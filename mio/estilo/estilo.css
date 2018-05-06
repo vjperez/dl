@@ -8,20 +8,20 @@
 .color06{ color:#f1c40f }
 */
 
-* {font-family: 'PT Mono', mono, monospace, fantasy, courier;} 
+* { font-family:'PT Mono', mono, monospace, fantasy, courier; } 
 
-a {font-family: 'Bree Serif', Georgia, Times, serif;}
+a { font-family:'Bree Serif', Georgia, Times, serif; }
 
-h1,h2,h3 { font-family: Shrikhand, Georgia, Times, serif, cursive; }
+h1,h2,h3 { font-family:Shrikhand, Georgia, Times, serif, cursive; }
 
-div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align: right;  font-size:85%;  color: #16a085; font-weight: bolder; }
-div#header img{ width: 100%; }	
+div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align:right;  font-size:3.0em;  color:#16a085; font-weight:bolder; }
+div#header img { width:100%; }	
 	
 	
 /*portada */
-div#forma label{ font-size: 1.5em; color: #c0392b; letter-spacing: 0.25em; width: 6em; float: left; clear: left; text-align: right; margin-right: 1em; }
-div#forma input{ font-size: 1.5em; width:16em; border-radius: 10px; }
-div#forma button{ width: 16em; border-radius: 10px; position: relative; left: 12em; } 
+div#forma label { font-size:1.5em; letter-spacing:0.25em; color:#c0392b; width:25%; float:left; clear:left; text-align:right; margin-right:5%; }
+div#forma input { font-size:1.5em; width:50%; border-radius:10px; }
+div#forma button { width:50%; border-radius:10px; position:relative; left:30%; } 
 
 
 /*profile */	
