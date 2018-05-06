@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <title>styling links</title>
+        <meta charset="utf-8">
+        <style>
+        
+        a:link{ text-decoration:none;  color:red}
+        a:visited{ text-decoration:none;  color:orchid;;}
+        a:hover{ text-decoration:underline;  color:blue}
+        
+        
+        
+        .btn01:link, .btn01:visited {
+            display: inline-block;
+            background-color: white;
+            color: black;
+            border: 2px solid #4CAF50;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin-left:20px;
+        }
+        .btn01:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        
+        .btn02 {
+            display:inline-block;
+            background-color:#f44336;
+            color: #FFFFFF;
+            padding: 14px 25px;
+            text-align: center;
+            text-decoration: none;
+            font-size:16px;
+            margin-left:20px;
+            opacity:0.8;
+        }
+        .btn02:hover {
+            color:white;
+            background-color:red;
+            opacity:1;
+        }        
+        </style>
+    </head>
+    <body>
+        <!-- google pseudo classes links or anchors-->
+        
+        <p><a href="https://en.wikipedia.org/wiki/Main_Page">wiki pedia main</a></p>
+        <p><a class="btn01" href="https://www.wikidata.org/wiki/Wikidata:Main_Page">visit wiki data main</a></p>
+        
+        <!-- .btn02 y .btn02:link no parece hacer diferencia. Al igual q a a:link tampoco
+             .btn01 especifica q hacer cuando el <a> esta visited, por eso no hereda el color 'orchid' de a:visited
+             .btn02 si lo hereda pq no especifica q hacer cuando <a> este visited-->
+             
+        <p><a class="btn02" href="https://en.wikivoyage.org/wiki/Main_Page">visit wiki voyage main</a></p>
+    </body>    
+</html>

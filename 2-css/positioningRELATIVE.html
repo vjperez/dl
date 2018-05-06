@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <title>flota cabron</title>  
+  <style type="text/css">
+    .bordeado{ border:2px solid blue; }
+    .reducido{ width:200px }  
+    .subido{ position:relative; top:-56px }
+    .bajado{ position:relative; top:56px }
+  </style>    
+</head>    
+
+<body>
+
+<!-- Relative positioning does not take the element that you are positioning
+ out of the flow of the page. It positions relative to where it would otherwise be-->
+ 
+    <h2>divisiones intercambiadas usando positioning</h2>
+    
+    <!--a esta div le introduje 56px en el top ; asi q va a bajar-->
+    <div class="bordeado reducido bajado">
+        <p>1</p>
+    </div>
+    
+    
+    <!--a esta div le saque 56px del top ;  asi q va a subir-->
+    <div class="bordeado reducido subido">
+        <p>2</p>
+    </div>
+</body>   
+ <!-- z-index decide cual objeto esta sobre otro 
+ dependiendo de quien tiene z-index mayor. 
+ Es como q coordenada z es la 3ra dimension.  Funciona con position:relative
+ 
+ opacity es un numero entre 0 y 1 que decide cuan opaco(opacity=uno) 
+ o transparente(opacity=cero) es un objeto -->
+</html>
