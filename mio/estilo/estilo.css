@@ -12,22 +12,22 @@
 
 a { font-family:'Bree Serif', Georgia, Times, serif; }
 
-h1,h2,h3 { font-family:Shrikhand, Georgia, Times, serif, cursive; }
+/*h1,h2,h3 { font-family:Shrikhand, Georgia, Times, serif, cursive; } */
 
-div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align:right;  font-size:3.0em;  color:#16a085; font-weight:bolder; }
+div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align:right;  font-size:1em;  color:#16a085; font-weight:bolder; }
 div#header img { width:100%; }	
 	
 	
 /*portada */
-div#forma label { font-size:1.5em; letter-spacing:0.25em; color:#c0392b; width:25%; float:left; clear:left; text-align:right; margin-right:5%; }
+div#forma label { font-size:1.5em; letter-spacing:0.25em; font-weight:bolder; color:#c0392b; width:25%; float:left; clear:left; text-align:right; margin-right:5%; }
 div#forma input { font-size:1.5em; width:50%; border-radius:10px; }
 div#forma button { width:50%; border-radius:10px; position:relative; left:30%; } 
 
 
 /*profile */	
-div#video h1{ color: #27ae60; }
-div#que h2, div#donde h2, div#quien h2{ color: #c0392b; } 
-div#video iframe{ width:560px; height:315px; } /* this are you tube dimensions */
+div#video h1 { letter-spacing:0.25em; color:#27ae60; }
+div#que h2, div#donde h2, div#quien h2 { letter-spacing:0.25em; color:#c0392b; } 
+div#video iframe { width:560px; height:315px; } /* this are you tube dimensions */
 table { border-spacing: 2.5em; }
 a.clavelink:link, .clavelink:visited {
     background-color: white;
@@ -41,5 +41,7 @@ a.clavelink:link, .clavelink:visited {
 a.clavelink:hover {
     background-color: #7fb3d5;
     color: #f1c40f;  }
-div#quien img{ width: 45%; }
-div#quien li{ line-height:1.4em; letter-spacing:0.2em; }
+div#quien div#foto img{ width:45%; }
+div#quien ul img{ width:32px; }
+div#quien ul { list-style-type:none; }
+div#quien li { /*line-height:1.4em; letter-spacing:0.2em;*/ display:inline; margin-right:5%;}
