@@ -1,23 +1,19 @@
 /*comun*/ 
+body { margin:0px; }
 /*Las clases centro y borde son usadas por todas las mains divisions 
 	header, footer, forma, video, que, donde, quien */
-.centro{  			
-	width:90%; 
-   margin-left:5%; 
-   margin-right:5%; }	
+.centro { width:94%; margin-left:auto; margin-right:auto; min-width:560px; max-width:1264px; }	
+.borde { border-style:solid; border-width:1px; }
 
-.borde{ border-style:solid; border-width:1px; }
-
-
-div#header { margin-bottom:50px; margin-top:5px; }
-div#footer { margin-bottom: 5px; margin-top:50px; }
+div#header { margin-bottom:50px; }
+div#footer { margin-top:50px; }
 
 /*portada */
-/* Aqui el contenido es div forma */
+/*Aqui el contenido es div forma */
 /*Pon un margin top arriba de todas menos la primera div del contenido */
 
 
 /*profile */
 /*Aqui el contenido es div video, que, donde, quien */
 /*Pon un margin top arriba de todas menos la primera div del contenido */
-div#que, div#donde, div#quien { margin-top:5px; }
+div#que, div#donde, div#quien { margin-top:25px; }

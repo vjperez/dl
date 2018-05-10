@@ -41,7 +41,7 @@ a.clavelink:link, .clavelink:visited {
 a.clavelink:hover {
     background-color: #7fb3d5;
     color: #f1c40f;  }
-div#quien div#foto img{ width:45%; }
-div#quien ul img{ width:32px; }
+div#quien div#foto img { width:45%; }
+div#quien ul img { width:32px; }
 div#quien ul { list-style-type:none; }
 div#quien li { /*line-height:1.4em; letter-spacing:0.2em;*/ display:inline; margin-right:5%;}
