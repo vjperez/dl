@@ -16,4 +16,4 @@ div#footer { margin-top:50px; }
 /*profile */
 /*Aqui el contenido es div video, que, donde, quien */
 /*Pon un margin top arriba de todas menos la primera div del contenido */
-div#que, div#donde, div#quien { margin-top:25px; }
+div#que, div#donde, div#cuando, div#quien { margin-top:25px; }
