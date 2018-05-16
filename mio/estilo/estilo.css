@@ -1,11 +1,11 @@
 /*Comun */
 /*
-.color01{ color:#c0392b }
-.color02{ color:#27ae60 }
-.color03{ color:#16a085 }
-.color04{ color:#7fb3d5 }
-.color05{ color:#2980b9 }
-.color06{ color:#f1c40f }
+.color01{ color:#c0392b } labels y h2s
+.color02{ color:#27ae60 } profile video h1 y footer background
+.color03{ color:#16a085 } not used
+.color04{ color:#7fb3d5 } link hover background
+.color05{ color:#2980b9 } link border
+.color06{ color:#f1c40f } link hover letras
 */
 
 
@@ -15,7 +15,8 @@ a, div#cuando li { font-family:'Bree Serif', Georgia, Times, serif; font-weight:
 
 /*h1,h2,h3 { font-family:Shrikhand, Georgia, Times, serif, cursive; } */
 
-div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align:right;  font-size:1em;  color:#16a085; font-weight:bolder; }
+div#footer { background-color:#27ae60; }
+div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align:right;  font-size:1em;  color:beige; font-weight:bolder; }
 div#header img { width:100%; }	
 	
 	

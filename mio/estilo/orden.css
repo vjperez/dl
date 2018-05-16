@@ -2,11 +2,11 @@
 body { margin:0px; background-color:#ffffff;}
 /*Las clases centro y borde son usadas por todas las mains divisions 
 	header, footer, forma, video, que, donde, quien */
-.centro { width:94%; margin-left:auto; margin-right:auto; min-width:560px; max-width:1264px; background-color:#e8eff5; }	
-.borde { /*border-style:solid; border-width:2px;*/ border-radius:10px; }
+.centro { width:94%; margin-left:auto; margin-right:auto; min-width:560px; max-width:1264px; }	
+.borde { /*border-style:solid; border-width:2px;*/ }
 
-div#header { margin-bottom:50px; }
-div#footer { margin-top:50px; }
+div#header { margin-bottom:150px; }
+div#footer { margin-top:150px; border-top:2px solid #a0b0b0; border-bottom:2px solid #cfdfdf;}
 
 /*portada */
 /*Aqui el contenido es div forma */
@@ -16,6 +16,5 @@ div#footer { margin-top:50px; }
 /*profile */
 /*Aqui el contenido es div video, que, donde, quien */
 /*Pon un margin top arriba de todas menos la primera div del contenido */
-div#que, div#donde, div#cuando, div#quien { margin-top:0px; padding-top:50px; }
+div#que, div#donde, div#cuando, div#quien { margin-top:100px; border-top:2px solid #cfdfdf; }
 
-div#video, div#que, div#donde, div#cuando, div#quien, div#footer { border-top:2px solid #f1f8fe; border-bottom:2px solid #cbd2d8; border-left:2px solid #cbd2d8; }
