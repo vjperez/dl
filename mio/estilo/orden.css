@@ -2,19 +2,30 @@
 body { margin:0px; background-color:#ffffff;}
 /*Las clases centro y borde son usadas por todas las mains divisions 
 	header, footer, forma, video, que, donde, quien */
+.ancho100 { width:100%; min-width:560px; max-width:1264px; }
 .centro { width:94%; margin-left:auto; margin-right:auto; min-width:560px; max-width:1264px; }	
-.borde { /*border-style:solid; border-width:2px;*/ }
+.ver-borde { border-style:solid; border-width:2px; }
 
 div#header { margin-bottom:150px; }
+div#header img { width:100%; }
 div#footer { margin-top:150px; border-top:2px solid #a0b0b0; border-bottom:2px solid #cfdfdf;}
 
 /*portada */
 /*Aqui el contenido es div forma */
 /*Pon un margin top arriba de todas menos la primera div del contenido */
+div#forma label { width:25%; float:left; clear:left; text-align:right; margin-right:5%; ;}
+div#forma input { width:50%; }
+div#forma button { width:25%; position:relative; left:30%; } 
 
 
 /*profile */
-/*Aqui el contenido es div video, que, donde, quien */
+/*Aqui el contenido es div video, que, donde, cuando, quien */
 /*Pon un margin top arriba de todas menos la primera div del contenido */
 div#que, div#donde, div#cuando, div#quien { margin-top:100px; border-top:2px solid #cfdfdf; }
+div#video iframe { width:560px; height:315px; } /* this are you tube dimensions */
+div#que li, div#donde li { display:inline-block; margin-right:0.1em; }
 
+div#quien div#foto img { width:45%; }
+div#quien li { display:inline; margin-right:2%; }
+div#quien ul img { width:3%; }  
+div#quien ul { text-align:center; }

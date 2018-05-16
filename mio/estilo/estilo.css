@@ -16,20 +16,19 @@ a, div#cuando li { font-family:'Bree Serif', Georgia, Times, serif; font-weight:
 /*h1,h2,h3 { font-family:Shrikhand, Georgia, Times, serif, cursive; } */
 
 div#footer { background-color:#27ae60; }
-div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align:right;  font-size:1em;  color:beige; font-weight:bolder; }
-div#header img { width:100%; }	
+div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align:right;  font-size:1em;  color:beige; font-weight:bolder; }	
 	
 	
 /*portada */
-div#forma label { font-size:1.5em; letter-spacing:0.25em; font-weight:bolder; color:#c0392b; width:25%; float:left; clear:left; text-align:right; margin-right:5%; }
-div#forma input { font-size:1.5em; width:50%; border-radius:10px; }
-div#forma button { width:25%; border-radius:10px; position:relative; left:30%; } 
-
+div#forma label { font-size:1.5em; letter-spacing:0.25em; font-weight:bolder; color:#c0392b; }
+div#forma input { font-size:1.5em; border-radius:10px; }
+div#forma input:focus { background-color:#f0f0f0; }
+div#forma button { border-radius:10px; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2px; } 
+div#forma button:hover, div#forma button:focus { background-color:#7fb3d5; }
 
 /*profile */	
 div#video h1 { letter-spacing:0.25em; color:#27ae60; }
 div#que h2, div#donde h2, div#cuando h2, div#quien h2 { letter-spacing:0.25em; color:#c0392b; } 
-div#video iframe { width:560px; height:315px; } /* this are you tube dimensions */
 
 a.clavelink:link, .clavelink:visited {
     background-color:white;
@@ -39,15 +38,13 @@ a.clavelink:link, .clavelink:visited {
 	 /*border-top-left-radius:40% 50%; border-top-right-radius:40% 50%; border-bottom-left-radius:20% 50%; border-bottom-right-radius:20% 50%;*/
     text-decoration:none;
     padding:0.5em 0.1em 0.5em 0.1em; }
-a.clavelink:hover {
+a.clavelink:hover, a.clavelink:focus {
     background-color:#7fb3d5;
     color:#f1c40f;  }
     
 div#que ul, div#donde ul, div#quien ul { list-style-type:none; }
-div#que li, div#donde li { display:inline-block; margin-right:0.1em; margin-bottom:1.5em; }  
+div#que li, div#donde li { margin-bottom:1.5em; }  
 div#cuando li { line-height:2em; }  
     
-div#quien div#foto img { width:45%; }
-div#quien ul img { width:3%;  border-color:#2980b9;  border-style:solid;  border-width:2px;  border-radius:10px; padding:0.2em; }
-div#quien ul { text-align:center; }
-div#quien li { display:inline; margin-right:2%; }
+
+div#quien ul img { border-color:#2980b9;  border-style:solid;  border-width:2px;  border-radius:10px; padding:0.2em; }
