@@ -1,14 +1,29 @@
-/*comun*/ 
-body { margin:0px; background-color:#ffffff;}
-/*Las clases centro y borde son usadas por todas las mains divisions 
-	header, footer, forma, video, que, donde, quien */
-.ancho100 { width:100%; min-width:560px; max-width:1264px; }
-.ancho94centro { width:94%; margin-left:auto; margin-right:auto; }	
-.ver-borde { border-style:solid; border-width:2px; }
+/*https://www.w3schools.com/css/css_rwd_mediaqueries.asp
+en media queries, max-width == hasta y min-width == desde*/
 
-div#header { margin-bottom:150px; }
-div#header img { width:100%; }
-div#footer { margin-top:150px; border-top:2px solid #909090; border-bottom:2px solid #909090; }
+
+
+/*comun*/
+/*This makes sure that the padding and border are included in the total 
+width and height of the elements. */ 
+* { box-sizing:border-box; }
+body { margin:0px; background-color:#ffffff; }
+.ancho330-1024 { width:100%; min-width:330pt; max-width:1024pt; }
+.ancho-var-cell-1de1 { width:96%; margin-left:2%; }
+.ancho-1de2 { width:47%; margin-left:2%; }	
+.ancho-1de3 { width:32%; margin-left:1%; }
+
+.izq { float:left; } /* nice selector to remember [class*="ancho-1de"] { float:left; } */
+.centro { margin-left:auto; margin-right:auto; }	
+.ver-borde { border-style:solid; border-width:1pt; border-bottom-color:#dadada; }
+.soloclear { clear:both; }
+div#header { margin-bottom:45pt; }
+/*vertical-align pone la imagen en el fondo del texto q iria alrededor de un elemento inline 
+como lo son las imagenes, sino creas un gap entre la img y el containing div */
+div#header img { width:100%; vertical-align:text-bottom; }
+div#footer { margin-top:45pt; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
+
+
 
 
 /*portada */
@@ -16,21 +31,24 @@ div#footer { margin-top:150px; border-top:2px solid #909090; border-bottom:2px s
 /*Pon un margin top arriba de todas menos la primera div del contenido */
 div#forma label { width:25%; float:left; clear:left; text-align:right; margin-right:5%; ;}
 div#forma input { width:50%; }
-div#forma button { width:25%; position:relative; left:30%; } 
+div#forma button { width:25%; position:relative; left:30%; }	
+
+
 
 
 /*opciones */
-/*Aqui elcontenido son divs de clase "punto320"*/
+/*Aqui elcontenido son divs de clase "320pt"*/
 div.punto320 { border:2px solid #ff0000; }   
 
 
+
+
 /*profile */
-/*Aqui el contenido es div video, que, donde, cuando, quien */
+/*Aqui el contenido son DIVs video, que, donde, cuando, quien */
 /*Pon un margin top arriba de todas menos la primera div del contenido */
 div#que, div#donde, div#cuando, div#quien { margin-top:100px; border-top:2px solid #dadada; }
-div#video iframe { width:560px; height:315px; } /* 320 180 this are you tube dimensions width:560px; height:315px; */
+div#video iframe { width:560px; height:315px; } /* this are you tube dimensions */
 div#que li, div#donde li { display:inline-block; margin-right:0.1em; }
-
 div#quien div#foto img { width:45%; margin-right:2%; }
 div#quien li { display:inline; margin-right:2%; }
 div#quien ul img { width:3%; }  

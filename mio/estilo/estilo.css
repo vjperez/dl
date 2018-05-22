@@ -8,16 +8,19 @@
 .color06{ color:#f1c40f } link hover letras not used. white now
 */
 
+html { font-family:'PT Mono', mono, monospace, fantasy, courier; } 
 
-* { font-family:'PT Mono', mono, monospace, fantasy, courier; } 
-
-a, div#cuando li { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; letter-spacing:0.2em; }
+a { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; letter-spacing:0.2em; }
 
 /*h1,h2,h3 { font-family:Shrikhand, Georgia, Times, serif, cursive; } */
 
 div#footer { background-color:#27ae60; }
 div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align:right;  font-size:1em;  color:beige; font-weight:bolder; }	
-	
+
+
+
+
+
 	
 /*portada */
 div#forma label { font-size:1.5em; letter-spacing:0.25em; font-weight:bolder; color:#c0392b; }
@@ -25,6 +28,11 @@ div#forma input { font-size:1.5em; border-radius:10px; }
 div#forma input:focus { background-color:#dadada; }
 div#forma button { border-radius:10px; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2px; } 
 div#forma button:hover, div#forma button:focus { background-color:#7fb3d5; }
+
+
+
+
+
 
 /*profile */	
 div#video h1 { letter-spacing:0.25em; color:#27ae60; }
@@ -44,7 +52,5 @@ a.clavelink:hover, a.clavelink:focus {
     
 div#que ul, div#donde ul, div#quien ul { list-style-type:none; }
 div#que li, div#donde li { margin-bottom:1.5em; }  
-div#cuando li { line-height:2em; }  
-    
-
+div#cuando li { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; line-height:2em; letter-spacing:0.2em; }
 div#quien ul img { border-color:#2980b9;  border-style:solid;  border-width:2px;  border-radius:10px; padding:0.2em; }
