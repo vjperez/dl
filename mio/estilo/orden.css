@@ -1,27 +1,31 @@
-/*https://www.w3schools.com/css/css_rwd_mediaqueries.asp
-en media queries, max-width == hasta y min-width == desde*/
-
-
-
 /*comun*/
-/*This makes sure that the padding and border are included in the total 
-width and height of the elements. */ 
+/*This makes sure that the padding and border are included in the total width and height of the elements. */ 
 * { box-sizing:border-box; }
-body { margin:0px; background-color:#ffffff; }
-.ancho330-1024 { width:100%; min-width:330pt; max-width:1024pt; }
-.ancho-var-cell-1de1 { width:96%; margin-left:2%; }
-.ancho-1de2 { width:47%; margin-left:2%; }	
-.ancho-1de3 { width:32%; margin-left:1%; }
-
-.izq { float:left; } /* nice selector to remember [class*="ancho-1de"] { float:left; } */
+body { margin:0px auto; background-color:#ffffff; min-width:320pt; max-width:960pt; }
+.izq { float:left; }  /*nice selector to remember [class*="ancho-1de"] { float:left; } */
 .centro { margin-left:auto; margin-right:auto; }	
-.ver-borde { border-style:solid; border-width:1pt; border-bottom-color:#dadada; }
+.ver-borde { border-style:solid; border-width:2pt; border-color:#000000; }
 .soloclear { clear:both; }
-div#header { margin-bottom:45pt; }
-/*vertical-align pone la imagen en el fondo del texto q iria alrededor de un elemento inline 
-como lo son las imagenes, sino creas un gap entre la img y el containing div */
+.margen { margin-left:2%; margin-right:2%; }
+div#header { margin-bottom:75pt; }
+/*vertical-align pone la imagen en el fondo del texto q iria alrededor de un elemento inline como lo son las imagenes, sino creas un gap entre la img y el containing div */
 div#header img { width:100%; vertical-align:text-bottom; }
-div#footer { margin-top:45pt; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
+div#footer { margin-top:75pt; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
+/*https://www.w3schools.com/css/css_rwd_mediaqueries.asp en media queries, max-width == hasta y min-width == desde*/
+[class*="ancho-sensi"] { width:100%; }
+@media only screen and (max-width: 480pt) { .ancho-sensi-cell-1de2 { width:50%; } div#header img { height:125pt; } }
+
+@media only screen and (min-width: 480pt) { .ancho-sensi-ipad-1de3 { width:33.3%; }
+														  .ancho-sensi-ipad-2de3 { width:66.6%; }
+														  .ancho-sensi-ipad-1de4 { width:25%; }
+														  .ancho-sensi-ipad-2de4 { width:50%; }  
+														  .ancho-sensi-ipad-3de4 { width:75%; } }
+														  
+@media only screen and (min-width: 768pt) { .ancho-sensi-desk-1de3 { width:33.3%; }
+														  .ancho-sensi-desk-2de3 { width:66.6%; }
+														  .ancho-sensi-desk-1de4 { width:25%; } 
+														  .ancho-sensi-desk-2de4 { width:50%; }
+														  .ancho-sensi-desk-3de4 { width:75%; } }
 
 
 
@@ -29,27 +33,29 @@ div#footer { margin-top:45pt; border-top:2pt solid #909090; border-bottom:2pt so
 /*portada */
 /*Aqui el contenido es div forma */
 /*Pon un margin top arriba de todas menos la primera div del contenido */
-div#forma label { width:25%; float:left; clear:left; text-align:right; margin-right:5%; ;}
+div#forma label { width:30%; float:left; clear:left; text-align:right; margin-right:7.5%; ;}
 div#forma input { width:50%; }
-div#forma button { width:25%; position:relative; left:30%; }	
-
-
-
-
-/*opciones */
-/*Aqui elcontenido son divs de clase "320pt"*/
-div.punto320 { border:2px solid #ff0000; }   
-
+div#forma button { width:25%; position:relative; left:37.5%; }
 
 
 
 /*profile */
 /*Aqui el contenido son DIVs video, que, donde, cuando, quien */
 /*Pon un margin top arriba de todas menos la primera div del contenido */
-div#que, div#donde, div#cuando, div#quien { margin-top:100px; border-top:2px solid #dadada; }
-div#video iframe { width:560px; height:315px; } /* this are you tube dimensions */
-div#que li, div#donde li { display:inline-block; margin-right:0.1em; }
-div#quien div#foto img { width:45%; margin-right:2%; }
-div#quien li { display:inline; margin-right:2%; }
-div#quien ul img { width:3%; }  
+div#que, div#donde, div#cuando, div#quien { margin-top:60pt; border-top:2pt solid #dadada; }
+div#que li, div#donde li { display:inline-block; margin-right:2pt; }
+div#quien li { display:inline; margin-right:5pt; } 
 div#quien ul { text-align:center; }
+@media only screen and (max-width: 480pt) { 
+														  div#video iframe { width:94%; height:250pt; } 
+														  div#quien div#foto img { width:94%; }
+														  div#quien ul img { width:30pt; }  }
+@media only screen and (min-width: 480pt) { 
+														  div#video iframe { width:480pt; height:274px; } 
+														  div#quien div#foto img { width:49%; padding-right:1%; }
+														  div#quien ul img { width:7%; }  }
+
+
+/*opciones */
+/*Aqui elcontenido son divs de clase "320pt"*/
+div.punto320 { border:2px solid #ff0000; }   
