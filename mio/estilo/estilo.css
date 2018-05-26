@@ -18,7 +18,7 @@ a { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; letter-
 div#footer { background-color:#27ae60; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
 div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align:right;  font-size:1em;  color:beige; font-weight:bolder; }	
 
-.ver-borde { border-style:solid; border-width:2pt; border-color:#000000; }
+.ver-borde { border-style:solid; border-width:2pt; border-color:#f1c40f; }
 
 
 
@@ -54,4 +54,4 @@ a.clavelink:hover, a.clavelink:focus {
 div#que ul, div#donde ul, div#quien ul { list-style-type:none; }
 div#que li, div#donde li { margin-bottom:1.5em; }  
 div#cuando li { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; line-height:2em; letter-spacing:0.2em; }
-div#quien ul img { border-color:#2980b9;  border-style:solid;  border-width:2px;  border-radius:10px; padding:0.2em; }
+div#quien ul img { border-color:#2980b9;  border-style:solid;  border-width:1px;  border-radius:10px; padding:0.2em; }
