@@ -51,7 +51,6 @@ a.clavelink:hover, a.clavelink:focus {
     background-color:#7fb3d5;
     color:#ffffff;  }
     
-div#que ul, div#donde ul, div#quien ul { list-style-type:none; }
-div#que li, div#donde li { margin-bottom:1.5em; }  
+div#que ul, div#donde ul, div#quien ul { list-style-type:none; }  
 div#cuando li { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; line-height:2em; letter-spacing:0.2em; }
 div#quien ul img { border-color:#2980b9;  border-style:solid;  border-width:1px;  border-radius:10px; padding:0.2em; }

@@ -42,7 +42,7 @@ div#forma button { width:25%; position:relative; left:37.5%; }
 /*Aqui el contenido son DIVs video, que, donde, cuando, quien */
 /*Pon un margin top arriba de todas menos la primera div del contenido */
 div#que, div#donde, div#cuando, div#quien { margin-top:60pt; border-top:2pt solid #dadada; }
-div#que li, div#donde li { display:inline-block; margin-right:2pt; }
+div#que li, div#donde li { display:inline-block; margin-right:2pt; margin-bottom:1.5em; }
 div#quien li { display:inline; margin-right:5pt; } 
 div#quien ul { text-align:center; }
 div#quien ul img { width:30pt; }
