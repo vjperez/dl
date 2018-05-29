@@ -68,4 +68,4 @@ div#video iframe, div#quien div#profilefotos img { display:block; margin-left:au
 /*opciones */
 /*Aqui elcontenido son divs de clase "320pt"*/
 div#opcionesfotos { overflow:auto; }
-div#opcionesfotos img { overflow:auto; float:left; }
+div#opcionesfotos img { float:left; }
