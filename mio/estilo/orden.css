@@ -8,21 +8,23 @@ div#header { margin-bottom:75pt; }
 /*vertical-align pone la imagen en el fondo del texto q iria alrededor de un elemento inline como lo son las imagenes, sino creas un gap entre la img y el containing div */
 div#header img { width:100%; vertical-align:text-bottom; }
 div#footer { margin-top:75pt; }
-/*https://www.w3schools.com/css/css_rwd_mediaqueries.asp en media queries, max-width == hasta y min-width == desde*/
-[class*="ancho-sensi"] { width:100%; }
-@media only screen and (max-width: 480pt) { .ancho-sensi-cell-1de2 { width:50%; } div#header img { height:125pt; } }
 
-@media only screen and (min-width: 480pt) { .ancho-sensi-ipad-1de3 { width:33.3%; }
-														  .ancho-sensi-ipad-2de3 { width:66.6%; }
-														  .ancho-sensi-ipad-1de4 { width:25%; }
-														  .ancho-sensi-ipad-2de4 { width:50%; }  
-														  .ancho-sensi-ipad-3de4 { width:75%; } }
+[class*="ancho-sensi"] { width:100%; }
+.ancho-sensi-cell-1de2 { width:50%; } 
+
+@media only screen and (min-width: 480pt) { 
+	.ancho-sensi-ipad-1de3 { width:33.3%; }
+	.ancho-sensi-ipad-2de3 { width:66.6%; }
+	.ancho-sensi-ipad-1de4 { width:25%; }
+	.ancho-sensi-ipad-2de4 { width:50%; }  
+	.ancho-sensi-ipad-3de4 { width:75%; }    }
 														  
-@media only screen and (min-width: 768pt) { .ancho-sensi-desk-1de3 { width:33.3%; }
-														  .ancho-sensi-desk-2de3 { width:66.6%; }
-														  .ancho-sensi-desk-1de4 { width:25%; } 
-														  .ancho-sensi-desk-2de4 { width:50%; }
-														  .ancho-sensi-desk-3de4 { width:75%; } }
+@media only screen and (min-width: 768pt) { 
+	.ancho-sensi-desk-1de3 { width:33.33%; }
+	.ancho-sensi-desk-2de3 { width:66.6%; }
+	.ancho-sensi-desk-1de4 { width:25%; } 
+	.ancho-sensi-desk-2de4 { width:50%; }
+	.ancho-sensi-desk-3de4 { width:75%; }    }
 
 
 
@@ -30,10 +32,10 @@ div#footer { margin-top:75pt; }
 /*portada */
 /*Aqui el contenido es div forma */
 /*Pon un margin top arriba de todas menos la primera div del contenido */
-div#forma label { width:30%; float:left; clear:left; text-align:right; margin-right:7.5%; ;}
+div#forma label { width:30%; float:left; clear:left; text-align:right; margin-right:7.5%; }
 div#forma input { width:50%; }
 div#forma button { width:25%; position:relative; left:37.5%; }
-@media only screen and (min-width: 480pt) { div#forma { margin-left:auto; margin-right:auto; } }
+div#forma { margin-left:auto; margin-right:auto; }
 
 
 
@@ -43,25 +45,26 @@ div#forma button { width:25%; position:relative; left:37.5%; }
 /*Pon un margin top arriba de todas menos la primera div del contenido */
 div#que, div#donde, div#cuando, div#quien { margin-top:60pt; border-top:2pt solid #dadada; }
 div#que li, div#donde li { display:inline-block; margin-right:2pt; margin-bottom:1.5em; }
-div#quien li { display:inline; margin-right:5pt; } 
+div#quien li { display:inline-block; margin-right:5pt; margin-top:20pt; margin-bottom:20pt; } 
 div#quien ul { text-align:center; }
-div#quien ul img { width:30pt; }
-div#video iframe, div#quien div#foto img { display:block; margin-left:auto; margin-right:auto; }
+div#quien ul img { width:25pt; }
+div#video iframe, div#quien div#profilefoto img { display:block; margin-left:auto; margin-right:auto; }
 @media only screen and (max-width: 480pt) { 
-														  body { border:5pt solid #ff0000; }														  
-														  div#video iframe { height:250pt; }  }
+	body { border:5pt solid #ff0000; }														  
+	div#video iframe { height:250pt; }
+	div#header img { height:125pt; }    }
 @media only screen and (min-width: 480pt) { 
-														  body { border:5pt solid #0000ff; }
-														  div#video iframe { height:275pt; } }
+	body { border:5pt solid #0000ff; }
+	div#video iframe { height:275pt; }    }
 @media only screen and (min-width: 768pt) { 
-													     body { border:5pt solid #ffff00; }
-													     div#video iframe { width:576pt; height:329pt; }
-														  div#quien div#foto { overflow:auto; }													     
-													     div#quien div#foto img { display:inline-block; float:left; }	}
+	body { border:5pt solid #ffff00; }
+	div#video iframe { width:576pt; height:329pt; }
+	div#quien div#profilefoto { overflow:auto; }													     
+	div#quien div#profilefoto img { display:inline; float:left; }	   }
 
 
 
 
 /*opciones */
 /*Aqui elcontenido son divs de clase "320pt"*/
-div.punto320 { border:2px solid #ff0000; }   
+   

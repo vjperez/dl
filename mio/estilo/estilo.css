@@ -25,9 +25,9 @@ div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  
 	
 /*portada */
 div#forma label { font-size:1.5em; letter-spacing:0.25em; font-weight:bolder; color:#c0392b; }
-div#forma input { font-size:1.5em; border-radius:10px; }
+div#forma input { font-size:1.5em; border-radius:5pt; }
 div#forma input:focus { background-color:#dadada; }
-div#forma button { border-radius:10px; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2px; } 
+div#forma button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
 div#forma button:hover, div#forma button:focus { background-color:#7fb3d5; }
 
 
@@ -43,14 +43,14 @@ a.clavelink:link, .clavelink:visited {
     background-color:white;
     color:black;
     border-color:#2980b9;
-    border-style:solid;     border-width:2px;  border-radius:10px;
+    border-style:solid;     border-width:2pt;  border-radius:5pt;
 	 /*border-top-left-radius:40% 50%; border-top-right-radius:40% 50%; border-bottom-left-radius:20% 50%; border-bottom-right-radius:20% 50%;*/
     text-decoration:none;
-    padding:0 0.5em 0 0.5em; }
+    padding:0.5em 0.5em 0.25em 0.5em; }
 a.clavelink:hover, a.clavelink:focus {
     background-color:#7fb3d5;
     color:#ffffff;  }
     
-div#que ul, div#donde ul, div#quien ul { list-style-type:none; }  
+div#que ul, div#donde ul, div#quien ul { list-style-type:none; }
 div#cuando li { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; line-height:2em; letter-spacing:0.2em; }
-div#quien ul img { border-color:#2980b9;  border-style:solid;  border-width:1px;  border-radius:10px; padding:0.2em; }
+div#quien ul img { border-color:#2980b9;  border-style:solid;  border-width:1pt;  border-radius:5pt; padding:0.2em; }
