@@ -48,7 +48,7 @@ div#que li, div#donde li { display:inline-block; margin-right:2pt; margin-bottom
 div#quien li { display:inline-block; margin-right:5pt; margin-top:20pt; margin-bottom:20pt; } 
 div#quien ul { text-align:center; }
 div#quien ul img { width:25pt; }
-div#video iframe, div#quien div#profilefoto img { display:block; margin-left:auto; margin-right:auto; }
+div#video iframe, div#quien div#profilefotos img { display:block; margin-left:auto; margin-right:auto; }
 @media only screen and (max-width: 480pt) { 
 	body { border:5pt solid #ff0000; }														  
 	div#video iframe { height:250pt; }
@@ -59,12 +59,13 @@ div#video iframe, div#quien div#profilefoto img { display:block; margin-left:aut
 @media only screen and (min-width: 768pt) { 
 	body { border:5pt solid #ffff00; }
 	div#video iframe { width:576pt; height:329pt; }
-	div#quien div#profilefoto { overflow:auto; }													     
-	div#quien div#profilefoto img { display:inline; float:left; }	   }
+	div#quien div#profilefotos { overflow:auto; }													     
+	div#quien div#profilefotos img { display:inline; float:left; }	   }
 
 
 
 
 /*opciones */
 /*Aqui elcontenido son divs de clase "320pt"*/
-   
+div#opcionesfotos { overflow:auto; }
+div#opcionesfotos img { overflow:auto; float:left; }
