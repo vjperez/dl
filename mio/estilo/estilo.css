@@ -2,16 +2,16 @@
 /*
 .color01{ color:#c0392b } labels y h2s. try rojito #fd341d;
 .color02{ color:#27ae60 } profile video h1 y footer background
-.color03{ color:#16a085 } not used. for verde try 00e356
+.color03{ color:#16a085 } div#cuando td. for verde try 00e356
 .color04{ color:#7fb3d5 } link hover background
 .color05{ color:#2980b9 } link border
-.color06{ color:#f1c40f } link hover letras not used. white now
+.color06{ color:#f1c40f } div#cuando h3
 */
 body { background-color:#ffffff; }
 
 html { font-family:'PT Mono', mono, monospace, fantasy, courier; } 
 
-a { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; letter-spacing:0.2em; }
+a { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; letter-spacing:0.25em; }
 
 /*h1,h2,h3 { font-family:Shrikhand, Georgia, Times, serif, cursive; } */
 
@@ -24,7 +24,7 @@ div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  
 
 	
 /*portada */
-div#forma label { font-size:1.5em; letter-spacing:0.25em; font-weight:bolder; color:#c0392b; }
+div#forma label { font-size:1.5em; letter-spacing:0.30em; font-weight:bolder; color:#c0392b; }
 div#forma input { font-size:1.5em; border-radius:5pt; }
 div#forma input:focus { background-color:#dadada; }
 div#forma button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
@@ -36,8 +36,9 @@ div#forma button:hover, div#forma button:focus { background-color:#7fb3d5; }
 
 
 /*profile */	
-div#video h1 { letter-spacing:0.25em; color:#27ae60; }
-div#que h2, div#donde h2, div#cuando h2, div#quien h2 { letter-spacing:0.25em; color:#c0392b; } 
+div#video h1 { letter-spacing:0.40em; color:#27ae60; }
+div#que h2, div#donde h2, div#cuando h2, div#quien h2 { letter-spacing:0.30em; color:#c0392b; } 
+div#cuando h3 { letter-spacing:0.25em;  color:#f1c40f; } 
 
 a.clavelink:link, .clavelink:visited {
     background-color:white;
@@ -52,5 +53,5 @@ a.clavelink:hover, a.clavelink:focus {
     color:#ffffff;  }
     
 div#que ul, div#donde ul, div#quien ul { list-style-type:none; }
-div#cuando li { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; line-height:2em; letter-spacing:0.2em; }
+div#cuando td { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; line-height:2em; letter-spacing:0.20em; color:#16a085; }
 div#quien ul img { border-color:#2980b9;  border-style:solid;  border-width:1pt;  border-radius:5pt; padding:0.2em; }

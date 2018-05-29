@@ -45,9 +45,20 @@ div#forma { margin-left:auto; margin-right:auto; }
 /*Pon un margin top arriba de todas menos la primera div del contenido */
 div#que, div#donde, div#cuando, div#quien { margin-top:60pt; border-top:2pt solid #dadada; }
 div#que li, div#donde li { display:inline-block; margin-right:2pt; margin-bottom:1.5em; }
+div#cuando h3 { text-align:center; }
+div#cuando h3 span.si, div#cuando h3 span.no { background: url("../imagenes/si-no.png"); 
+	 vertical-align:text-bottom; 
+	 display:inline-block;
+    height:25px;
+    width:25px;
+    margin-left:10pt; }
+div#cuando h3 span.no { background-position:0px -25px; } 
+div#cuando td.dia { text-align:right; }
+div#cuando td.hora { text-align:left; position:relative; left:25pt; }
+    
+div#quien ul { text-align:center; }    
 div#quien li { display:inline-block; margin-right:5pt; margin-top:20pt; margin-bottom:20pt; } 
-div#quien ul { text-align:center; }
-div#quien ul img { width:25pt; }
+div#quien ul li img { width:25pt; }
 div#video iframe { display:block; margin-left:auto; margin-right:auto; }
 @media only screen and (max-width: 480pt) { 
 	body { border:5pt solid #ff0000; }														  
