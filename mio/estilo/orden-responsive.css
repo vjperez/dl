@@ -1,0 +1,42 @@
+/*todo lo q sea borde aqui, va pa fuera*/
+.ver-borde { border-style:solid; border-width:2pt; border-color:#f1c40f; }
+
+[class*="ancho-sensi"] { width:100%; }
+.ancho-sensi-cell-1de2 { width:50%; } 
+
+@media only screen and (max-width: 480pt) {
+	body { border:5pt solid #ff0000; }
+	div#header img { height:125pt; }    } 
+@media only screen and (min-width: 480pt) { 
+	body { border:5pt solid #0000ff; }
+	.ancho-sensi-ipad-1de3 { width:33.3%; }
+	.ancho-sensi-ipad-2de3 { width:66.6%; }
+	.ancho-sensi-ipad-1de4 { width:25%; }
+	.ancho-sensi-ipad-2de4 { width:50%; }  
+	.ancho-sensi-ipad-3de4 { width:75%; }    }
+														  
+@media only screen and (min-width: 768pt) { 
+	body { border:5pt solid #ffff00; }
+	.ancho-sensi-desk-1de3 { width:33.33%; }
+	.ancho-sensi-desk-2de3 { width:66.6%; }
+	.ancho-sensi-desk-1de4 { width:25%; } 
+	.ancho-sensi-desk-2de4 { width:50%; }
+	.ancho-sensi-desk-3de4 { width:75%; }    }
+	
+	
+	
+	
+	
+	
+/*profile */
+/*the order of this file depends on screen width*/
+@media only screen and (max-width: 480pt) { 													  
+	div#video iframe { height:250pt; }
+	div#quien div#profilefotos img { display:block; }    }
+@media only screen and (min-width: 480pt) { 
+	div#video iframe { height:275pt; }
+	div#quien div#profilefotos img { display:block; margin-left:auto; margin-right:auto; }    }
+@media only screen and (min-width: 768pt) { 
+	div#video iframe { width:576pt; height:329pt; }
+	div#quien div#profilefotos { overflow:auto; }													     
+	div#quien div#profilefotos img { display:inline; float:left; }	   }	
