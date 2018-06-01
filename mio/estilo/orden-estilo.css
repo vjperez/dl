@@ -8,8 +8,8 @@ body { margin:0px auto; min-width:320pt; max-width:960pt; }
 div#header img { width:100%; vertical-align:text-bottom; }
 div#footer { margin-top:75pt; }
 div#navega { margin-bottom:75pt; }
-div#navega ul { text-align:center;    margin-top:5pt; margin-bottom:0pt; }    
-div#navega li { display:inline-block; margin-top:0pt; margin-bottom:0pt; margin-right:25pt; } 
+div#navega ul { text-align:center;    margin-top:0pt; margin-bottom:0pt; }    
+div#navega li { display:inline-block; margin-top:0pt; margin-bottom:0pt; margin-right:25pt; padding:10pt 0; } 
 
 
 
@@ -30,9 +30,9 @@ h1, h2, h3, h4, label { font-family:'PT Mono', fantasy, mono, monospace, courier
 a.clavelink, a.navelink { text-decoration:none; }
 
 /*h1,h2,h3 { font-family:Shrikhand, Georgia, Times, serif, cursive; } */
-div#navega { font-family:serif, mono, monospace; font-weight:bolder; font-size:0.85em; }
+a.navelink { font-family:serif, mono, monospace; font-weight:bolder; font-size:0.85em; }
 a.navelink:link, a.navelink:visited { color:#2980b9; }
-a.navelink:hover, a.navelink:focus { text-decoration:underline; }
+a.navelink li:hover, a.navelink li:focus { text-decoration:underline; }
 div#footer { background-color:#27ae60; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
 div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align:right;  font-size:1em;  color:beige; font-weight:bolder; }	
 
@@ -74,11 +74,11 @@ div#que, div#donde, div#cuando, div#quien { margin-top:75pt; border-top:2pt soli
 div#que li, div#donde li { display:inline-block; margin-right:2pt; margin-bottom:1.5em; }
 div#cuando h3 { text-align:center; margin-top:20pt; }
 div#cuando h3 span.si, div#cuando h3 span.no { background: url("../imagenes/si-no.png"); 
-	vertical-align:text-bottom; 
-	display:inline-block;
-    height:25px;
-    width:25px;
-    margin-left:10pt; }
+  vertical-align:text-bottom; 
+  display:inline-block;
+  height:25px;
+  width:25px;
+  margin-left:10pt; }
 div#cuando h3 span.no { background-position:0px -25px; } 
 div#cuando table { margin-top:20pt; }
 div#cuando td.dia { text-align:right; }
