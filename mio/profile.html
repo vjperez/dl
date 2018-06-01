@@ -11,15 +11,17 @@
   </head>
   <body>
     <div id="header">
-      <a href="portada.html"><img src="imagenes/caribe-landscape.jpg" alt="caribe landscape"></a>
+      <img src="imagenes/caribe-landscape.jpg" alt="caribe landscape">
     </div> 
-	 <div id="navega">
-	   <ul>
-	     <li>Log In</li>
-		  <li>Registro</li>
-		  <li>Que carajo es esto?</li>
-	   </ul>
-	 </div>
+	<div id="navega">
+	  <ul>
+		<li><a class="navelink" href="portada.html">Busca</a></li>  
+		<li></li>
+	    <li><a class="navelink" href="">Log</a></li>
+		<li><a class="navelink" href="">Registro</a></li>
+		<li><a class="navelink" href="">Que es?</a></li>
+	  </ul>
+	</div>
 	
 	
     
@@ -28,7 +30,9 @@
     
     <div id="video">
       <h1>Bob Builder</h1>
-        <iframe class="ancho-sensi-cell-1de1 ancho-sensi-ipad-3de4 ver-borde" src="https://www.youtube.com/embed/cuA-KqUPa7k" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>	    
+      <!-- ancho-sensi aplica siempre; para cell, aqui no es re escrito, so por default aplica ancho-sensi (1de1 o sea 100%).
+	  ipad 3 de 4 lo re escribe para ipad y al no re escribir para desk, sigue aplicando en desk las dimensiones q se dieron para ipad --> 
+      <iframe class="ancho-sensi-ipad-3de4 ver-borde" src="https://www.youtube.com/embed/cuA-KqUPa7k" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>	    
     </div>
     
     <div id="que">

@@ -8,8 +8,9 @@ body { margin:0px auto; min-width:320pt; max-width:960pt; }
 div#header img { width:100%; vertical-align:text-bottom; }
 div#footer { margin-top:75pt; }
 div#navega { margin-bottom:75pt; }
-div#navega ul { text-align:center; margin-top:0pt; margin-bottom:0pt; }    
-div#navega li { display:inline-block; margin-right:5pt; } 
+div#navega ul { text-align:center;    margin-top:5pt; margin-bottom:0pt; }    
+div#navega li { display:inline-block; margin-top:0pt; margin-bottom:0pt; margin-right:25pt; } 
+
 
 
 
@@ -25,11 +26,13 @@ div#navega li { display:inline-block; margin-right:5pt; }
 .color06{ color:#f1c40f } div#cuando h3
 */
 body { background-color:#ffffff; }
-html { font-family:'PT Mono', mono, monospace, fantasy, courier; } 
-a { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; letter-spacing:0.25em; }
+h1, h2, h3, h4, label { font-family:'PT Mono', fantasy, mono, monospace, courier; } /*this used to have html as selector*/
+a.clavelink, a.navelink { text-decoration:none; }
 
 /*h1,h2,h3 { font-family:Shrikhand, Georgia, Times, serif, cursive; } */
-
+div#navega { font-family:serif, mono, monospace; font-weight:bolder; font-size:0.85em; }
+a.navelink:link, a.navelink:visited { color:#2980b9; }
+a.navelink:hover, a.navelink:focus { text-decoration:underline; }
 div#footer { background-color:#27ae60; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
 div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align:right;  font-size:1em;  color:beige; font-weight:bolder; }	
 
@@ -82,7 +85,7 @@ div#cuando td.dia { text-align:right; }
 div#cuando td.hora { text-align:left; position:relative; left:25pt; }
     
 div#quien ul { text-align:center; margin-top:0pt; margin-bottom:20pt; }    
-div#quien li { display:inline-block; margin-right:5pt; margin-top:0pt; margin-bottom:0pt; } 
+div#quien li { display:inline-block; margin-right:25pt; margin-top:0pt; margin-bottom:0pt; } 
 div#quien ul li img { width:25pt; }
 
 
@@ -95,20 +98,20 @@ div#video h1 { letter-spacing:0.40em; color:#27ae60; }
 div#que h2, div#donde h2, div#cuando h2, div#quien h2 { letter-spacing:0.30em; color:#c0392b; } 
 div#cuando h3 { letter-spacing:0.25em;  color:#f1c40f; } 
 
-a.clavelink:link, .clavelink:visited {
+a.clavelink, div#cuando td { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; letter-spacing:0.25em; }
+a.clavelink:link, a.clavelink:visited {
     background-color:white;
     color:black;
     border-color:#2980b9;
     border-style:solid;     border-width:2pt;  border-radius:5pt;
 	 /*border-top-left-radius:40% 50%; border-top-right-radius:40% 50%; border-bottom-left-radius:20% 50%; border-bottom-right-radius:20% 50%;*/
-    text-decoration:none;
-    padding:0em 0.5em 0em 0.5em; }
+    padding:0.25em 0.5em 0em 0.5em; }
 a.clavelink:hover, a.clavelink:focus {
     background-color:#7fb3d5;
     color:#ffffff;  }
     
 div#que ul, div#donde ul, div#quien ul { list-style-type:none; }
-div#cuando td { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; line-height:2em; letter-spacing:0.20em; color:#16a085; }
+div#cuando td { line-height:2em; color:#16a085; }
 div#quien ul img { border-color:#2980b9;  border-style:solid;  border-width:1pt;  border-radius:5pt; padding:0.2em; }
 
 
