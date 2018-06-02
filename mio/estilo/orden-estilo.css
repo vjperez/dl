@@ -6,10 +6,12 @@ body { margin:0px auto; min-width:320pt; max-width:960pt; }
 .margen { margin-left:1%; margin-right:1%; }
 /*vertical-align pone la imagen en el fondo del texto q iria alrededor de un elemento inline como lo son las imagenes, sino creas un gap entre la img y el containing div */
 div#header img { width:100%; vertical-align:text-bottom; }
-div#footer { margin-top:75pt; }
+div#footer { margin-top:75pt; min-height:107pt; overflow:auto; }
+div#footer ul { text-align:center; list-style-type:none; padding:0; }
+div#footer li { display:inline-block; float:left; }
 div#navega { margin-bottom:75pt; }
-div#navega ul { text-align:center;    margin-top:0pt; margin-bottom:0pt; }    
-div#navega li { display:inline-block; margin-top:0pt; margin-bottom:0pt; margin-right:25pt; padding:10pt 0; } 
+div#navega ul { text-align:left; list-style-type:none; margin:0pt; padding:0; }    
+div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; } 
 
 
 
@@ -27,15 +29,14 @@ div#navega li { display:inline-block; margin-top:0pt; margin-bottom:0pt; margin-
 */
 body { background-color:#ffffff; }
 h1, h2, h3, h4, label { font-family:'PT Mono', fantasy, mono, monospace, courier; } /*this used to have html as selector*/
-a.clavelink, a.navelink { text-decoration:none; }
+a.clavelink, a.navelink, a.footerlink { text-decoration:none; }
 
-/*h1,h2,h3 { font-family:Shrikhand, Georgia, Times, serif, cursive; } */
-a.navelink { font-family:serif, mono, monospace; font-weight:bolder; font-size:0.85em; }
+a.navelink { font-family:serif, mono, monospace; font-weight:bolder; font-size:0.8em; }
 a.navelink:link, a.navelink:visited { color:#2980b9; }
 a.navelink li:hover, a.navelink li:focus { text-decoration:underline; }
 div#footer { background-color:#27ae60; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
-div#footer p { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align:right;  font-size:1em;  color:beige; font-weight:bolder; }	
-
+div#footer p.footertitulo { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align:right;  font-size:1em; font-weight:bolder; color:beige; }	
+div#footer a.footerlink { font-family:mono, monospace; font-weight:bolder; font-size:0.75em; color:beige; }
 
 
 
@@ -71,6 +72,7 @@ div#forma button:hover, div#forma button:focus { background-color:#7fb3d5; }
 /*Pon un margin top arriba de todas menos la primera div del contenido */
 div#video iframe { display:block; margin-left:auto; margin-right:auto; }
 div#que, div#donde, div#cuando, div#quien { margin-top:75pt; border-top:2pt solid #dadada; }
+div#que ul, div#donde ul, div#quien ul { padding:0; }
 div#que li, div#donde li { display:inline-block; margin-right:2pt; margin-bottom:1.5em; }
 div#cuando h3 { text-align:center; margin-top:20pt; }
 div#cuando h3 span.si, div#cuando h3 span.no { background: url("../imagenes/si-no.png"); 
@@ -85,7 +87,7 @@ div#cuando td.dia { text-align:right; }
 div#cuando td.hora { text-align:left; position:relative; left:25pt; }
     
 div#quien ul { text-align:center; margin-top:0pt; margin-bottom:20pt; }    
-div#quien li { display:inline-block; margin-right:25pt; margin-top:0pt; margin-bottom:0pt; } 
+div#quien li { display:inline-block; margin-right:12pt; margin-left:12pt; margin-top:0pt; margin-bottom:0pt; } 
 div#quien ul li img { width:25pt; }
 
 
@@ -97,7 +99,7 @@ div#quien ul li img { width:25pt; }
 div#video h1 { letter-spacing:0.40em; color:#27ae60; }
 div#que h2, div#donde h2, div#cuando h2, div#quien h2 { letter-spacing:0.30em; color:#c0392b; } 
 div#cuando h3 { letter-spacing:0.25em;  color:#f1c40f; } 
-
+/*font para #que #donde #cuando*/
 a.clavelink, div#cuando td { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; letter-spacing:0.25em; }
 a.clavelink:link, a.clavelink:visited {
     background-color:white;
