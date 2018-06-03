@@ -42,25 +42,26 @@ div#footer a.footerlink { font-family:mono, monospace; font-weight:bolder; font-
 
 
 
-/*orden : portada */
-/*Aqui el contenido es div forma */
+
+/*orden : busca */
+/*Aqui el contenido es la div q contiene la forma; div#QueDondeForm */
 /*Pon un margin top arriba de todas menos la primera div del contenido */
-div#forma label { width:30%; float:left; clear:left; text-align:right; margin-right:7.5%; }
-div#forma input { width:50%; }
-div#forma button { width:25%; position:relative; left:37.5%; }
-div#forma { margin-left:auto; margin-right:auto; }
+div#QueDondeForm { margin-left:auto; margin-right:auto; }
+form#QueDondeForm label { float:left; clear:left; width:40%; text-align:right; margin-right:7.5%; }
+form#QueDondeForm input { width:50%; } /*hasta aqui un width de 40 + 7.5 + 50; esta suma suma debe dejar disponible menos q el width del button*/
+form#QueDondeForm button { width:25%; position:relative; left:47.5%; }
 
 
 
 
 
-	
-/*estilo : portada */
-div#forma label { font-size:1.5em; letter-spacing:0.30em; font-weight:bolder; color:#c0392b; }
-div#forma input { font-size:1.5em; border-radius:5pt; }
-div#forma input:focus { background-color:#dadada; }
-div#forma button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
-div#forma button:hover, div#forma button:focus { background-color:#7fb3d5; }
+
+/*estilo : busca */
+form#QueDondeForm label { font-size:1.5em; letter-spacing:0.30em; font-weight:bolder; color:#c0392b; }
+form#QueDondeForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
+form#QueDondeForm input:focus { background-color:#dadada; }
+form#QueDondeForm button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
+form#QueDondeForm button:hover, form#QueDondeForm button:focus { background-color:#7fb3d5; }
 
 
 
@@ -125,3 +126,54 @@ div#quien ul img { border-color:#2980b9;  border-style:solid;  border-width:1pt;
 /*Aqui elcontenido son divs de clase "320pt"*/
 div#opcionesfotos { overflow:auto; }
 div#opcionesfotos img { /*display inline is a default for img */ display:inline; float:left; }
+
+
+
+
+
+
+/*orden : login */
+/*casi una copia de busca*/
+div#loginForm { margin-left:auto; margin-right:auto; }
+form#loginForm label { float:left; clear:left; width:40%; text-align:right; margin-right:7.5%; }
+form#loginForm input { width:50%; } /*hasta aqui un width de 40 + 7.5 + 50; esta suma suma debe dejar disponible menos q el width del button*/
+form#loginForm button { width:25%; position:relative; left:47.5%; }
+
+
+
+
+
+
+/*estilo : login */
+/*casi una copia de busca*/
+form#loginForm label { font-size:1.5em; letter-spacing:0.1em; font-weight:bolder; color:#c0392b; }
+form#loginForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
+form#loginForm input:focus { background-color:#dadada; }
+form#loginForm button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
+form#loginForm button:hover, form#loginForm button:focus { background-color:#7fb3d5; }
+
+
+
+
+
+
+/*orden : registro */
+/*casi una copia de busca*/
+div#registroForm { margin-left:auto; margin-right:auto; }
+form#registroForm label { float:left; clear:left; width:40%; text-align:right; margin-right:7.5%; }
+form#registroForm input { width:50%; } /*hasta aqui un width de 40 + 7.5 + 50; esta suma suma debe dejar disponible menos q el width del button*/
+form#registroForm button { width:25%; position:relative; left:47.5%; }
+
+
+
+
+
+
+/*estilo : registro */
+/*casi una copia de busca*/
+form#registroForm label { font-size:1.5em; letter-spacing:0.1em; font-weight:bolder; color:#c0392b; }
+form#registroForm label.small { font-weight:normal; }
+form#registroForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
+form#registroForm input:focus { background-color:#dadada; }
+form#registroForm button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
+form#registroForm button:hover, form#loginForm button:focus { background-color:#7fb3d5; }
