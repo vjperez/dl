@@ -4,12 +4,12 @@
 body { margin:0px auto; min-width:320pt; max-width:960pt; }
 .izq { float:left; }  /*nice selector to remember [class*="ancho-1de"] { float:left; } */
 .margen { margin-left:1%; margin-right:1%; }
+.contenido { margin-bottom:75pt; margin-top:75pt; }
 /*vertical-align pone la imagen en el fondo del texto q iria alrededor de un elemento inline como lo son las imagenes, sino creas un gap entre la img y el containing div */
 div#header img { width:100%; vertical-align:text-bottom; }
-div#footer { margin-top:75pt; min-height:107pt; overflow:auto; }
+div#footer { min-height:107pt; overflow:auto; }
 div#footer ul { text-align:center; list-style-type:none; padding:0; }
 div#footer li { display:inline-block; float:left; }
-div#navega { margin-bottom:75pt; }
 div#navega ul { text-align:left; list-style-type:none; margin:0pt; padding:0; }    
 div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; } 
 
@@ -44,8 +44,6 @@ div#footer a.footerlink { font-family:mono, monospace; font-weight:bolder; font-
 
 
 /*orden : busca */
-/*Aqui el contenido es la div q contiene la forma; div#QueDondeForm */
-/*Pon un margin top arriba de todas menos la primera div del contenido */
 div#QueDondeForm { margin-left:auto; margin-right:auto; }
 form#QueDondeForm label { float:left; clear:left; width:40%; text-align:right; margin-right:7.5%; }
 form#QueDondeForm input { width:50%; } /*hasta aqui un width de 40 + 7.5 + 50; esta suma suma debe dejar disponible menos q el width del button*/
@@ -69,8 +67,6 @@ form#QueDondeForm button:hover, form#QueDondeForm button:focus { background-colo
 
 
 /*orden : profile */
-/*Aqui el contenido son DIVs video, que, donde, cuando, quien */
-/*Pon un margin top arriba de todas menos la primera div del contenido */
 div#video iframe { display:block; margin-left:auto; margin-right:auto; }
 div#que, div#donde, div#cuando, div#quien { margin-top:75pt; border-top:2pt solid #dadada; }
 div#que ul, div#donde ul, div#quien ul { padding:0; }
@@ -123,7 +119,6 @@ div#quien ul img { border-color:#2980b9;  border-style:solid;  border-width:1pt;
 
 
 /*orden : opciones */
-/*Aqui elcontenido son divs de clase "320pt"*/
 div#opcionesfotos { overflow:auto; }
 div#opcionesfotos img { /*display inline is a default for img */ display:inline; float:left; }
 
