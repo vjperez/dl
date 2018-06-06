@@ -1,8 +1,7 @@
 /*orden  : comun*/
 /*This makes sure that the padding and border are included in the total width and height of the elements. */ 
 * { box-sizing:border-box; }
-body { margin:0px auto; min-width:320pt; max-width:960pt; }
-.izq { float:left; }  /*nice selector to remember [class*="ancho-1de"] { float:left; } */
+body { margin:0px auto; min-width:320pt; max-width:960pt; } 
 .margen { margin-left:1%; margin-right:1%; }
 .contenido { margin-bottom:75pt; margin-top:75pt; }
 /*vertical-align pone la imagen en el fondo del texto q iria alrededor de un elemento inline como lo son las imagenes, sino creas un gap entre la img y el containing div */
@@ -27,18 +26,27 @@ div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; }
 .color05{ color:#2980b9 } link border
 .color06{ color:#f1c40f } div#cuando h3
 */
-body { background-color:#ffffff; }
-h1, h2, h3, h4, label { font-family:'PT Mono', fantasy, mono, monospace, courier; } /*this used to have html as selector*/
-a.clavelink, a.navelink, a.footerlink { text-decoration:none; }
+body { background-color:#ffffff; font-family:'Slabo 27px', Georgia, Times, times, serif; font-weight:normal; letter-spacing:0.1em; }
+h1 { letter-spacing:0.40em; }
+h2 { letter-spacing:0.30em; } 
+h3 { letter-spacing:0.25em; } 
+p, td { line-height:2em; }
+p::first-letter{ font-size:1.5em; }
+.enfasis { color:#16a085; font-size:1.2em; font-style:italic; font-weight:bold; }
+a.link { text-decoration:none; }
+a.link:link,     a.link:visited { color:#2980b9; }
+a.link:hover, a.link:focus { text-decoration:underline; }
+a.link li:hover, a.link li:focus { text-decoration:underline; }
 
-a.navelink { font-family:serif, mono, monospace; font-weight:bolder; font-size:0.8em; }
-a.navelink:link, a.navelink:visited { color:#2980b9; }
-a.navelink li:hover, a.navelink li:focus { text-decoration:underline; }
+
+
+
+div#navega a.navelink { font-family:serif, mono, monospace; font-weight:bolder; font-size:0.8em; }
+h1, h2, h3, h4, label { font-family:'PT Mono', courier, mono, monospace; }
+div#footer h3.footertitulo { font-family:Pacifico, serif, fantasy, mono, monospace;  text-align:right; color:beige; }	
+div#footer a.footerlink { font-family:courier, mono, monospace; font-weight:bolder; font-size:0.75em; }
+div#footer a.footerlink:link,     a.footerlink:visited { color:beige; }
 div#footer { background-color:#27ae60; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
-div#footer p.footertitulo { font-family:Pacifico, serif, fantasy, mono, monospace, cursive;  text-align:right;  font-size:1em; font-weight:bolder; color:beige; }	
-div#footer a.footerlink { font-family:mono, monospace; font-weight:bolder; font-size:0.75em; color:beige; }
-
-
 
 
 
@@ -93,11 +101,12 @@ div#quien ul li img { width:25pt; }
 
 
 /*estilo : profile */	
-div#video h1 { letter-spacing:0.40em; color:#27ae60; }
-div#que h2, div#donde h2, div#cuando h2, div#quien h2 { letter-spacing:0.30em; color:#c0392b; } 
-div#cuando h3 { letter-spacing:0.25em;  color:#f1c40f; } 
+div#video h1 { color:#27ae60; }
+div#que h2, div#donde h2, div#cuando h2, div#quien h2 { color:#c0392b; } 
+div#cuando h3 { color:#f1c40f; } 
 /*font para #que #donde #cuando*/
-a.clavelink, div#cuando td { font-family:'Bree Serif', Georgia, Times, serif; font-weight:bolder; letter-spacing:0.25em; }
+a.clavelink { font-weight:bolder; letter-spacing:0.25em; } /*inherits font-family from body*/
+div#cuando td { font-family:'Bree Serif', serif, Times; font-weight:bolder; letter-spacing:0.25em; }
 a.clavelink:link, a.clavelink:visited {
     background-color:white;
     color:black;
@@ -106,11 +115,12 @@ a.clavelink:link, a.clavelink:visited {
 	 /*border-top-left-radius:40% 50%; border-top-right-radius:40% 50%; border-bottom-left-radius:20% 50%; border-bottom-right-radius:20% 50%;*/
     padding:0.25em 0.5em 0em 0.5em; }
 a.clavelink:hover, a.clavelink:focus {
+	text-decoration:none; /*todos los .link aqui subrayan, pero este NO*/
     background-color:#7fb3d5;
     color:#ffffff;  }
     
 div#que ul, div#donde ul, div#quien ul { list-style-type:none; }
-div#cuando td { line-height:2em; color:#16a085; }
+div#cuando td { color:#16a085; }
 div#quien ul img { border-color:#2980b9;  border-style:solid;  border-width:1pt;  border-radius:5pt; padding:0.2em; }
 
 
@@ -172,3 +182,12 @@ form#registroForm input { font-size:1.5em; border-radius:5pt; background-color:#
 form#registroForm input:focus { background-color:#dadada; }
 form#registroForm button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
 form#registroForm button:hover, form#loginForm button:focus { background-color:#7fb3d5; }
+
+
+
+
+
+
+/*estilo : faq */
+[id*="preg"] h1, [id*="preg"] h2, [id*="preg"] h3, [id*="preg"] h4 { color:#c0392b; }
+div#preg2, div#preg3, div#preg4, div#preg5, div#preg6 { margin-top:60pt; }
