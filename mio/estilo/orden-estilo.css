@@ -33,7 +33,7 @@ h3 { letter-spacing:0.25em; }
 p, td { line-height:2em; }
 p::first-letter{ font-size:1.5em; }
 .enfasis { color:#16a085; font-size:1.2em; font-style:italic; font-weight:bold; }
-a.link { text-decoration:none; }
+a.link { text-decoration:none; font-weight:bolder; }
 a.link:link,     a.link:visited { color:#2980b9; }
 a.link:hover, a.link:focus { text-decoration:underline; }
 a.link li:hover, a.link li:focus { text-decoration:underline; }
@@ -41,10 +41,10 @@ a.link li:hover, a.link li:focus { text-decoration:underline; }
 
 
 
-div#navega a.navelink { font-family:serif, mono, monospace; font-weight:bolder; font-size:0.8em; }
+div#navega a.navelink { font-family:serif, mono, monospace; font-size:0.8em; }
 h1, h2, h3, h4, label { font-family:'PT Mono', courier, mono, monospace; }
 div#footer h3.footertitulo { font-family:Pacifico, serif, fantasy, mono, monospace;  text-align:right; color:beige; }	
-div#footer a.footerlink { font-family:courier, mono, monospace; font-weight:bolder; font-size:0.75em; }
+div#footer a.footerlink { font-family:courier, mono, monospace; font-size:0.75em; }
 div#footer a.footerlink:link,     a.footerlink:visited { color:beige; }
 div#footer { background-color:#27ae60; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
 
@@ -105,13 +105,13 @@ div#video h1 { color:#27ae60; }
 div#que h2, div#donde h2, div#cuando h2, div#quien h2 { color:#c0392b; } 
 div#cuando h3 { color:#f1c40f; } 
 /*font para #que #donde #cuando*/
-a.clavelink { font-weight:bolder; letter-spacing:0.25em; } /*inherits font-family from body*/
+a.clavelink { letter-spacing:0.25em; } /*inherits font-family from body*/
 div#cuando td { font-family:'Bree Serif', serif, Times; font-weight:bolder; letter-spacing:0.25em; }
 a.clavelink:link, a.clavelink:visited {
     background-color:white;
     color:black;
     border-color:#2980b9;
-    border-style:solid;     border-width:2pt;  border-radius:5pt;
+    border-style:solid;     border-width:1pt;  border-radius:5pt;
 	 /*border-top-left-radius:40% 50%; border-top-right-radius:40% 50%; border-bottom-left-radius:20% 50%; border-bottom-right-radius:20% 50%;*/
     padding:0.25em 0.5em 0em 0.5em; }
 a.clavelink:hover, a.clavelink:focus {

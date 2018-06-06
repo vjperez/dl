@@ -1,6 +1,0 @@
-hacer hoy
-
-	1) un solo html con todos los faqs del footer y le apuntas con ids
-	2) cuando se logueen y registren : ve a mi cuenta (debes ensenar profile ? siguiendo un link que diga "como luciria tu profile" )
-	3) bilingual
-	4) icons for log, registro y busca [fontawesome css] ; a usarse en registro.html y login.html ; tambien en nav
