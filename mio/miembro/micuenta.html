@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+  <head>
+    <title>don papo</title>
+    <meta http-equiv="author" content="Victor J. Perez">
+    <meta http-equiv="description" content="who is working NOW... on what and where">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Mono|Slabo+27px|Pacifico|Bree+Serif">
+	<link rel="stylesheet" href="../estilo/orden-estilo.css"  type="text/css">
+	<link rel="stylesheet" href="../estilo/orden-responsive.css" type="text/css">
+  </head>
+  <body>
+    <div id="header">
+      <img src="../imagenes/caribe-landscape.jpg" alt="caribe landscape">
+    </div> 
+
+	 <div id="navega" class="margen">
+	   <ul>
+		 <a class="link navelink" href="../busca.html"><li>Busca</li></a>
+	   </ul>
+	 </div>
+	
+	
+	
+	
+	 <!-- contenido -->
+    <div class="contenido">
+
+	<h1>Tu Datos:</h1>
+    <!-- ancho-sensi aplica siempre; para cell, aqui no es re escrito, so por default aplica ancho-sensi (1de1 o sea 100%).
+	ipad 3 de 4 lo re escribe para ipad y al no re escribir para desk, sigue aplicando en desk las dimensiones q se dieron para ipad -->
+    <div id="editDatoForm" class="ancho-sensi-ipad-2de3 ver-borde">
+ 	  <form id="editDatoForm" action="editcuenta.php" method="post">
+ 	    <fieldset>
+ 	    <p><label for="nombreId">Nombre<span class="explica">requerido</span></label> 
+ 	       <input id="nombreId"        type="text" name="nombre"     maxlength="50"      required=true placeholder="victor"></p>
+ 	    <p><label for="videoAdrrId">Video<span class="explica">requerido</span></label>
+ 	       <input id="videoAdrrId"     type="url"  name="videoAdrr"  maxlength="50"      required=true placeholder="www.youtube.com/blablabla"></p>
+		 </fieldset><fieldset>
+		 <p><label for="">Qu&eacute;<span class="explica">minimo 1</span></label></p> 	    
+ 	    <p><input id="que1Id" type="text" name="que1" maxlength="50" required=true placeholder="barbero"></p> 	
+ 	    <p><input id="que2Id" type="text" name="que2" maxlength="50" placeholder="estilista"></p> 
+ 	    <p><input id="que3Id" type="text" name="que3" maxlength="50" placeholder="peluquero"></p>
+ 	    <p><input id="que4Id" type="text" name="que4" maxlength="50" placeholder="corta pelo"></p>
+ 	    <p><input id="que5Id" type="text" name="que5" maxlength="50" placeholder="peina pelo"></p> 
+		 </fieldset><fieldset>
+		 <p><label for="">Donde<span class="explica">minimo 1</span></label></p> 	    
+ 	    <p><input id="donde1Id" type="text" name="donde1" maxlength="50" required=true placeholder="mayaguez"></p> 	
+ 	    <p><input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder="anasco"></p> 
+ 	    <p><input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder="hormigueros"></p> 	
+ 	    <p><label for="">A su casa<span class="explica">&iquest;Trabajarias en casa del cliente?</span></label></p> 	
+ 	    <p>Si<input type="radio" name="aTuCasa" value="si"></p>
+       <p>No<input type="radio" name="aTuCasa" value="no"></p>
+ 	    </fieldset><fieldset>
+		 <p><label for="">Cuando<span class="explica">Tu horario para los proximos 3 dias</span></label></p> 	    
+ 	    <p><input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder="9 a 12 pm"></p> 	
+ 	    <p><input id="dia2Id" type="text" name="dia2" maxlength="50" placeholder="6 a 11 am"></p> 
+ 	    <p><input id="dia3Id" type="text" name="dia3" maxlength="50" placeholder="4 a  8 pm"></p> 	
+ 	    <p><label for="">Ahora Mismo<span class="explica">&iquest;Trabajando ahora mismo?</span></label></p> 	
+ 	    <p>Si<input type="radio" name="ahoraMismo" value="si"></p>
+       <p>No<input type="radio" name="ahoraMismo" value="no"></p> 	    
+ 	    </fieldset><fieldset>
+ 	    <p><label for="red1Id">Facebook</label> 
+ 	       <input id="red1Id"        type="text" name="red1"     maxlength="50"         placeholder="facebook.com/victorjperez"></p>
+ 	    <p><label for="red2Id">Twitter</label>
+ 	       <input id="red2Id"     type="text"  name="red2"  maxlength="50"       placeholder="www.twitter.com/elvictor"></p>
+		 </fieldset>
+ 	    <p><button>Edita</button></p>
+ 	    <p><button>Tu profile</button></p>   
+ 	  </form>
+    </div>       
+    </div><!-- contenido -->
+    
+    
+    
+    
+    
+    <div id="footer">
+      <h3 class="footertitulo">donpapo.com&copy;</h3>  
+      <ul>
+        <li class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde"><a class="link footerlink" href="../faq.html#preg1">&iquest;Qu&eacute; es esto?</a></li>
+        <li class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde"><a class="link footerlink" href="../faq.html#preg2">&iquest;Como se usa?</a></li> 
+        <li class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde"><a class="link footerlink" href="../faq.html#preg3">&iquest;Qui&eacute;n se registra?</a></li>
+        <li class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde"><a class="link footerlink" href="../faq.html#preg4">&iquest;Como busco?</a></li> 
+        <li class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde"><a class="link footerlink" href="../faq.html#preg5">&iquest;Cuanto cuesta?</a></li>
+        <li class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde"><a class="link footerlink" href="../faq.html#preg6">&iquest;Donde pago?</a></li> 
+      </ul>
+    </div>	
+    
+  </body>
+</html>	
