@@ -24,7 +24,7 @@
 	
 	
 	 <!-- contenido -->
-    <div class="contenido">
+    <div class="contenido margen">
 
 	<h1>Tu Datos:</h1>
     <!-- ancho-sensi aplica siempre; para cell, aqui no es re escrito, so por default aplica ancho-sensi (1de1 o sea 100%).
@@ -32,41 +32,55 @@
     <div id="editDatoForm" class="ancho-sensi-ipad-2de3 ver-borde">
  	  <form id="editDatoForm" action="editcuenta.php" method="post">
  	    <fieldset>
- 	    <p><label for="nombreId">Nombre<span class="explica">requerido</span></label> 
- 	       <input id="nombreId"        type="text" name="nombre"     maxlength="50"      required=true placeholder="victor"></p>
- 	    <p><label for="videoAdrrId">Video<span class="explica">requerido</span></label>
- 	       <input id="videoAdrrId"     type="url"  name="videoAdrr"  maxlength="50"      required=true placeholder="www.youtube.com/blablabla"></p>
+ 	    <label for="nombreId">Nombre</label>
+ 	    <label for="nombreId" class="explica">requerido</label>
+ 	    <p><input id="nombreId"        type="text" name="nombre"     maxlength="50"      required=true placeholder="victor"></p>
+ 	    <label for="videoAdrrId">Video</label>
+ 	    <label for="videoAdrrId" class="explica">requerido</label>
+ 	    <p><input id="videoAdrrId"     type="url"  name="videoAdrr"  maxlength="50"      required=true placeholder="https://www.youtube.com/blablabla"></p>
 		 </fieldset><fieldset>
-		 <p><label for="">Qu&eacute;<span class="explica">minimo 1</span></label></p> 	    
+		 <label for="">Qu&eacute;</label>
+		 <label for="" class="explica">minimo 1</label> 	    
  	    <p><input id="que1Id" type="text" name="que1" maxlength="50" required=true placeholder="barbero"></p> 	
  	    <p><input id="que2Id" type="text" name="que2" maxlength="50" placeholder="estilista"></p> 
  	    <p><input id="que3Id" type="text" name="que3" maxlength="50" placeholder="peluquero"></p>
  	    <p><input id="que4Id" type="text" name="que4" maxlength="50" placeholder="corta pelo"></p>
  	    <p><input id="que5Id" type="text" name="que5" maxlength="50" placeholder="peina pelo"></p> 
 		 </fieldset><fieldset>
-		 <p><label for="">Donde<span class="explica">minimo 1</span></label></p> 	    
+		 <label for="">Donde</label> 
+		 <label for="" class="explica">minimo 1</label>	    
  	    <p><input id="donde1Id" type="text" name="donde1" maxlength="50" required=true placeholder="mayaguez"></p> 	
  	    <p><input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder="anasco"></p> 
  	    <p><input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder="hormigueros"></p> 	
- 	    <p><label for="">A su casa<span class="explica">&iquest;Trabajarias en casa del cliente?</span></label></p> 	
+ 	    <label for="">A su casa</label>	
+ 	    <label for="" class="explica">&iquest;Trabajarias en casa del cliente?</label>	
  	    <p>Si<input type="radio" name="aTuCasa" value="si"></p>
        <p>No<input type="radio" name="aTuCasa" value="no"></p>
  	    </fieldset><fieldset>
-		 <p><label for="">Cuando<span class="explica">Tu horario para los proximos 3 dias</span></label></p> 	    
+		 <label for="">Cuando</label> 
+		 <label for="" class="explica">Horario para los proximos 3 dias</label> 	    
  	    <p><input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder="9 a 12 pm"></p> 	
  	    <p><input id="dia2Id" type="text" name="dia2" maxlength="50" placeholder="6 a 11 am"></p> 
  	    <p><input id="dia3Id" type="text" name="dia3" maxlength="50" placeholder="4 a  8 pm"></p> 	
- 	    <p><label for="">Ahora Mismo<span class="explica">&iquest;Trabajando ahora mismo?</span></label></p> 	
+ 	    <label for="">Ahora Mismo</label> 
+ 	    <label for="" class="explica">&iquest;Trabajando ahora mismo?</label> 	
  	    <p>Si<input type="radio" name="ahoraMismo" value="si"></p>
        <p>No<input type="radio" name="ahoraMismo" value="no"></p> 	    
  	    </fieldset><fieldset>
- 	    <p><label for="red1Id">Facebook</label> 
- 	       <input id="red1Id"        type="text" name="red1"     maxlength="50"         placeholder="facebook.com/victorjperez"></p>
- 	    <p><label for="red2Id">Twitter</label>
- 	       <input id="red2Id"     type="text"  name="red2"  maxlength="50"       placeholder="www.twitter.com/elvictor"></p>
-		 </fieldset>
+ 	    <label for="">Qui&eacute;n</label>
+ 	    <label for="" class="explica">minimo 1 contacto</label>
+ 	    <p><label for="red1Id">Facebook</label></p> 
+ 	    <p><input id="red1Id"     type="url" name="red1"  maxlength="50"       placeholder="https://www.facebook.com/your.username"></p>
+ 	    <p><label for="red2Id">Twitter</label></p>
+ 	    <p><input id="red2Id"     type="url" name="red2"  maxlength="50"       placeholder="https://twitter.com/username"></p>
+ 	    <p><label for="red3Id">Instagram</label></p>
+ 	    <p><input id="red3Id"     type="url" name="red3"  maxlength="50"       placeholder="https://www.instagram.com/username/"></p>
+ 	    <p><label for="red4Id">Telefono</label></p>
+ 	    <p><input id="red4Id"     type="tel" name="red4"  maxlength="50"       placeholder="787 833 0101"></p>
+		 </fieldset><fieldset>
  	    <p><button>Edita</button></p>
- 	    <p><button>Tu profile</button></p>   
+ 	    <p><button>Tu profile</button></p> 
+ 	    </fieldset>  
  	  </form>
     </div>       
     </div><!-- contenido -->
