@@ -42,7 +42,7 @@ a.link li:hover, a.link li:focus { text-decoration:underline; }
 
 
 div#navega a.navelink { font-family:serif, mono, monospace; font-size:0.8em; }
-h1, h2, h3, h4, label { font-family:'PT xxxMono', courier, mono, monospace; }
+h1, h2, h3, h4, label { font-family:'PT Mono', courier, mono, monospace; }
 div#footer h3.footertitulo { font-family:Pacifico, serif, fantasy, mono, monospace;  text-align:right; color:beige; letter-spacing:0.10em; }	
 div#footer a.footerlink { font-family:courier, mono, monospace; font-size:0.75em; }
 div#footer a.footerlink:link,     a.footerlink:visited { color:beige; }
@@ -52,7 +52,7 @@ div#footer { background-color:#27ae60; border-top:2pt solid #909090; border-bott
 
 
 /*orden : busca */
-div#queDondeForm { margin-left:auto; margin-right:auto; }
+form#queDondeForm { margin-left:auto; margin-right:auto; }
 form#queDondeForm label { float:left; clear:left; width:40%; text-align:right; margin-right:7.5%; }
 form#queDondeForm input { width:50%; } /*hasta aqui un width de 40 + 7.5 + 50; esta suma suma debe dejar disponible menos q el width del button*/
 form#queDondeForm button { width:25%; position:relative; left:47.5%; }
@@ -100,7 +100,7 @@ div#quien ul li img { width:25pt; }
 
 
 
-/*estilo : profile */	font-fa
+/*estilo : profile */
 div#video h1 { color:#27ae60; }
 div#que h2, div#donde h2, div#cuando h2, div#quien h2 { color:#c0392b; } 
 div#donde h3, div#cuando h3 { color:#f1c40f; } 
@@ -139,7 +139,7 @@ div#opcionesfotos img { /*display inline is a default for img */ display:inline;
 
 /*orden : login */
 /*casi una copia de busca*/
-div#loginForm { margin-left:auto; margin-right:auto; }
+form#loginForm { margin-left:auto; margin-right:auto; }
 form#loginForm label { float:left; clear:left; width:40%; text-align:right; margin-right:7.5%; }
 form#loginForm input { width:50%; } /*hasta aqui un width de 40 + 7.5 + 50; esta suma suma debe dejar disponible menos q el width del button*/
 form#loginForm button { width:25%; position:relative; left:47.5%; }
@@ -164,7 +164,7 @@ form#loginForm button:hover, form#loginForm button:focus { background-color:#7fb
 
 /*orden : registro */
 /*casi una copia de busca*/
-div#registroForm { margin-left:auto; margin-right:auto; }
+form#registroForm { margin-left:auto; margin-right:auto; }
 form#registroForm label { float:left; clear:left; width:40%; text-align:right; margin-right:7.5%; }
 form#registroForm input { width:50%; } /*hasta aqui un width de 40 + 7.5 + 50; esta suma suma debe dejar disponible menos q el width del button*/
 form#registroForm button { width:25%; position:relative; left:47.5%; }
@@ -197,7 +197,7 @@ div#preg2, div#preg3, div#preg4, div#preg5, div#preg6 { margin-top:60pt; }
 
 
 /* orden : micuenta */
-div#editDatoForm { margin-left:auto; margin-right:auto; }
+form#editDatoForm { margin-left:auto; margin-right:auto; }
 
 
 
@@ -213,4 +213,6 @@ form#editDatoForm button:hover, form#editDatoForm button:focus { background-colo
 
 form#editDatoForm label.explica { color:#16a085; font-size:0.75em; fontxxx-style:italic; fontxxx-weight:bold; }
 form#editDatoForm fieldset { margin-top:75pt; }
-form#editDatoForm fieldset.secundario { margin-top:20pt; margin-left:2em; }
+form#editDatoForm fieldset.secundario { margin-top:20pt; margin-left:0.5em; }
+
+div#editDatoForm h1 { color:#27ae60; }
