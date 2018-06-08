@@ -212,9 +212,9 @@ form#editDatoForm button:hover, form#editDatoForm button:focus { background-colo
 form#editDatoForm label.explica { color:#16a085; font-size:0.85em; letter-spacing:0.2em; fontxxx-style:italic; fontxxx-weight:bold; }
 
 form#editDatoForm fieldset { margin:0pt; margin-top:75pt; padding:0pt;}
-form#editDatoForm fieldset.secundario { margin-top:35pt; }
+form#editDatoForm fieldset.secundario { margin-top:30pt; }
 form#editDatoForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; }
 form#editDatoForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.00em; }
 
-form#editDatoForm p { margin-top:4pt; margin-bottom:28pt; }
+form#editDatoForm p { margin-top:2pt; margin-bottom:30pt; }
 div#editDatoForm h1 { color:#27ae60; }
