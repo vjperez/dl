@@ -189,7 +189,7 @@ form#registroForm button:hover, form#loginForm button:focus { background-color:#
 
 /*estilo : faq */
 [id*="preg"] h1, [id*="preg"] h2, [id*="preg"] h3, [id*="preg"] h4 { color:#c0392b; }
-div#preg2, div#preg3, div#preg4, div#preg5, div#preg6 { margin-top:60pt; }
+[id*="preg"] { margin-top:60pt; }
 
 
 
@@ -204,15 +204,17 @@ form#editDatoForm { margin-left:auto; margin-right:auto; }
 
 
 /*estilo : micuenta*/
-form#editDatoForm label { font-size:1.5em; letter-spacing:0.30em; font-weight:bolder; color:#c0392b; display:block; }
-form#editDatoForm fieldset.secundario label { font-size:0.75em; letter-spacing:0.25em; }
+form#editDatoForm label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 form#editDatoForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#editDatoForm input:focus { background-color:#dadada; }
 form#editDatoForm button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
 form#editDatoForm button:hover, form#editDatoForm button:focus { background-color:#7fb3d5; }
+form#editDatoForm label.explica { color:#16a085; font-size:0.85em; letter-spacing:0.2em; fontxxx-style:italic; fontxxx-weight:bold; }
 
-form#editDatoForm label.explica { color:#16a085; font-size:0.75em; fontxxx-style:italic; fontxxx-weight:bold; }
-form#editDatoForm fieldset { margin-top:75pt; }
-form#editDatoForm fieldset.secundario { margin-top:20pt; margin-left:0.5em; }
+form#editDatoForm fieldset { margin:0pt; margin-top:75pt; padding:0pt;}
+form#editDatoForm fieldset.secundario { margin-top:35pt; }
+form#editDatoForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; }
+form#editDatoForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.00em; }
 
+form#editDatoForm p { margin-top:4pt; margin-bottom:28pt; }
 div#editDatoForm h1 { color:#27ae60; }
