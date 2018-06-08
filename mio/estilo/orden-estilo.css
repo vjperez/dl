@@ -26,7 +26,7 @@ div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; }
 .color05{ color:#2980b9 } link border
 .color06{ color:#f1c40f } div#donde h3, div#cuando h3
 */
-body { background-color:#ffffff; font-family:'Slabo 27px', Georgia, Times, times, serif; font-weight:normal; letter-spacing:0.1em; }
+body { background-color:#ffffff; font-family:'Slabo 27px', Times, times, serif; font-weight:normal; letter-spacing:0.1em; } /*like faq paragraph*/
 h1 { letter-spacing:0.40em; }
 h2 { letter-spacing:0.30em; } 
 h3 { letter-spacing:0.25em; } 
@@ -42,7 +42,7 @@ a.link li:hover, a.link li:focus { text-decoration:underline; }
 
 
 div#navega a.navelink { font-family:serif, mono, monospace; font-size:0.8em; }
-h1, h2, h3, h4, label { font-family:'PT Mono', courier, mono, monospace; }
+h1, h2, h3, h4, label { font-family:courier, mono, monospace; }
 div#footer h3.footertitulo { font-family:Pacifico, serif, fantasy, mono, monospace;  text-align:right; color:beige; letter-spacing:0.10em; }	
 div#footer a.footerlink { font-family:courier, mono, monospace; font-size:0.75em; }
 div#footer a.footerlink:link,     a.footerlink:visited { color:beige; }
@@ -105,8 +105,8 @@ div#video h1 { color:#27ae60; }
 div#que h2, div#donde h2, div#cuando h2, div#quien h2 { color:#c0392b; } 
 div#donde h3, div#cuando h3 { color:#f1c40f; } 
 /*font para #que #donde #cuando*/
-a.clavelink { letter-spacing:0.25em; } /*inherits font-family from body*/
-div#cuando td { font-family:'Bree Serif', serif, Times; font-weight:bolder; letter-spacing:0.25em; }
+a.clavelink { font-family:'Slabo 27px', Times, times, courier, mono, monospace; letter-spacing:0.1em; } 
+div#cuando td { font-family:'Bree Serif', serif, Times, times; font-weight:bolder; letter-spacing:0.25em; }
 a.clavelink:link, a.clavelink:visited {
     background-color:white;
     color:black;
