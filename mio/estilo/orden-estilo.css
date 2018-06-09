@@ -217,4 +217,6 @@ form#editDatoForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.
 form#editDatoForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.00em; }
 
 form#editDatoForm p { margin-top:2pt; margin-bottom:30pt; }
+form#editDatoForm input.si { margin-right:30pt; }
+form#editDatoForm button { display:block; margin-bottom:30pt; }
 div#editDatoForm h1 { color:#27ae60; }
