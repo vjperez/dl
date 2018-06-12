@@ -1,12 +1,22 @@
 hacer hoy
-
-	1) un solo html con todos los faqs del footer y le apuntas con ids
-	2) cuando se logueen y registren : ve a mi cuenta ; muestra  una forma que tenga los datos que
-		el miembro ha llenado en su profile. Tienes esto ... quieres editar ? y debes ensenar profile 
-		siguiendo un link que diga "como luciria tu profile" )
-	3) bilingual
-	4) icons for log, registro y busca [fontawesome css] ; a usarse en registro.html y login.html ; tambien en nav
-	5) a tu casa : si o no en seccion donde, usa el mismo image de ahora mismo
-	6) se puede llenar el donde con un location pin ?
-	7) como se usa android pay iphone pay y ath mobile, usar credits cards online
-	8) qure reglas tiene youTube y vimeo to embed video on my site
+    ) en mi cuenta faltan username y passwords
+    
+    ) icons for log in (una llave), registro (un lapiz) y busca [fontawesome css] ; a usarse en registro.html y login.html ; tambien en nav
+    
+    ) bilingual
+	
+	) cuando se logueen y registren : ve a mi cuenta ; muestra  una forma que tenga los datos que
+		el miembro ha llenado en su profile. Tienes esto ... quieres editar ? 
+		: debes ensenar profile siguiendo un link que diga "como luciria tu profile" )
+		: usa js para esconder secciones
+		: indica que tiene y que falta en el profile
+done
+	) un solo html con todos los faqs del footer y le apuntas con ids
+	
+	) a tu casa : si o no en seccion donde, usa el mismo image de ahora mismo
+	
+find out
+	) se puede llenar el donde con un location pin ?
+	) como se usa android pay iphone pay y ath mobile, usar credits cards online
+	) qure reglas tiene youTube y vimeo to embed video on my site
+	) como te logueas con facebook?
