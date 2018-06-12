@@ -21,7 +21,7 @@ div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; }
 /*
 .color01{ color:#c0392b } labels y h2s. try rojito #fd341d;
 .color02{ color:#27ae60 } profile video h1 y footer background
-.color03{ color:#16a085 } div#cuando td, .enfasis, label.explica for verde try 00e356
+.color03{ color:#16a085 } div#cuando td, .enfasis, label.explica ; for verde try 00e356
 .color04{ color:#7fb3d5 } link hover background
 .color05{ color:#2980b9 } link border
 .color06{ color:#f1c40f } div#donde h3, div#cuando h3
@@ -219,4 +219,4 @@ form#editDatoForm fieldset.secundario label.explica { font-size:0.85em; letter-s
 form#editDatoForm p { margin-top:2pt; margin-bottom:30pt; }
 form#editDatoForm input.si { margin-right:30pt; }
 form#editDatoForm button { display:block; margin-bottom:30pt; }
-div#editDatoForm h1 { color:#27ae60; }
+div#editDatoForm h1 { color:#16a085; }
