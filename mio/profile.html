@@ -31,7 +31,8 @@
 	
 	
     <div id="video">
-      <h1>Bob Builder</h1>
+      <h1>Bob Builder</h1> 
+	  <h4>Actualizado hace 4 dias.</h4>
       <!-- ancho-sensi aplica siempre; para cell, aqui no es re escrito, so por default aplica ancho-sensi (1de1 o sea 100%).
 	  ipad 3 de 4 lo re escribe para ipad y al no re escribir para desk, sigue aplicando en desk las dimensiones q se dieron para ipad --> 
       <iframe class="ancho-sensi-ipad-3de4 ver-borde" src="https://www.youtube.com/embed/cuA-KqUPa7k" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>	    
@@ -64,11 +65,15 @@
 	
     <div id="cuando">    
       <h2>Cuando</h2>
-	  <h3>Ahora mismo:<span class="si"></span></h3>
-      <table>
+	  <!--  <h3>Ahora mismo:<span class="si"></span></h3>  -->
+      <table id="cuandoHidable">
         <tr><td class="dia">Lunes</td><td class="hora">8 - 12 pm</td></tr>
 		<tr><td class="dia">Martes</td><td class="hora">Cerrado</td></tr>
 		<tr><td class="dia">Miercoles</td><td class="hora">6 - 10 am</td></tr>
+        <tr><td class="dia">Jueves</td><td class="hora">8 - 12 pm</td></tr>
+		<tr><td class="dia">Viernes</td><td class="hora">Cerrado</td></tr>
+		<tr><td class="dia">Sabado</td><td class="hora">6 - 10 am</td></tr>
+		<tr><td class="dia">Domingo</td><td class="hora">6 - 10 am</td></tr>
       </table>        
     </div>	
 
@@ -77,7 +82,7 @@
 	
     <div id="que">
       <h2>Qu&eacute;</h2>
-      <ul>
+      <ul id="queHidable">
         <li><a class="link clavelink" href="">task 1</a></li>
 		  <li><a class="link clavelink" href="">task 2</a></li>
 		  <li><a class="link clavelink" href="">task 3</a></li>      
@@ -93,12 +98,14 @@
    
     <div id="donde">    
       <h2>Donde</h2>
+	  <div id="dondeHidable">
       <h3>A tu casa:<span class="no"></span></h3>
       <ul>
         <li><a class="link clavelink" href="">sitio 1</a></li>
 		<li><a class="link clavelink" href="">sitio 2</a></li>
 		<li><a class="link clavelink" href="">sitio 3</a></li>
-      </ul>        
+      </ul>      
+      </div>	  
     </div>         
 	</div><!-- contenido -->
      
@@ -118,5 +125,8 @@
       </ul>
     </div> 
     
+	
+	<script src="js/jquery-3.3.1.js"></script>
+    <script src="js/profile.js"></script>
   </body>
 </html>	

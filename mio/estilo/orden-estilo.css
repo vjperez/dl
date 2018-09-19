@@ -3,7 +3,7 @@
 * { box-sizing:border-box; }
 body { margin:0px auto; min-width:320pt; max-width:960pt; } 
 .margen { margin-left:1%; margin-right:1%; }
-.contenido { margin-bottom:75pt; margin-top:75pt; }
+.contenido { margin-bottom:50pt; margin-top:50pt; }
 /*vertical-align pone la imagen en el fondo del texto q iria alrededor de un elemento inline como lo son las imagenes, sino creas un gap entre la img y el containing div */
 div#header img { width:100%; vertical-align:text-bottom; }
 div#footer { min-height:107pt; overflow:auto; }
@@ -12,7 +12,7 @@ div#footer li { display:inline-block; float:left; }
 div#navega ul { text-align:left; list-style-type:none; margin:0pt; padding:0; }    
 div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; } 
 
-
+ 
 
 
 
@@ -32,9 +32,10 @@ h2 { letter-spacing:0.30em; }
 h3 { letter-spacing:0.25em; } 
 p, td { line-height:2em; }
 p::first-letter{ font-size:1.5em; }
-.enfasis { color:#16a085; font-size:1.2em; font-style:italic; font-weight:bold; }
+.enfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace; font-style:xxitalicxx; color:#16a085;}
+.nameenfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace;}
 a.link { text-decoration:none; font-weight:bolder; }
-a.link:link,     a.link:visited { color:#2980b9; }
+a.link:link,     a.link:visited { color:#1980b9; }
 a.link:hover, a.link:focus { text-decoration:underline; }
 a.link li:hover, a.link li:focus { text-decoration:underline; }
 
@@ -46,7 +47,8 @@ h1, h2, h3, h4, label { font-family:courier, mono, monospace; }
 div#footer h3.footertitulo { font-family:Pacifico, serif, fantasy, mono, monospace;  text-align:right; color:beige; letter-spacing:0.10em; }	
 div#footer a.footerlink { font-family:courier, mono, monospace; font-size:0.75em; }
 div#footer a.footerlink:link,     a.footerlink:visited { color:beige; }
-div#footer { background-color:#27ae60; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
+div#footer { background-color:#27ae60; border-top:2 
+pt solid #909090; border-bottom:2pt solid #909090; }
 
 
 
@@ -76,7 +78,7 @@ form#queDondeForm button:hover, form#queDondeForm button:focus { background-colo
 
 /*orden : profile */
 div#video iframe { display:block; margin-left:auto; margin-right:auto; }
-div#que, div#donde, div#cuando, div#quien { margin-top:75pt; border-top:2pt solid #dadada; }
+div#video, div#quien, div#cuando, div#que, div#donde { padding-bottom:50pt; border-top:2pt solid #dadada; }
 div#que ul, div#donde ul, div#quien ul { padding:0; }
 div#que li, div#donde li { display:inline-block; margin-right:2pt; margin-bottom:1.5em; }
 div#donde h3, div#cuando h3 { text-align:center; margin-top:20pt; margin-bottom:20pt; }
