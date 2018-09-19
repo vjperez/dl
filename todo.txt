@@ -1,3 +1,9 @@
+REM 
+	) promo yourself en pueblos con festivales o juegos; do business with namero aguada , parcha pepino, delacremapr hatillo quesos y leche
+	) no quiero q usen redes personales para evitar pago, promocionate o ve donde gente como ronald
+	) ve a un lugar con variedad agricola y vende agrobox a US
+	) laboreo
+
 hacer hoy
     ) en mi cuenta faltan username y passwords
     
@@ -20,3 +26,4 @@ find out
 	) como se usa android pay iphone pay y ath mobile, usar credits cards online
 	) qure reglas tiene youTube y vimeo to embed video on my site
 	) como te logueas con facebook?
+	)  Android Pay, IPhone Pay, Tarjeta de credito 
