@@ -29,7 +29,8 @@ div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; }
 body { background-color:#ffffff; font-family:'Slabo 27px', Times, times, serif; font-weight:normal; letter-spacing:0.1em; } /*like faq paragraph*/
 h1 { letter-spacing:0.40em; }
 h2 { letter-spacing:0.30em; } 
-h3 { letter-spacing:0.25em; } 
+h3 { letter-spacing:0.25em; }
+h4 { letter-spacing:0.15em; } 
 p, td { line-height:2em; }
 p::first-letter{ font-size:1.5em; }
 .enfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace; font-style:xxitalicxx; color:#16a085;}
@@ -47,8 +48,7 @@ h1, h2, h3, h4, label { font-family:courier, mono, monospace; }
 div#footer h3.footertitulo { font-family:Pacifico, serif, fantasy, mono, monospace;  text-align:right; color:beige; letter-spacing:0.10em; }	
 div#footer a.footerlink { font-family:courier, mono, monospace; font-size:0.75em; }
 div#footer a.footerlink:link,     a.footerlink:visited { color:beige; }
-div#footer { background-color:#27ae60; border-top:2 
-pt solid #909090; border-bottom:2pt solid #909090; }
+div#footer { background-color:#27ae60; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
 
 
 
@@ -104,6 +104,7 @@ div#quien ul li img { width:25pt; }
 
 /*estilo : profile */
 div#video h1 { color:#27ae60; }
+div#video h4 { color:#16a085; }
 div#que h2, div#donde h2, div#cuando h2, div#quien h2 { color:#c0392b; } 
 div#donde h3, div#cuando h3 { color:#f1c40f; } 
 /*font para #que #donde #cuando*/
