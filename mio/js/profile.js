@@ -1,4 +1,4 @@
-jQuery(
+jQuery('document').ready(
 	function(){
 		var $tableCuandoHidable = jQuery('table#cuandoHidable');
 		var $ulQueHidable = jQuery('ul#queHidable');
