@@ -1,0 +1,31 @@
+The Web Server
+
+lighttpd es bueno usando pocos resources incluyendo cpu y memoria; buenos para
+laptop development.  Lo baje pero no creo que el support en windows sea bueno ni
+muy documentado.  Nginx lo usare cuando ponga el site en BlueHost. 
+
+Apache esta en Downloads
+
+Por ahora usare lighttpd.
+
+	baje de http://lighttpd.dtech.hu/
+	instale en Desktop / lighttpd
+	lo corri usando el README que trae el server :
+	
+	-----------------
+	Starting lighttpd
+	-----------------
+
+	As daemon in the background: ::
+
+		$ lighttpd -f <configfile>
+
+	or without detaching from the console: ::
+
+		$ lighttpd -D -f <configfile>
+		
+	El viene configurado pa correr index.html y ya lo corri (bajo localhost en el browser) y edite.
+	
+	El config file es conf/lighttpd.conf.
+	
+	

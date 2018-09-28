@@ -1,10 +1,14 @@
 REM 
 	) promo yourself en pueblos con festivales o juegos; do business with namero aguada , parcha pepino, delacremapr hatillo quesos y leche
-	) no quiero q usen redes personales para evitar pago, promocionate o ve donde gente como ronald
+	) no quiero q usen redes personales para evitar pago, promocionate o ve donde gente como ronald, joshua pauta, tipo comun, cristian colon, molusco
 	) ve a un lugar con variedad agricola y vende agrobox a US
-	) laboreo
+	) laboreo y/o codeAVictor
 
 hacer hoy
+	) usa jQuery para cambiar content, siempre usando el mismo header y el mismo footer
+	
+	) instalar server(apache, lighttpd, or Nginx) + php ::: luego sigue con los ejemplos de jQuery (load, get, post, ....)
+
     ) en mi cuenta faltan username y passwords
     
     ) icons for log in (una llave), registro (un lapiz) y busca [fontawesome css] ; a usarse en registro.html y login.html ; tambien en nav
@@ -16,6 +20,8 @@ hacer hoy
 		: debes ensenar profile siguiendo un link que diga "como luciria tu profile" )
 		: usa js para esconder secciones
 		: indica que tiene y que falta en el profile
+
+		
 done
 	) un solo html con todos los faqs del footer y le apuntas con ids
 	
@@ -26,4 +32,4 @@ find out
 	) como se usa android pay iphone pay y ath mobile, usar credits cards online
 	) qure reglas tiene youTube y vimeo to embed video on my site
 	) como te logueas con facebook?
-	)  Android Pay, IPhone Pay, Tarjeta de credito 
+	) Android Pay, IPhone Pay, Tarjeta de credito 
