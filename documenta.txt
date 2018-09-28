@@ -2,7 +2,7 @@ The Web Server
 
 lighttpd es bueno usando pocos resources incluyendo cpu y memoria; buenos para
 laptop development.  Lo baje pero no creo que el support en windows sea bueno ni
-muy documentado.  Nginx lo usare cuando ponga el site en BlueHost. 
+muy documentado.  Nginx lo usare cuando ponga el site en BlueHost, o DigitalOcean. 
 
 Apache esta en Downloads
 
@@ -27,5 +27,10 @@ Por ahora usare lighttpd.
 	El viene configurado pa correr index.html y ya lo corri (bajo localhost en el browser) y edite.
 	
 	El config file es conf/lighttpd.conf.
+	
+	
+	
+PHP
+	Voy a usar el NON Thread
 	
 	
