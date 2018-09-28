@@ -214,8 +214,8 @@ form#editDatoForm button { border-radius:5pt; background-color:white; border-col
 form#editDatoForm button:hover, form#editDatoForm button:focus { background-color:#7fb3d5; }
 form#editDatoForm label.explica { color:#16a085; font-size:0.85em; letter-spacing:0.2em; fontxxx-style:italic; fontxxx-weight:bold; }
 
-form#editDatoForm fieldset { margin:0pt; margin-top:75pt; padding:0pt;}
-form#editDatoForm fieldset.secundario { margin-top:30pt; }
+form#editDatoForm fieldset.primario { margin:0pt; padding:0pt; padding-bottom:50pt; }
+form#editDatoForm fieldset.secundario { margin-top:0pt; }
 form#editDatoForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; }
 form#editDatoForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.00em; }
 
