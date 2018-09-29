@@ -8,8 +8,9 @@ $('#selecciona').append(vote);
 $('#selecciona a').on('click', function(e) {
   e.preventDefault();
   var queryString = 'vote=' + $(e.target).attr('id');
-  $.get('http://localhost/WebDevelopmentStuff/libro-js-negro/c08/php/votes.php', queryString, function(data) {
-    $('#selecciona').html(data);
+  $.get('http://localhost/WebDevelopmentStuff/libro-js-negro/c08/php/votes.php', queryString, function(datos, status) {
+    $('#selecciona').html(datos);
+	console.log(status);
   });
 });
 
