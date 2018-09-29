@@ -6,7 +6,7 @@ muy documentado.  Nginx lo usare cuando ponga el site en BlueHost, o DigitalOcea
 
 Apache esta en Downloads
 
-Por ahora usare lighttpd.
+Por ahora usare lighttpd.  El folder esta en User/Victor
 
 	baje de http://lighttpd.dtech.hu/
 	instale en Desktop / lighttpd
@@ -26,11 +26,20 @@ Por ahora usare lighttpd.
 		
 	El viene configurado pa correr index.html y ya lo corri (bajo localhost en el browser) y edite.
 	
-	El config file es conf/lighttpd.conf.
-	
-	
+	El config file es conf/lighttpd.conf. Ver line 20, line 27 para modulos y lineas 152 y 170
+		:sin configurar mod_cgi ni mod_fastcgi y error en 171 -> No reconoce los config-key, keyfastcgi.server ni cgi.assign ademas :: produce 403 FORBIDDEN
+		:configurando solo mod fastcgi module at line 27  y con error en 171       ->  No reconoce el config-key cgi.assign ademas :: el socket connection falla y produce 503 SERVICE NOT AVAILABLE
+		:configurando solo mod fastcgi module at line 27  y ARREGLANDO error en 171 -> No reconoce el config-key cgi.assign ademas :: el socket connection falla y produce 503 SERVICE NOT AVAILABLE
+		:configurando solo mod cgi module at line 20  y error en 171 ->  No reconoce el config-key fatcgi ademas, reconoce el error en 171 y produce 500 INTERNAL ERROR SERVER
+	    :configurando solo mod cgi module at line 20  y ARREGLANDO error en 171 -> phpinfo works !
+		:configurando mod_cgi y mod_fastcgi y ARREGLANDO error en 171 -> phpinfo works !
+		
+		:solo cgi, quite 27 y 152 -> phpinfo works ! and i know am using simple cgi
+	    Deja fastcgi para cuando corras un real server ... maybe using Nginx
+
 	
 PHP
-	Voy a usar el NON Thread
+	El folder esta en User/Victor
+	Voy a usar el NON Thread - VC15 x64
 	
 	
