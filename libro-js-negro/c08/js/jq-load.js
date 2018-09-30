@@ -39,9 +39,9 @@ $('nav a').on('click', function(e) {                 // User clicks nav link
     $(e.target).addClass('current');                       // New current indicator
 
     $('#container').remove();                          // Remove elemento with id = #container
-    $('#content').load(url + ' #container', function(dato, statusText, xhr){
-												alert(dato);
-												console.log('statusText es ' + statusText + '\nxhr.status es ' + xhr.status + '\nxhr.statusText es ' + xhr.statusText);
+    $('#content').load(url + ' #container', function(datos, estatus, xhrObjeto){
+												alert(datos);
+												console.log('el estatus es ' + estatus + '\nxhrObjeto.status es ' + xhrObjeto.status + '\nxhrObjeto.statusText es ' + xhrObjeto.statusText);
 											} 
 					).hide().fadeIn(500); // // load INTO #content el url, pero solo el elemento con id = #container (space before # is necessary)
   }
