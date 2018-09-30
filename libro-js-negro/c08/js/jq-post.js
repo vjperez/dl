@@ -5,8 +5,8 @@
 $('#registerFormId').on('submit', function(e) {           // When form is submitted
   e.preventDefault();                               // Prevent it being sent
   var details = $('#registerFormId').serialize();         // Serialize form data
-  $.post('http://localhost/WebDevelopmentStuff/libro-js-negro/c08/php/register.php', details, function(datos, estatus) {  // Use $.post() to send it
-    console.log('el estatus es ' + estatus);
+  $.post('http://localhost/WebDevelopmentStuff/libro-js-negro/c08/php/register.php', details, function(datos, estatus, xhrObj) {  // Use $.post() to send it
+    console.log('el estatus es ' + estatus + '\nel xhrObj.status es ' + xhrObj.status + '\nel xhrObj.statusText es ' + xhrObj.statusText);
 	$('#registerFormId').html(datos);                    // Where to display result
   });
 });
