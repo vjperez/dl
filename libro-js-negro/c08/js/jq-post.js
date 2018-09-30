@@ -5,13 +5,8 @@
 $('#registerFormId').on('submit', function(e) {           // When form is submitted
   e.preventDefault();                               // Prevent it being sent
   var details = $('#registerFormId').serialize();         // Serialize form data
-  $.post('register.php', details, function(data) {  // Use $.post() to send it
-    $('#registerFormId').html(data);                    // Where to display result
+  $.post('http://localhost/WebDevelopmentStuff/libro-js-negro/c08/php/register.php', details, function(datos, estatus) {  // Use $.post() to send it
+    console.log('el estatus es ' + estatus);
+	$('#registerFormId').html(datos);                    // Where to display result
   });
 });
-
-
-
-
-
-// cuando das submit a un server, la data q envias toma el lugar de la forma con id = registerFormId
