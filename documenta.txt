@@ -7,13 +7,14 @@ muy documentado.  Nginx lo usare cuando ponga el site en BlueHost, o DigitalOcea
 Apache esta en Downloads
 
 Por ahora usare lighttpd.  El folder esta en User/Victor
+Deja fastcgi para cuando corras un real server ... maybe using Nginx
 
 	baje de http://lighttpd.dtech.hu/
-	instale en Desktop / lighttpd
+	instale en User \ victor \ lighttpd
 	lo corri usando el README que trae el server :
 	
 	-----------------
-	Starting lighttpd
+	Starting lighttpd (usando un .bat llamado elServer.bat en User \ victor)
 	-----------------
 
 	As daemon in the background: ::
@@ -23,6 +24,8 @@ Por ahora usare lighttpd.  El folder esta en User/Victor
 	or without detaching from the console: ::
 
 		$ lighttpd -D -f <configfile>
+	
+	
 		
 	El viene configurado pa correr index.html y ya lo corri (bajo localhost en el browser) y edite.
 	
@@ -35,11 +38,11 @@ Por ahora usare lighttpd.  El folder esta en User/Victor
 		:configurando mod_cgi y mod_fastcgi y ARREGLANDO error en 171 -> phpinfo works !
 		
 		:solo cgi, quite 27 y 152 -> phpinfo works ! and i know am using simple cgi
-	    Deja fastcgi para cuando corras un real server ... maybe using Nginx
+
 
 	
-PHP
-	El folder esta en User/Victor
+PHP7
+	El folder esta en User \ Victor
 	Voy a usar el NON Thread - VC15 x64
 	
 	

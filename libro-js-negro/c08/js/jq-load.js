@@ -24,6 +24,13 @@
 // prior to scripts being removed. This executes the script blocks before they are discarded. If .load() is
 // called with a selector expression appended to the URL, however, the scripts are stripped out prior to 
 //the DOM being updated, and thus are not executed. An example of both cases can be seen below:
+
+//If no element is matched by the jQuery selector — in this case, if the document does not contain an 
+//element with id="content" — the Ajax request will not be sent.  If the url is wrong you'll get 'error' y\o
+//'not found'.  If the error on the other hand is caused by the jQuery selector looking for a page fragment
+//- in this case #container, the request will be successfull and it will get the data, but jQuery will not
+//be able to insert it or parse the response.
+
 $('nav a').on('click', function(e) {                 // User clicks nav link
     e.preventDefault();                                // Stop loading new link
     var url = e.target.href;                               // Get value of href
@@ -32,8 +39,9 @@ $('nav a').on('click', function(e) {                 // User clicks nav link
     $(e.target).addClass('current');                       // New current indicator
 
     $('#container').remove();                          // Remove elemento with id = #container
-    $('#content').load(url + ' #container', function(data){
-												console.log(data);
+    $('#content').load(url + ' #container', function(dato, statusText, xhr){
+												alert(dato);
+												console.log('statusText es ' + statusText + '\nxhr.status es ' + xhr.status + '\nxhr.statusText es ' + xhr.statusText);
 											} 
 					).hide().fadeIn(500); // // load INTO #content el url, pero solo el elemento con id = #container (space before # is necessary)
   }
