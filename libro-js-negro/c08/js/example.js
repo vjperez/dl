@@ -4,7 +4,7 @@
 
 $(function() {                                    // When the DOM is ready
 
-  var times;                                      // Declare global variable
+  var timesAndTitles;                                      // Declare global variable
   $.ajax({
     beforeSend: function(xhr) {                   // Before requesting data
       if (xhr.overrideMimeType) {                 // If supported
@@ -12,32 +12,41 @@ $(function() {                                    // When the DOM is ready
       }
     }
   });
+  
+  
+  
+  
 
   // FUNCTION THAT COLLECTS DATA FROM THE JSON FILE
   function loadTimetable() {                    // Declare function
     $.getJSON('data/example.json')              // Try to collect JSON data
     .done( function(data){                      // If successful
-      times = data;                             // Store it in a variable
-    }).fail( function() {                       // If a problem: show message
+      timesAndTitles = data;                             // Store it in a variable
+    }).fail( function(x) {                       // If a problem: show message
       $('#event').html('Sorry! We could not load the timetable at the moment');
+      console.log(x.statusText + ", o sea " + x.status);
     });
   }
 
   loadTimetable();                              // Call the function
 
 
+
+
+
+
   // CLICK ON THE EVENT TO LOAD A TIMETABLE 
-  $('#content').on('click', '#event a', function(e) {  // User clicks on event
+  $('#content').on('click', '#event a', function(e) {  // User clicks on event y en anchor
 
     e.preventDefault();                                // Prevent loading page
     var loc = this.id.toUpperCase();                   // Get value of id attr
 
     var newContent = '';                               // Build up timetable by
-    for (var i = 0; i < times[loc].length; i++) {      // looping through events
-      newContent += '<li><span class="time">' + times[loc][i].time + '</span>';
+    for (var i = 0; i < timesAndTitles[loc].length; i++) {      // looping through events
+      newContent += '<li><span class="time">' + timesAndTitles[loc][i].time + '</span>';
       newContent += '<a href="descriptions.html#';
-      newContent += times[loc][i].title.replace(/ /g, '-') + '">';
-      newContent += times[loc][i].title + '</a></li>';
+      newContent += timesAndTitles[loc][i].title.replace(/ /g, '-') + '">';
+      newContent += timesAndTitles[loc][i].title + '</a></li>';
     }
 
     $('#sessions').html('<ul>' + newContent + '</ul>'); // Display times on page
@@ -47,6 +56,10 @@ $(function() {                                    // When the DOM is ready
 
     $('#details').text('');                             // Clear third column
   });
+
+
+
+
 
   // CLICK ON A SESSION TO LOAD THE DESCRIPTION
   $('#content').on('click', '#sessions li a', function(e) { // Click on session
@@ -61,6 +74,10 @@ $(function() {                                    // When the DOM is ready
   });
 
 
+
+
+
+  // codigo de navegacion principal ; lo mismo de pasados ejemplos
   // CLICK ON PRIMARY NAVIGATION
   $('nav a').on('click', function(e) {                       // Click on nav
     e.preventDefault();                                      // Prevent loading
@@ -72,5 +89,9 @@ $(function() {                                    // When the DOM is ready
     $('#container').remove();                                // Remove old part
     $('#content').load(url + ' #container').hide().fadeIn('slow'); // Add new
   });
+
+
+
+
 
 });
