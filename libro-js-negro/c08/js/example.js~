@@ -69,11 +69,6 @@ $(function() {                                    // When the DOM is ready
 
     fragment = fragment.replace('#', ' #');                 // Add space after#
     $('#details').load(fragment,
-    										  //texas almuerza no es un fragmento de descriptions.html, so aunque tendra exito loadeando descriptions.html,
-    										  //no podra pardear el fragmento #texas-almuerza y #details quedara vacio. cuanndo eso pase
-    										  // carga en #details el fragmento #noDefinido
-    										  //El problema surge pq el tituto de session texasAlmuerza no matchea con ningun fragmento de descriptions.html
-    										  //cuando eso pase entonces carga el fragmento #noDefinido
     										  function(respuesta, estatus){	
     											 if($('#details').text() == "") jQuery('#details').load('descriptions.html #noDefinido');
 											  }
