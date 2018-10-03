@@ -3,14 +3,19 @@ jQuery('document').ready(
 		var $cuandoHidable = jQuery('table#cuandoHidable');
 		var $queHidable = jQuery('ul#queHidable');
 		var $dondeHidable = jQuery('div#dondeHidable');
+		var $videoHidable = jQuery('div#videoHidable');
+		var $quienHidable = jQuery('div#quienHidable');
 		
 		$cuandoHidable.hide();
 		$queHidable.hide();
 		$dondeHidable.hide();
+		$videoHidable.hide();
+		$quienHidable.hide();		
 		
-		jQuery('div#cuando').on('click', function(){
+		
+		jQuery('div#cuando').on('click tap', function(){
 			$cuandoHidable.toggle();
-			/* same code
+			/* same code as toggle
 			if($tableCuandoHidable.is(":visible")){
 				$tableCuandoHidable.hide();
 			}else{
@@ -20,14 +25,25 @@ jQuery('document').ready(
 		});
 		
 		
-		jQuery('div#que').on('click', function(){
+		jQuery('div#que').on('click tap', function(){
 			$queHidable.toggle();
 		});	
 
 		
-		jQuery('div#donde').on('click', function(){
+		jQuery('div#donde').on('click tap', function(){
 			$dondeHidable.toggle();
 		});			
+
+
+		jQuery('div#video').on('click tap', function(){
+			$videoHidable.toggle();
+		});	
+
+		
+		jQuery('div#quien').on('click tap', function(){
+			$quienHidable.toggle();
+		});		
+		
 		
 	}
 );
