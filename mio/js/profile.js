@@ -8,10 +8,8 @@ jQuery('document').ready(
 		$queHidable.hide();
 		$dondeHidable.hide();
 		
-		jQuery('div#cuando').on('click mouseover', function(){
-			$cuandoHidable.show();
-			$queHidable.hide();
-			$dondeHidable.hide();			
+		jQuery('div#cuando').on('click', function(){
+			$cuandoHidable.toggle();
 			/* same code
 			if($tableCuandoHidable.is(":visible")){
 				$tableCuandoHidable.hide();
@@ -22,17 +20,13 @@ jQuery('document').ready(
 		});
 		
 		
-		jQuery('div#que').on('click mouseover', function(){
-			$cuandoHidable.hide();
-			$queHidable.show();
-			$dondeHidable.hide();
+		jQuery('div#que').on('click', function(){
+			$queHidable.toggle();
 		});	
 
 		
-		jQuery('div#donde').on('click mouseover', function(){
-			$cuandoHidable.hide();
-			$queHidable.hide();
-			$dondeHidable.show();
+		jQuery('div#donde').on('click', function(){
+			$dondeHidable.toggle();
 		});			
 		
 	}
