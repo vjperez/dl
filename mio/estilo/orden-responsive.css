@@ -19,7 +19,7 @@
 	.ancho-sensi-ipad-3de4 { width:75%; }    }
 														  
 @media only screen and (min-width: 768pt) { 
-	body { border:5pt solid #ffff00; }
+	body { border:5pt solid #f9ab00; }
 	div#header img { height:178pt; }
 	/*div#navega li { position:relative; top:-133pt; }*/ 
 	.ancho-sensi-desk-1de3 { width:33.33%; }

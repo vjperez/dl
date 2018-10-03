@@ -19,12 +19,13 @@ div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; }
 
 /*estilo : comun */
 /*
-.color01{ color:#c0392b } labels y h2s. try rojito #fd341d;
-.color02{ color:#27ae60 } profile video h1 y footer background
+.color01{ color:#c0392b } labels y h2s. try rojito #fd341d;                             ::: google 'RED' ea4335
+.color02{ color:#27ae60 } profile video h1 y footer background                          ::: google 'GREEN' 34a853
 .color03{ color:#16a085 } div#cuando td, .enfasis, label.explica ; for verde try 00e356
-.color04{ color:#7fb3d5 } link hover background
-.color05{ color:#2980b9 } link border
-.color06{ color:#f1c40f } div#donde h3, div#cuando h3
+.color04{ color:#7fb3d5 } button link hover background
+.color05{ color:#2980b9 } button link border                                                   ::: google 'BLUE' 4285f4
+.color06{ color:#f1c40f } currentl not used                                                    ::: google 'YELLOW' f9ab00
+4285f4 normal links and nav links
 */
 body { background-color:#ffffff; font-family:'Slabo 27px', Times, times, serif; font-weight:normal; letter-spacing:0.1em; } /*like faq paragraph*/
 h1 { letter-spacing:0.40em; }
@@ -36,7 +37,7 @@ p::first-letter{ font-size:1.5em; }
 .enfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace; font-sxxxtyle:italic; color:#16a085;}
 .nameenfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace;}
 a.link { text-decoration:none; font-weight:bolder; }
-a.link:link,     a.link:visited { color:#1980b9; }
+a.link:link,     a.link:visited { color:#4285f4; }
 a.link:hover, a.link:focus { text-decoration:underline; }
 a.link li:hover, a.link li:focus { text-decoration:underline; }
 
