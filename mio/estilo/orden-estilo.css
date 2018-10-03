@@ -192,7 +192,7 @@ form#registroForm button:hover, form#loginForm button:focus { background-color:#
 
 /*estilo : faq */
 [id*="preg"] h1, [id*="preg"] h2, [id*="preg"] h3, [id*="preg"] h4 { color:#c0392b; }
-[id*="preg"] { margin-top:60pt; }
+[id*="preg"] { padding-bottom:50pt; }
 
 
 
