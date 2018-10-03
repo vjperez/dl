@@ -69,7 +69,7 @@
     <div id="cuando">    
       <h2>Cuando</h2>
 	  <!--  <h3>Ahora mismo:<span class="si"></span></h3>  -->
-      <table id="cuandoHidable">
+      <table class="hidable">
         <tr><td class="dia">Lunes</td><td class="hora">8 - 12 pm</td></tr>
 		<tr><td class="dia">Martes</td><td class="hora">Cerrado</td></tr>
 		<tr><td class="dia">Miercoles</td><td class="hora">6 - 10 am</td></tr>
@@ -85,7 +85,7 @@
 	
     <div id="que">
       <h2>Qu&eacute;</h2>
-      <ul id="queHidable">
+      <ul id="hidable">
         <li><a class="link clavelink" href="">task 1</a></li>
 		  <li><a class="link clavelink" href="">task 2</a></li>
 		  <li><a class="link clavelink" href="">task 3</a></li>      
@@ -101,7 +101,7 @@
    
     <div id="donde">    
      <h2>Donde</h2>
-	  <div id="dondeHidable">
+	  <div id="hidable">
       <h3>A tu casa:<span class="no"></span></h3>
       <ul>
         <li><a class="link clavelink" href="">sitio 1</a></li>
