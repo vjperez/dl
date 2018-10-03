@@ -59,11 +59,11 @@
 			</fieldset>
 		</fieldset><fieldset class="primario">
 			<label for="">Donde</label> 
-      	<label for="" class="explica">Donde buscas clientes</label>	
-	   	<label for="" class="explica">Usado para encontrar tu profile</label>
+        	<label for="" class="explica">Donde buscas clientes</label>	
+	    	<label for="" class="explica">Usado para encontrar tu profile</label>
 			<label for="" class="explica">(minimo 1)</label>
-			<fieldset class="secundario hidable">
- 	   	<p><input id="donde1Id" type="text" name="donde1" maxlength="50" required=true placeholder="mayaguez"></p> 	
+		   <fieldset class="secundario hidable">
+ 	      <p><input id="donde1Id" type="text" name="donde1" maxlength="50" required=true placeholder="mayaguez"></p> 	
  	      <p><input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder="anasco"></p> 
  	      <p><input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder="hormigueros"></p> 
 		   
@@ -75,7 +75,7 @@
 
  	   </fieldset><fieldset class="primario">
 			<label for="">Cuando</label> 
-			<label for="" class="explica">Tu Horario</label> 
+		<label for="" class="explica">Tu Horario</label> 
 			<fieldset class="secundario hidable">
 			<label for="dia1Id">Lunes</label>
 			<p><input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder="9 a 12 pm"></p> 
@@ -101,21 +101,21 @@
         	 </fieldset>   
 		-->	 
  	    </fieldset><fieldset class="primario">
- 	    	<label for="">Qui&eacute;n</label>
- 	    	<label for="" class="explica">minimo 1 contacto</label>
- 	      <fieldset class="secundario hidable">
- 	      <label for="red1Id">Facebook</label>
- 	      <!-- <label for="red1Id" class="explica">URL</label> -->
- 	      <p><input id="red1Id"     type="url" name="red1"  maxlength="50"       placeholder="https://www.facebook.com/your.username"></p>
- 	      <label for="red2Id">Twitter</label>
-      	<!-- <label for="red2Id" class="explica">URL</label> -->         
- 	      <p><input id="red2Id"     type="url" name="red2"  maxlength="50"       placeholder="@username"></p>
- 	      <label for="red3Id">Instagram</label>
-         <!-- <label for="red3Id" class="explica">URL</label> --> 	         
- 	      <p><input id="red3Id"     type="url" name="red3"  maxlength="50"       placeholder="username"></p>
- 	      <label for="red4Id">Telefono</label>
- 	      <p><input id="red4Id"     type="tel" name="red4"  maxlength="50"       placeholder="787 833 0101"></p>
- 	      </fieldset>  
+ 	    <label for="">Qui&eacute;n</label>
+ 	    <label for="" class="explica">minimo 1 contacto</label>
+ 	       <fieldset class="secundario hidable">
+ 	         <label for="red1Id">Facebook</label>
+ 	         <!-- <label for="red1Id" class="explica">URL</label> -->
+ 	         <p><input id="red1Id"     type="url" name="red1"  maxlength="50"       placeholder="https://www.facebook.com/your.username"></p>
+ 	         <label for="red2Id">Twitter</label>
+             <!-- <label for="red2Id" class="explica">URL</label> -->         
+ 	         <p><input id="red2Id"     type="url" name="red2"  maxlength="50"       placeholder="@username"></p>
+ 	         <label for="red3Id">Instagram</label>
+             <!-- <label for="red3Id" class="explica">URL</label> --> 	         
+ 	         <p><input id="red3Id"     type="url" name="red3"  maxlength="50"       placeholder="username"></p>
+ 	         <label for="red4Id">Telefono</label>
+ 	         <p><input id="red4Id"     type="tel" name="red4"  maxlength="50"       placeholder="787 833 0101"></p>
+ 	       </fieldset>  
 		 </fieldset><fieldset class="primario">
  	    <button>Tu profile</button>
  	    </fieldset>  
