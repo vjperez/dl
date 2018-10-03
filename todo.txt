@@ -7,7 +7,7 @@ REM
 hacer hoy
 	 ) usa jQuery para cambiar content, siempre usando el mismo header y el mismo footer
 
-	 ) muestra social media handles on click and on mouseover    
+	 ) muestra social media handles only on click and tap   
     
     ) en mi cuenta faltan username y passwords
     
