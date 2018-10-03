@@ -5,6 +5,8 @@ REM
 	) laboreo y/o codeAVictor
 
 hacer hoy
+	 ) micuenta, current, faqs y keep footer.  Mas lo del file de texto de ayer
+
 	 ) usa jQuery para cambiar content, siempre usando el mismo header y el mismo footer
 
 	 ) muestra social media handles only on click and tap   

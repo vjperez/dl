@@ -1,3 +1,6 @@
+// currently NOT USED - using class hidable
+
+
 jQuery('document').ready(
 	function(){
 		var $cuandoHidable = jQuery('table#cuandoHidable');

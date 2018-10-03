@@ -33,7 +33,7 @@ h3 { letter-spacing:0.25em; }
 h4 { letter-spacing:0.15em; } 
 p, td { line-height:2em; }
 p::first-letter{ font-size:1.5em; }
-.enfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace; font-style:xxitalicxx; color:#16a085;}
+.enfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace; font-sxxxtyle:italic; color:#16a085;}
 .nameenfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace;}
 a.link { text-decoration:none; font-weight:bolder; }
 a.link:link,     a.link:visited { color:#1980b9; }
