@@ -34,7 +34,7 @@ h3 { letter-spacing:0.25em; }
 h4 { letter-spacing:0.15em; } 
 p, td { line-height:2em; }
 p::first-letter{ font-size:1.5em; }
-.enfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace; font-sxxxtyle:italic; color:#16a085;}
+.enfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace; color:#16a085;}
 .nameenfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace;}
 a.link { text-decoration:none; font-weight:bolder; }
 a.link:link,     a.link:visited { color:#4285f4; }
@@ -212,7 +212,7 @@ form#editDatoForm input { font-size:1.5em; border-radius:5pt; background-color:#
 form#editDatoForm input:focus { background-color:#dadada; }
 form#editDatoForm button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
 form#editDatoForm button:hover, form#editDatoForm button:focus { background-color:#7fb3d5; }
-form#editDatoForm label.explica { color:#16a085; font-size:0.85em; letter-spacing:0.2em; fontxxx-style:italic; fontxxx-weight:bold; }
+form#editDatoForm label.explica { color:#16a085; font-size:0.85em; letter-spacing:0.2em; }
 
 form#editDatoForm fieldset.primario { margin:0pt; padding:0pt; padding-bottom:50pt; }
 form#editDatoForm fieldset.secundario { margin-top:0pt; }
