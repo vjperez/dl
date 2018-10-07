@@ -23,6 +23,24 @@ jQuery(document).ready(
 					jQuery('#containerForMain').html(mainDeBusca);
 				});
 				jQuery('#navBusca').hide();
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, opciones){
+					//alert('opciones.url ' + opciones.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
+					//This IF is validation code for busca.html form.  It run when get isCompleted and IF the get was for busca.html
+					if(opciones.url === 'busca.html'){ // === means true without type coersion - the type and value most both be equal
+						jQuery('form').submit(function(evento){
+							var que = jQuery('#queId').val();
+							var donde = jQuery('#dondeId').val(); 
+							//alert(que + ' ' + que.length + '\n' + donde + ' ' + donde.length);
+							if(que.length > 0 || donde.length > 0){
+								evento.preventDefault();
+								jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + que + '&donde=' + donde);
+							}else{
+								evento.preventDefault();
+								jQuery('#feedback').text('Que, Donde buscas? ...').show().fadeOut(2000);
+							}
+						});
+					}						
+				});	
 			break;
 			case 'faq':
 				jQuery.get('faq.html', function(datosDeRespuesta, estatus, xhrObjeto){
@@ -33,20 +51,36 @@ jQuery(document).ready(
 				});	
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, opciones){
 					//alert('opciones.url ' + opciones.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
-					//essentially this IF is the js/hidable.js file
+					//essentially this IF is the js/hidable.js file. It run when get isCompleted and IF the get was for faq.html
 					if(opciones.url === 'faq.html'){ // === means true without type coersion - the type and value most both be equal
 						var $todosLosNotHidable = jQuery('.notHidable');
 						var $todosLosHidable = jQuery('.hidable');
 						
 						$todosLosHidable.hide();
 
-						$todosLosNotHidable.on('click', function(evento){
+						$todosLosNotHidable.click(function(evento){
 							var $toToggle = jQuery(evento.currentTarget).children('.hidable');
 							$toToggle.toggle();
 						});
 					}						
 				});					
-			break;			
+			break;
+			case 'opciones':
+				var que = jQuery.urlParam('que');
+				var donde = jQuery.urlParam('donde');
+				jQuery.getJSON('json/getOpcionesJSON.php', {que:que, donde:donde} )
+				.done(function(datos){
+					var mainDeOpciones = '<div id="main" class="contenido margen"><div id="opcionesfotos" class="ver-borde">';
+					mainDeOpciones += '</div></div>';
+					jQuery('#containerForMain').html(mainDeOpciones);
+				})
+				.fail(function(){
+					jQuery.get('error.html', function(datosDeRespuesta, estatus, xhrObjeto){
+						var mainDeError = jQuery(datosDeRespuesta).filter('#main');
+						jQuery('#containerForMain').html(mainDeError);
+					});					
+				});		
+			break;
 		}//switch
 		
 		
@@ -56,7 +90,7 @@ jQuery(document).ready(
 
 
 /*
-var pathname = window.location.pathname; // Returns path only
-var url      = window.location.href;     // Returns full URL
-var origin   = window.location.origin;   // Returns base URL
+var pathname = window.location.pathname; // Returns path only- http://localhost/WebDevelopmentStuff/mio/portada.html - saca parametros viejos
+var url      = window.location.href;     // Returns full URL - http://localhost/WebDevelopmentStuff/mio/portada.html - deja parametros viejos
+var origin   = window.location.origin;   // Returns base URL - localhost/
 */
