@@ -16,7 +16,7 @@ jQuery(document).ready(
 				jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 			break;
 			case 'busca':
-				jQuery.get('busca.html', function(datosDeRespuesta, estatus, xhrObjeto){
+				jQuery.get('looks/busca.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					//console.log(jQuery(datosDeRespuesta));
 					var mainDeBusca = jQuery(datosDeRespuesta).filter('#main');
 					//console.log(mainDeBusca);
@@ -26,7 +26,7 @@ jQuery(document).ready(
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
 					//This code runs when get isCompleted and IF the get was requesting busca.html
-					if(settingsObjeto.url === 'busca.html'){ // === means true without type coersion - the type and value most both be equal
+					if(settingsObjeto.url === 'looks/busca.html'){ // === means true without type coersion - the type and value most both be equal
 						jQuery('form').submit(function(evento){
 							evento.preventDefault(); //not making a submit (GET request) here. Let do it at look=opciones
 							var que = jQuery('#queId').val();
@@ -42,14 +42,14 @@ jQuery(document).ready(
 				});	
 			break;
 			case 'faq':
-				jQuery.get('faq.html', function(datosDeRespuesta, estatus, xhrObjeto){
+				jQuery.get('looks/faq.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeFaq = jQuery(datosDeRespuesta).filter('#main');
 					jQuery('#containerForMain').html(mainDeFaq);
 				});	
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
 					//This code runs when get isCompleted and IF the get was requesting faq.html
-					if(settingsObjeto.url === 'faq.html'){ // === means true without type coersion - the type and value most both be equal
+					if(settingsObjeto.url === 'looks/faq.html'){ // === means true without type coersion - the type and value most both be equal
 						var $todosLosNotHidable = jQuery('.notHidable');
 						var $todosLosHidable = jQuery('.hidable');	
 						$todosLosHidable.hide();
@@ -74,7 +74,7 @@ jQuery(document).ready(
 					jQuery('#containerForMain').html(mainDeOpciones);
 				})
 				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 diferent type of errors here
-					jQuery.get('error.html', function(datosDeRespuesta, estatus, xhrObjeto){
+					jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
 						var mainDeError = jQuery(datosDeRespuesta).filter('#main');
 						jQuery('#containerForMain').html(mainDeError);
 					});					

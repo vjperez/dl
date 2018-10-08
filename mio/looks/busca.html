@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head></head>
+<body>
+<!-- header -->
+<!-- navega -->  
+
+ 
+  <!-- contenido -->
+  <div id="main" class="contenido">
+  <!-- ancho-sensi aplica siempre; para cell, aqui no es re escrito, so por default aplica ancho-sensi (1de1 o sea 100%).
+  ipad 3 de 4 lo re escribe para ipad y al no re escribir para desk, sigue aplicando en desk las dimensiones q se dieron para ipad -->
+  <div id="queDondeForm">
+    <!-- //not making a submit (GET request) here with action. Let's do it at look=opciones -->
+ 	<form id="queDondeForm" class="ancho-sensi-ipad-2de3 ver-borde" action="XXXjson/getJSON.phpXXX" method="get"> 	  
+ 	  <p><label for="queId">Qu&eacute;</label> 
+ 	    <input id="queId"   type="text" name="que"   maxlength="50"></p>
+ 	  <p><label for="dondeId">Donde</label>
+ 	    <input id="dondeId" type="text" name="donde" maxlength="50"></p>
+ 	  <p><button type="submit"><img src="imagenes/busca2em.png" alt="Busca"></button></p> 
+	  <p id="feedback"></p>
+ 	</form>
+  </div> 		
+  </div>
+  <!-- contenido -->     
+    
+	
+<!-- footer -->	
+</body>
+</html>
