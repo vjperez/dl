@@ -80,6 +80,11 @@ jQuery(document).ready(
 					});					
 				});		
 			break;
+			default :
+			    var mainDefault = '<div id="main" class="contenido margen"><h4>Default look:</h4>';
+				mainDefault += '<ul><li>could not identify the desired look :|)</li></ul></div>';
+				jQuery('#containerForMain').html(mainDefault);
+			break;
 		}//switch
 		
 		
