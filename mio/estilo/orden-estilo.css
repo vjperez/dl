@@ -12,8 +12,7 @@ div#header img { width:100%; vertical-align:text-bottom; max-height:50pt; }
 div#footer { min-height:107pt; overflow:auto; }
 div#footer ul { text-align:center; list-style-type:none; padding:0; }
 div#footer li { display:inline-block; float:left; }
-div#navega    { border-bottom:1pt solid #c0c0c0; }
-div#navega    { border-bottom:1pt solid #909090; }
+div#navega    { border-bottom:1pt solid #dadada; }
 div#navega ul { text-align:left; list-style-type:none; margin:0pt; padding:0; }    
 div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; } 
 
@@ -26,25 +25,24 @@ div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; }
 /*
 .color01{ color:#c0392b } labels y h2s. try rojito #fd341d;                             ::: google 'RED' ea4335
 .color02{ color:#27ae60 } profile video h1 y footer background                          ::: google 'GREEN' 34a853
-.color03{ color:#16a085 } div#cuando td, .enfasis, label.explica ; for verde try 00e356
+.color03{ color:#16a085 } div#cuando td, .colorenfasis, label.explica, div#quien ul img:hover, div#quien h3, div#donde h3  for verde try 00e356
 .color04{ color:#7fb3d5 } button link hover background
 .color05{ color:#2980b9 } button link border                                                   ::: google 'BLUE' 4285f4
 .color06{ color:#f1c40f } currentl not used                                                    ::: google 'YELLOW' f9ab00
 4285f4 normal links and nav links
-<<<<<<< HEAD
-909090 border top border bottom footer, header
+909090 header bottom y footer borders
 c0c0c0 border bottom navega
-=======
-909090 border top border bottom
 */
 body { background-color:#ffffff; font-family:'Slabo 27px', Times, times, serif; font-weight:normal; letter-spacing:0.1em; } /*like faq paragraph*/
 h1 { letter-spacing:0.40em; }
 h2 { letter-spacing:0.30em; } 
 h3 { letter-spacing:0.25em; }
-h4 { letter-spacing:0.15em; } 
+h4 { letter-spacing:0.15em; }
+/*estilo : error y look de portada cuando javascript disabled*/
+div#main h1, div#main h2, div#main h3, div#main h4 { color:#c0392b; }  
 p, td { line-height:2em; }
-p::first-letter{ font-size:1.5em; }
-.enfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace; color:#16a085;}
+p::first-letter{ font-size:1.3em; }
+.enfasis     { font-size:1.2em; font-weight:bold; font-family:mono, monospace; color:#16a085;}
 .nameenfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace;}
 a.link { text-decoration:none; font-weight:bolder; }
 a.link:link,     a.link:visited { color:#4285f4; }
@@ -90,10 +88,10 @@ form#queDondeForm h3 { font-family:serif, Times, times; color:#16a085; }
 
 /*orden : profile */
 div#video iframe { display:block; margin-left:auto; margin-right:auto; }
-div#video, div#quien, div#cuando, div#que, div#donde { padding-bottom:50pt; border-top:2pt solid #dadada; }
+div#quien, div#cuando, div#que, div#donde { padding-bottom:50pt; border-top:1pt solid #dadada; }
 div#que ul, div#donde ul, div#quien ul { padding:0; }
 div#que li, div#donde li { display:inline-block; margin-right:2pt; margin-bottom:1.5em; }
-div#quien h3, div#donde h3 { text-align:center; }
+div#quien h3, div#donde h3, div#video h1 { text-align:center; }
 div#video h5, div#quien h3, div#donde h3 { margin-top:20pt; margin-bottom:20pt; }
 div#donde h3 span.si, div#donde h3 span.no, div#cuando h3 span.si, div#cuando h3 span.no 
 { background: url("../imagenes/si-no.png"); 
@@ -206,10 +204,6 @@ form#registroForm button:hover, form#loginForm button:focus { background-color:#
 /*estilo : faq */
 [id*="preg"] h1, [id*="preg"] h2, [id*="preg"] h3, [id*="preg"] h4 { color:#c0392b; }
 [id*="preg"] { padding-bottom:50pt; }
-
-
-/*estilo : error y look de portada cuando javascript disabled*/
-h3, h4 { color:#c0392b; } 
 
 
 

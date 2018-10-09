@@ -5,9 +5,16 @@ REM
 	) laboreo y/o codeAVictor
 
 hacer hoy
+	 ) profile what data makes it; move it from php to jquery using json
+	 ) tengo unos cambios en el profile para usar h3 mostrando social media handles
+	 ) css display flex ; read and use it (para estaquiar al centro las fotos en opciones) 
+			: google for 'css display flex' 
+			https://codepen.io/anon/pen/NYrbWK
+			https://medium.freecodecamp.org/learn-css-flexbox-in-5-minutes-b941f0affc34
+	 ) error handle in jquery
+	 ) name enfasis ; otras busquedas ; linea profile
 	 ) micuenta, current, faqs y keep footer.  Mas lo del file de texto de ayer
 
-	 ) usa jQuery para cambiar content, siempre usando el mismo header y el mismo footer
 
 	 ) muestra social media handles only on click and tap   
     
