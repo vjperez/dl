@@ -12,7 +12,11 @@ div#header img { width:100%; vertical-align:text-bottom; max-height:50pt; }
 div#footer { min-height:107pt; overflow:auto; }
 div#footer ul { text-align:center; list-style-type:none; padding:0; }
 div#footer li { display:inline-block; float:left; }
+<<<<<<< HEAD
 div#navega    { border-bottom:1pt solid #c0c0c0; }
+=======
+div#navega    { border-bottom:1pt solid #909090; }
+>>>>>>> 535e863294e1f24e50e49f8ee0c2158ba298414c
 div#navega ul { text-align:left; list-style-type:none; margin:0pt; padding:0; }    
 div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; } 
 
@@ -30,8 +34,12 @@ div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; }
 .color05{ color:#2980b9 } button link border                                                   ::: google 'BLUE' 4285f4
 .color06{ color:#f1c40f } currentl not used                                                    ::: google 'YELLOW' f9ab00
 4285f4 normal links and nav links
+<<<<<<< HEAD
 909090 border top border bottom footer, header
 c0c0c0 border bottom navega
+=======
+909090 border top border bottom
+>>>>>>> 535e863294e1f24e50e49f8ee0c2158ba298414c
 */
 body { background-color:#ffffff; font-family:'Slabo 27px', Times, times, serif; font-weight:normal; letter-spacing:0.1em; } /*like faq paragraph*/
 h1 { letter-spacing:0.40em; }
