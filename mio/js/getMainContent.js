@@ -35,7 +35,7 @@ jQuery(document).ready(
 							if(que.length > 0 || donde.length > 0){
 								jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + que + '&donde=' + donde);
 							}else{
-								jQuery('#feedback').text('Que, Donde buscas? ...').show().fadeOut(2000);
+								jQuery('form#queDondeForm h3').text('Buscas algo? ...').slideDown(500).delay(1000).slideUp(2000);
 							}
 						});
 					}						
