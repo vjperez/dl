@@ -7,10 +7,12 @@ body { margin:0px auto; min-width:320pt; max-width:960pt; }
 .margen { margin-left:1%; margin-right:1%; }
 .contenido { margin-bottom:50pt; margin-top:50pt; }
 /*vertical-align pone la imagen en el fondo del texto q iria alrededor de un elemento inline como lo son las imagenes, sino creas un gap entre la img y el containing div */
-div#header img { width:100%; vertical-align:text-bottom; }
+div#header { border-bottom:2pt solid #909090; }
+div#header img { width:100%; vertical-align:text-bottom; max-height:50pt; }
 div#footer { min-height:107pt; overflow:auto; }
 div#footer ul { text-align:center; list-style-type:none; padding:0; }
 div#footer li { display:inline-block; float:left; }
+div#navega    { border-bottom:1pt solid #909090; }
 div#navega ul { text-align:left; list-style-type:none; margin:0pt; padding:0; }    
 div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; } 
 
@@ -28,6 +30,7 @@ div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; }
 .color05{ color:#2980b9 } button link border                                                   ::: google 'BLUE' 4285f4
 .color06{ color:#f1c40f } currentl not used                                                    ::: google 'YELLOW' f9ab00
 4285f4 normal links and nav links
+909090 border top border bottom
 */
 body { background-color:#ffffff; font-family:'Slabo 27px', Times, times, serif; font-weight:normal; letter-spacing:0.1em; } /*like faq paragraph*/
 h1 { letter-spacing:0.40em; }
