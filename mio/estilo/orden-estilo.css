@@ -91,6 +91,8 @@ div#video iframe { display:block; margin-left:auto; margin-right:auto; }
 div#quien, div#cuando, div#que, div#donde { padding-bottom:50pt; border-top:1pt solid #dadada; }
 div#que ul, div#donde ul, div#quien ul { padding:0; }
 div#que li, div#donde li { display:inline-block; margin-right:2pt; margin-bottom:1.5em; }
+div#quien h3 { display:none; }
+div#quien h3.current { display:block; }
 div#quien h3, div#donde h3, div#video h1 { text-align:center; }
 div#video h5, div#quien h3, div#donde h3 { margin-top:20pt; margin-bottom:20pt; }
 div#donde h3 span.si, div#donde h3 span.no, div#cuando h3 span.si, div#cuando h3 span.no 
@@ -134,7 +136,7 @@ a.clavelink:hover, a.clavelink:focus {
     
 div#que ul, div#donde ul, div#quien ul { list-style-type:none; }
 div#quien ul img { border-color:#2980b9;  border-style:solid;  border-width:1pt;  border-radius:5pt; padding:0.2em; }
-div#quien ul img:hover, div#quien ul img:focus, div#quien ul img.current { border-color:#16a085; border-width:2pt; }
+div#quien ul img:hover, div#quien ul img:focus, div#quien ul img.current { border-color:#16a085; border-width:3pt; }
 
 
 
