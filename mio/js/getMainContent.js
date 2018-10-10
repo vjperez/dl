@@ -63,7 +63,7 @@ jQuery(document).ready(
 			case 'opciones':
 				var que = jQuery.urlParam('que');
 				var donde = jQuery.urlParam('donde');
-				jQuery.getJSON('json/getOpcionesJSON.php', {que:que, donde:donde} )
+				jQuery.getJSON('escritos/getOpcionesJSON.php', {que:que, donde:donde} )
 				.done(function(datos){
 					var mainDeOpciones = '<div id="main" class="contenido margen"><div id="opcionesfotos" class="ver-borde">';
 					jQuery.each(datos, function(profileLink, fotoSrc){
