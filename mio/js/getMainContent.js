@@ -13,7 +13,7 @@ jQuery(document).ready(
 			//you can join the null case and busca case together, should avoid requesting portada.html
 			//twice when there is NO look parameter (null)
 			case null:
-				jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 			break;
 			case 'busca':
 				jQuery.get('looks/busca.html', function(datosDeRespuesta, estatus, xhrObjeto){
@@ -63,11 +63,11 @@ jQuery(document).ready(
 			case 'opciones':
 				var que = jQuery.urlParam('que');
 				var donde = jQuery.urlParam('donde');
-				jQuery.getJSON('escritos/getOpcionesJSON.php', {que:que, donde:donde} )
+				jQuery.getJSON('uiTests/show6OptionsTest.php', {que:que, donde:donde} )
 				.done(function(datos){
 					var mainDeOpciones = '<div id="main" class="contenido margen"><div id="opcionesfotos" class="ver-borde">';
-					jQuery.each(datos, function(profileLink, fotoSrc){
-						mainDeOpciones += '<a href="' + profileLink + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" src="';
+					jQuery.each(datos, function(fotoSrc, id){
+						mainDeOpciones += '<a href="portada.html?look=profile&id=' + id + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" src="';
 						mainDeOpciones += fotoSrc + '"></a>';
 					});
 					mainDeOpciones += '</div></div>';
@@ -81,9 +81,10 @@ jQuery(document).ready(
 				});		
 			break;
 			default :
-			    var mainDefault = '<div id="main" class="contenido margen"><h4>Default look:</h4>';
-				mainDefault += '<ul><li>could not identify the desired look :|)</li></ul></div>';
-				jQuery('#containerForMain').html(mainDefault);
+					jQuery.get('looks/default.html', function(datosDeRespuesta, estatus, xhrObjeto){
+						var mainDeDefault = jQuery(datosDeRespuesta).filter('#main');
+						jQuery('#containerForMain').html(mainDeDefault);
+					});
 			break;
 		}//switch
 		

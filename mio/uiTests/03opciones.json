@@ -1,0 +1,34 @@
+{"opciones":[
+    { "id":0,
+	  "nombre":"tito el barbero", 
+	  "videoUrl":"https://www.youtube.com/watch?v=rWq_-AexyAo", 
+	  "quien":["socialHandle":["tt":"@tito", "fb":"tito el feo", "insta":"@tito_en_insta", "phone":"787 248 1632"], 
+	           "fotoSrc":["imagenes/profile/bob301a.jpg", "imagenes/profile/bob301b.jpg", "imagenes/profile/bob301c.jpg", "imagenes/profile/bob301d.jpg", "imagenes/profile/bob301e.jpg"]],
+	  "cuando":["lun":"libre", "mar":"por la tarde", "mier":"8am-11am", "jue":"3pm-11pm", "vier":"libre:se bebe", "sab":"desde 5am", "dom":"desde 7pm"],
+	  "que":["barbero", "estilista", "hair professional", "peinador", "peluquero"],
+	  "donde":["moca", "anasco", "rincon"],
+	  "atucasa":true
+	},
+
+	{ "id":1,
+	  "nombre":"lola dona", 
+	  "videoUrl":"https://www.youtube.com/watch?v=4KjYNuNBOBg", 
+	  "quien":["socialHandle":["tt":"@lola", "fb":"lola la comelola", "insta":"@lola_en_insta", "phone":"787 249 1819"], 
+	           "fotoSrc":["imagenes/profile/bob302a.jpg", "imagenes/profile/bob302b.jpg", "imagenes/profile/bob302c.jpg"]],
+	  "cuando":["lun":"12 a 5pm", "mar":"no work martes", "mier":"10pm-1am", "jue":"5am-1pm", "vier":"10:30am a 2pm", "sab":"desde 9pm", "dom":"hasta las 15"],
+	  "que":["repostera", "baker", "panadera", "dulces", "postres"],
+	  "donde":["ponce", "coamo", "sabana grande"],
+	  "atucasa":false
+	},
+	
+    { "id":2,
+	  "nombre":"chucho landscaping", 
+	  "videoUrl":"https://www.youtube.com/watch?v=0Uk5kZ5k0vY", 
+	  "quien":["socialHandle":["tt":"@granchucho", "fb":"chucho de jayuya", "insta":"@chucho_en_insta", "phone":"787 222 4444"], 
+	           "fotoSrc":["imagenes/profile/bob303a.jpg", "imagenes/profile/bob303b.jpg"]],
+	  "cuando":["lun":"no", "mar":"quiza", "mier":"to el dia", "jue":"3pm-11pm", "vier":"si no llueve", "sab":"desde 9am", "dom":"24hrs"],
+	  "que":["pica grama", "corta grama", "tumba yerba", "limpio patios", "trimeo palos"],
+	  "donde":["moca", "las marias", "mayaguez"],
+	  "atucasa":true
+	}	
+]}
