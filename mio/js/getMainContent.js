@@ -60,7 +60,10 @@ jQuery(document).ready(
 					}						
 				});					
 			break;
-			case 'opciones':
+			case 'opciones': 
+			//This look completely depends on the amount of options to be presented.  It doesn't make
+			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
+			//concatenating strings inside an each loop, with the requested JSON datos.
 				var que = jQuery.urlParam('que');
 				var donde = jQuery.urlParam('donde');
 				jQuery.getJSON('uiTests/show15RandomOptionsTest.php', {que:que, donde:donde} )
@@ -73,13 +76,37 @@ jQuery(document).ready(
 					mainDeOpciones += '</div></div>';
 					jQuery('#containerForMain').html(mainDeOpciones);
 				})
-				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 diferent type of errors here
+				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
 					jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
 						var mainDeError = jQuery(datosDeRespuesta).filter('#main');
 						jQuery('#containerForMain').html(mainDeError);
 					});					
 				});		
 			break;
+
+
+
+
+			case 'profile':
+				var id = jQuery.urlParam('id');
+				jQuery.getJSON('uiTests/showProfileTest.php', {id:id} )
+				.done(function(datos){
+					jQuery.get('looks/profile.html', function(datosDeRespuesta, estatus, xhrObjeto){
+						var mainDeProfile = jQuery(datosDeRespuesta).filter('#main');
+						jQuery('#containerForMain').html(mainDeProfile);
+					});						
+				})
+				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
+					jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
+						var mainDeError = jQuery(datosDeRespuesta).filter('#main');
+						jQuery('#containerForMain').html(mainDeError);
+					});					
+				});		
+			break;
+
+
+
+
 			default :
 					jQuery.get('looks/default.html', function(datosDeRespuesta, estatus, xhrObjeto){
 						var mainDeDefault = jQuery(datosDeRespuesta).filter('#main');
