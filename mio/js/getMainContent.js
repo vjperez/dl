@@ -94,7 +94,12 @@ jQuery(document).ready(
 					jQuery.get('looks/profile.html', function(datosDeRespuesta, estatus, xhrObjeto){
 						var mainDeProfile = jQuery(datosDeRespuesta).filter('#main');
 						jQuery('#containerForMain').html(mainDeProfile);
-					});						
+					});	
+					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+						if(settingsObjeto.url === 'looks/profile.html'){
+		
+						}						
+					});					
 				})
 				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
 					jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){

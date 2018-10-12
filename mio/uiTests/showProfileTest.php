@@ -3,8 +3,10 @@
 //as a PHP variable.  PHP will use the variable to return the requested option, the
 //one with the matching id.
 
-$dbJSON = '
-{"opciones":[
+$dbJSON = '["nueve":99]';
+
+/*
+$dbJSON = '{"opciones":[
     { "id":1,
 	  "nombre":"tito el barbero", 
 	  "videoUrl":"https://www.youtube.com/watch?v=rWq_-AexyAo", 
@@ -66,14 +68,15 @@ $dbJSON = '
 	  "atucasa":false
 	}
 ]}';
-
+*/
 //saca los valores de GET
 $id = $_GET['id'];
 
 
 //generar la opcion deseada
-$dbPHP = json_decode($dbJSON);
-$opcion = $dbPHP['opciones'][-1 + $id]; //PHP counts from 0, this dbJSON data counts from 1
+$dbPHP = json_decode($dbJSON);    
+$opcion = $dbPHP['nueve'];
+//$opcion = $dbPHP->opciones[-1 + $id]; //PHP counts from 0, this dbJSON data counts from 1
 
 //devuelve la opcion deseada as JSON 
 echo json_encode($opcion);
