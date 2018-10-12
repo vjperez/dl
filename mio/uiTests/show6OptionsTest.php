@@ -13,6 +13,7 @@
 
 
 //tengo que devolver un array con pares fotoSrc => id
-$opciones = array("imagenes/profile/bob302c.jpg" => 2, "imagenes/profile/bob303a.jpg" => 3, "imagenes/profile/bob301e.jpg" => 1);
+$opciones = array("imagenes/profile/bob302c.jpg" => 2, "imagenes/profile/bob303a.jpg" => 3, "imagenes/profile/bob301e.jpg" => 1, 
+                  "imagenes/profile/bob305a.jpg" => 5, "imagenes/profile/bob306b.jpg" => 6, "imagenes/profile/bob304d.jpg" => 4);
 echo json_encode($opciones);
 ?>
