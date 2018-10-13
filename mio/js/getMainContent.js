@@ -97,8 +97,37 @@ jQuery(document).ready(
 					});	
 					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 						if(settingsObjeto.url === 'looks/profile.html'){
-		
-						}						
+							jQuery('#video h5').text('Revisado: ' + datos.revisado);
+							jQuery('#video h1').text(datos.nombrecomun);
+							jQuery('#video iframe').attr('src', datos.videoUrl);
+							jQuery('#quien h3.tt').text(datos.quien.socialHandle.tt);
+							jQuery('#quien h3.fbk').text(datos.quien.socialHandle.fbk);
+							jQuery('#quien h3.igrm').text(datos.quien.socialHandle.igrm);
+							jQuery('#quien h3.phn').text(datos.quien.socialHandle.phn);
+							
+
+							//hide
+							var $todosLosNotHidable = jQuery('.notHidable');
+							var $todosLosHidable = jQuery('.hidable');
+							
+							$todosLosHidable.hide();
+
+							$todosLosNotHidable.on('click', function(evento){
+								var $toToggle = jQuery(evento.currentTarget).children('.hidable');
+								$toToggle.toggle();
+							});
+							//socials
+							var $icon = jQuery('div#quien ul li').click(function(evento){
+								evento.preventDefault();
+								jQuery('div#quien ul li img').removeClass('current');
+								var $imgToFocus = jQuery(evento.currentTarget).find('img');
+								var $socialClass = $imgToFocus.attr('class'); // grab the name this class, used to select h3 with same class
+								$imgToFocus.addClass('current');
+								
+								jQuery('div#quien h3').removeClass('current');
+								jQuery('div#quien h3.' + $socialClass).addClass('current');
+							});	
+						}//if						
 					});					
 				})
 				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here

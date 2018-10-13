@@ -1,5 +1,6 @@
 //this code now runs after an ajaxComplete in the faq section of getMainContent.js
 jQuery(document).ready(function(){
+		//hide
 		var $todosLosNotHidable = jQuery('.notHidable');
 		var $todosLosHidable = jQuery('.hidable');
 		

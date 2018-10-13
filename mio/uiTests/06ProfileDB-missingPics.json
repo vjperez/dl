@@ -1,8 +1,9 @@
 [
-    { "id":1,
-	  "nombre":"tito el barbero", 
-	  "videoUrl":"https://www.youtube.com/watch?v=rWq_-AexyAo", 
-	  "quien":{"socialHandle":{"tt":"@tito", "fb":"tito el feo", "insta":"@tito_en_insta", "phone":"787 248 0001"}, 
+    { "id":1,	
+	  "nombrecomun":"tito el barbero",
+	  "revisado":"23-10-1991",
+	  "videoUrl":"https://www.youtube.com/embed/rWq_-AexyAo", 
+	  "quien":{"socialHandle":{"tt":"@tito", "fbk":"tito el feo", "igrm":"@tito_en_insta", "phn":"787 248 0001"}, 
 	           "fotoSrc":["imagenes/profile/bob301a.jpg", "imagenes/profile/bob301b.jpg", "imagenes/profile/bob301c.jpg", "imagenes/profile/bob301d.jpg", "imagenes/profile/bob301e.jpg"]
 	          },
 	  "cuando":{"lun":"libre", "mar":"por la tarde", "mier":"8am-11am", "jue":"3pm-11pm", "vier":"libre:se bebe", "sab":"desde 5am", "dom":"desde 7pm"},
@@ -11,9 +12,10 @@
 	  "atucasa":true
 	},
 	{ "id":2,
-	  "nombre":"lola dona", 
-	  "videoUrl":"https://www.youtube.com/watch?v=4KjYNuNBOBg", 
-	  "quien":{"socialHandle":{"tt":"@lola", "fb":"lola la comelola", "insta":"@lola_en_insta", "phone":"787 249 0002"}, 
+	  "nombrecomun":"lola dona", 
+	  "revisado":"23-10-1992",
+	  "videoUrl":"https://www.youtube.com/embed/4KjYNuNBOBg", 
+	  "quien":{"socialHandle":{"tt":"@lola", "fbk":"lola la comelola", "igrm":"@lola_en_insta", "phn":"787 249 0002"}, 
 	           "fotoSrc":["imagenes/profile/bob302a.jpg", "imagenes/profile/bob302b.jpg", "imagenes/profile/bob302c.jpg"]
 	          },
 	  "cuando":{"lun":"12 a 5pm", "mar":"no work martes", "mier":"10pm-1am", "jue":"5am-1pm", "vier":"10:30am a 2pm", "sab":"desde 9pm", "dom":"hasta las 15"},
@@ -22,9 +24,10 @@
 	  "atucasa":false
 	},
     { "id":3,
-	  "nombre":"chucho landscaping", 
-	  "videoUrl":"https://www.youtube.com/watch?v=0Uk5kZ5k0vY", 
-	  "quien":{"socialHandle":{"tt":"@granchucho", "fb":"chucho de jayuya", "insta":"@chucho_en_insta", "phone":"787 222 0003"}, 
+	  "nombrecomun":"chucho landscaping", 
+	  "revisado":"23-10-1993",
+	  "videoUrl":"https://www.youtube.com/embed/0Uk5kZ5k0vY", 
+	  "quien":{"socialHandle":{"tt":"@granchucho", "fbk":"chucho de jayuya", "igrm":"@chucho_en_insta", "phn":"787 222 0003"}, 
 	           "fotoSrc":["imagenes/profile/bob303a.jpg", "imagenes/profile/bob303b.jpg"]
 	          },
 	  "cuando":{"lun":"no", "mar":"quiza", "mier":"to el dia", "jue":"3pm-11pm", "vier":"si no llueve", "sab":"desde 9am", "dom":"24hrs"},
@@ -33,9 +36,10 @@
 	  "atucasa":true
 	},
     { "id":4,
-	  "nombre":"papito el bello", 
-	  "videoUrl":"https://www.youtube.com/watch?v=AFoFxirvRKU", 
-	  "quien":{"socialHandle":{"tt":"@papito", "fb":"papito el bello", "insta":"@papito_en_insta", "phone":"787 248 0004"}, 
+	  "nombrecomun":"papito el bello", 
+	  "revisado":"23-10-1994",
+	  "videoUrl":"https://www.youtube.com/embed/AFoFxirvRKU", 
+	  "quien":{"socialHandle":{"tt":"@papito", "fbk":"papito el bello", "igrm":"@papito_en_insta", "phn":"787 248 0004"}, 
 	           "fotoSrc":["imagenes/profile/bob304a.jpg", "imagenes/profile/bob304b.jpg", "imagenes/profile/bob304c.jpg", "imagenes/profile/bob304d.jpg"]
 	          },
 	  "cuando":{"lun":"libre", "mar":"", "mier":"8am-11am", "jue":"3pm-11pm", "vier":"libre:se bebe", "sab":"", "dom":""},
@@ -44,9 +48,10 @@
 	  "atucasa":true
 	},
 	{ "id":5,
-	  "nombre":"luis car wash", 
-	  "videoUrl":"https://www.youtube.com/watch?v=L0eIqLvZlz8", 
-	  "quien":{"socialHandle":{"tt":"@luis", "fb":"luis limpia carro", "insta":"@luis_en_insta", "phone":"787 249 0005"}, 
+	  "nombrecomun":"luis car wash", 
+	  "revisado":"23-10-1995",
+	  "videoUrl":"https://www.youtube.com/embed/L0eIqLvZlz8", 
+	  "quien":{"socialHandle":{"tt":"@luis", "fbk":"luis limpia carro", "igrm":"@luis_en_insta", "phn":"787 249 0005"}, 
 	           "fotoSrc":["imagenes/profile/bob305a.jpg"]
 	          },
 	  "cuando":{"lun":"12 a 5pm", "mar":"no work martes", "mier":"10pm-1am", "jue":"5am-1pm", "vier":"10:30am a 2pm", "sab":"desde 9pm", "dom":"hasta las 15"},
@@ -55,9 +60,10 @@
 	  "atucasa":true
 	},
     { "id":6,
-	  "nombre":"cheo foto shopero", 
-	  "videoUrl":"https://www.youtube.com/watch?v=nSYT367zBUI", 
-	  "quien":{"socialHandle":{"tt":"@cheo", "fb":"cheo mr foto", "insta":"@cheo_en_insta", "phone":"787 222 0006"}, 
+	  "nombrecomun":"cheo foto shopero", 
+	  "revisado":"23-10-1996",
+	  "videoUrl":"https://www.youtube.com/embed/nSYT367zBUI", 
+	  "quien":{"socialHandle":{"tt":"@cheo", "fbk":"cheo mr foto", "igrm":"@cheo_en_insta", "phn":"787 222 0006"}, 
 	           "fotoSrc":["imagenes/profile/bob306a.jpg", "imagenes/profile/bob306b.jpg"]
 	          },
 	  "cuando":{"lun":"me amanesco", "mar":"quiza", "mier":"to la noche", "jue":"3pm pa lante", "vier":"si tengo luz", "sab":"desde 9am", "dom":"24hrs"},
