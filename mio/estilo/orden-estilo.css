@@ -104,7 +104,7 @@ div#donde h3 span.si, div#donde h3 span.no, div#cuando h3 span.si, div#cuando h3
   margin-left:10pt; }
 div#donde h3 span.no, div#cuando h3 span.no { background-position:0px -25px; } 
 div#cuando td.dia { text-align:right; }
-div#cuando td.hora { text-align:left; position:relative; left:25pt; }
+div#cuando td.hora { text-align:left; position:relative; left:25pt; font-weight:bold; }
     
 div#quien ul { text-align:center; margin-top:0pt; margin-bottom:20pt; }    
 div#quien li { display:inline-block; margin-right:12pt; margin-left:12pt; margin-top:0pt; margin-bottom:0pt; } 

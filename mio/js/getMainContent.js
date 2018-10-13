@@ -97,6 +97,7 @@ jQuery(document).ready(
 					});	
 					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 						if(settingsObjeto.url === 'looks/profile.html'){
+							//load real profile data
 							jQuery('#video h5').text('Revisado: ' + datos.revisado);
 							jQuery('#video h1').text(datos.nombrecomun);
 							jQuery('#video iframe').attr('src', datos.videoUrl);
@@ -104,9 +105,25 @@ jQuery(document).ready(
 							jQuery('#quien h3.fbk').text(datos.quien.socialHandle.fbk);
 							jQuery('#quien h3.igrm').text(datos.quien.socialHandle.igrm);
 							jQuery('#quien h3.phn').text(datos.quien.socialHandle.phn);
-							
-
-							//hide
+							jQuery('#quien #profilefotos img').each(function(index){
+								jQuery(this).attr('src', datos.quien.fotoSrc[index]);	
+							});
+							jQuery('#cuando td.lun').text(datos.cuando.lun);
+							jQuery('#cuando td.mar').text(datos.cuando.mar);
+							jQuery('#cuando td.mier').text(datos.cuando.mier);
+							jQuery('#cuando td.jue').text(datos.cuando.jue);
+							jQuery('#cuando td.vier').text(datos.cuando.vier);
+							jQuery('#cuando td.sab').text(datos.cuando.sab);
+							jQuery('#cuando td.dom').text(datos.cuando.dom);
+							jQuery('#que li a').each(function(index){
+								jQuery(this).text(datos.que[index]);	
+							});							
+							jQuery('#donde li a').each(function(index){
+								jQuery(this).text(datos.donde[index]);	
+							});	
+							var clase = 'no'; if(datos.atucasa) clase = 'si'; 
+							jQuery('#donde h3 span').attr('class', clase);
+							//hide, show on click
 							var $todosLosNotHidable = jQuery('.notHidable');
 							var $todosLosHidable = jQuery('.hidable');
 							
@@ -116,7 +133,7 @@ jQuery(document).ready(
 								var $toToggle = jQuery(evento.currentTarget).children('.hidable');
 								$toToggle.toggle();
 							});
-							//socials
+							//show only 1 social handle with class current
 							var $icon = jQuery('div#quien ul li').click(function(evento){
 								evento.preventDefault();
 								jQuery('div#quien ul li img').removeClass('current');
