@@ -6,7 +6,7 @@
 	  "quien":{"socialHandle":{"tt":"@tito", "fbk":"tito el feo", "igrm":"@tito_en_insta", "phn":"787 248 0001"}, 
 	           "fotoSrc":["imagenes/profile/bob301a.jpg", "imagenes/profile/bob301b.jpg", "imagenes/profile/bob301c.jpg", "imagenes/profile/bob301d.jpg", "imagenes/profile/bob301e.jpg"]
 	          },
-	  "cuando":{"lun":"libre", "mar":"por la tarde", "mier":"8am-11am", "jue":"3pm-11pm", "vier":"libre:se bebe", "sab":"desde 5am", "dom":"desde 7pm"},
+	  "cuando":{"lun":"libre", "mar":"por la tarde", "mier":"8am-11am", "jue":"3pm-11pm", "vier":"libre papi, hoy se bebe", "sab":"tambien bebo hoy", "dom":"desde 7pm"},
 	  "que":["barbero", "estilista", "hair professional", "peinador", "peluquero"],
 	  "donde":["moca", "anasco", "rincon"],
 	  "atucasa":true
@@ -30,7 +30,7 @@
 	  "quien":{"socialHandle":{"tt":"@granchucho", "fbk":"chucho de jayuya", "igrm":"@chucho_en_insta", "phn":"787 222 0003"}, 
 	           "fotoSrc":["imagenes/profile/bob303a.jpg", "imagenes/profile/bob303b.jpg"]
 	          },
-	  "cuando":{"lun":"no", "mar":"quiza", "mier":"to el dia", "jue":"3pm-11pm", "vier":"si no llueve", "sab":"desde 9am", "dom":"24hrs"},
+	  "cuando":{"lun":"no creo, llama", "mar":"quiza", "mier":"todito el dia", "jue":"3pm-11pm", "vier":"si no llueve", "sab":"desde 9am", "dom":"24hrs"},
 	  "que":["pica grama", "corta grama", "tumba yerba", "limpio patios", "trimeo palos"],
 	  "donde":["moca", "las marias", "mayaguez"],
 	  "atucasa":true
@@ -42,7 +42,7 @@
 	  "quien":{"socialHandle":{"tt":"@papito", "fbk":"papito el bello", "igrm":"@papito_en_insta", "phn":"787 248 0004"}, 
 	           "fotoSrc":["imagenes/profile/bob304a.jpg", "imagenes/profile/bob304b.jpg", "imagenes/profile/bob304c.jpg", "imagenes/profile/bob304d.jpg"]
 	          },
-	  "cuando":{"lun":"libre", "mar":"", "mier":"8am-11am", "jue":"3pm-11pm", "vier":"libre:se bebe", "sab":"", "dom":""},
+	  "cuando":{"lun":"libre", "mar":"libre tambien", "mier":"8am-11am", "jue":"3pm-11pm", "vier":"hoy si que si", "sab":"desde ayer", "dom":"hasta mediodia"},
 	  "que":["musico", "bailarin", "orquesta", "entretenimiento actividades", "payaso"],
 	  "donde":["moca", "san german", "lares"],
 	  "atucasa":true
@@ -66,7 +66,7 @@
 	  "quien":{"socialHandle":{"tt":"@cheo", "fbk":"cheo mr foto", "igrm":"@cheo_en_insta", "phn":"787 222 0006"}, 
 	           "fotoSrc":["imagenes/profile/bob306a.jpg", "imagenes/profile/bob306b.jpg"]
 	          },
-	  "cuando":{"lun":"me amanesco", "mar":"quiza", "mier":"to la noche", "jue":"3pm pa lante", "vier":"si tengo luz", "sab":"desde 9am", "dom":"24hrs"},
+	  "cuando":{"lun":"me amanesco", "mar":"quiza", "mier":"toda la noche", "jue":"3pm pa lante", "vier":"si tengo luz", "sab":"3er turno", "dom":"24hrs"},
 	  "que":["profile picture photoshop", "photoshop pictures", "foto shopeo imagenes", "caricaturas basada en foto", "experto dibujo digital"],
 	  "donde":["new york", "orlando", "bayamon"],
 	  "atucasa":false
