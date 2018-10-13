@@ -4,6 +4,11 @@
 // together with id comming as a GET parameter to return data of the requested option, the
 //one with the matching id.
 
+//To see test, put path, 'uiTests/show15RandomOptionsTest.php', on getMainContent.js on the opciones 'case' section.
+//Then reload portada.html with a look=opciones, or go back to busca look and search with any parameters(the test ignore them).
+//Profile will be properly displayed only if images required are available on images/profile.
+//Will display profiles available at 06ProfileDB-missingPics.json.
+
 $dbJSON = file_get_contents('06ProfileDB-missingPics.json');
 $db = json_decode($dbJSON); 
 // the data is now a PHP object
