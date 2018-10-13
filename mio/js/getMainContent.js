@@ -105,8 +105,11 @@ jQuery(document).ready(
 							jQuery('#quien h3.fbk').text(datos.quien.socialHandle.fbk);
 							jQuery('#quien h3.igrm').text(datos.quien.socialHandle.igrm);
 							jQuery('#quien h3.phn').text(datos.quien.socialHandle.phn);
+							//following code works when there are 5 or less images coming from getJSON.
+							//the html is prepared for a max of 5 images, this code removes excess html when less than 5 images come
 							jQuery('#quien #profilefotos img').each(function(index){
-								jQuery(this).attr('src', datos.quien.fotoSrc[index]);	
+								if(index < datos.quien.fotoSrc.length) { jQuery(this).attr('src', datos.quien.fotoSrc[index]); }
+								else { jQuery(this).remove(); }
 							});
 							jQuery('#cuando td.lun').text(datos.cuando.lun);
 							jQuery('#cuando td.mar').text(datos.cuando.mar);
@@ -115,11 +118,17 @@ jQuery(document).ready(
 							jQuery('#cuando td.vier').text(datos.cuando.vier);
 							jQuery('#cuando td.sab').text(datos.cuando.sab);
 							jQuery('#cuando td.dom').text(datos.cuando.dom);
+							//following code works when there are 10 or less 'que' coming from getJSON.
+							//the html is prepared for a max of 10 'que', this code removes excess html when less than 10 'que' come
 							jQuery('#que li a').each(function(index){
-								jQuery(this).text(datos.que[index]);	
-							});							
+								if(index < datos.que.length) { jQuery(this).text(datos.que[index]); }
+								else { jQuery(this).remove(); }				
+							});		
+							//following code works when there are 5 or less 'donde' coming from getJSON.
+							//the html is prepared for a max of 5 'donde', this code removes excess html when less than 5 'donde' come							
 							jQuery('#donde li a').each(function(index){
-								jQuery(this).text(datos.donde[index]);	
+								if(index < datos.donde.length) { jQuery(this).text(datos.donde[index]); }
+								else { jQuery(this).remove(); }								
 							});	
 							var clase = 'no'; if(datos.atucasa) clase = 'si'; 
 							jQuery('#donde h3 span').attr('class', clase);
