@@ -98,13 +98,14 @@ jQuery(document).ready(
 					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 						if(settingsObjeto.url === 'looks/profile.html'){
 							//load real profile data
-							jQuery('#video h5').text('Revisado: ' + datos.revisado);
+							var str = new Date(datos.revisado).toString();
+							jQuery('#video h5').text('Revisado: ' + str.substring(0, -1+str.indexOf('00:00:00')));
 							jQuery('#video h1').text(datos.nombrecomun);
 							jQuery('#video iframe').attr('src', datos.videoUrl);
-							jQuery('#quien h3.tt').text(datos.quien.socialHandle.tt);
-							jQuery('#quien h3.fbk').text(datos.quien.socialHandle.fbk);
-							jQuery('#quien h3.igrm').text(datos.quien.socialHandle.igrm);
-							jQuery('#quien h3.phn').text(datos.quien.socialHandle.phn);
+							if(datos.quien.socialHandle.tt != '')   jQuery('#quien h3.tt').text(datos.quien.socialHandle.tt);
+							if(datos.quien.socialHandle.fbk != '')  jQuery('#quien h3.fbk').text(datos.quien.socialHandle.fbk);
+							if(datos.quien.socialHandle.igrm != '') jQuery('#quien h3.igrm').text(datos.quien.socialHandle.igrm);
+							if(datos.quien.socialHandle.phn != '')  jQuery('#quien h3.phn').text(datos.quien.socialHandle.phn);
 							//following code works when there are 5 or less images coming from getJSON.
 							//the html is prepared for a max of 5 images, this code removes excess html when less than 5 images come
 							jQuery('#quien #profilefotos img').each(function(index){
