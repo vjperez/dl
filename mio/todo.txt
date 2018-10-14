@@ -1,3 +1,10 @@
+    La interfase esta ready pa: 
+	el social handle que el miembro no provea guardalo por default, y envia JSON "fbk":"", "igrm":"@tito_en_insta", "phn":"".
+	Recibir por JSON un date de la forma "07/25/1994". 
+	Recibir por JSON 5 fotos o menos, 10 QUE o menos, 5 DONDE o menos, no envies ni null ni "" por JSON
+	Mi cuenta recibe id=-1 si no se debe loguear el user, otherwise la  data
+	
+	
 REM 
 	) promo yourself en pueblos con festivales o juegos; do business with namero aguada , parcha pepino, delacremapr hatillo quesos y leche
 	) no quiero q usen redes personales para evitar pago, promocionate o ve donde gente como ronald, joshua pauta, tipo comun, cristian colon, molusco
