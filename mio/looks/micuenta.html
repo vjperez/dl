@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head></head>
+<body>
+<!-- header -->
+<!-- navega -->  
+
+ 
+<!-- contenido -->
+    <div id="main" class="contenido margen">
+
+    <!-- ancho-sensi aplica siempre; para cell, aqui no es re escrito, so por default aplica ancho-sensi (1de1 o sea 100%).
+	ipad 3 de 4 lo re escribe para ipad y al no re escribir para desk, sigue aplicando en desk las dimensiones q se dieron para ipad -->
+    <div id="editDatoForm">
+	<h1>Datos:</h1> 	
+    <p>la interfase esta ready pa: el social handle que el miembro no provea guardalo por default, y envia JSON "fbk":"", "igrm":"@tito_en_insta", "phn":"".
+	Recibir por JSON un date de la forma "07/25/1994". Recibir por JSON 5 fotos o menos, 10 QUE o menos, 5 DONDE o menos, no envies ni null ni "" por JSON</p>	
+ 	<form id="editDatoForm" class="ancho-sensi-ipad-2de3 ver-borde" action="editcuenta.php" method="post">
+ 	    <fieldset class="primario notHidable">
+ 	    	<label>Nombre</label> 	    
+ 	    	<label class="explica">(requerido)</label>
+		 	<fieldset class="secundario hidable"> 	    
+				<p><input id="nombreId"        type="text" name="nombre"     maxlength="50"      required=true placeholder="victor"></p>
+		 	</fieldset>
+		</fieldset><fieldset class="primario notHidable">  	   
+ 	    	<label>Video</label>
+        	<label class="explica">URL de tu video</label> 	    
+ 	    	<label class="explica">(requerido)</label>
+		 	<fieldset class="secundario hidable"> 	    
+				<p><input id="videoAdrrId"     type="url"  name="videoAdrr"  maxlength="50"      required=true placeholder="https://www.youtube.com/blablabla"></p>
+		 	</fieldset>		
+		</fieldset><fieldset class="primario notHidable">
+			<label>Qu&eacute;</label>
+			<label class="explica">Explica que haces</label> 
+			<label class="explica">Usado para encontrar tu profile</label>		 
+			<label class="explica">(minimo 1)</label> 
+			<fieldset class="secundario hidable">
+				<p><input id="que1Id" type="text" name="que1" maxlength="50" required=true placeholder="barbero"></p> 	
+				<p><input id="que2Id" type="text" name="que2" maxlength="50" placeholder="estilista"></p> 
+				<p><input id="que3Id" type="text" name="que3" maxlength="50" placeholder="peluquero"></p>
+				<p><input id="que4Id" type="text" name="que4" maxlength="50" placeholder="corta pelo"></p>
+				<p><input id="que5Id" type="text" name="que5" maxlength="50" placeholder="peina pelo"></p> 
+			</fieldset>
+		</fieldset><fieldset class="primario notHidable">
+			<label>Donde</label> 
+			<label class="explica">Donde buscas clientes</label>	
+			<label class="explica">Usado para encontrar tu profile</label>
+			<label class="explica">(minimo 1)</label>
+			<fieldset class="secundario hidable">
+				<p><input id="donde1Id" type="text" name="donde1" maxlength="50" required=true placeholder="mayaguez"></p> 	
+				<p><input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder="anasco"></p> 
+				<p><input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder="hormigueros"></p> 
+		   
+				<label>A su casa</label>	
+				<label class="explica">&iquest;Trabajarias en casa del cliente?</label>	
+				<span>Si</span><input type="radio" name="aTuCasa" value="si" class="si">
+				<span>No</span><input type="radio" name="aTuCasa" value="no">
+			</fieldset> 
+		</fieldset><fieldset class="primario notHidable">
+			<label>Cuando</label> 
+			<label class="explica">Tu Horario</label> 
+			<fieldset class="secundario hidable">
+				<label for="dia1Id">Lunes</label>
+				<p><input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder="9 a 12 pm"></p> 
+				<label for="dia2Id">Martes</label>
+				<p><input id="dia2Id" type="text" name="dia2" maxlength="50" placeholder="6 a 11 am"></p> 
+				<label for="dia3Id">Miercoles</label>
+				<p><input id="dia3Id" type="text" name="dia3" maxlength="50" placeholder="4 a  8 pm"></p>
+				<label for="dia4Id">Jueves</label>
+				<p><input id="dia4Id" type="text" name="dia4" maxlength="50" placeholder="Cerrado"></p> 
+				<label for="dia5Id">Viernes</label>
+				<p><input id="dia5Id" type="text" name="dia5" maxlength="50" placeholder="Cerrado"></p> 
+				<label for="dia6Id">Sabado</label>
+				<p><input id="dia6Id" type="text" name="dia6" maxlength="50" placeholder="6am a 7pm"></p>
+				<label for="dia7Id">Domingo</label>
+				<p><input id="dia7Id" type="text" name="dia7" maxlength="50" placeholder="6am a 7pm"></p>			
+			</fieldset>
+		<!--
+ 	       <fieldset class="secundario">
+ 	         <label>Ahora Mismo</label> 
+ 	         <label class="explica">&iquest;Trabajando ahora mismo?</label> 	
+ 	         <span>Si</span><input type="radio" name="ahoraMismo" value="si" class="si">
+             <span>No</span><input type="radio" name="ahoraMismo" value="no">
+        	 </fieldset>   
+		-->	 
+ 	    </fieldset><fieldset class="primario notHidable">
+ 	    	<label>Qui&eacute;n</label>
+ 	    	<label class="explica">minimo 1 contacto</label>
+			<fieldset class="secundario hidable">
+				<label for="red1Id">Facebook</label>
+				<!-- <label for="red1Id" class="explica">URL</label> -->
+				<p><input id="red1Id"     type="url" name="red1"  maxlength="50"       placeholder="https://www.facebook.com/your.username"></p>
+				<label for="red2Id">Twitter</label>
+				<!-- <label for="red2Id" class="explica">URL</label> -->         
+				<p><input id="red2Id"     type="url" name="red2"  maxlength="50"       placeholder="@username"></p>
+				<label for="red3Id">Instagram</label>
+				<!-- <label for="red3Id" class="explica">URL</label> --> 	         
+				<p><input id="red3Id"     type="url" name="red3"  maxlength="50"       placeholder="username"></p>
+				<label for="red4Id">Telefono</label>
+				<p><input id="red4Id"     type="tel" name="red4"  maxlength="50"       placeholder="787 833 0101"></p>
+			</fieldset>  
+		</fieldset><fieldset class="primario">
+ 	    <button>Tu profile</button>
+ 	    </fieldset>  
+ 	</form>
+    </div><!-- editDatoForm -->       
+    </div>
+<!-- contenido -->     
+    
+	
+<!-- footer -->	
+</body>
+</html>
