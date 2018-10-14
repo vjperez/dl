@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head></head>
+<body>
+<!-- header -->
+<!-- navega -->  
+
+ 
+  <!-- contenido -->
+  <div id="main" class="contenido">	
+  <!-- ancho-sensi aplica siempre; para cell, aqui no es re escrito, so por default aplica ancho-sensi (1de1 o sea 100%).
+  ipad 3 de 4 lo re escribe para ipad y al no re escribir para desk, sigue aplicando en desk las dimensiones q se dieron para ipad -->
+  
+  <!-- //not making a submit (POST request) here with action, request not made at look=login either. Let's do it at look=micuenta -->
+  <!-- Using required here on html input elements, no need to check for that with jQuery -->  
+  <div id="loginForm">
+    <form id="loginForm" class="ancho-sensi-ipad-2de3 ver-borde" action="XXXXmicuenta.htmlXXXX" method="post"> 	  
+	<p><label for="usernameId">Usuario</label> 
+	   <input id="usernameId" type="text"     name="username" maxlength="50" required=true></p>
+	<p><label for="passwordId">Password</label>
+	   <input id="passwordId" type="password" name="password" maxlength="50" required=true></p>
+	<p><button>Login</button></p>   
+    </form>
+  </div> 
+  <!-- contenido -->     
+    
+	
+<!-- footer -->	
+</body>
+</html>

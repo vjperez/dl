@@ -11,7 +11,9 @@
   <!-- ancho-sensi aplica siempre; para cell, aqui no es re escrito, so por default aplica ancho-sensi (1de1 o sea 100%).
   ipad 3 de 4 lo re escribe para ipad y al no re escribir para desk, sigue aplicando en desk las dimensiones q se dieron para ipad -->
   <div id="queDondeForm">
-    <!-- //not making a submit (GET request) here with action. Let's do it at look=opciones -->
+    <!-- //not making a submit (GET request) here with action, request not made at look=busca either. Let's do it at look=opciones -->
+	<!-- Since i want to allow for either 'que' or 'donde' to be empty, but not both- jQuery checks for that -->
+	<!-- so i cant use required here on html input elements -->
  	<form id="queDondeForm" class="ancho-sensi-ipad-2de3 ver-borde" action="XXXjson/getJSON.phpXXX" method="get"> 	  
  	  <p><label for="queId">Qu&eacute;</label> 
  	    <input id="queId"   type="text" name="que"   maxlength="50"></p>
