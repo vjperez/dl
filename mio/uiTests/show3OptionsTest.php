@@ -5,7 +5,7 @@
 //To see test, put path of this file, 'uiTests/show3OptionsTest.php', on getMainContent.js on the opciones 'case' section.
 //Then reload portada.html with a look=opciones, or go back to busca look and search with any parameters(the test ignore them).
 //The option will be properly displayed only if image is available on images/profile.
-//Will link to an existing profile only if it is available at 06ProfileDB-missingPics.json.
+//Will link to an existing profile only if it is available at 06ProfilesDB.json.
 
 //saca los valores de GET
 //$que = $_GET['que'];

@@ -9,7 +9,7 @@
 //Profile will be properly displayed only if images required are available on images/profile.
 //Will display profiles available at 06ProfileDB-missingPics.json.
 
-$dbJSON = file_get_contents('06ProfileDB-missingPics.json');
+$dbJSON = file_get_contents('06ProfilesDB.json');
 $db = json_decode($dbJSON); 
 // the data is now a PHP object
 // the JSON file is improperly formed and won't decode correctly into PHP

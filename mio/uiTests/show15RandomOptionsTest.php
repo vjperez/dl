@@ -7,7 +7,7 @@
 //The option will be properly displayed only if image is available on images/profile.
 //Will link to an existing profile only if it is available at 06ProfileDB-missingPics.json.
 //Note that 06ProfileDB-missingPics.json provides 6 profiles, that's why a random id is selected between 1 and 6.
-//Also $numberOfPics reflect the pics provided on 06ProfileDB-missingPics.json.
+//Also $numberOfPics reflect the pics provided on 06ProfilesDB.json.
 
 //saca los valores de GET
 //$que = $_GET['que'];
