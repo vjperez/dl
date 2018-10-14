@@ -41,25 +41,6 @@ jQuery(document).ready(
 					}						
 				});	
 			break;
-			case 'faq':
-				jQuery.get('looks/faq.html', function(datosDeRespuesta, estatus, xhrObjeto){
-					var mainDeFaq = jQuery(datosDeRespuesta).filter('#main');
-					jQuery('#containerForMain').html(mainDeFaq);
-				});	
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
-					//This code runs when get isCompleted and IF the get was requesting faq.html
-					if(settingsObjeto.url === 'looks/faq.html'){ // === means true without type coersion - the type and value most both be equal
-						var $todosLosNotHidable = jQuery('.notHidable');
-						var $todosLosHidable = jQuery('.hidable');	
-						$todosLosHidable.hide();
-						$todosLosNotHidable.click(function(evento){
-							var $toToggle = jQuery(evento.currentTarget).children('.hidable');
-							$toToggle.toggle();
-						});
-					}						
-				});					
-			break;
 			case 'opciones': 
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
@@ -83,10 +64,6 @@ jQuery(document).ready(
 					});					
 				});		
 			break;
-
-
-
-
 			case 'profile':
 				var id = jQuery.urlParam('id');
 				jQuery.getJSON('uiTests/showProfileTest.php', {id:id} )
@@ -136,9 +113,7 @@ jQuery(document).ready(
 							//hide, show on click
 							var $todosLosNotHidable = jQuery('.notHidable');
 							var $todosLosHidable = jQuery('.hidable');
-							
 							$todosLosHidable.hide();
-
 							$todosLosNotHidable.on('click', function(evento){
 								var $toToggle = jQuery(evento.currentTarget).children('.hidable');
 								$toToggle.toggle();
@@ -163,11 +138,58 @@ jQuery(document).ready(
 						jQuery('#containerForMain').html(mainDeError);
 					});					
 				});		
+			break;			
+			case 'login':
+				jQuery.get('looks/login.html', function(datosDeRespuesta, estatus, xhrObjeto){
+					var mainDeLogin = jQuery(datosDeRespuesta).filter('#main');
+					jQuery('#containerForMain').html(mainDeLogin);
+				});
+				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					//This code runs when get isCompleted and IF the get was requesting login.html
+					if(settingsObjeto.url === 'looks/login.html'){ // === means true without type coersion - the type and value most both be equal
+						jQuery('form').submit(function(evento){
+							evento.preventDefault(); //not making a submit (POST request) here. Let do it at look=micuenta
+							var user = jQuery('#usernameId').val();
+							var pass = jQuery('#passwordId').val(); 
+							jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&user=' + user + '&pass=' + pass);
+						});
+					}						
+				});	
+			break;	
+			case 'micuenta': 
+				var user = jQuery.urlParam('user');
+				var pass = jQuery.urlParam('pass');
+				jQuery.post('uiTests/showCuentaToUser.php', {user:user, pass:pass} )
+				.done(function(datos){
+		
+				})
+				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
+					jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
+						var mainDeError = jQuery(datosDeRespuesta).filter('#main');
+						jQuery('#containerForMain').html(mainDeError);
+					});					
+				});		
 			break;
-
-
-
-
+			case 'faq':
+				jQuery.get('looks/faq.html', function(datosDeRespuesta, estatus, xhrObjeto){
+					var mainDeFaq = jQuery(datosDeRespuesta).filter('#main');
+					jQuery('#containerForMain').html(mainDeFaq);
+				});	
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
+					//This code runs when get isCompleted and IF the get was requesting faq.html
+					if(settingsObjeto.url === 'looks/faq.html'){ // === means true without type coersion - the type and value most both be equal
+						var $todosLosNotHidable = jQuery('.notHidable');
+						var $todosLosHidable = jQuery('.hidable');	
+						$todosLosHidable.hide();
+						$todosLosNotHidable.click(function(evento){
+							var $toToggle = jQuery(evento.currentTarget).children('.hidable');
+							$toToggle.toggle();
+						});
+					}						
+				});					
+			break;
 			default :
 					jQuery.get('looks/default.html', function(datosDeRespuesta, estatus, xhrObjeto){
 						var mainDeDefault = jQuery(datosDeRespuesta).filter('#main');
@@ -175,7 +197,6 @@ jQuery(document).ready(
 					});
 			break;
 		}//switch
-		
 		
 	}); // ready function and statement
 
