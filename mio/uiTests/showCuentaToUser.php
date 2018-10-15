@@ -27,7 +27,8 @@ if($index < count($usersDB)){
   $profilesDB = json_decode($profilesJSON);
   $userDatos = $profilesDB[$index]; 
 }else{
-  $userDatos = array("id"=>-1);	
+  //$userDatos = array("id"=>-1)         // is there a diference with the code below ?!
+  $userDatos = json_decode( '{"id":-1}' );  	
 }
 echo json_encode($userDatos);
 ?>

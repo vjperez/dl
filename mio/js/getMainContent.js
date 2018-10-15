@@ -48,7 +48,8 @@ jQuery(document).ready(
 				var que = jQuery.urlParam('que');
 				var donde = jQuery.urlParam('donde');
 				jQuery.getJSON('uiTests/show15RandomOptionsTest.php', {que:que, donde:donde} )
-				.done(function(datos){
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+					alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					var mainDeOpciones = '<div id="main" class="contenido margen"><div id="opcionesfotos" class="ver-borde">';
 					jQuery.each(datos, function(fotoSrc, id){
 						mainDeOpciones += '<a href="portada.html?look=profile&id=' + id + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" src="';
@@ -67,7 +68,7 @@ jQuery(document).ready(
 			case 'profile':
 				var id = jQuery.urlParam('id');
 				jQuery.getJSON('uiTests/showProfileTest.php', {id:id} )
-				.done(function(datos){
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					jQuery.get('looks/profile.html', function(datosDeRespuesta, estatus, xhrObjeto){
 						var mainDeProfile = jQuery(datosDeRespuesta).filter('#main');
 						jQuery('#containerForMain').html(mainDeProfile);
@@ -160,9 +161,19 @@ jQuery(document).ready(
 			case 'micuenta': 
 				var user = jQuery.urlParam('user');
 				var pass = jQuery.urlParam('pass');
-				jQuery.post('uiTests/showCuentaToUser.php', {user:user, pass:pass} )
-				.done(function(datos){
-		
+				jQuery.post('uiTests/showCuentaToUser.php', {user:user, pass:pass}, "json" )
+				.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+					alert(datosJSONStr);
+					datosJSObj = JSON.parse(datosJSONStr);  
+					alert('datos json parsed as a js obj ' + datosJSObj + '\ndatos.id ' + datosJSObj.id+ '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
+				    if(datosJSObj.id == -1){ //datos recieves id=-1 when user cannot be logged.
+						jQuery(window.location).attr('href', window.location.pathname + '?look=login');
+				    }else{ // Otherwise user is logged - datos has all the user data to show in micuenta
+					    jQuery.get('looks/micuenta.html', function(datosDeRespuesta, estatus, xhrObjeto){
+						    var mainDeMiCuenta = jQuery(datosDeRespuesta).filter('#main');
+						    jQuery('#containerForMain').html(mainDeMiCuenta);
+					    });						
+				    }
 				})
 				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
 					jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
