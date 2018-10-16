@@ -1,3 +1,8 @@
+// this version works but since it gets the profile look FIRST
+// then gets profile data and then updates, you actually see 
+// the page changing from the DEFAULT profile page to the actually 
+// requested profile.... which is not very good looking :)
+
 jQuery(document).ready(
 	function(){
 		//extracs parameters from the url
@@ -66,20 +71,20 @@ jQuery(document).ready(
 				});		
 			break;
 			case 'profile':	
-				//get id then
-				var id = jQuery.urlParam('id');
-				//request get JSON data for that id
-				jQuery.getJSON('uiTests/showProfileTest.php', {id:id} )
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-
-					//get profile look	
-					jQuery.get('looks/profile.html', function(datosDeRespuesta, estatus, xhrObjeto){
-						var mainDeProfile = jQuery(datosDeRespuesta).filter('#main');
-						jQuery('#containerForMain').html(mainDeProfile);
-					});				
-					//Once the look is in, then insert json data into profile look
-					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/profile.html'){								
+			//do this get before the getJSON request, present html first then get id then
+			//request get JSON data for that id
+			jQuery.get('looks/profile.html', function(datosDeRespuesta, estatus, xhrObjeto){
+				var mainDeProfile = jQuery(datosDeRespuesta).filter('#main');
+				jQuery('#containerForMain').html(mainDeProfile);
+			});	
+			//////
+			//then insert json data into html of profile
+			jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+				if(settingsObjeto.url === 'looks/profile.html'){
+					var id = jQuery.urlParam('id');
+					jQuery.getJSON('uiTests/showProfileTest.php', {id:id} )
+					.done(function(datos, estatusForDONE, xhrObjetoForDONE){	
+							
 						//load real profile data
 						var str = new Date(datos.revisado).toString();
 						jQuery('#video h5').text('Revisado: ' + str.substring(0, -1+str.indexOf('00:00:00')));
@@ -134,17 +139,19 @@ jQuery(document).ready(
 							
 							jQuery('div#quien h3').removeClass('current');
 							jQuery('div#quien h3.' + $socialClass).addClass('current');
-						});		
-					}//if						
-					});//ajax complete				
-				
-				})//done
-				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
-					jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
-						var mainDeError = jQuery(datosDeRespuesta).filter('#main');
-						jQuery('#containerForMain').html(mainDeError);
-					});					
-				});//fail							
+						});
+						
+					})//done
+					.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
+						jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
+							var mainDeError = jQuery(datosDeRespuesta).filter('#main');
+							jQuery('#containerForMain').html(mainDeError);
+						});					
+					});
+						
+				}//if						
+			});//ajax complete					
+		
 			break;			
 			case 'login':
 				jQuery.get('looks/login.html', function(datosDeRespuesta, estatus, xhrObjeto){
