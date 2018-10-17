@@ -1,34 +1,28 @@
 <?php
-//This ui test assumes that a user is trying to log in. User is quering the DB with values 'user'
-//and 'pass', the response is the array $userDatos with user data if user is successfully logged. 
-//Otherwise $userDatos will contain an "id" of -1.  Response will be sent in JSON format.
-//'user' and 'pass' data appears on 06usersDB.json.
+//This ui test assumes that a user is trying to see his account data. User is quering the DB with value 'id'.
+//The response is the array $userDatos with user data. 
+//Response will be sent in JSON format.
+//User data appears on 06ProfilesDB.json.
 
 //To see test, put path of this file, 'uiTests/showCuentaToUser.php', on getMainContent.js on the micuenta 'case' section.
 //Then reload portada.html with a look=micuenta, or go back to login look and try to log in.
 
 
 //saca los valores de POST
-$user = $_POST['user'];
-$pass = $_POST['pass'];
+$id = $_POST['id'];
 
-//lee 06usersDB.json y decide si logueas o no
-$usersJSON = file_get_contents('06usersDB.json');
-$usersDB = json_decode($usersJSON);
-//try to match user and pass with data on $usersDB
-$index;
-for($index=0; $index < count($usersDB) ;$index++){
-  if($user == $usersDB[$index]->user && $pass == $usersDB[$index]->pass ) break;
-}
-
-if($index < count($usersDB)){
-  //lee 06ProfilesDB.json y busca datos para usuario con el index donde se encontro un match
-  $profilesJSON = file_get_contents('06ProfilesDB.json');
-  $profilesDB = json_decode($profilesJSON);
+//lee 06ProfilesDB.json y busca datos para usuario con el index donde se encontro un match
+$profilesJSON = file_get_contents('06ProfilesDB.json');
+$profilesDB = json_decode($profilesJSON);
+  
+$index = $id -1;  
+if($index < count($profilesDB)){
   $userDatos = $profilesDB[$index]; 
 }else{
-  //$userDatos = array("id"=>-1)         // is there a diference with the code below ?!
-  $userDatos = json_decode( '{"id":-1}' );  	
+  // CODE should never get here when trying to login
+  //here you should create new empty profile,  with id = id on 06ProfilesDB.json
+  //and add user with id = id on 06usersDB.json
+  $userDatos = json_decode( '{}' );  	
 }
 echo json_encode($userDatos);
 ?>

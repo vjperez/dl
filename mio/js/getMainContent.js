@@ -72,15 +72,15 @@ jQuery(document).ready(
 				jQuery.getJSON('uiTests/showProfileTest.php', {id:id} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 
-					//get profile look	
+					//Once the data is in, get profile look	
 					jQuery.get('looks/profile.html', function(datosDeRespuesta, estatus, xhrObjeto){
 						var mainDeProfile = jQuery(datosDeRespuesta).filter('#main');
 						jQuery('#containerForMain').html(mainDeProfile);
 					});				
-					//Once the look is in, then insert json data into profile look
+					//Once the look is in (ajaxComplete), then insert json data into profile look
 					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/profile.html'){								
-						//load real profile data
+						//insert json data into profile look
 						var str = new Date(datos.revisado).toString();
 						jQuery('#video h5').text('Revisado: ' + str.substring(0, -1+str.indexOf('00:00:00')));
 						jQuery('#video h1').text(datos.nombrecomun);
@@ -147,45 +147,50 @@ jQuery(document).ready(
 				});//fail							
 			break;			
 			case 'login':
+				//remove navegation before requesting new html.  Less likely user will notice it going away. 
+				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+				//get login look
 				jQuery.get('looks/login.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeLogin = jQuery(datosDeRespuesta).filter('#main');
 					jQuery('#containerForMain').html(mainDeLogin);
 				});
-				
-				
-				
-				
-				
-				//remove navegation before requesting new html.  Less likely user will notice it going away. 
-				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
-			
-				
+				//once look is in, use jQuery on loaded elements to get values
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//This code runs when get isCompleted and IF the get was requesting login.html
 					if(settingsObjeto.url === 'looks/login.html'){
 						jQuery('form').submit(function(evento){
-							evento.preventDefault(); //not making a submit (POST request) here. Let do it at look=micuenta
+							evento.preventDefault(); //not making a submit (POST request) from html action. 
 							var user = jQuery('#usernameId').val();
 							var pass = jQuery('#passwordId').val(); 
-							jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&user=' + user + '&pass=' + pass);
+							//Making a submit (POST request) here. Not in look=micuenta
+							jQuery.post('uiTests/loginExito.php', {user:user, pass:pass} )
+							.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){  alert(datosJSONStr);
+								datosJSObj = JSON.parse(datosJSONStr);  alert(datosJSObj);
+								if(datosJSObj.log){
+									jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
+								}else{
+									jQuery(window.location).attr('href', window.location.pathname + '?look=login');
+								}
+							})
+							.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
+								jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
+									var mainDeError = jQuery(datosDeRespuesta).filter('#main');
+									jQuery('#containerForMain').html(mainDeError);
+								});					
+							});
 						});
-					}						
-				});	
+					}//if						
+				});//ajax complete				
 			break;	
 			case 'registro':
+				//remove navegation before requesting new html.  Less likely user will notice it going away.
+				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+				//get registro look
 				jQuery.get('looks/registro.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeRegistro = jQuery(datosDeRespuesta).filter('#main');
 					jQuery('#containerForMain').html(mainDeRegistro);
 				});
-				
-				
-				
-				
-				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
-				
-				
-				
+				//once look is in, use jQuery on loaded elements to get values
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//This code runs when get isCompleted and IF the get was requesting registro.html
 					if(settingsObjeto.url === 'looks/registro.html'){
@@ -196,26 +201,29 @@ jQuery(document).ready(
 							var pass02 = jQuery('#passwordConfirmId').val();
 							jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&usertb=' + userTB + '&pass01=' + pass01 + '&pass02=' + pass02);
 						});
-					}						
-				});	
+					}//if						
+				});//ajax complete	
 			break;			
 			case 'micuenta': 
-				var user = jQuery.urlParam('user');
-				var pass = jQuery.urlParam('pass');
-				jQuery.post('uiTests/showCuentaToUser.php', {user:user, pass:pass} )
+				var id = jQuery.urlParam('id');
+				jQuery.post('uiTests/showCuentaToUser.php', {id:id} )
 				.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 					//alert(datosJSONStr);
 					datosJSObj = JSON.parse(datosJSONStr);  
 					//datosJSObj = datosJSONStr;
 					//alert('datos json str parsed as a js obj ' + datosJSObj + '\ndatos.id ' + datosJSObj.id+ '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
-				    if(datosJSObj.id == -1){ //datos recieves id=-1 when user cannot be logged.
-						jQuery(window.location).attr('href', window.location.pathname + '?look=login');
-				    }else{ // Otherwise user is logged - datos has all the user data to show in micuenta
-					    jQuery.get('looks/micuenta.html', function(datosDeRespuesta, estatus, xhrObjeto){
-						    var mainDeMiCuenta = jQuery(datosDeRespuesta).filter('#main');
-						    jQuery('#containerForMain').html(mainDeMiCuenta);
-					    });						
-				    }
+					
+					//get mi cuenta look
+					jQuery.get('looks/micuenta.html', function(datosDeRespuesta, estatus, xhrObjeto){
+						var mainDeMiCuenta = jQuery(datosDeRespuesta).filter('#main');
+						jQuery('#containerForMain').html(mainDeMiCuenta);
+					});										
+					//once look is in, use jQuery on loaded elements to get values
+					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+						if(settingsObjeto.url === 'looks/login.html'){
+							jQuery('#video h1').text(datos.nombrecomun);
+						}//if
+					});//ajaxComplete
 				})
 				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
 					jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
