@@ -1,7 +1,10 @@
     La interfase esta ready pa: 
-	el social handle que el miembro no provea guardalo por default, y envia JSON "fbk":"", "igrm":"@tito_en_insta", "phn":"".
+	el social handle y los cuando que el miembro no provea guardalo por default, y envia JSON 
+			"fbk":"", "igrm":"@tito_en_insta", "phn":"", "mier":"", "vier":""
+			(pq son "key":value members of js objects)
 	Recibir por JSON un date de la forma "07/25/1994". 
 	Recibir por JSON 5 fotos o menos, 10 QUE o menos, 5 DONDE o menos, no envies ni null ni "" por JSON
+			(pq son arreglos que manejas con each y remove en profile; jaja...)
 	
 	
 	

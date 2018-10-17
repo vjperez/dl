@@ -260,7 +260,21 @@ jQuery(document).ready(
 							});
 							jQuery('form#editDatoForm input[value=si]').prop('checked', datos.atucasa);
 							jQuery('form#editDatoForm input[value=no]').prop('checked', !datos.atucasa);
-						
+							//cuando
+							jQuery('form#editDatoForm input[name=dia1]').attr('placeholder', datos.cuando.lun);
+							jQuery('form#editDatoForm input[name=dia2]').attr('placeholder', datos.cuando.mar);
+							jQuery('form#editDatoForm input[name=dia3]').attr('placeholder', datos.cuando.mier);
+							jQuery('form#editDatoForm input[name=dia4]').attr('placeholder', datos.cuando.jue);
+							jQuery('form#editDatoForm input[name=dia5]').attr('placeholder', datos.cuando.vier);
+							jQuery('form#editDatoForm input[name=dia6]').attr('placeholder', datos.cuando.sab);
+							jQuery('form#editDatoForm input[name=dia7]').attr('placeholder', datos.cuando.dom);
+							//quien
+							jQuery('form#editDatoForm input[name=red1]').attr('placeholder', datos.quien.socialHandle.fbk);
+							jQuery('form#editDatoForm input[name=red2]').attr('placeholder', datos.quien.socialHandle.tt);
+							jQuery('form#editDatoForm input[name=red3]').attr('placeholder', datos.quien.socialHandle.igrm);
+							jQuery('form#editDatoForm input[name=red4]').attr('placeholder', datos.quien.socialHandle.phn);							
+							
+							
 							//hide, show on click
 							var $todosLosNotHidable = jQuery('.notHidable');
 							var $todosLosHidable = jQuery('.hidable');
