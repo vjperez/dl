@@ -210,7 +210,7 @@ form#registroForm button:hover, form#loginForm button:focus { background-color:#
 
 /* orden : micuenta */
 form#editDatoForm { margin-left:auto; margin-right:auto; }
-
+form#editDatoForm input[type='url'], form#editDatoForm input[type='text']{ width:67%; }
 
 
 
@@ -231,4 +231,4 @@ form#editDatoForm fieldset.secundario label.explica { font-size:0.85em; letter-s
 form#editDatoForm p { margin-top:2pt; margin-bottom:30pt; }
 form#editDatoForm input.si { margin-right:30pt; }
 form#editDatoForm button { display:block; margin-bottom:30pt; }
-div#editDatoForm h1 { color:#16a085; }
+div#editDato h1 { color:#16a085; }

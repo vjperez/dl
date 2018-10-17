@@ -71,7 +71,6 @@ jQuery(document).ready(
 				//request get JSON data for that id
 				jQuery.getJSON('uiTests/showProfileTest.php', {id:id} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-
 					//Once the data is in, get profile look	
 					jQuery.get('looks/profile.html', function(datosDeRespuesta, estatus, xhrObjeto){
 						var mainDeProfile = jQuery(datosDeRespuesta).filter('#main');
@@ -195,33 +194,81 @@ jQuery(document).ready(
 					//This code runs when get isCompleted and IF the get was requesting registro.html
 					if(settingsObjeto.url === 'looks/registro.html'){
 						jQuery('form').submit(function(evento){
-							evento.preventDefault(); //not making a submit (POST request) here. Let do it at look=micuenta
-							var userTB = jQuery('#usernameId').val();
+							evento.preventDefault(); //not making a submit (POST request) from html action
+							var usertb = jQuery('#usernameId').val();
 							var pass01 = jQuery('#passwordId').val(); 
 							var pass02 = jQuery('#passwordConfirmId').val();
+							//Making a submit (POST request) here. Not in look=micuenta
+							jQuery.post('uiTests/registroExito.php', {usertb:usertb, pass01:pass01, pass02:pass02} )
+							.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){  alert(datosJSONStr);
+								datosJSObj = JSON.parse(datosJSONStr);  alert(datosJSObj);
+								if(datosJSObj.reg){
+									jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
+								}else{
+									jQuery(window.location).attr('href', window.location.pathname + '?look=login');
+								}
+							})
+							.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
+								jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
+									var mainDeError = jQuery(datosDeRespuesta).filter('#main');
+									jQuery('#containerForMain').html(mainDeError);
+								});					
+							});							
+							
+							
+							
 							jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&usertb=' + userTB + '&pass01=' + pass01 + '&pass02=' + pass02);
+						
+						
+						
 						});
 					}//if						
 				});//ajax complete	
 			break;			
 			case 'micuenta': 
+				//this code is very similar to profile case code - should make functions to simplify
+				
+				//remove navegation before requesting new html.  Less likely user will notice it going away.
+				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+				
+				//get id
 				var id = jQuery.urlParam('id');
-				jQuery.post('uiTests/showCuentaToUser.php', {id:id} )
-				.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-					//alert(datosJSONStr);
-					datosJSObj = JSON.parse(datosJSONStr);  
-					//datosJSObj = datosJSONStr;
-					//alert('datos json str parsed as a js obj ' + datosJSObj + '\ndatos.id ' + datosJSObj.id+ '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
-					
-					//get mi cuenta look
+				//get profile data
+				jQuery.getJSON('uiTests/showProfileTest.php', {id:id} )
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){				
+					//Once the data is in, get mi cuenta look
 					jQuery.get('looks/micuenta.html', function(datosDeRespuesta, estatus, xhrObjeto){
 						var mainDeMiCuenta = jQuery(datosDeRespuesta).filter('#main');
 						jQuery('#containerForMain').html(mainDeMiCuenta);
 					});										
 					//once look is in, use jQuery on loaded elements to get values
 					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						if(settingsObjeto.url === 'looks/login.html'){
-							jQuery('#video h1').text(datos.nombrecomun);
+						if(settingsObjeto.url === 'looks/micuenta.html'){
+							jQuery('form#editDatoForm input[name=nombre]').attr('placeholder', datos.nombrecomun);
+							jQuery('form#editDatoForm input[name=videoUrl]').attr('placeholder', datos.videoUrl);
+							//following code works when there are 10 or less 'que' coming from getJSON.
+							//the html is prepared for a max of 10 'que'
+							jQuery('form#editDatoForm input[name^=que]').each(function(index){
+								if(index < datos.que.length) { jQuery(this).attr('placeholder', datos.que[index]); }
+								else {  } //ya estan vacios en html por default				
+							});							
+							//following code works when there are 5 or less 'donde' coming from getJSON.
+							//the html is prepared for a max of 5 'donde'
+							jQuery('form#editDatoForm input[name^=donde]').each(function(index){
+								if(index < datos.donde.length) { jQuery(this).attr('placeholder', datos.donde[index]); }
+								else {  } //ya estan vacios en html por default				
+							});
+							jQuery('form#editDatoForm input[value=si]').prop('checked', datos.atucasa);
+							jQuery('form#editDatoForm input[value=no]').prop('checked', !datos.atucasa);
+						
+							//hide, show on click
+							var $todosLosNotHidable = jQuery('.notHidable');
+							var $todosLosHidable = jQuery('.hidable');
+							$todosLosHidable.hide();
+							$todosLosNotHidable.on('click', function(evento){
+								var $toToggle = jQuery(evento.currentTarget).children('.hidable');
+								$toToggle.toggle();
+							});
 						}//if
 					});//ajaxComplete
 				})

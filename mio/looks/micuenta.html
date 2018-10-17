@@ -11,7 +11,7 @@
 
     <!-- ancho-sensi aplica siempre; para cell, aqui no es re escrito, so por default aplica ancho-sensi (1de1 o sea 100%).
 	ipad 3 de 4 lo re escribe para ipad y al no re escribir para desk, sigue aplicando en desk las dimensiones q se dieron para ipad -->
-    <div id="editDatoForm">
+    <div id="editDato">
 	<h1>Datos:</h1> 	
 	
  	<form id="editDatoForm" class="ancho-sensi-ipad-2de3 ver-borde" action="editcuenta.php" method="post">
@@ -19,40 +19,47 @@
  	    	<label>Nombre</label> 	    
  	    	<label class="explica">(requerido)</label>
 		 	<fieldset class="secundario hidable"> 	    
-				<p><input id="nombreId"        type="text" name="nombre"     maxlength="50"      required=true placeholder="victor"></p>
+				<p><input id="nombreId"  type="text"  name="nombre"     maxlength="50" required=true placeholder="nombre tuyo o de negocio"></p>
 		 	</fieldset>
 		</fieldset><fieldset class="primario notHidable">  	   
  	    	<label>Video</label>
-        	<label class="explica">URL de tu video</label> 	    
+        	<label class="explica">URL de tu video.</label> 	    
  	    	<label class="explica">(requerido)</label>
 		 	<fieldset class="secundario hidable"> 	    
-				<p><input id="videoAdrrId"     type="url"  name="videoAdrr"  maxlength="50"      required=true placeholder="https://www.youtube.com/blablabla"></p>
+				<p><input id="videoAdrrId" type="url"  name="videoUrl"  maxlength="50" required=true placeholder="youtube.com/blablabla"></p>
 		 	</fieldset>		
 		</fieldset><fieldset class="primario notHidable">
 			<label>Qu&eacute;</label>
-			<label class="explica">Explica que haces</label> 
-			<label class="explica">Usado para encontrar tu profile</label>		 
-			<label class="explica">(minimo 1)</label> 
+			<label class="explica">Explica que haces.</label> 
+			<label class="explica">Usado para encontrar tu profile!</label>		 
+			<label class="explica">(minimo 1, maximo 10)</label> 
 			<fieldset class="secundario hidable">
-				<p><input id="que1Id" type="text" name="que1" maxlength="50" required=true placeholder="barbero"></p> 	
-				<p><input id="que2Id" type="text" name="que2" maxlength="50" placeholder="estilista"></p> 
-				<p><input id="que3Id" type="text" name="que3" maxlength="50" placeholder="peluquero"></p>
-				<p><input id="que4Id" type="text" name="que4" maxlength="50" placeholder="corta pelo"></p>
-				<p><input id="que5Id" type="text" name="que5" maxlength="50" placeholder="peina pelo"></p> 
+				<p><input id="que1Id"  type="text" name="que1"  maxlength="50" placeholder="eso mismo" required=true></p> 	
+				<p><input id="que2Id"  type="text" name="que2"  maxlength="50" placeholder=""></p> 
+				<p><input id="que3Id"  type="text" name="que3"  maxlength="50" placeholder=""></p>
+				<p><input id="que4Id"  type="text" name="que4"  maxlength="50" placeholder=""></p>
+				<p><input id="que5Id"  type="text" name="que5"  maxlength="50" placeholder=""></p> 
+				<p><input id="que6Id"  type="text" name="que6"  maxlength="50" placeholder=""></p> 	
+				<p><input id="que7Id"  type="text" name="que7"  maxlength="50" placeholder=""></p> 
+				<p><input id="que8Id"  type="text" name="que8"  maxlength="50" placeholder=""></p>
+				<p><input id="que9Id"  type="text" name="que9"  maxlength="50" placeholder=""></p>
+				<p><input id="que10Id" type="text" name="que10" maxlength="50" placeholder=""></p>
 			</fieldset>
 		</fieldset><fieldset class="primario notHidable">
 			<label>Donde</label> 
-			<label class="explica">Donde buscas clientes</label>	
-			<label class="explica">Usado para encontrar tu profile</label>
-			<label class="explica">(minimo 1)</label>
+			<label class="explica">Donde buscas clientes.</label>	
+			<label class="explica">Usado para encontrar tu profile!</label>
+			<label class="explica">(minimo 1, maximo 5)</label>
 			<fieldset class="secundario hidable">
-				<p><input id="donde1Id" type="text" name="donde1" maxlength="50" required=true placeholder="mayaguez"></p> 	
-				<p><input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder="anasco"></p> 
-				<p><input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder="hormigueros"></p> 
+				<p><input id="donde1Id" type="text" name="donde1" maxlength="50" placeholder="aqui" required=true></p> 	
+				<p><input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder=""></p> 
+				<p><input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder=""></p> 
+				<p><input id="donde4Id" type="text" name="donde4" maxlength="50" placeholder=""></p> 
+				<p><input id="donde5Id" type="text" name="donde5" maxlength="50" placeholder=""></p> 
 		   
 				<label>A su casa</label>	
 				<label class="explica">&iquest;Trabajarias en casa del cliente?</label>	
-				<span>Si</span><input type="radio" name="aTuCasa" value="si" class="si">
+				<span>Si</span><input type="radio" name="aTuCasa" value="si" required class="si">
 				<span>No</span><input type="radio" name="aTuCasa" value="no">
 			</fieldset> 
 		</fieldset><fieldset class="primario notHidable">
@@ -97,12 +104,15 @@
 				<p><input id="red3Id"     type="url" name="red3"  maxlength="50"       placeholder="username"></p>
 				<label for="red4Id">Telefono</label>
 				<p><input id="red4Id"     type="tel" name="red4"  maxlength="50"       placeholder="787 833 0101"></p>
-			</fieldset>  
+			</fieldset>
+
+				5 fotos
+				
 		</fieldset><fieldset class="primario">
  	    <button>Tu profile</button>
  	    </fieldset>  
  	</form>
-    </div><!-- editDatoForm -->       
+    </div><!-- editDato -->       
     </div>
 <!-- contenido -->     
     

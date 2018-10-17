@@ -2,7 +2,7 @@
 	el social handle que el miembro no provea guardalo por default, y envia JSON "fbk":"", "igrm":"@tito_en_insta", "phn":"".
 	Recibir por JSON un date de la forma "07/25/1994". 
 	Recibir por JSON 5 fotos o menos, 10 QUE o menos, 5 DONDE o menos, no envies ni null ni "" por JSON
-	Mi cuenta recibe id=-1 si no se debe loguear el user, otherwise la  data
+	
 	
 	
 REM 
@@ -11,9 +11,9 @@ REM
 	) ve a un lugar con variedad agricola y vende agrobox a US
 	) laboreo y/o codeAVictor
 
-hacer hoy
-	 ) profile what data makes it; move it from php to jquery using json
-	 ) tengo unos cambios en el profile para usar h3 mostrando social media handles
+hacer hoy               ***presentado los datos en mi cuenta cuando alguien se loguea, sigue ahi***
+	 ) registro, login, micuenta, papo00, object oriented js to simplify js code at portada, put a portada that
+		without letters
 	 ) css display flex ; read and use it (para estaquiar al centro las fotos en opciones) 
 			: google for 'css display flex' 
 			https://codepen.io/anon/pen/NYrbWK
@@ -44,7 +44,8 @@ done
 	) a tu casa : si o no en seccion donde, usa el mismo image de ahora mismo
 	
 	) instalar server(apache, lighttpd, or Nginx) + php ::: luego sigue con los ejemplos de jQuery (load, get, post, ....)
-	
+	 ) profile what data makes it; move it from php to jquery using json
+	 ) tengo unos cambios en el profile para usar h3 mostrando social media handles	
 find out
 	) se puede llenar el donde con un location pin ?
 	) como se usa android pay iphone pay y ath mobile, usar credits cards online
