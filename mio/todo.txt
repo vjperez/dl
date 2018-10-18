@@ -19,14 +19,10 @@ hacer hoy
 			http://talkerscode.com/webtricks/upload%20image%20to%20database%20and%20server%20using%20HTML,PHP%20and%20MySQL.php
 			
 	 ) google search : css accordion image
-	 
-<<<<<<< HEAD
-	 ) mientras NO tengas una cantidad minima de profiles (en Aguadilla?), no ofrezcas busca.  Llega a faq, primeras 2 preguntas
-	   not hidded, con un video que entre otras cosas muestres que al cliquear labels, sale mas cotenido. 
-=======
+
 	 ) mientras NO tengas una cantidad minima de profiles (en Aguadilla?), no ofrezcas busca.  Llega a faq, primeras 2 preguntas con un video
-	 ``que entre otras cosas muestres que al cliquear labels, sale mas cotenido. 
->>>>>>> c47385362fcdcd807dde557715773128a344120b
+	 que entre otras cosas muestres que al cliquear labels, sale mas contenido. 
+
 				
 	 ) registro, login, micuenta, papo00, object oriented js to simplify js code at portada, put a portada that
 		without letters
