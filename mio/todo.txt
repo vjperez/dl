@@ -14,7 +14,12 @@ REM
 	) ve a un lugar con variedad agricola y vende agrobox a US
 	) laboreo y/o codeAVictor
 
-hacer hoy               ***presentado los datos en mi cuenta cuando alguien se loguea, sigue ahi***
+hacer hoy 
+	 ) google search : post image php
+			http://talkerscode.com/webtricks/upload%20image%20to%20database%20and%20server%20using%20HTML,PHP%20and%20MySQL.php
+			
+	 ) google search : css accordion image
+				
 	 ) registro, login, micuenta, papo00, object oriented js to simplify js code at portada, put a portada that
 		without letters
 	 ) css display flex ; read and use it (para estaquiar al centro las fotos en opciones) 
@@ -26,7 +31,7 @@ hacer hoy               ***presentado los datos en mi cuenta cuando alguien se l
 	 ) micuenta, current, faqs y keep footer.  Mas lo del file de texto de ayer
 
 
-	 ) muestra social media handles only on click and tap   
+	) muestra social media handles only on click and tap   
     
     ) en mi cuenta faltan username y passwords
     
@@ -42,6 +47,7 @@ hacer hoy               ***presentado los datos en mi cuenta cuando alguien se l
 
 		
 done
+	) ***presentado los datos en mi cuenta cuando alguien se loguea, sigue ahi***
 	) un solo html con todos los faqs del footer y le apuntas con ids
 	
 	) a tu casa : si o no en seccion donde, usa el mismo image de ahora mismo
