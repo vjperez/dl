@@ -20,8 +20,13 @@ hacer hoy
 			
 	 ) google search : css accordion image
 	 
+<<<<<<< HEAD
 	 ) mientras NO tengas una cantidad minima de profiles (en Aguadilla?), no ofrezcas busca.  Llega a faq, primeras 2 preguntas
 	   not hidded, con un video que entre otras cosas muestres que al cliquear labels, sale mas cotenido. 
+=======
+	 ) mientras NO tengas una cantidad minima de profiles (en Aguadilla?), no ofrezcas busca.  Llega a faq, primeras 2 preguntas con un video
+	 ``que entre otras cosas muestres que al cliquear labels, sale mas cotenido. 
+>>>>>>> c47385362fcdcd807dde557715773128a344120b
 				
 	 ) registro, login, micuenta, papo00, object oriented js to simplify js code at portada, put a portada that
 		without letters
