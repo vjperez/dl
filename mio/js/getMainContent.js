@@ -120,7 +120,7 @@ jQuery(document).ready(
 						var $todosLosHidable = jQuery('.hidable');
 						$todosLosHidable.hide();
 						$todosLosNotHidable.on('click', function(evento){
-							var $toToggle = jQuery(evento.currentTarget).children('.hidable');
+							var $toToggle = jQuery(evento.currentTarget).siblings('.hidable');
 							$toToggle.toggle();
 						});
 						//show only 1 social handle with class current
@@ -244,35 +244,35 @@ jQuery(document).ready(
 					//once look is in, use jQuery on loaded elements to get values
 					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 						if(settingsObjeto.url === 'looks/micuenta.html'){
-							jQuery('form#editDatoForm input[name=nombre]').attr('placeholder', datos.nombrecomun);
-							jQuery('form#editDatoForm input[name=videoUrl]').attr('placeholder', datos.videoUrl);
+							jQuery('form#editDatoForm input[name=nombre]').val(datos.nombrecomun);
+							jQuery('form#editDatoForm input[name=videoUrl]').val(datos.videoUrl);
 							//following code works when there are 10 or less 'que' coming from getJSON.
 							//the html is prepared for a max of 10 'que'
 							jQuery('form#editDatoForm input[name^=que]').each(function(index){
-								if(index < datos.que.length) { jQuery(this).attr('placeholder', datos.que[index]); }
+								if(index < datos.que.length) { jQuery(this).val(datos.que[index]); }
 								else {  } //ya estan vacios en html por default				
 							});							
 							//following code works when there are 5 or less 'donde' coming from getJSON.
 							//the html is prepared for a max of 5 'donde'
 							jQuery('form#editDatoForm input[name^=donde]').each(function(index){
-								if(index < datos.donde.length) { jQuery(this).attr('placeholder', datos.donde[index]); }
+								if(index < datos.donde.length) { jQuery(this).val(datos.donde[index]); }
 								else {  } //ya estan vacios en html por default				
 							});
 							jQuery('form#editDatoForm input[value=si]').prop('checked', datos.atucasa);
 							jQuery('form#editDatoForm input[value=no]').prop('checked', !datos.atucasa);
 							//cuando
-							jQuery('form#editDatoForm input[name=dia1]').attr('placeholder', datos.cuando.lun);
-							jQuery('form#editDatoForm input[name=dia2]').attr('placeholder', datos.cuando.mar);
-							jQuery('form#editDatoForm input[name=dia3]').attr('placeholder', datos.cuando.mier);
-							jQuery('form#editDatoForm input[name=dia4]').attr('placeholder', datos.cuando.jue);
-							jQuery('form#editDatoForm input[name=dia5]').attr('placeholder', datos.cuando.vier);
-							jQuery('form#editDatoForm input[name=dia6]').attr('placeholder', datos.cuando.sab);
-							jQuery('form#editDatoForm input[name=dia7]').attr('placeholder', datos.cuando.dom);
+							jQuery('form#editDatoForm input[name=dia1]').val(datos.cuando.lun);
+							jQuery('form#editDatoForm input[name=dia2]').val(datos.cuando.mar);
+							jQuery('form#editDatoForm input[name=dia3]').val(datos.cuando.mier);
+							jQuery('form#editDatoForm input[name=dia4]').val(datos.cuando.jue);
+							jQuery('form#editDatoForm input[name=dia5]').val(datos.cuando.vier);
+							jQuery('form#editDatoForm input[name=dia6]').val(datos.cuando.sab);
+							jQuery('form#editDatoForm input[name=dia7]').val(datos.cuando.dom);
 							//quien
-							jQuery('form#editDatoForm input[name=red1]').attr('placeholder', datos.quien.socialHandle.fbk);
-							jQuery('form#editDatoForm input[name=red2]').attr('placeholder', datos.quien.socialHandle.tt);
-							jQuery('form#editDatoForm input[name=red3]').attr('placeholder', datos.quien.socialHandle.igrm);
-							jQuery('form#editDatoForm input[name=red4]').attr('placeholder', datos.quien.socialHandle.phn);							
+							jQuery('form#editDatoForm input[name=red1]').val(datos.quien.socialHandle.fbk);
+							jQuery('form#editDatoForm input[name=red2]').val(datos.quien.socialHandle.tt);
+							jQuery('form#editDatoForm input[name=red3]').val(datos.quien.socialHandle.igrm);
+							jQuery('form#editDatoForm input[name=red4]').val(datos.quien.socialHandle.phn);							
 							
 							
 							//hide, show on click
@@ -280,7 +280,7 @@ jQuery(document).ready(
 							var $todosLosHidable = jQuery('.hidable');
 							$todosLosHidable.hide();
 							$todosLosNotHidable.on('click', function(evento){
-								var $toToggle = jQuery(evento.currentTarget).children('.hidable');
+								var $toToggle = jQuery(evento.currentTarget).siblings('.hidable');
 								$toToggle.toggle();
 							});
 						}//if
@@ -306,17 +306,17 @@ jQuery(document).ready(
 						var $todosLosHidable = jQuery('.hidable');	
 						$todosLosHidable.hide();
 						$todosLosNotHidable.click(function(evento){
-							var $toToggle = jQuery(evento.currentTarget).children('.hidable');
+							var $toToggle = jQuery(evento.currentTarget).siblings('.hidable');
 							$toToggle.toggle();
 						});
 					}						
 				});					
 			break;
 			default :
-					jQuery.get('looks/default.html', function(datosDeRespuesta, estatus, xhrObjeto){
-						var mainDeDefault = jQuery(datosDeRespuesta).filter('#main');
-						jQuery('#containerForMain').html(mainDeDefault);
-					});
+				jQuery.get('looks/default.html', function(datosDeRespuesta, estatus, xhrObjeto){
+					var mainDeDefault = jQuery(datosDeRespuesta).filter('#main');
+					jQuery('#containerForMain').html(mainDeDefault);
+				});
 			break;
 		}//switch
 		
