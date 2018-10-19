@@ -202,10 +202,10 @@ jQuery(document).ready(
 							jQuery.post('uiTests/registroExito.php', {usertb:usertb, pass01:pass01, pass02:pass02} )
 							.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){  alert(datosJSONStr);
 								datosJSObj = JSON.parse(datosJSONStr);  alert(datosJSObj);
-								if(datosJSObj.reg){
+								if(datosJSObj.registra){
 									jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
 								}else{
-									jQuery(window.location).attr('href', window.location.pathname + '?look=login');
+									jQuery(window.location).attr('href', window.location.pathname + '?look=registro');
 								}
 							})
 							.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
@@ -214,13 +214,6 @@ jQuery(document).ready(
 									jQuery('#containerForMain').html(mainDeError);
 								});					
 							});							
-							
-							
-							
-							jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&usertb=' + userTB + '&pass01=' + pass01 + '&pass02=' + pass02);
-						
-						
-						
 						});
 					}//if						
 				});//ajax complete	
@@ -241,11 +234,27 @@ jQuery(document).ready(
 						var mainDeMiCuenta = jQuery(datosDeRespuesta).filter('#main');
 						jQuery('#containerForMain').html(mainDeMiCuenta);
 					});										
-					//once look is in, use jQuery on loaded elements to get values
+					//once look is in, use jQuery to update look with profile values
 					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 						if(settingsObjeto.url === 'looks/micuenta.html'){
+							//nombre y video
 							jQuery('form#editDatoForm input[name=nombre]').val(datos.nombrecomun);
 							jQuery('form#editDatoForm input[name=videoUrl]').val(datos.videoUrl);
+							//quien
+							jQuery('form#editDatoForm input[name=red1]').val(datos.quien.socialHandle.fbk);
+							jQuery('form#editDatoForm input[name=red2]').val(datos.quien.socialHandle.tt);
+							jQuery('form#editDatoForm input[name=red3]').val(datos.quien.socialHandle.igrm);
+							jQuery('form#editDatoForm input[name=red4]').val(datos.quien.socialHandle.phn)							
+							//falta each para array de fotos
+							
+							//cuando
+							jQuery('form#editDatoForm input[name=dia1]').val(datos.cuando.lun);
+							jQuery('form#editDatoForm input[name=dia2]').val(datos.cuando.mar);
+							jQuery('form#editDatoForm input[name=dia3]').val(datos.cuando.mier);
+							jQuery('form#editDatoForm input[name=dia4]').val(datos.cuando.jue);
+							jQuery('form#editDatoForm input[name=dia5]').val(datos.cuando.vier);
+							jQuery('form#editDatoForm input[name=dia6]').val(datos.cuando.sab);
+							jQuery('form#editDatoForm input[name=dia7]').val(datos.cuando.dom);							
 							//following code works when there are 10 or less 'que' coming from getJSON.
 							//the html is prepared for a max of 10 'que'
 							jQuery('form#editDatoForm input[name^=que]').each(function(index){
@@ -258,21 +267,11 @@ jQuery(document).ready(
 								if(index < datos.donde.length) { jQuery(this).val(datos.donde[index]); }
 								else {  } //ya estan vacios en html por default				
 							});
-							jQuery('form#editDatoForm input[value=si]').prop('checked', datos.atucasa);
-							jQuery('form#editDatoForm input[value=no]').prop('checked', !datos.atucasa);
-							//cuando
-							jQuery('form#editDatoForm input[name=dia1]').val(datos.cuando.lun);
-							jQuery('form#editDatoForm input[name=dia2]').val(datos.cuando.mar);
-							jQuery('form#editDatoForm input[name=dia3]').val(datos.cuando.mier);
-							jQuery('form#editDatoForm input[name=dia4]').val(datos.cuando.jue);
-							jQuery('form#editDatoForm input[name=dia5]').val(datos.cuando.vier);
-							jQuery('form#editDatoForm input[name=dia6]').val(datos.cuando.sab);
-							jQuery('form#editDatoForm input[name=dia7]').val(datos.cuando.dom);
-							//quien
-							jQuery('form#editDatoForm input[name=red1]').val(datos.quien.socialHandle.fbk);
-							jQuery('form#editDatoForm input[name=red2]').val(datos.quien.socialHandle.tt);
-							jQuery('form#editDatoForm input[name=red3]').val(datos.quien.socialHandle.igrm);
-							jQuery('form#editDatoForm input[name=red4]').val(datos.quien.socialHandle.phn);							
+							if(datos.atucasa != null){ //comes with null(falsy) for an empty profile
+								jQuery('form#editDatoForm input[value=si]').prop('checked', datos.atucasa);
+								jQuery('form#editDatoForm input[value=no]').prop('checked', !datos.atucasa);
+							}
+;							
 							
 							
 							//hide, show on click
