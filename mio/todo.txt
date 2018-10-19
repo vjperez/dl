@@ -6,7 +6,8 @@
 	Recibir por JSON 5 fotos o menos, 10 QUE o menos, 5 DONDE o menos, no envies ni null ni "" por JSON
 			(pq son arreglos que manejas con each y remove en profile; jaja...)
 	
-	
+	Lo que pongas en un placeholder de un requerido, sale pero solo una vez, no sale a los registrados pq lo borraran de una.
+	Lo que pongas en otro placeholder seguira saliendo, hasta q no escriban ahi.
 	
 REM 
 	) promo yourself en pueblos con festivales o juegos; do business with namero aguada , parcha pepino, delacremapr hatillo quesos y leche
@@ -17,6 +18,8 @@ REM
 hacer hoy 
 	 ) google search : post image php
 			http://talkerscode.com/webtricks/upload%20image%20to%20database%20and%20server%20using%20HTML,PHP%20and%20MySQL.php
+	 ) google search : mysql vs postgresql
+			http://blog.dumper.io/showdown-mysql-8-vs-postgresql-10/
 			
 	 ) google search : css accordion image
 

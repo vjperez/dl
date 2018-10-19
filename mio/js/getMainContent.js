@@ -115,6 +115,7 @@ jQuery(document).ready(
 						});	
 						var clase = 'no'; if(datos.atucasa) clase = 'si'; 
 						jQuery('#donde h3 span').attr('class', clase);
+						
 						//hide, show on click
 						var $todosLosNotHidable = jQuery('.notHidable');
 						var $todosLosHidable = jQuery('.hidable');
