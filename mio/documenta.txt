@@ -46,3 +46,30 @@ PHP7
 	Voy a usar el NON Thread - VC15 x64
 	
 	
+PostgreSQL-11 x64
+	Instalado:   ; en Program Files en el 2do intento, borrado de Users victor
+	C:\Users\victor\postgresql\11
+	Datos en:
+	C:\Users\victor\postgresql\11\data
+	Database super user:postgres pass:kt
+		Cree database superuser victordbu pass:kt
+	Database port 5432
+	locale : spanish,Puerto Rico
+	pgAdmin4 Installation Directory: C:\Users\victor\postgresql\11\pgAdmin 4
+	Database Service: postgresql-x64-11
+	Command Line Tools Installation Directory: C:\Users\victor\postgresql\11
+	Instalo mal : tuve que borrar todo de Users \ victor ; crear un windows admin user llamado postgres (pass kt) ; este windows user corrio el installer
+		desde el command prompt e instalo en c Programs Files
+		
+	http://www.postgresqltutorial.com/install-postgresql/
+    You need to do the following steps:
+
+    Uninstall the PostgreSQL and delete the data directory in the installation folder.
+    Create a new Windows user named postgres and add it to the Administrators group.
+    Restart your computer.
+    Open cmd (command prompt) as the postgres command using the following command: runas/user:postgres cmd.exe
+    A new window appears, you need to run the installer file from this window.	
+	
+	Baje e instale dvdrental database 
+		from http://www.postgresqltutorial.com/load-postgresql-sample-database/
+		el owner es victordbu
