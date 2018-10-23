@@ -16,6 +16,7 @@ REM
 	) laboreo y/o codeAVictor
 
 hacer hoy 
+	 ) que php necesita el busca, login y registro...
 	 ) google search : post image php
 			http://talkerscode.com/webtricks/upload%20image%20to%20database%20and%20server%20using%20HTML,PHP%20and%20MySQL.php
 	 ) google search : mysql vs postgresql

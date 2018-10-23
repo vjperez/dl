@@ -1,3 +1,6 @@
+** When to use = and when to use IN ...
+
+
 dvdrental=# SELECT title, description FROM film WHERE film_id = 
 				(SELECT film_id FROM inventory WHERE inventory_id = 
 				(SELECT inventory_id FROM rental WHERE rental_id IN  
@@ -11,7 +14,7 @@ dvdrental=# SELECT title, description FROM film WHERE film_id =
 
 
 
-** When to use = and when to use IN ...
+
 
 dvdrental=# SELECT title, description FROM film WHERE film_id = (SELECT film_id FROM inventory WHERE inventory_id = (SELECT inventory_id FROM rental WHERE rental_id IN  (SELECT rental_id FROM rental WHERE extract(year FROM rental_date) = 2005 AND extract(month FROM rental_date) = 8 AND extract(day FROM rental_date) = 22) AND customer_id IN (SELECT customer_id FROM customer WHERE first_name LIKE 'L%')));
 ERROR:  una subconsulta utilizada como expresión retornó más de un registro
