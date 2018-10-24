@@ -86,3 +86,19 @@ FROM film   LEFT JOIN  inventory ON  film.film_id = inventory.film_id
 SELECT address
 FROM address LEFT JOIN customer ON customer.address_id = address.address_id
 			WHERE customer_id ISNULL;
+			
+			
+			
+//for a NATURAL JOIN you need same data type ; smallint type used on customer.address_id but integer used on address.address_id
+//so you get no rows		
+SELECT   first_name, address  FROM address NATURAL JOIN customer;
+
+//this join works, for some reason, maybe its more explicit an forces postgre ?! 
+SELECT   first_name, address  FROM address INNER JOIN customer ON customer.address_id = address.address_id;
+
+//customer living in store addresses ; a join for this ?
+SELECT customer_id, first_name FROM customer WHERE address_id IN 
+			(SELECT address_id FROM store);
+			
+
+
