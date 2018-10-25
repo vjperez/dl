@@ -82,23 +82,44 @@ FROM film   LEFT JOIN  inventory ON  film.film_id = inventory.film_id
 			WHERE inventory_id ISNULL; 
 			
 
-//address where no customer lives in
-SELECT address
+//address where no customer lives in  
+//on left joins, even when when every customer value is NULL, the address is 'equal' for join purposes
+//i guess thats the whole idea of a left and right join 
+SELECT address.address_id, customer.address_id, address
 FROM address LEFT JOIN customer ON customer.address_id = address.address_id
 			WHERE customer_id ISNULL;
 			
 			
 			
-//for a NATURAL JOIN you need same data type ; smallint type used on customer.address_id but integer used on address.address_id
-//so you get no rows		
+//smallint type used on customer.address_id but integer used on address.address_id
+//you get no rows, but not for the reason above.  The reason is the extra column last update.		
 SELECT   first_name, address  FROM address NATURAL JOIN customer;
+//same thing here
+SELECT   country, city        FROM country NATURAL JOIN city;
 
-//this join works, for some reason, maybe its more explicit an forces postgre ?! 
+//this join works, because last update is not used in the join here 
 SELECT   first_name, address  FROM address INNER JOIN customer ON customer.address_id = address.address_id;
+SELECT   country, city        FROM country INNER JOIN city     ON country.country_id  = city.country_id     ORDER BY country;
 
-//customer living in store addresses ; a join for this ?
+
+//customer living in store addresses ;  
 SELECT customer_id, first_name FROM customer WHERE address_id IN 
 			(SELECT address_id FROM store);
+
+//customer living in store addresses ;  
+SELECT customer_id, first_name FROM customer WHERE address_id IN 
+			(SELECT address_id FROM store);
+			
+SELECT store_id, count(customer_id) FROM customer GROUP BY store_id;
+
+INSERT INTO customer (store_id, first_name, last_name, email, address_id) VALUES(2, 'DON VICTOR', 'Perez', 'algo at emilio', 28);
+
+SELECT first_name FROM customer WHERE address_id=28;
+
+SELECT count(customer_id) FROM customer WHERE  first_name='Krystal';
+
+
+UPDATE  store  SET  last_update = '2018-04-29 05:00:00';
 			
 
 
