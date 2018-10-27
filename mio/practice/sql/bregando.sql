@@ -24,22 +24,37 @@ INSERT INTO bregando(usuario_id, micro_empre_id) VALUES(6, 6);
 
 SELECT * FROM bregando;
 
-//who manages bussiness 1
-SELECT username FROM usuario WHERE usuario_id = (SELECT usuario_id   FROM bregando 	WHERE micro_empre_id = 1);
-
-//who manages bussiness 6   ; cannot use = here, use IN.  Multiple admins.
-SELECT username FROM usuario WHERE usuario_id IN (SELECT usuario_id   FROM bregando 	WHERE micro_empre_id = 6);
-
 //SETTING NUMBER OF admins for bussiness 6
 UPDATE micro_empre SET numero_de_admins = 2 WHERE micro_empre_id = 6;
 SELECT numero_de_admins FROM micro_empre;
 
 
+
+//who manages bussiness 1
+SELECT username FROM usuario WHERE usuario_id = 
+		(SELECT usuario_id   FROM bregando 	WHERE micro_empre_id = 1);
+
+//who manages bussiness 6   ; cannot use = here, use IN.  Multiple admins.
+SELECT username FROM usuario WHERE usuario_id IN 
+		(SELECT usuario_id   FROM bregando 	WHERE micro_empre_id = 6);
+
+
+
+
 //who manages a bussines which name is exactly 'lola dona'
-SELECT username FROM usuario WHERE usuario_id = (SELECT usuario_id   FROM bregando 	WHERE micro_empre_id = (SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 'lola dona'));
+SELECT username FROM usuario WHERE usuario_id = 
+		(SELECT usuario_id   FROM bregando 	WHERE micro_empre_id = 
+		(SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 'lola dona'));
 
 //who manages a bussines with 'foto' on its name
-SELECT username FROM usuario WHERE usuario_id IN (SELECT usuario_id   FROM bregando 	WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre iLIKE '%FoTo%'));
+SELECT username FROM usuario WHERE usuario_id IN 
+		(SELECT usuario_id   FROM bregando 	WHERE micro_empre_id IN 
+		(SELECT micro_empre_id FROM micro_empre 	WHERE nombre iLIKE '%FoTo%'));
+
+
+
+
+
 
 
 //is any of the admins of 'tito el barbero' the admin of any other bussines?  
