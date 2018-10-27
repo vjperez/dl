@@ -44,3 +44,22 @@ INSERT INTO usuario(username, password) VALUES('luis', '5555');
 SELECT currval('usuario_usuario_id_seq');
 
 SELECT setval('usuario_usuario_id_seq', 7);
+
+SELECT setval('usuario_usuario_id_seq', 7, false);
+
+
+
+
+
+
+SELECT usuario_id, password FROM usuario;
+
+UPDATE usuario SET usuario_id=7 WHERE usuario_id=1;
+
+SELECT currval('usuario_usuario_id_seq');
+
+UPDATE usuario SET usuario_id=1 WHERE usuario_id=2;
+
+UPDATE usuario SET usuario_id=2 WHERE usuario_id=6;
+
+UPDATE usuario SET usuario_id=6 WHERE usuario_id=7;

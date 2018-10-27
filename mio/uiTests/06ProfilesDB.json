@@ -36,10 +36,10 @@
 	  "atucasa":true
 	},
     { "id":4,
-	  "nombrecomun":"papito el bello", 
+	  "nombrecomun":"papito el bello : payaso", 
 	  "revisado":"07/25/1994",
 	  "videoUrl":"https://www.youtube.com/embed/AFoFxirvRKU", 
-	  "quien":{"socialHandle":{"tt":"@papito", "fbk":"papito el bello", "igrm":"@papito_en_insta", "phn":"787 248 0004"}, 
+	  "quien":{"socialHandle":{"tt":"@papito-payaso", "fbk":"papito el payaso", "igrm":"@papitoPayaso_en_insta", "phn":"787 248 4004"}, 
 	           "fotoSrc":["imagenes/profile/bob304a.jpg", "imagenes/profile/bob304b.jpg", "imagenes/profile/bob304c.jpg", "imagenes/profile/bob304d.jpg"]
 	          },
 	  "cuando":{"lun":"libre", "mar":"libre tambien", "mier":"8am-11am", "jue":"3pm-11pm", "vier":"hoy si que si", "sab":"desde ayer", "dom":"hasta mediodia"},
@@ -48,10 +48,10 @@
 	  "atucasa":true
 	},
 	{ "id":5,
-	  "nombrecomun":"luis car wash", 
+	  "nombrecomun":"papito el bello : car washer", 
 	  "revisado":"07/25/1995",
 	  "videoUrl":"https://www.youtube.com/embed/L0eIqLvZlz8", 
-	  "quien":{"socialHandle":{"tt":"@luis", "fbk":"luis limpia carro", "igrm":"@luis_en_insta", "phn":"787 249 0005"}, 
+	  "quien":{"socialHandle":{"tt":"@papito-carwasher", "fbk":"papito limpia carro", "igrm":"@papitoWasher_en_insta", "phn":"787 249 4005"}, 
 	           "fotoSrc":["imagenes/profile/bob305a.jpg"]
 	          },
 	  "cuando":{"lun":"si me levanto", "mar":"texteame a ver", "mier":"10pm-4am", "jue":"si hay agua", "vier":"12:30am a 5pm", "sab":"desde 9pm", "dom":"por la tarde"},
@@ -60,10 +60,10 @@
 	  "atucasa":true
 	},
     { "id":6,
-	  "nombrecomun":"cheo foto shopero", 
+	  "nombrecomun":"luis y cheo foto shopeo", 
 	  "revisado":"07/25/1996",
 	  "videoUrl":"https://www.youtube.com/embed/nSYT367zBUI", 
-	  "quien":{"socialHandle":{"tt":"@cheo", "fbk":"cheo mr foto", "igrm":"@cheo_en_insta", "phn":"787 222 0006"}, 
+	  "quien":{"socialHandle":{"tt":"@luis-cheo", "fbk":"cheo luis foto shopeo", "igrm":"@luis_cheo_en_insta", "phn":"787 222 5606"}, 
 	           "fotoSrc":["imagenes/profile/bob306a.jpg", "imagenes/profile/bob306b.jpg"]
 	          },
 	  "cuando":{"lun":"me amanezco", "mar":"quiza", "mier":"toda la noche", "jue":"3pm pa lante", "vier":"si tengo luz", "sab":"3er turno", "dom":"24hrs"},
