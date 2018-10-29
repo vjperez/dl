@@ -26,8 +26,8 @@ INSERT INTO bregando(usuario_id, micro_empre_id) VALUES(6, 6);
 UPDATE micro_empre SET numero_de_admins = 2 WHERE micro_empre_id = 6;
 SELECT numero_de_admins FROM micro_empre;
 
-SELECT * FROM bregando;
 
+SELECT * FROM bregando;
 
 
 // triple join for admin name and micro_empre name
@@ -56,7 +56,6 @@ SELECT username FROM usuario WHERE usuario_id =
 		(SELECT micro_empre_id   FROM micro_empre   WHERE nombre = 
 		'lola dona'));
 //wont work when more than 1 micro_empre or more than 1 usuario
-
 
 
 //who admins a micro empre with 'foto' on its name
