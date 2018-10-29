@@ -45,6 +45,7 @@ PHP7
 	El folder esta en User \ Victor
 	Voy a usar el NON Thread - VC15 x64
 	
+	en php ini :: el doc_root, el extension_dir y pgsql extension
 	
 PostgreSQL-11 x64
 	Instalado:   ; en Program Files en el 2do intento, borrado de Users victor
