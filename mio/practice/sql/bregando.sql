@@ -22,62 +22,124 @@ INSERT INTO bregando(usuario_id, micro_empre_id) VALUES(4, 5);
 INSERT INTO bregando(usuario_id, micro_empre_id) VALUES(5, 6);
 INSERT INTO bregando(usuario_id, micro_empre_id) VALUES(6, 6);
 
-SELECT * FROM bregando;
-
-//who manages bussiness 1
-SELECT username FROM usuario WHERE usuario_id = (SELECT usuario_id   FROM bregando 	WHERE micro_empre_id = 1);
-
-//who manages bussiness 6   ; cannot use = here, use IN.  Multiple admins.
-SELECT username FROM usuario WHERE usuario_id IN (SELECT usuario_id   FROM bregando 	WHERE micro_empre_id = 6);
-
 //SETTING NUMBER OF admins for bussiness 6
 UPDATE micro_empre SET numero_de_admins = 2 WHERE micro_empre_id = 6;
 SELECT numero_de_admins FROM micro_empre;
 
-
-//who manages a bussines which name is exactly 'lola dona'
-SELECT username FROM usuario WHERE usuario_id = (SELECT usuario_id   FROM bregando 	WHERE micro_empre_id = (SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 'lola dona'));
-
-//who manages a bussines with 'foto' on its name
-SELECT username FROM usuario WHERE usuario_id IN (SELECT usuario_id   FROM bregando 	WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre iLIKE '%FoTo%'));
+SELECT * FROM bregando;
 
 
-//is any of the admins of 'tito el barbero' the admin of any other bussines?  
-SELECT nombre FROM micro_empre WHERE micro_empre_id IN (SELECT micro_empre_id FROM bregando WHERE usuario_id IN (SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 'tito el barbero')));
+
+// triple join for admin name and micro_empre name
+SELECT username, nombre FROM bregando 
+	INNER JOIN micro_empre ON bregando.micro_empre_id = micro_empre.micro_empre_id
+	INNER JOIN usuario     ON bregando.usuario_id     = usuario.usuario_id;
 
 
-//which 'tito el barbero' admin has any other bussiness
+
+
+
+
+
+//				SEARCHING FOR ADMINS				//
+
+//who admins micro empre 1
+SELECT username FROM usuario WHERE usuario_id = (SELECT usuario_id   FROM bregando 	WHERE micro_empre_id = 1);
+
+//who admins micro empre 6   ; cannot use = here, use IN.  Multiple admins.
+SELECT username FROM usuario WHERE usuario_id IN (SELECT usuario_id   FROM bregando 	WHERE micro_empre_id = 6);
+
+
+//who admins a micro empre which name is exactly 'lola dona'
+SELECT username FROM usuario WHERE usuario_id = 
+		(SELECT usuario_id   FROM bregando 	WHERE micro_empre_id = 
+		(SELECT micro_empre_id   FROM micro_empre   WHERE nombre = 
+		'lola dona'));
+//wont work when more than 1 micro_empre or more than 1 usuario
+
+
+
+//who admins a micro empre with 'foto' on its name
+SELECT username FROM usuario WHERE usuario_id IN 
+		(SELECT usuario_id   FROM bregando 	WHERE micro_empre_id IN 
+		(SELECT micro_empre_id   FROM micro_empre   WHERE nombre iLIKE 
+		'%FoTo%'));
+
+
+//an admin of 'tito el barbero' and at the same time, admins other micro empre
+//try also with 'papito el bello : payaso' micro_empre
 SELECT username from usuario
-WHERE usuario_id 
-IN (SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 'tito el barbero'))
-AND 
-usuario_id 
-IN (SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre != 'tito el barbero'));
+WHERE usuario_id IN 
+		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 'tito el barbero'))
+AND usuario_id IN 
+		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre != 'tito el barbero'));
 
-
-//which 'tito el barbero' admin has no other bussiness
+		
+		
+//an admin of 'tito el barbero', and has no other bussiness
 SELECT username from usuario
-WHERE usuario_id 
-IN (SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 'tito el barbero'))
-AND 
-usuario_id 
-NOT IN (SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre != 'tito el barbero'));
+WHERE usuario_id IN 
+		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 'tito el barbero'))
+AND usuario_id NOT IN 
+		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre != 'tito el barbero'));
 
 
-//is any of the admins of 'papito el bello : car washer' the admin of any other bussines?
-SELECT nombre FROM micro_empre WHERE micro_empre_id IN (SELECT micro_empre_id FROM bregando WHERE usuario_id IN (SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 'papito el bello : car washer')));
-
-//which 'papito el bello : car washer' admin has any other bussiness
 
 
-//busssiness of username chucho
+//related admins
+SELECT username FROM usuario WHERE usuario_id IN 
+		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN 
+		(SELECT micro_empre_id FROM bregando WHERE usuario_id = 
+		(SELECT usuario_id FROM usuario WHERE username = 
+		'tito')));
 
 
-//busssiness of username papito
 
 
-//does lola has any bussiness with coadmins ;  in what busssiness is lola a coadmin?
 
 
-//does cheo has any bussiness with coadmins
 
+		
+//				SEARCHING FOR MICRO EMPRES			//		
+
+		
+//micro emprees administered by the admins of any 'tito el barbero' ; with exact name
+//micro emprees RELATED to a particular micro empre 
+SELECT nombre FROM micro_empre WHERE micro_empre_id IN 
+		(SELECT micro_empre_id FROM bregando WHERE usuario_id IN 
+		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN 
+		(SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 
+		'tito el barbero')));
+
+		
+
+
+
+
+//micro empre(s) (0, 1, MANY) of admin with username chucho
+SELECT nombre FROM micro_empre WHERE micro_empre_id IN
+		(SELECT micro_empre_id FROM bregando WHERE usuario_id = 
+		(SELECT usuario_id FROM usuario WHERE username = 
+		'chucho'));
+
+		
+		
+		
+		
+//micro empre(s) of lola that, at the same time, have other admins
+//try with cheo for diferent result
+SELECT nombre FROM micro_empre 
+WHERE micro_empre_id IN
+		(SELECT micro_empre_id FROM bregando WHERE usuario_id = (SELECT usuario_id FROM usuario WHERE username =  'lola'))
+AND micro_empre_id IN
+		(SELECT micro_empre_id FROM bregando WHERE usuario_id IN (SELECT usuario_id FROM usuario WHERE username != 'lola'));
+		
+		
+		
+//micro empre(s) of luis that, at the same time, have NO other admins ; ()
+//try with tito for diferent result
+SELECT nombre FROM micro_empre 
+WHERE micro_empre_id IN
+		(SELECT micro_empre_id FROM bregando WHERE usuario_id = (SELECT usuario_id FROM usuario WHERE username =  'luis'))
+AND micro_empre_id NOT IN
+		(SELECT micro_empre_id FROM bregando WHERE usuario_id IN (SELECT usuario_id FROM usuario WHERE username != 'luis'));

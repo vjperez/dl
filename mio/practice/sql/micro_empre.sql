@@ -35,7 +35,7 @@ SELECT quien_foto_src, que, donde FROM micro_empre;
 
 SELECT micro_empre_id, numero_de_admins, nombre, revisado, video_url, a_tu_casa FROM micro_empre;
 
-
+SELECT micro_empre_id, nombre FROM micro_empre;
 
 
 
