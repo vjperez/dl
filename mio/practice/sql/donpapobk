@@ -5,7 +5,7 @@
 -- Dumped from database version 11.0
 -- Dumped by pg_dump version 11.0
 
--- Started on 2018-10-27 09:49:05
+-- Started on 2018-10-30 12:43:42
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -198,12 +198,12 @@ COPY public.bregando (usuario_id, micro_empre_id, bregando_id) FROM stdin;
 --
 
 COPY public.micro_empre (numero_de_admins, micro_empre_id, nombre, revisado, video_url, quien_social_handle, quien_foto_src, cuando, que, donde, a_tu_casa) FROM stdin;
-1	1	tito el barbero	2010-01-01	https://www.youtube.com/embed/rWq_-AexyAo	{"tt":"@tito", "fbk":"", "igrm":"@tito_en_insta", "phn":""}	{bob301a.jpg,bob301b.jpg,bob301c.jpg,bob301d.jpg,bob301e.jpg}	{"lun":"libre", "mar":"por la tarde", "mier":"8am-11am", "jue":"3pm-11pm", "vier":"libre papi, hoy se bebe", "sab":"tambien bebo hoy", "dom":"desde 7pm"}	{barbero,estilista,"hair professional",peinador,peluquero}	{moca,anasco,rincon}	t
+1	4	papito payaseando	2010-01-01	https://www.youtube.com/embed/AFoFxirvRKU	{"tt":"@papito-payaso", "fbk":"papito el payaso", "igrm":"@papitoPayaso_en_insta", "phn":"787 248 4004"}	{bob304a.jpg,bob304b.jpg,bob304c.jpg,bob304d.jpg}	{"lun":"libre", "mar":"libre tambien", "mier":"8am-11am", "jue":"3pm-11pm", "vier":"hoy si que si", "sab":"desde ayer", "dom":"hasta mediodia"}	{musico,bailarin,orquesta,"entretenimiento actividades",payaso}	{moca,"san german",lares}	t
 1	3	chucho landscaping	2010-01-01	https://www.youtube.com/embed/0Uk5kZ5k0vY	{"tt":"@granchucho", "fbk":"chucho de jayuya", "igrm":"", "phn":"787 222 0003"}	{bob303a.jpg,bob303b.jpg}	{"lun":"no creo, llama", "mar":"quiza", "mier":"todito el dia", "jue":"3pm-11pm", "vier":"si no llueve", "sab":"desde 9am", "dom":"24hrs"}	{"pica grama","corta grama","tumba yerba","limpio patios","trimeo palos"}	{moca,"las marias",mayaguez}	t
-1	2	lola dona	2010-01-01	https://www.youtube.com/embed/4KjYNuNBOBg	{"tt":"", "fbk":"lola la comelola", "igrm":"@lola_en_insta", "phn":"787 249 0002"}	{bob302a.jpg,bob302b.jpg,bob302c.jpg}	{"lun":"12 a 5pm", "mar":"no trabajo los martes", "mier":"10pm-1am", "jue":"5am-1pm", "vier":"10:30am a 2pm", "sab":"desde 9pm", "dom":"hasta las 15"}	{repostera,baker,panadera,dulces,postres}	{ponce,coamo,"sabana grande"}	f
-1	4	papito el bello : payaso	2010-01-01	https://www.youtube.com/embed/AFoFxirvRKU	{"tt":"@papito-payaso", "fbk":"papito el payaso", "igrm":"@papitoPayaso_en_insta", "phn":"787 248 4004"}	{bob304a.jpg,bob304b.jpg,bob304c.jpg,bob304d.jpg}	{"lun":"libre", "mar":"libre tambien", "mier":"8am-11am", "jue":"3pm-11pm", "vier":"hoy si que si", "sab":"desde ayer", "dom":"hasta mediodia"}	{musico,bailarin,orquesta,"entretenimiento actividades",payaso}	{moca,"san german",lares}	t
-1	5	papito el bello : car washer	2010-01-01	https://www.youtube.com/embed/L0eIqLvZlz8	{"tt":"@papito-carwasher", "fbk":"papito limpia carro", "igrm":"@papitoWasher_en_insta", "phn":"787 249 4005"}	{bob305a.jpg}	{"lun":"si me levanto", "mar":"texteame a ver", "mier":"10pm-4am", "jue":"si hay agua", "vier":"12:30am a 5pm", "sab":"desde 9pm", "dom":"por la tarde"}	{"limpia carro","brilla carro","vaccum car cleaner","car detailing","lava carro"}	{yauco,"santa isabel","sabana grande"}	t
 2	6	luis y cheo foto shopeo	2010-01-01	https://www.youtube.com/embed/nSYT367zBUI	{"tt":"@luis-cheo", "fbk":"cheo luis foto shopeo", "igrm":"@luis_cheo_en_insta", "phn":"787 222 5606"}	{bob306a.jpg,bob306b.jpg}	{"lun":"nos amanecemos", "mar":"quiza", "mier":"toda la noche", "jue":"3pm pa lante", "vier":"si tenemos luz", "sab":"3er turno", "dom":"24hrs"}	{"profile picture photoshop","photoshop pictures","foto shopeo imagenes","caricaturas basada en foto","experto dibujo digital"}	{"new york",orlando,bayamon}	f
+1	1	barberia de tito	2010-01-01	https://www.youtube.com/embed/rWq_-AexyAo	{"tt":"@tito", "fbk":"", "igrm":"@tito_en_insta", "phn":""}	{bob301a.jpg,bob301b.jpg,bob301c.jpg,bob301d.jpg,bob301e.jpg}	{"lun":"libre", "mar":"por la tarde", "mier":"8am-11am", "jue":"3pm-11pm", "vier":"libre papi, hoy se bebe", "sab":"tambien bebo hoy", "dom":"desde 7pm"}	{barbero,estilista,"hair professional",peinador,peluquero}	{moca,anasco,rincon}	t
+1	2	las donas de la lola	2010-01-01	https://www.youtube.com/embed/4KjYNuNBOBg	{"tt":"", "fbk":"lola la comelola", "igrm":"@lola_en_insta", "phn":"787 249 0002"}	{bob302a.jpg,bob302b.jpg,bob302c.jpg}	{"lun":"12 a 5pm", "mar":"no trabajo los martes", "mier":"10pm-1am", "jue":"5am-1pm", "vier":"10:30am a 2pm", "sab":"desde 9pm", "dom":"hasta las 15"}	{repostera,baker,panadera,dulces,postres}	{ponce,coamo,"sabana grande"}	f
+1	5	papito lavando	2010-01-01	https://www.youtube.com/embed/L0eIqLvZlz8	{"tt":"@papito-carwasher", "fbk":"papito limpia carro", "igrm":"@papitoWasher_en_insta", "phn":"787 249 4005"}	{bob305a.jpg}	{"lun":"si me levanto", "mar":"texteame a ver", "mier":"10pm-4am", "jue":"si hay agua", "vier":"12:30am a 5pm", "sab":"desde 9pm", "dom":"por la tarde"}	{"limpia carro","brilla carro","vaccum car cleaner","car detailing","lava carro"}	{yauco,"santa isabel","sabana grande"}	t
 \.
 
 
@@ -304,7 +304,7 @@ ALTER TABLE ONLY public.bregando
     ADD CONSTRAINT bregando_usuario_id_fkey FOREIGN KEY (usuario_id) REFERENCES public.usuario(usuario_id);
 
 
--- Completed on 2018-10-27 09:49:07
+-- Completed on 2018-10-30 12:43:43
 
 --
 -- PostgreSQL database dump complete
