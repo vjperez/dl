@@ -9,10 +9,7 @@ jQuery(document).ready(function(){
 		
 				jQuery.getJSON('queries.php', {query:query} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-					alert('datos: automatically parsed to object object by getJSON ' + datos + 
-					'\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status +
-					'\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText +
-					'\nestatusForDONE ' + estatusForDONE );
+					//alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					var losLis = '';
 					jQuery.each(datos, function(indice, fila){
 						losLis += '<li>';

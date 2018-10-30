@@ -18,5 +18,5 @@ if($resource){
 }else{
 	echo "<li>Error, pg_query no produjo un result resource...</li>";
 }
-
+pg_close($cnx); //maybe not needed but doesn't hurt
 ?>
