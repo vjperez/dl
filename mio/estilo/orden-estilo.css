@@ -195,7 +195,7 @@ form#registroForm label { font-size:1.5em; letter-spacing:0.3em; font-weight:bol
 form#registroForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#registroForm input:focus { background-color:#dadada; }
 form#registroForm button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
-form#registroForm button:hover, form#loginForm button:focus { background-color:#7fb3d5; }
+form#registroForm button:hover, form#registroForm button:focus { background-color:#7fb3d5; }
 
 
 

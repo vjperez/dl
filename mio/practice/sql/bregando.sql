@@ -50,11 +50,11 @@ SELECT username FROM usuario WHERE usuario_id = (SELECT usuario_id   FROM bregan
 SELECT username FROM usuario WHERE usuario_id IN (SELECT usuario_id   FROM bregando 	WHERE micro_empre_id = 6);
 
 
-//who admins a micro empre which name is exactly 'lola dona'
+//who admins a micro empre which name is exactly 'las donas de lola'
 SELECT username FROM usuario WHERE usuario_id = 
 		(SELECT usuario_id   FROM bregando 	WHERE micro_empre_id = 
 		(SELECT micro_empre_id   FROM micro_empre   WHERE nombre = 
-		'lola dona'));
+		'las donas de lola'));
 //wont work when more than 1 micro_empre or more than 1 usuario
 
 
@@ -65,22 +65,22 @@ SELECT username FROM usuario WHERE usuario_id IN
 		'%FoTo%'));
 
 
-//an admin of 'tito el barbero' and at the same time, admins other micro empre
-//try also with 'papito el bello : payaso' micro_empre
+//an admin of 'barberia de tito' and at the same time, admins other micro empre
+//try also with 'papito payaseando' micro_empre
 SELECT username from usuario
 WHERE usuario_id IN 
-		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 'tito el barbero'))
+		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 'barberia de tito'))
 AND usuario_id IN 
-		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre != 'tito el barbero'));
+		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre != 'barberia de tito'));
 
 		
 		
-//an admin of 'tito el barbero', and has no other bussiness
+//an admin of 'barberia de tito', and has no other bussiness
 SELECT username from usuario
 WHERE usuario_id IN 
-		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 'tito el barbero'))
+		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 'barberia de tito'))
 AND usuario_id NOT IN 
-		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre != 'tito el barbero'));
+		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN (SELECT micro_empre_id FROM micro_empre 	WHERE nombre != 'barberia de tito'));
 
 
 
@@ -102,13 +102,13 @@ SELECT username FROM usuario WHERE usuario_id IN
 //				SEARCHING FOR MICRO EMPRES			//		
 
 		
-//micro emprees administered by the admins of any 'tito el barbero' ; with exact name
+//micro emprees administered by the admins of any 'barberia de tito' ; with exact name
 //micro emprees RELATED to a particular micro empre 
 SELECT nombre FROM micro_empre WHERE micro_empre_id IN 
 		(SELECT micro_empre_id FROM bregando WHERE usuario_id IN 
 		(SELECT usuario_id FROM bregando WHERE micro_empre_id IN 
 		(SELECT micro_empre_id FROM micro_empre 	WHERE nombre = 
-		'tito el barbero')));
+		'barberia de tito')));
 
 		
 
