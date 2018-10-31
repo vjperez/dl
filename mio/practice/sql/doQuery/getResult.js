@@ -13,7 +13,9 @@ jQuery(document).ready(function(){
 					var losLis = '';
 					jQuery.each(datos, function(indice, fila){
 						if(indice==0){// here fila contains just a number
-							jQuery('div#result h5').text(fila + ' rows');
+							jQuery('div#result h5').text(fila + ' num rows, ');
+						}else if(indice==1){// here fila contains just a number
+							jQuery('div#result h5').append(fila + ' affected rows');
 						}else{// here fila contains an array
 							losLis += '<li>';
 							jQuery.each(fila, function(columna){
@@ -34,7 +36,7 @@ jQuery(document).ready(function(){
 
 		
 		}else{
-			jQuery('form#formaQuery h3').text('Buscas algo? ...').slideDown(500).delay(1000).slideUp(2000);
+			jQuery('form#formaQuery h3').text('en serio? query vacio! ...').slideDown(500).delay(1000).slideUp(2000);
 		}
 	});	
 	
