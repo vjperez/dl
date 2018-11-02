@@ -7,7 +7,39 @@ jQuery(document).ready(
 			else return results[1];
 			//return results[1] || 0;
 		}
+		jQuery.cleanStr = function(str){
+			/*
+			newStr01 = str.replace(/[^a-zA-Z 0-9]+/g, '');
+			newStr02 = str.replace(/[^a-z0-9]/gi, ' ');
+			newStrArray01 = newStr01.split(' ');
+			newStrArray02 = newStr02.split(' ');
+			
+			arrayParts01 = '';
+			arrayParts02 = '';
+			for(var i=0; i < newStrArray01.length; i++){
+				arrayParts01 += '(' + newStrArray01[i] + ')';
+			}
+			for(var i=0; i < newStrArray02.length; i++){
+				arrayParts02 += '(' + newStrArray02[i] + ')';
+			}			
+			alert('[' + str + '] -> [' + newStr01 + '] -> [' + arrayParts01 + '] :: [' + newStr02 + '] -> [' + arrayParts02 + ']');
+			return newStr02;
+			//On result array only copy from  newStrArray[], when it is NOT ''
+			//when  newStrArray[i] is '',  it is shown in arrayParts as ()
+			//it means split found delimiters back to back and there is nothing between them.			
+			*/
+			str = str.replace(/[^a-z0-9]/gi, ' ');
+			strArray = str.split(' ');
+			result = new Array();
+			for(var i=0; i < strArray.length; i++){
+				if (strArray[i] != '') result.push(strArray[i]);
+			}		
+			alert(result);
+			return result;
+		}
 
+		
+		
 		var look = jQuery.urlParam('look');
 		switch(look) {
 			//you can join the null case and busca case together, should avoid requesting portada.html
@@ -18,7 +50,7 @@ jQuery(document).ready(
 			case 'busca':
 				jQuery('#navBusca').hide();
 				jQuery.get('looks/busca.html', function(datosDeRespuesta, estatus, xhrObjeto){
-					//console.log(jQuery(datosDeRespuesta));
+					//console.log(datosDeRespuesta);
 					var mainDeBusca = jQuery(datosDeRespuesta).filter('#main');
 					//console.log(mainDeBusca);
 					jQuery('#containerForMain').html(mainDeBusca);
@@ -29,8 +61,8 @@ jQuery(document).ready(
 					if(settingsObjeto.url === 'looks/busca.html'){ // === means true without type coersion - the type and value most both be equal
 						jQuery('form').submit(function(evento){
 							evento.preventDefault(); //not making a submit (GET request) here. Lets do it at look=opciones
-							var que = jQuery('#queId').val();
-							var donde = jQuery('#dondeId').val(); 
+							var que = jQuery('#queId').val(); que = jQuery.cleanStr(que);
+							var donde = jQuery('#dondeId').val(); donde = jQuery.cleanStr(donde); 
 							//alert(que + ' ' + que.length + '\n' + donde + ' ' + donde.length);
 							if(que.length > 0 || donde.length > 0){
 								jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + que + '&donde=' + donde);
@@ -49,7 +81,7 @@ jQuery(document).ready(
 				var donde = jQuery.urlParam('donde');
 				jQuery.getJSON('uiTests/show15RandomOptionsTest.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-					//alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
+					alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					var mainDeOpciones = '<div id="main" class="contenido margen"><div id="opcionesfotos" class="ver-borde">';
 					jQuery.each(datos, function(fotoSrc, id){
 						mainDeOpciones += '<a href="portada.html?look=profile&id=' + id + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" src="';
