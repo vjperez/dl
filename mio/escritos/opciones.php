@@ -34,7 +34,7 @@ if($cnx){
 			while($fila = pg_fetch_row($recurso)){
 				$toLetter = array(1=>"a", 2=>"b", 3=>"c", 4=>"d", 5=>"e");
 				$random_micro_empre_foto = 'imagenes/profile/bob30' . $fila[1] .  $toLetter[rand(1, count(explode(',', $fila[0])))] . '.jpg'; 
-				$result[$random_micro_empre_foto] = $fila[1];
+				$result[$queryIndex][$random_micro_empre_foto] = $fila[1];
 			}
 		}else{
 			echo "<li>Error, pg_query con indice de query $queryIndex, no produjo un recurso para result...</li>";

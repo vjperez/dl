@@ -84,12 +84,15 @@ jQuery(document).ready(
 				jQuery.getJSON('escritos/opciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
-					var mainDeOpciones = '<div id="main" class="contenido margen"><div id="opcionesfotos" class="ver-borde">';
-					jQuery.each(datos, function(fotoSrc, id){
-						mainDeOpciones += '<a href="portada.html?look=profile&id=' + id + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" src="';
-						mainDeOpciones += fotoSrc + '"></a>';
-					});
-					mainDeOpciones += '</div></div>';
+					var mainDeOpciones = '';
+					jQuery.each(datos, function(queryIndex, pares){
+						mainDeOpciones += '<div id="main" class="contenido margen"><div id="opcionesfotos" class="ver-borde">';
+						jQuery.each(pares, function(fotoSrc, id){
+							mainDeOpciones += '<a href="portada.html?look=profile&id=' + id + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" src="';
+							mainDeOpciones += fotoSrc + '"></a>';
+						});
+						mainDeOpciones += '</div></div>';
+					});	
 					jQuery('#containerForMain').html(mainDeOpciones);
 				})
 				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
