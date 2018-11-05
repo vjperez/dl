@@ -34,7 +34,7 @@ jQuery(document).ready(
 			for(var i=0; i < strArray.length; i++){
 				if (strArray[i] != '') result.push(strArray[i]);
 			}		
-			alert(result);
+			//alert(result);
 			return result;
 		}
 
@@ -61,10 +61,12 @@ jQuery(document).ready(
 					if(settingsObjeto.url === 'looks/busca.html'){ // === means true without type coersion - the type and value most both be equal
 						jQuery('form').submit(function(evento){
 							evento.preventDefault(); //not making a submit (GET request) here. Lets do it at look=opciones
-							var que = jQuery('#queId').val(); que = jQuery.cleanStr(que);
-							var donde = jQuery('#dondeId').val(); donde = jQuery.cleanStr(donde); 
+							var que = jQuery('#queId').val(); 
+							que = jQuery.cleanStr(que); // clean function returns an array with 'words' to be searched
+							var donde = jQuery('#dondeId').val(); 
+							donde = jQuery.cleanStr(donde); 
 							//alert(que + ' ' + que.length + '\n' + donde + ' ' + donde.length);
-							if(que.length > 0 || donde.length > 0){
+							if(que.length > 0 || donde.length > 0){//'que' y 'donde' are arrays of words, so on each, i'm looking for at least 1 word
 								jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + que + '&donde=' + donde);
 							}else{
 								jQuery('form#queDondeForm h3').text('Buscas algo? ...').slideDown(500).delay(1000).slideUp(2000);
@@ -79,7 +81,7 @@ jQuery(document).ready(
 			//concatenating strings inside an each loop, with the requested JSON datos.
 				var que = jQuery.urlParam('que');
 				var donde = jQuery.urlParam('donde');
-				jQuery.getJSON('uiTests/show15RandomOptionsTest.php', {que:que, donde:donde} )
+				jQuery.getJSON('escritos/opciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					var mainDeOpciones = '<div id="main" class="contenido margen"><div id="opcionesfotos" class="ver-borde">';
@@ -94,7 +96,15 @@ jQuery(document).ready(
 					jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
 						var mainDeError = jQuery(datosDeRespuesta).filter('#main');
 						jQuery('#containerForMain').html(mainDeError);
-					});					
+					});	
+					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+						if(settingsObjeto.url === 'looks/error.html'){
+							losLis = '<li>' + estatusForFAIL + '</li>';
+							losLis += '<li>' + errorMessageSentByServer + '</li>';
+							losLis += '<li>' + xhrObjetoForFAIL.responseText + '</li>';
+							jQuery('#containerForErrors').append(losLis);
+						}
+					});						
 				});		
 			break;
 			case 'profile':	
