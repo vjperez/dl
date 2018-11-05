@@ -1,6 +1,4 @@
 <?php
-//$queries = build3LiteralQueries($queLiteralStr, $dondeLiteralStr);
-
 //Othe way to query array
 //$query = 'SELECT micro_empre_id, que FROM micro_empre WHERE que @> ARRAY['payaso']::varchar[]';
 

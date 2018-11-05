@@ -25,12 +25,12 @@ $dondeArray = explode(",", $donde);
 require_once 'conecta/conecta.php';
 if($cnx){
 	require_once 'conecta/buildQuery.php';
-	//$queries is defined in the above require
+	$result = array(); 
 	for($queryIndex = 1; $queryIndex <= 3; $queryIndex++){
+		//$queries is defined in buildQuery.php, required above
 		$query = $queries[$queryIndex];
 		$recurso = pg_query($cnx, $query);
-		if($recurso){
-			$result = array();  					       
+		if($recurso){ 					       
 			while($fila = pg_fetch_row($recurso)){
 				$toLetter = array(1=>"a", 2=>"b", 3=>"c", 4=>"d", 5=>"e");
 				$random_micro_empre_foto = 'imagenes/profile/bob30' . $fila[1] .  $toLetter[rand(1, count(explode(',', $fila[0])))] . '.jpg'; 
