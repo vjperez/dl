@@ -8,14 +8,14 @@
 //When searching, use a percentMatch() 'que' vs 'que' and 'donde' vs 'donde' 
 
 //saca los valores de GET
-$que = $_GET['que']; //here 'que' and 'donde' are strings with commas as delimiters
-$donde = $_GET['donde'];
-//literal strings
-$queLiteralStr   = str_replace(',', ' ', $que);
-$dondeLiteralStr = str_replace(',', ' ', $donde);
+$queLiteralStr = $_GET['que']; //here 'que' and 'donde' are strings with commas as delimiters
+$dondeLiteralStr = $_GET['donde'];
+
+
+
 //explode into arrays
-$queArray   = explode(",", $que);
-$dondeArray = explode(",", $donde);
+$queArray   = explode(' ', $queLiteralStr);
+$dondeArray = explode(' ', $dondeLiteralStr);
 //used to verify that i was really producing literal strings and arrays. 
 //echo json_encode($queLiteralStr . ' : ' . $queArray[2]);
 

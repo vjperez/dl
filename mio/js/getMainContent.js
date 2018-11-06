@@ -35,7 +35,7 @@ jQuery(document).ready(
 				if (strArray[i] != '') result.push(strArray[i]);
 			}		
 			//alert(result);
-			return result;
+			return result; // this is an array
 		}
 
 		
@@ -64,10 +64,12 @@ jQuery(document).ready(
 							var que = jQuery('#queId').val(); 
 							que = jQuery.cleanStr(que); // clean function returns an array with 'words' to be searched
 							var donde = jQuery('#dondeId').val(); 
-							donde = jQuery.cleanStr(donde); 
+							donde = jQuery.cleanStr(donde); // clean function returns an array with 'words' to be searched
 							//alert(que + ' ' + que.length + '\n' + donde + ' ' + donde.length);
 							if(que.length > 0 || donde.length > 0){//'que' y 'donde' are arrays of words, so on each, i'm looking for at least 1 word
 								jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + que + '&donde=' + donde);
+								//here each array of words is converted into a string with ',' as delimiter; that's what
+								//you see on address bar 
 							}else{
 								jQuery('form#queDondeForm h3').text('Buscas algo? ...').slideDown(500).delay(1000).slideUp(2000);
 							}
@@ -79,20 +81,30 @@ jQuery(document).ready(
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 			//concatenating strings inside an each loop, with the requested JSON datos.
-				var que = jQuery.urlParam('que');
-				var donde = jQuery.urlParam('donde');
+				var que = jQuery.urlParam('que');			
+				que = que.replace(',', ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter
+				var donde = jQuery.urlParam('donde');			
+				donde = donde.replace(',', ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter
 				jQuery.getJSON('escritos/opciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
-					var mainDeOpciones = '';
+					var mainDeOpciones = '<div id="main" class="contenido margen">';
 					jQuery.each(datos, function(queryIndex, pares){
-						mainDeOpciones += '<div id="main" class="contenido margen"><div id="opcionesfotos" class="ver-borde">';
+						mainDeOpciones += '<div class="ver-borde opcionesfotos">';
+						if(queryIndex == 1){
+							mainDeOpciones += '<h5>' + que + ' + ' + donde + '</h5>';
+						}else if (queryIndex == 2){
+							mainDeOpciones += '<h5>' + que + '</h5>';
+						}else if (queryIndex == 3){
+							mainDeOpciones += '<h5>' + donde + '</h5>';
+						}
 						jQuery.each(pares, function(fotoSrc, id){
 							mainDeOpciones += '<a href="portada.html?look=profile&id=' + id + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" src="';
 							mainDeOpciones += fotoSrc + '"></a>';
 						});
-						mainDeOpciones += '</div></div>';
+						mainDeOpciones += '</div>';
 					});	
+					mainDeOpciones += '</div>';
 					jQuery('#containerForMain').html(mainDeOpciones);
 				})
 				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
