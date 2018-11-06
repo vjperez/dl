@@ -82,9 +82,9 @@ jQuery(document).ready(
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 			//concatenating strings inside an each loop, with the requested JSON datos.
 				var que = jQuery.urlParam('que');			
-				que = que.replace(',', ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter
+				que = que.replace(/,/g, ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter
 				var donde = jQuery.urlParam('donde');			
-				donde = donde.replace(',', ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter
+				donde = donde.replace(/,/g, ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter
 				jQuery.getJSON('escritos/opciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
@@ -161,14 +161,18 @@ jQuery(document).ready(
 						//following code works when there are 10 or less 'que' coming from getJSON.
 						//the html is prepared for a max of 10 'que', this code removes excess html when less than 10 'que' come
 						jQuery('#que li a').each(function(index){
-							if(index < datos.que.length) { jQuery(this).text(datos.que[index]); }
-							else { jQuery(this).remove(); }				
+							if(index < datos.que.length) { 
+								jQuery(this).text(datos.que[index]); 
+								jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + datos.que[index].replace(/ /g, ',') + '&donde=');
+							} else { jQuery(this).remove(); }				
 						});		
 						//following code works when there are 5 or less 'donde' coming from getJSON.
 						//the html is prepared for a max of 5 'donde', this code removes excess html when less than 5 'donde' come							
 						jQuery('#donde li a').each(function(index){
-							if(index < datos.donde.length) { jQuery(this).text(datos.donde[index]); }
-							else { jQuery(this).remove(); }								
+							if(index < datos.donde.length) { 
+								jQuery(this).text(datos.donde[index]); 
+								jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + '&donde=' + datos.donde[index].replace(/ /g, ','));
+							}else { jQuery(this).remove(); }								
 						});	
 						var clase = 'no'; if(datos.atucasa) clase = 'si'; 
 						jQuery('#donde h3 span').attr('class', clase);
