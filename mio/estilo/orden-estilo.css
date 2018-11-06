@@ -104,7 +104,7 @@ div#donde h3 span.si, div#donde h3 span.no, div#cuando h3 span.si, div#cuando h3
   margin-left:10pt; }
 div#donde h3 span.no, div#cuando h3 span.no { background-position:0px -25px; } 
 div#cuando td.dia { text-align:right; }
-div#cuando td.hora { text-align:left; position:relative; left:25pt; font-weight:bold; }
+div#cuando td.hora { text-align:left; position:relative; left:25pt; }
     
 div#quien ul { text-align:center; margin-top:0pt; margin-bottom:20pt; }    
 div#quien li { display:inline-block; margin-right:12pt; margin-left:12pt; margin-top:0pt; margin-bottom:0pt; } 
@@ -122,6 +122,7 @@ div#que h2, div#donde h2, div#cuando h2, div#quien h2 { color:#c0392b; }
 /*font para #que #donde #cuando*/
 a.clavelink { font-family:'Slabo 27px', Times, times, courier, mono, monospace; letter-spacing:0.1em; } 
 div#cuando td, div#video h5, div#quien h3, div#donde h3 { font-family:serif, Times, times; color:#16a085;}
+div#cuando td.hora { font-weight:bold; }
 a.clavelink:link, a.clavelink:visited {
     background-color:white;
     color:black;
@@ -147,8 +148,9 @@ div#quien ul img:hover, div#quien ul img:focus, div#quien ul img.current { borde
 /*orden : opciones */
 div.opcionesfotos { overflow:auto; }
 div.opcionesfotos img { /*display inline is a default for img */ display:inline; float:left; }
-
-
+/*estilo : opciones */
+div#main .opcionesfotos h3 { color:#16a085;}
+/* div#main .opcionesfotos h3 { font-weight:bold; } */
 
 
 

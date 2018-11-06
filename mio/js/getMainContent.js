@@ -92,11 +92,11 @@ jQuery(document).ready(
 					jQuery.each(datos, function(queryIndex, pares){
 						mainDeOpciones += '<div class="ver-borde opcionesfotos">';
 						if(queryIndex == 1){
-							mainDeOpciones += '<h5>' + que + ' + ' + donde + '</h5>';
+							mainDeOpciones += '<h3>' + que + ' + ' + donde + '</h3>';
 						}else if (queryIndex == 2){
-							mainDeOpciones += '<h5>' + que + '</h5>';
+							mainDeOpciones += '<h3>' + que + '</h3>';
 						}else if (queryIndex == 3){
-							mainDeOpciones += '<h5>' + donde + '</h5>';
+							mainDeOpciones += '<h3>' + donde + '</h3>';
 						}
 						jQuery.each(pares, function(fotoSrc, id){
 							mainDeOpciones += '<a href="portada.html?look=profile&id=' + id + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" src="';
