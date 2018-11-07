@@ -39,6 +39,31 @@ SELECT micro_empre_id, nombre FROM micro_empre;
 
 
 
+
+
+
+
+SELECT DISTINCT micro_empre_id FROM
+			(
+			SELECT micro_empre_id, nombre, unnest (que) losque FROM micro_empre
+			) queasrows 
+WHERE losque iLIKE '%sHop%';
+	
+SELECT * FROM
+			(
+			SELECT micro_empre_id, nombre, unnest (que) losque FROM micro_empre
+			) queasrows 
+WHERE losque iLIKE '%sHop%';
+	
+SELECT micro_empre_id, nombre, unnest (que) FROM micro_empre;
+
+
+
+
+
+
+
+
 INSERT INTO micro_empre
 	    (nombre, revisado, video_url, quien_social_handle, quien_foto_src, cuando, que, donde, a_tu_casa) 
 		VALUES('lola dona', '1992-07-25',
