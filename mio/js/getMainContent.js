@@ -100,7 +100,7 @@ jQuery(document).ready(
 						}
 						jQuery.each(pares, function(fotoSrc, id){
 							mainDeOpciones += '<a href="portada.html?look=profile&id=' + id + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" src="';
-							mainDeOpciones += fotoSrc + '"></a>';
+							mainDeOpciones += 'imagenes/profile/bob30' + fotoSrc + '"></a>';
 						});
 						mainDeOpciones += '</div>';
 					});	
@@ -126,8 +126,9 @@ jQuery(document).ready(
 				//get id then
 				var id = jQuery.urlParam('id');
 				//request get JSON data for that id
-				jQuery.getJSON('uiTests/showProfileTest.php', {id:id} )
+				jQuery.getJSON('escritos/showProfile.php', {id:id} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+					alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					//Once the data is in, get profile look	
 					jQuery.get('looks/profile.html', function(datosDeRespuesta, estatus, xhrObjeto){
 						var mainDeProfile = jQuery(datosDeRespuesta).filter('#main');
@@ -139,18 +140,22 @@ jQuery(document).ready(
 						//insert json data into profile look
 						var str = new Date(datos.revisado).toString();
 						jQuery('#video h5').text('Revisado: ' + str.substring(0, -1+str.indexOf('00:00:00')));
-						jQuery('#video h1').text(datos.nombrecomun);
+						jQuery('#video h1').text(datos.nombre);
+						alert(datos.videoUrl);
 						jQuery('#video iframe').attr('src', datos.videoUrl);
-						if(datos.quien.socialHandle.tt != '')   jQuery('#quien h3.tt').text(datos.quien.socialHandle.tt);
-						if(datos.quien.socialHandle.fbk != '')  jQuery('#quien h3.fbk').text(datos.quien.socialHandle.fbk);
-						if(datos.quien.socialHandle.igrm != '') jQuery('#quien h3.igrm').text(datos.quien.socialHandle.igrm);
-						if(datos.quien.socialHandle.phn != '')  jQuery('#quien h3.phn').text(datos.quien.socialHandle.phn);
+						alert(datos.quienSocialHandle);
+						if(datos.quienSocialHandle.tt != '')   jQuery('#quien h3.tt').text(datos.quienSocialHandle.tt);
+						if(datos.quienSocialHandle.fbk != '')  jQuery('#quien h3.fbk').text(datos.quienSocialHandle.fbk);
+						if(datos.quienSocialHandle.igrm != '') jQuery('#quien h3.igrm').text(datos.quienSocialHandle.igrm);
+						if(datos.quienSocialHandle.phn != '')  jQuery('#quien h3.phn').text(datos.quienSocialHandle.phn);
 						//following code works when there are 5 or less images coming from getJSON.
 						//the html is prepared for a max of 5 images, this code removes excess html when less than 5 images come
+						alert(datos.quienFotoSrc);
 						jQuery('#quien #profilefotos img').each(function(index){
-							if(index < datos.quien.fotoSrc.length) { jQuery(this).attr('src', datos.quien.fotoSrc[index]); }
+							if(index < datos.quienFotoSrc.length) { jQuery(this).attr('src', 'imagenes/profile/bob30' + datos.quienFotoSrc[index]); }
 							else { jQuery(this).remove(); }
 						});
+						alert(datos.cuando);
 						jQuery('#cuando td.lun').text(datos.cuando.lun);
 						jQuery('#cuando td.mar').text(datos.cuando.mar);
 						jQuery('#cuando td.mier').text(datos.cuando.mier);
@@ -160,6 +165,7 @@ jQuery(document).ready(
 						jQuery('#cuando td.dom').text(datos.cuando.dom);
 						//following code works when there are 10 or less 'que' coming from getJSON.
 						//the html is prepared for a max of 10 'que', this code removes excess html when less than 10 'que' come
+						alert(datos.que);
 						jQuery('#que li a').each(function(index){
 							if(index < datos.que.length) { 
 								jQuery(this).text(datos.que[index]); 
@@ -168,13 +174,15 @@ jQuery(document).ready(
 						});		
 						//following code works when there are 5 or less 'donde' coming from getJSON.
 						//the html is prepared for a max of 5 'donde', this code removes excess html when less than 5 'donde' come							
+						alert(datos.donde);
 						jQuery('#donde li a').each(function(index){
 							if(index < datos.donde.length) { 
 								jQuery(this).text(datos.donde[index]); 
 								jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + '&donde=' + datos.donde[index].replace(/ /g, ','));
 							}else { jQuery(this).remove(); }								
 						});	
-						var clase = 'no'; if(datos.atucasa) clase = 'si'; 
+						alert(datos.atucasa);
+						var clase = 'no'; if(datos.atucasa == 'si') clase = 'si'; 
 						jQuery('#donde h3 span').attr('class', clase);
 						
 						//hide, show on click
@@ -204,6 +212,14 @@ jQuery(document).ready(
 					jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
 						var mainDeError = jQuery(datosDeRespuesta).filter('#main');
 						jQuery('#containerForMain').html(mainDeError);
+					});	
+					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+						if(settingsObjeto.url === 'looks/error.html'){
+							losLis = '<li>' + estatusForFAIL + '</li>';
+							losLis += '<li>' + errorMessageSentByServer + '</li>';
+							losLis += '<li>' + xhrObjetoForFAIL.responseText + '</li>';
+							jQuery('#containerForErrors').append(losLis);
+						}
 					});					
 				});//fail							
 			break;			
@@ -303,10 +319,10 @@ jQuery(document).ready(
 							jQuery('form#editDatoForm input[name=nombre]').val(datos.nombrecomun);
 							jQuery('form#editDatoForm input[name=videoUrl]').val(datos.videoUrl);
 							//quien
-							jQuery('form#editDatoForm input[name=red1]').val(datos.quien.socialHandle.fbk);
-							jQuery('form#editDatoForm input[name=red2]').val(datos.quien.socialHandle.tt);
-							jQuery('form#editDatoForm input[name=red3]').val(datos.quien.socialHandle.igrm);
-							jQuery('form#editDatoForm input[name=red4]').val(datos.quien.socialHandle.phn)							
+							jQuery('form#editDatoForm input[name=red1]').val(datos.quienSocialHandle.fbk);
+							jQuery('form#editDatoForm input[name=red2]').val(datos.quienSocialHandle.tt);
+							jQuery('form#editDatoForm input[name=red3]').val(datos.quienSocialHandle.igrm);
+							jQuery('form#editDatoForm input[name=red4]').val(datos.quienSocialHandle.phn)							
 							//falta each para array de fotos
 							
 							//cuando

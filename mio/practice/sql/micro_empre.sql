@@ -167,3 +167,6 @@ SELECT quien_social_handle->'tt' FROM micro_empre WHERE micro_empre_id=6;
 SELECT quien_social_handle->>'tt' FROM micro_empre WHERE micro_empre_id=6;
 
 UPDATE micro_empre SET 	quien_social_handle->'tt' = '"@luisYcheo"' WHERE micro_empre_id=6;
+
+
+UPDATE micro_empre SET quien_foto_src = ARRAY['4a.jpg', '4b.jpg', '4c.jpg', '4d.jpg'] WHERE micro_empre_id = 4;
