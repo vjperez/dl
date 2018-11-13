@@ -12,28 +12,23 @@ if($cnx){
 	$recurso = pg_query($cnx, $query);
 	if($recurso){ 	
 		$result = pg_fetch_row($recurso); 
-		$profile['micro_empre_id'] = $result[0];
+		$profile['micro_empre_id'] = json_decode($result[0]);
 		$profile['nombre'] = $result[1];
 		$profile['revisado'] = $result[2];
 		$profile['videoUrl'] = $result[3];
-		$profile['quienSocialHandle']['tt'] = $result[4];
-		$profile['quienSocialHandle']['fbk'] = $result[5];
-		$profile['quienSocialHandle']['igrm'] = $result[6];
-		$profile['quienSocialHandle']['phn'] = $result[7];
-		$profile['quienFotoSrc'] = $result[8];
-		$profile['cuando']['lun'] = $result[9];
-		$profile['cuando']['mar'] = $result[10];
-		$profile['cuando']['mier'] = $result[11];
-		$profile['cuando']['jue'] = $result[12];
-		$profile['cuando']['vier'] = $result[13];
-		$profile['cuando']['sab'] = $result[14];
-		$profile['cuando']['dom'] = $result[15];		
-		$profile['que'] = $result[16];	
-		$profile['donde'] = $result[17];
-		$profile['atucasa'] = $result[18];
-		//json_encode($profile);
-		//$profile['quienSocialHandle'] = $result[4];
-		//$profile['cuando'] = $result[6];
+		$profile['quienSocialHandle'] = json_decode($result[4]);
+		$profile['quienFotoSrc'] = json_decode($result[5]);
+		$profile['cuando'] = json_decode($result[6]);	
+		$profile['que'] = json_decode($result[7]);	
+		$profile['donde'] = json_decode($result[8]);
+		$profile['atucasa'] = json_decode($result[9]);
+//When you put text, or string or arrays, into a json format it allows
+//the later use of functions like json_decode().  This makes possible
+//the preservation of the datatypes, as stored in the postgresql.  
+//When jQuery.getJSON receives data it will build a javascript objects
+//with the correct datatypes only if you preserve those datatypes, 
+//otherwise it simply receives text, and you get hard to debug,
+//wrong results.		
 	}else{
 		echo "<li>Error, pg_query con indice de query $queryIndex, no produjo un recurso para result...</li>";
 	}

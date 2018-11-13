@@ -128,7 +128,7 @@ jQuery(document).ready(
 				//request get JSON data for that id
 				jQuery.getJSON('escritos/showProfile.php', {id:id} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-					alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
+					alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					//Once the data is in, get profile look	
 					jQuery.get('looks/profile.html', function(datosDeRespuesta, estatus, xhrObjeto){
 						var mainDeProfile = jQuery(datosDeRespuesta).filter('#main');
@@ -138,12 +138,12 @@ jQuery(document).ready(
 					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/profile.html'){								
 						//insert json data into profile look
-						var str = new Date(datos.revisado).toString();
-						jQuery('#video h5').text('Revisado: ' + str.substring(0, -1+str.indexOf('00:00:00')));
+						var date = new Date(datos.revisado).toString();
+						jQuery('#video h5').text('Revisado: ' + date.substring(0, -1+date.indexOf('00:00:00')));
 						jQuery('#video h1').text(datos.nombre);
-						alert(datos.videoUrl);
+						alert('url: ' + datos.videoUrl + ' id: ' + datos.micro_empre_id + ' de tipo: ' + typeof datos.micro_empre_id);
 						jQuery('#video iframe').attr('src', datos.videoUrl);
-						alert(datos.quienSocialHandle);
+						//alert(datos.quienSocialHandle);
 						if(datos.quienSocialHandle.tt != '')   jQuery('#quien h3.tt').text(datos.quienSocialHandle.tt);
 						if(datos.quienSocialHandle.fbk != '')  jQuery('#quien h3.fbk').text(datos.quienSocialHandle.fbk);
 						if(datos.quienSocialHandle.igrm != '') jQuery('#quien h3.igrm').text(datos.quienSocialHandle.igrm);
@@ -181,8 +181,8 @@ jQuery(document).ready(
 								jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + '&donde=' + datos.donde[index].replace(/ /g, ','));
 							}else { jQuery(this).remove(); }								
 						});	
-						alert(datos.atucasa);
-						var clase = 'no'; if(datos.atucasa == 'si') clase = 'si'; 
+						alert('a tu casa: ' + datos.atucasa + '   tipo: ' + typeof datos.atucasa);
+						var clase = 'no'; if(datos.atucasa) clase = 'si'; 
 						jQuery('#donde h3 span').attr('class', clase);
 						
 						//hide, show on click
