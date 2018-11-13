@@ -22,9 +22,9 @@ if($cnx){
 		$profile['que'] = json_decode($result[7]);	
 		$profile['donde'] = json_decode($result[8]);
 		$profile['atucasa'] = json_decode($result[9]);
-//When you put text, or string or arrays, into a json format it allows
+//When you put bool values, arrays, or integers like the id, into a json format it allows
 //the later use of functions like json_decode().  This makes possible
-//the preservation of the datatypes, as stored in the postgresql.  
+//the preservation of the datatypes, as stored in postgresql.  
 //When jQuery.getJSON receives data it will build a javascript objects
 //with the correct datatypes only if you preserve those datatypes, 
 //otherwise it simply receives text, and you get hard to debug,
