@@ -6,6 +6,8 @@
 //with the correct datatypes only if you preserve those datatypes, 
 //otherwise it simply receives text, and you get hard to debug,
 //wrong results.
+
+//query returns arrays, bool values ... everything in JSON format (read data from postgre, as json)
 $query = "SELECT 
 	to_json(micro_empre_id), 
 	nombre, 
