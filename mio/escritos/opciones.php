@@ -37,7 +37,8 @@ if($cnx){
 				$result[$queryIndex][$random_micro_empre_foto] = $fila[1];
 			}
 		}else{
-			echo "<li>Error, pg_query con indice de query $queryIndex, no produjo un recurso para result...</li>";
+			throw new Exception('Mal query.  Sin RECURSO.  Indice de query: ' .  $queryIndex .  '.');
+			//echo "<li>Error, pg_query con indice de query $queryIndex, no produjo un recurso para result...</li>";
 		}
 	}
 	echo json_encode($result);

@@ -1,10 +1,8 @@
 <?php
 //saca los valores de GET
 $id = $_GET['id'];
-
 //conecta al db
 require_once 'conecta/conecta.php';
-
 if($cnx){
 	require_once 'lee/showProfileQuery.php';
 	$result = array(); 
@@ -30,11 +28,12 @@ if($cnx){
 		$profile['que'] = json_decode($result[7]);	
 		$profile['donde'] = json_decode($result[8]);
 		$profile['atucasa'] = json_decode($result[9]);
-	}else{
-		echo "<li>Error, pg_query con indice de query $queryIndex, no produjo un recurso para result...</li>";
-	}
 //Send data from server in json format
-	echo json_encode($profile);
+		echo json_encode($profile);	
+	}else{
+		throw new Exception('Mal query.  Sin RECURSO.');
+		//echo "<li>Error, pg_query, no produjo un recurso para result... en showProfile</li>";
+	}
 	pg_close($cnx); //maybe not needed but doesn't hurt	
 }
 ?>

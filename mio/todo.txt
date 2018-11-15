@@ -1,4 +1,6 @@
-check for a 2 way substring relation
+check for a 2 way substring relation  
+	:  que "lavado a mano de carros" machee "lavar carro" when > 40% words are 'alike' not equal
+	:  que aparezca en el heading de opciones "lavar carro" from los que del micro empre, no el que introducido en busca
 	explain in postgrsql
 	unnest
 	index for arrays			Can i use indexes when searchng for que and donde ?

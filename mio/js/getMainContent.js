@@ -37,7 +37,29 @@ jQuery(document).ready(
 			//alert(result);
 			return result; // this is an array
 		}
-
+		jQuery.fallas = function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ 
+		//Called at getJSON .fail and jQuery post when parsing errors (caused by PHP Exceptions), and
+		//other errors are found.
+		//jQuery getJSON will throw an error and run the .fail code whenever it cannot
+		//parse a response from server, (that includes PHP Exceptions which are not valid JSON!).  So the 
+		//text from PHP Exceptions will endup here.
+		//jQuery post will NOT run .fail code when JSON parsing errors are found. So in order 
+		//to redirect here PHP Exceptions from the login section,
+		//i have to explicitly try the JSON parse in a try-catch block, and when a parsing error
+		//is catched, call this function.
+			jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
+				var mainDeError = jQuery(datosDeRespuesta).filter('#main');
+				jQuery('#containerForMain').html(mainDeError);
+			});	
+			jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+				if(settingsObjeto.url === 'looks/error.html'){
+					losLis = '<li>' + xhrObjetoForFAIL.responseText + '</li>';
+					losLis += '<li>' + estatusForFAIL + '</li>';
+					losLis += '<li>' + errorMessageSentByServer + '</li>';
+					jQuery('#containerForErrors').append(losLis);
+				}
+			});						
+		}
 		
 		
 		var look = jQuery.urlParam('look');
@@ -87,7 +109,7 @@ jQuery(document).ready(
 				donde = donde.replace(/,/g, ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter
 				jQuery.getJSON('escritos/opciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-					alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
+					//alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					var mainDeOpciones = '<div id="main" class="contenido margen">';
 					jQuery.each(datos, function(queryIndex, pares){
 						mainDeOpciones += '<div class="ver-borde opcionesfotos">';
@@ -107,20 +129,7 @@ jQuery(document).ready(
 					mainDeOpciones += '</div>';
 					jQuery('#containerForMain').html(mainDeOpciones);
 				})
-				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
-					jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
-						var mainDeError = jQuery(datosDeRespuesta).filter('#main');
-						jQuery('#containerForMain').html(mainDeError);
-					});	
-					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						if(settingsObjeto.url === 'looks/error.html'){
-							losLis = '<li>' + estatusForFAIL + '</li>';
-							losLis += '<li>' + errorMessageSentByServer + '</li>';
-							losLis += '<li>' + xhrObjetoForFAIL.responseText + '</li>';
-							jQuery('#containerForErrors').append(losLis);
-						}
-					});						
-				});		
+				.fail(	jQuery.fallas  );		
 			break;
 			case 'profile':	
 				//get id then
@@ -128,7 +137,7 @@ jQuery(document).ready(
 				//request get JSON data for that id
 				jQuery.getJSON('escritos/showProfile.php', {id:id} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-					alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
+					//alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					//Once the data is in, get profile look	
 					jQuery.get('looks/profile.html', function(datosDeRespuesta, estatus, xhrObjeto){
 						var mainDeProfile = jQuery(datosDeRespuesta).filter('#main');
@@ -141,7 +150,7 @@ jQuery(document).ready(
 						var date = new Date(datos.revisado).toString();
 						jQuery('#video h5').text('Revisado: ' + date.substring(0, -1+date.indexOf('00:00:00')));
 						jQuery('#video h1').text(datos.nombre);
-						alert('url: ' + datos.videoUrl + ' id: ' + datos.micro_empre_id + ' de tipo: ' + typeof datos.micro_empre_id);
+						//alert('url: ' + datos.videoUrl + '\nid: ' + datos.micro_empre_id + ' de tipo: ' + typeof datos.micro_empre_id);
 						jQuery('#video iframe').attr('src', datos.videoUrl);
 						//alert(datos.quienSocialHandle);
 						if(datos.quienSocialHandle.tt != '')   jQuery('#quien h3.tt').text(datos.quienSocialHandle.tt);
@@ -150,12 +159,12 @@ jQuery(document).ready(
 						if(datos.quienSocialHandle.phn != '')  jQuery('#quien h3.phn').text(datos.quienSocialHandle.phn);
 						//following code works when there are 5 or less images coming from getJSON.
 						//the html is prepared for a max of 5 images, this code removes excess html when less than 5 images come
-						alert(datos.quienFotoSrc);
+						//alert(datos.quienFotoSrc);
 						jQuery('#quien #profilefotos img').each(function(index){
 							if(index < datos.quienFotoSrc.length) { jQuery(this).attr('src', 'imagenes/profile/bob30' + datos.quienFotoSrc[index]); }
 							else { jQuery(this).remove(); }
 						});
-						alert(datos.cuando);
+						//alert(datos.cuando);
 						jQuery('#cuando td.lun').text(datos.cuando.lun);
 						jQuery('#cuando td.mar').text(datos.cuando.mar);
 						jQuery('#cuando td.mier').text(datos.cuando.mier);
@@ -165,7 +174,7 @@ jQuery(document).ready(
 						jQuery('#cuando td.dom').text(datos.cuando.dom);
 						//following code works when there are 10 or less 'que' coming from getJSON.
 						//the html is prepared for a max of 10 'que', this code removes excess html when less than 10 'que' come
-						alert(datos.que);
+						//alert(datos.que);
 						jQuery('#que li a').each(function(index){
 							if(index < datos.que.length) { 
 								jQuery(this).text(datos.que[index]); 
@@ -174,14 +183,14 @@ jQuery(document).ready(
 						});		
 						//following code works when there are 5 or less 'donde' coming from getJSON.
 						//the html is prepared for a max of 5 'donde', this code removes excess html when less than 5 'donde' come							
-						alert(datos.donde);
+						//alert(datos.donde);
 						jQuery('#donde li a').each(function(index){
 							if(index < datos.donde.length) { 
 								jQuery(this).text(datos.donde[index]); 
 								jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + '&donde=' + datos.donde[index].replace(/ /g, ','));
 							}else { jQuery(this).remove(); }								
 						});	
-						alert('a tu casa: ' + datos.atucasa + '   tipo: ' + typeof datos.atucasa);
+						//alert('a tu casa: ' + datos.atucasa + '\ntipo: ' + typeof datos.atucasa);
 						var clase = 'no'; if(datos.atucasa) clase = 'si'; 
 						jQuery('#donde h3 span').attr('class', clase);
 						
@@ -208,20 +217,7 @@ jQuery(document).ready(
 					});//ajax complete				
 				
 				})//done
-				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
-					jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
-						var mainDeError = jQuery(datosDeRespuesta).filter('#main');
-						jQuery('#containerForMain').html(mainDeError);
-					});	
-					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						if(settingsObjeto.url === 'looks/error.html'){
-							losLis = '<li>' + estatusForFAIL + '</li>';
-							losLis += '<li>' + errorMessageSentByServer + '</li>';
-							losLis += '<li>' + xhrObjetoForFAIL.responseText + '</li>';
-							jQuery('#containerForErrors').append(losLis);
-						}
-					});					
-				});//fail							
+				.fail(  jQuery.fallas  );//fail							
 			break;			
 			case 'login':
 				//remove navegation before requesting new html.  Less likely user will notice it going away. 
@@ -240,21 +236,22 @@ jQuery(document).ready(
 							var user = jQuery('#usernameId').val();
 							var pass = jQuery('#passwordId').val(); 
 							//Making a submit (POST request) here. Not in look=micuenta
-							jQuery.post('uiTests/loginExito.php', {user:user, pass:pass} )
-							.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){  alert(datosJSONStr);
-								datosJSObj = JSON.parse(datosJSONStr);  alert(datosJSObj);
-								if(datosJSObj.log){
+							jQuery.post('escritos/login.php', {user:user, pass:pass} )
+							.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+								try{
+									//alert('datosJSONStr: ' + datosJSONStr);
+									datosJSObj = JSON.parse(datosJSONStr);  
+									//alert('datosJSObj.loguea: ' + datosJSObj.loguea);								
+								}catch(errorParseo){
+									jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
+								}
+								if(datosJSObj.loguea){
 									jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
 								}else{
 									jQuery(window.location).attr('href', window.location.pathname + '?look=login');
 								}
 							})
-							.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
-								jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
-									var mainDeError = jQuery(datosDeRespuesta).filter('#main');
-									jQuery('#containerForMain').html(mainDeError);
-								});					
-							});
+							.fail(  jQuery.fallas  );//fail
 						});
 					}//if						
 				});//ajax complete				
@@ -277,21 +274,22 @@ jQuery(document).ready(
 							var pass01 = jQuery('#passwordId').val(); 
 							var pass02 = jQuery('#passwordConfirmId').val();
 							//Making a submit (POST request) here. Not in look=micuenta
-							jQuery.post('uiTests/registroExito.php', {usertb:usertb, pass01:pass01, pass02:pass02} )
+							jQuery.post('escritos/registro.php', {usertb:usertb, pass01:pass01, pass02:pass02} )
 							.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){  alert(datosJSONStr);
-								datosJSObj = JSON.parse(datosJSONStr);  alert(datosJSObj);
+								try{
+									//alert('datosJSONStr: ' + datosJSONStr);
+									datosJSObj = JSON.parse(datosJSONStr);  
+									//alert('datosJSObj.loguea: ' + datosJSObj.loguea);								
+								}catch(errorParseo){
+									jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
+								}								
 								if(datosJSObj.registra){
 									jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
 								}else{
 									jQuery(window.location).attr('href', window.location.pathname + '?look=registro');
 								}
 							})
-							.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
-								jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
-									var mainDeError = jQuery(datosDeRespuesta).filter('#main');
-									jQuery('#containerForMain').html(mainDeError);
-								});					
-							});							
+							.fail(  jQuery.fallas  );							
 						});
 					}//if						
 				});//ajax complete	
@@ -363,12 +361,7 @@ jQuery(document).ready(
 						}//if
 					});//ajaxComplete
 				})
-				.fail(function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){ //learn about error handling; 2 possible type of errors here
-					jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
-						var mainDeError = jQuery(datosDeRespuesta).filter('#main');
-						jQuery('#containerForMain').html(mainDeError);
-					});					
-				});		
+				.fail(  jQuery.fallas  );		
 			break;
 			case 'faq':
 				jQuery.get('looks/faq.html', function(datosDeRespuesta, estatus, xhrObjeto){

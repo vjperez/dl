@@ -1,6 +1,6 @@
 <?php
 //This ui test assumes that a user is trying to log in. User is quering the DB with values 'user'
-//and 'pass', the response will be in JSON format.  It will contain '{"log":true}', if user is
+//and 'pass', the response will be in JSON format.  It will contain '{"log":true}', if user
 //appears on 06usersDB.json. Otherwise it will contain '{"log":false}'.  
 //'user' and 'pass' data appears on 06usersDB.json.
 
