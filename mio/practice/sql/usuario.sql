@@ -45,6 +45,7 @@ SELECT currval('usuario_usuario_id_seq');
 
 SELECT setval('usuario_usuario_id_seq', 7);
 
+/*7 will be the next value used since you're stating it has  NOT been used */ 
 SELECT setval('usuario_usuario_id_seq', 7, false);
 
 

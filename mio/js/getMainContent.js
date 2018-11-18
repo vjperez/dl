@@ -274,16 +274,17 @@ jQuery(document).ready(
 							var pass01 = jQuery('#passwordId').val(); 
 							var pass02 = jQuery('#passwordConfirmId').val();
 							//Making a submit (POST request) here. Not in look=micuenta
-							jQuery.post('escritos/registro.php', {usertb:usertb, pass01:pass01, pass02:pass02} )
-							.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){  alert(datosJSONStr);
+							jQuery.post('escritos/registra.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
+							.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){  
+								//alert(datosJSONStr);
 								try{
-									//alert('datosJSONStr: ' + datosJSONStr);
+									alert('datosJSONStr: ' + datosJSONStr);
 									datosJSObj = JSON.parse(datosJSONStr);  
-									//alert('datosJSObj.loguea: ' + datosJSObj.loguea);								
+									alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.id: ' + datosJSObj.id);								
 								}catch(errorParseo){
-									jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
+									jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/registra.php', datosJSONStr);
 								}								
-								if(datosJSObj.registra){
+								if(datosJSObj.registrado){
 									jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
 								}else{
 									jQuery(window.location).attr('href', window.location.pathname + '?look=registro');

@@ -8,7 +8,7 @@ require_once 'conecta/conecta.php';
 
 if($cnx){
 	require_once 'lee/loginQuery.php';
-	$recurso = pg_query($cnx, $query.'lk9');
+	$recurso = pg_query($cnx, $query);
 	if($recurso){		 
 		if($fila = pg_fetch_row($recurso)){
 			$id = $fila[0];
