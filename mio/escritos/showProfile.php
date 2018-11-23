@@ -18,7 +18,7 @@ if($cnx){
 //wrong results.		
 //Read data already in json format, and decode it into PHP variables with correct datatype	
 		$result = pg_fetch_row($recurso); 
-		$profile['micro_empre_id'] = json_decode($result[0]);
+		$profile['microEmpreId'] = json_decode($result[0]);
 		$profile['nombre'] = $result[1];
 		$profile['revisado'] = $result[2];
 		$profile['videoUrl'] = $result[3];

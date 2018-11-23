@@ -93,7 +93,7 @@ jQuery(document).ready(
 								//here each array of words is converted into a string with ',' as delimiter; that's what
 								//you see on address bar 
 							}else{
-								jQuery('form#queDondeForm h3').text('Buscas algo? ...').slideDown(500).delay(1000).slideUp(2000);
+								jQuery('form#queDondeForm h3.feedbacka').text('Buscas algo?').slideDown(500).delay(1000).slideUp(2000);
 							}
 						});
 					}						
@@ -150,7 +150,7 @@ jQuery(document).ready(
 						var date = new Date(datos.revisado).toString();
 						jQuery('#video h5').text('Revisado: ' + date.substring(0, -1+date.indexOf('00:00:00')));
 						jQuery('#video h1').text(datos.nombre);
-						//alert('url: ' + datos.videoUrl + '\nid: ' + datos.micro_empre_id + ' de tipo: ' + typeof datos.micro_empre_id);
+						//alert('url: ' + datos.videoUrl + '\nEmpre id: ' + datos.microEmpreId + ' de tipo: ' + typeof datos.microEmpreId);
 						jQuery('#video iframe').attr('src', datos.videoUrl);
 						//alert(datos.quienSocialHandle);
 						if(datos.quienSocialHandle.tt != '')   jQuery('#quien h3.tt').text(datos.quienSocialHandle.tt);
@@ -304,7 +304,7 @@ jQuery(document).ready(
 				//get id
 				var id = jQuery.urlParam('id');
 				//get profile data
-				jQuery.getJSON('uiTests/showProfileTest.php', {id:id} )
+				jQuery.getJSON('escritos/showDatosCuenta.php', {id:id} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){				
 					//Once the data is in, get mi cuenta look
 					jQuery.get('looks/micuenta.html', function(datosDeRespuesta, estatus, xhrObjeto){
@@ -315,7 +315,7 @@ jQuery(document).ready(
 					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 						if(settingsObjeto.url === 'looks/micuenta.html'){
 							//nombre y video
-							jQuery('form#editDatoForm input[name=nombre]').val(datos.nombrecomun);
+							jQuery('form#editDatoForm input[name=nombre]').val(datos.nombre);
 							jQuery('form#editDatoForm input[name=videoUrl]').val(datos.videoUrl);
 							//quien
 							jQuery('form#editDatoForm input[name=red1]').val(datos.quienSocialHandle.fbk);
