@@ -6,6 +6,12 @@ CREATE TABLE  IF NOT EXISTS usuario(
 );
 ALTER TABLE usuario ALTER COLUMN last_log SET DEFAULT '2010-01-01';
 
+ALTER TABLE IF EXISTS usuario RENAME TO admins;
+
+ALTER TABLE admins RENAME COLUMN usuario_id TO admins_id;
+
+ALTER TABLE usuario ADD COLUMN first_log DATE CHECK(first_log > '2009-12-31') DEFAULT '2010-01-01' ;
+
  
 INSERT INTO usuario(username, password, last_log) VALUES('tito', '1111', '1999-04-29');
 
