@@ -28,7 +28,7 @@ jQuery(document).ready(
 			//when  newStrArray[i] is '',  it is shown in arrayParts as ()
 			//it means split found delimiters back to back and there is nothing between them.			
 			*/
-			str = str.replace(/[^a-z0-9]/gi, ' ');
+			str = str.replace(/[^a-z0-9]/gi, ' '); // same as replace(/[^a-zA-Z0-9]/g, '');
 			strArray = str.split(' ');
 			result = new Array();
 			for(var i=0; i < strArray.length; i++){
@@ -60,11 +60,29 @@ jQuery(document).ready(
 				}
 			});						
 		}
-	
 		jQuery.feedback = function(elementoDonde, mensaje){
 			jQuery(elementoDonde).text(mensaje).slideDown(500).delay(1000).slideUp(2000);
 		}	
-		
+		jQuery.analizaUserYPass = function(usertb, pass01, pass02){
+			//para cosas q se pueden chequear en el ui. Chequear Usuario repetido requiere hacer el post.
+			// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; se puede chequear antes del post
+			usertbCheck = usertb.replace(/[^a-z0-9]/gi, '');  //same as replace(/[^a-zA-Z0-9]/g, '');
+			pass01Check = pass01.replace(/[^a-z0-9]/gi, '');
+			pass02Check = pass02.replace(/[^a-z0-9]/gi, '');
+			if(usertb.length < 4 || pass01.length < 4 || pass02.length < 4){
+				jQuery.feedback('form#registroForm h3', 'Usuario o password muy corto.');
+				return false;
+			}else if(usertbCheck.length < usertb.length  ||  pass01Check.length < pass01.length ||  pass02Check.length < pass02.length){
+				jQuery.feedback('form#registroForm h3', 'Usa solo letras y/o numeros.');
+				return false;
+			}else if(pass01 !== pass02){//same type, same value, no type conversion
+				jQuery.feedback('form#registroForm h3', 'Los passwords son diferentes.');
+				return false;
+			}			
+			return true;
+		}
+			
+			
 		var look = jQuery.urlParam('look');
 		switch(look) {
 			//you can join the null case and busca case together, should avoid requesting portada.html
@@ -277,25 +295,27 @@ jQuery(document).ready(
 							var usertb = jQuery('#usernameId').val();
 							var pass01 = jQuery('#passwordId').val(); 
 							var pass02 = jQuery('#passwordConfirmId').val();
-							//Making a submit (POST request) here. Not in look=micuenta
-							jQuery.post('escritos/registra.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
-							.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){  
-								//alert(datosJSONStr);
-								try{
-									//alert('datosJSONStr: ' + datosJSONStr);
-									datosJSObj = JSON.parse(datosJSONStr);  
-									//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.id: ' + datosJSObj.id);								
-								}catch(errorParseo){
-									jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/registra.php', datosJSONStr);
-								}								
-								if(datosJSObj.registrado){
-									jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
-								}else{
-									//jQuery('form#registroForm h3').text(datosJSObj.feedback).slideDown(500).delay(1000).slideUp(2000);
-									jQuery.feedback('form#registroForm h3', datosJSObj.feedback);
-								}
-							})
-							.fail(  jQuery.fallas  );							
+							var registrableValues = jQuery.analizaUserYPass(usertb, pass01, pass02);
+							if(registrableValues){ // 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; se puede chequear antes del post
+								//Si tengo valores registrables entonces, Making a submit (POST request) here. Not in look=micuenta
+								jQuery.post('escritos/registra.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
+								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){  
+									//alert(datosJSONStr);
+									try{
+										//alert('datosJSONStr: ' + datosJSONStr);
+										datosJSObj = JSON.parse(datosJSONStr);  
+										//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.id: ' + datosJSObj.id);								
+									}catch(errorParseo){
+										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/registra.php', datosJSONStr);
+									}								
+									if(datosJSObj.registrado){
+										jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
+									}else{ // usuario es repetido en el database, por eso se chequea despues del post
+										jQuery.feedback('form#registroForm h3', datosJSObj.feedback);
+									}
+								})
+								.fail(  jQuery.fallas  );  //falling post
+							}											
 						});
 					}//if						
 				});//ajax complete	
