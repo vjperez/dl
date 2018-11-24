@@ -1,4 +1,5 @@
 <?php
+//case sensitive PostgreSQL search tito and tiTo are diferent
 $queryCheckUserName = "SELECT 
 	usuario_id
 FROM usuario 
