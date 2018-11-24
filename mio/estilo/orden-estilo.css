@@ -73,7 +73,6 @@ form#queDondeForm h3 { margin-top:20pt; margin-bottom:20pt; }
 
 
 
-
 /*estilo : busca */
 form#queDondeForm label { font-size:1.5em; letter-spacing:0.30em; font-weight:bolder; color:#c0392b; }
 form#queDondeForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
@@ -81,7 +80,6 @@ form#queDondeForm input:focus { background-color:#dadada; }
 form#queDondeForm button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
 form#queDondeForm button:hover, form#queDondeForm button:focus { background-color:#7fb3d5; }
 form#queDondeForm h3 { font-family:serif, Times, times; color:#16a085; }
-
 
 
 
@@ -161,7 +159,7 @@ form#loginForm { margin-left:auto; margin-right:auto; }
 form#loginForm label { float:left; clear:left; width:40%; text-align:right; margin-right:7.5%; }
 form#loginForm input { width:50%; } /*hasta aqui un width de 40 + 7.5 + 50; esta suma suma debe dejar disponible menos q el width del button*/
 form#loginForm button { width:25%; position:relative; left:47.5%; }
-
+form#loginForm h3 { text-align:center; }
 
 
 
@@ -174,7 +172,7 @@ form#loginForm input { font-size:1.5em; border-radius:5pt; background-color:#ebe
 form#loginForm input:focus { background-color:#dadada; }
 form#loginForm button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
 form#loginForm button:hover, form#loginForm button:focus { background-color:#7fb3d5; }
-
+form#loginForm h3 { font-family:serif, Times, times; color:#16a085; }
 
 
 
@@ -185,7 +183,7 @@ form#registroForm { margin-left:auto; margin-right:auto; }
 form#registroForm label { float:left; clear:left; width:40%; text-align:right; margin-right:7.5%; }
 form#registroForm input { width:50%; } /*hasta aqui un width de 40 + 7.5 + 50; esta suma suma debe dejar disponible menos q el width del button*/
 form#registroForm button { width:25%; position:relative; left:47.5%; }
-
+form#registroForm h3 { text-align:center; }
 
 
 
@@ -198,7 +196,7 @@ form#registroForm input { font-size:1.5em; border-radius:5pt; background-color:#
 form#registroForm input:focus { background-color:#dadada; }
 form#registroForm button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
 form#registroForm button:hover, form#registroForm button:focus { background-color:#7fb3d5; }
-
+form#registroForm h3 { font-family:serif, Times, times; color:#16a085; }
 
 
 

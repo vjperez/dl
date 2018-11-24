@@ -93,7 +93,7 @@ jQuery(document).ready(
 								//here each array of words is converted into a string with ',' as delimiter; that's what
 								//you see on address bar 
 							}else{
-								jQuery('form#queDondeForm h3.feedbacka').text('Buscas algo?').slideDown(500).delay(1000).slideUp(2000);
+								jQuery('form#queDondeForm h3').text('Buscas algo?').slideDown(500).delay(1000).slideUp(2000);
 							}
 						});
 					}						
@@ -248,7 +248,8 @@ jQuery(document).ready(
 								if(datosJSObj.loguea){
 									jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
 								}else{
-									jQuery(window.location).attr('href', window.location.pathname + '?look=login');
+									//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
+									jQuery('form#loginForm h3').text('Trata otra vez.').slideDown(500).delay(1000).slideUp(2000);
 								}
 							})
 							.fail(  jQuery.fallas  );//fail
@@ -278,16 +279,16 @@ jQuery(document).ready(
 							.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){  
 								//alert(datosJSONStr);
 								try{
-									alert('datosJSONStr: ' + datosJSONStr);
+									//alert('datosJSONStr: ' + datosJSONStr);
 									datosJSObj = JSON.parse(datosJSONStr);  
-									alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.id: ' + datosJSObj.id);								
+									//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.id: ' + datosJSObj.id);								
 								}catch(errorParseo){
 									jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/registra.php', datosJSONStr);
 								}								
 								if(datosJSObj.registrado){
 									jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
 								}else{
-									jQuery(window.location).attr('href', window.location.pathname + '?look=registro');
+									jQuery('form#registroForm h3').text(datosJSObj.feedback).slideDown(500).delay(1000).slideUp(2000);
 								}
 							})
 							.fail(  jQuery.fallas  );							
