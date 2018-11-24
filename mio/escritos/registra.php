@@ -19,7 +19,7 @@ if($cnx){
 			$recurso = pg_query($cnx, $queryRegisterUserReturningId);
 			if($recurso && $filaConId = pg_fetch_row ($recurso)){
 				$id = $filaConId[0];
-				$respuesta = json_decode('{"registrado":true, "feedback":"Ya estas registrado.  Directo a mi cuenta, no lo uso.", "id":'  .  $id  . '}');
+				$respuesta = json_decode('{"registrado":true, "feedback":"Ya estas registrado.  Directo a mi cuenta, no uso esto.", "id":'  .  $id  . '}');
 			}else{
 				pg_close($cnx); //maybe not needed but doesn't hurt
 				throw new Exception('Mal query.  Sin RECURSO, para queryRegisterUserReturningId.  (username es nuevo, pero hubo error.)');				
