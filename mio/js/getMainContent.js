@@ -60,7 +60,10 @@ jQuery(document).ready(
 				}
 			});						
 		}
-		
+	
+		jQuery.feedback = function(elementoDonde, mensaje){
+			jQuery(elementoDonde).text(mensaje).slideDown(500).delay(1000).slideUp(2000);
+		}	
 		
 		var look = jQuery.urlParam('look');
 		switch(look) {
@@ -93,7 +96,7 @@ jQuery(document).ready(
 								//here each array of words is converted into a string with ',' as delimiter; that's what
 								//you see on address bar 
 							}else{
-								jQuery('form#queDondeForm h3').text('Buscas algo?').slideDown(500).delay(1000).slideUp(2000);
+								jQuery.feedback('form#queDondeForm h3', 'Buscas algo?');
 							}
 						});
 					}						
@@ -249,7 +252,7 @@ jQuery(document).ready(
 									jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
 								}else{
 									//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
-									jQuery('form#loginForm h3').text('Trata otra vez.').slideDown(500).delay(1000).slideUp(2000);
+									jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
 								}
 							})
 							.fail(  jQuery.fallas  );//fail
@@ -288,7 +291,8 @@ jQuery(document).ready(
 								if(datosJSObj.registrado){
 									jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
 								}else{
-									jQuery('form#registroForm h3').text(datosJSObj.feedback).slideDown(500).delay(1000).slideUp(2000);
+									//jQuery('form#registroForm h3').text(datosJSObj.feedback).slideDown(500).delay(1000).slideUp(2000);
+									jQuery.feedback('form#registroForm h3', datosJSObj.feedback);
 								}
 							})
 							.fail(  jQuery.fallas  );							
