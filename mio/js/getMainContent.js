@@ -70,7 +70,7 @@ jQuery(document).ready(
 			pass01Check = pass01.replace(/[^a-z0-9]/gi, '');
 			pass02Check = pass02.replace(/[^a-z0-9]/gi, '');
 			if(usertb.length < 4 || pass01.length < 4 || pass02.length < 4){
-				jQuery.feedback('form#registroForm h3', 'Usuario o password muy corto.');
+				jQuery.feedback('form#registroForm h3', 'Usuario o password es muy corto.');
 				return false;
 			}else if(usertbCheck.length < usertb.length  ||  pass01Check.length < pass01.length ||  pass02Check.length < pass02.length){
 				jQuery.feedback('form#registroForm h3', 'Usa solo letras y/o numeros.');
@@ -256,24 +256,27 @@ jQuery(document).ready(
 							evento.preventDefault(); //not making a submit (POST request) from html action. 
 							var user = jQuery('#usernameId').val();
 							var pass = jQuery('#passwordId').val(); 
-							//Making a submit (POST request) here. Not in look=micuenta
-							jQuery.post('escritos/login.php', {user:user, pass:pass} )
-							.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-								try{
-									//alert('datosJSONStr: ' + datosJSONStr);
-									datosJSObj = JSON.parse(datosJSONStr);  
-									//alert('datosJSObj.loguea: ' + datosJSObj.loguea);								
-								}catch(errorParseo){
-									jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
-								}
-								if(datosJSObj.loguea){
-									jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
-								}else{
-									//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
-									jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
-								}
-							})
-							.fail(  jQuery.fallas  );//fail
+							var registrableValues = jQuery.analizaUserYPass(user, pass, pass);
+							if(registrableValues){ // 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; se puede chequear antes del post							
+								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=micuenta
+								jQuery.post('escritos/login.php', {user:user, pass:pass} )
+								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+									try{
+										//alert('datosJSONStr: ' + datosJSONStr);
+										datosJSObj = JSON.parse(datosJSONStr);  
+										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);								
+									}catch(errorParseo){
+										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
+									}
+									if(datosJSObj.loguea){
+										jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
+									}else{
+										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
+										jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
+									}
+								})
+								.fail(  jQuery.fallas  );//fail
+							}
 						});
 					}//if						
 				});//ajax complete				
