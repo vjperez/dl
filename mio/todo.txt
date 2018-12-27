@@ -1,3 +1,14 @@
+comas y espacios en opciones addrress bar
+subir
+usar SELECT * FROM
+			(
+			SELECT micro_empre_id, nombre, unnest (que) losque FROM micro_empre
+			) queasrows 
+WHERE losque iLIKE '%sHop%';
+en los search
+
+ir contruyendo un web de que verbo o nombre estan relacionados, segun los links de la gente
+lista de texto de opciones (orden alfabetico)
 pon mi profile con id zero, faq lo necesita.
 add 'final_date' to usuario para q venza a los 30 dias por ejemplo
 check for a 2 way substring relation  
@@ -21,12 +32,11 @@ check for a 2 way substring relation
 	
 REM 
 	) promo yourself en pueblos con festivales o juegos; do business with namero aguada , parcha pepino, delacremapr hatillo quesos y leche
-	) no quiero q usen redes personales para evitar pago, promocionate o ve donde gente como ronald, joshua pauta, tipo comun, cristian colon, molusco
+	) no quiero q usen redes personales para evitar pago, promocionate o ve donde gente como ronald, joshua, tipo comun, cristian colon, molusco
 	) ve a un lugar con variedad agricola y vende agrobox a US
 	) laboreo y/o codeAVictor
 
 hacer hoy 
-	 ) que php necesita el busca, login y registro...
 	 ) google search : post image php
 			http://talkerscode.com/webtricks/upload%20image%20to%20database%20and%20server%20using%20HTML,PHP%20and%20MySQL.php
 	 ) google search : mysql vs postgresql
@@ -46,7 +56,6 @@ hacer hoy
 			https://medium.freecodecamp.org/learn-css-flexbox-in-5-minutes-b941f0affc34
 	 ) error handle in jquery
 	 ) name enfasis ; otras busquedas ; linea profile
-	 ) micuenta, current, faqs y keep footer.  Mas lo del file de texto de ayer
 
 
 	) muestra social media handles only on click and tap   
