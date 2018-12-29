@@ -14,8 +14,7 @@ CREATE TABLE IF NOT EXISTS micro_empre (
 );
 
 
-INSERT INTO micro_empre
-	    (nombre, video_url, quien_social_handle, quien_foto_src, cuando, que, donde, a_tu_casa) 
+INSERT INTO micro_empre (nombre, video_url, quien_social_handle, quien_foto_src, cuando, que, donde, a_tu_casa) 
 		VALUES('tito el barbero', 
 			   'https://www.youtube.com/embed/rWq_-AexyAo', 
 			   '{"tt":"@tito", "fbk":"", "igrm":"@tito_en_insta", "phn":""}', 
@@ -24,7 +23,7 @@ INSERT INTO micro_empre
 			   ARRAY['barbero', 'estilista', 'hair professional', 'peinador', 'peluquero'],
 			   ARRAY['moca', 'anasco', 'rincon'],
 			   true
-);
+		);
 
 
 SELECT * FROM micro_empre;
@@ -36,27 +35,6 @@ SELECT quien_foto_src, que, donde FROM micro_empre;
 SELECT micro_empre_id, numero_de_admins, nombre, revisado, video_url, a_tu_casa FROM micro_empre;
 
 SELECT micro_empre_id, nombre FROM micro_empre;
-
-
-
-
-
-
-
-SELECT DISTINCT micro_empre_id FROM
-			(
-			SELECT micro_empre_id, nombre, unnest (que) losque FROM micro_empre
-			) queasrows 
-WHERE losque iLIKE '%sHop%';
-	
-SELECT * FROM
-			(
-			SELECT micro_empre_id, nombre, unnest (que) losque FROM micro_empre
-			) queasrows 
-WHERE losque iLIKE '%sHop%';
-	
-SELECT micro_empre_id, nombre, unnest (que) FROM micro_empre;
-
 
 
 
