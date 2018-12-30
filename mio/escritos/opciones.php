@@ -1,6 +1,6 @@
 <?php
 // When 'que' and 'donde' gets here they should already be clean (no blank spaces
-// no weird symbols, just a to z and 0 to 9 case insensitive, that's it. 
+// no weird symbols, just a to z, A to Z and 0 to 9, that's it. 
 // no words bigger than 10,
 // ignore words smaller than 2, a vowel in every word ... thins like that.  Do functions in 
 // getMainContent using jQuery )
@@ -8,7 +8,7 @@
 //When searching, use a percentMatch() 'que' vs 'que' and 'donde' vs 'donde' 
 
 //saca los valores de GET
-$queLiteralStr = $_GET['que']; //here 'que' and 'donde' are strings with commas as delimiters
+$queLiteralStr   = $_GET['que'];   //here 'que' and 'donde' are STRINGS with commas as delimiters
 $dondeLiteralStr = $_GET['donde'];
 
 
@@ -17,7 +17,7 @@ $dondeLiteralStr = $_GET['donde'];
 $queArray   = explode(' ', $queLiteralStr);
 $dondeArray = explode(' ', $dondeLiteralStr);
 //used to verify that i was really producing literal strings and arrays. 
-//echo json_encode($queLiteralStr . ' : ' . $queArray[2]);
+//echo json_encode($queLiteralStr . ' : ' . $queArray[1] . ' y ' . $dondeLiteralStr . ' : ' . $dondeArray[1]);
 
 
 //generar array con pares fotoSrc => id usando el database
@@ -26,7 +26,7 @@ require_once 'conecta/conecta.php';
 if($cnx){
 	require_once 'lee/opcionesQuery.php';
 	$result = array(); 
-	for($queryIndex = 1; $queryIndex <= 3; $queryIndex++){
+	for($queryIndex = 1; $queryIndex <= 6; $queryIndex++){
 		//$queries is defined in opcionesQuery.php, required above
 		$query = $queries[$queryIndex];
 		$recurso = pg_query($cnx, $query);

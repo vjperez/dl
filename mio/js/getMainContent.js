@@ -28,8 +28,8 @@ jQuery(document).ready(
 			//when  newStrArray[i] is '',  it is shown in arrayParts as ()
 			//it means split found delimiters back to back and there is nothing between them.			
 			*/
-			str = str.replace(/[^a-z0-9]/gi, ' '); // same as replace(/[^a-zA-Z0-9]/g, ''); JavaScript is a case-sensitive language
-			strArray = str.split(' ');
+			str = str.replace(/[^a-z0-9]/gi, '*'); // same as replace(/[^a-zA-Z0-9]/g, '*'); JavaScript is a case-sensitive language
+			strArray = str.split('*');
 			result = new Array();
 			for(var i=0; i < strArray.length; i++){
 				if (strArray[i] != '') result.push(strArray[i]);
@@ -125,8 +125,8 @@ jQuery(document).ready(
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 			//concatenating strings inside an each loop, with the requested JSON datos.
 				var que = jQuery.urlParam('que');			
-				que = que.replace(/,/g, ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter
-				var donde = jQuery.urlParam('donde');			
+				var donde = jQuery.urlParam('donde');		
+				que = que.replace(/,/g, ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter. The server receives 'limpia carro' not 'limpia,carro'
 				donde = donde.replace(/,/g, ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter
 				jQuery.getJSON('escritos/opciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
@@ -134,12 +134,12 @@ jQuery(document).ready(
 					var mainDeOpciones = '<div id="main" class="contenido margen">';
 					jQuery.each(datos, function(queryIndex, pares){
 						mainDeOpciones += '<div class="ver-borde opcionesfotos">';
-						if(queryIndex == 1){
-							mainDeOpciones += '<h3>' + que + ' + ' + donde + '</h3>';
-						}else if (queryIndex == 2){
-							mainDeOpciones += '<h3>' + que + '</h3>';
-						}else if (queryIndex == 3){
-							mainDeOpciones += '<h3>' + donde + '</h3>';
+						if(queryIndex == 1 || queryIndex == 2){
+							mainDeOpciones += '<h3>' + queryIndex + ': ' + que + ' + ' + donde + '</h3>';
+						}else if (queryIndex == 3 || queryIndex == 4){
+							mainDeOpciones += '<h3>' + queryIndex + ': ' + que + '</h3>';
+						}else if (queryIndex == 5 || queryIndex == 6){
+							mainDeOpciones += '<h3>' + queryIndex + ': ' + donde + '</h3>';
 						}
 						jQuery.each(pares, function(fotoSrc, id){
 							mainDeOpciones += '<a href="portada.html?look=profile&id=' + id + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" src="';
