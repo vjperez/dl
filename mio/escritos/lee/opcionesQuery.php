@@ -67,9 +67,11 @@ $queries[2] = "SELECT quien_foto_src, micro_empre_id
 */
 
 //barber -> los barberos, la barberia      eria -> panaderia, heladeria, barberia
-$queries['embeddedQue'] = "SELECT quien_foto_src, micro_empre_id
+$queries['embeddedQue'] = "SELECT quien_foto_src, micro_empre_id, COUNT(losque) cuentaenlosque
 			FROM  (SELECT quien_foto_src, micro_empre_id, unnest (que) losque FROM micro_empre) queasrows
-			WHERE losque iLIKE '%$queLiteralStr%'";
+			WHERE losque iLIKE '%$queLiteralStr%'
+			GROUP BY quien_foto_src, micro_empre_id
+			ORDER BY cuentaenlosque DESC";
 
 //junco -> juncos, maya -> mayaguez, baya -> bayamon, kiss -> kissimmee
 $queries['embeddedDonde'] = "SELECT quien_foto_src, micro_empre_id
