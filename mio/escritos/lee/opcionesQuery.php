@@ -4,7 +4,7 @@
 
 
 //barbero -> barbero   +   moca -> moca
-$queries[1] = "SELECT quien_foto_src, micro_empre_id FROM micro_empre
+$queries['literalBoth'] = "SELECT quien_foto_src, micro_empre_id FROM micro_empre
 			WHERE '$queLiteralStr' = ANY(que)
 			AND '$dondeLiteralStr' = ANY(donde)";
 /*
@@ -21,7 +21,7 @@ SELECT queasrows.micro_empre_id, losque, losdonde, queasrows.quien_foto_src  FRO
 
 
 //barbero -> barbero
-$queries[3] = "SELECT quien_foto_src, micro_empre_id FROM micro_empre
+$queries['literalQue'] = "SELECT quien_foto_src, micro_empre_id FROM micro_empre
 			WHERE '$queLiteralStr' = ANY(que)";
 /*
 SELECT micro_empre_id, losque, quien_foto_src FROM
@@ -34,7 +34,7 @@ WHERE losque = 'barbero';
 
 
 //moca -> moca
-$queries[5] = "SELECT quien_foto_src, micro_empre_id FROM micro_empre
+$queries['literalDonde'] = "SELECT quien_foto_src, micro_empre_id FROM micro_empre
 			WHERE '$dondeLiteralStr' = ANY(donde)";
 /*
 SELECT micro_empre_id, losdonde, quien_foto_src  FROM
@@ -51,7 +51,7 @@ WHERE losdonde = 'moca';
 
 
 //barber -> los barberos, la barberia   +   junco -> juncos, maya -> mayaguez, baya -> bayamon, kiss -> kissimmee
-$queries[2] = "SELECT queasrows.quien_foto_src, queasrows.micro_empre_id FROM (
+$queries['embeddedBoth'] = "SELECT queasrows.quien_foto_src, queasrows.micro_empre_id FROM (
 				  SELECT micro_empre_id, unnest (que) losque, quien_foto_src FROM micro_empre
 	 ) queasrows
 	 INNER JOIN (
@@ -67,17 +67,31 @@ $queries[2] = "SELECT quien_foto_src, micro_empre_id
 */
 
 //barber -> los barberos, la barberia      eria -> panaderia, heladeria, barberia
-$queries[4] = "SELECT quien_foto_src, micro_empre_id
+$queries['embeddedQue'] = "SELECT quien_foto_src, micro_empre_id
 			FROM  (SELECT quien_foto_src, micro_empre_id, unnest (que) losque FROM micro_empre) queasrows
 			WHERE losque iLIKE '%$queLiteralStr%'";
 
 //junco -> juncos, maya -> mayaguez, baya -> bayamon, kiss -> kissimmee
-$queries[6] = "SELECT DISTINCT quien_foto_src, micro_empre_id
+$queries['embeddedDonde'] = "SELECT quien_foto_src, micro_empre_id
 			FROM  (SELECT quien_foto_src, micro_empre_id, unnest (donde) losdonde FROM micro_empre) dondeasrows
 			WHERE losdonde iLIKE '%$dondeLiteralStr%'";
 
 
-
+//select queries to used
+switch($buscaMode){
+	case 'buscaQue':
+		$queries[1] = $queries['literalQue'];
+		$queries[2] = $queries['embeddedQue'];
+		break;
+	case 'buscaDonde':
+	  $queries[1] = $queries['literalDonde'];
+	  $queries[2] = $queries['embeddedDonde'];
+		break;
+	case 'buscaBoth':
+	  $queries[1] = $queries['literalBoth'];
+	  $queries[2] = $queries['embeddedBoth'];
+		break;
+}
 
 
 
