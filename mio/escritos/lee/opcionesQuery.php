@@ -51,14 +51,14 @@ WHERE losdonde = 'moca';
 
 
 //barber -> los barberos, la barberia   +   junco -> juncos, maya -> mayaguez, baya -> bayamon, kiss -> kissimmee
-$queries['embeddedBoth'] = "SELECT queasrows.quien_foto_src, queasrows.micro_empre_id FROM (
-				  SELECT micro_empre_id, unnest (que) losque, quien_foto_src FROM micro_empre
-	 ) queasrows
-	 INNER JOIN (
-				  SELECT micro_empre_id, unnest (donde) losdonde, quien_foto_src FROM micro_empre
-	 ) dondeasrows
+$queries['embeddedBoth'] = "SELECT queasrows.quien_foto_src, queasrows.micro_empre_id, COUNT(losque) cuentaenlosque
+   FROM ( SELECT micro_empre_id, unnest (que) losque, quien_foto_src FROM micro_empre ) queasrows
+	 INNER JOIN
+	      ( SELECT micro_empre_id, unnest (donde) losdonde, quien_foto_src FROM micro_empre ) dondeasrows
 	ON queasrows.micro_empre_id = dondeasrows.micro_empre_id
-	WHERE losque iLIKE '%$queLiteralStr%' AND losdonde  iLIKE '%$dondeLiteralStr%'";
+	WHERE losque iLIKE '%$queLiteralStr%' AND losdonde  iLIKE '%$dondeLiteralStr%'
+	GROUP BY queasrows.quien_foto_src, queasrows.micro_empre_id
+	ORDER BY cuentaenlosque DESC";
 /*
 $queries[2] = "SELECT quien_foto_src, micro_empre_id
 			FROM  (SELECT quien_foto_src, micro_empre_id, unnest (que) losque, unnest (donde) losdonde FROM micro_empre) queasrows

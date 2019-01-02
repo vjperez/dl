@@ -28,8 +28,9 @@ SELECT micro_empre_id, COUNT(losque) cuentaenque FROM
 			(
 			SELECT micro_empre_id, unnest (que) losque FROM micro_empre
 			) queasrows
-WHERE losque iLIKE '%sHop%'
-GROUP BY micro_empre_id;
+WHERE losque iLIKE '%l%'
+GROUP BY micro_empre_id
+ORDER BY cuentaenque DESC;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////// iLIKE en nombre y en los que ; usa esta
