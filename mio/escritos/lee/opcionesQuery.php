@@ -4,9 +4,11 @@
 
 
 //barbero -> barbero   +   moca -> moca
+//If pattern does not contain percent signs or underscore, then the pattern only represents the string itself;
+//in that case LIKE acts like the equals operator
 $queries['literalBoth'] = "SELECT quien_foto_src, micro_empre_id FROM micro_empre
-			WHERE '$queLiteralStr' = ANY(que)
-			AND '$dondeLiteralStr' = ANY(donde)";
+			WHERE '$queLiteralStr'  iLIKE  ANY(que)
+			AND '$dondeLiteralStr'  iLIKE  ANY(donde)";
 /*
 SELECT queasrows.micro_empre_id, losque, losdonde, queasrows.quien_foto_src  FROM (
 				  SELECT micro_empre_id, unnest (que) losque, quien_foto_src FROM micro_empre
@@ -21,8 +23,10 @@ SELECT queasrows.micro_empre_id, losque, losdonde, queasrows.quien_foto_src  FRO
 
 
 //barbero -> barbero
+//If pattern does not contain percent signs or underscore, then the pattern only represents the string itself;
+//in that case LIKE acts like the equals operator
 $queries['literalQue'] = "SELECT quien_foto_src, micro_empre_id FROM micro_empre
-			WHERE '$queLiteralStr' = ANY(que)";
+			WHERE '$queLiteralStr' iLIKE  ANY(que)";
 /*
 SELECT micro_empre_id, losque, quien_foto_src FROM
 				 (
@@ -34,8 +38,10 @@ WHERE losque = 'barbero';
 
 
 //moca -> moca
+//If pattern does not contain percent signs or underscore, then the pattern only represents the string itself;
+//in that case LIKE acts like the equals operator
 $queries['literalDonde'] = "SELECT quien_foto_src, micro_empre_id FROM micro_empre
-			WHERE '$dondeLiteralStr' = ANY(donde)";
+			WHERE '$dondeLiteralStr' iLIKE  ANY(donde)";
 /*
 SELECT micro_empre_id, losdonde, quien_foto_src  FROM
 				 (
