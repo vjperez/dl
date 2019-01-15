@@ -1,7 +1,7 @@
 <?php
 require_once 'datosConectar.php';
 
-$cnx = pg_connect("$host $port $dbname $usuario");
+$cnx = pg_connect(HOST . PORT . DBNAME . USUARIO);
 if($cnx){
 	//echo "Conectado a $dbname en $host.";
 }else{

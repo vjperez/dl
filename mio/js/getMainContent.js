@@ -132,29 +132,27 @@ jQuery(document).ready(
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					var mainDeOpciones = '<div id="main" class="contenido margen">';
+					jQuery.each(datos, function(buscaMode, cuaTuples){
 
-            jQuery.each(datos, function(buscaMode, cuaTuples){
+						jQuery.each(cuaTuples, function(queryIndex, trios){
+							mainDeOpciones += '<div class="ver-borde opcionesfotos">';
+							if(buscaMode.indexOf("buscaBoth") > -1){
+								mainDeOpciones += '<h3>' + queryIndex + ': ' + que + ' + ' + donde + '</h3>';
+							}else if (buscaMode.indexOf("buscaQue") > -1){
+								mainDeOpciones += '<h3>' + queryIndex + ': ' + que + '</h3>';
+							}else if (buscaMode.indexOf("buscaDonde") > -1){
+								mainDeOpciones += '<h3>' + queryIndex + ': ' + donde + '</h3>';
+							}
+							jQuery.each(trios, function(index, pares){
+								jQuery.each(pares, function(id, fotoSrc){
+									mainDeOpciones += '<a href="portada.html?look=profile&id=' + id + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" src="';
+									mainDeOpciones += 'imagenes/profile/' + fotoSrc + '"></a>';
+								});
+							}); // each in trios
+							mainDeOpciones += '</div>'; // <div class="ver-borde opcionesfotos">
+						}); // each in cuaTuples
 
-								jQuery.each(cuaTuples, function(queryIndex, trios){
-									mainDeOpciones += '<div class="ver-borde opcionesfotos">';
-									if(buscaMode.indexOf("buscaBoth") > -1){
-										mainDeOpciones += '<h3>' + queryIndex + ': ' + que + ' + ' + donde + '</h3>';
-									}else if (buscaMode.indexOf("buscaQue") > -1){
-										mainDeOpciones += '<h3>' + queryIndex + ': ' + que + '</h3>';
-									}else if (buscaMode.indexOf("buscaDonde") > -1){
-										mainDeOpciones += '<h3>' + queryIndex + ': ' + donde + '</h3>';
-									}
-									jQuery.each(trios, function(index, pares){
-										jQuery.each(pares, function(id, fotoSrc){
-											mainDeOpciones += '<a href="portada.html?look=profile&id=' + id + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" src="';
-											mainDeOpciones += 'imagenes/profile/' + fotoSrc + '"></a>';
-										});
-									}); // each in trios
-                  mainDeOpciones += '</div>'; // <div class="ver-borde opcionesfotos">
-								}); // each in cuaTuples
-
-            }); // each in datos
-
+					}); // each in datos
 					mainDeOpciones += '</div>'; //  <div id="main" class="contenido margen">
 					jQuery('#containerForMain').html(mainDeOpciones);
 				})
