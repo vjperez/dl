@@ -7,7 +7,7 @@ $pass = $_POST['pass'];
 require_once 'conecta/conecta.php';
 
 if($cnx){
-	require_once 'lee/loginQuery.php';
+	require_once 'login/loginQuery.php';
 	$recurso = pg_query($cnx, $query);
 	if($recurso){		 
 		if($fila = pg_fetch_row($recurso)){

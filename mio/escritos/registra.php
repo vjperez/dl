@@ -6,7 +6,7 @@ $pass01 = $_POST['pass01'];
 //conecta al db
 require_once 'conecta/conecta.php';
 if($cnx){
-	require_once 'lee/registraQueries.php';
+	require_once 'registra/registraQueries.php';
 	$recurso = pg_query($cnx, $queryCheckUserName);
 	if($recurso){
 		$isNewName;

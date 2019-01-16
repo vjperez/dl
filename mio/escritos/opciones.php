@@ -21,7 +21,7 @@ if(strlen($queLiteralStr) >  0 && strlen($dondeLiteralStr) >  0) $buscaMode = 'b
 //conecta al db
 require_once 'conecta/conecta.php';
 if($cnx){
-	require_once 'lee/opcionesQuery.php';
+	require_once 'opciones/opcionesQuery.php';
 	$result = array();
 	for($queryIndex = 1; $queryIndex <= 2; $queryIndex++){
 		//$queries is defined in opcionesQuery.php, required above
