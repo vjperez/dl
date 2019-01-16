@@ -11,7 +11,7 @@ $id = $_GET['id'];
 //conecta al db
 require_once 'conecta/conecta.php';
 if($cnx){
-	require_once 'lee/showProfileQuery.php';
+	require_once 'showProfile/showProfileQuery.php';
 	$result = array(); 
 	$profile = array();
 	$recurso = pg_query($cnx, $query);
