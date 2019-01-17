@@ -61,22 +61,37 @@ jQuery(document).ready(
 			});
 		}
 		jQuery.feedback = function(elementoDonde, mensaje){
+			
 			jQuery(elementoDonde).text(mensaje).slideDown(500).delay(1000).slideUp(2000);
 		}
-		jQuery.analizaUserYPass = function(usertb, pass01, pass02){
-			//para cosas q se pueden chequear en el ui. Chequear Usuario repetido requiere hacer el post.
+		
+		jQuery.areValidUserYPass = function(usertb, pass01, pass02, logOrRegister){
+			//para cosas q se pueden chequear en el ui, y evitar post innecesarios. 
+			//Chequear Usuario repetido requiere hacer el post, pq requiere info de database.
 			// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; se puede chequear antes del post
 			usertbCheck = usertb.replace(/[^a-z0-9]/gi, '');  //same as replace(/[^a-zA-Z0-9]/g, ''); JavaScript is a case-sensitive language
 			pass01Check = pass01.replace(/[^a-z0-9]/gi, '');
 			pass02Check = pass02.replace(/[^a-z0-9]/gi, '');
 			if(usertb.length < 4 || pass01.length < 4 || pass02.length < 4){
-				jQuery.feedback('form#registroForm h3', 'Usuario o password es muy corto.');
+				if(logOrRegister.indexOf('ToRegister') !== -1){
+					jQuery.feedback('form#registroForm h3', 'Usuario o password es muy corto.');
+				}else if(logOrRegister.indexOf('ToLog') !== -1){
+					jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
+				}
 				return false;
 			}else if(usertbCheck.length < usertb.length  ||  pass01Check.length < pass01.length ||  pass02Check.length < pass02.length){
-				jQuery.feedback('form#registroForm h3', 'Usa solo letras y/o numeros.');
+				if(logOrRegister.indexOf('ToRegister') !== -1){
+					jQuery.feedback('form#registroForm h3', 'Usa solo letras y/o numeros.');
+				}else if(logOrRegister.indexOf('ToLog') !== -1){
+					jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
+				}
 				return false;
-			}else if(pass01 !== pass02){//same type, same value, no type conversion, case sensitive
-				jQuery.feedback('form#registroForm h3', 'Los passwords son diferentes.');
+			}else if(pass01 !== pass02){  //same type, same value, no type conversion, case sensitive
+				if(logOrRegister.indexOf('ToRegister') !== -1){
+					jQuery.feedback('form#registroForm h3', 'Los passwords son diferentes.');
+				}else if(logOrRegister.indexOf('ToLog') !== -1){
+					jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
+				}
 				return false;
 			}
 			return true;
@@ -262,9 +277,8 @@ jQuery(document).ready(
 							evento.preventDefault(); //not making a submit (POST request) from html action.
 							var user = jQuery('#usernameId').val();
 							var pass = jQuery('#passwordId').val();
-							var registrableValues = jQuery.analizaUserYPass(user, pass, pass);
-							if(registrableValues){ 
-								//registrableValues son los q cumplen estas 3 cosas. 
+							if( jQuery.areValidUserYPass(user, pass, pass, "tryingToLog") ){ 
+								//Valid values son los q cumplen estas 3 cosas. 
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
 								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; 
 								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=micuenta
@@ -309,9 +323,8 @@ jQuery(document).ready(
 							var usertb = jQuery('#usernameId').val();
 							var pass01 = jQuery('#passwordId').val();
 							var pass02 = jQuery('#passwordConfirmId').val();
-							var registrableValues = jQuery.analizaUserYPass(usertb, pass01, pass02);
-							if(registrableValues){ 
-								//registrableValues son los q cumplen estas 3 cosas. 
+							if( jQuery.areValidUserYPass(usertb, pass01, pass02, "tryingToRegister") ){ 
+								//Valid values son los q cumplen estas 3 cosas. 
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
 								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; 
 								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=micuenta

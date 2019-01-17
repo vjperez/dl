@@ -1,11 +1,4 @@
 <?php
-
-
-//lo que hay q sacar de la basedatos para q al loguarte puedas puedas editar
-//los datos del empre, es la mismo info q hace falta sacar para mostrar el profile
-//publicamente; por eso este file es identico a showProfileQuery
-//Falta anadir para q se pueda editar tambien los datos personales.
-
 //saca los valores de GET
 $id = $_GET['id'];
 //conecta al db
@@ -25,7 +18,7 @@ if($cnx){
 //wrong results.		
 //Read data already in json format, and decode it into PHP variables with correct datatype	
 		$result = pg_fetch_row($recurso); 
-		$profile['micro_empre_id'] = json_decode($result[0]);
+		$profile['microEmpreId'] = json_decode($result[0]);
 		$profile['nombre'] = $result[1];
 		$profile['revisado'] = $result[2];
 		$profile['videoUrl'] = $result[3];
@@ -43,4 +36,10 @@ if($cnx){
 	}
 	pg_close($cnx); //maybe not needed but doesn't hurt	
 }
+
+//lo que hay q sacar de la basedatos para q al loguarte puedas puedas editar
+//los datos del empre, es la mismo info q hace falta sacar para mostrar el profile
+//publicamente; por eso este file es identico a showProfileQuery
+
+//Falta anadir para q se pueda editar tambien los datos personales.
 ?>
