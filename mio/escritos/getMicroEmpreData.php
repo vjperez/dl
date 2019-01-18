@@ -4,7 +4,7 @@ $id = $_GET['id'];
 //conecta al db
 require_once 'conecta/conecta.php';
 if($cnx){
-	require_once 'showProfile/showProfileQuery.php';
+	require_once 'getMicroEmpreData/getMicroEmpreDataQuery.php';
 	$result = array(); 
 	$profile = array();
 	$recurso = pg_query($cnx, $query);
@@ -32,14 +32,14 @@ if($cnx){
 		echo json_encode($profile);	
 	}else{
 		throw new Exception('Mal query.  Sin RECURSO.');
-		//echo "<li>Error, pg_query, no produjo un recurso para result... en showProfile</li>";
+		//echo "<li>Error, pg_query, no produjo un recurso para result... en getMicroEmpreData</li>";
 	}
 	pg_close($cnx); //maybe not needed but doesn't hurt	
 }
 
 //lo que hay q sacar de la basedatos para q al loguarte puedas puedas editar
-//los datos del empre, es la mismo info q hace falta sacar para mostrar el profile
-//publicamente; por eso este file es identico a showProfileQuery
-
-//Falta anadir para q se pueda editar tambien los datos personales.
+//los datos del empre en look=miCuenta id=x, 
+//es la mismo info q hace falta sacar para mostrar el profile del empre publicamente
+//en look=profile id=x
+//Solo que en micuenta tambien se anaden los datos del admin.
 ?>

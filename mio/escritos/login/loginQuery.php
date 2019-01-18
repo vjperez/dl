@@ -1,6 +1,6 @@
 <?php
 $query = "UPDATE 
-		usuario
+		dueno
 SET last_log = NOW()::date 
 WHERE username = '$user'
 AND password = '$pass'
@@ -8,8 +8,8 @@ AND password = '$pass'
  ;
 
 	SELECT 
-	usuario_id
-FROM usuario 
+	dueno_id
+FROM dueno 
 WHERE username = '$user'
 AND password = '$pass'";
 ?>

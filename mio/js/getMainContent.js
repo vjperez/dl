@@ -66,7 +66,8 @@ jQuery(document).ready(
 		}
 		
 		jQuery.areValidUserYPass = function(usertb, pass01, pass02, logOrRegister){
-			//para cosas q se pueden chequear en el ui, y evitar post innecesarios. 
+			//Esta funcion la usan login y registra
+			//para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios. 
 			//Chequear Usuario repetido requiere hacer el post, pq requiere info de database.
 			// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; se puede chequear antes del post
 			usertbCheck = usertb.replace(/[^a-z0-9]/gi, '');  //same as replace(/[^a-zA-Z0-9]/g, ''); JavaScript is a case-sensitive language
@@ -177,7 +178,7 @@ jQuery(document).ready(
 				//get id then
 				var id = jQuery.urlParam('id');
 				//request get JSON data for that id
-				jQuery.getJSON('escritos/showProfile.php', {id:id} )
+				jQuery.getJSON('escritos/getMicroEmpreData.php', {id:id} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					//Once the data is in, get profile look
@@ -360,7 +361,7 @@ jQuery(document).ready(
 				//get id
 				var id = jQuery.urlParam('id');
 				//get profile data
-				jQuery.getJSON('escritos/showDatosCuenta.php', {id:id} )
+				jQuery.getJSON('escritos/getMicroEmpreData.php', {id:id} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//Once the data is in, get mi cuenta look
 					jQuery.get('looks/micuenta.html', function(datosDeRespuesta, estatus, xhrObjeto){
