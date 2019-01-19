@@ -375,32 +375,41 @@ jQuery(document).ready(
 							jQuery('form#editDatoForm input[name=nombre]').val(datos.nombre);
 							jQuery('form#editDatoForm input[name=videoUrl]').val(datos.videoUrl);
 							//quien
-							jQuery('form#editDatoForm input[name=red1]').val(datos.quienSocialHandle.fbk);
-							jQuery('form#editDatoForm input[name=red2]').val(datos.quienSocialHandle.tt);
-							jQuery('form#editDatoForm input[name=red3]').val(datos.quienSocialHandle.igrm);
-							jQuery('form#editDatoForm input[name=red4]').val(datos.quienSocialHandle.phn)
+							if(datos.quienSocialHandle != null){
+								jQuery('form#editDatoForm input[name=red1]').val(datos.quienSocialHandle.fbk);
+								jQuery('form#editDatoForm input[name=red2]').val(datos.quienSocialHandle.tt);
+								jQuery('form#editDatoForm input[name=red3]').val(datos.quienSocialHandle.igrm);
+								jQuery('form#editDatoForm input[name=red4]').val(datos.quienSocialHandle.phn);
+							}
+							
 							//falta each para array de fotos
 
 							//cuando
-							jQuery('form#editDatoForm input[name=dia1]').val(datos.cuando.lun);
-							jQuery('form#editDatoForm input[name=dia2]').val(datos.cuando.mar);
-							jQuery('form#editDatoForm input[name=dia3]').val(datos.cuando.mier);
-							jQuery('form#editDatoForm input[name=dia4]').val(datos.cuando.jue);
-							jQuery('form#editDatoForm input[name=dia5]').val(datos.cuando.vier);
-							jQuery('form#editDatoForm input[name=dia6]').val(datos.cuando.sab);
-							jQuery('form#editDatoForm input[name=dia7]').val(datos.cuando.dom);
+							if(datos.cuando != null){
+								jQuery('form#editDatoForm input[name=dia1]').val(datos.cuando.lun);
+								jQuery('form#editDatoForm input[name=dia2]').val(datos.cuando.mar);
+								jQuery('form#editDatoForm input[name=dia3]').val(datos.cuando.mier);
+								jQuery('form#editDatoForm input[name=dia4]').val(datos.cuando.jue);
+								jQuery('form#editDatoForm input[name=dia5]').val(datos.cuando.vier);
+								jQuery('form#editDatoForm input[name=dia6]').val(datos.cuando.sab);
+								jQuery('form#editDatoForm input[name=dia7]').val(datos.cuando.dom);
+							}
 							//following code works when there are 10 or less 'que' coming from getJSON.
 							//the html is prepared for a max of 10 'que'
-							jQuery('form#editDatoForm input[name^=que]').each(function(index){
-								if(index < datos.que.length) { jQuery(this).val(datos.que[index]); }
-								else {  } //ya estan vacios en html por default
-							});
+							if(datos.que != null){
+								jQuery('form#editDatoForm input[name^=que]').each(function(index){
+									if(index < datos.que.length) { jQuery(this).val(datos.que[index]); }
+									else {  } //ya estan vacios en html por default
+								});
+							}
 							//following code works when there are 5 or less 'donde' coming from getJSON.
 							//the html is prepared for a max of 5 'donde'
-							jQuery('form#editDatoForm input[name^=donde]').each(function(index){
-								if(index < datos.donde.length) { jQuery(this).val(datos.donde[index]); }
-								else {  } //ya estan vacios en html por default
-							});
+							if(datos.donde != null){
+								jQuery('form#editDatoForm input[name^=donde]').each(function(index){
+									if(index < datos.donde.length) { jQuery(this).val(datos.donde[index]); }
+									else {  } //ya estan vacios en html por default
+								});
+							}
 							if(datos.atucasa != null){ //comes with null(falsy) for an empty profile
 								jQuery('form#editDatoForm input[value=si]').prop('checked', datos.atucasa);
 								jQuery('form#editDatoForm input[value=no]').prop('checked', !datos.atucasa);

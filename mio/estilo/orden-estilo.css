@@ -22,13 +22,13 @@ div#navega li img { vertical-align:middle; }
 
 /*estilo : comun */
 /*
-.color01{ color:#c0392b } labels y h2s. try rojito #fd341d;                             ::: google 'RED' ea4335
+.color01{ color:#c0392b } labels y h2s de profile faq y micuenta. try rojito #fd341d;                             ::: google 'RED' ea4335
 .color02{ color:#27ae60 } profile video h1 y footer background                          ::: google 'GREEN' 34a853
-.color03{ color:#16a085 } div#cuando td, .colorenfasis, label.explica, div#quien ul img:hover, div#quien h3, div#donde h3  for verde try 00e356
+.color03{ color:#16a085 } label de busca, login y registra, div#cuando td, .colorenfasis, label.explica, div#quien ul img:hover, div#quien h3, div#donde h3  for verde try 00e356
 .color04{ color:#7fb3d5 } button link hover background
-.color05{ color:#2980b9 } button link border                                                   ::: google 'BLUE' 4285f4
+.color05{ color:#4285f4 } button link border                                                   ::: google 'BLUE' 4285f4
 .color06{ color:#f1c40f } currentl not used                                                    ::: google 'YELLOW' f9ab00
-4285f4 normal links and nav links
+2980b9 normal links and nav links
 909090 header bottom y footer borders
 c0c0c0 border bottom navega
 */
@@ -44,7 +44,7 @@ p::first-letter{ font-size:1.3em; }
 .colorenfasis{ font-size:1.2em; font-weight:bold; font-family:mono, monospace; color:#16a085;}
 .sizeenfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace;}
 a.link { text-decoration:none; font-weight:bolder; }
-a.link:link,     a.link:visited { color:#4285f4; }
+a.link:link,     a.link:visited { color:#2980b9; }
 a.link:hover, a.link:focus { text-decoration:underline; }
 a.link li:hover, a.link li:focus { text-decoration:underline; }
 
@@ -74,10 +74,10 @@ form#queDondeForm h3 { margin-top:20pt; margin-bottom:20pt; }
 
 
 /*estilo : busca */
-form#queDondeForm label { font-size:1.5em; letter-spacing:0.30em; font-weight:bolder; color:#c0392b; }
+form#queDondeForm label { font-size:1.5em; letter-spacing:0.30em; font-weight:bolder; color:#16a085; }
 form#queDondeForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#queDondeForm input:focus { background-color:#dadada; }
-form#queDondeForm button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
+form#queDondeForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; } 
 form#queDondeForm button:hover, form#queDondeForm button:focus { background-color:#7fb3d5; }
 form#queDondeForm h3 { font-family:serif, Times, times; color:#16a085; }
 
@@ -86,7 +86,7 @@ form#queDondeForm h3 { font-family:serif, Times, times; color:#16a085; }
 
 /*orden : profile */
 div#video iframe { display:block; margin-left:auto; margin-right:auto; }
-div#quien, div#cuando, div#que, div#donde { padding-bottom:50pt; border-top:1pt solid #dadada; }
+div#quien, div#cuando, div#que, div#donde { margin-top:50pt; border-top:1pt solid #dadada; }
 div#que ul, div#donde ul, div#quien ul { padding:0; }
 div#que li, div#donde li { display:inline-block; margin-right:2pt; margin-bottom:1.5em; }
 div#quien h3 { display:none; }
@@ -114,17 +114,18 @@ div#quien ul li img { width:25pt; }
 
 
 /*estilo : profile */
-div#video h1 { color:#27ae60; }
+div#video h1 { color:#16a085; }
 div#que h2, div#donde h2, div#cuando h2, div#quien h2 { color:#c0392b; } 
 /*div#cuando h3 { color:#f1c40f; } */
 /*font para #que #donde #cuando*/
 a.clavelink { font-family:'Slabo 27px', Times, times, courier, mono, monospace; letter-spacing:0.1em; } 
-div#cuando td, div#video h5, div#quien h3, div#donde h3 { font-family:serif, Times, times; color:#16a085;}
+div#cuando td, div#video h5, div#quien h3, div#donde h3 { font-weight:bolder; font-family:serif, Times, times; color:#16a085;}
+div#video h5 { color:#909090; text-align:right; }
 div#cuando td.hora { font-weight:bold; }
 a.clavelink:link, a.clavelink:visited {
     background-color:white;
     color:black;
-    border-color:#2980b9;
+    border-color:#4285f4;
     border-style:solid;     border-width:1pt;  border-radius:5pt;
 	 /*border-top-left-radius:40% 50%; border-top-right-radius:40% 50%; border-bottom-left-radius:20% 50%; border-bottom-right-radius:20% 50%;*/
     padding:0.25em 0.5em 0em 0.5em; }
@@ -134,7 +135,7 @@ a.clavelink:hover, a.clavelink:focus {
     color:#ffffff;  }
     
 div#que ul, div#donde ul, div#quien ul { list-style-type:none; }
-div#quien ul img { border-color:#2980b9;  border-style:solid;  border-width:1pt;  border-radius:5pt; padding:0.2em; }
+div#quien ul img { border-color:#000000;  border-style:solid;  border-width:1pt;  border-radius:5pt; padding:0.2em; }
 div#quien ul img:hover, div#quien ul img:focus, div#quien ul img.current { border-color:#16a085; border-width:3pt; }
 
 
@@ -167,10 +168,10 @@ form#loginForm h3 { text-align:center; }
 
 /*estilo : login */
 /*casi una copia de busca*/
-form#loginForm label { font-size:1.5em; letter-spacing:0.3em; font-weight:bolder; color:#c0392b; }
+form#loginForm label { font-size:1.5em; letter-spacing:0.3em; font-weight:bolder; color:#16a085; }
 form#loginForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#loginForm input:focus { background-color:#dadada; }
-form#loginForm button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
+form#loginForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; } 
 form#loginForm button:hover, form#loginForm button:focus { background-color:#7fb3d5; }
 form#loginForm h3 { font-family:serif, Times, times; color:#16a085; }
 
@@ -191,10 +192,10 @@ form#registroForm h3 { text-align:center; }
 
 /*estilo : registro */
 /*casi una copia de busca*/
-form#registroForm label { font-size:1.5em; letter-spacing:0.3em; font-weight:bolder; color:#c0392b; }
+form#registroForm label { font-size:1.5em; letter-spacing:0.3em; font-weight:bolder; color:#16a085; }
 form#registroForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#registroForm input:focus { background-color:#dadada; }
-form#registroForm button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
+form#registroForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; } 
 form#registroForm button:hover, form#registroForm button:focus { background-color:#7fb3d5; }
 form#registroForm h3 { font-family:serif, Times, times; color:#16a085; }
 
@@ -219,16 +220,17 @@ form#editDatoForm input[type='url'], form#editDatoForm input[type='text']{ width
 form#editDatoForm label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 form#editDatoForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#editDatoForm input:focus { background-color:#dadada; }
-form#editDatoForm button { border-radius:5pt; background-color:white; border-color:#2980b9; border-style:solid;  border-width:2pt; } 
+form#editDatoForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; } 
 form#editDatoForm button:hover, form#editDatoForm button:focus { background-color:#7fb3d5; }
 form#editDatoForm label.explica { color:#16a085; font-size:0.85em; letter-spacing:0.2em; }
 
 form#editDatoForm fieldset.primario { margin:0pt; padding:0pt; padding-bottom:50pt; }
 form#editDatoForm fieldset.secundario { margin-top:0pt; }
-form#editDatoForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; }
-form#editDatoForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.00em; }
+form#editDatoForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
+form#editDatoForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#16a085; }
 
 form#editDatoForm p { margin-top:2pt; margin-bottom:30pt; }
 form#editDatoForm input.si { margin-right:30pt; }
-form#editDatoForm button { display:block; margin-bottom:30pt; }
+form#editDatoForm button { display:block; margixxxn-bottom:30pt; }
+form#editDatoForm button { width:25%; position:relative; left:37.5%; }
 div#editDato h1 { color:#16a085; }
