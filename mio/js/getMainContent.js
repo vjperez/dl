@@ -60,12 +60,11 @@ jQuery(document).ready(
 				}
 			});
 		}
-		jQuery.feedback = function(elementoDonde, mensaje){
-			
+		jQuery.feedback = function(elementoDonde, mensaje){			
 			jQuery(elementoDonde).text(mensaje).slideDown(500).delay(1000).slideUp(2000);
 		}
 		
-		jQuery.areValidUserYPass = function(usertb, pass01, pass02, logOrRegister){
+		jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatElement){
 			//Esta funcion la usan login y registra
 			//para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios. 
 			//Chequear Usuario repetido requiere hacer el post, pq requiere info de database.
@@ -74,28 +73,29 @@ jQuery(document).ready(
 			pass01Check = pass01.replace(/[^a-z0-9]/gi, '');
 			pass02Check = pass02.replace(/[^a-z0-9]/gi, '');
 			if(usertb.length < 4 || pass01.length < 4 || pass02.length < 4){
-				if(logOrRegister.indexOf('ToRegister') !== -1){
-					jQuery.feedback('form#registroForm h3', 'Usuario o password es muy corto.');
-				}else if(logOrRegister.indexOf('ToLog') !== -1){
-					jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
+				if(feedbackType.indexOf('fullFeedback') !== -1){
+					jQuery.feedback(whatElement, "Usuario o contrase\u00f1a es muy corto.");
+				}else if(feedbackType.indexOf('generalFeedback') !== -1){
+					jQuery.feedback(whatElement, 'Trata otra vez.');
 				}
 				return false;
 			}else if(usertbCheck.length < usertb.length  ||  pass01Check.length < pass01.length ||  pass02Check.length < pass02.length){
-				if(logOrRegister.indexOf('ToRegister') !== -1){
-					jQuery.feedback('form#registroForm h3', 'Usa solo letras y/o numeros.');
-				}else if(logOrRegister.indexOf('ToLog') !== -1){
-					jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
+				if(feedbackType.indexOf('fullFeedback') !== -1){
+					jQuery.feedback(whatElement, 'Usa solo letras y/o numeros.');
+				}else if(feedbackType.indexOf('generalFeedback') !== -1){
+					jQuery.feedback(whatElement, 'Trata otra vez.');
 				}
 				return false;
 			}else if(pass01 !== pass02){  //same type, same value, no type conversion, case sensitive
-				if(logOrRegister.indexOf('ToRegister') !== -1){
-					jQuery.feedback('form#registroForm h3', 'Los passwords son diferentes.');
-				}else if(logOrRegister.indexOf('ToLog') !== -1){
-					jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
+				if(feedbackType.indexOf('fullFeedback') !== -1){
+					jQuery.feedback(whatElement, 'Las contrase\u00f1as son diferentes.');
+				}else if(feedbackType.indexOf('generalFeedback') !== -1){
+					jQuery.feedback(whatElement, 'Trata otra vez.');
 				}
 				return false;
+			}else{
+				return true;
 			}
-			return true;
 		}
 
 
@@ -274,15 +274,15 @@ jQuery(document).ready(
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//This code runs when get isCompleted and IF the get was requesting login.html
 					if(settingsObjeto.url === 'looks/login.html'){
-						jQuery('form').submit(function(evento){
+						jQuery('form#loginForm').submit(function(evento){
 							evento.preventDefault(); //not making a submit (POST request) from html action.
 							var user = jQuery('#usernameId').val();
 							var pass = jQuery('#passwordId').val();
-							if( jQuery.areValidUserYPass(user, pass, pass, "tryingToLog") ){ 
+							if( jQuery.areValidUserYPass(user, pass, pass, "generalFeedback", 'form#loginForm h3') ){ 
 								//Valid values son los q cumplen estas 3 cosas. 
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
 								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; 
-								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=micuenta
+								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoData
 								jQuery.post('escritos/login.php', {user:user, pass:pass} )
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo. 
@@ -295,7 +295,7 @@ jQuery(document).ready(
 										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
 									}
 									if(datosJSObj.loguea){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
+										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoData&id=' + datosJSObj.id);
 									}else{
 										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 										jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
@@ -319,16 +319,16 @@ jQuery(document).ready(
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//This code runs when get isCompleted and IF the get was requesting registro.html
 					if(settingsObjeto.url === 'looks/registro.html'){
-						jQuery('form').submit(function(evento){
+						jQuery('form#registroForm').submit(function(evento){
 							evento.preventDefault(); //not making a submit (POST request) from html action
 							var usertb = jQuery('#usernameId').val();
 							var pass01 = jQuery('#passwordId').val();
 							var pass02 = jQuery('#passwordConfirmId').val();
-							if( jQuery.areValidUserYPass(usertb, pass01, pass02, "tryingToRegister") ){ 
+							if( jQuery.areValidUserYPass(usertb, pass01, pass02, 'fullFeedback', 'form#registroForm h3') ){ 
 								//Valid values son los q cumplen estas 3 cosas. 
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
 								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; 
-								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=micuenta
+								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoData
 								jQuery.post('escritos/registra.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo. 
@@ -341,18 +341,76 @@ jQuery(document).ready(
 										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/registra.php', datosJSONStr);
 									}
 									if(datosJSObj.registrado){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=micuenta&id=' + datosJSObj.id);
+										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoData&id=' + datosJSObj.id);
 									}else{ // usuario es repetido en el database, por eso se chequea despues del post
 										jQuery.feedback('form#registroForm h3', datosJSObj.feedback);
 									}
 								})
-								.fail(  jQuery.fallas  );  //falling post
+								.fail(  jQuery.fallas  );  //failing post
 							}
 						});
 					}//if
 				});//ajax complete
 			break;
-			case 'micuenta':
+			case 'editDuenoData':
+				//remove navegation before requesting new html.  Less likely user will notice it going away.
+				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+				//get id
+				var id = jQuery.urlParam('id');
+
+				jQuery.get('looks/editDuenoData.html', function(datosDeRespuesta, estatus, xhrObjeto){
+					var mainDeDuenoData = jQuery(datosDeRespuesta).filter('#main');
+					jQuery('#containerForMain').html(mainDeDuenoData);
+				});
+				//once look is in, use jQuery to update look with profile values
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'looks/editDuenoData.html'){
+						jQuery('form#editDuenoDataForm').submit(function(evento){
+							evento.preventDefault(); //not making a submit (POST request) from html action.
+							var user = 'valorDummy';
+							var pass01 = jQuery('#passwordId').val();
+							var pass02 = jQuery('#passwordConfirmId').val();
+							if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editDuenoDataForm h3') ){ 
+								//Valid values son los q cumplen estas 3 cosas. 
+								//Estas cosas se pueden chequear antes del post y evito post sin sentido
+								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; 
+								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoData
+								jQuery.post('escritos/login.php', {user:user, pass:pass} )
+								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo. 
+									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
+									try{
+										//alert('datosJSONStr: ' + datosJSONStr);
+										datosJSObj = JSON.parse(datosJSONStr);
+										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
+									}catch(errorParseo){
+										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
+									}
+									if(datosJSObj.loguea){
+										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoData&id=' + datosJSObj.id);
+									}else{
+										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
+										jQuery.feedback('form#editDuenoDataForm h3', 'Trata otra vez.');
+									}
+								})
+								.fail(  jQuery.fallas  );//fail
+							}
+						});			
+			
+						//hide, show on click
+						var $todosLosNotHidable = jQuery('.notHidable');
+						var $todosLosHidable = jQuery('.hidable');
+						$todosLosHidable.hide();
+						$todosLosNotHidable.on('click', function(evento){
+							var $toToggle = jQuery(evento.currentTarget).siblings('.hidable');
+							$toToggle.toggle();
+						});
+					}//if
+				});//ajaxComplete				
+				
+
+			break;			
+			case 'editMicroEmpreData':
 				//this code is very similar to profile case code - should make functions to simplify
 
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
@@ -364,13 +422,13 @@ jQuery(document).ready(
 				jQuery.getJSON('escritos/getMicroEmpreData.php', {id:id} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//Once the data is in, get mi cuenta look
-					jQuery.get('looks/micuenta.html', function(datosDeRespuesta, estatus, xhrObjeto){
-						var mainDeMiCuenta = jQuery(datosDeRespuesta).filter('#main');
-						jQuery('#containerForMain').html(mainDeMiCuenta);
+					jQuery.get('looks/editMicroEmpreData.html', function(datosDeRespuesta, estatus, xhrObjeto){
+						var mainDeMicroEmpreData = jQuery(datosDeRespuesta).filter('#main');
+						jQuery('#containerForMain').html(mainDeMicroEmpreData);
 					});
 					//once look is in, use jQuery to update look with profile values
 					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						if(settingsObjeto.url === 'looks/micuenta.html'){
+						if(settingsObjeto.url === 'looks/editMicroEmpreData.html'){
 							//nombre y video
 							jQuery('form#editDatoForm input[name=nombre]').val(datos.nombre);
 							jQuery('form#editDatoForm input[name=videoUrl]').val(datos.videoUrl);
@@ -458,7 +516,6 @@ jQuery(document).ready(
 		}//switch
 
 	}); // ready function and statement
-
 
 
 /*
