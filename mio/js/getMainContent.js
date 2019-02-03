@@ -53,20 +53,22 @@ jQuery(document).ready(
 			});
 			jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 				if(settingsObjeto.url === 'looks/error.html'){
-					losLis = '<li>' + xhrObjetoForFAIL.responseText + '</li>';
+					losLis = '<br><hr>';
+					losLis += '<li>' + xhrObjetoForFAIL.responseText + '</li>';
 					losLis += '<li>' + estatusForFAIL + '</li>';
 					losLis += '<li>' + errorMessageSentByServer + '</li>';
+					losLis += '<br><hr>';
 					jQuery('#containerForErrors').append(losLis);
 				}
 			});
 		}
-		jQuery.feedback = function(elementoDonde, mensaje){			
+		jQuery.feedback = function(elementoDonde, mensaje){
 			jQuery(elementoDonde).text(mensaje).slideDown(500).delay(1000).slideUp(2000);
 		}
-		
+
 		jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatElement){
 			//Esta funcion la usan login y registra
-			//para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios. 
+			//para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.
 			//Chequear Usuario repetido requiere hacer el post, pq requiere info de database.
 			// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; se puede chequear antes del post
 			usertbCheck = usertb.replace(/[^a-z0-9]/gi, '');  //same as replace(/[^a-zA-Z0-9]/g, ''); JavaScript is a case-sensitive language
@@ -274,18 +276,18 @@ jQuery(document).ready(
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//This code runs when get isCompleted and IF the get was requesting login.html
 					if(settingsObjeto.url === 'looks/login.html'){
-						jQuery('form#loginForm').submit(function(evento){
+						jQuery('form#loginxxxForm').submit(function(evento){
 							evento.preventDefault(); //not making a submit (POST request) from html action.
 							var user = jQuery('#usernameId').val();
 							var pass = jQuery('#passwordId').val();
-							if( jQuery.areValidUserYPass(user, pass, pass, "generalFeedback", 'form#loginForm h3') ){ 
-								//Valid values son los q cumplen estas 3 cosas. 
+							if( jQuery.areValidUserYPass(user, pass, pass, "generalFeedback", 'form#loginForm h3') ){
+								//Valid values son los q cumplen estas 3 cosas.
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
-								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; 
+								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
 								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoDataShowEmpres
 								jQuery.post('escritos/login.php', {user:user, pass:pass} )
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo. 
+									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
 									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
 									try{
 										//alert('datosJSONStr: ' + datosJSONStr);
@@ -324,15 +326,15 @@ jQuery(document).ready(
 							var usertb = jQuery('#usernameId').val();
 							var pass01 = jQuery('#passwordId').val();
 							var pass02 = jQuery('#passwordConfirmId').val();
-							if( jQuery.areValidUserYPass(usertb, pass01, pass02, 'fullFeedback', 'form#registroForm h3') ){ 
-								//Valid values son los q cumplen estas 3 cosas. 
+							if( jQuery.areValidUserYPass(usertb, pass01, pass02, 'fullFeedback', 'form#registroForm h3') ){
+								//Valid values son los q cumplen estas 3 cosas.
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
-								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; 
+								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
 								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoDataShowEmpres
 								jQuery.post('escritos/registra.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo. 
-									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas									
+									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
+									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
 									try{
 										//alert('datosJSONStr: ' + datosJSONStr);
 										datosJSObj = JSON.parse(datosJSONStr);
@@ -365,19 +367,19 @@ jQuery(document).ready(
 				//once look is in, use jQuery to update look with profile values
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/editDuenoDataShowEmpres.html'){
-						jQuery('form#editDuenoDataForm').submit(function(evento){
+						jQuery('form#editDuenozzzDataForm').submit(function(evento){
 							evento.preventDefault(); //not making a submit (POST request) from html action.
 							var user = 'valorDummy';
 							var pass01 = jQuery('#passwordId').val();
 							var pass02 = jQuery('#passwordConfirmId').val();
-							if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editDuenoDataForm h3') ){ 
-								//Valid values son los q cumplen estas 3 cosas. 
+							if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editDuenoDataForm h3') ){
+								//Valid values son los q cumplen estas 3 cosas.
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
-								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; 
+								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
 								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoDataShowEmpres
 								jQuery.post('escritos/logxxxxin.php', {user:user, pass01:pass01} )
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo. 
+									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
 									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
 									try{
 										//alert('datosJSONStr: ' + datosJSONStr);
@@ -395,8 +397,8 @@ jQuery(document).ready(
 								})
 								.fail(  jQuery.fallas  );//fail
 							}
-						});			
-			
+						});
+
 						//hide, show on click
 						var $todosLosNotHidable = jQuery('.notHidable');
 						var $todosLosHidable = jQuery('.hidable');
@@ -406,10 +408,10 @@ jQuery(document).ready(
 							$toToggle.toggle();
 						});
 					}//if
-				});//ajaxComplete				
-				
+				});//ajaxComplete
 
-			break;			
+
+			break;
 			case 'editMicroEmpreData':
 				//this code is very similar to profile case code - should make functions to simplify
 
@@ -439,7 +441,7 @@ jQuery(document).ready(
 								jQuery('form#editMicroEmpreForm input[name=red3]').val(datos.quienSocialHandle.igrm);
 								jQuery('form#editMicroEmpreForm input[name=red4]').val(datos.quienSocialHandle.phn);
 							}
-							
+
 							//falta each para array de fotos
 
 							//cuando
