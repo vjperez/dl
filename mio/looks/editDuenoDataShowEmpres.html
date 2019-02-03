@@ -10,19 +10,24 @@
     <div id="main" class="contenido margen">
 
 	
-	<div id="empres">    
-	  <h2 class="notHidable">Empres</h2>
-	  <table class="hidable">
-		<tr><td class="dia">Lunes</td><td class="hora lun">nunca</td></tr>
-		<tr><td class="dia">Martes</td><td class="hora mar">nunca</td></tr>
-	  </table>        
-	</div>		
+		
 	
 	
     <!-- ancho-sensi aplica siempre; para cell, aqui no es re escrito, so por default aplica ancho-sensi (1de1 o sea 100%).
 	ipad 3 de 4 lo re escribe para ipad y al no re escribir para desk, sigue aplicando en desk las dimensiones q se dieron para ipad -->
-    <div id="editDuenoForm">		
-		<form id="editDuenoForm" class="ancho-sensi-ipad-2de3 ver-borde" action="XXXeditcontrasena.phpXXX" method="post">		
+    <div id="editDuenoDataShowEmpres">	
+
+		<div id="empresas" class="ancho-sensi-ipad-2de3 ver-borde"> 
+			<fieldset class="primario">
+			  <label class="notHidable">ktMicro Empresas:</label>
+			  <table class="hidable">
+				<tr><td class="dia">Lunes</td><td class="hora lun">nunca</td></tr>
+				<tr><td class="dia">Martes</td><td class="hora mar">nunca</td></tr>
+			  </table>        
+			</fieldset>  
+		</div> 
+	
+		<form id="editDuenoDataForm" class="ancho-sensi-ipad-2de3 ver-borde" action="XXXeditcontrasena.phpXXX" method="post">		
 			<fieldset class="primario">
 				<label class="notHidable">Contrase&ntilde;a</label> 
 				<label class="explica">Cambia tu contrase&ntilde;a</label>	
@@ -32,11 +37,12 @@
 					<p><label for="passwordConfirmId">Contrase&ntilde;a</label>
 					   <input id="passwordConfirmId" type="password" name="passwordConfirm" maxlength="50" required=true placeholder="confirma"></p>			
 					<p><button type="submit"><img src="imagenes/lapiz.png" alt="Cambia"></button></p>
-				</fieldset> 
+				</fieldset>
+				<h3></h3>
 			</fieldset>	  
-			<h3></h3>
+			
 		</form>
-	</div><!-- editDuenoForm -->       
+	</div><!-- editDuenoDataForm -->       
 	
 	
 	</div>

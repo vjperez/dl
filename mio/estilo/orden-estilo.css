@@ -238,22 +238,24 @@ div#editMicroEmpre h1 { color:#16a085; }
 
 
 /* orden : editDuenoData */
-form#editDuenoForm { margin-left:auto; margin-right:auto; }
-form#editDuenoForm input[type='password']{ width:67%; }
+form#editDuenoDataForm, div#empresas { margin-left:auto; margin-right:auto; }
+form#editDuenoDataForm input[type='password']{ width:67%; }
+form#editDuenoDataForm h3 { text-align:center; }
 
 /*estilo : editDuenoData*/
-form#editDuenoForm label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
-form#editDuenoForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
-form#editDuenoForm input:focus { background-color:#dadada; }
-form#editDuenoForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; } 
-form#editDuenoForm button:hover, form#editDuenoForm button:focus { background-color:#7fb3d5; }
-form#editDuenoForm label.explica { color:#16a085; font-size:0.85em; letter-spacing:0.2em; }
+form#editDuenoDataForm label, div#empresas label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
+form#editDuenoDataForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
+form#editDuenoDataForm input:focus { background-color:#dadada; }
+form#editDuenoDataForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; } 
+form#editDuenoDataForm button:hover, form#editDuenoDataForm button:focus { background-color:#7fb3d5; }
+form#editDuenoDataForm label.explica { color:#16a085; font-size:0.85em; letter-spacing:0.2em; }
 
-form#editDuenoForm fieldset.primario { margin:0pt; padding:0pt; padding-bottom:50pt; }
-form#editDuenoForm fieldset.secundario { margin-top:0pt; }
-form#editDuenoForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
-form#editDuenoForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#16a085; }
+form#editDuenoDataForm fieldset.primario, div#empresas fieldset.primario { margin:0pt; padding:0pt; padding-bottom:50pt; }
+form#editDuenoDataForm fieldset.secundario { margin-top:0pt; }
+form#editDuenoDataForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
+form#editDuenoDataForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#16a085; }
 
-form#editDuenoForm p { margin-top:2pt; margin-bottom:30pt; }
-form#editDuenoForm button { display:block; margixxxn-bottom:30pt; }
-form#editDuenoForm button { width:25%; position:relative; left:37.5%; }
+form#editDuenoDataForm p { margin-top:2pt; margin-bottom:30pt; }
+form#editDuenoDataForm button { display:block; margixxxn-bottom:30pt; }
+form#editDuenoDataForm button { width:25%; position:relative; left:37.5%; }
+form#editDuenoDataForm h3 { font-family:serif, Times, times; color:#16a085; }

@@ -282,7 +282,7 @@ jQuery(document).ready(
 								//Valid values son los q cumplen estas 3 cosas. 
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
 								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; 
-								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoData
+								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoDataShowEmpres
 								jQuery.post('escritos/login.php', {user:user, pass:pass} )
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo. 
@@ -295,7 +295,7 @@ jQuery(document).ready(
 										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
 									}
 									if(datosJSObj.loguea){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoData&id=' + datosJSObj.id);
+										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&id=' + datosJSObj.id);
 									}else{
 										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 										jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
@@ -328,7 +328,7 @@ jQuery(document).ready(
 								//Valid values son los q cumplen estas 3 cosas. 
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
 								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; 
-								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoData
+								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoDataShowEmpres
 								jQuery.post('escritos/registra.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo. 
@@ -341,7 +341,7 @@ jQuery(document).ready(
 										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/registra.php', datosJSONStr);
 									}
 									if(datosJSObj.registrado){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoData&id=' + datosJSObj.id);
+										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&id=' + datosJSObj.id);
 									}else{ // usuario es repetido en el database, por eso se chequea despues del post
 										jQuery.feedback('form#registroForm h3', datosJSObj.feedback);
 									}
@@ -352,19 +352,19 @@ jQuery(document).ready(
 					}//if
 				});//ajax complete
 			break;
-			case 'editDuenoData':
+			case 'editDuenoDataShowEmpres':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
 				//get id
 				var id = jQuery.urlParam('id');
 
-				jQuery.get('looks/editDuenoData.html', function(datosDeRespuesta, estatus, xhrObjeto){
+				jQuery.get('looks/editDuenoDataShowEmpres.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeDuenoData = jQuery(datosDeRespuesta).filter('#main');
 					jQuery('#containerForMain').html(mainDeDuenoData);
 				});
 				//once look is in, use jQuery to update look with profile values
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/editDuenoData.html'){
+					if(settingsObjeto.url === 'looks/editDuenoDataShowEmpres.html'){
 						jQuery('form#editDuenoDataForm').submit(function(evento){
 							evento.preventDefault(); //not making a submit (POST request) from html action.
 							var user = 'valorDummy';
@@ -374,8 +374,8 @@ jQuery(document).ready(
 								//Valid values son los q cumplen estas 3 cosas. 
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
 								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal; 
-								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoData
-								jQuery.post('escritos/login.php', {user:user, pass:pass} )
+								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoDataShowEmpres
+								jQuery.post('escritos/logxxxxin.php', {user:user, pass01:pass01} )
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo. 
 									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
@@ -387,7 +387,7 @@ jQuery(document).ready(
 										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
 									}
 									if(datosJSObj.loguea){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoData&id=' + datosJSObj.id);
+										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&id=' + datosJSObj.id);
 									}else{
 										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 										jQuery.feedback('form#editDuenoDataForm h3', 'Trata otra vez.');
