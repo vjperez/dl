@@ -276,7 +276,7 @@ jQuery(document).ready(
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//This code runs when get isCompleted and IF the get was requesting login.html
 					if(settingsObjeto.url === 'looks/login.html'){
-						jQuery('form#loginxxxForm').submit(function(evento){
+						jQuery('form#loginForm').submit(function(evento){
 							evento.preventDefault(); //not making a submit (POST request) from html action.
 							var user = jQuery('#usernameId').val();
 							var pass = jQuery('#passwordId').val();
@@ -297,7 +297,7 @@ jQuery(document).ready(
 										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
 									}
 									if(datosJSObj.loguea){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&id=' + datosJSObj.id);
+										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&id=' + datosJSObj.duenoId);
 									}else{
 										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 										jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
@@ -343,7 +343,7 @@ jQuery(document).ready(
 										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/registra.php', datosJSONStr);
 									}
 									if(datosJSObj.registrado){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&id=' + datosJSObj.id);
+										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&id=' + datosJSObj.duenoId);
 									}else{ // usuario es repetido en el database, por eso se chequea despues del post
 										jQuery.feedback('form#registroForm h3', datosJSObj.feedback);
 									}
@@ -358,7 +358,7 @@ jQuery(document).ready(
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
 				//get id
-				var id = jQuery.urlParam('id');
+				var duenoId = jQuery.urlParam('id');
 
 				jQuery.get('looks/editDuenoDataShowEmpres.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeDuenoData = jQuery(datosDeRespuesta).filter('#main');
@@ -367,7 +367,7 @@ jQuery(document).ready(
 				//once look is in, use jQuery to update look with profile values
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/editDuenoDataShowEmpres.html'){
-						jQuery('form#editDuenozzzDataForm').submit(function(evento){
+						jQuery('form#editDuenoDataForm').submit(function(evento){
 							evento.preventDefault(); //not making a submit (POST request) from html action.
 							var user = 'valorDummy';
 							var pass01 = jQuery('#passwordId').val();
@@ -377,7 +377,7 @@ jQuery(document).ready(
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
 								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
 								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoDataShowEmpres
-								jQuery.post('escritos/logxxxxin.php', {user:user, pass01:pass01} )
+								jQuery.post('escritos/editDuenoContrasena.php', {duenoId:duenoId, pass01:pass01} )
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
 									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
@@ -388,11 +388,12 @@ jQuery(document).ready(
 									}catch(errorParseo){
 										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
 									}
-									if(datosJSObj.loguea){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&id=' + datosJSObj.id);
+									if(datosJSObj.cambiado){
+										//jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&id=' + datosJSObj.id);
+										jQuery.feedback('form#editDuenoDataForm h3', 'Tu contrasena fue cambiada.');
 									}else{
 										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
-										jQuery.feedback('form#editDuenoDataForm h3', 'Trata otra vez.');
+										jQuery.feedback('form#editDuenoDataForm h3', 'Trata otra vez. No cambiamos NADA !');
 									}
 								})
 								.fail(  jQuery.fallas  );//fail

@@ -1,25 +1,24 @@
 <?php
 //saca los valores de POST
-$user = $_POST['user'];
-$pass = $_POST['pass'];
+$dueno_id = $_POST['duenoId'];
+$pass01 = $_POST['pass01'];
 
 //conecta al db
 require_once 'conecta/conecta.php';
 
 if($cnx){
-	require_once 'login/loginQuery.php';
+	require_once 'editDuenoContrasena/editDuenoContrasenaQuery.php';
 	$recurso = pg_query($cnx, $query);
 	if($recurso){		 
-		if($fila = pg_fetch_row($recurso)){
-			$dueno_id = $fila[0];
-			$respuesta = json_decode('{"loguea":true,  "duenoId":' . $dueno_id . '}');
-		}else{
-			$respuesta = json_decode('{"loguea":false}');
+		if(pg_affected_rows($recurso) == 1){
+			$respuesta = json_decode('{"cambiado":true}');
+		}elseif(pg_affected_rows($recurso) == 0){
+			$respuesta = json_decode('{"cambiado":false}');
 		}
 	//Send data from server in json format
 	echo json_encode($respuesta);		
 	}else{
-		throw new Exception('Mal query.  Sin RECURSO, para query loginQuery');
+		throw new Exception('Mal query.  Sin RECURSO, para editDuenoContrasenaQuery');
 		//echo "<li>Error, pg_query, no produjo un recurso para result... en escritos\login</li>";
 	}
 	pg_close($cnx); //maybe not needed but doesn't hurt	
