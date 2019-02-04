@@ -20,31 +20,32 @@ if(strlen($queLiteralStr) >  0 && strlen($dondeLiteralStr) >  0) $buscaMode = 'b
 //generar array con pares fotoSrc => id usando el database
 //conecta al db
 require_once 'conecta/conecta.php';
-if($cnx){
-	require_once 'opciones/opcionesQuery.php';
-	$result = array();
-	for($queryIndex = 1; $queryIndex <= 2; $queryIndex++){
-		//$queries is defined in opcionesQuery.php, required above
-		$query = $queries[$queryIndex];
-		$recurso = pg_query($cnx, $query);
-		if($recurso){
-			$parIndex = 0;  // para ordenar los pares $fila[1] , $random_micro_empre_foto.  $fila 1 viene de micro_empre_id y $random_micro_empre_foto es una de las fotos de quien_foto_src ($fila[0])
-			while($fila = pg_fetch_row($recurso)){
-				$toLetter = array(1=>"a", 2=>"b", 3=>"c", 4=>"d", 5=>"e");
-				//para lo unico q uso fila 0 o sea quien_foto_src es para saber cuantas fotos son, y sacar un random number entre 1 y ese numero
-				//So, en el db podria guardar simplemente cuantas fotos tiene cada micro_empre
-				$random_micro_empre_foto = $fila[1] .  $toLetter[rand(1, count(explode(',', $fila[0])))] . '.jpg';
-				$result["$buscaMode"][$queryIndex][$parIndex][$fila[1]] = $random_micro_empre_foto;
-				$parIndex++;
-			}
-		}else{
-			throw new Exception('Mal query.  Sin RECURSO.  Busca Mode: ' .  $buscaMode .  '.  Indice de query: ' .  $queryIndex .  '.');
-			//echo "<li>Error, pg_query con indice de query $queryIndex, no produjo un recurso para result...</li>";
+//i am sure i have a connection, because an exception was NOT thrown at conecta
+
+require_once 'opciones/opcionesQuery.php';
+$result = array();
+for($queryIndex = 1; $queryIndex <= 2; $queryIndex++){
+	//$queries is defined in opcionesQuery.php, required above
+	$query = $queries[$queryIndex];
+	$recurso = pg_query($cnx, $query);
+	if($recurso){
+		$parIndex = 0;  // para ordenar los pares $fila[1] , $random_micro_empre_foto.  $fila 1 viene de micro_empre_id y $random_micro_empre_foto es una de las fotos de quien_foto_src ($fila[0])
+		while($fila = pg_fetch_row($recurso)){
+			$toLetter = array(1=>"a", 2=>"b", 3=>"c", 4=>"d", 5=>"e");
+			//para lo unico q uso fila 0 o sea quien_foto_src es para saber cuantas fotos son, y sacar un random number entre 1 y ese numero
+			//So, en el db podria guardar simplemente cuantas fotos tiene cada micro_empre
+			$random_micro_empre_foto = $fila[1] .  $toLetter[rand(1, count(explode(',', $fila[0])))] . '.jpg';
+			$result["$buscaMode"][$queryIndex][$parIndex][$fila[1]] = $random_micro_empre_foto;
+			$parIndex++;
 		}
+	}else{
+		throw new Exception('Mal query.  Sin RECURSO.  Busca Mode: ' .  $buscaMode .  '.  Indice de query: ' .  $queryIndex .  '.');
+		//echo "<li>Error, pg_query con indice de query $queryIndex, no produjo un recurso para result...</li>";
 	}
-	echo json_encode($result);
-	pg_close($cnx); //maybe not needed but doesn't hurt
 }
+echo json_encode($result);
+pg_close($cnx); //maybe not needed but doesn't hurt
+
 
 
 /*

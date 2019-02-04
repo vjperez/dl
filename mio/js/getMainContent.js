@@ -410,7 +410,10 @@ jQuery(document).ready(
 						});
 
 						//show empresas ; editDuenoDataShowEmpres task 3
-
+						jQuery.getJSON('escritos/getMicroEmpreIdsForDueno.php', {duenoId:duenoId} )
+						.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+						})
+						.fail(  jQuery.fallas  );//fail
 
 					}//if
 				});//ajaxComplete
