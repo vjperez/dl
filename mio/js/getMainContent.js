@@ -162,9 +162,9 @@ jQuery(document).ready(
 								mainDeOpciones += '<h3>' + queryIndex + ': ' + donde + '</h3>';
 							}
 							jQuery.each(trios, function(index, pares){
-								jQuery.each(pares, function(id, fotoSrc){
-									mainDeOpciones += '<a href="portada.html?look=profile&id=' + id + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" src="';
-									mainDeOpciones += 'imagenes/profile/' + fotoSrc + '"></a>';
+								jQuery.each(pares, function(meId, fotoSrc){
+									mainDeOpciones += '<a href="portada.html?look=profile&meId=' + meId + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" ';
+									mainDeOpciones += ' src="imagenes/profile/' + fotoSrc + '"></a>';
 								});
 							}); // each in trios
 							mainDeOpciones += '</div>'; // <div class="ver-borde opcionesfotos">
@@ -177,10 +177,10 @@ jQuery(document).ready(
 				.fail(	jQuery.fallas  );
 			break;
 			case 'profile':
-				//get id then
-				var id = jQuery.urlParam('id');
-				//request get JSON data for that id
-				jQuery.getJSON('escritos/getMicroEmpreData.php', {id:id} )
+				//get meId then
+				var meId = jQuery.urlParam('meId');
+				//request get JSON data for that meId
+				jQuery.getJSON('escritos/getMicroEmpreData.php', {meId:meId} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					//Once the data is in, get profile look
@@ -297,7 +297,7 @@ jQuery(document).ready(
 										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
 									}
 									if(datosJSObj.loguea){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&id=' + datosJSObj.duenoId);
+										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&duenoId=' + datosJSObj.duenoId);
 									}else{
 										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 										jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
@@ -338,12 +338,12 @@ jQuery(document).ready(
 									try{
 										//alert('datosJSONStr: ' + datosJSONStr);
 										datosJSObj = JSON.parse(datosJSONStr);
-										//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.id: ' + datosJSObj.id);
+										//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
 									}catch(errorParseo){
 										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/registra.php', datosJSONStr);
 									}
 									if(datosJSObj.registrado){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&id=' + datosJSObj.duenoId);
+										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&duenoId=' + datosJSObj.duenoId);
 									}else{ // usuario es repetido en el database, por eso se chequea despues del post
 										jQuery.feedback('form#registroForm h3', datosJSObj.feedback);
 									}
@@ -357,8 +357,8 @@ jQuery(document).ready(
 			case 'editDuenoDataShowEmpres':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
-				//get id
-				var duenoId = jQuery.urlParam('id');
+				//get duenoId
+				var duenoId = jQuery.urlParam('duenoId');
 
 				jQuery.get('looks/editDuenoDataShowEmpres.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeDuenoData = jQuery(datosDeRespuesta).filter('#main');
@@ -367,6 +367,8 @@ jQuery(document).ready(
 				//once look is in, use jQuery to update look with profile values
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/editDuenoDataShowEmpres.html'){
+
+						//do this when form submitted ; editDuenoDataShowEmpres task 1
 						jQuery('form#editDuenoDataForm').submit(function(evento){
 							evento.preventDefault(); //not making a submit (POST request) from html action.
 							var user = 'valorDummy';
@@ -389,10 +391,8 @@ jQuery(document).ready(
 										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
 									}
 									if(datosJSObj.cambiado){
-										//jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&id=' + datosJSObj.id);
 										jQuery.feedback('form#editDuenoDataForm h3', 'Tu contrasena fue cambiada.');
 									}else{
-										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 										jQuery.feedback('form#editDuenoDataForm h3', 'Trata otra vez. No cambiamos NADA !');
 									}
 								})
@@ -400,7 +400,7 @@ jQuery(document).ready(
 							}
 						});
 
-						//hide, show on click
+						//hide, show on click ; editDuenoDataShowEmpres task 2
 						var $todosLosNotHidable = jQuery('.notHidable');
 						var $todosLosHidable = jQuery('.hidable');
 						$todosLosHidable.hide();
@@ -408,6 +408,10 @@ jQuery(document).ready(
 							var $toToggle = jQuery(evento.currentTarget).siblings('.hidable');
 							$toToggle.toggle();
 						});
+
+						//show empresas ; editDuenoDataShowEmpres task 3
+
+
 					}//if
 				});//ajaxComplete
 
@@ -419,10 +423,10 @@ jQuery(document).ready(
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
 
-				//get id
-				var id = jQuery.urlParam('id');
+				//get meId
+				var meId = jQuery.urlParam('meId');
 				//get profile data
-				jQuery.getJSON('escritos/getMicroEmpreData.php', {id:id} )
+				jQuery.getJSON('escritos/getMicroEmpreData.php', {meId:meId} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//Once the data is in, get mi cuenta look
 					jQuery.get('looks/editMicroEmpreData.html', function(datosDeRespuesta, estatus, xhrObjeto){

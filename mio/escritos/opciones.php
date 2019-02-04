@@ -28,7 +28,7 @@ if($cnx){
 		$query = $queries[$queryIndex];
 		$recurso = pg_query($cnx, $query);
 		if($recurso){
-			$parIndex = 0;  // para ordenar los pares $fila[1] , $random_micro_empre_foto.  $fila1 viene de micro_empre_id y $random_micro_empre_foto es una de las fotos de quien_foto_src ($fila[0])
+			$parIndex = 0;  // para ordenar los pares $fila[1] , $random_micro_empre_foto.  $fila 1 viene de micro_empre_id y $random_micro_empre_foto es una de las fotos de quien_foto_src ($fila[0])
 			while($fila = pg_fetch_row($recurso)){
 				$toLetter = array(1=>"a", 2=>"b", 3=>"c", 4=>"d", 5=>"e");
 				//para lo unico q uso fila 0 o sea quien_foto_src es para saber cuantas fotos son, y sacar un random number entre 1 y ese numero
