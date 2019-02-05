@@ -412,6 +412,25 @@ jQuery(document).ready(
 						//show empresas ; editDuenoDataShowEmpres task 3
 						jQuery.getJSON('escritos/getMicroEmpreIdsForDueno.php', {duenoId:duenoId} )
 						.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+
+
+							var labelAndTable = '<label class="notHidable">Micro Empresas:</label>';
+							labelAndTable   +=  '<table class="hidaxxxble">';
+
+
+
+									jQuery.each(datos, function(index, meId, nombre){
+
+											 labelAndTable += '<tr><td><a href="portada.html?look=editMicroEmpreData&meId=' + meId + '">' + nombre + '</a></td></tr>';
+									
+									});
+
+
+							labelAndTable += '</table>';
+							jQuery('#labelAndTableContainer').html(labelAndTable);
+
+
+
 						})
 						.fail(  jQuery.fallas  );//fail
 
