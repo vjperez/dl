@@ -8,7 +8,7 @@ require_once 'conecta/conecta.php';
 require_once 'getMicroEmpreIdsForDueno/getMicroEmpreIdsForDuenoQuery.php';
 $empresa =  array();
 $empresas = array();
-$recurso = pg_query($cnx, $getMicroEmpresQuery);
+$recurso = pg_query($cnx, $getMicroEmpreIdsQuery);
 if($recurso){
 	$index = 0;
 	while($empresa = pg_fetch_row($recurso) ){
