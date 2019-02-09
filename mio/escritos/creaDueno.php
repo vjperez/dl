@@ -7,7 +7,7 @@ $pass01 = $_POST['pass01'];
 require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
-require_once 'registra/registraQueries.php';
+require_once 'creaDueno/creaDuenoQueries.php';
 $recurso = pg_query($cnx, $queryCheckUserName);
 if($recurso){
 	$isNewName;
@@ -23,7 +23,7 @@ if($recurso){
 			$respuesta = json_decode('{"registrado":true, "feedback":"Ya estas registrado.  Directo a mi cuenta, no uso esto.", "duenoId":'  .  $dueno_id  . '}');
 		}else{
 			pg_close($cnx); //maybe not needed but doesn't hurt
-			throw new Exception('Mal query.  Sin RECURSO, para queryRegisterUserReturningId.  (username es nuevo, pero hubo error.)');				
+			throw new Exception('Mal query.  Sin RECURSO, para queryRegisterUserReturningId.  (username es nuevo, pero hubo error.)');
 		}
 	}else{
 		$respuesta = json_decode('{"registrado":false, "feedback":"Usuario no disponible."}');

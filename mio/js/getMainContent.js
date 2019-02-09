@@ -309,29 +309,29 @@ jQuery(document).ready(
 					}//if
 				});//ajax complete
 			break;
-			case 'registro':
+			case 'creaDueno':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
-				//get registro look
-				jQuery.get('looks/registro.html', function(datosDeRespuesta, estatus, xhrObjeto){
+				//get creaDueno look
+				jQuery.get('looks/creaDueno.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeRegistro = jQuery(datosDeRespuesta).filter('#main');
 					jQuery('#containerForMain').html(mainDeRegistro);
 				});
 				//once look is in, use jQuery on loaded elements to get values
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					//This code runs when get isCompleted and IF the get was requesting registro.html
-					if(settingsObjeto.url === 'looks/registro.html'){
-						jQuery('form#registroForm').submit(function(evento){
+					//This code runs when get isCompleted and IF the get was requesting creaDueno.html
+					if(settingsObjeto.url === 'looks/creaDueno.html'){
+						jQuery('form#creaDuenoForm').submit(function(evento){
 							evento.preventDefault(); //not making a submit (POST request) from html action
 							var usertb = jQuery('#usernameId').val();
 							var pass01 = jQuery('#passwordId').val();
 							var pass02 = jQuery('#passwordConfirmId').val();
-							if( jQuery.areValidUserYPass(usertb, pass01, pass02, 'fullFeedback', 'form#registroForm h3') ){
+							if( jQuery.areValidUserYPass(usertb, pass01, pass02, 'fullFeedback', 'form#creaDuenoForm h3') ){
 								//Valid values son los q cumplen estas 3 cosas.
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
 								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
 								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoDataShowEmpres
-								jQuery.post('escritos/registra.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
+								jQuery.post('escritos/creaDueno.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
 									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
@@ -340,12 +340,12 @@ jQuery(document).ready(
 										datosJSObj = JSON.parse(datosJSONStr);
 										//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
 									}catch(errorParseo){
-										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/registra.php', datosJSONStr);
+										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/creaUsuario.php', datosJSONStr);
 									}
 									if(datosJSObj.registrado){
 										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&duenoId=' + datosJSObj.duenoId);
 									}else{ // usuario es repetido en el database, por eso se chequea despues del post
-										jQuery.feedback('form#registroForm h3', datosJSObj.feedback);
+										jQuery.feedback('form#creaDuenoForm h3', datosJSObj.feedback);
 									}
 								})
 								.fail(  jQuery.fallas  );  //failing post
