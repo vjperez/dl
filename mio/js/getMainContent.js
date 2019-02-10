@@ -7,7 +7,7 @@ jQuery(document).ready(
 			else return results[1];
 			//return results[1] || 0;
 		}
-		jQuery.cleanStr = function(str){
+		jQuery.cleanBuscaStr = function(str){
 			/*
 			newStr01 = str.replace(/[^a-zA-Z 0-9]+/g, '');
 			newStr02 = str.replace(/[^a-z0-9]/gi, ' ');
@@ -123,9 +123,9 @@ jQuery(document).ready(
 						jQuery('form').submit(function(evento){
 							evento.preventDefault(); //not making a submit (GET request) here. Lets do it at look=opciones
 							var que = jQuery('#queId').val();
-							que = jQuery.cleanStr(que); // clean function returns an array with 'words' to be searched
+							que = jQuery.cleanBuscaStr(que); // clean function returns an array with 'words' to be searched
 							var donde = jQuery('#dondeId').val();
-							donde = jQuery.cleanStr(donde); // clean function returns an array with 'words' to be searched
+							donde = jQuery.cleanBuscaStr(donde); // clean function returns an array with 'words' to be searched
 							//alert(que + ' ' + que.length + '\n' + donde + ' ' + donde.length);
 							if(que.length > 0 || donde.length > 0){//'que' y 'donde' are arrays of words, so on each, i'm looking for at least 1 word
 								jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + que + '&donde=' + donde);
@@ -436,74 +436,125 @@ jQuery(document).ready(
 				jQuery.get('looks/editMicroEmpre.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeMicroEmpreData = jQuery(datosDeRespuesta).filter('#main');
 					jQuery('#containerForMain').html(mainDeMicroEmpreData);
-				});		
+				});
+
 
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/editMicroEmpre.html'){											
-						//hide, show on click ; 
+					if(settingsObjeto.url === 'looks/editMicroEmpre.html'){
+						//hide, show on click ;
 						var $todosLosNotHidable = jQuery('.notHidable');
 						var $todosLosHidable = jQuery('.hidable');
 						$todosLosHidable.hide();
 						$todosLosNotHidable.on('click', function(evento){
 							var $toToggle = jQuery(evento.currentTarget).siblings('.hidable');
 							$toToggle.toggle();
-						});	
+						});
+
+						//get meId
+						var meId = jQuery.urlParam('meId');
+						if(meId > 0){ //in the db showEmpresasGetIds, zero is used for crear empresa
+							//get profile data
+							jQuery.getJSON('escritos/getMicroEmpreData.php', {meId:meId} )
+							.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+										//nombre y video
+										jQuery('form#editMicroEmpreForm input[name=nombre]').val(datos.nombre);
+										jQuery('form#editMicroEmpreForm input[name=videoUrl]').val(datos.videoUrl);
+										//quien
+										jQuery('form#editMicroEmpreForm input[name=red1]').val(datos.quienSocialHandle.fbk);
+										jQuery('form#editMicroEmpreForm input[name=red2]').val(datos.quienSocialHandle.tt);
+										jQuery('form#editMicroEmpreForm input[name=red3]').val(datos.quienSocialHandle.igrm);
+										jQuery('form#editMicroEmpreForm input[name=red4]').val(datos.quienSocialHandle.phn);
+
+										//falta each para array de fotos
+
+										//cuando
+										jQuery('form#editMicroEmpreForm input[name=dia1]').val(datos.cuando.lun);
+										jQuery('form#editMicroEmpreForm input[name=dia2]').val(datos.cuando.mar);
+										jQuery('form#editMicroEmpreForm input[name=dia3]').val(datos.cuando.mier);
+										jQuery('form#editMicroEmpreForm input[name=dia4]').val(datos.cuando.jue);
+										jQuery('form#editMicroEmpreForm input[name=dia5]').val(datos.cuando.vier);
+										jQuery('form#editMicroEmpreForm input[name=dia6]').val(datos.cuando.sab);
+										jQuery('form#editMicroEmpreForm input[name=dia7]').val(datos.cuando.dom);
+
+										//following code works when there are 10 or less 'que' coming from getJSON.
+										//the html is prepared for a max of 10 'que'
+										jQuery('form#editMicroEmpreForm input[name^=que]').each(function(index){
+											if(index < datos.que.length) { jQuery(this).val(datos.que[index]); }
+											else {  } //ya estan vacios en html por default
+										});
+
+										//following code works when there are 5 or less 'donde' coming from getJSON.
+										//the html is prepared for a max of 5 'donde'
+										jQuery('form#editMicroEmpreForm input[name^=donde]').each(function(index){
+											if(index < datos.donde.length) { jQuery(this).val(datos.donde[index]); }
+											else {  } //ya estan vacios en html por default
+										});
+
+										jQuery('form#editMicroEmpreForm input[value=si]').prop('checked', datos.atucasa);
+										jQuery('form#editMicroEmpreForm input[value=no]').prop('checked', !datos.atucasa);
+
+							})
+							.fail(  jQuery.fallas  );
+						}
+
+
 					}//if
 				});//ajaxComplete
-				
-				//get meId
-				var meId = jQuery.urlParam('meId');
-				if(meId > 0){ //in the db showEmpresasGetIds, zero is used for crear empresa
-					//get profile data
-					jQuery.getJSON('escritos/getMicroEmpreData.php', {meId:meId} )
-					.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-						//Once the data is in, get mi cuenta look
-						//use jQuery to update look with profile values
-						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-							if(settingsObjeto.url === 'looks/editMicroEmpre.html'){
-														
-								//nombre y video
-								jQuery('form#editMicroEmpreForm input[name=nombre]').val(datos.nombre);
-								jQuery('form#editMicroEmpreForm input[name=videoUrl]').val(datos.videoUrl);
-								//quien
-								jQuery('form#editMicroEmpreForm input[name=red1]').val(datos.quienSocialHandle.fbk);
-								jQuery('form#editMicroEmpreForm input[name=red2]').val(datos.quienSocialHandle.tt);
-								jQuery('form#editMicroEmpreForm input[name=red3]').val(datos.quienSocialHandle.igrm);
-								jQuery('form#editMicroEmpreForm input[name=red4]').val(datos.quienSocialHandle.phn);
 
-								//falta each para array de fotos
+				//task 2 ; if this micro empre existed already, get its data
 
-								//cuando	
-								jQuery('form#editMicroEmpreForm input[name=dia1]').val(datos.cuando.lun);
-								jQuery('form#editMicroEmpreForm input[name=dia2]').val(datos.cuando.mar);
-								jQuery('form#editMicroEmpreForm input[name=dia3]').val(datos.cuando.mier);
-								jQuery('form#editMicroEmpreForm input[name=dia4]').val(datos.cuando.jue);
-								jQuery('form#editMicroEmpreForm input[name=dia5]').val(datos.cuando.vier);
-								jQuery('form#editMicroEmpreForm input[name=dia6]').val(datos.cuando.sab);
-								jQuery('form#editMicroEmpreForm input[name=dia7]').val(datos.cuando.dom);
-								
-								//following code works when there are 10 or less 'que' coming from getJSON.
-								//the html is prepared for a max of 10 'que'								
-								jQuery('form#editMicroEmpreForm input[name^=que]').each(function(index){
-									if(index < datos.que.length) { jQuery(this).val(datos.que[index]); }
-									else {  } //ya estan vacios en html por default
-								});
-								
-								//following code works when there are 5 or less 'donde' coming from getJSON.
-								//the html is prepared for a max of 5 'donde'
-								jQuery('form#editMicroEmpreForm input[name^=donde]').each(function(index){
-									if(index < datos.donde.length) { jQuery(this).val(datos.donde[index]); }
-									else {  } //ya estan vacios en html por default
-								});
-								
-								jQuery('form#editMicroEmpreForm input[value=si]').prop('checked', datos.atucasa);
-								jQuery('form#editMicroEmpreForm input[value=no]').prop('checked', !datos.atucasa);					
-							}//if
-						});//ajaxComplete
-					})
-					.fail(  jQuery.fallas  );	
-				}					
-			break;			
+				// task 3 ; handle for submission
+/*
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'looks/editMicroEmpre.html'){
+
+
+
+
+
+
+
+						jQuery('form#editMicroEmpreForm').submit(function(evento){
+							evento.preventDefault(); //not making a submit (POST request) from html action
+							var usertb = jQuery('#usernameId').val();
+							var pass01 = jQuery('#passwordId').val();
+							var pass02 = jQuery('#passwordConfirmId').val();
+							if( jQuery.areValidUserYPass(usertb, pass01, pass02, 'fullFeedback', 'form#creaDuenoForm h3') ){
+								//Valid values son los q cumplen estas 3 cosas.
+								//Estas cosas se pueden chequear antes del post y evito post sin sentido
+								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
+								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
+								jQuery.post('escritos/creaDueno.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
+								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
+									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
+									try{
+										//alert('datosJSONStr: ' + datosJSONStr);
+										datosJSObj = JSON.parse(datosJSONStr);
+										//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
+									}catch(errorParseo){
+										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/creaUsuario.php', datosJSONStr);
+									}
+									if(datosJSObj.registrado){
+										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId);
+									}else{ // usuario es repetido en el database, por eso se chequea despues del post
+										jQuery.feedback('form#creaDuenoForm h3', datosJSObj.feedback);
+									}
+								})
+								.fail(  jQuery.fallas  );  //failing post
+							}
+						});
+
+
+
+
+
+
+
+					}//if
+				});//ajaxComplete
+*/
+			break;
 			case 'faq':
 				jQuery.get('looks/faq.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeFaq = jQuery(datosDeRespuesta).filter('#main');
