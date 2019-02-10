@@ -33,7 +33,7 @@ if($recurso){
 	echo json_encode($profile);
 }else{
 	throw new Exception('Mal query.  Sin RECURSO.');
-	//echo "<li>Error, pg_query, no produjo un recurso para result... en getMicroEmpreData</li>";
+	//echo "<li>Error, pg_query, no produjo un recurso para result... en getMicroEmpreProfile</li>";
 }
 pg_close($cnx); //maybe not needed but doesn't hurt
 

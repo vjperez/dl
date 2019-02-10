@@ -284,7 +284,7 @@ jQuery(document).ready(
 								//Valid values son los q cumplen estas 3 cosas.
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
 								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
-								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoDataShowEmpres
+								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
 								jQuery.post('escritos/login.php', {user:user, pass:pass} )
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
@@ -297,7 +297,7 @@ jQuery(document).ready(
 										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
 									}
 									if(datosJSObj.loguea){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&duenoId=' + datosJSObj.duenoId);
+										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId);
 									}else{
 										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 										jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
@@ -330,7 +330,7 @@ jQuery(document).ready(
 								//Valid values son los q cumplen estas 3 cosas.
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
 								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
-								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoDataShowEmpres
+								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
 								jQuery.post('escritos/creaDueno.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
@@ -343,7 +343,7 @@ jQuery(document).ready(
 										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/creaUsuario.php', datosJSONStr);
 									}
 									if(datosJSObj.registrado){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoDataShowEmpres&duenoId=' + datosJSObj.duenoId);
+										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId);
 									}else{ // usuario es repetido en el database, por eso se chequea despues del post
 										jQuery.feedback('form#creaDuenoForm h3', datosJSObj.feedback);
 									}
@@ -354,21 +354,21 @@ jQuery(document).ready(
 					}//if
 				});//ajax complete
 			break;
-			case 'editDuenoDataShowEmpres':
+			case 'editDuenoShowEmpresas':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
 				//get duenoId
 				var duenoId = jQuery.urlParam('duenoId');
 
-				jQuery.get('looks/editDuenoDataShowEmpres.html', function(datosDeRespuesta, estatus, xhrObjeto){
+				jQuery.get('looks/editDuenoShowEmpresas.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeDuenoData = jQuery(datosDeRespuesta).filter('#main');
 					jQuery('#containerForMain').html(mainDeDuenoData);
 				});
 				//once look is in, use jQuery to update look with profile values
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/editDuenoDataShowEmpres.html'){
+					if(settingsObjeto.url === 'looks/editDuenoShowEmpresas.html'){
 
-						//do this when form submitted ; editDuenoDataShowEmpres task 1
+						//do this when form submitted ; editDuenoShowEmpresas task 1
 						jQuery('form#editDuenoDataForm').submit(function(evento){
 							evento.preventDefault(); //not making a submit (POST request) from html action.
 							var user = 'valorDummy';
@@ -378,7 +378,7 @@ jQuery(document).ready(
 								//Valid values son los q cumplen estas 3 cosas.
 								//Estas cosas se pueden chequear antes del post y evito post sin sentido
 								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
-								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoDataShowEmpres
+								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
 								jQuery.post('escritos/editDuenoContrasena.php', {duenoId:duenoId, pass01:pass01} )
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
@@ -400,7 +400,7 @@ jQuery(document).ready(
 							}
 						});
 
-						//hide, show on click ; editDuenoDataShowEmpres task 2
+						//hide, show on click ; editDuenoShowEmpresas task 2
 						var $todosLosNotHidable = jQuery('.notHidable');
 						var $todosLosHidable = jQuery('.hidable');
 						$todosLosHidable.hide();
@@ -409,13 +409,13 @@ jQuery(document).ready(
 							$toToggle.toggle();
 						});
 
-						//show empresas ; editDuenoDataShowEmpres task 3
-						jQuery.getJSON('escritos/getMicroEmpreIdsForDueno.php', {duenoId:duenoId} )
+						//show empresas ; editDuenoShowEmpresas task 3
+						jQuery.getJSON('escritos/showEmpresasGetIds.php', {duenoId:duenoId} )
 						.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 							var labelAndTable = '<label class="notHidable">Micro Empresas:</label>';
 							labelAndTable   +=  '<table class="hidaxxxble">';
 								jQuery.each(datos, function(index, meId, nombre){
-									labelAndTable += '<tr><td><a class="link" href="portada.html?look=editMicroEmpreData&meId=' + datos[index].meId + '">' + datos[index].nombre + '</a></td></tr>';
+									labelAndTable += '<tr><td><a class="link" href="portada.html?look=editMicroEmpre&meId=' + datos[index].meId + '">' + datos[index].nombre + '</a></td></tr>';
 								});
 							labelAndTable += '</table>';
 							jQuery('#labelAndTableContainer').html(labelAndTable);
@@ -427,40 +427,53 @@ jQuery(document).ready(
 
 
 			break;
-			case 'editMicroEmpreData':
+			case 'editMicroEmpre':
 				//this code is very similar to profile case code - should make functions to simplify
 
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
 
+				jQuery.get('looks/editMicroEmpre.html', function(datosDeRespuesta, estatus, xhrObjeto){
+					var mainDeMicroEmpreData = jQuery(datosDeRespuesta).filter('#main');
+					jQuery('#containerForMain').html(mainDeMicroEmpreData);
+				});		
+
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'looks/editMicroEmpre.html'){											
+						//hide, show on click ; 
+						var $todosLosNotHidable = jQuery('.notHidable');
+						var $todosLosHidable = jQuery('.hidable');
+						$todosLosHidable.hide();
+						$todosLosNotHidable.on('click', function(evento){
+							var $toToggle = jQuery(evento.currentTarget).siblings('.hidable');
+							$toToggle.toggle();
+						});	
+					}//if
+				});//ajaxComplete
+				
 				//get meId
 				var meId = jQuery.urlParam('meId');
-				//get profile data
-				jQuery.getJSON('escritos/getMicroEmpreData.php', {meId:meId} )
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-					//Once the data is in, get mi cuenta look
-					jQuery.get('looks/editMicroEmpreData.html', function(datosDeRespuesta, estatus, xhrObjeto){
-						var mainDeMicroEmpreData = jQuery(datosDeRespuesta).filter('#main');
-						jQuery('#containerForMain').html(mainDeMicroEmpreData);
-					});
-					//once look is in, use jQuery to update look with profile values
-					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						if(settingsObjeto.url === 'looks/editMicroEmpreData.html'){
-							//nombre y video
-							jQuery('form#editMicroEmpreForm input[name=nombre]').val(datos.nombre);
-							jQuery('form#editMicroEmpreForm input[name=videoUrl]').val(datos.videoUrl);
-							//quien
-							if(datos.quienSocialHandle != null){
+				if(meId > 0){ //in the db showEmpresasGetIds, zero is used for crear empresa
+					//get profile data
+					jQuery.getJSON('escritos/getMicroEmpreData.php', {meId:meId} )
+					.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+						//Once the data is in, get mi cuenta look
+						//use jQuery to update look with profile values
+						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+							if(settingsObjeto.url === 'looks/editMicroEmpre.html'){
+														
+								//nombre y video
+								jQuery('form#editMicroEmpreForm input[name=nombre]').val(datos.nombre);
+								jQuery('form#editMicroEmpreForm input[name=videoUrl]').val(datos.videoUrl);
+								//quien
 								jQuery('form#editMicroEmpreForm input[name=red1]').val(datos.quienSocialHandle.fbk);
 								jQuery('form#editMicroEmpreForm input[name=red2]').val(datos.quienSocialHandle.tt);
 								jQuery('form#editMicroEmpreForm input[name=red3]').val(datos.quienSocialHandle.igrm);
 								jQuery('form#editMicroEmpreForm input[name=red4]').val(datos.quienSocialHandle.phn);
-							}
 
-							//falta each para array de fotos
+								//falta each para array de fotos
 
-							//cuando
-							if(datos.cuando != null){
+								//cuando	
 								jQuery('form#editMicroEmpreForm input[name=dia1]').val(datos.cuando.lun);
 								jQuery('form#editMicroEmpreForm input[name=dia2]').val(datos.cuando.mar);
 								jQuery('form#editMicroEmpreForm input[name=dia3]').val(datos.cuando.mier);
@@ -468,43 +481,29 @@ jQuery(document).ready(
 								jQuery('form#editMicroEmpreForm input[name=dia5]').val(datos.cuando.vier);
 								jQuery('form#editMicroEmpreForm input[name=dia6]').val(datos.cuando.sab);
 								jQuery('form#editMicroEmpreForm input[name=dia7]').val(datos.cuando.dom);
-							}
-							//following code works when there are 10 or less 'que' coming from getJSON.
-							//the html is prepared for a max of 10 'que'
-							if(datos.que != null){
+								
+								//following code works when there are 10 or less 'que' coming from getJSON.
+								//the html is prepared for a max of 10 'que'								
 								jQuery('form#editMicroEmpreForm input[name^=que]').each(function(index){
 									if(index < datos.que.length) { jQuery(this).val(datos.que[index]); }
 									else {  } //ya estan vacios en html por default
 								});
-							}
-							//following code works when there are 5 or less 'donde' coming from getJSON.
-							//the html is prepared for a max of 5 'donde'
-							if(datos.donde != null){
+								
+								//following code works when there are 5 or less 'donde' coming from getJSON.
+								//the html is prepared for a max of 5 'donde'
 								jQuery('form#editMicroEmpreForm input[name^=donde]').each(function(index){
 									if(index < datos.donde.length) { jQuery(this).val(datos.donde[index]); }
 									else {  } //ya estan vacios en html por default
 								});
-							}
-							if(datos.atucasa != null){ //comes with null(falsy) for an empty profile
+								
 								jQuery('form#editMicroEmpreForm input[value=si]').prop('checked', datos.atucasa);
-								jQuery('form#editMicroEmpreForm input[value=no]').prop('checked', !datos.atucasa);
-							}
-;
-
-
-							//hide, show on click
-							var $todosLosNotHidable = jQuery('.notHidable');
-							var $todosLosHidable = jQuery('.hidable');
-							$todosLosHidable.hide();
-							$todosLosNotHidable.on('click', function(evento){
-								var $toToggle = jQuery(evento.currentTarget).siblings('.hidable');
-								$toToggle.toggle();
-							});
-						}//if
-					});//ajaxComplete
-				})
-				.fail(  jQuery.fallas  );
-			break;
+								jQuery('form#editMicroEmpreForm input[value=no]').prop('checked', !datos.atucasa);					
+							}//if
+						});//ajaxComplete
+					})
+					.fail(  jQuery.fallas  );	
+				}					
+			break;			
 			case 'faq':
 				jQuery.get('looks/faq.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeFaq = jQuery(datosDeRespuesta).filter('#main');
