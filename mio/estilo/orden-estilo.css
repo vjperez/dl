@@ -212,7 +212,7 @@ form#creaDuenoForm h3 { font-family:serif, Times, times; color:#16a085; }
 /* orden : editMicroEmpreData */
 div#editMicroEmpre { margin-left:auto; margin-right:auto;  padding-bottom:50pt;}
 form#editMicroEmpreForm { margin-left:auto; margin-right:auto; }
-form#editMicroEmpreForm input[type='text'] { width:67%; }
+form#editMicroEmpreForm input[type='text'], form#editMicroEmpreForm input[type='tel'], form#editMicroEmpreForm textarea { width:80%; }
 
 
 

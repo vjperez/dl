@@ -3,35 +3,34 @@
 <head></head>
 <body>
 <!-- header -->
-<!-- navega -->  
+<!-- navega -->
 
- 
+
 <!-- contenido -->
     <div id="main" class="contenido margen">
 
     <!-- ancho-sensi aplica siempre; para cell, aqui no es re escrito, so por default aplica ancho-sensi (1de1 o sea 100%).
 	ipad 3 de 4 lo re escribe para ipad y al no re escribir para desk, sigue aplicando en desk las dimensiones q se dieron para ipad -->
     <div id="editMicroEmpre" class="ancho-sensi-ipad-2de3 ver-borde">
-	<h1>MicroEmpresa:</h1> 	
+	<h1>MicroEmpresa:</h1>
 	</div><!-- editMicroEmpre -->
  	<form id="editMicroEmpreForm" class="ancho-sensi-ipad-2de3 ver-borde" action="XXXeditcuenta.phpXXX" method="post">
  	    <fieldset class="primario">
- 	    	<label class="notHidable">Nombre</label> 	    
+ 	    	<label class="notHidable">Nombre</label>
  	    	<label class="explica">Nombre de tu Micro Empresa</label>
 			<label class="explica">(requerido)</label>
-		 	<fieldset class="secundario hidable"> 	    
+		 	<fieldset class="secundario hidable">
 				<p><input id="nombreId"  type="text"  name="nombre"     maxlength="50" placeholder="" required=true></p>
 		 	</fieldset>
 		</fieldset>
-		
-		
-		<fieldset class="primario">  	   
+
+		<fieldset class="primario">
  	    	<label class="notHidable">Video</label>
-        	<label class="explica">Contiene info de tu Micro Empresa.</label> 	    
+        	<label class="explica">Contiene info de tu Micro Empresa.</label>
  	    	<label class="explica">(requerido)</label>
-		 	<fieldset class="secundario hidable"> 	    
-				<p><input id="videoAdrrId" type="text"  name="videoUrl"  maxlength="50" placeholder="" required=true></p>
-		 	</fieldset>		
+		 	<fieldset class="secundario hidable">
+				<p><textarea id="videoUrlId"  name="videoUrl"  rows="6" cols="50" placeholder="" required=true></textarea></p>
+		 	</fieldset>
 		</fieldset>
 
 
@@ -43,98 +42,99 @@
 				<!-- <label for="red1Id" class="explica">URL</label> -->
 				<p><input id="red1Id"     type="text" name="red1"  maxlength="50"  placeholder=""></p>
 				<label for="red2Id">Twitter</label>
-				<!-- <label for="red2Id" class="explica">URL</label> -->         
+				<!-- <label for="red2Id" class="explica">URL</label> -->
 				<p><input id="red2Id"     type="text" name="red2"  maxlength="50"  placeholder=""></p>
 				<label for="red3Id">Instagram</label>
-				<!-- <label for="red3Id" class="explica">URL</label> --> 	         
+				<!-- <label for="red3Id" class="explica">URL</label> -->
 				<p><input id="red3Id"     type="text" name="red3"  maxlength="50"  placeholder=""></p>
 				<label for="red4Id">Telefono</label>
 				<p><input id="red4Id"     type="tel" name="red4"  maxlength="50"   placeholder=""></p>
 			</fieldset>
 				5 fotos
 		</fieldset>
-		
+
 
 		<fieldset class="primario">
-			<label class="notHidable">Cuando</label> 
-			<label class="explica">Horario de tu Micro Empresa</label> 
+			<label class="notHidable">Cuando</label>
+			<label class="explica">Horario de tu Micro Empresa</label>
 			<fieldset class="secundario hidable">
 				<label for="dia1Id">Lunes</label>
-				<p><input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder=""></p> 
+				<p><input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder=""></p>
 				<label for="dia2Id">Martes</label>
-				<p><input id="dia2Id" type="text" name="dia2" maxlength="50" placeholder=""></p> 
+				<p><input id="dia2Id" type="text" name="dia2" maxlength="50" placeholder=""></p>
 				<label for="dia3Id">Miercoles</label>
 				<p><input id="dia3Id" type="text" name="dia3" maxlength="50" placeholder=""></p>
 				<label for="dia4Id">Jueves</label>
-				<p><input id="dia4Id" type="text" name="dia4" maxlength="50" placeholder=""></p> 
+				<p><input id="dia4Id" type="text" name="dia4" maxlength="50" placeholder=""></p>
 				<label for="dia5Id">Viernes</label>
-				<p><input id="dia5Id" type="text" name="dia5" maxlength="50" placeholder=""></p> 
+				<p><input id="dia5Id" type="text" name="dia5" maxlength="50" placeholder=""></p>
 				<label for="dia6Id">Sabado</label>
 				<p><input id="dia6Id" type="text" name="dia6" maxlength="50" placeholder=""></p>
 				<label for="dia7Id">Domingo</label>
-				<p><input id="dia7Id" type="text" name="dia7" maxlength="50" placeholder=""></p>			
+				<p><input id="dia7Id" type="text" name="dia7" maxlength="50" placeholder=""></p>
 			</fieldset>
 		<!--
  	       <fieldset class="secundario">
- 	         <label>Ahora Mismo</label> 
- 	         <label class="explica">&iquest;Trabajando ahora mismo?</label> 	
+ 	         <label>Ahora Mismo</label>
+ 	         <label class="explica">&iquest;Trabajando ahora mismo?</label>
  	         <span>Si</span><input type="radio" name="ahoraMismo" value="si" class="si">
              <span>No</span><input type="radio" name="ahoraMismo" value="no">
-        	 </fieldset>   
-		-->	 
+        	 </fieldset>
+		-->
  	    </fieldset>
 
-		
+
 		<fieldset class="primario">
 			<label class="notHidable">Qu&eacute;</label>
-			<label class="explica">Explica que haces.</label> 
-			<label class="explica">Usado por clientes para encontrar tu Micro Empresa!</label>		 
-			<label class="explica">(requerido 1, maximo 10)</label> 
+			<label class="explica">Explica que haces.</label>
+			<label class="explica">Usado por clientes para encontrar tu Micro Empresa!</label>
+			<label class="explica">(requerido 1, maximo 10)</label>
 			<fieldset class="secundario hidable">
-				<p><input id="que1Id"  type="text" name="que1"  maxlength="50" placeholder="" required=true></p> 	
-				<p><input id="que2Id"  type="text" name="que2"  maxlength="50" placeholder=""></p> 
+				<p><input id="que1Id"  type="text" name="que1"  maxlength="50" placeholder="" required=true></p>
+				<p><input id="que2Id"  type="text" name="que2"  maxlength="50" placeholder=""></p>
 				<p><input id="que3Id"  type="text" name="que3"  maxlength="50" placeholder=""></p>
 				<p><input id="que4Id"  type="text" name="que4"  maxlength="50" placeholder=""></p>
-				<p><input id="que5Id"  type="text" name="que5"  maxlength="50" placeholder=""></p> 
-				<p><input id="que6Id"  type="text" name="que6"  maxlength="50" placeholder=""></p> 	
-				<p><input id="que7Id"  type="text" name="que7"  maxlength="50" placeholder=""></p> 
+				<p><input id="que5Id"  type="text" name="que5"  maxlength="50" placeholder=""></p>
+				<p><input id="que6Id"  type="text" name="que6"  maxlength="50" placeholder=""></p>
+				<p><input id="que7Id"  type="text" name="que7"  maxlength="50" placeholder=""></p>
 				<p><input id="que8Id"  type="text" name="que8"  maxlength="50" placeholder=""></p>
 				<p><input id="que9Id"  type="text" name="que9"  maxlength="50" placeholder=""></p>
 				<p><input id="que10Id" type="text" name="que10" maxlength="50" placeholder=""></p>
 			</fieldset>
 		</fieldset>
-		
-		
+
+
 		<fieldset class="primario">
-			<label class="notHidable">Donde</label> 
-			<label class="explica">Donde buscas clientes?</label>	
+			<label class="notHidable">Donde</label>
+			<label class="explica">Donde buscas clientes?</label>
 			<label class="explica">Usado por clientes para encontrar tu Micro Empresa!</label>
 			<label class="explica">(requerido 1, maximo 5)</label>
 			<fieldset class="secundario hidable">
-				<p><input id="donde1Id" type="text" name="donde1" maxlength="50" placeholder="" required=true></p> 	
-				<p><input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder=""></p> 
-				<p><input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder=""></p> 
-				<p><input id="donde4Id" type="text" name="donde4" maxlength="50" placeholder=""></p> 
-				<p><input id="donde5Id" type="text" name="donde5" maxlength="50" placeholder=""></p> 
-		   
-				<label>A su casa</label>	
+				<p><input id="donde1Id" type="text" name="donde1" maxlength="50" placeholder="" required=true></p>
+				<p><input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder=""></p>
+				<p><input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder=""></p>
+				<p><input id="donde4Id" type="text" name="donde4" maxlength="50" placeholder=""></p>
+				<p><input id="donde5Id" type="text" name="donde5" maxlength="50" placeholder=""></p>
+
+				<label>A su casa</label>
 				<label class="explica">&iquest;Trabajarias en casa del cliente?</label>
 				<label class="explica">(requerido)</label>
 				<span>Si</span><input type="radio" name="aTuCasa" value="si" class="si" required>
 				<span>No</span><input type="radio" name="aTuCasa" value="no">
-			</fieldset> 
+			</fieldset>
 		</fieldset>
-		
-		
+
+
 		<fieldset class="primario">
 		<p><button type="submit"><img src="imagenes/lapiz.png" alt="Revisa"></button></p>
- 	    </fieldset>  
+    <h3></h3>
+ 	   </fieldset>
  	</form>
-           
+
     </div>
-<!-- contenido -->     
-    
-	
-<!-- footer -->	
+<!-- contenido -->
+
+
+<!-- footer -->
 </body>
 </html>

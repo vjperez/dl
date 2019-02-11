@@ -441,7 +441,7 @@ jQuery(document).ready(
 
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/editMicroEmpre.html'){
-						//hide, show on click ;
+						//task 1 when ajax complete; hide, show on click ;
 						var $todosLosNotHidable = jQuery('.notHidable');
 						var $todosLosHidable = jQuery('.hidable');
 						$todosLosHidable.hide();
@@ -449,7 +449,7 @@ jQuery(document).ready(
 							var $toToggle = jQuery(evento.currentTarget).siblings('.hidable');
 							$toToggle.toggle();
 						});
-
+						//task 2 when ajax complete ; if already existing micro empre then get that data
 						//get meId
 						var meId = jQuery.urlParam('meId');
 						if(meId > 0){ //in the db showEmpresasGetIds, zero is used for crear empresa
@@ -458,7 +458,7 @@ jQuery(document).ready(
 							.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 										//nombre y video
 										jQuery('form#editMicroEmpreForm input[name=nombre]').val(datos.nombre);
-										jQuery('form#editMicroEmpreForm input[name=videoUrl]').val(datos.videoUrl);
+										jQuery('form#editMicroEmpreForm textarea[name=videoUrl]').val(datos.videoUrl);
 										//quien
 										jQuery('form#editMicroEmpreForm input[name=red1]').val(datos.quienSocialHandle.fbk);
 										jQuery('form#editMicroEmpreForm input[name=red2]').val(datos.quienSocialHandle.tt);
@@ -497,34 +497,36 @@ jQuery(document).ready(
 							.fail(  jQuery.fallas  );
 						}
 
-
-					}//if
-				});//ajaxComplete
-
-				//task 2 ; if this micro empre existed already, get its data
-
-				// task 3 ; handle for submission
-/*
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/editMicroEmpre.html'){
-
-
-
-
-
-
-
+						//task 3 when ajax complete ; handle form submit
 						jQuery('form#editMicroEmpreForm').submit(function(evento){
 							evento.preventDefault(); //not making a submit (POST request) from html action
-							var usertb = jQuery('#usernameId').val();
-							var pass01 = jQuery('#passwordId').val();
-							var pass02 = jQuery('#passwordConfirmId').val();
-							if( jQuery.areValidUserYPass(usertb, pass01, pass02, 'fullFeedback', 'form#creaDuenoForm h3') ){
-								//Valid values son los q cumplen estas 3 cosas.
-								//Estas cosas se pueden chequear antes del post y evito post sin sentido
-								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
-								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
-								jQuery.post('escritos/creaDueno.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
+							var nombre = jQuery('#nombreId').val();
+							var videoUrl = jQuery('#videoUrlId').val();
+							var fbk  = jQuery('#red1Id').val();
+							var tt   = jQuery('#red2Id').val();
+							var igrm = jQuery('#red3Id').val();
+							var phn  = jQuery('#red4Id').val();
+							var lun  = jQuery('#dia1Id').val();
+							var mar  = jQuery('#dia2Id').val();
+							var mier = jQuery('#dia3Id').val();
+							var jue  = jQuery('#dia4Id').val();
+							var vier = jQuery('#dia5Id').val();
+							var sab  = jQuery('#dia6Id').val();
+							var dom  = jQuery('#dia7Id').val();
+							var que = new Array();
+							jQuery('form#editMicroEmpreForm input[name^=que]').each(function(index){
+								que[index] = jQuery(this).val();
+							});
+							var donde = new Array();
+							jQuery('form#editMicroEmpreForm input[name^=donde]').each(function(index){
+								donde[index] = jQuery(this).val();
+							});
+							var atucasa = jQuery('form#editMicroEmpreForm input[value=si]').prop('checked');
+							//if( jQuery. froma es valida (usertb, pass01, pass02, 'fullFeedback', 'form#creaDuenoForm h3') ){
+
+								jQuery.post('escritos/editMicroEmpreData.php', {nombre:nombre, videoUrl:videoUrl, fbk:fbk, tt:tt, igrm:igrm, phn:phn,
+																											 lun:lun, mar:mar, mier:mier, jue:jue, vier:vier, sab:sab, dom:dom,
+																										   que:que, donde:donde, atucasa:atucasa, meId:meId})
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
 									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
@@ -533,27 +535,20 @@ jQuery(document).ready(
 										datosJSObj = JSON.parse(datosJSONStr);
 										//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
 									}catch(errorParseo){
-										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/creaUsuario.php', datosJSONStr);
+										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/editMicroEmpreData.php', datosJSONStr);
 									}
-									if(datosJSObj.registrado){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId);
-									}else{ // usuario es repetido en el database, por eso se chequea despues del post
-										jQuery.feedback('form#creaDuenoForm h3', datosJSObj.feedback);
+									if(datosJSObj.actualizado){
+										jQuery(window.location).attr('href', window.location.pathname + '?look=profile&meId=' + meId);
+									}else{
+										//jQuery.feedback('form#editMicroEmpreForm h3', datosJSObj.feedback);
 									}
 								})
 								.fail(  jQuery.fallas  );  //failing post
-							}
+							//}
 						});
-
-
-
-
-
-
 
 					}//if
 				});//ajaxComplete
-*/
 			break;
 			case 'faq':
 				jQuery.get('looks/faq.html', function(datosDeRespuesta, estatus, xhrObjeto){
