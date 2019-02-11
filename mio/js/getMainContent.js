@@ -515,11 +515,11 @@ jQuery(document).ready(
 							var dom  = jQuery('#dia7Id').val();
 							var que = new Array();
 							jQuery('form#editMicroEmpreForm input[name^=que]').each(function(index){
-								que[index] = jQuery(this).val();
+								if(jQuery(this).val()) que[index] = jQuery(this).val();
 							});
 							var donde = new Array();
 							jQuery('form#editMicroEmpreForm input[name^=donde]').each(function(index){
-								donde[index] = jQuery(this).val();
+								if(jQuery(this).val()) donde[index] = jQuery(this).val();
 							});
 							var atucasa = jQuery('form#editMicroEmpreForm input[value=si]').prop('checked');
 							//if( jQuery. froma es valida (usertb, pass01, pass02, 'fullFeedback', 'form#creaDuenoForm h3') ){

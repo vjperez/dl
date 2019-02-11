@@ -15,8 +15,8 @@ $vier = $_POST['vier'];
 $sab = $_POST['sab'];
 $dom = $_POST['dom'];
 $cuando = json_encode ( array("lun"=>$lun, "mar"=>$mar, "mier"=>$mier, "jue"=>$jue, "vier"=>$vier, "sab"=>$sab, "dom"=>$dom) );
-$que = $_POST['que'];
-$donde = $_POST['donde'];
+$que = '{' . implode(",", $_POST['que']) . '}';
+$donde = '{' . implode(",", $_POST['donde']) . '}';
 $a_tu_casa = $_POST['atucasa'];
 $micro_empre_id = $_POST['meId'];
 
