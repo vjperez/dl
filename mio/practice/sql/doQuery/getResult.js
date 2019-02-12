@@ -4,12 +4,12 @@ jQuery(document).ready(function(){
 		evento.preventDefault(); //not making a submit (GET request) here.
 		var query = jQuery('input[name=query]').val(); 
 		
-		alert('query: ' + query + '  Length: ' + query.length);
+		//alert('query: ' + query + '  Length: ' + query.length);
 		if(query.length > 0){
 		
 				jQuery.getJSON('queries.php', {query:query} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-					alert('datos: automatically parsed to object object by getJSON: ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
+					//alert('datos: automatically parsed to object object by getJSON: ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					var losLis = '';
 					jQuery.each(datos, function(indice, fila){
 						if(indice==0){// here fila contains just a number

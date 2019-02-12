@@ -9,8 +9,5 @@ $queryInsertMicroEmpreReturningId = "INSERT INTO
 SELECT currval('micro_empre_micro_empre_id_seq')";
 
 
-//insert into bregando
-$queryInsertBregando = "INSERT INTO
-	bregando(dueno_id, micro_empre_id)
-	VALUES($dueno_id, $micro_empre_id)";
+
 ?>

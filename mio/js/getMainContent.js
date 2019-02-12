@@ -441,6 +441,11 @@ jQuery(document).ready(
 
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/editMicroEmpre.html'){
+						//get meId
+						var meId = jQuery.urlParam('meId');
+						//get duenoId
+						var duenoId = jQuery.urlParam('duenoId');
+						
 						//task 1 when ajax complete; hide, show on click ;
 						var $todosLosNotHidable = jQuery('.notHidable');
 						var $todosLosHidable = jQuery('.hidable');
@@ -450,8 +455,6 @@ jQuery(document).ready(
 							$toToggle.toggle();
 						});
 						//task 2 when ajax complete ; if already existing micro empre then get that data
-						//get meId
-						var meId = jQuery.urlParam('meId');
 						if(meId > 0){ //in the db showEmpresasGetIds, zero is used for crear empresa
 							//get profile data
 							jQuery.getJSON('escritos/getMicroEmpreData.php', {meId:meId} )
