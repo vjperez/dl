@@ -19,19 +19,15 @@ $que = '{' . implode(",", $_POST['que']) . '}';
 $donde = '{' . implode(",", $_POST['donde']) . '}';
 $a_tu_casa = $_POST['atucasa'];
 $micro_empre_id = $_POST['meId'];
+$dueno_id = $_POST['duenoId'];
 
 //conecta al db
 require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
-require_once 'editMicroEmpreData/editMicroEmpreDataQuery.php';
-$recurso = pg_query($cnx, $query);
-if($recurso){
-	$respuesta = json_decode('{"actualizado":true, "feedback":"Microempresa actualizada."}');
-	pg_close($cnx); //maybe not needed but doesn't hurt
-	echo json_encode ($respuesta);
+if($micro_empre_id == 0){
+	require_once 'editMicroEmpreData/insert/insertMicroEmpreData.php';
 }else{
-	pg_close($cnx); //maybe not needed but doesn't hurt
-	throw new Exception('Mal query.  Sin RECURSO, para query editMicroEmpreDataQuery');
+	require_once 'editMicroEmpreData/update/updateMicroEmpreData.php';
 }
 ?>

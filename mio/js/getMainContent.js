@@ -415,7 +415,7 @@ jQuery(document).ready(
 							var labelAndTable = '<label class="notHidable">Micro Empresas:</label>';
 							labelAndTable   +=  '<table class="hidaxxxble">';
 								jQuery.each(datos, function(index, meId, nombre){
-									labelAndTable += '<tr><td><a class="link" href="portada.html?look=editMicroEmpre&meId=' + datos[index].meId + '">' + datos[index].nombre + '</a></td></tr>';
+									labelAndTable += '<tr><td><a class="link" href="portada.html?look=editMicroEmpre&meId=' + datos[index].meId + '&duenoId=' + duenoId + '">' + datos[index].nombre + '</a></td></tr>';
 								});
 							labelAndTable += '</table>';
 							jQuery('#labelAndTableContainer').html(labelAndTable);
@@ -526,7 +526,7 @@ jQuery(document).ready(
 
 								jQuery.post('escritos/editMicroEmpreData.php', {nombre:nombre, videoUrl:videoUrl, fbk:fbk, tt:tt, igrm:igrm, phn:phn,
 																											 lun:lun, mar:mar, mier:mier, jue:jue, vier:vier, sab:sab, dom:dom,
-																										   que:que, donde:donde, atucasa:atucasa, meId:meId})
+																										   que:que, donde:donde, atucasa:atucasa, duenoId:duenoId, meId:meId})
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
 									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
@@ -538,7 +538,7 @@ jQuery(document).ready(
 										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/editMicroEmpreData.php', datosJSONStr);
 									}
 									if(datosJSObj.actualizado){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=profile&meId=' + meId);
+										jQuery(window.location).attr('href', window.location.pathname + '?look=profile&meId=' + datosJSObj.meId);
 									}else{
 										//jQuery.feedback('form#editMicroEmpreForm h3', datosJSObj.feedback);
 									}
