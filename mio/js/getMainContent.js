@@ -163,7 +163,7 @@ jQuery(document).ready(
 							}
 							jQuery.each(trios, function(index, pares){
 								jQuery.each(pares, function(meId, fotoSrc){
-									mainDeOpciones += '<a href="portada.html?look=profile&meId=' + meId + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de4 ver-borde" ';
+									mainDeOpciones += '<a href="portada.html?look=profile&meId=' + meId + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ancho-sensi-desk-1de4 alto-sensi-cell-1de2 alto-sensi-ipad-1de3 alto-sensi-desk-1de4 ver-borde" ';
 									mainDeOpciones += ' src="imagenes/profile/' + fotoSrc + '"></a>';
 								});
 							}); // each in trios
