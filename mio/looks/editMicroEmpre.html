@@ -14,7 +14,7 @@
     <div id="editMicroEmpre" class="ancho-sensi-ipad-2de3 ver-borde">
 	<h1>MicroEmpresa:</h1>
 	</div><!-- editMicroEmpre -->
- 	<form id="editMicroEmpreForm" class="ancho-sensi-ipad-2de3 ver-borde" action="XXXeditcuenta.phpXXX" method="post">
+ 	<form id="editMicroEmpreForm" class="ancho-sensi-ipad-2de3 ver-borde" action="XXXeditcuenta.phpXXX" enctype="multipart/form-data" method="post">
  	    <fieldset class="primario">
  	    	<label class="notHidable">Nombre</label>
  	    	<label class="explica">Nombre de tu Micro Empresa</label>
@@ -50,10 +50,20 @@
 				<label for="red4Id">Telefono</label>
 				<p><input id="red4Id"     type="tel" name="red4"  maxlength="50"   placeholder=""></p>
 			</fieldset>
-				5 fotos
 		</fieldset>
 
 
+ 	    <fieldset class="primario">
+ 	    	<label class="notHidable">Fotos</label>
+ 	    	<label class="explica">Fotos de tu Micro Empresa</label>
+			<fieldset class="secundario hidable">
+				<input type="hidden" name="MAX_FILE_SIZE" value="0000000"> <!-- 2MB -->
+				<label for="foto1Id">Foto 1</label>
+				<p><input id="foto1Id"  type="file" name="foto1" multiple></p>
+			</fieldset>
+		</fieldset>		
+		
+		
 		<fieldset class="primario">
 			<label class="notHidable">Cuando</label>
 			<label class="explica">Horario de tu Micro Empresa</label>

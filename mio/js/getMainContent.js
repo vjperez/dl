@@ -505,6 +505,12 @@ jQuery(document).ready(
 							evento.preventDefault(); //not making a submit (POST request) from html action
 							var nombre = jQuery('#nombreId').val();
 							var videoUrl = jQuery('#videoUrlId').val();
+							
+		//var files = jQuery('form#editMicroEmpreForm input[name=foto1]').files;
+        var datito = new FormData(this);
+        //for(var i = 0; i < files.length; i++) data.append('file' + i, files[i]);		
+							
+							//var foto1 = jQuery('form#editMicroEmpreForm input[name=foto1]')[0].files[0];
 							var fbk  = jQuery('#red1Id').val();
 							var tt   = jQuery('#red2Id').val();
 							var igrm = jQuery('#red3Id').val();
@@ -528,8 +534,8 @@ jQuery(document).ready(
 							//if( jQuery. froma es valida (usertb, pass01, pass02, 'fullFeedback', 'form#creaDuenoForm h3') ){
 
 								jQuery.post('escritos/editMicroEmpreData.php', {nombre:nombre, videoUrl:videoUrl, fbk:fbk, tt:tt, igrm:igrm, phn:phn,
-																											 lun:lun, mar:mar, mier:mier, jue:jue, vier:vier, sab:sab, dom:dom,
-																										   que:que, donde:donde, atucasa:atucasa, duenoId:duenoId, meId:meId})
+																				lun:lun, mar:mar, mier:mier, jue:jue, vier:vier, sab:sab, dom:dom,
+																				que:que, donde:donde, atucasa:atucasa, duenoId:duenoId, meId:meId})
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
 									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas

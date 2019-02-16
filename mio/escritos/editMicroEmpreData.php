@@ -21,6 +21,11 @@ $a_tu_casa = $_POST['atucasa'];
 $micro_empre_id = $_POST['meId'];
 $dueno_id = $_POST['duenoId'];
 
+require_once 'checkFotoUploadError/checkFotoUploadError.php';
+
+require_once 'configConstants/constants.php';
+$fotos_subidas_dir = MAQUINA_PATH . SITE_PATH_APPEND . '\\imagenes\\profile\\subidas\\';
+
 //conecta al db
 require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
