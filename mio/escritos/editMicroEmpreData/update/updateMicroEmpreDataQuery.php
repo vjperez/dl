@@ -10,5 +10,10 @@ que = '$que',
 donde = '$donde',
 a_tu_casa = $a_tu_casa
 
+
+
+
+
+
 WHERE micro_empre_id = '$micro_empre_id'";
 ?>

@@ -1,5 +1,5 @@
 <?php
 if($_FILES['foto1']['error'] > 0){
-	echo json_encode ($_FILES['foto1']['error']);
+	throw new Exception('Error subiendo foto. Codigo:' . $_FILES['foto1']['error'] . '.');
 }
 ?>

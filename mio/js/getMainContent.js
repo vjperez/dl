@@ -519,14 +519,18 @@ jQuery(document).ready(
 							var vier = jQuery('#dia5Id').val();
 							var sab  = jQuery('#dia6Id').val();
 							var dom  = jQuery('#dia7Id').val();
+*/
 							var que = new Array();
 							jQuery('form#editMicroEmpreForm input[name^=que]').each(function(index){
-								if(jQuery(this).val()) que[index] = jQuery(this).val();
+								if(jQuery(this).val()) { que[index] = jQuery(this).val(); } else {  }
 							});
+							formData.append('que', que);
 							var donde = new Array();
 							jQuery('form#editMicroEmpreForm input[name^=donde]').each(function(index){
-								if(jQuery(this).val()) donde[index] = jQuery(this).val();
+								if(jQuery(this).val()) { donde[index] = jQuery(this).val(); } else {  }
 							});
+							formData.append('donde', donde);
+/*
 							var atucasa = jQuery('form#editMicroEmpreForm input[value=si]').prop('checked');
 							//if( jQuery. froma es valida (usertb, pass01, pass02, 'fullFeedback', 'form#creaDuenoForm h3') ){
 
@@ -535,6 +539,8 @@ jQuery(document).ready(
 																				lun:lun, mar:mar, mier:mier, jue:jue, vier:vier, sab:sab, dom:dom,
 																				que:que, donde:donde, atucasa:atucasa, duenoId:duenoId, meId:meId})
 */
+								formData.append('duenoId', duenoId);
+								formData.append('meId', meId);
 								jQuery.ajax({method:"POST", url:"escritos/editMicroEmpreData.php", data:formData, processData:false, contentType:false, cache:false})
 								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.

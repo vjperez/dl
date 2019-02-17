@@ -2,22 +2,39 @@
 //saca los valores de POST
 $nombre = $_POST['nombre'];
 $videoUrl = $_POST['videoUrl'];
-$fbk = $_POST['fbk'];
-$tt = $_POST['tt'];
-$igrm = $_POST['igrm'];
-$phn = $_POST['phn'];
+$fbk = $_POST['red1'];
+$tt = $_POST['red2'];
+$igrm = $_POST['red3'];
+$phn = $_POST['red4'];
 $quien_social_handle = json_encode ( array("fbk"=>$fbk, "tt"=>$tt, "igrm"=>$igrm, "phn"=>$phn) );
-$lun = $_POST['lun'];
-$mar = $_POST['mar'];
-$mier = $_POST['mier'];
-$jue = $_POST['jue'];
-$vier = $_POST['vier'];
-$sab = $_POST['sab'];
-$dom = $_POST['dom'];
+$lun = $_POST['dia1'];
+$mar = $_POST['dia2'];
+$mier = $_POST['dia3'];
+$jue = $_POST['dia4'];
+$vier = $_POST['dia5'];
+$sab = $_POST['dia6'];
+$dom = $_POST['dia7'];
 $cuando = json_encode ( array("lun"=>$lun, "mar"=>$mar, "mier"=>$mier, "jue"=>$jue, "vier"=>$vier, "sab"=>$sab, "dom"=>$dom) );
-$que = '{' . implode(",", $_POST['que']) . '}';
-$donde = '{' . implode(",", $_POST['donde']) . '}';
-$a_tu_casa = $_POST['atucasa'];
+$que   = '{' . $_POST['que'] . '}';
+$donde = '{' . $_POST['donde'] . '}';
+/*
+$que = '{' . $_POST['que'][0];
+for ($i=1; $i < 10; $i++) {
+	if ($_POST['que'][$i] !== '') $que = $que . ', ' . $_POST['que'][$i];
+}
+$que = $que . '}';
+
+$donde = '{' . $_POST['donde'][0];
+for ($i=1; $i < 5 ; $i++) {
+	if ($_POST['donde'][$i] !== '') $donde = $donde . ', ' . $_POST['donde'][$i];
+}
+$donde = $donde . '}';
+*/
+if(strcmp($_POST['aTuCasa'] , 'si') === 0){
+		$a_tu_casa = true;
+}else{
+		$a_tu_casa = false;
+}
 $micro_empre_id = $_POST['meId'];
 $dueno_id = $_POST['duenoId'];
 
