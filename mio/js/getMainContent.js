@@ -238,6 +238,7 @@ jQuery(document).ready(
 						//alert('a tu casa: ' + datos.atucasa + '\ntipo: ' + typeof datos.atucasa);
 						var clase = 'no'; if(datos.atucasa) clase = 'si';
 						jQuery('#donde h3 span').attr('class', clase);
+						jQuery('#donde h3').append(clase);
 
 						//hide, show on click
 						var $todosLosNotHidable = jQuery('.notHidable');
@@ -550,7 +551,7 @@ jQuery(document).ready(
 										datosJSObj = JSON.parse(datosJSONStr);
 										//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
 									}catch(errorParseo){
-										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/editMicroEmpreData.php', datosJSONStr);
+										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server desde escritos/editMicroEmpreData.php', datosJSONStr);
 									}
 									if(datosJSObj.actualizado){
 										jQuery(window.location).attr('href', window.location.pathname + '?look=profile&meId=' + datosJSObj.meId);

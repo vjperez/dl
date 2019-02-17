@@ -30,11 +30,15 @@ for ($i=1; $i < 5 ; $i++) {
 }
 $donde = $donde . '}';
 */
+
+//echo $_POST['aTuCasa'] . ' : ';
 if(strcmp($_POST['aTuCasa'] , 'si') === 0){
-		$a_tu_casa = true;
+		$a_tu_casa = 'true';
 }else{
-		$a_tu_casa = false;
+		$a_tu_casa = 'false' ;
 }
+//echo $a_tu_casa . '<br>';
+
 $micro_empre_id = $_POST['meId'];
 $dueno_id = $_POST['duenoId'];
 

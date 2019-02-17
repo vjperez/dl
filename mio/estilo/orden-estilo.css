@@ -99,7 +99,8 @@ div#donde h3 span.si, div#donde h3 span.no, div#cuando h3 span.si, div#cuando h3
   display:inline-block;
   height:25px;
   width:25px;
-  margin-left:10pt; }
+  margin-left:10pt;
+  margin-right:10pt; }
 div#donde h3 span.no, div#cuando h3 span.no { background-position:0px -25px; }
 div#cuando td.dia { text-align:right; }
 div#cuando td.hora { text-align:left; position:relative; left:25pt; }
