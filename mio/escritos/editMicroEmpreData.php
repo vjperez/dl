@@ -39,13 +39,28 @@ if(strcmp($_POST['aTuCasa'] , 'si') === 0){
 }
 //echo $a_tu_casa . '<br>';
 
+
 $micro_empre_id = $_POST['meId'];
 $dueno_id = $_POST['duenoId'];
+// i already have the post values
 
-require_once 'checkFotoUploadError/checkFotoUploadError.php';
 
-require_once 'configConstants/constants.php';
-$fotos_subidas_dir = MAQUINA_PATH . SITE_PATH_APPEND . '\\imagenes\\profile\\subidas\\';
+//inspecting $_FILES array ; curiosity and debugging
+foreach ($_FILES as $key => $fotos) {
+		echo $key . ' contiene: ' . $fotos . '<br>';
+		foreach ($fotos as $key => $foto) {
+			echo $key . ' contiene: ' . $foto . '<br>';
+		}
+}
+
+
+//check for foto errors now ; if and only if $_FILES has content
+/*
+if(){
+	require_once 'checkFotoUploadError/checkFotoUploadError.php';
+}
+*/
+
 
 //conecta al db
 require_once 'conecta/conecta.php';
