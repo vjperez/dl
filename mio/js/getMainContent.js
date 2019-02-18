@@ -56,7 +56,7 @@ jQuery(document).ready(
 					losLis = '<br><hr>';
 					losLis += '<li>' + xhrObjetoForFAIL.responseText + '</li>';
 					losLis += '<li>' + estatusForFAIL + '</li>';
-					losLis += '<li>' + errorMessageSentByServer + '</li>';
+					losLis += '<li><span class="colorenfasis">Message sent by servidor PHP:<br></span>' + errorMessageSentByServer + '</li>';
 					losLis += '<br><hr>';
 					jQuery('#containerForErrors').append(losLis);
 				}
