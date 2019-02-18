@@ -295,7 +295,7 @@ jQuery(document).ready(
 										datosJSObj = JSON.parse(datosJSONStr);
 										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 									}catch(errorParseo){
-										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
+										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
 									}
 									if(datosJSObj.loguea){
 										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId);
@@ -341,7 +341,7 @@ jQuery(document).ready(
 										datosJSObj = JSON.parse(datosJSONStr);
 										//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
 									}catch(errorParseo){
-										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/creaUsuario.php', datosJSONStr);
+										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/creaDueno.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
 									}
 									if(datosJSObj.registrado){
 										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId);
@@ -389,7 +389,7 @@ jQuery(document).ready(
 										datosJSObj = JSON.parse(datosJSONStr);
 										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 									}catch(errorParseo){
-										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php', datosJSONStr);
+										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/editDuenoContrasena.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
 									}
 									if(datosJSObj.cambiado){
 										jQuery.feedback('form#editDuenoDataForm h3', 'Tu contrasena fue cambiada.');
@@ -551,7 +551,7 @@ jQuery(document).ready(
 										datosJSObj = JSON.parse(datosJSONStr);
 										//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
 									}catch(errorParseo){
-										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server desde escritos/editMicroEmpreData.php', datosJSONStr);
+										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server desde escritos/editMicroEmpreData.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
 									}
 									if(datosJSObj.actualizado){
 										jQuery(window.location).attr('href', window.location.pathname + '?look=profile&meId=' + datosJSObj.meId);
