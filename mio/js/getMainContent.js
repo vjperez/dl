@@ -505,6 +505,13 @@ jQuery(document).ready(
 						jQuery('form#editMicroEmpreForm').submit(function(evento){
 							evento.preventDefault(); //not making a submit (POST request) from html action
 							var formData = new FormData(this);
+
+							//var fotoArr = new Array();
+							var i;
+							for (i = 0; i < jQuery('form#editMicroEmpreForm input[name^=foto]')[0].files.length; i++) {
+							 	formData.append('fotoArr[]', jQuery('form#editMicroEmpreForm input[name^=foto]')[0].files[i] );
+							}
+							//formData.append('fotoArr', fotoArr);
 /*
 							var nombre = jQuery('#nombreId').val();
 							var videoUrl = jQuery('#videoUrlId').val();

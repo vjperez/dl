@@ -46,13 +46,12 @@ $dueno_id = $_POST['duenoId'];
 
 
 //inspecting $_FILES array ; curiosity and debugging
-foreach ($_FILES as $key => $fotos) {
-		echo $key . ' contiene: ' . $fotos . '<br>';
-		foreach ($fotos as $key => $foto) {
-			echo $key . ' contiene: ' . $foto . '<br>';
-		}
+foreach ($_FILES['fotoArr']['name'] as $key => $nombre) {
+	echo $key . ' nombre: ' . $nombre . '<br>';
 }
-
+foreach ($_FILES['fotoArr']['size'] as $key => $size) {
+	echo $key . ' size: ' . $size . '<br>';
+}
 
 //check for foto errors now ; if and only if $_FILES has content
 /*
