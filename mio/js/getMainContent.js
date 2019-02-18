@@ -506,69 +506,40 @@ jQuery(document).ready(
 							evento.preventDefault(); //not making a submit (POST request) from html action
 							var formData = new FormData(this);
 
-							/*
-							var i;
-							$theFotoFiles = jQuery('form#editMicroEmpreForm input[name^=fotoArr]')[0].files;
-							for (i = 0; i < $theFotoFiles.length; i++) {
-							 	+formData.append('fotoArr[]', $theFotoFiles[i] );
-							}
-							*/
-							
-/*
-							var nombre = jQuery('#nombreId').val();
-							var videoUrl = jQuery('#videoUrlId').val();
-							//var foto1 = jQuery('form#editMicroEmpreForm input[name=foto1]')[0].files[0];
-							var fbk  = jQuery('#red1Id').val();
-							var tt   = jQuery('#red2Id').val();
-							var igrm = jQuery('#red3Id').val();
-							var phn  = jQuery('#red4Id').val();
-							var lun  = jQuery('#dia1Id').val();
-							var mar  = jQuery('#dia2Id').val();
-							var mier = jQuery('#dia3Id').val();
-							var jue  = jQuery('#dia4Id').val();
-							var vier = jQuery('#dia5Id').val();
-							var sab  = jQuery('#dia6Id').val();
-							var dom  = jQuery('#dia7Id').val();
-*/
 							var que = new Array();
 							jQuery('form#editMicroEmpreForm input[name^=que]').each(function(index){
 								if(jQuery(this).val()) { que[index] = jQuery(this).val(); } else {  }
+								formData.delete(jQuery(this).attr("name")); //sending ques in array so delete them individually
 							});
 							formData.append('que', que);
 							var donde = new Array();
 							jQuery('form#editMicroEmpreForm input[name^=donde]').each(function(index){
 								if(jQuery(this).val()) { donde[index] = jQuery(this).val(); } else {  }
+								formData.delete(jQuery(this).attr("name")); //sending dondes in array so delete them individually
 							});
 							formData.append('donde', donde);
-/*
-							var atucasa = jQuery('form#editMicroEmpreForm input[value=si]').prop('checked');
-							//if( jQuery. froma es valida (usertb, pass01, pass02, 'fullFeedback', 'form#creaDuenoForm h3') ){
 
-
-								jQuery.post('escritos/editMicroEmpreData.php', {nombre:nombre, videoUrl:videoUrl, fbk:fbk, tt:tt, igrm:igrm, phn:phn,
-																				lun:lun, mar:mar, mier:mier, jue:jue, vier:vier, sab:sab, dom:dom,
-																				que:que, donde:donde, atucasa:atucasa, duenoId:duenoId, meId:meId})
-*/
-								formData.append('duenoId', duenoId);
-								formData.append('meId', meId);
-								jQuery.ajax({method:"POST", url:"escritos/editMicroEmpreData.php", data:formData, processData:false, contentType:false, cache:false})
-								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
-									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
-									try{
-										//alert('datosJSONStr: ' + datosJSONStr);
-										datosJSObj = JSON.parse(datosJSONStr);
-										//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
-									}catch(errorParseo){
-										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server desde escritos/editMicroEmpreData.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
-									}
-									if(datosJSObj.actualizado){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=profile&meId=' + datosJSObj.meId);
-									}else{
-										//jQuery.feedback('form#editMicroEmpreForm h3', datosJSObj.feedback);
-									}
-								})
-								.fail(  jQuery.fallas  );  //failing post
+							formData.append('duenoId', duenoId);
+							formData.append('meId', meId);
+							//if{ post only validated data
+									jQuery.ajax({method:"POST", url:"escritos/editMicroEmpreData.php", data:formData, processData:false, contentType:false, cache:false})
+									.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+										//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
+										//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
+										try{
+											//alert('datosJSONStr: ' + datosJSONStr);
+											datosJSObj = JSON.parse(datosJSONStr);
+											//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
+										}catch(errorParseo){
+											jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server desde escritos/editMicroEmpreData.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
+										}
+										if(datosJSObj.actualizado){
+											jQuery(window.location).attr('href', window.location.pathname + '?look=profile&meId=' + datosJSObj.meId);
+										}else{
+											//jQuery.feedback('form#editMicroEmpreForm h3', datosJSObj.feedback);
+										}
+									})
+									.fail(  jQuery.fallas  );  //failing post
 							//}
 						});
 

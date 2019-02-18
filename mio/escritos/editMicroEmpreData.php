@@ -17,34 +17,19 @@ $dom = $_POST['dia7'];
 $cuando = json_encode ( array("lun"=>$lun, "mar"=>$mar, "mier"=>$mier, "jue"=>$jue, "vier"=>$vier, "sab"=>$sab, "dom"=>$dom) );
 $que   = '{' . $_POST['que'] . '}';
 $donde = '{' . $_POST['donde'] . '}';
-/*
-$que = '{' . $_POST['que'][0];
-for ($i=1; $i < 10; $i++) {
-	if ($_POST['que'][$i] !== '') $que = $que . ', ' . $_POST['que'][$i];
-}
-$que = $que . '}';
 
-$donde = '{' . $_POST['donde'][0];
-for ($i=1; $i < 5 ; $i++) {
-	if ($_POST['donde'][$i] !== '') $donde = $donde . ', ' . $_POST['donde'][$i];
-}
-$donde = $donde . '}';
-*/
-
-//echo $_POST['aTuCasa'] . ' : ';
 if(strcmp($_POST['aTuCasa'] , 'si') === 0){
 		$a_tu_casa = 'true';
 }else{
 		$a_tu_casa = 'false' ;
 }
-//echo $a_tu_casa . '<br>';
 
 
 $micro_empre_id = $_POST['meId'];
 $dueno_id = $_POST['duenoId'];
 // i already have the post values
 
-
+/*
 //inspecting $_FILES array ; curiosity and debugging
 foreach ($_FILES['fotoArr']['name'] as $key => $name) {
 	echo 'name ' . $key . ': ' . $name . '<br>';
@@ -61,13 +46,11 @@ foreach ($_FILES['fotoArr']['size'] as $key => $size) {
 foreach ($_FILES['fotoArr']['error'] as $key => $error) {
 	echo 'error ' . $key . '= ' . $error . '<br>';
 }
-foreach ($_FILES['fotoArr'] as $k => $p) {
-	echo 'key: ' . $k . ' prop: ' . $p . '<br>';
-}
+*/
 
 //check for foto errors now ; if and only if $_FILES has content
 //if(){
-	require_once 'checkFotoUploadError/checkFotoUploadError.php';
+require_once 'checkFotoUploadError/checkFotoUploadError.php';
 //}
 
 
