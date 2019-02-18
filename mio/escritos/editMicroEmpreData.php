@@ -46,19 +46,30 @@ $dueno_id = $_POST['duenoId'];
 
 
 //inspecting $_FILES array ; curiosity and debugging
-foreach ($_FILES['fotoArr']['name'] as $key => $nombre) {
-	echo $key . ' nombre: ' . $nombre . '<br>';
+foreach ($_FILES['fotoArr']['name'] as $key => $name) {
+	echo 'name ' . $key . ': ' . $name . '<br>';
+}
+foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
+	echo 'tmp name ' . $key . '= ' . $tmpn . '<br>';
+}
+foreach ($_FILES['fotoArr']['type'] as $key => $type) {
+	echo 'type ' . $key . ': ' . $type . '<br>';
 }
 foreach ($_FILES['fotoArr']['size'] as $key => $size) {
-	echo $key . ' size: ' . $size . '<br>';
+	echo 'size ' . $key . '= ' . $size . '<br>';
+}
+foreach ($_FILES['fotoArr']['error'] as $key => $error) {
+	echo 'error ' . $key . '= ' . $error . '<br>';
+}
+foreach ($_FILES['fotoArr'] as $k => $p) {
+	echo 'key: ' . $k . ' prop: ' . $p . '<br>';
 }
 
 //check for foto errors now ; if and only if $_FILES has content
-/*
-if(){
+//if(){
 	require_once 'checkFotoUploadError/checkFotoUploadError.php';
-}
-*/
+//}
+
 
 
 //conecta al db

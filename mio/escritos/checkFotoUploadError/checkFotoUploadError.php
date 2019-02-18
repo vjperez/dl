@@ -1,8 +1,10 @@
 <?php
-if($_FILES['foto1']['error'] > 0){
-	throw new Exception('Error subiendo foto. Codigo:' . $_FILES['foto1']['error'] . '.');
-}
 
+foreach ($_FILES['fotoArr']['error'] as $key => $error) {
+	if($error > 0){
+		throw new Exception('Error subiendo foto. Foto: ' . $key . '  Codigo: ' . $error . '.');
+	}
+}
 
 
 

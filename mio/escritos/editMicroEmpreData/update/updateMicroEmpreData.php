@@ -7,7 +7,7 @@ if($recurso){
 	echo json_encode ($respuesta);
 }else{
 	pg_close($cnx); //maybe not needed but doesn't hurt
-	echo $query;
+	//echo $query;
 	throw new Exception('Mal query.  Sin RECURSO, para query updateMicroEmpreDataQuery');
 }
 ?>
