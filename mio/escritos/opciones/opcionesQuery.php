@@ -6,7 +6,7 @@
 //barbero -> barbero   +   moca -> moca
 //If pattern does not contain percent signs or underscore, then the pattern only represents the string itself;
 //in that case LIKE acts like the equals operator
-$queries['literalBoth'] = "SELECT quien_foto_src, micro_empre_id FROM micro_empre
+$queries['literalBoth'] = "SELECT array_to_json(quien_foto_src), micro_empre_id FROM micro_empre
 			WHERE '$queLiteralStr'  iLIKE  ANY(que)
 			AND '$dondeLiteralStr'  iLIKE  ANY(donde)";
 /*
@@ -25,7 +25,7 @@ SELECT queasrows.micro_empre_id, losque, losdonde, queasrows.quien_foto_src  FRO
 //barbero -> barbero
 //If pattern does not contain percent signs or underscore, then the pattern only represents the string itself;
 //in that case LIKE acts like the equals operator
-$queries['literalQue'] = "SELECT quien_foto_src, micro_empre_id FROM micro_empre
+$queries['literalQue'] = "SELECT array_to_json(quien_foto_src), micro_empre_id FROM micro_empre
 			WHERE '$queLiteralStr' iLIKE  ANY(que)";
 /*
 SELECT micro_empre_id, losque, quien_foto_src FROM
@@ -40,7 +40,7 @@ WHERE losque = 'barbero';
 //moca -> moca
 //If pattern does not contain percent signs or underscore, then the pattern only represents the string itself;
 //in that case LIKE acts like the equals operator
-$queries['literalDonde'] = "SELECT quien_foto_src, micro_empre_id FROM micro_empre
+$queries['literalDonde'] = "SELECT array_to_json(quien_foto_src), micro_empre_id FROM micro_empre
 			WHERE '$dondeLiteralStr' iLIKE  ANY(donde)";
 /*
 SELECT micro_empre_id, losdonde, quien_foto_src  FROM
@@ -57,7 +57,7 @@ WHERE losdonde = 'moca';
 
 
 //barber -> los barberos, la barberia   +   junco -> juncos, maya -> mayaguez, baya -> bayamon, kiss -> kissimmee
-$queries['embeddedBoth'] = "SELECT queasrows.quien_foto_src, queasrows.micro_empre_id, COUNT(losque) cuentaenlosque
+$queries['embeddedBoth'] = "SELECT array_to_json(queasrows.quien_foto_src), queasrows.micro_empre_id, COUNT(losque) cuentaenlosque
    FROM ( SELECT micro_empre_id, unnest (que) losque, quien_foto_src FROM micro_empre ) queasrows
 	 INNER JOIN
 	      ( SELECT micro_empre_id, unnest (donde) losdonde, quien_foto_src FROM micro_empre ) dondeasrows
@@ -73,14 +73,14 @@ $queries[2] = "SELECT quien_foto_src, micro_empre_id
 */
 
 //barber -> los barberos, la barberia      eria -> panaderia, heladeria, barberia
-$queries['embeddedQue'] = "SELECT quien_foto_src, micro_empre_id, COUNT(losque) cuentaenlosque
+$queries['embeddedQue'] = "SELECT array_to_json(quien_foto_src), micro_empre_id, COUNT(losque) cuentaenlosque
 			FROM  (SELECT quien_foto_src, micro_empre_id, unnest (que) losque FROM micro_empre) queasrows
 			WHERE losque iLIKE '%$queLiteralStr%'
 			GROUP BY quien_foto_src, micro_empre_id
 			ORDER BY cuentaenlosque DESC";
 
 //junco -> juncos, maya -> mayaguez, baya -> bayamon, kiss -> kissimmee
-$queries['embeddedDonde'] = "SELECT quien_foto_src, micro_empre_id
+$queries['embeddedDonde'] = "SELECT array_to_json(quien_foto_src), micro_empre_id
 			FROM  (SELECT quien_foto_src, micro_empre_id, unnest (donde) losdonde FROM micro_empre) dondeasrows
 			WHERE losdonde iLIKE '%$dondeLiteralStr%'";
 

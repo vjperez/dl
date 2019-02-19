@@ -31,10 +31,13 @@ for($queryIndex = 1; $queryIndex <= 2; $queryIndex++){
 	if($recurso){
 		$parIndex = 0;  // para ordenar los pares $fila[1] , $random_micro_empre_foto.  $fila 1 viene de micro_empre_id y $random_micro_empre_foto es una de las fotos de quien_foto_src ($fila[0])
 		while($fila = pg_fetch_row($recurso)){
-			$toLetter = array(1=>"a", 2=>"b", 3=>"c", 4=>"d", 5=>"e");
+			//$toLetter = array(1=>"a", 2=>"b", 3=>"c", 4=>"d", 5=>"e"); not needed, complete name is on db
 			//para lo unico q uso fila 0 o sea quien_foto_src es para saber cuantas fotos son, y sacar un random number entre 1 y ese numero
 			//So, en el db podria guardar simplemente cuantas fotos tiene cada micro_empre
-			$random_micro_empre_foto = $fila[1] .  $toLetter[rand(1, count(explode(',', $fila[0])))] . '.jpg';
+			$quien_foto_src = json_decode($fila[0]);
+			$randomIndex = rand(0, -1 + count($quien_foto_src));
+			$random_micro_empre_foto = $quien_foto_src[$randomIndex];
+			//$random_micro_empre_foto = $fila[1] .  $toLetter[rand(1, count(explode(',', $fila[0])))] . '.jpg'; not needed, complete name is on db
 			$result["$buscaMode"][$queryIndex][$parIndex][$fila[1]] = $random_micro_empre_foto;
 			$parIndex++;
 		}
