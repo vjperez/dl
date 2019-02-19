@@ -446,7 +446,7 @@ jQuery(document).ready(
 						var meId = jQuery.urlParam('meId');
 						//get duenoId
 						var duenoId = jQuery.urlParam('duenoId');
-
+/*
 						//task 1 when ajax complete; hide, show on click ;
 						var $todosLosNotHidable = jQuery('.notHidable');
 						var $todosLosHidable = jQuery('.hidable');
@@ -455,6 +455,7 @@ jQuery(document).ready(
 							var $toToggle = jQuery(evento.currentTarget).siblings('.hidable');
 							$toToggle.toggle();
 						});
+*/
 						//task 2 when ajax complete ; if already existing micro empre then get that data
 						if(meId > 0){ //in the db showEmpresasGetIds, zero is used for crear empresa
 							//get profile data
@@ -509,19 +510,19 @@ jQuery(document).ready(
 							var que = new Array();
 							jQuery('form#editMicroEmpreForm input[name^=que]').each(function(index){
 								if(jQuery(this).val()) { que[index] = jQuery(this).val(); } else {  }
-								formData.delete(jQuery(this).attr("name")); //sending ques in array so delete them individually
+								formData.delete(jQuery(this).attr("name")); //sending ques in array so delete them individually from formData
 							});
 							formData.append('que', que);
 							var donde = new Array();
 							jQuery('form#editMicroEmpreForm input[name^=donde]').each(function(index){
 								if(jQuery(this).val()) { donde[index] = jQuery(this).val(); } else {  }
-								formData.delete(jQuery(this).attr("name")); //sending dondes in array so delete them individually
+								formData.delete(jQuery(this).attr("name")); //sending dondes in array so delete them individually from formData
 							});
 							formData.append('donde', donde);
 
 							formData.append('duenoId', duenoId);
 							formData.append('meId', meId);
-							//if{ post only validated data
+							//if{			 post only validated data ;  is this the place to validate data
 									jQuery.ajax({method:"POST", url:"escritos/editMicroEmpreData.php", data:formData, processData:false, contentType:false, cache:false})
 									.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 										//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.

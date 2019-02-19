@@ -225,6 +225,8 @@ form#editMicroEmpreForm input:focus { background-color:#dadada; }
 form#editMicroEmpreForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; }
 form#editMicroEmpreForm button:hover, form#editMicroEmpreForm button:focus { background-color:#7fb3d5; }
 form#editMicroEmpreForm label.explica { color:#16a085; font-size:0.85em; letter-spacing:0.2em; }
+form#editMicroEmpreForm textarea { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
+form#editMicroEmpreForm textarea:focus { background-color:#dadada; }
 
 form#editMicroEmpreForm fieldset.primario { margin:0pt; padding:0pt; padding-bottom:50pt; }
 form#editMicroEmpreForm fieldset.secundario { margin-top:0pt; }
