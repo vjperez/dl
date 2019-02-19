@@ -53,7 +53,7 @@ foreach ($_FILES['fotoArr']['error'] as $key => $error) {
 */
 
 //check for foto errors now ;
-require_once 'checkFotoUploadError/checkFotoUploadError.php';
+require_once 'checkFotoUploadErrorAndMove/checkFotoUploadErrorAndMove.php';
 
 
 

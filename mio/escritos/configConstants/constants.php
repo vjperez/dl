@@ -3,5 +3,5 @@
 //define("SITE_PATH_APPEND", "\WebDevelopmentStuff\mio ");
 
 define("MAQUINA_PATH", "/srv/http");
-define("SITE_PATH_APPEND", "/WebDevelopmentStuff/mio ");
+define("SITE_PATH_APPEND", "/WebDevelopmentStuff/mio");
 ?>

@@ -523,6 +523,8 @@ jQuery(document).ready(
 							formData.append('duenoId', duenoId);
 							formData.append('meId', meId);
 							//if{			 post only validated data ;  is this the place to validate data
+							//make sure you send MAX 5 pictures ; also check size and dimensions
+							//among other validations
 									jQuery.ajax({method:"POST", url:"escritos/editMicroEmpreData.php", data:formData, processData:false, contentType:false, cache:false})
 									.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 										//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.

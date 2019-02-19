@@ -41,4 +41,9 @@ foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
 //if there are no foto errors, prepare to move the images
 require_once 'configConstants/constants.php';
 $fotos_subidas_dir = MAQUINA_PATH . SITE_PATH_APPEND . '/imagenes/profile/subidas';
+foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
+	if(!move_uploaded_file($tmpn, $fotos_subidas_dir . '/' . $key)){ // si el file se pudo mover
+		throw new Exception('Error moviendo foto. Foto: ' . $key . '.  No se pudo mover la imagen!, tmp_name es: ' . $tmpn . '.');
+	}
+}
 ?>
