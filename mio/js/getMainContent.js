@@ -509,17 +509,42 @@ jQuery(document).ready(
 
 							var que = new Array();
 							jQuery('form#editMicroEmpreForm input[name^=que]').each(function(index){
-								if(jQuery(this).val()) { que[index] = jQuery(this).val(); } else {  }
+								if(jQuery(this).val() && (jQuery(this).val().length > 0)) { que[index] = jQuery(this).val(); } else { }
 								formData.delete(jQuery(this).attr("name")); //sending ques in array so delete them individually from formData
 							});
+							que = JSON.stringify(que); //alert(que);
 							formData.append('que', que);
 							var donde = new Array();
 							jQuery('form#editMicroEmpreForm input[name^=donde]').each(function(index){
-								if(jQuery(this).val()) { donde[index] = jQuery(this).val(); } else {  }
+								if(jQuery(this).val() && (jQuery(this).val().length > 0)) { donde[index] = jQuery(this).val(); } else { }
 								formData.delete(jQuery(this).attr("name")); //sending dondes in array so delete them individually from formData
 							});
+							donde = JSON.stringify(donde);  //alert(donde);
 							formData.append('donde', donde);
-
+							//quienSocialHandle is a JS array object, it is stringified before sending it				
+							var quienSocialHandle = {fbk:jQuery('form#editMicroEmpreForm input[name=red1]').val(), tt:jQuery('form#editMicroEmpreForm input[name=red2]').val(),
+													igrm:jQuery('form#editMicroEmpreForm input[name=red3]').val(), phn:jQuery('form#editMicroEmpreForm input[name=red4]').val()};				
+							formData.delete("red1"); //sending reds in array so delete them individually from formData
+							formData.delete("red2"); //sending reds in array so delete them individually from formData
+							formData.delete("red3"); //sending reds in array so delete them individually from formData
+							formData.delete("red4"); //sending reds in array so delete them individually from formData
+							quienSocialHandle = JSON.stringify(quienSocialHandle);  alert(quienSocialHandle);
+							formData.append('quienSocialHandle', quienSocialHandle);							
+							//cuando is a JS array object, it is stringified before sending it
+							var cuando = {dia1:jQuery('form#editMicroEmpreForm input[name=dia1]').val(), dia2:jQuery('form#editMicroEmpreForm input[name=dia2]').val(),
+										  dia3:jQuery('form#editMicroEmpreForm input[name=dia3]').val(), dia4:jQuery('form#editMicroEmpreForm input[name=dia4]').val(),
+										  dia5:jQuery('form#editMicroEmpreForm input[name=dia5]').val(), dia6:jQuery('form#editMicroEmpreForm input[name=dia6]').val(),
+										  dia7:jQuery('form#editMicroEmpreForm input[name=dia7]').val()};				
+							formData.delete("dia1"); //sending dias in array so delete them individually from formData
+							formData.delete("dia2"); //sending dias in array so delete them individually from formData
+							formData.delete("dia3"); //sending dias in array so delete them individually from formData
+							formData.delete("dia4"); //sending dias in array so delete them individually from formData
+							formData.delete("dia5"); //sending dias in array so delete them individually from formData
+							formData.delete("dia6"); //sending dias in array so delete them individually from formData
+							formData.delete("dia7"); //sending dias in array so delete them individually from formData							
+							cuando = JSON.stringify(cuando);  alert(cuando);
+							formData.append('cuando', cuando);							
+							
 							formData.append('duenoId', duenoId);
 							formData.append('meId', meId);
 							//if{			 post only validated data ;  is this the place to validate data

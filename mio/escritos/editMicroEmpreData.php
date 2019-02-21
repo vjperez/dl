@@ -2,28 +2,32 @@
 //saca los valores de POST
 $nombre = $_POST['nombre'];
 $videoUrl = $_POST['videoUrl'];
-$fbk = $_POST['red1'];
-$tt = $_POST['red2'];
-$igrm = $_POST['red3'];
-$phn = $_POST['red4'];
-$quien_social_handle = json_encode ( array("fbk"=>$fbk, "tt"=>$tt, "igrm"=>$igrm, "phn"=>$phn) );
-$lun = $_POST['dia1'];
-$mar = $_POST['dia2'];
-$mier = $_POST['dia3'];
-$jue = $_POST['dia4'];
-$vier = $_POST['dia5'];
-$sab = $_POST['dia6'];
-$dom = $_POST['dia7'];
-$cuando = json_encode ( array("lun"=>$lun, "mar"=>$mar, "mier"=>$mier, "jue"=>$jue, "vier"=>$vier, "sab"=>$sab, "dom"=>$dom) );
-$que   = '{' . $_POST['que'] . '}';
-$donde = '{' . $_POST['donde'] . '}';
+$quien_social_handle = $_POST['quienSocialHandle'];
+$cuando = $_POST['cuando'];
+$quePHP   = json_decode($_POST['que']);
+$quePosgreArray = '{';
+foreach($quePHP as $key => $element){
+	if(strlen($element) > 0){
+		$quePosgreArray = $quePosgreArray . $element;
+		if(1 + $key < count($quePHP)) $quePosgreArray = $quePosgreArray . ',';
+	}
+}
+$quePosgreArray = $quePosgreArray . '}';
+$dondePHP = json_decode($_POST['donde']);
+$dondePosgreArray = '{';
+foreach($dondePHP as $key => $element){
+	if(strlen($element) > 0){
+		$dondePosgreArray = $dondePosgreArray . $element;
+		if(1 + $key < count($dondePHP)) $dondePosgreArray = $dondePosgreArray . ',';
+	}
+}
+$dondePosgreArray = $dondePosgreArray . '}';
 
 if(strcmp($_POST['aTuCasa'] , 'si') === 0){
 		$a_tu_casa = 'true';
 }else{
 		$a_tu_casa = 'false' ;
 }
-
 
 $micro_empre_id = $_POST['meId'];
 $dueno_id = $_POST['duenoId'];
