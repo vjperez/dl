@@ -210,13 +210,13 @@ jQuery(document).ready(
 							else { jQuery(this).remove(); }
 						});
 						//alert(datos.cuando);
-						jQuery('#cuando td.lun').text(datos.cuando.lun);
-						jQuery('#cuando td.mar').text(datos.cuando.mar);
-						jQuery('#cuando td.mier').text(datos.cuando.mier);
-						jQuery('#cuando td.jue').text(datos.cuando.jue);
-						jQuery('#cuando td.vier').text(datos.cuando.vier);
-						jQuery('#cuando td.sab').text(datos.cuando.sab);
-						jQuery('#cuando td.dom').text(datos.cuando.dom);
+						if(datos.cuando.lun  != '') jQuery('#cuando td.lun').text(datos.cuando.lun);
+						if(datos.cuando.mar  != '') jQuery('#cuando td.mar').text(datos.cuando.mar);
+						if(datos.cuando.mier != '') jQuery('#cuando td.mier').text(datos.cuando.mier);
+						if(datos.cuando.jue  != '') jQuery('#cuando td.jue').text(datos.cuando.jue);
+						if(datos.cuando.vier != '') jQuery('#cuando td.vier').text(datos.cuando.vier);
+						if(datos.cuando.sab  != '') jQuery('#cuando td.sab').text(datos.cuando.sab);
+						if(datos.cuando.dom  != '') jQuery('#cuando td.dom').text(datos.cuando.dom);
 						//following code works when there are 10 or less 'que' coming from getJSON.
 						//the html is prepared for a max of 10 'que', this code removes excess html when less than 10 'que' come
 						//alert(datos.que);
@@ -523,7 +523,7 @@ jQuery(document).ready(
 							formData.append('donde', donde);
 							//quienSocialHandle is a JS array object, it is stringified before sending it				
 							var quienSocialHandle = {fbk:jQuery('form#editMicroEmpreForm input[name=red1]').val(), tt:jQuery('form#editMicroEmpreForm input[name=red2]').val(),
-													igrm:jQuery('form#editMicroEmpreForm input[name=red3]').val(), phn:jQuery('form#editMicroEmpreForm input[name=red4]').val()};				
+													igrm:jQuery('form#editMicroEmpreForm input[name=red3]').val(),phn:jQuery('form#editMicroEmpreForm input[name=red4]').val()};				
 							formData.delete("red1"); //sending reds in array so delete them individually from formData
 							formData.delete("red2"); //sending reds in array so delete them individually from formData
 							formData.delete("red3"); //sending reds in array so delete them individually from formData
@@ -531,10 +531,10 @@ jQuery(document).ready(
 							quienSocialHandle = JSON.stringify(quienSocialHandle);  alert(quienSocialHandle);
 							formData.append('quienSocialHandle', quienSocialHandle);							
 							//cuando is a JS array object, it is stringified before sending it
-							var cuando = {dia1:jQuery('form#editMicroEmpreForm input[name=dia1]').val(), dia2:jQuery('form#editMicroEmpreForm input[name=dia2]').val(),
-										  dia3:jQuery('form#editMicroEmpreForm input[name=dia3]').val(), dia4:jQuery('form#editMicroEmpreForm input[name=dia4]').val(),
-										  dia5:jQuery('form#editMicroEmpreForm input[name=dia5]').val(), dia6:jQuery('form#editMicroEmpreForm input[name=dia6]').val(),
-										  dia7:jQuery('form#editMicroEmpreForm input[name=dia7]').val()};				
+							var cuando = {lun:jQuery('form#editMicroEmpreForm input[name=dia1]').val(), mar:jQuery('form#editMicroEmpreForm input[name=dia2]').val(),
+										  mier:jQuery('form#editMicroEmpreForm input[name=dia3]').val(), jue:jQuery('form#editMicroEmpreForm input[name=dia4]').val(),
+										  vier:jQuery('form#editMicroEmpreForm input[name=dia5]').val(), sab:jQuery('form#editMicroEmpreForm input[name=dia6]').val(),
+										  dom:jQuery('form#editMicroEmpreForm input[name=dia7]').val()};				
 							formData.delete("dia1"); //sending dias in array so delete them individually from formData
 							formData.delete("dia2"); //sending dias in array so delete them individually from formData
 							formData.delete("dia3"); //sending dias in array so delete them individually from formData
