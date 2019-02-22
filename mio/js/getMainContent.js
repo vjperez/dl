@@ -3,11 +3,11 @@ jQuery(document).ready(
 		//extracs parameters from the url
 		jQuery.urlParam = function(name){
 			var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-			if(results == null) return null;
+			if(results === null) return null;
 			else return results[1];
 			//return results[1] || 0;
 		}
-		jQuery.cleanBuscaStr = function(str){
+		jQuery.cleanStr = function(str){
 			/*
 			newStr01 = str.replace(/[^a-zA-Z 0-9]+/g, '');
 			newStr02 = str.replace(/[^a-z0-9]/gi, ' ');
@@ -30,12 +30,18 @@ jQuery(document).ready(
 			*/
 			str = str.replace(/[^a-z0-9]/gi, '*'); // same as replace(/[^a-zA-Z0-9]/g, '*'); JavaScript is a case-sensitive language
 			strArray = str.split('*');
-			result = new Array();
+			result = '';
 			for(var i=0; i < strArray.length; i++){
-				if (strArray[i] != '') result.push(strArray[i]);
+				if (strArray[i] != '') {
+					result += strArray[i];
+					if (i+1 < strArray.length) result += ' ';
+				}
 			}
-			//alert(result);
-			return result; // this is an array
+			return result;
+		}
+		jQuery.isVacioStr = function(str){
+			if (str === null) return true;
+			return str.length == 0;
 		}
 		jQuery.fallas = function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){
 		//Called at getJSON .fail and jQuery post when parsing errors (caused by PHP Exceptions), and
@@ -123,12 +129,12 @@ jQuery(document).ready(
 						jQuery('form').submit(function(evento){
 							evento.preventDefault(); //not making a submit (GET request) here. Lets do it at look=opciones
 							var que = jQuery('#queId').val();
-							que = jQuery.cleanBuscaStr(que); // clean function returns an array with 'words' to be searched
+							que = jQuery.cleanStr(que); // clean function returns cleaned str
 							var donde = jQuery('#dondeId').val();
-							donde = jQuery.cleanBuscaStr(donde); // clean function returns an array with 'words' to be searched
+							donde = jQuery.cleanStr(donde); // clean function returns cleaned str 
 							//alert(que + ' ' + que.length + '\n' + donde + ' ' + donde.length);
-							if(que.length > 0 || donde.length > 0){//'que' y 'donde' are arrays of words, so on each, i'm looking for at least 1 word
-								jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + que + '&donde=' + donde);
+							if(que.length > 0 || donde.length > 0){//i'm looking for a non empty cleaned str
+								jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + que.replace(/ /g, ':') + '&donde=' + donde.replace(/ /g, ':'));
 								//here each array of words is converted into a string with ',' as delimiter; that's what
 								//you see on address bar
 							}else{
@@ -144,8 +150,8 @@ jQuery(document).ready(
 			//concatenating strings inside an each loop, with the requested JSON datos.
 				var que = jQuery.urlParam('que');
 				var donde = jQuery.urlParam('donde');
-				que = que.replace(/,/g, ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter. The server receives 'limpia carro' not 'limpia,carro'
-				donde = donde.replace(/,/g, ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter
+				que = que.replace(/:/g, ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter. The server receives 'limpia carro' not 'limpia,carro'
+				donde = donde.replace(/:/g, ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter
 				jQuery.getJSON('escritos/opciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
@@ -223,7 +229,7 @@ jQuery(document).ready(
 						jQuery('#que li a').each(function(index){
 							if(index < datos.que.length) {
 								jQuery(this).text(datos.que[index]);
-								jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + datos.que[index].replace(/ /g, ',') + '&donde=');
+								jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + datos.que[index].replace(/ /g, ':') + '&donde=');
 							} else { jQuery(this).remove(); }
 						});
 						//following code works when there are 5 or less 'donde' coming from getJSON.
@@ -232,7 +238,7 @@ jQuery(document).ready(
 						jQuery('#donde li a').each(function(index){
 							if(index < datos.donde.length) {
 								jQuery(this).text(datos.donde[index]);
-								jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + '&donde=' + datos.donde[index].replace(/ /g, ','));
+								jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + '&donde=' + datos.donde[index].replace(/ /g, ':'));
 							}else { jQuery(this).remove(); }
 						});
 						//alert('a tu casa: ' + datos.atucasa + '\ntipo: ' + typeof datos.atucasa);
@@ -509,14 +515,16 @@ jQuery(document).ready(
 
 							var que = new Array();
 							jQuery('form#editMicroEmpreForm input[name^=que]').each(function(index){
-								if(jQuery(this).val() && (jQuery(this).val().length > 0)) { que[index] = jQuery(this).val(); } else { }
+								var cleanedQue = jQuery.cleanStr(jQuery(this).val());
+								if(jQuery.isVacioStr(cleanedQue)) {  } else { que[index] = cleanedQue; }
 								formData.delete(jQuery(this).attr("name")); //sending ques in array so delete them individually from formData
 							});
 							que = JSON.stringify(que); //alert(que);
 							formData.append('que', que);
 							var donde = new Array();
 							jQuery('form#editMicroEmpreForm input[name^=donde]').each(function(index){
-								if(jQuery(this).val() && (jQuery(this).val().length > 0)) { donde[index] = jQuery(this).val(); } else { }
+								var cleanedDonde = jQuery.cleanStr(jQuery(this).val());
+								if(jQuery.isVacioStr(cleanedDonde)) {  } else { donde[index] = cleanedDonde; }
 								formData.delete(jQuery(this).attr("name")); //sending dondes in array so delete them individually from formData
 							});
 							donde = JSON.stringify(donde);  //alert(donde);
