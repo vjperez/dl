@@ -489,14 +489,16 @@ jQuery(document).ready(
 										//the html is prepared for a max of 10 'que'
 										jQuery('form#editMicroEmpreForm input[name^=que]').each(function(index){
 											if(index < datos.que.length) { jQuery(this).val(datos.que[index]); }
-											else {  } //ya estan vacios en html por default
+											else {  } //en el task3 aqui, entran al arreglo de ques, solo los cleaned ques que no son vacioStrs,
+													  // ; en html profile solo se muestran los input field q entraron al arreglo los demas se remueven
 										});
 
 										//following code works when there are 5 or less 'donde' coming from getJSON.
 										//the html is prepared for a max of 5 'donde'
 										jQuery('form#editMicroEmpreForm input[name^=donde]').each(function(index){
 											if(index < datos.donde.length) { jQuery(this).val(datos.donde[index]); }
-											else {  } //ya estan vacios en html por default
+											else {  } //en el task3 aqui, entran al arreglo de dondes, solo los cleaned dondes que no son vacioStrs,
+													  // ; en html profile solo se muestran los input field q entraron al arreglo los demas se remueven
 										});
 
 										jQuery('form#editMicroEmpreForm input[value=si]').prop('checked', datos.atucasa);

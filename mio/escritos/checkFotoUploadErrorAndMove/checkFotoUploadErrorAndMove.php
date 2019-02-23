@@ -32,7 +32,7 @@ foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
 	}
 	*/
 	if( stripos(getimagesize($tmpn)['mime'],  'image') !== 0 ) { // si getimagesize no devuelve 'image/blahblah' en la posicion cero del index 'mime'
-		throw new Exception('Error subiendo foto. Foto: ' . $key . '.  Esta file NO es una imagen!, tmp_name es: ' . $tmpn . ', tipo de file es: ' . $_FILES['fotoArr']['type'][$key] . '.');
+		throw new Exception('Error subiendo foto. Foto: ' . $key . '.  Esta file, segun getimagesize($tmpn), NO es una imagen!, tmp_name es: ' . $tmpn . ', tipo de file es: ' . $_FILES['fotoArr']['type'][$key] . '.');
 	}
 }
 

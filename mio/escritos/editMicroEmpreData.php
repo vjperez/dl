@@ -56,6 +56,17 @@ foreach ($_FILES['fotoArr']['size'] as $key => $size) {
 foreach ($_FILES['fotoArr']['error'] as $key => $error) {
 	echo 'error ' . $key . '= ' . $error . '<br>';
 }
+//output for 2 images:
+name 0: light_button.png
+name 1: light_logo.png
+tmp name 0= C:\Users\victor\lighttpd\tmp\php2E44.tmp
+tmp name 1= C:\Users\victor\lighttpd\tmp\php2E54.tmp
+type 0: image/png
+type 1: image/png
+size 0= 2072
+size 1= 35431
+error 0= 0
+error 1= 0
 */
 
 //check for foto errors now ;
