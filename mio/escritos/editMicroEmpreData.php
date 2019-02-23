@@ -7,18 +7,20 @@ $cuando = $_POST['cuando'];
 $quePHP   = json_decode($_POST['que']);
 $quePosgreArray = '{';
 foreach($quePHP as $key => $element){
-	if(strlen($element) > 0){
+	if(strlen($element) > 0){  // because of cleanStr in JS, this should ALWAYS be true
+		if(strlen($quePosgreArray) > strlen('{')) $quePosgreArray = $quePosgreArray . ',';
 		$quePosgreArray = $quePosgreArray . $element;
-		if(1 + $key < count($quePHP)) $quePosgreArray = $quePosgreArray . ',';
+		//if(1 + $key < count($quePHP)) $quePosgreArray = $quePosgreArray . ',';
 	}
 }
 $quePosgreArray = $quePosgreArray . '}';
 $dondePHP = json_decode($_POST['donde']);
 $dondePosgreArray = '{';
 foreach($dondePHP as $key => $element){
-	if(strlen($element) > 0){
+	if(strlen($element) > 0){  // because of cleanStr in JS, this should ALWAYS be true
+		if(strlen($dondePosgreArray) > strlen('{')) $dondePosgreArray = $dondePosgreArray . ',';
 		$dondePosgreArray = $dondePosgreArray . $element;
-		if(1 + $key < count($dondePHP)) $dondePosgreArray = $dondePosgreArray . ',';
+		//if(1 + $key < count($dondePHP)) $dondePosgreArray = $dondePosgreArray . ',';
 	}
 }
 $dondePosgreArray = $dondePosgreArray . '}';

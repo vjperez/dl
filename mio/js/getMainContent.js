@@ -33,8 +33,8 @@ jQuery(document).ready(
 			result = '';
 			for(var i=0; i < strArray.length; i++){
 				if (strArray[i] != '') {
+					if(result !== ''){result += ' ';} //the first time, simply add the 'word', other times add a ' ' before the word
 					result += strArray[i];
-					if (i+1 < strArray.length) result += ' ';
 				}
 			}
 			return result;
@@ -132,11 +132,9 @@ jQuery(document).ready(
 							que = jQuery.cleanStr(que); // clean function returns cleaned str
 							var donde = jQuery('#dondeId').val();
 							donde = jQuery.cleanStr(donde); // clean function returns cleaned str 
-							//alert(que + ' ' + que.length + '\n' + donde + ' ' + donde.length);
+							alert('que=(' + que  + ')\ndonde=(' +  donde + ')');
 							if(que.length > 0 || donde.length > 0){//i'm looking for a non empty cleaned str
 								jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + que.replace(/ /g, ':') + '&donde=' + donde.replace(/ /g, ':'));
-								//here each array of words is converted into a string with ',' as delimiter; that's what
-								//you see on address bar
 							}else{
 								jQuery.feedback('form#queDondeForm h3', 'Buscas algo?');
 							}
