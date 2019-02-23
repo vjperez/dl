@@ -69,6 +69,9 @@ error 0= 0
 error 1= 0
 */
 
+
+
+
 //check for foto errors now ;
 require_once 'checkFotoUploadErrorAndMove/checkFotoUploadErrorAndMove.php';
 

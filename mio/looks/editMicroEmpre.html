@@ -37,7 +37,7 @@
  	    <fieldset class="primario">
  	    	<label class="notHidable">Qui&eacute;n</label>
  	    	<label class="explica">minimo 1 contacto de tu Micro Empresa</label>
-			<fieldset class="secundario hidable">
+			<fieldset id="socialHandleFieldset" class="secundario hidable">
 				<label for="red1Id">Facebook</label>
 				<!-- <label for="red1Id" class="explica">URL</label> -->
 				<p><input id="red1Id"     type="text" name="red1"  maxlength="50"  placeholder=""></p>
@@ -49,6 +49,7 @@
 				<p><input id="red3Id"     type="text" name="red3"  maxlength="50"  placeholder=""></p>
 				<label for="red4Id">Telefono</label>
 				<p><input id="red4Id"     type="tel" name="red4"  maxlength="50"   placeholder=""></p>
+				<h3></h3>
 			</fieldset>
 		</fieldset>
 
@@ -56,10 +57,11 @@
  	    <fieldset class="primario">
  	    	<label class="notHidable">Fotos</label>
  	    	<label class="explica">Fotos de tu Micro Empresa</label>
-			<fieldset class="secundario hidable">
+			<fieldset id="fotoSrcFieldset" class="secundario hidable">
 				<input type="hidden" name="MAX_FILE_SIZE" value="200000"> <!-- 2MB  200 000B-->
 				<label for="fotosId">Fotos:</label>
 				<p><input id="fotosId"  type="file" name="fotoArr[]" multiple required=true></p>
+				<h3></h3>
 			</fieldset>
 		</fieldset>
 
