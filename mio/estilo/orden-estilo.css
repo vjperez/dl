@@ -190,7 +190,6 @@ form#creaDuenoForm h3 { text-align:center; }
 
 
 
-
 /*estilo : creaDueno */
 /*casi una copia de busca*/
 form#creaDuenoForm label { font-size:1.5em; letter-spacing:0.3em; font-weight:bolder; color:#16a085; }
@@ -214,6 +213,9 @@ form#creaDuenoForm h3 { font-family:serif, Times, times; color:#16a085; }
 div#editMicroEmpre { margin-left:auto; margin-right:auto;  padding-bottom:50pt;}
 form#editMicroEmpreForm { margin-left:auto; margin-right:auto; }
 form#editMicroEmpreForm input[type='text'], form#editMicroEmpreForm input[type='tel'], form#editMicroEmpreForm textarea { width:80%; }
+form#editMicroEmpreForm fieldset#socialHandleFieldset h3 { text-align:center; }
+form#editMicroEmpreForm fieldset#fotoSrcFieldset      h3 { text-align:center; }
+
 
 
 
@@ -238,7 +240,10 @@ form#editMicroEmpreForm input.si { margin-right:30pt; }
 form#editMicroEmpreForm button { display:block; margixxxn-bottom:30pt; }
 form#editMicroEmpreForm button { width:25%; position:relative; left:37.5%; }
 div#editMicroEmpre h1 { color:#16a085; }
-
+form#editMicroEmpreForm fieldset#socialHandleFieldset.warn h3 { font-family:serif, Times, times; color:#ff0000; }
+form#editMicroEmpreForm fieldset#fotoSrcFieldset.warn      h3 { font-family:serif, Times, times; color:#ff0000; }
+form#editMicroEmpreForm fieldset#socialHandleFieldset.warn  { border-color:#ff0000; }
+form#editMicroEmpreForm fieldset#fotoSrcFieldset.warn       { border-color:#ff0000; }
 
 
 /* orden : editDuenoData */

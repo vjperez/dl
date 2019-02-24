@@ -108,15 +108,25 @@ jQuery(document).ready(
 		jQuery.haveAtLeast1Handle = function(){
 			if(jQuery.isVacioStr(jQuery('form#editMicroEmpreForm input[name=red1]').val()) &&  jQuery.isVacioStr(jQuery('form#editMicroEmpreForm input[name=red2]').val()) &&
 			   jQuery.isVacioStr(jQuery('form#editMicroEmpreForm input[name=red3]').val()) &&  jQuery.isVacioStr(jQuery('form#editMicroEmpreForm input[name=red4]').val()) ) {
-				jQuery.feedback('fieldset#socialHandleFieldset h3', 'Minimo 1 contacto de tu micro empresa');
+				jQuery.feedback('fieldset#socialHandleFieldset h3', 'Minimo 1 contacto');
+			  jQuery('fieldset#socialHandleFieldset').addClass('warn');
 				return false;
-			}else{ return true; }
+			}else{
+				jQuery.feedback('fieldset#socialHandleFieldset h3', '');
+				jQuery('fieldset#socialHandleFieldset').removeClass('warn');
+				return true;
+			}
 		}
 		jQuery.have5OrLessFotos = function(){
 			if(jQuery('form#editMicroEmpreForm input#fotosId')[0].files.length > 5 ){
 				jQuery.feedback('fieldset#fotoSrcFieldset h3', 'Maximo 5 fotos');
-				return false;				
-			}else{ return true; }
+				jQuery('fieldset#fotoSrcFieldset').addClass('warn');
+				return false;
+			}else{
+				jQuery.feedback('fieldset#fotoSrcFieldset h3', '');
+				jQuery('fieldset#fotoSrcFieldset').removeClass('warn');
+				return true;
+			}
 		}
 
 		var look = jQuery.urlParam('look');
@@ -143,7 +153,7 @@ jQuery(document).ready(
 							var que = jQuery('#queId').val();
 							que = jQuery.cleanStr(que); // clean function returns cleaned str
 							var donde = jQuery('#dondeId').val();
-							donde = jQuery.cleanStr(donde); // clean function returns cleaned str 
+							donde = jQuery.cleanStr(donde); // clean function returns cleaned str
 							alert('que=(' + que  + ')\ndonde=(' +  donde + ')');
 							if(que.length > 0 || donde.length > 0){//i'm looking for a non empty cleaned str
 								jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + que.replace(/ /g, ':') + '&donde=' + donde.replace(/ /g, ':'));
@@ -541,33 +551,33 @@ jQuery(document).ready(
 							});
 							donde = JSON.stringify(donde);  //alert(donde);
 							formData.append('donde', donde);
-							//quienSocialHandle is a JS array object, it is stringified before sending it				
+							//quienSocialHandle is a JS array object, it is stringified before sending it
 							var quienSocialHandle = {fbk:jQuery('form#editMicroEmpreForm input[name=red1]').val(), tt:jQuery('form#editMicroEmpreForm input[name=red2]').val(),
-													igrm:jQuery('form#editMicroEmpreForm input[name=red3]').val(),phn:jQuery('form#editMicroEmpreForm input[name=red4]').val()};				
+													igrm:jQuery('form#editMicroEmpreForm input[name=red3]').val(),phn:jQuery('form#editMicroEmpreForm input[name=red4]').val()};
 							formData.delete("red1"); //sending reds in array so delete them individually from formData
 							formData.delete("red2"); //sending reds in array so delete them individually from formData
 							formData.delete("red3"); //sending reds in array so delete them individually from formData
 							formData.delete("red4"); //sending reds in array so delete them individually from formData
 							quienSocialHandle = JSON.stringify(quienSocialHandle);
-							formData.append('quienSocialHandle', quienSocialHandle);							
+							formData.append('quienSocialHandle', quienSocialHandle);
 							//cuando is a JS array object, it is stringified before sending it
 							var cuando = {lun:jQuery('form#editMicroEmpreForm input[name=dia1]').val(), mar:jQuery('form#editMicroEmpreForm input[name=dia2]').val(),
 										  mier:jQuery('form#editMicroEmpreForm input[name=dia3]').val(), jue:jQuery('form#editMicroEmpreForm input[name=dia4]').val(),
 										  vier:jQuery('form#editMicroEmpreForm input[name=dia5]').val(), sab:jQuery('form#editMicroEmpreForm input[name=dia6]').val(),
-										  dom:jQuery('form#editMicroEmpreForm input[name=dia7]').val()};				
+										  dom:jQuery('form#editMicroEmpreForm input[name=dia7]').val()};
 							formData.delete("dia1"); //sending dias in array so delete them individually from formData
 							formData.delete("dia2"); //sending dias in array so delete them individually from formData
 							formData.delete("dia3"); //sending dias in array so delete them individually from formData
 							formData.delete("dia4"); //sending dias in array so delete them individually from formData
 							formData.delete("dia5"); //sending dias in array so delete them individually from formData
 							formData.delete("dia6"); //sending dias in array so delete them individually from formData
-							formData.delete("dia7"); //sending dias in array so delete them individually from formData							
+							formData.delete("dia7"); //sending dias in array so delete them individually from formData
 							cuando = JSON.stringify(cuando);
-							formData.append('cuando', cuando);							
-							
+							formData.append('cuando', cuando);
+
 							formData.append('duenoId', duenoId);
 							formData.append('meId', meId);
-							if(jQuery.haveAtLeast1Handle( ) && jQuery.have5OrLessFotos()){ // post only validated data ;				
+							if(jQuery.haveAtLeast1Handle() & jQuery.have5OrLessFotos()){ // post only validated data ;  evaluate both AND clauses using &
 									jQuery.ajax({method:"POST", url:"escritos/editMicroEmpreData.php", data:formData, processData:false, contentType:false, cache:false})
 									.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 										//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
