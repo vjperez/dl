@@ -19,6 +19,7 @@ foreach ($_FILES['fotoArr']['error'] as $key => $error) {
 
 //is any of the uploaded files targeting a system file ? ; @ suppresses errors
 //is any of the uploaded files NOT an image ? ; @ suppresses errors
+//was the file movement a success ?
 foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
 	if(!is_uploaded_file($tmpn)){ // si el file no es uploaded file
 		throw new Exception('Error subiendo foto. Foto: ' . $key . '.  Esta NO es uploaded file!, tmp_name es: ' . $tmpn . '.');
@@ -34,15 +35,14 @@ foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
 	if( stripos(getimagesize($tmpn)['mime'],  'image') !== 0 ) { // si getimagesize no devuelve 'image/blahblah' en la posicion cero del index 'mime'
 		throw new Exception('Error subiendo foto. Foto: ' . $key . '.  Esta file, segun getimagesize($tmpn), NO es una imagen!, tmp_name es: ' . $tmpn . ', tipo de file es: ' . $_FILES['fotoArr']['type'][$key] . '.');
 	}
-}
-
-
-
-//if there are no foto errors, prepare to move the images
-require_once 'configConstants/constants.php';
-foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
-	if(!move_uploaded_file($tmpn, $fotos_subidas_dir . $key)){ // si el file se pudo mover
+	//if there are no foto errors, prepare to move the images
+	require_once 'configConstants/constants.php';
+	$toLetter = array(0=>"a", 1=>"b", 2=>"c", 3=>"d", 4=>"e");
+	if(!move_uploaded_file($tmpn, $fotos_subidas_dir . $micro_empre_id . $toLetter[$key] )){ // si el file se pudo mover
 		throw new Exception('Error moviendo foto. Foto: ' . $key . '.  No se pudo mover la imagen!, tmp_name es: ' . $tmpn . '.');
 	}
+	//building $quien_foto_src
+	if(strlen($quien_foto_src) > strlen('{')) $quien_foto_src = $quien_foto_src . ',';
+	$quien_foto_src = $quien_foto_src . $micro_empre_id . $toLetter[$key];
 }
 ?>

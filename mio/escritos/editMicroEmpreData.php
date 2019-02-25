@@ -72,9 +72,10 @@ error 1= 0
 
 
 
-//check for foto errors now ;
+//check for foto errors now   ;   move fotos   ;   build a $quien_foto_src postgresql type array
+$quien_foto_src = '{';
 require_once 'checkFotoUploadErrorAndMove/checkFotoUploadErrorAndMove.php';
-
+$quien_foto_src = $quien_foto_src . '}';
 
 
 
