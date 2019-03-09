@@ -302,7 +302,7 @@ jQuery(document).ready(
 							var labelAndTable = '<label class="notHidable">Micro Empresas:</label>';
 							labelAndTable   +=  '<table class="hidaxxxble">';
 								jQuery.each(datos, function(index, meId, nombre){
-									labelAndTable += '<tr><td><a class="link" href="portada.html?look=editMicroEmpre&meId=' + datos[index].meId + '&duenoId=' + duenoId + '">' + datos[index].nombre + '</a></td></tr>';
+									labelAndTable += '<tr><td><a class="link" href="portada.html?look=createMicroEmpre&meId=' + datos[index].meId + '&duenoId=' + duenoId + '">' + datos[index].nombre + '</a></td></tr>';
 								});
 							labelAndTable += '</table>';
 							jQuery('#labelAndTableContainer').html(labelAndTable);
@@ -318,20 +318,20 @@ jQuery(document).ready(
 
 
 			break;
-			case 'editMicroEmpre':
+			case 'createMicroEmpre':
 				//this code is very similar to profile case code - should make functions to simplify
 
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
 
-				jQuery.get('looks/editMicroEmpre.html', function(datosDeRespuesta, estatus, xhrObjeto){
+				jQuery.get('looks/createMicroEmpre.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeMicroEmpreData = jQuery(datosDeRespuesta).filter('#main');
 					jQuery('#containerForMain').html(mainDeMicroEmpreData);
 				});
 
 
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/editMicroEmpre.html'){
+					if(settingsObjeto.url === 'looks/createMicroEmpre.html'){
 						//get meId
 						var meId = jQuery.urlParam('meId');
 						//get duenoId
@@ -343,28 +343,28 @@ jQuery(document).ready(
 							jQuery.getJSON('escritos/getMicroEmpreData.php', {meId:meId} )
 							.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 										//nombre y video
-										jQuery('form#editMicroEmpreForm input[name=nombre]').val(datos.nombre);
-										jQuery('form#editMicroEmpreForm textarea[name=videoUrl]').val(datos.videoUrl);
+										jQuery('form#createMicroEmpreForm input[name=nombre]').val(datos.nombre);
+										jQuery('form#createMicroEmpreForm textarea[name=videoUrl]').val(datos.videoUrl);
 										//quien
-										jQuery('form#editMicroEmpreForm input[name=red1]').val(datos.quienSocialHandle.fbk);
-										jQuery('form#editMicroEmpreForm input[name=red2]').val(datos.quienSocialHandle.tt);
-										jQuery('form#editMicroEmpreForm input[name=red3]').val(datos.quienSocialHandle.igrm);
-										jQuery('form#editMicroEmpreForm input[name=red4]').val(datos.quienSocialHandle.phn);
+										jQuery('form#createMicroEmpreForm input[name=red1]').val(datos.quienSocialHandle.fbk);
+										jQuery('form#createMicroEmpreForm input[name=red2]').val(datos.quienSocialHandle.tt);
+										jQuery('form#createMicroEmpreForm input[name=red3]').val(datos.quienSocialHandle.igrm);
+										jQuery('form#createMicroEmpreForm input[name=red4]').val(datos.quienSocialHandle.phn);
 
 										//falta each para array de fotos
 
 										//cuando
-										jQuery('form#editMicroEmpreForm input[name=dia1]').val(datos.cuando.lun);
-										jQuery('form#editMicroEmpreForm input[name=dia2]').val(datos.cuando.mar);
-										jQuery('form#editMicroEmpreForm input[name=dia3]').val(datos.cuando.mier);
-										jQuery('form#editMicroEmpreForm input[name=dia4]').val(datos.cuando.jue);
-										jQuery('form#editMicroEmpreForm input[name=dia5]').val(datos.cuando.vier);
-										jQuery('form#editMicroEmpreForm input[name=dia6]').val(datos.cuando.sab);
-										jQuery('form#editMicroEmpreForm input[name=dia7]').val(datos.cuando.dom);
+										jQuery('form#createMicroEmpreForm input[name=dia1]').val(datos.cuando.lun);
+										jQuery('form#createMicroEmpreForm input[name=dia2]').val(datos.cuando.mar);
+										jQuery('form#createMicroEmpreForm input[name=dia3]').val(datos.cuando.mier);
+										jQuery('form#createMicroEmpreForm input[name=dia4]').val(datos.cuando.jue);
+										jQuery('form#createMicroEmpreForm input[name=dia5]').val(datos.cuando.vier);
+										jQuery('form#createMicroEmpreForm input[name=dia6]').val(datos.cuando.sab);
+										jQuery('form#createMicroEmpreForm input[name=dia7]').val(datos.cuando.dom);
 
 										//following code works when there are 10 or less 'que' coming from getJSON.
 										//the html is prepared for a max of 10 'que'
-										jQuery('form#editMicroEmpreForm input[name^=que]').each(function(index){
+										jQuery('form#createMicroEmpreForm input[name^=que]').each(function(index){
 											if(index < datos.que.length) { jQuery(this).val(datos.que[index]); }
 											else {  } //en el task3 aqui, entran al arreglo de ques, solo los cleaned ques que no son vacioStrs,
 													  // ; en html profile solo se muestran los input field q entraron al arreglo los demas se remueven
@@ -372,29 +372,29 @@ jQuery(document).ready(
 
 										//following code works when there are 5 or less 'donde' coming from getJSON.
 										//the html is prepared for a max of 5 'donde'
-										jQuery('form#editMicroEmpreForm input[name^=donde]').each(function(index){
+										jQuery('form#createMicroEmpreForm input[name^=donde]').each(function(index){
 											if(index < datos.donde.length) { jQuery(this).val(datos.donde[index]); }
 											else {  } //en el task3 aqui, entran al arreglo de dondes, solo los cleaned dondes que no son vacioStrs,
 													  // ; en html profile solo se muestran los input field q entraron al arreglo los demas se remueven
 										});
 
-										jQuery('form#editMicroEmpreForm input[value=si]').prop('checked', datos.atucasa);
-										jQuery('form#editMicroEmpreForm input[value=no]').prop('checked', !datos.atucasa);
+										jQuery('form#createMicroEmpreForm input[value=si]').prop('checked', datos.atucasa);
+										jQuery('form#createMicroEmpreForm input[value=no]').prop('checked', !datos.atucasa);
 
 							})
 							.fail(  jQuery.fallas  );
 						}
 
 						//task 2 when ajax complete ; handle form submit
-						jQuery('form#editMicroEmpreForm').submit(function(evento){
+						jQuery('form#createMicroEmpreForm').submit(function(evento){
 							evento.preventDefault(); //not making a submit (POST request) from html action
 							var formData = new FormData(this);
 
 							//nombre y video
 							
 							//quienSocialHandle is a JS array object, it is stringified before sending it
-							var quienSocialHandle = {fbk:jQuery('form#editMicroEmpreForm input[name=red1]').val(), tt:jQuery('form#editMicroEmpreForm input[name=red2]').val(),
-													igrm:jQuery('form#editMicroEmpreForm input[name=red3]').val(),phn:jQuery('form#editMicroEmpreForm input[name=red4]').val()};
+							var quienSocialHandle = {fbk:jQuery('form#createMicroEmpreForm input[name=red1]').val(), tt:jQuery('form#createMicroEmpreForm input[name=red2]').val(),
+													igrm:jQuery('form#createMicroEmpreForm input[name=red3]').val(),phn:jQuery('form#createMicroEmpreForm input[name=red4]').val()};
 							formData.delete("red1"); //sending reds in array so delete them individually from formData
 							formData.delete("red2"); //sending reds in array so delete them individually from formData
 							formData.delete("red3"); //sending reds in array so delete them individually from formData
@@ -403,15 +403,15 @@ jQuery(document).ready(
 							formData.append('quienSocialHandle', quienSocialHandle);
 							
 							//falta quien foto src
-							for(var i=0; i < jQuery('form#editMicroEmpreForm input#fotosId')[0].files.length; i++){
-								alert(jQuery('form#editMicroEmpreForm input#fotosId')[0].files[i].name + ' size en bytes: ' +jQuery('form#editMicroEmpreForm input#fotosId')[0].files[i].size )
+							for(var i=0; i < jQuery('form#createMicroEmpreForm input#fotosId')[0].files.length; i++){
+								alert(jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i].name + ' size en bytes: ' +jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i].size )
 							}
 							
 							//cuando is a JS array object, it is stringified before sending it
-							var cuando = {lun:jQuery('form#editMicroEmpreForm input[name=dia1]').val(), mar:jQuery('form#editMicroEmpreForm input[name=dia2]').val(),
-										  mier:jQuery('form#editMicroEmpreForm input[name=dia3]').val(), jue:jQuery('form#editMicroEmpreForm input[name=dia4]').val(),
-										  vier:jQuery('form#editMicroEmpreForm input[name=dia5]').val(), sab:jQuery('form#editMicroEmpreForm input[name=dia6]').val(),
-										  dom:jQuery('form#editMicroEmpreForm input[name=dia7]').val()};
+							var cuando = {lun:jQuery('form#createMicroEmpreForm input[name=dia1]').val(), mar:jQuery('form#createMicroEmpreForm input[name=dia2]').val(),
+										  mier:jQuery('form#createMicroEmpreForm input[name=dia3]').val(), jue:jQuery('form#createMicroEmpreForm input[name=dia4]').val(),
+										  vier:jQuery('form#createMicroEmpreForm input[name=dia5]').val(), sab:jQuery('form#createMicroEmpreForm input[name=dia6]').val(),
+										  dom:jQuery('form#createMicroEmpreForm input[name=dia7]').val()};
 							formData.delete("dia1"); //sending dias in array so delete them individually from formData
 							formData.delete("dia2"); //sending dias in array so delete them individually from formData
 							formData.delete("dia3"); //sending dias in array so delete them individually from formData
@@ -424,7 +424,7 @@ jQuery(document).ready(
 							
 							//sending ques in array
 							var que = new Array();
-							jQuery('form#editMicroEmpreForm input[name^=que]').each(function(index){
+							jQuery('form#createMicroEmpreForm input[name^=que]').each(function(index){
 								var cleanedQue = jQuery.cleanStr(jQuery(this).val());
 								if(jQuery.isVacioStr(cleanedQue)) {  } else { que[index] = cleanedQue; }
 								formData.delete(jQuery(this).attr("name")); //sending ques in array so delete them individually from formData
@@ -434,7 +434,7 @@ jQuery(document).ready(
 							
 							//sending dondes in array
 							var donde = new Array();
-							jQuery('form#editMicroEmpreForm input[name^=donde]').each(function(index){
+							jQuery('form#createMicroEmpreForm input[name^=donde]').each(function(index){
 								var cleanedDonde = jQuery.cleanStr(jQuery(this).val());
 								if(jQuery.isVacioStr(cleanedDonde)) {  } else { donde[index] = cleanedDonde; }
 								formData.delete(jQuery(this).attr("name")); //sending dondes in array so delete them individually from formData
@@ -460,7 +460,7 @@ jQuery(document).ready(
 										if(datosJSObj.actualizado){
 											jQuery(window.location).attr('href', window.location.pathname + '?look=profile&meId=' + datosJSObj.meId);
 										}else{
-											//jQuery.feedback('form#editMicroEmpreForm h3', datosJSObj.feedback);
+											//jQuery.feedback('form#createMicroEmpreForm h3', datosJSObj.feedback);
 										}
 									})
 									.fail(  jQuery.fallas  );  //failing post
