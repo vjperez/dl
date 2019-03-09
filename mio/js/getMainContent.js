@@ -41,8 +41,8 @@ jQuery(document).ready(
 			//concatenating strings inside an each loop, with the requested JSON datos.
 				var que = jQuery.urlParam('que');
 				var donde = jQuery.urlParam('donde');
-				que = que.replace(/:/g, ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter. The server receives 'limpia carro' not 'limpia,carro'
-				donde = donde.replace(/:/g, ' ');// here each string with ',' as delimiter is converted into a string with ' ' as delimiter
+				que = que.replace(/:/g, ' ');// here each string with ':' as delimiter is converted into a string with ' ' as delimiter. The server receives 'limpia carro' not 'limpia:carro'
+				donde = donde.replace(/:/g, ' ');// here each string with ':' as delimiter is converted into a string with ' ' as delimiter
 				jQuery.getJSON('escritos/opciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//alert('datos: automatically parsed to object object by getJSON ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
@@ -95,7 +95,7 @@ jQuery(document).ready(
 						//alert('url: ' + datos.videoUrl + '\nEmpre id: ' + datos.microEmpreId + ' de tipo: ' + typeof datos.microEmpreId);
 						jQuery('#video iframe').attr('src', datos.videoUrl);
 						//alert(datos.quienSocialHandle);
-						if(datos.quienSocialHandle.tt != '')   jQuery('#quien h3.tt').text(datos.quienSocialHandle.tt);
+						if(datos.quienSocialHandle.tt != '')   jQuery('#quien h3.tt').text(datos.quienSocialHandle.tt);    // si no cambias valores, se quedan los de looks/profile.html
 						if(datos.quienSocialHandle.fbk != '')  jQuery('#quien h3.fbk').text(datos.quienSocialHandle.fbk);
 						if(datos.quienSocialHandle.igrm != '') jQuery('#quien h3.igrm').text(datos.quienSocialHandle.igrm);
 						if(datos.quienSocialHandle.phn != '')  jQuery('#quien h3.phn').text(datos.quienSocialHandle.phn);
@@ -107,7 +107,7 @@ jQuery(document).ready(
 							else { jQuery(this).remove(); }
 						});
 						//alert(datos.cuando);
-						if(datos.cuando.lun  != '') jQuery('#cuando td.lun').text(datos.cuando.lun);
+						if(datos.cuando.lun  != '') jQuery('#cuando td.lun').text(datos.cuando.lun);			// si no cambias valores, se quedan los de looks/profile.html
 						if(datos.cuando.mar  != '') jQuery('#cuando td.mar').text(datos.cuando.mar);
 						if(datos.cuando.mier != '') jQuery('#cuando td.mier').text(datos.cuando.mier);
 						if(datos.cuando.jue  != '') jQuery('#cuando td.jue').text(datos.cuando.jue);
@@ -328,7 +328,6 @@ jQuery(document).ready(
 					var mainDeMicroEmpreData = jQuery(datosDeRespuesta).filter('#main');
 					jQuery('#containerForMain').html(mainDeMicroEmpreData);
 				});
-
 
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/createMicroEmpre.html'){
