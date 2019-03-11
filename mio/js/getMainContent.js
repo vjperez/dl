@@ -19,21 +19,10 @@ jQuery(document).ready(
 					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
 					//This code runs when get isCompleted and IF the get was requesting busca.html
 					if(settingsObjeto.url === 'looks/busca.html'){ // === means true without type coersion - the type and value most both be equal
-						jQuery('form').submit(function(evento){
-							evento.preventDefault(); //not making a submit (GET request) here. Lets do it at look=opciones
-							var que = jQuery('#queId').val();
-							que = jQuery.cleanStr(que); // clean function returns cleaned str
-							var donde = jQuery('#dondeId').val();
-							donde = jQuery.cleanStr(donde); // clean function returns cleaned str
-							alert('que=(' + que  + ')\ndonde=(' +  donde + ')');
-							if(que.length > 0 || donde.length > 0){//i'm looking for a non empty cleaned str
-								jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + que.replace(/ /g, ':') + '&donde=' + donde.replace(/ /g, ':'));
-							}else{
-								jQuery.feedback('form#queDondeForm h3', 'Buscas algo?');
-							}
-						});
-					}
-				});
+						//when ajax complete ; handle form submit and go to opciones
+						jQuery.handleSubmit();
+					}//if
+				}); //ajax complete
 			break;
 			case 'opciones':
 			//This look completely depends on the amount of options to be presented.  It doesn't make
@@ -106,36 +95,8 @@ jQuery(document).ready(
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//This code runs when get isCompleted and IF the get was requesting login.html
 					if(settingsObjeto.url === 'looks/login.html'){
-						jQuery('form#loginForm').submit(function(evento){
-							evento.preventDefault(); //not making a submit (POST request) from html action.
-							var user = jQuery('#usernameId').val();
-							var pass = jQuery('#passwordId').val();
-							if( jQuery.areValidUserYPass(user, pass, pass, "generalFeedback", 'form#loginForm h3') ){
-								//Valid values son los q cumplen estas 3 cosas.
-								//Estas cosas se pueden chequear antes del post y evito post sin sentido
-								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
-								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
-								jQuery.post('escritos/login.php', {user:user, pass:pass} )
-								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
-									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
-									try{
-										//alert('datosJSONStr: ' + datosJSONStr);
-										datosJSObj = JSON.parse(datosJSONStr);
-										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
-									}catch(errorParseo){
-										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
-									}
-									if(datosJSObj.loguea){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId);
-									}else{
-										//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
-										jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
-									}
-								})
-								.fail(  jQuery.fallas  );//fail
-							}
-						});
+						//when ajax complete ; handle form submit and make post
+						jQuery.handleSubmit();
 					}//if
 				});//ajax complete
 			break;
@@ -151,36 +112,8 @@ jQuery(document).ready(
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//This code runs when get isCompleted and IF the get was requesting creaDueno.html
 					if(settingsObjeto.url === 'looks/creaDueno.html'){
-						jQuery('form#creaDuenoForm').submit(function(evento){
-							evento.preventDefault(); //not making a submit (POST request) from html action
-							var usertb = jQuery('#usernameId').val();
-							var pass01 = jQuery('#passwordId').val();
-							var pass02 = jQuery('#passwordConfirmId').val();
-							if( jQuery.areValidUserYPass(usertb, pass01, pass02, 'fullFeedback', 'form#creaDuenoForm h3') ){
-								//Valid values son los q cumplen estas 3 cosas.
-								//Estas cosas se pueden chequear antes del post y evito post sin sentido
-								// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
-								//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
-								jQuery.post('escritos/creaDueno.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
-								.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-									//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
-									//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
-									try{
-										//alert('datosJSONStr: ' + datosJSONStr);
-										datosJSObj = JSON.parse(datosJSONStr);
-										//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
-									}catch(errorParseo){
-										jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/creaDueno.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
-									}
-									if(datosJSObj.registrado){
-										jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId);
-									}else{ // usuario es repetido en el database, por eso se chequea despues del post
-										jQuery.feedback('form#creaDuenoForm h3', datosJSObj.feedback);
-									}
-								})
-								.fail(  jQuery.fallas  );  //failing post
-							}
-						});
+						//when ajax complete ; handle form submit and make post
+						jQuery.handleSubmit();
 					}//if
 				});//ajax complete
 			break;
