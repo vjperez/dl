@@ -38,11 +38,16 @@ foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
 	//if there are no foto errors, prepare to move the images
 	require_once 'configConstants/constants.php';
 	$toLetter = array(0=>"a", 1=>"b", 2=>"c", 3=>"d", 4=>"e");
-	if(!move_uploaded_file($tmpn, $fotos_subidas_dir . $micro_empre_id . $toLetter[$key] )){ // si el file se pudo mover
+	if(!move_uploaded_file($tmpn, $fotos_subidas_dir . $micro_empre_id . $toLetter[$key] )){ // si el file no se pudo mover
 		throw new Exception('Error moviendo foto. Foto: ' . $key . '.  No se pudo mover la imagen!, tmp_name es: ' . $tmpn . '.');
 	}
-	//building $quien_foto_src
-	if(strlen($quien_foto_src) > strlen('{')) $quien_foto_src = $quien_foto_src . ',';
-	$quien_foto_src = $quien_foto_src . $micro_empre_id . $toLetter[$key];
+	//building $quien_foto_srcPosgreArray
+	if(strlen($quien_foto_srcPosgreArray) > strlen('{')) $quien_foto_srcPosgreArray = $quien_foto_srcPosgreArray . ',';
+	$quien_foto_srcPosgreArray = $quien_foto_srcPosgreArray . $micro_empre_id . $toLetter[$key];
 }
+//erase previously loaded photos ; those that were not overwritten
+for ($i = count($_FILES['fotoArr']['tmp_name']); $i < 5; $i++) {  // 5 is maximum amount of photos allowed ; this should be a php constant 
+	$foto = $fotos_subidas_dir . $micro_empre_id . $toLetter[$i];
+	if(file_exists ("$foto")) unlink("$foto");
+} 
 ?>

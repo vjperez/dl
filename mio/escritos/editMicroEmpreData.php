@@ -4,6 +4,8 @@ $nombre = $_POST['nombre'];
 $videoUrl = $_POST['videoUrl'];
 $quien_social_handle = $_POST['quienSocialHandle'];
 $cuando = $_POST['cuando'];
+
+//build a postgresql type array using 'que' data
 $quePHP   = json_decode($_POST['que']);
 $quePosgreArray = '{';
 foreach($quePHP as $key => $element){
@@ -14,6 +16,8 @@ foreach($quePHP as $key => $element){
 	}
 }
 $quePosgreArray = $quePosgreArray . '}';
+
+//build a postgresql type array using 'donde' data
 $dondePHP = json_decode($_POST['donde']);
 $dondePosgreArray = '{';
 foreach($dondePHP as $key => $element){
@@ -73,9 +77,9 @@ error 1= 0
 
 
 //check for foto errors now   ;   move fotos   ;   build a $quien_foto_src postgresql type array
-$quien_foto_src = '{';
+$quien_foto_srcPosgreArray = '{';
 require_once 'checkFotoUploadErrorAndMove/checkFotoUploadErrorAndMove.php';
-$quien_foto_src = $quien_foto_src . '}';
+$quien_foto_srcPosgreArray = $quien_foto_srcPosgreArray . '}';
 
 
 
