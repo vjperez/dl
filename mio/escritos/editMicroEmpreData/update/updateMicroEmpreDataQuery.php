@@ -3,7 +3,7 @@
 // In order to form a postgresql array, i first extract the elements and then 
 // aggregate them into a postgresql array.  So this query should manage data
 // sent by any language as long as they send it in JSON strinngify format
-$query = "UPDATE
+$query = "UPDATyyyE
 	micro_empre
 SET revisado = NOW()::date,
 nombre = '$nombre',
