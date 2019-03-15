@@ -61,7 +61,8 @@
 				<input type="hidden" name="MAX_FILE_SIZE" value="200000"> <!-- 2MB  200 000B-->
 				<label for="fotosId">Fotos:</label>
 				<p><input id="fotosId"  type="file" name="fotoArr[]" multiple required=true></p>
-				<h3></h3>
+				<h3 id="max5Feedback"></h3>
+				<h3 id="isImageFeedback"></h3>
 			</fieldset>
 		</fieldset>
 
@@ -91,7 +92,7 @@
  	         <label class="explica">&iquest;Trabajando ahora mismo?</label>
  	         <span>Si</span><input type="radio" name="ahoraMismo" value="si" class="si">
              <span>No</span><input type="radio" name="ahoraMismo" value="no">
-        	 </fieldset>
+           </fieldset>
 		-->
  	    </fieldset>
 
@@ -137,9 +138,10 @@
 		</fieldset>
 
 
-		<fieldset class="primario">
+		<fieldset id="submitButtonFieldset" class="primario">
 		<p><button type="submit"><img src="imagenes/lapiz.png" alt="Revisa"></button></p>
-		<h3></h3>
+		<h3 id="handlesFeedback" class="warn"></h3>
+		<h3 id="fotosFeedback" class="warn"></h3>
  	   </fieldset>
  	</form>
 

@@ -62,7 +62,7 @@ jQuery.handleSubmit = function(duenoId, meId){
 		
 		//falta quien foto src
 		for(var i=0; i < jQuery('form#createMicroEmpreForm input#fotosId')[0].files.length; i++){
-			alert(jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i].name + ' size en bytes: ' +jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i].size )
+			alert(jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i].name + ' size en bytes: ' + jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i].size  + '\ntipo:' + jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i].type);
 		}
 		
 		//cuando is a JS array object, it is stringified before sending it
@@ -103,25 +103,29 @@ jQuery.handleSubmit = function(duenoId, meId){
 		formData.append('duenoId', duenoId);
 		formData.append('meId', meId);
 		
-		if(jQuery.haveAtLeast1Handle() & jQuery.have5OrLessFotos()){ // post only validated data ;  evaluate both AND clauses using &
-				jQuery.ajax({method:"POST", url:"escritos/editMicroEmpreData.php", data:formData, processData:false, contentType:false, cache:false})
-				.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-					//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
-					//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
-					try{
-						//alert('datosJSONStr: ' + datosJSONStr);
-						datosJSObj = JSON.parse(datosJSONStr);
-						//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
-					}catch(errorParseo){
-						jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server desde escritos/editMicroEmpreData.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
-					}
-					if(datosJSObj.actualizado){
-						jQuery(window.location).attr('href', window.location.pathname + '?look=profile&meId=' + datosJSObj.meId);
-					}else{
-						//jQuery.feedback('form#createMicroEmpreForm h3', datosJSObj.feedback);
-					}
-				})
-				.fail(  jQuery.fallas  );  //failing post
+		var submitVote1 = jQuery.haveAtLeast1Handle();
+		var submitVote2 = jQuery.have5OrLessImages();
+		if(submitVote1 && submitVote2){ // post only validated data ; & used to force evaluation of both functions
+			jQuery.ajax({method:"POST", url:"escritos/editMicroEmpreData.php", data:formData, processData:false, contentType:false, cache:false})
+			.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+				//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
+				//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
+				try{
+					//alert('datosJSONStr: ' + datosJSONStr);
+					datosJSObj = JSON.parse(datosJSONStr);
+					//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
+				}catch(errorParseo){
+					jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server desde escritos/editMicroEmpreData.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
+				}
+				if(datosJSObj.actualizado){
+					jQuery(window.location).attr('href', window.location.pathname + '?look=profile&meId=' + datosJSObj.meId);
+				}else{
+					//jQuery.feedback('form#createMicroEmpreForm h3', datosJSObj.feedback);
+				}
+			})
+			.fail(  jQuery.fallas  );  //failing post
+		}else{// not posting ... no aditional feedback needed
+			//all feedback given at haveAtLeast1Handle() and have5OrLessImages() when they run to handle change events
 		}
 	});
 }
@@ -133,25 +137,52 @@ jQuery.handleSubmit = function(duenoId, meId){
 jQuery.haveAtLeast1Handle = function(){
 	if(jQuery.isVacioStr(jQuery('form#createMicroEmpreForm input[name=red1]').val()) &&  jQuery.isVacioStr(jQuery('form#createMicroEmpreForm input[name=red2]').val()) &&
 	   jQuery.isVacioStr(jQuery('form#createMicroEmpreForm input[name=red3]').val()) &&  jQuery.isVacioStr(jQuery('form#createMicroEmpreForm input[name=red4]').val()) ) {
-		jQuery.feedback('fieldset#socialHandleFieldset h3', 'Minimo 1 contacto');
-		jQuery('fieldset#socialHandleFieldset').addClass('warn');
+			jQuery.feedback('fieldset#socialHandleFieldset h3', 'Minimo 1 contacto');
+			jQuery('fieldset#socialHandleFieldset').addClass('warn');
+			jQuery.feedback('fieldset#submitButtonFieldset h3#handlesFeedback', 'Verifica secci&oacute;n : QUIEN');
+			return false;
+	}else{
+			jQuery.feedback('fieldset#socialHandleFieldset h3', '');
+			jQuery('fieldset#socialHandleFieldset').removeClass('warn');
+			jQuery.feedback('fieldset#submitButtonFieldset h3#handlesFeedback', '');
+			return true;
+	}
+}
+jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files? 2)are all files images?
+	fotoSrcFieldsetAddWarningClassVote1 = false;
+	fotoSrcFieldsetAddWarningClassVote2 = false;
+	// question 1
+	if(jQuery('form#createMicroEmpreForm input#fotosId')[0].files.length > 5 ){
+		jQuery.feedback('fieldset#fotoSrcFieldset h3#max5Feedback', 'Maximo 5 fotos');
+		fotoSrcFieldsetAddWarningClassVote1 = true;
+	}else{
+		jQuery.feedback('fieldset#fotoSrcFieldset h3#max5Feedback', '');
+		fotoSrcFieldsetAddWarningClassVote1 = false;
+	}
+	// question 2
+	if(jQuery.isNotImage()){
+		jQuery.feedback('fieldset#fotoSrcFieldset h3#isImageFeedback', 'No es foto');
+		fotoSrcFieldsetAddWarningClassVote2 = true;
+	}else{
+		jQuery.feedback('fieldset#fotoSrcFieldset h3#isImageFeedback', '');
+		fotoSrcFieldsetAddWarningClassVote2 = false;
+	}
+	if(fotoSrcFieldsetAddWarningClassVote1 || fotoSrcFieldsetAddWarningClassVote2){
+		jQuery('fieldset#fotoSrcFieldset').addClass('warn');
+		jQuery.feedback('fieldset#submitButtonFieldset h3#fotosFeedback', 'Verifica secci&oacute;n : FOTOS');
 		return false;
 	}else{
-		jQuery.feedback('fieldset#socialHandleFieldset h3', '');
-		jQuery('fieldset#socialHandleFieldset').removeClass('warn');
+		jQuery('fieldset#fotoSrcFieldset').removeClass('warn');
+		jQuery.feedback('fieldset#submitButtonFieldset h3#fotosFeedback', '');
 		return true;
 	}
 }
-jQuery.have5OrLessFotos = function(){
-	if(jQuery('form#createMicroEmpreForm input#fotosId')[0].files.length > 5 ){
-		jQuery.feedback('fieldset#fotoSrcFieldset h3', 'Maximo 5 fotos');
-		jQuery('fieldset#fotoSrcFieldset').addClass('warn');
-		return false;
-	}else{
-		jQuery.feedback('fieldset#fotoSrcFieldset h3', '');
-		jQuery('fieldset#fotoSrcFieldset').removeClass('warn');
-		return true;
-	}
+jQuery.isNotImage = function(){ //helper function for jQuery.have5OrLessImages
+	var i;
+	for (i = 0; i < jQuery('form#createMicroEmpreForm input#fotosId')[0].files.length; i++) {
+		if( ! jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i].type.toLowerCase().startsWith("image") ) return true; // if not an image, return true and break for loop
+	} 
+	return false;
 }
 
 //run validation logic functions, when handling change events
@@ -161,5 +192,5 @@ $redInputs.on('change', function(evento){
 });
 var $fotoInput = jQuery('form#createMicroEmpreForm input#fotosId');
 $fotoInput.on('change', function(evento){
-	jQuery.have5OrLessFotos();
+	jQuery.have5OrLessImages();
 });

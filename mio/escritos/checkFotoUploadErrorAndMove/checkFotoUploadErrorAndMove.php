@@ -46,7 +46,7 @@ foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
 	$quien_foto_srcPosgreArray = $quien_foto_srcPosgreArray . $micro_empre_id . $toLetter[$key];
 }
 //erase previously loaded photos ; those that were not overwritten
-for ($i = count($_FILES['fotoArr']['tmp_name']); $i < 5; $i++) {  // 5 is maximum amount of photos allowed ; this should be a php constant 
+for ($i = count($_FILES['fotoArr']['tmp_name']); $i < 5; $i++) {  // 5 is maximum amount of photos allowed ; this should be a php constant // needs to match the 5 in js/createMicroEmpre
 	$foto = $fotos_subidas_dir . $micro_empre_id . $toLetter[$i];
 	if(file_exists ("$foto")) unlink("$foto");
 } 

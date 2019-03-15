@@ -7,8 +7,15 @@
 // sent by any language as long as they send it in JSON strinngify format
 $queryInsertMicroEmpreReturningId = "INSERT INTO
 	micro_empre (revisado, nombre, video_url, quien_social_handle, quien_foto_src, cuando, que, donde, a_tu_casa)
- 	VALUES (NOW()::date, '$nombre', '$videoUrl', '$quien_social_handle', '{sin foto, no foto}', '$cuando', 
-	'$quePosgreArray', '$dondePosgreArray',  $a_tu_casa)
+ 	VALUES (NOW()::date,
+	'$nombre',
+	'$videoUrl',
+	'$quien_social_handle',
+	'$quien_foto_srcPosgreArray',
+	'$cuando', 
+	'$quePosgreArray',
+	'$dondePosgreArray',
+	$a_tu_casa)
 
 ;
 

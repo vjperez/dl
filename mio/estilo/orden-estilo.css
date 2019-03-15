@@ -215,9 +215,7 @@ form#createMicroEmpreForm { margin-left:auto; margin-right:auto; }
 form#createMicroEmpreForm input[type='text'], form#createMicroEmpreForm input[type='tel'], form#createMicroEmpreForm textarea { width:80%; }
 form#createMicroEmpreForm fieldset#socialHandleFieldset h3 { text-align:center; }
 form#createMicroEmpreForm fieldset#fotoSrcFieldset      h3 { text-align:center; }
-
-
-
+form#createMicroEmpreForm fieldset#submitButtonFieldset h3 { text-align:center; }
 
 
 /*estilo : createMicroEmpreData*/
@@ -242,6 +240,7 @@ form#createMicroEmpreForm button { width:25%; position:relative; left:37.5%; }
 div#createMicroEmpre h1 { color:#16a085; }
 form#createMicroEmpreForm fieldset#socialHandleFieldset.warn h3 { font-family:serif, Times, times; color:#ff0000; }
 form#createMicroEmpreForm fieldset#fotoSrcFieldset.warn      h3 { font-family:serif, Times, times; color:#ff0000; }
+form#createMicroEmpreForm fieldset#submitButtonFieldset h3.warn { font-family:serif, Times, times; color:#ff0000; }
 form#createMicroEmpreForm fieldset#socialHandleFieldset.warn  { border-color:#ff0000; }
 form#createMicroEmpreForm fieldset#fotoSrcFieldset.warn       { border-color:#ff0000; }
 
