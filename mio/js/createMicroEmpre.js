@@ -65,9 +65,14 @@ jQuery.handleSubmit = function(duenoId, meId){
 			formData.append('quienSocialHandle', quienSocialHandle);
 			
 			//falta quien foto src
+			var resizedImages = [];
 			for(var i=0; i < jQuery('form#createMicroEmpreForm input#fotosId')[0].files.length; i++){
-				alert(jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i].name + ' size en bytes: ' + jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i].size  + '\ntipo:' + jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i].type);
+				var unaImagen = jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i];
+						alert(unaImagen.name + ' size en bytes: ' + unaImagen.size  + '\nde tipo:' + unaImagen.type);
+				resizedImages.push(jQuery.resizeImage(unaImagen));
+				formData.delete(unaImagen);  //estoy borrando las images pero quiza no borre el array files.  Quiza tenga info necesaria
 			}
+			formData.append('resizedImages', resizedImages);
 			
 			//cuando is a JS array object, it is stringified before sending it
 			var cuando = {lun:jQuery('form#createMicroEmpreForm input[name=dia1]').val(), mar:jQuery('form#createMicroEmpreForm input[name=dia2]').val(),
@@ -188,6 +193,10 @@ jQuery.isNotImage = function(){ //helper function for jQuery.have5OrLessImages
 	} 
 	return false;
 }
+jQuery.resizeImage = function(unaImagen){ //helper function for jQuery.handleSubmit
+	return unaImagen;
+}
+
 
 //validation logic functions are run as handlers to change events
 var $redInputs = jQuery('form#createMicroEmpreForm input[name^=red]');
