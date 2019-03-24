@@ -1,6 +1,7 @@
 var submitVote2 = false;
 var ria = [];
 
+
 //major task 1
 //when ajax complete ; if already existing micro empre then populate form using that data
 jQuery.populateForm = function(datos){
@@ -44,7 +45,7 @@ jQuery.populateForm = function(datos){
 	jQuery('form#createMicroEmpreForm input[value=no]').prop('checked', !datos.atucasa);
 }
 
-//major task 2 
+//major task 2
 //when ajax complete ; handle form submit and make post
 jQuery.handleSubmit = function(duenoId, meId){
 	jQuery('form#createMicroEmpreForm').submit(function(evento){
@@ -54,13 +55,13 @@ jQuery.handleSubmit = function(duenoId, meId){
 		var formData = new FormData(forma);
 		var submitVote1 = jQuery.haveAtLeast1Handle();
 
-		
-		
+
+
 		if(submitVote1 && submitVote2){ // post only validated data ; & used to force evaluation of both functions
 			// 1) edit formdata
 
 			//nombre y video
-			
+
 			//quienSocialHandle is a JS array object, it is stringified before sending it
 			var quienSocialHandle = {fbk:jQuery('form#createMicroEmpreForm input[name=red1]').val(), tt:jQuery('form#createMicroEmpreForm input[name=red2]').val(),
 									igrm:jQuery('form#createMicroEmpreForm input[name=red3]').val(),phn:jQuery('form#createMicroEmpreForm input[name=red4]').val()};
@@ -70,7 +71,7 @@ jQuery.handleSubmit = function(duenoId, meId){
 			formData.delete("red4"); //sending reds in array so delete them individually from formData
 			quienSocialHandle = JSON.stringify(quienSocialHandle);
 			formData.append('quienSocialHandle', quienSocialHandle);
-			
+
 			/*
 			//falta quien foto src
 			var fotoFilesFromFormData = formData.getAll("fotoArr[]");								alert(fotoFilesFromFormData);
@@ -84,13 +85,13 @@ jQuery.handleSubmit = function(duenoId, meId){
 				//formData.append("fotoArr[]", reducida);
 			}
 			*/
-			
+
 			formData.delete("fotoArr[]");
 			jQuery.each(ria, function( index, value ) {
 				formData.append("fotoArr[]", value);
 			});
 			//formData.append("fotoArr[]", ria);
-			
+
 			//cuando is a JS array object, it is stringified before sending it
 			var cuando = {lun:jQuery('form#createMicroEmpreForm input[name=dia1]').val(), mar:jQuery('form#createMicroEmpreForm input[name=dia2]').val(),
 						  mier:jQuery('form#createMicroEmpreForm input[name=dia3]').val(), jue:jQuery('form#createMicroEmpreForm input[name=dia4]').val(),
@@ -104,8 +105,8 @@ jQuery.handleSubmit = function(duenoId, meId){
 			formData.delete("dia6"); //sending dias in array so delete them individually from formData
 			formData.delete("dia7"); //sending dias in array so delete them individually from formData
 			cuando = JSON.stringify(cuando);
-			formData.append('cuando', cuando);		
-				
+			formData.append('cuando', cuando);
+
 			//sending ques in array
 			var que = new Array();
 			jQuery('form#createMicroEmpreForm input[name^=que]').each(function(index){
@@ -115,7 +116,7 @@ jQuery.handleSubmit = function(duenoId, meId){
 			});
 			que = JSON.stringify(que); //alert(que);
 			formData.append('que', que);
-			
+
 			//sending dondes in array
 			var donde = new Array();
 			jQuery('form#createMicroEmpreForm input[name^=donde]').each(function(index){
@@ -128,14 +129,14 @@ jQuery.handleSubmit = function(duenoId, meId){
 
 			formData.append('duenoId', duenoId);
 			formData.append('meId', meId);
-			
+
 console.log("form built");
 for (var value of formData.values()) {
-   console.log(value); 
+   console.log(value);
 }
 			//formdata built
-			
-			
+
+
 			// 2) do the post submition
 			jQuery.ajax({method:"POST", url:"escritos/editMicroEmpreData.php", data:formData, processData:false, contentType:false, cache:false})
 			.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
@@ -162,8 +163,8 @@ for (var value of formData.values()) {
 }
 
 
-	
-	
+
+
 //validation logic run as change event handler
 jQuery.haveAtLeast1Handle = function(){
 	if(jQuery.isVacioStr(jQuery('form#createMicroEmpreForm input[name=red1]').val()) &&  jQuery.isVacioStr(jQuery('form#createMicroEmpreForm input[name=red2]').val()) &&
@@ -179,6 +180,10 @@ jQuery.haveAtLeast1Handle = function(){
 			return true;
 	}
 }
+
+
+
+
 jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files? 2)are all files images?
 	fotoSrcFieldsetAddWarningClassVote1 = false;
 	fotoSrcFieldsetAddWarningClassVote2 = false;
@@ -205,17 +210,19 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 	}else{
 		jQuery('fieldset#fotoSrcFieldset').removeClass('warn');
 		jQuery.feedback('fieldset#submitButtonFieldset h3#fotosFeedback', '');
-		
+
 		submitVote2 = true;
 		jQuery.gria();
 	}
 }
 
 
+
+
 jQuery.gria = function(){ //helper function for jQuery.have5OrLessImages
 			var forma = document.getElementById('createMicroEmpreForm');
 			var formData = new FormData(forma);
-		 	var fotoFilesFromFormData = formData.getAll("fotoArr[]");								
+		 	var fotoFilesFromFormData = formData.getAll("fotoArr[]");
 			formData.delete("fotoArr[]");
 			for(var index = 0; index < fotoFilesFromFormData.length; index++){
 				var unFotoFile = fotoFilesFromFormData[index];
@@ -225,23 +232,26 @@ jQuery.gria = function(){ //helper function for jQuery.have5OrLessImages
 }
 
 
+
+
 jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.handleSubmit
 	var reader = new FileReader();
 	reader.onload = function(evento){
-		console.log('resizeImage:reader onload... ' + index); 
+		console.log('resizeImage:reader onload... ' + index);
 		var nuevaImagen = new Image();
 		nuevaImagen.src = reader.result;
-			var canvas = document.getElementById('elCanvas');
+			//var canvas = document.getElementById('elCanvas');
+			var canvas = document.createElement("canvas");
 			canvas.width = 250;
 			canvas.height = 125;
 			canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 250, 125);
-			var dataURL = canvas.toDataURL('image/jpeg', 1.0);
+			var dataURL = canvas.toDataURL('image/jpeg', 0.5);
 			var dataBlob = dataURLToBlob( dataURL );
 			ria.push( dataBlob );
 			debugger;
-	}	
+	}
 	reader.readAsDataURL(unFotoFile);
-	console.log('resizeImage:read as data url... ' + index); 
+	console.log('resizeImage:read as data url... ' + index);
 /*
 var reader = new FileReader();
 reader.readAsDataURL(unFotoFile);
@@ -258,8 +268,8 @@ nuevaImagen.src = "imagenes/caribe-landscape.jpg";
 			var dataURL = canvas.toDataURL('image/jpeg', 1.0);
 			//return dataURL;
 			return dataURLToBlob( dataURL );
-			
-*/			
+
+*/
 /*
 	var reader = new FileReader();
 	reader.addEventListener("load", function(){
@@ -274,7 +284,7 @@ nuevaImagen.src = "imagenes/caribe-landscape.jpg";
 			return dataURLToBlob( dataURL );
 		});
 		nuevaImagen.src = reader.result;
-	});	
+	});
 	reader.readAsDataURL(unFotoFile);
 */
 /*
@@ -291,10 +301,12 @@ nuevaImagen.src = "imagenes/caribe-landscape.jpg";
 			return dataURLToBlob( dataURL );
 		});
 		nuevaImagen.src = reader.result;
-	});	
+	});
 	reader.readAsDataURL(unFotoFile);
 */
 }
+
+
 
 
 jQuery.isNotImage = function(){ //helper function for jQuery.have5OrLessImages
@@ -303,9 +315,10 @@ jQuery.isNotImage = function(){ //helper function for jQuery.have5OrLessImages
 		//var imageType = /image.*/;
 		//file.type.match(imageType)     ;   instead of toLowerCase() and startsWith() you could use the previous regular expression
 		if( ! jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i].type.toLowerCase().startsWith("image") ) return true; // if not an image, return true and break for loop
-	} 
+	}
 	return false;
 }
+
 
 
 
