@@ -239,16 +239,19 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 	reader.onload = function(evento){
 		console.log('resizeImage:reader onload... ' + index);
 		var nuevaImagen = new Image();
+		nuevaImagen.onload = function(evento){
+			  console.log('resizeImage:nuevaImagen onload... ' + index);
+				//var canvas = document.getElementById('elCanvas');
+				var canvas = document.createElement("canvas");
+				canvas.width = 250;
+				canvas.height = 125;
+				canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 250, 125);
+				var dataURL = canvas.toDataURL('image/jpeg', 0.5);
+				var dataBlob = dataURLToBlob( dataURL );
+				ria.push( dataBlob );
+				//debugger;
+		}
 		nuevaImagen.src = reader.result;
-			//var canvas = document.getElementById('elCanvas');
-			var canvas = document.createElement("canvas");
-			canvas.width = 250;
-			canvas.height = 125;
-			canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 250, 125);
-			var dataURL = canvas.toDataURL('image/jpeg', 0.5);
-			var dataBlob = dataURLToBlob( dataURL );
-			ria.push( dataBlob );
-			debugger;
 	}
 	reader.readAsDataURL(unFotoFile);
 	console.log('resizeImage:read as data url... ' + index);
