@@ -60,6 +60,8 @@ foreach ($_FILES['fotoArr']['size'] as $key => $size) {
 foreach ($_FILES['fotoArr']['error'] as $key => $error) {
 	echo 'error ' . $key . '= ' . $error . '<br>';
 }
+*/
+/*
 //output for 2 images:
 name 0: light_button.png
 name 1: light_logo.png

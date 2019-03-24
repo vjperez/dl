@@ -1,3 +1,6 @@
+var submitVote2 = false;
+var ria = [];
+
 //major task 1
 //when ajax complete ; if already existing micro empre then populate form using that data
 jQuery.populateForm = function(datos){
@@ -46,11 +49,15 @@ jQuery.populateForm = function(datos){
 jQuery.handleSubmit = function(duenoId, meId){
 	jQuery('form#createMicroEmpreForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action
+		// 1) build formdata
+		var forma = document.getElementById('createMicroEmpreForm');
+		var formData = new FormData(forma);
 		var submitVote1 = jQuery.haveAtLeast1Handle();
-		var submitVote2 = jQuery.have5OrLessImages();
+
+		
+		
 		if(submitVote1 && submitVote2){ // post only validated data ; & used to force evaluation of both functions
-			// 1) build formdata
-			var formData = new FormData(this);
+			// 1) edit formdata
 
 			//nombre y video
 			
@@ -64,15 +71,25 @@ jQuery.handleSubmit = function(duenoId, meId){
 			quienSocialHandle = JSON.stringify(quienSocialHandle);
 			formData.append('quienSocialHandle', quienSocialHandle);
 			
+			/*
 			//falta quien foto src
-			var resizedImages = [];
-			for(var i=0; i < jQuery('form#createMicroEmpreForm input#fotosId')[0].files.length; i++){
-				var unaImagen = jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i];
-						alert(unaImagen.name + ' size en bytes: ' + unaImagen.size  + '\nde tipo:' + unaImagen.type);
-				resizedImages.push(jQuery.resizeImage(unaImagen));
-				formData.delete(unaImagen);  //estoy borrando las images pero quiza no borre el array files.  Quiza tenga info necesaria
+			var fotoFilesFromFormData = formData.getAll("fotoArr[]");								alert(fotoFilesFromFormData);
+			formData.delete("fotoArr[]");
+			for(var index = 0; index < fotoFilesFromFormData.length; index++){
+				var unFotoFile = fotoFilesFromFormData[index];
+ 				alert(unFotoFile.name);  alert(formData);
+				console.log("resize image " + index);
+				jQuery.resizeImage(index, unFotoFile, formData);
+				//var reducida = jQuery.resizeImage(index, fotoFilesFromFormData, formData);
+				//formData.append("fotoArr[]", reducida);
 			}
-			formData.append('resizedImages', resizedImages);
+			*/
+			
+			formData.delete("fotoArr[]");
+			jQuery.each(ria, function( index, value ) {
+				formData.append("fotoArr[]", value);
+			});
+			//formData.append("fotoArr[]", ria);
 			
 			//cuando is a JS array object, it is stringified before sending it
 			var cuando = {lun:jQuery('form#createMicroEmpreForm input[name=dia1]').val(), mar:jQuery('form#createMicroEmpreForm input[name=dia2]').val(),
@@ -87,8 +104,8 @@ jQuery.handleSubmit = function(duenoId, meId){
 			formData.delete("dia6"); //sending dias in array so delete them individually from formData
 			formData.delete("dia7"); //sending dias in array so delete them individually from formData
 			cuando = JSON.stringify(cuando);
-			formData.append('cuando', cuando);							
-			
+			formData.append('cuando', cuando);		
+				
 			//sending ques in array
 			var que = new Array();
 			jQuery('form#createMicroEmpreForm input[name^=que]').each(function(index){
@@ -111,6 +128,11 @@ jQuery.handleSubmit = function(duenoId, meId){
 
 			formData.append('duenoId', duenoId);
 			formData.append('meId', meId);
+			
+console.log("form built");
+for (var value of formData.values()) {
+   console.log(value); 
+}
 			//formdata built
 			
 			
@@ -179,23 +201,139 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 	if(fotoSrcFieldsetAddWarningClassVote1 || fotoSrcFieldsetAddWarningClassVote2){
 		jQuery('fieldset#fotoSrcFieldset').addClass('warn');
 		jQuery.feedback('fieldset#submitButtonFieldset h3#fotosFeedback', 'Verifica secci\u00F3n : FOTOS');
-		return false;
+		submitVote2 = false;
 	}else{
 		jQuery('fieldset#fotoSrcFieldset').removeClass('warn');
 		jQuery.feedback('fieldset#submitButtonFieldset h3#fotosFeedback', '');
-		return true;
+		
+		submitVote2 = true;
+		jQuery.gria();
 	}
 }
+
+
+jQuery.gria = function(){ //helper function for jQuery.have5OrLessImages
+			var forma = document.getElementById('createMicroEmpreForm');
+			var formData = new FormData(forma);
+		 	var fotoFilesFromFormData = formData.getAll("fotoArr[]");								
+			formData.delete("fotoArr[]");
+			for(var index = 0; index < fotoFilesFromFormData.length; index++){
+				var unFotoFile = fotoFilesFromFormData[index];
+				console.log("calling resize image " + index);
+				jQuery.resizeImage(index, unFotoFile);
+			}
+}
+
+
+jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.handleSubmit
+	var reader = new FileReader();
+	reader.onload = function(evento){
+		console.log('resizeImage:reader onload... ' + index); 
+		var nuevaImagen = new Image();
+		nuevaImagen.src = reader.result;
+			var canvas = document.getElementById('elCanvas');
+			canvas.width = 250;
+			canvas.height = 125;
+			canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 250, 125);
+			var dataURL = canvas.toDataURL('image/jpeg', 1.0);
+			var dataBlob = dataURLToBlob( dataURL );
+			ria.push( dataBlob );
+			debugger;
+	}	
+	reader.readAsDataURL(unFotoFile);
+	console.log('resizeImage:read as data url... ' + index); 
+/*
+var reader = new FileReader();
+reader.readAsDataURL(unFotoFile);
+
+var nuevaImagen = new Image();
+//nuevaImagen.src = reader.result;
+nuevaImagen.src = "imagenes/caribe-landscape.jpg";
+
+			var canvas = document.createElement("canvas");
+			canvas.width = 180;
+			canvas.height = 90;
+			var cvctx = canvas.getContext("2d");
+			cvctx.drawImage(nuevaImagen, 0, 0, 180, 90);
+			var dataURL = canvas.toDataURL('image/jpeg', 1.0);
+			//return dataURL;
+			return dataURLToBlob( dataURL );
+			
+*/			
+/*
+	var reader = new FileReader();
+	reader.addEventListener("load", function(){
+		var nuevaImagen = new Image();
+		nuevaImagen.addEventListener("load", function(){
+			var canvas = document.createElement('canvas');
+			canvas.width = 100;
+			canvas.height = 55;
+			canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 150, 55);
+			var dataURL = canvas.toDataURL();
+			//return dataURL;
+			return dataURLToBlob( dataURL );
+		});
+		nuevaImagen.src = reader.result;
+	});	
+	reader.readAsDataURL(unFotoFile);
+*/
+/*
+	var reader = new FileReader();
+	jQuery(reader).on("load", function(){
+		var nuevaImagen = new Image();
+		jQuery(nuevaImagen).on("load", function(){
+			var canvas = document.createElement('canvas');
+			canvas.width = 100;
+			canvas.height = 55;
+			canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 150, 55);
+			var dataURL = canvas.toDataURL();
+			//return dataURL;
+			return dataURLToBlob( dataURL );
+		});
+		nuevaImagen.src = reader.result;
+	});	
+	reader.readAsDataURL(unFotoFile);
+*/
+}
+
+
 jQuery.isNotImage = function(){ //helper function for jQuery.have5OrLessImages
 	var i;
 	for (i = 0; i < jQuery('form#createMicroEmpreForm input#fotosId')[0].files.length; i++) {
+		//var imageType = /image.*/;
+		//file.type.match(imageType)     ;   instead of toLowerCase() and startsWith() you could use the previous regular expression
 		if( ! jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i].type.toLowerCase().startsWith("image") ) return true; // if not an image, return true and break for loop
 	} 
 	return false;
 }
-jQuery.resizeImage = function(unaImagen){ //helper function for jQuery.handleSubmit
-	return unaImagen;
+
+
+
+var dataURLToBlob = function(dataURL) {
+    var BASE64_MARKER = ';base64,';
+    if (dataURL.indexOf(BASE64_MARKER) == -1) {
+        var parts = dataURL.split(',');
+        var contentType = parts[0].split(':')[1];
+        var raw = parts[1];
+
+        return new Blob([raw], {type: contentType});
+    }
+
+    var parts = dataURL.split(BASE64_MARKER);
+    var contentType = parts[0].split(':')[1];
+    var raw = window.atob(parts[1]);
+    var rawLength = raw.length;
+
+    var uInt8Array = new Uint8Array(rawLength);
+
+    for (var i = 0; i < rawLength; ++i) {
+        uInt8Array[i] = raw.charCodeAt(i);
+    }
+
+    return new Blob([uInt8Array], {type: contentType});
 }
+
+
 
 
 //validation logic functions are run as handlers to change events
