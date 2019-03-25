@@ -50,7 +50,7 @@ jQuery(document).ready(
 							jQuery.each(trios, function(index, pares){
 								jQuery.each(pares, function(meId, fotoSrc){
 									mainDeOpciones += '<a href="portada.html?look=profile&meId=' + meId + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ancho-sensi-desk-1de4 alto-sensi-cell-1de2 alto-sensi-ipad-1de3 alto-sensi-desk-1de4 ver-borde" ';
-									mainDeOpciones += ' src="imagenes/profile/' + fotoSrc + '"></a>';
+									mainDeOpciones += ' src="imagenes/profile/subidas/' + fotoSrc + '"></a>';
 								});
 							}); // each in trios
 							mainDeOpciones += '</div>'; // <div class="ver-borde opcionesfotos">
@@ -76,7 +76,7 @@ jQuery(document).ready(
 					});
 					//Once the look is in (ajaxComplete), then insert json data into profile look
 					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						if(settingsObjeto.url === 'looks/profile.html'){	
+						if(settingsObjeto.url === 'looks/profile.html'){
 							jQuery.populateProfile(datos);
 						}//if
 					});//ajax complete
@@ -167,9 +167,9 @@ jQuery(document).ready(
 						//task 2 when ajax complete ; handle form submit and make post
 						jQuery.handleSubmit(duenoId, meId);
 						//submit event listener and handler
-								
+
 						//task 3 when ajax complete; hide, show on click ;
-						//jQuery.toggleOnClick();						
+						//jQuery.toggleOnClick();
 
 					}//if
 				});//ajaxComplete

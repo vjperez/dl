@@ -1,5 +1,7 @@
 var submitVote2 = false;
-var ria = [];
+var reducedImagesArray = [];
+
+
 
 
 //major task 1
@@ -45,20 +47,20 @@ jQuery.populateForm = function(datos){
 	jQuery('form#createMicroEmpreForm input[value=no]').prop('checked', !datos.atucasa);
 }
 
+
+
+
 //major task 2
-//when ajax complete ; handle form submit and make post
+//when ajax complete ; build formdata and make post
 jQuery.handleSubmit = function(duenoId, meId){
 	jQuery('form#createMicroEmpreForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action
-		// 1) build formdata
-		var forma = document.getElementById('createMicroEmpreForm');
-		var formData = new FormData(forma);
 		var submitVote1 = jQuery.haveAtLeast1Handle();
-
-
-
-		if(submitVote1 && submitVote2){ // post only validated data ; & used to force evaluation of both functions
-			// 1) edit formdata
+		// var submitVote2 es false por default, puede cambiar solo en have5OrLessImages() que corre como handler de un change event, este event es requerido ya que el input de fotoArr esta required en HTML
+		if(submitVote1 && submitVote2){ // 2 votes come from validation by haveAtLeast1Handle() and have5OrLessImages()
+			// 1) build and edit formdata
+			var forma = document.getElementById('createMicroEmpreForm');
+			var formData = new FormData(forma);
 
 			//nombre y video
 
@@ -72,25 +74,11 @@ jQuery.handleSubmit = function(duenoId, meId){
 			quienSocialHandle = JSON.stringify(quienSocialHandle);
 			formData.append('quienSocialHandle', quienSocialHandle);
 
-			/*
-			//falta quien foto src
-			var fotoFilesFromFormData = formData.getAll("fotoArr[]");								alert(fotoFilesFromFormData);
-			formData.delete("fotoArr[]");
-			for(var index = 0; index < fotoFilesFromFormData.length; index++){
-				var unFotoFile = fotoFilesFromFormData[index];
- 				alert(unFotoFile.name);  alert(formData);
-				console.log("resize image " + index);
-				jQuery.resizeImage(index, unFotoFile, formData);
-				//var reducida = jQuery.resizeImage(index, fotoFilesFromFormData, formData);
-				//formData.append("fotoArr[]", reducida);
-			}
-			*/
 
-			formData.delete("fotoArr[]");
-			jQuery.each(ria, function( index, value ) {
+			formData.delete("fotoArr[]"); // borra las originales grandes
+			jQuery.each(reducedImagesArray, function( index, value ) {
 				formData.append("fotoArr[]", value);
 			});
-			//formData.append("fotoArr[]", ria);
 
 			//cuando is a JS array object, it is stringified before sending it
 			var cuando = {lun:jQuery('form#createMicroEmpreForm input[name=dia1]').val(), mar:jQuery('form#createMicroEmpreForm input[name=dia2]').val(),
@@ -130,10 +118,10 @@ jQuery.handleSubmit = function(duenoId, meId){
 			formData.append('duenoId', duenoId);
 			formData.append('meId', meId);
 
-console.log("form built");
-for (var value of formData.values()) {
-   console.log(value);
-}
+			console.log("form built");
+			for (var value of formData.values()) {
+			   console.log(value);
+			}
 			//formdata built
 
 
@@ -156,11 +144,16 @@ for (var value of formData.values()) {
 				}
 			})
 			.fail(  jQuery.fallas  );  //failing post
-		}else{// not posting ... no aditional feedback needed
-			//all feedback given at haveAtLeast1Handle() and have5OrLessImages() when they run to handle change events
+			// post made
+		}  // submitVote1 && submitVote2
+		else
+		{
+					// not posting ...  validation by haveAtLeast1Handle() and have5OrLessImages()  failed
+					//no aditional feedback needed
+			    //all feedback given at haveAtLeast1Handle() and have5OrLessImages() when they run to handle change events
 		}
-	});
-}
+	});  //jQuery submit
+}//  handleSubmit
 
 
 
@@ -212,14 +205,14 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 		jQuery.feedback('fieldset#submitButtonFieldset h3#fotosFeedback', '');
 
 		submitVote2 = true;
-		jQuery.gria();
+		jQuery.getReducedImagesArray();
 	}
 }
 
 
 
 
-jQuery.gria = function(){ //helper function for jQuery.have5OrLessImages
+jQuery.getReducedImagesArray = function(){ //helper function for jQuery.have5OrLessImages
 			var forma = document.getElementById('createMicroEmpreForm');
 			var formData = new FormData(forma);
 		 	var fotoFilesFromFormData = formData.getAll("fotoArr[]");
@@ -243,70 +236,18 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 			  console.log('resizeImage:nuevaImagen onload... ' + index);
 				//var canvas = document.getElementById('elCanvas');
 				var canvas = document.createElement("canvas");
-				canvas.width = 250;
-				canvas.height = 125;
-				canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 250, 125);
+				canvas.width = 320;
+				canvas.height = 160;
+				canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 320, 160);
 				var dataURL = canvas.toDataURL('image/jpeg', 0.85);
 				var dataBlob = dataURLToBlob( dataURL );
-				ria.push( dataBlob );
+				reducedImagesArray.push( dataBlob );
 				//debugger;
 		}
 		nuevaImagen.src = reader.result;
 	}
 	reader.readAsDataURL(unFotoFile);
 	console.log('resizeImage:read as data url... ' + index);
-/*
-var reader = new FileReader();
-reader.readAsDataURL(unFotoFile);
-
-var nuevaImagen = new Image();
-//nuevaImagen.src = reader.result;
-nuevaImagen.src = "imagenes/caribe-landscape.jpg";
-
-			var canvas = document.createElement("canvas");
-			canvas.width = 180;
-			canvas.height = 90;
-			var cvctx = canvas.getContext("2d");
-			cvctx.drawImage(nuevaImagen, 0, 0, 180, 90);
-			var dataURL = canvas.toDataURL('image/jpeg', 1.0);
-			//return dataURL;
-			return dataURLToBlob( dataURL );
-
-*/
-/*
-	var reader = new FileReader();
-	reader.addEventListener("load", function(){
-		var nuevaImagen = new Image();
-		nuevaImagen.addEventListener("load", function(){
-			var canvas = document.createElement('canvas');
-			canvas.width = 100;
-			canvas.height = 55;
-			canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 150, 55);
-			var dataURL = canvas.toDataURL();
-			//return dataURL;
-			return dataURLToBlob( dataURL );
-		});
-		nuevaImagen.src = reader.result;
-	});
-	reader.readAsDataURL(unFotoFile);
-*/
-/*
-	var reader = new FileReader();
-	jQuery(reader).on("load", function(){
-		var nuevaImagen = new Image();
-		jQuery(nuevaImagen).on("load", function(){
-			var canvas = document.createElement('canvas');
-			canvas.width = 100;
-			canvas.height = 55;
-			canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 150, 55);
-			var dataURL = canvas.toDataURL();
-			//return dataURL;
-			return dataURLToBlob( dataURL );
-		});
-		nuevaImagen.src = reader.result;
-	});
-	reader.readAsDataURL(unFotoFile);
-*/
 }
 
 
