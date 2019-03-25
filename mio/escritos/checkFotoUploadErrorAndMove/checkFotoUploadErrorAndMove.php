@@ -17,6 +17,8 @@ foreach ($_FILES['fotoArr']['error'] as $key => $error) {
 }
 
 
+
+
 //is any of the uploaded files targeting a system file ? ; @ suppresses errors
 //is any of the uploaded files NOT an image ? ; @ suppresses errors
 //was the file movement a success ?
@@ -38,16 +40,24 @@ foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
 	//if there are no foto errors, prepare to move the images
 	require_once 'configConstants/constants.php';
 	$toLetter = array(0=>"a", 1=>"b", 2=>"c", 3=>"d", 4=>"e");
-	if(!move_uploaded_file($tmpn, $fotos_subidas_dir . $micro_empre_id . $toLetter[$key] )){ // si el file no se pudo mover
+	$foto = $fotos_subidas_dir . $micro_empre_id . $toLetter[$key];  // filesystem path
+   // dont overwrite, unlink before moving
+	if(file_exists ("$foto")) unlink("$foto");
+	if(!move_uploaded_file($tmpn, $foto )){ // si el file no se pudo mover
 		throw new Exception('Error moviendo foto. Foto: ' . $key . '.  No se pudo mover la imagen!, tmp_name es: ' . $tmpn . '.');
 	}
 	//building $quien_foto_srcPosgreArray
 	if(strlen($quien_foto_srcPosgreArray) > strlen('{')) $quien_foto_srcPosgreArray = $quien_foto_srcPosgreArray . ',';
 	$quien_foto_srcPosgreArray = $quien_foto_srcPosgreArray . $micro_empre_id . $toLetter[$key];
 }
-//erase previously loaded photos ; those that were not overwritten
+
+
+
+
+//erase previously loaded EXTRA photos ; those that were NOT overwritten
+//no podria ser foreach
 for ($i = count($_FILES['fotoArr']['tmp_name']); $i < 5; $i++) {  // 5 is maximum amount of photos allowed ; this should be a php constant // needs to match the 5 in js/createMicroEmpre
 	$foto = $fotos_subidas_dir . $micro_empre_id . $toLetter[$i];
 	if(file_exists ("$foto")) unlink("$foto");
-} 
+}
 ?>
