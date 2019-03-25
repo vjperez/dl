@@ -246,7 +246,7 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 				canvas.width = 250;
 				canvas.height = 125;
 				canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 250, 125);
-				var dataURL = canvas.toDataURL('image/jpeg', 0.5);
+				var dataURL = canvas.toDataURL('image/jpeg', 0.85);
 				var dataBlob = dataURLToBlob( dataURL );
 				ria.push( dataBlob );
 				//debugger;
