@@ -178,6 +178,10 @@ jQuery.haveAtLeast1Handle = function(){
 
 
 jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files? 2)are all files images?
+	submitVote2 = false;  // default or initial value
+	reducedImagesArray = [];  // default or initial value
+
+
 	fotoSrcFieldsetAddWarningClassVote1 = false;
 	fotoSrcFieldsetAddWarningClassVote2 = false;
 	// question 1
