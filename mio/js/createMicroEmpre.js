@@ -237,16 +237,17 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 		console.log('resizeImage:reader onload... ' + index);
 		var nuevaImagen = new Image();
 		nuevaImagen.onload = function(evento){
-			  console.log('resizeImage:nuevaImagen onload... ' + index);
-				//var canvas = document.getElementById('elCanvas');
-				var canvas = document.createElement("canvas");
-				canvas.width = 320;
-				canvas.height = 160;
-				canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 320, 160);
-				var dataURL = canvas.toDataURL('image/jpeg', 0.85);
-				var dataBlob = dataURLToBlob( dataURL );
-				reducedImagesArray.push( dataBlob );
-				//debugger;
+			console.log('resizeImage:nuevaImagen onload... ' + index);
+			//var canvas = document.getElementById('elCanvas');
+			var canvas = document.createElement("canvas");
+			canvas.width = 320;
+			canvas.height = 160;
+			canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 320, 160);
+			var dataURL = canvas.toDataURL('image/jpeg', 0.95);
+			console.log(index + ': dataURL: ' + dataURL);
+			var dataBlob = dataURLToBlob( dataURL );
+			reducedImagesArray.push( dataBlob );
+			//debugger;
 		}
 		nuevaImagen.src = reader.result;
 	}
