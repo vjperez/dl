@@ -3,7 +3,7 @@
 /*orden  : comun*/
 /*This makes sure that the padding and border are included in the total width and height of the elements. */
 * { box-sizing:border-box; }
-body { margin:0px auto; min-width:320pt; max-width:960pt; }
+body { margin:0px auto; min-width:280pt; max-width:960pt; }
 .margen { margin-left:1%; margin-right:1%; }
 .contenido { margin-bottom:50pt; margin-top:50pt; }
 /*vertical-align pone la imagen en el fondo del texto q iria alrededor de un elemento inline como lo son las imagenes, sino creas un gap entre la img y el containing div */
@@ -64,12 +64,17 @@ div#footer { background-color:#27ae60; border-top:2pt solid #909090; border-bott
 
 /*orden : busca */
 form#queDondeForm { margin-left:auto; margin-right:auto; }
-form#queDondeForm label { float:left; clear:left; width:40%; text-align:right; margin-right:7.5%; }
-form#queDondeForm input { width:50%; } /*hasta aqui un width de 40 + 7.5 + 50; esta suma suma debe dejar disponible menos q el width del button*/
-form#queDondeForm button { width:25%; position:relative; left:47.5%; }
+form#queDondeForm label { float:left; clear:left; width:90%; text-align:left; }
+form#queDondeForm input { float:left; clear:left; width:90%; }
+form#queDondeForm button { width:25%; position:relative; left:37.5%; margin-top:30pt; }
 form#queDondeForm h3 { text-align:center; }
-form#queDondeForm h3 { margin-top:20pt; margin-bottom:20pt; }
-
+/*
+form#creaDuenoForm { margin-left:auto; margin-right:auto; }
+form#creaDuenoForm label { float:left; clear:left; width:40%; text-align:right; margin-right:7.5%; }
+form#creaDuenoForm input { width:50%; } /*hasta aqui un width de 40 + 7.5 + 50; esta suma suma debe dejar disponible menos q el width del button
+form#creaDuenoForm button { width:25%; position:relative; left:47.5%; }
+form#creaDuenoForm h3 { text-align:center; }
+*/
 
 
 
@@ -158,11 +163,10 @@ div#main .opcionesfotos h3 { color:#16a085;}
 /*orden : login */
 /*casi una copia de busca*/
 form#loginForm { margin-left:auto; margin-right:auto; }
-form#loginForm label { float:left; clear:left; width:40%; text-align:right; margin-right:7.5%; }
-form#loginForm input { width:50%; } /*hasta aqui un width de 40 + 7.5 + 50; esta suma suma debe dejar disponible menos q el width del button*/
-form#loginForm button { width:25%; position:relative; left:47.5%; }
+form#loginForm label { float:left; clear:left; width:90%; text-align:left; }
+form#loginForm input { float:left; clear:left; width:90%; }
+form#loginForm button { width:25%; position:relative; left:37.5%;  margin-top:30pt;  }
 form#loginForm h3 { text-align:center; }
-
 
 
 
@@ -182,9 +186,9 @@ form#loginForm h3 { font-family:serif, Times, times; color:#16a085; }
 /*orden : creaDueno */
 /*casi una copia de busca*/
 form#creaDuenoForm { margin-left:auto; margin-right:auto; }
-form#creaDuenoForm label { float:left; clear:left; width:40%; text-align:right; margin-right:7.5%; }
-form#creaDuenoForm input { width:50%; } /*hasta aqui un width de 40 + 7.5 + 50; esta suma suma debe dejar disponible menos q el width del button*/
-form#creaDuenoForm button { width:25%; position:relative; left:47.5%; }
+form#creaDuenoForm label { float:left; clear:left; width:90%; text-align:left; }
+form#creaDuenoForm input { float:left; clear:left; width:90%; }
+form#creaDuenoForm button { width:25%; position:relative; left:37.5%;  margin-top:30pt;  }
 form#creaDuenoForm h3 { text-align:center; }
 
 
@@ -212,7 +216,7 @@ form#creaDuenoForm h3 { font-family:serif, Times, times; color:#16a085; }
 /* orden : createMicroEmpreData */
 div#createMicroEmpre { margin-left:auto; margin-right:auto;  padding-bottom:50pt;}
 form#createMicroEmpreForm { margin-left:auto; margin-right:auto; }
-form#createMicroEmpreForm input[type='text'], form#createMicroEmpreForm input[type='tel'], form#createMicroEmpreForm textarea { width:80%; }
+form#createMicroEmpreForm input[type='text'], form#createMicroEmpreForm input[type='tel'], form#createMicroEmpreForm textarea, form#createMicroEmpreForm input[type='file'] { width:100%; }
 form#createMicroEmpreForm fieldset#socialHandleFieldset h3 { text-align:center; }
 form#createMicroEmpreForm fieldset#fotoSrcFieldset      h3 { text-align:center; }
 form#createMicroEmpreForm fieldset#submitButtonFieldset h3 { text-align:center; }
@@ -220,7 +224,7 @@ form#createMicroEmpreForm fieldset#submitButtonFieldset h3 { text-align:center; 
 
 /*estilo : createMicroEmpreData*/
 form#createMicroEmpreForm label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
-form#createMicroEmpreForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
+form#createMicroEmpreForm input[type='text'], form#createMicroEmpreForm input[type='tel'], form#createMicroEmpreForm textarea { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#createMicroEmpreForm input:focus { background-color:#dadada; }
 form#createMicroEmpreForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; }
 form#createMicroEmpreForm button:hover, form#createMicroEmpreForm button:focus { background-color:#7fb3d5; }
@@ -247,7 +251,7 @@ form#createMicroEmpreForm fieldset#fotoSrcFieldset.warn       { border-color:#ff
 
 /* orden : editDuenoData */
 form#editDuenoDataForm, div#empresas { margin-left:auto; margin-right:auto; }
-form#editDuenoDataForm input[type='password']{ width:67%; }
+form#editDuenoDataForm input[type='password']{ width:100%; }
 form#editDuenoDataForm h3 { text-align:center; }
 
 /*estilo : editDuenoData*/
