@@ -217,7 +217,15 @@ form#creaDuenoForm h3 { font-family:serif, Times, times; color:#16a085; }
 /* orden : createMicroEmpreData */
 div#createMicroEmpre { margin-left:auto; margin-right:auto;  padding-bottom:50pt;}
 form#createMicroEmpreForm { margin-left:auto; margin-right:auto; }
-form#createMicroEmpreForm input[type='text'], form#createMicroEmpreForm input[type='tel'], form#createMicroEmpreForm textarea, form#createMicroEmpreForm input[type='file'] { width:100%; margin-botxxxtom:500pt; }
+form#createMicroEmpreForm input[type='text'],
+form#createMicroEmpreForm input[type='tel'],
+form#createMicroEmpreForm textarea,
+form#createMicroEmpreForm input[type='file'] { width:100%; }
+
+form#createMicroEmpreForm fieldset#socialHandleFieldset input,
+form#createMicroEmpreForm fieldset#fotoSrcFieldset input[type='file'],
+form#createMicroEmpreForm fieldset#cuandoFieldset input { margin-bottom:20pt; }
+
 form#createMicroEmpreForm fieldset#socialHandleFieldset h3 { text-align:center; }
 form#createMicroEmpreForm fieldset#fotoSrcFieldset      h3 { text-align:center; }
 form#createMicroEmpreForm fieldset#submitButtonFieldset h3 { text-align:center; }
@@ -233,8 +241,7 @@ form#createMicroEmpreForm label.explica { color:#16a085; font-size:0.85em; lette
 form#createMicroEmpreForm textarea { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#createMicroEmpreForm textarea:focus { background-color:#dadada; }
 
-form#createMicroEmpreForm fieldset.primario { margin:0pt; padding:0pt; padding-bottom:50pt; }
-form#createMicroEmpreForm fieldset#submitButtonFieldset { margin:0pt; padding:0pt; }
+form#createMicroEmpreForm fieldset.primario { padding-bottom:5pt; }
 form#createMicroEmpreForm fieldset.secundario { margin-top:0pt; }
 form#createMicroEmpreForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
 form#createMicroEmpreForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#16a085; }
