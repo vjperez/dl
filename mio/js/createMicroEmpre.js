@@ -247,6 +247,7 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 			console.log(index + ': dataURL: ' + dataURL);
 			var dataBlob = dataURLToBlob( dataURL );
 			reducedImagesArray.push( dataBlob );
+			reducedImagesArray.push( unFotoFile );  // no reduction
 			//debugger;
 		}
 		nuevaImagen.src = reader.result;
