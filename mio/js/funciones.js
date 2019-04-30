@@ -30,6 +30,7 @@ jQuery.cleanStr = function(str){
 	strArray = str.split('*');
 	result = '';
 	for(var i=0; i < strArray.length; i++){
+		//alert('parte de strArray=(' + strArray[i]  + ')');
 		if (strArray[i] != '') {
 			if(result !== ''){result += ' ';} //the first time, simply add the 'word', other times add a ' ' before the word
 			result += strArray[i];

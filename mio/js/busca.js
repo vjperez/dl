@@ -1,4 +1,4 @@
-jQuery.handleSubmit = function(){
+jQuery.handleQueDondeSubmit = function(){
 	jQuery('form').submit(function(evento){
 		evento.preventDefault(); //not making a submit (GET request) here. Lets do it at look=opciones
 		var que = jQuery('#queId').val();

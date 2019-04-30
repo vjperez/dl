@@ -20,7 +20,7 @@ jQuery(document).ready(
 					//This code runs when get isCompleted and IF the get was requesting busca.html
 					if(settingsObjeto.url === 'looks/busca.html'){ // === means true without type coersion - the type and value most both be equal
 						//when ajax complete ; handle form submit and go to opciones
-						jQuery.handleSubmit();
+						jQuery.handleQueDondeSubmit();
 					}//if
 				}); //ajax complete
 			break;
