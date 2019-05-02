@@ -32,7 +32,7 @@ jQuery.cleanStr = function(str){
 	for(var i=0; i < strArray.length; i++){
 		//alert('parte de strArray=(' + strArray[i]  + ')');
 		if (strArray[i] != '') {
-			if(result !== ''){result += ' ';} //the first time, simply add the 'word', other times add a ' ' before the word
+			if(result !== ''){result += ':';} //the first time, simply add the 'word', other times add a ' ' before the word
 			result += strArray[i];
 		}
 	}
@@ -67,8 +67,12 @@ jQuery.fallas = function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentBySer
 		}
 	});
 }
-jQuery.feedback = function(elementoDonde, mensaje){
-	jQuery(elementoDonde).text(mensaje);    //    .slideDown(500).delay(1000).slideUp(2000)
+jQuery.feedback = function(elementoDonde, mensaje, forma){
+	if(forma === 'downdelayup') {
+		jQuery(elementoDonde).text(mensaje);
+		jQuery(elementoDonde).slideDown(500).delay(1000).slideUp(2000);
+	}
+	else jQuery(elementoDonde).text(mensaje);
 }
 jQuery.toggleOnClick = function(){
 	var $todosLosNotHidable = jQuery('.notHidable');

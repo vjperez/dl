@@ -57,6 +57,7 @@ WHERE losdonde = 'moca';
 
 
 //barber -> los barberos, la barberia   +   junco -> juncos, maya -> mayaguez, baya -> bayamon, kiss -> kissimmee
+//to not repeat literals ... add to where    AND losque NOT iLIKE '$queLiteralStr' AND losdonde NOT iLIKE '$dondeLiteralStr'
 $queries['embeddedBoth'] = "SELECT array_to_json(queasrows.quien_foto_src), queasrows.micro_empre_id, COUNT(losque) cuentaenlosque
    FROM ( SELECT micro_empre_id, unnest (que) losque, quien_foto_src FROM micro_empre ) queasrows
 	 INNER JOIN
@@ -73,6 +74,7 @@ $queries[2] = "SELECT quien_foto_src, micro_empre_id
 */
 
 //barber -> los barberos, la barberia      eria -> panaderia, heladeria, barberia
+//to not repeat literals ... ad to where    AND losque NOT iLIKE '$queLiteralStr' 
 $queries['embeddedQue'] = "SELECT array_to_json(quien_foto_src), micro_empre_id, COUNT(losque) cuentaenlosque
 			FROM  (SELECT quien_foto_src, micro_empre_id, unnest (que) losque FROM micro_empre) queasrows
 			WHERE losque iLIKE '%$queLiteralStr%'
@@ -80,9 +82,11 @@ $queries['embeddedQue'] = "SELECT array_to_json(quien_foto_src), micro_empre_id,
 			ORDER BY cuentaenlosque DESC";
 
 //junco -> juncos, maya -> mayaguez, baya -> bayamon, kiss -> kissimmee
+//to not repeat literals ... ad to where     AND losdonde NOT iLIKE '$dondeLiteralStr'
 $queries['embeddedDonde'] = "SELECT array_to_json(quien_foto_src), micro_empre_id
 			FROM  (SELECT quien_foto_src, micro_empre_id, unnest (donde) losdonde FROM micro_empre) dondeasrows
-			WHERE losdonde iLIKE '%$dondeLiteralStr%'";
+			WHERE losdonde iLIKE '%$dondeLiteralStr%'
+			";
 
 
 //select queries to used

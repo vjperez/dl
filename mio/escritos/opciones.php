@@ -3,7 +3,7 @@
 // no weird symbols, just a to z, A to Z and 0 to 9, that's it.
 // no words bigger than 10,
 // ignore words smaller than 2, a vowel in every word ... thins like that.
-//Do functions in getMainContent using jQuery :
+// Make functions in getMainContent using jQuery :
 //			-cleanStr() is used in the busca case on getMainContent
 
 
@@ -12,6 +12,7 @@ $queLiteralStr   = $_GET['que'];   //here 'que' and 'donde' are STRINGS with emp
 $dondeLiteralStr = $_GET['donde'];
 
 //busca mode
+//because of js (buscas algo); they cant both be 0
 if(strlen($queLiteralStr) == 0 && strlen($dondeLiteralStr) >  0) $buscaMode = 'buscaDonde';
 if(strlen($queLiteralStr) >  0 && strlen($dondeLiteralStr) == 0) $buscaMode = 'buscaQue';
 if(strlen($queLiteralStr) >  0 && strlen($dondeLiteralStr) >  0) $buscaMode = 'buscaBoth';
@@ -52,7 +53,7 @@ pg_close($cnx); //maybe not needed but doesn't hurt
 
 
 /*
-not using this idea ; 'lava carro' is not necessarily related to 'lava casa' so why explode them
+not using this idea ; 'lava carro' is not necessarily related to 'lava casa'  ot to 'pinto carros' so why explode them
 //explode into arrays
 $queArray   = explode(' ', $queLiteralStr);
 $dondeArray = explode(' ', $dondeLiteralStr);
