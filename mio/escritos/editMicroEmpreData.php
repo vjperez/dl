@@ -6,7 +6,7 @@ $quien_social_handle = $_POST['quienSocialHandle'];
 $cuando = $_POST['cuando'];
 
 //build a postgresql type array using 'que' data
-$quePHP   = json_decode($_POST['que']);
+$quePHP = str_replace(":", " ", json_decode($_POST['que']));
 $quePosgreArray = '{';
 foreach($quePHP as $key => $element){
 	if(strlen($element) > 0){  // because of cleanStr in JS, this should ALWAYS be true
@@ -18,7 +18,7 @@ foreach($quePHP as $key => $element){
 $quePosgreArray = $quePosgreArray . '}';
 
 //build a postgresql type array using 'donde' data
-$dondePHP = json_decode($_POST['donde']);
+$dondePHP = str_replace(":", " ", json_decode($_POST['donde']));
 $dondePosgreArray = '{';
 foreach($dondePHP as $key => $element){
 	if(strlen($element) > 0){  // because of cleanStr in JS, this should ALWAYS be true
@@ -28,6 +28,7 @@ foreach($dondePHP as $key => $element){
 	}
 }
 $dondePosgreArray = $dondePosgreArray . '}';
+
 
 if(strcmp($_POST['aTuCasa'] , 'si') === 0){
 		$a_tu_casa = 'true';
@@ -89,7 +90,7 @@ $quien_foto_srcPosgreArray = $quien_foto_srcPosgreArray . '}';
 require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
-if($micro_empre_id == 0){
+if( ! isset($micro_empre_id) || trim($micro_empre_id) === ''){
 	require_once 'editMicroEmpreData/insert/insertMicroEmpreData.php';
 }else{
 	require_once 'editMicroEmpreData/update/updateMicroEmpreData.php';

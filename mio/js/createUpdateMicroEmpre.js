@@ -1,5 +1,5 @@
 var submitVote2 = false;
-var reducedImagesArray = [];
+var reducedImagesArray = []; 
 
 
 
@@ -26,7 +26,7 @@ jQuery.populateForm = function(datos){
 	jQuery('form#createMicroEmpreForm input[name=dia5]').val(datos.cuando.vier);
 	jQuery('form#createMicroEmpreForm input[name=dia6]').val(datos.cuando.sab);
 	jQuery('form#createMicroEmpreForm input[name=dia7]').val(datos.cuando.dom);
-
+	
 	//following code works when there are 10 or less 'que' coming from getJSON.
 	//the html is prepared for a max of 10 'que'
 	jQuery('form#createMicroEmpreForm input[name^=que]').each(function(index){

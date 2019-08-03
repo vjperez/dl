@@ -7,12 +7,14 @@ $query = "UPDATE
 	micro_empre
 SET revisado = NOW()::date,
 nombre = '$nombre',
-video_url = '$videoUrl',
-quien_social_handle = '$quien_social_handle',
-quien_foto_src = '$quien_foto_srcPosgreArray',
+media_video_url = '$videoUrl',
+media_social_handle = '$quien_social_handle',
+media_foto_url = '$quien_foto_srcPosgreArray',
 cuando = '$cuando',
 que   = '$quePosgreArray',
 donde = '$dondePosgreArray',
+nombre_que_vector =	to_tsvector('spanish', '$nombre' || ' ' || '$quePosgreArray' ),
+donde_vector = to_tsvector('simple', '$dondePosgreArray' ),
 a_tu_casa = '$a_tu_casa'
 WHERE micro_empre_id = '$micro_empre_id'";
 ?>

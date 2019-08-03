@@ -6,7 +6,7 @@
 // aggregate them into a postgresql array.  So this query should manage data
 // sent by any language as long as they send it in JSON strinngify format
 $queryInsertMicroEmpreReturningId = "INSERT INTO
-	micro_empre (revisado, nombre, video_url, quien_social_handle, quien_foto_src, cuando, que, donde, a_tu_casa)
+	micro_empre (revisado, nombre, media_video_url, media_social_handle, media_foto_url, cuando, que, donde, nombre_que_vector, donde_vector, a_tu_casa)
  	VALUES (NOW()::date,
 	'$nombre',
 	'$videoUrl',
@@ -15,6 +15,8 @@ $queryInsertMicroEmpreReturningId = "INSERT INTO
 	'$cuando', 
 	'$quePosgreArray',
 	'$dondePosgreArray',
+	to_tsvector('spanish', '$nombre' || ' ' || '$quePosgreArray' ),
+	to_tsvector('simple', '$dondePosgreArray' ),
 	$a_tu_casa)
 
 ;

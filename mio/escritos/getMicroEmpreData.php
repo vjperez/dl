@@ -22,12 +22,12 @@ if($recurso){
 	$profile['microEmpreId'] = json_decode($result[0]);
 	$profile['nombre'] = $result[1];
 	$profile['revisado'] = $result[2];
-	$profile['videoUrl'] = $result[3];
-	$profile['quienSocialHandle'] = json_decode($result[4]);
-	$profile['quienFotoSrc'] = json_decode($result[5]);
-	$profile['cuando'] = json_decode($result[6]);
-	$profile['que'] = json_decode($result[7]);
-	$profile['donde'] = json_decode($result[8]);
+	$profile['que'] = json_decode($result[3]);
+	$profile['donde'] = json_decode($result[4]);
+	$profile['cuando'] = json_decode($result[5]);
+	$profile['videoUrl'] = $result[6];
+	$profile['quienSocialHandle'] = json_decode($result[7]);
+	$profile['quienFotoSrc'] = json_decode($result[8]);
 	$profile['atucasa'] = json_decode($result[9]);
 //Send data from server in json format
 	echo json_encode($profile);

@@ -12,12 +12,12 @@ $query = "SELECT
 	to_json(micro_empre_id),
 	nombre,
 	to_char(revisado, 'Mon/DD/YYYY'),
-	video_url,
-	quien_social_handle,
-	array_to_json(quien_foto_src),
-	cuando,
 	array_to_json(que),
-	array_to_json(donde),
+	array_to_json(donde),	
+	cuando,
+	media_video_url,
+	media_social_handle,
+	array_to_json(media_foto_url),
 	to_json(a_tu_casa)
 FROM micro_empre
 WHERE micro_empre_id = $meId";

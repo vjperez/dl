@@ -20,7 +20,7 @@ jQuery(document).ready(
 					//This code runs when get isCompleted and IF the get was requesting busca.html
 					if(settingsObjeto.url === 'looks/busca.html'){ // === means true without type coersion - the type and value most both be equal
 						//when ajax complete ; handle form submit and go to opciones
-						jQuery.handleQueDondeSubmit();
+						jQuery.handleBuscaSubmit();
 					}//if
 				}); //ajax complete
 			break;
@@ -28,24 +28,22 @@ jQuery(document).ready(
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 			//concatenating strings inside an each loop, with the requested JSON datos.
-				var que = jQuery.urlParam('que');
-				var donde = jQuery.urlParam('donde');
-				que = que.replace(/:/g, ' ');// here each string with ':' as delimiter is converted into a string with ' ' as delimiter. The server receives 'limpia carro' not 'limpia:carro'
-				donde = donde.replace(/:/g, ' ');// here each string with ':' as delimiter is converted into a string with ' ' as delimiter
+				var que = jQuery.urlParam('que');      //a string with : as delimiter between  words
+				var donde = jQuery.urlParam('donde');  //a string with : as delimiter between  words
 				jQuery.getJSON('escritos/opciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-					alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
+					//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
 					var mainDeOpciones = '<div id="main" class="contenido margen">';
-					jQuery.each(datos, function(buscaMode, cuaTuples){
+					jQuery.each(datos, function(buscaMode, trios){
 
-						jQuery.each(cuaTuples, function(queryIndex, trios){
+						
 							mainDeOpciones += '<div class="ver-borde opcionesfotos">';
 							if(buscaMode.indexOf("buscaBoth") > -1){
-								mainDeOpciones += '<h3>' + queryIndex + ': ' + que + ' + ' + donde + '</h3>';
+								mainDeOpciones += '<h3>'  + que.replace(':', ' ') + ' + ' + donde.replace(':', ' ') + '</h3>';
 							}else if (buscaMode.indexOf("buscaQue") > -1){
-								mainDeOpciones += '<h3>' + queryIndex + ': ' + que + '</h3>';
+								mainDeOpciones += '<h3>'  + que.replace(':', ' ') + '</h3>';
 							}else if (buscaMode.indexOf("buscaDonde") > -1){
-								mainDeOpciones += '<h3>' + queryIndex + ': ' + donde + '</h3>';
+								mainDeOpciones += '<h3>'  + donde.replace(':', ' ') + '</h3>';
 							}
 							jQuery.each(trios, function(index, pares){
 								jQuery.each(pares, function(meId, fotoSrc){
@@ -54,7 +52,7 @@ jQuery(document).ready(
 								});
 							}); // each in trios
 							mainDeOpciones += '</div>'; // <div class="ver-borde opcionesfotos">
-						}); // each in cuaTuples
+						
 
 					}); // each in datos
 					mainDeOpciones += '</div>'; //  <div id="main" class="contenido margen">
@@ -130,50 +128,44 @@ jQuery(document).ready(
 				//once look is in, use jQuery to update look with profile values
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/editDuenoShowEmpresas.html'){
-						jQuery.editDuenoShowEmpresasTasks(duenoId);
+						jQuery.editDuenoShowEmpresas(duenoId);
 					}//if
 				});//ajaxComplete
 
 
 			break;
-			case 'createMicroEmpre':
-				//this code is very similar to profile case code - should make functions to simplify
-
+			case 'createUpdateMicroEmpre':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
 
-				jQuery.get('looks/createMicroEmpre.html', function(datosDeRespuesta, estatus, xhrObjeto){
+				jQuery.get('looks/createUpdateMicroEmpre.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeMicroEmpreData = jQuery(datosDeRespuesta).filter('#main');
 					jQuery('#containerForMain').html(mainDeMicroEmpreData);
 				});
 
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/createMicroEmpre.html'){
+					if(settingsObjeto.url === 'looks/createUpdateMicroEmpre.html'){
 						//get meId
-						var meId = jQuery.urlParam('meId');
+						var meId = jQuery.urlParam('meId');  // empty-null when creating
 						//get duenoId
 						var duenoId = jQuery.urlParam('duenoId');
 
-						//task 1 when ajax complete ; if already existing micro empre then get that data
-						if(meId > 0){ //in the db showEmpresasGetIds, zero is used for crear empresa
-							//get profile data
+						//task 1 when ajax complete get that data, (only when updating)
+						//alert('meId : ' + meId);
+						if(jQuery.isNotVacioStr(meId)){
 							jQuery.getJSON('escritos/getMicroEmpreData.php', {meId:meId} )
 							.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 								jQuery.populateForm(datos);
 							})
 							.fail(  jQuery.fallas  );
-						}
-
+						}							
+						
 						//task 2 when ajax complete ; handle form submit and make post
 						jQuery.handleSubmit(duenoId, meId);
 						//submit event listener and handler
-
-						//task 3 when ajax complete; hide, show on click ;
-						//jQuery.toggleOnClick();
-
 					}//if
 				});//ajaxComplete
-			break;
+			break;			
 			case 'faq':
 				jQuery.get('looks/faq.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeFaq = jQuery(datosDeRespuesta).filter('#main');

@@ -1,47 +1,44 @@
 //extracs parameters from the url
 jQuery.urlParam = function(name){
-	var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+	var str = window.location.href;
+	var patron = new RegExp('[\?&]' + name + '=([^&#]*)');
+	var results = patron.exec(str);  //searches str for a pattern described in patron
+	//results is an array, contains NJLL when name=" " is not found on str. 
+    //otherwise results[0] contains name=" ", and 
+	//          results[1] contains the " " after the = sign and before  ? or &	
 	if(results === null) return null;
 	else return results[1];
 	//return results[1] || 0;
 }
-jQuery.cleanStr = function(str){
-	/*
-	newStr01 = str.replace(/[^a-zA-Z 0-9]+/g, '');
-	newStr02 = str.replace(/[^a-z0-9]/gi, ' ');
-	newStrArray01 = newStr01.split(' ');
-	newStrArray02 = newStr02.split(' ');
 
-	arrayParts01 = '';
-	arrayParts02 = '';
-	for(var i=0; i < newStrArray01.length; i++){
-		arrayParts01 += '(' + newStrArray01[i] + ')';
-	}
-	for(var i=0; i < newStrArray02.length; i++){
-		arrayParts02 += '(' + newStrArray02[i] + ')';
-	}
-	alert('[' + str + '] -> [' + newStr01 + '] -> [' + arrayParts01 + '] :: [' + newStr02 + '] -> [' + arrayParts02 + ']');
-	return newStr02;
-	//On result array only copy from  newStrArray[], when it is NOT ''
-	//when  newStrArray[i] is '',  it is shown in arrayParts as ()
-	//it means split found delimiters back to back and there is nothing between them.
-	*/
-	str = str.replace(/[^a-z0-9]/gi, '*'); // same as replace(/[^a-zA-Z0-9]/g, '*'); JavaScript is a case-sensitive language
+
+jQuery.cleanStr = function(str){
+	var patron = /[^a-z0-9]/gi;  // Find any character NOT between the brackets, global, insensitive
+	str = str.replace(patron, '*'); // same as replace(/[^a-zA-Z0-9]/g, '*'); JavaScript is a case-sensitive language
 	strArray = str.split('*');
 	result = '';
 	for(var i=0; i < strArray.length; i++){
 		//alert('parte de strArray=(' + strArray[i]  + ')');
 		if (strArray[i] != '') {
-			if(result !== ''){result += ':';} //the first time, simply add the 'word', other times add a ' ' before the word
+			if(result !== ''){result += ':';} //the first time, dont run this line of code, simply add the 'word', other times add a ':' before the word as delimiter
 			result += strArray[i];
 		}
 	}
 	return result;
 }
+
+
 jQuery.isVacioStr = function(str){
 	if (str === null) return true;
-	return str.length == 0;
+	else return str.length == 0;
 }
+
+jQuery.isNotVacioStr = function(str){
+	//  str !== null && str !== ''
+	return ! jQuery.isVacioStr(str);
+}
+
+
 jQuery.fallas = function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentByServer){
 //Called at getJSON .fail and jQuery post when parsing errors (caused by PHP Exceptions), and
 //other errors are found.
@@ -67,6 +64,8 @@ jQuery.fallas = function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentBySer
 		}
 	});
 }
+
+
 jQuery.feedback = function(elementoDonde, mensaje, forma){
 	if(forma === 'downdelayup') {
 		jQuery(elementoDonde).text(mensaje);
@@ -74,6 +73,8 @@ jQuery.feedback = function(elementoDonde, mensaje, forma){
 	}
 	else jQuery(elementoDonde).text(mensaje);
 }
+
+
 jQuery.toggleOnClick = function(){
 	var $todosLosNotHidable = jQuery('.notHidable');
 	var $todosLosHidable = jQuery('.hidable');
@@ -83,6 +84,8 @@ jQuery.toggleOnClick = function(){
 		$toToggle.toggle();
 	});
 }
+
+
 jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatElement){
 	//Esta funcion la usan login y registra
 	//para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.

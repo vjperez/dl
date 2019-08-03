@@ -1,113 +1,46 @@
 <?php
+//saca los valores de GET
+$queLiteralStr   = str_replace(":", " | ", $_GET['que']);   //here 'que' and 'donde' come as STRINGS with ':' as delimiters between words, delimeter is changed to " "
+$dondeLiteralStr = str_replace(":", " | ", $_GET['donde']); //here 'que' and 'donde' come as STRINGS with ':' as delimiters between words, delimeter is changed to " "
+//str_replace("world","Peter","Hello world!");   produces "Hello Peter!"
 
-//When searching, use a percentMatch() 'que' vs 'que' and 'donde' vs 'donde'
 
-
-//barbero -> barbero   +   moca -> moca
-//If pattern does not contain percent signs or underscore, then the pattern only represents the string itself;
-//in that case LIKE acts like the equals operator
-$queries['literalBoth'] = "SELECT array_to_json(quien_foto_src), micro_empre_id FROM micro_empre
-			WHERE '$queLiteralStr'  iLIKE  ANY(que)
-			AND '$dondeLiteralStr'  iLIKE  ANY(donde)";
-/*
-SELECT queasrows.micro_empre_id, losque, losdonde, queasrows.quien_foto_src  FROM (
-				  SELECT micro_empre_id, unnest (que) losque, quien_foto_src FROM micro_empre
-	 ) queasrows
-	 INNER JOIN (
-				  SELECT micro_empre_id, unnest (donde) losdonde, quien_foto_src FROM micro_empre
-	 ) dondeasrows
-	ON queasrows.micro_empre_id = dondeasrows.micro_empre_id
-	WHERE losque = 'barbero' AND losdonde = 'moca';
-*/
+$queryBoth = "SELECT array_to_json(media_foto_url), micro_empre_id, ts_rank_cd(nombre_que_vector, que_query) + ts_rank_cd(donde_vector, donde_query) AS ranqueo
+FROM micro_empre, to_tsquery('spanish', '$queLiteralStr') que_query,  to_tsquery('simple', '$dondeLiteralStr') donde_query
+WHERE que_query @@ nombre_que_vector AND donde_query @@ donde_vector 
+ORDER BY ranqueo DESC
+";
 
 
 
-//barbero -> barbero
-//If pattern does not contain percent signs or underscore, then the pattern only represents the string itself;
-//in that case LIKE acts like the equals operator
-$queries['literalQue'] = "SELECT array_to_json(quien_foto_src), micro_empre_id FROM micro_empre
-			WHERE '$queLiteralStr' iLIKE  ANY(que)";
-/*
-SELECT micro_empre_id, losque, quien_foto_src FROM
-				 (
-				  SELECT micro_empre_id, unnest (que) losque, quien_foto_src FROM micro_empre
-				 ) queasrows
-WHERE losque = 'barbero';
-*/
+$queryQue = "SELECT array_to_json(media_foto_url), micro_empre_id, ts_rank_cd(nombre_que_vector, el_query) AS ranqueo
+FROM micro_empre, to_tsquery('spanish', '$queLiteralStr') el_query
+WHERE el_query @@ nombre_que_vector
+ORDER BY ranqueo DESC
+";
+	
+$queryDonde = "SELECT array_to_json(media_foto_url), micro_empre_id, ts_rank_cd(donde_vector, el_query) AS ranqueo
+FROM micro_empre, to_tsquery('simple', '$dondeLiteralStr') el_query
+WHERE el_query @@ donde_vector
+ORDER BY ranqueo DESC
+";	
 
 
+if(strlen($queLiteralStr) == 0 && strlen($dondeLiteralStr) >  0) $buscaMode = 'buscaDonde';
+elseif(strlen($queLiteralStr) >  0 && strlen($dondeLiteralStr) == 0) $buscaMode = 'buscaQue';
+elseif(strlen($queLiteralStr) >  0 && strlen($dondeLiteralStr) >  0) $buscaMode = 'buscaBoth';
+else throw new Exception('No tengo un Busca Mode, en opcionesQuery.php.'); // sholud not get here ; throw warning
 
-//moca -> moca
-//If pattern does not contain percent signs or underscore, then the pattern only represents the string itself;
-//in that case LIKE acts like the equals operator
-$queries['literalDonde'] = "SELECT array_to_json(quien_foto_src), micro_empre_id FROM micro_empre
-			WHERE '$dondeLiteralStr' iLIKE  ANY(donde)";
-/*
-SELECT micro_empre_id, losdonde, quien_foto_src  FROM
-				 (
-				  SELECT micro_empre_id, unnest (donde) losdonde, quien_foto_src FROM micro_empre
-				 ) dondeasrows
-WHERE losdonde = 'moca';
-*/
-
-
-
-
-
-
-
-//barber -> los barberos, la barberia   +   junco -> juncos, maya -> mayaguez, baya -> bayamon, kiss -> kissimmee
-//to not repeat literals ... add to where    AND losque NOT iLIKE '$queLiteralStr' AND losdonde NOT iLIKE '$dondeLiteralStr'
-$queries['embeddedBoth'] = "SELECT array_to_json(queasrows.quien_foto_src), queasrows.micro_empre_id, COUNT(losque) cuentaenlosque
-   FROM ( SELECT micro_empre_id, unnest (que) losque, quien_foto_src FROM micro_empre ) queasrows
-	 INNER JOIN
-	      ( SELECT micro_empre_id, unnest (donde) losdonde, quien_foto_src FROM micro_empre ) dondeasrows
-	ON queasrows.micro_empre_id = dondeasrows.micro_empre_id
-	WHERE losque iLIKE '%$queLiteralStr%' AND losdonde  iLIKE '%$dondeLiteralStr%'
-	GROUP BY queasrows.quien_foto_src, queasrows.micro_empre_id
-	ORDER BY cuentaenlosque DESC";
-/*
-$queries[2] = "SELECT quien_foto_src, micro_empre_id
-			FROM  (SELECT quien_foto_src, micro_empre_id, unnest (que) losque, unnest (donde) losdonde FROM micro_empre) queasrows
-			WHERE losque iLIKE '%$queLiteralStr%'
-			AND losdonde iLIKE '%$dondeLiteralStr%'";
-*/
-
-//barber -> los barberos, la barberia      eria -> panaderia, heladeria, barberia
-//to not repeat literals ... ad to where    AND losque NOT iLIKE '$queLiteralStr' 
-$queries['embeddedQue'] = "SELECT array_to_json(quien_foto_src), micro_empre_id, COUNT(losque) cuentaenlosque
-			FROM  (SELECT quien_foto_src, micro_empre_id, unnest (que) losque FROM micro_empre) queasrows
-			WHERE losque iLIKE '%$queLiteralStr%'
-			GROUP BY quien_foto_src, micro_empre_id
-			ORDER BY cuentaenlosque DESC";
-
-//junco -> juncos, maya -> mayaguez, baya -> bayamon, kiss -> kissimmee
-//to not repeat literals ... ad to where     AND losdonde NOT iLIKE '$dondeLiteralStr'
-$queries['embeddedDonde'] = "SELECT array_to_json(quien_foto_src), micro_empre_id
-			FROM  (SELECT quien_foto_src, micro_empre_id, unnest (donde) losdonde FROM micro_empre) dondeasrows
-			WHERE losdonde iLIKE '%$dondeLiteralStr%'
-			";
-
-
-//select queries to used
+//select query to be used based on $buscaMode
 switch($buscaMode){
 	case 'buscaQue':
-		$queries[1] = $queries['literalQue'];
-		$queries[2] = $queries['embeddedQue'];
+		$query = $queryQue;
 		break;
 	case 'buscaDonde':
-	  $queries[1] = $queries['literalDonde'];
-	  $queries[2] = $queries['embeddedDonde'];
+	  $query = $queryDonde;
 		break;
 	case 'buscaBoth':
-	  $queries[1] = $queries['literalBoth'];
-	  $queries[2] = $queries['embeddedBoth'];
+	  $query = $queryBoth;
 		break;
 }
-
-
-
-
-//Othe way to query array
-//$query = 'SELECT micro_empre_id, que FROM micro_empre WHERE que @> ARRAY['payaso']::varchar[]';
 ?>

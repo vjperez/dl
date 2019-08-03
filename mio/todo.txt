@@ -1,3 +1,19 @@
+solo muestra en el search los q marquen trabajando : HOY
+usa HOY: horario ; en vez de cuando
+
+video y fotos, QUE, DONDE, CUANDO Hoy Lunes ...., QUIEN
+
+usa revisado para saber si el profile ha sido actualizado en menos de 24 horas
+
+arregla el prog usando los nuevos  nombres, y verifica el search
+
+
+
+make a vector column for each micro empre
+	using tsquery and tsvector, you no longer need embedded queries, just rank matches 
+find out what happens when you use empty tsqueries
+	depending on that, you may noot need queQuery, dondeQuery and bothQuery concept
+
 comas y espacios en opciones addrress bar
 subir
 usar SELECT * FROM
