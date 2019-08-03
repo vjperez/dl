@@ -39,11 +39,11 @@ jQuery(document).ready(
 						
 							mainDeOpciones += '<div class="ver-borde opcionesfotos">';
 							if(buscaMode.indexOf("buscaBoth") > -1){
-								mainDeOpciones += '<h3>'  + que.replace(':', ' ') + ' + ' + donde.replace(':', ' ') + '</h3>';
+								mainDeOpciones += '<h3>'  + que.replace(/:/g, ' ') + ' + ' + donde.replace(/:/g, ' ') + '</h3>';
 							}else if (buscaMode.indexOf("buscaQue") > -1){
-								mainDeOpciones += '<h3>'  + que.replace(':', ' ') + '</h3>';
+								mainDeOpciones += '<h3>'  + que.replace(/:/g, ' ') + '</h3>';
 							}else if (buscaMode.indexOf("buscaDonde") > -1){
-								mainDeOpciones += '<h3>'  + donde.replace(':', ' ') + '</h3>';
+								mainDeOpciones += '<h3>'  + donde.replace(/:/g, ' ') + '</h3>';
 							}
 							jQuery.each(trios, function(index, pares){
 								jQuery.each(pares, function(meId, fotoSrc){
