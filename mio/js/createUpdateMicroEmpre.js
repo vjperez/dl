@@ -17,6 +17,7 @@ jQuery.populateForm = function(datos){
 	jQuery('form#createMicroEmpreForm input[name=red4]').val(datos.quienSocialHandle.phn);
 
 	//falta each para array de fotos
+	jQuery('form#createMicroEmpreForm input[name=fotoArr]').prop('required', false);
 
 	//cuando
 	jQuery('form#createMicroEmpreForm input[name=dia1]').val(datos.cuando.lun);

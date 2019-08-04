@@ -1,32 +1,65 @@
-solo muestra en el search los q marquen trabajando : HOY
-usa HOY: horario ; en vez de cuando
+:crea y edita nepes en paginas dieferentes ; ?que qjkeres editar? ; envia cada seccion individualmente
 
-video y fotos, QUE, DONDE, CUANDO Hoy Lunes ...., QUIEN
+:replace watch for embed when loading image
 
-usa revisado para saber si el profile ha sido actualizado en menos de 24 horas
+:estoy logueado ... y sigo editando sin loguearme de nuevo.
 
-arregla el prog usando los nuevos  nombres, y verifica el search
+:show pic on database when editing nepe
+
+:pq 2 veces fotos ???
+
+:solo muestra en el search los nepes de los duenos q marquen trabajando : HOY
+	usa HOY: horario ; highlight it in profile en vez de cuando; usa revisado
+:add 'final_date' to usuario para q venza a los 30 dias por ejemplo
+
+:video y fotos, QUE, DONDE, CUANDO Hoy Lunes ...., QUIEN
 
 
 
-make a vector column for each micro empre
+
+
+
+DONE
+:make a vector column for each micro empre
 	using tsquery and tsvector, you no longer need embedded queries, just rank matches 
-find out what happens when you use empty tsqueries
+:find out what happens when you use empty tsqueries
 	depending on that, you may noot need queQuery, dondeQuery and bothQuery concept
+	ANSWER: si se pude , usando OR entre tsqueries, 'dulce' o 'yauco' podria ser ''
+	SELECT micro_empre_id, nombre, ts_rank_cd(nombre_que_vector, que_query) + ts_rank_cd(donde_vector, donde_query) AS ranqueo
+	FROM micro_empre, to_tsquery('spanish', 'dulce') que_query,  to_tsquery('simple', 'yauco') donde_query
+	WHERE que_query @@ nombre_que_vector OR donde_query @@ donde_vector 
+	ORDER BY ranqueo DESC;
+	
+	
 
-comas y espacios en opciones addrress bar
-subir
-usar SELECT * FROM
-			(
-			SELECT micro_empre_id, nombre, unnest (que) losque FROM micro_empre
-			) queasrows 
-WHERE losque iLIKE '%sHop%';
-en los search
 
-ir contruyendo un web de que verbo o nombre estan relacionados, segun los links de la gente
-lista de texto de opciones (orden alfabetico)
-pon mi profile con id zero, faq lo necesita.
-add 'final_date' to usuario para q venza a los 30 dias por ejemplo
+:ir contruyendo un web de que verbo o nombre estan relacionados, segun los links de la gente
+
+:lista de texto de opciones (orden alfabetico)
+
+:pon mi profile con id zero, faq lo necesita.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 check for a 2 way substring relation  
 	:  que "lavado a mano de carros" machee "lavar carro" when > 40% words are 'alike' not equal
 	:  que aparezca en el heading de opciones "lavar carro" from los que del micro empre, no el que introducido en busca

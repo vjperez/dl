@@ -1,8 +1,4 @@
-change names 
-
-nepes de chucho
-
-pq 2 veces fotos
+caja para transporte en baul ?
 
 rent your shower, toilet, get houses near the beach vieques??
 
@@ -23,7 +19,15 @@ WHERE el_query @@ nombre_que_vector;
 
 SELECT micro_empre_id, nombre, ts_rank_cd(nombre_que_vector, el_query) AS ranqueo
 FROM micro_empre, to_tsquery('spanish', 'barbetta | peinadora') el_query
-WHERE el_query @@ nombre_que_vector;
+WHERE el_query @@ nombre_que_vector
+ORDER BY ranqueo DESC;
+
+
+SELECT micro_empre_id, nombre, ts_rank_cd(nombre_que_vector, que_query) + ts_rank_cd(donde_vector, donde_query) AS ranqueo
+FROM micro_empre, to_tsquery('spanish', 'dulce') que_query,  to_tsquery('simple', 'yauco') donde_query
+WHERE que_query @@ nombre_que_vector AND donde_query @@ donde_vector 
+ORDER BY ranqueo DESC;
+
 
 SELECT micro_empre_id, nombre, ts_rank(nombre_que_vector, el_query, 0) AS ranqueo 
 FROM micro_empre, to_tsquery('spanish', 'payaso') el_query 
