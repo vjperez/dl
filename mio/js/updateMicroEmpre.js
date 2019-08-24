@@ -241,9 +241,9 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 			console.log('resizeImage:nuevaImagen onload... ' + index);
 			//var canvas = document.getElementById('elCanvas');
 			var canvas = document.createElement("canvas");
-			canvas.width = 320;
-			canvas.height = 160;
-			canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 320, 160);
+			/*canvas.width = 320; */		canvas.width = 640;
+			/*canvas.height = 160;*/	canvas.height = 320;
+			canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 640, 320);
 			var dataURL = canvas.toDataURL('image/jpeg', 0.95);
 			console.log(index + ': dataURL: ' + dataURL);
 			var dataBlob = dataURLToBlob( dataURL );

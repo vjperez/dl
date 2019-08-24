@@ -38,9 +38,9 @@ jQuery.editDuenoShowEmpresas = function(duenoId){
 		var labelAndTable = '<label class="notHidable">Tus NePes:</label>';
 		labelAndTable   +=  '<table class="hidaxxxble">';
 			jQuery.each(datos, function(index, meId, nombre){
-				labelAndTable += '<tr><td><a class="link" href="portada.html?look=createUpdateMicroEmpre&meId=' + datos[index].meId + '&duenoId=' + duenoId + '">' + datos[index].nombre + '</a></td></tr>';
+				labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateMicroEmpre&meId=' + datos[index].meId + '&duenoId=' + duenoId + '">' + datos[index].nombre + '</a></td></tr>';
 			});
-			labelAndTable += '<tr><td><a class="link" href="portada.html?look=createUpdateMicroEmpre&meId=' + '' + '&duenoId=' + duenoId + '">' + 'Crea NePe' + '</a></td></tr>';
+			labelAndTable += '<tr><td><a class="link" href="portada.html?look=createMicroEmpre&duenoId=' + duenoId + '">' + 'Crea NePe' + '</a></td></tr>';
 			labelAndTable += '</table>';
 		jQuery('#labelAndTableContainer').html(labelAndTable);
 	})

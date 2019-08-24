@@ -5,7 +5,12 @@ jQuery(document).ready(
 			//you can join the null case and busca case together, should avoid requesting portada.html
 			//twice when there is NO look parameter (null)
 			case null:
+				//when in running mode
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+				jQuery.get('looks/lookIsNull.html', function(datosDeRespuesta, estatus, xhrObjeto){
+					var mainDeNull = jQuery(datosDeRespuesta).filter('#main');
+					jQuery('#containerForMain').html(mainDeNull);
+				});	
 			break;
 			case 'busca':
 				jQuery('#navBusca').hide();
@@ -134,32 +139,49 @@ jQuery(document).ready(
 
 
 			break;
-			case 'createUpdateMicroEmpre':
+			case 'createMicroEmpre':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
 
-				jQuery.get('looks/createUpdateMicroEmpre.html', function(datosDeRespuesta, estatus, xhrObjeto){
+				jQuery.get('looks/createMicroEmpre.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeMicroEmpreData = jQuery(datosDeRespuesta).filter('#main');
 					jQuery('#containerForMain').html(mainDeMicroEmpreData);
 				});
 
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/createUpdateMicroEmpre.html'){
+					if(settingsObjeto.url === 'looks/createMicroEmpre.html'){
+						//get duenoId
+						var duenoId = jQuery.urlParam('duenoId');
+						//task 1 when ajax complete ; handle form submit and make post
+						jQuery.handleSubmit(duenoId);
+						//submit event listener and handler
+					}//if
+				});//ajaxComplete
+			break;
+			case 'updateMicroEmpre':
+				//remove navegation before requesting new html.  Less likely user will notice it going away.
+				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+
+				jQuery.get('looks/updateMicroEmpre.html', function(datosDeRespuesta, estatus, xhrObjeto){
+					var mainDeMicroEmpreData = jQuery(datosDeRespuesta).filter('#main');
+					jQuery('#containerForMain').html(mainDeMicroEmpreData);
+				});
+
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'looks/updateMicroEmpre.html'){
 						//get meId
-						var meId = jQuery.urlParam('meId');  // empty-null when creating
+						var meId = jQuery.urlParam('meId');  
 						//get duenoId
 						var duenoId = jQuery.urlParam('duenoId');
 
-						//task 1 when ajax complete get that data, (only when updating)
+						//task 1 when ajax complete get that data
 						//alert('meId : ' + meId);
-						if(jQuery.isNotVacioStr(meId)){
-							jQuery.getJSON('escritos/getMicroEmpreData.php', {meId:meId} )
-							.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-								jQuery.populateForm(datos);
-							})
-							.fail(  jQuery.fallas  );
-						}							
-						
+						jQuery.getJSON('escritos/getMicroEmpreData.php', {meId:meId} )
+						.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+							jQuery.populateForm(datos);
+						})
+						.fail(  jQuery.fallas  );
+													
 						//task 2 when ajax complete ; handle form submit and make post
 						jQuery.handleSubmit(duenoId, meId);
 						//submit event listener and handler
@@ -180,6 +202,8 @@ jQuery(document).ready(
 				});
 			break;
 			default :
+				//when in running mode
+				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 				jQuery.get('looks/default.html', function(datosDeRespuesta, estatus, xhrObjeto){
 					var mainDeDefault = jQuery(datosDeRespuesta).filter('#main');
 					jQuery('#containerForMain').html(mainDeDefault);

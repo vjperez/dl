@@ -1,3 +1,7 @@
+:en las imagenes del barbero, cuando subes una cuadrada peq 200x200 y la deformas a 320x160
+para luego mostrarla 620x310 aprox NO VALE LA PENA, aumentas el size solo pa q se vea peor
+En cambio cuando subes una 2040x1030 aprox si la reduces y si se ve muy bien 
+
 :crea y edita nepes en paginas dieferentes ; ?que qjkeres editar? ; envia cada seccion individualmente
 
 :replace watch for embed when loading image
