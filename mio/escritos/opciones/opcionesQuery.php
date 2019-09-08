@@ -5,42 +5,36 @@ $dondeLiteralStr = str_replace(":", " | ", $_GET['donde']); //here 'que' and 'do
 //str_replace("world","Peter","Hello world!");   produces "Hello Peter!"
 
 
-$queryBoth = "SELECT array_to_json(media_foto_url), micro_empre_id, ts_rank_cd(nombre_que_vector, que_query) + ts_rank_cd(donde_vector, donde_query) AS ranqueo
-FROM micro_empre, to_tsquery('spanish', '$queLiteralStr') que_query,  to_tsquery('simple', '$dondeLiteralStr') donde_query
-WHERE que_query @@ nombre_que_vector AND donde_query @@ donde_vector 
-ORDER BY ranqueo DESC
-";
-
-
-
-$queryQue = "SELECT array_to_json(media_foto_url), micro_empre_id, ts_rank_cd(nombre_que_vector, el_query) AS ranqueo
-FROM micro_empre, to_tsquery('spanish', '$queLiteralStr') el_query
-WHERE el_query @@ nombre_que_vector
-ORDER BY ranqueo DESC
-";
-	
-$queryDonde = "SELECT array_to_json(media_foto_url), micro_empre_id, ts_rank_cd(donde_vector, el_query) AS ranqueo
-FROM micro_empre, to_tsquery('simple', '$dondeLiteralStr') el_query
-WHERE el_query @@ donde_vector
-ORDER BY ranqueo DESC
-";	
-
-
+//define buscaMode
 if(strlen($queLiteralStr) == 0 && strlen($dondeLiteralStr) >  0) $buscaMode = 'buscaDonde';
 elseif(strlen($queLiteralStr) >  0 && strlen($dondeLiteralStr) == 0) $buscaMode = 'buscaQue';
 elseif(strlen($queLiteralStr) >  0 && strlen($dondeLiteralStr) >  0) $buscaMode = 'buscaBoth';
 else throw new Exception('No tengo un Busca Mode, en opcionesQuery.php.'); // sholud not get here ; throw warning
 
 //select query to be used based on $buscaMode
+//switch is not necessary, $query could be built inside above if - elseif structure
+//but maybe this is clearer ... maybe not
 switch($buscaMode){
 	case 'buscaQue':
-		$query = $queryQue;
+		$query = "SELECT id, array_to_json(media_foto_url), ts_rank_cd(nombre_que_vector, el_query) AS ranqueo
+		FROM micro_empre, to_tsquery('spanish', '$queLiteralStr') el_query
+		WHERE el_query @@ nombre_que_vector
+		ORDER BY ranqueo DESC
+		";
 		break;
 	case 'buscaDonde':
-	  $query = $queryDonde;
+		$query = "SELECT id, array_to_json(media_foto_url), ts_rank_cd(donde_vector, el_query) AS ranqueo
+		FROM micro_empre, to_tsquery('simple', '$dondeLiteralStr') el_query
+		WHERE el_query @@ donde_vector
+		ORDER BY ranqueo DESC
+		";
 		break;
 	case 'buscaBoth':
-	  $query = $queryBoth;
+		$query = "SELECT id, array_to_json(media_foto_url), ts_rank_cd(nombre_que_vector, que_query) + ts_rank_cd(donde_vector, donde_query) AS ranqueo
+		FROM micro_empre, to_tsquery('spanish', '$queLiteralStr') que_query,  to_tsquery('simple', '$dondeLiteralStr') donde_query
+		WHERE que_query @@ nombre_que_vector AND donde_query @@ donde_vector 
+		ORDER BY ranqueo DESC
+		";
 		break;
 }
 ?>
