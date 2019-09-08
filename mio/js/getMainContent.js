@@ -35,7 +35,7 @@ jQuery(document).ready(
 			//concatenating strings inside an each loop, with the requested JSON datos.
 				var que = jQuery.urlParam('que');      //a string with : as delimiter between  words
 				var donde = jQuery.urlParam('donde');  //a string with : as delimiter between  words
-				jQuery.getJSON('escritos/opciones.php', {que:que, donde:donde} )
+				jQuery.getJSON('escritos/getOpciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
 					var mainDeOpciones = '<div id="main" class="contenido margen">';

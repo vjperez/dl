@@ -12,7 +12,7 @@ elseif(strlen($queLiteralStr) >  0 && strlen($dondeLiteralStr) >  0) $buscaMode 
 else throw new Exception('No tengo un Busca Mode, en opcionesQuery.php.'); // sholud not get here ; throw warning
 
 //select query to be used based on $buscaMode
-//switch is not necessary, $query could be built inside above if - elseif structure
+//switch structure is not necessary, $query could be built inside above if/elseif structure
 //but maybe this is clearer ... maybe not
 switch($buscaMode){
 	case 'buscaQue':
