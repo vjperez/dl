@@ -9,16 +9,17 @@
 
 //query returns arrays, bool values ... everything in JSON format (read data from postgre, as json)
 $query = "SELECT
-	to_json(micro_empre_id),
+	to_json(id),
 	nombre,
 	to_char(revisado, 'Mon/DD/YYYY'),
 	array_to_json(que),
 	array_to_json(donde),	
 	cuando,
+	to_json(a_tu_casa),
+
 	media_video_url,
 	media_social_handle,
-	array_to_json(media_foto_url),
-	to_json(a_tu_casa)
+	array_to_json(media_foto_url)
 FROM micro_empre
-WHERE micro_empre_id = $meId";
+WHERE id = $meId";
 ?>

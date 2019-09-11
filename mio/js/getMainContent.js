@@ -69,7 +69,7 @@ jQuery(document).ready(
 				//get meId then
 				var meId = jQuery.urlParam('meId');
 				//request get JSON data for that meId
-				jQuery.getJSON('escritos/getMicroEmpreData.php', {meId:meId} )
+				jQuery.getJSON('escritos/getMicroEmpre.php', {meId:meId} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					//Once the data is in, get profile look
