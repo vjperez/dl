@@ -3,7 +3,8 @@
 <head>
   <title>flota cabron</title>  
   <style type="text/css">
-    .bordeado{ border:2px solid blue; }
+    .borde-azul { border:2px solid blue; }
+    .borde-verde{ border:2px solid green; }
     .reduce{ width:100px }  
     .izq{ float:left }
     .dere{ float:right }
@@ -13,10 +14,10 @@
 </head>    
 
 <body>
-    <div class="bordeado reduce izq">
+    <div class="borde-azul reduce izq">
         <p>1</p>
     </div>
-    <div class="bordeado reduce dere">
+    <div class="borde-azul reduce dere">
         <p>2</p>
     </div>
     
@@ -24,7 +25,7 @@
     pero puede q se le monte encima a las div 1 y 2 q fueron flotadas.  -->
     <p>Texto escrito despues de usar float en dos divs. La div 3 subira hasta donde lo permita este texto.</p>
     
-    <div class="bordeado reduce">
+    <div class="borde-verde reduce">
         <p>3 : not floated using code</p>
     </div>
     
@@ -32,15 +33,15 @@
     Como la div 3 no esta flotando, este texto no sube nunca hasta la misma altura de la div 3.
     Pero la div 3 y el texto entre la div 1 y la div 2, ignoran por completo la posicion vertical de la div 1 y la div 2 ya q estas estan flotando.</p>
 
-    <div class="bordeado reduce izq">
+    <div class="borde-azul reduce izq">
         <p>4</p>
     </div>
-    <div class="bordeado reduce dere">
+    <div class="borde-azul reduce dere">
         <p>5</p>
     </div>
 
    <div class="toClear"> </div>
-    <p>Texto q no intentara subir pq ya di clear</p>
+    <p>Texto q no intentara subir entre las divs flotadas (como lo hace el texto original), pq ya di clear</p>
 
 </body>    
 </html>
