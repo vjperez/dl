@@ -1,0 +1,32 @@
+<html>
+
+
+<head>
+    <title>javascript</title>
+</head>
+
+<body>
+    <p>Can you guess the number 1, 2, or 3 ?</p>
+    <input id="el-input" type="text">
+    <button id="el-boton">Try</button>
+   
+    <p id="el-parafo"></p>
+
+   <script>
+       document.getElementById("el-boton").onclick = function(){
+            let guess =  document.getElementById("el-input").value;
+            let randomValue = 1 + (Math.floor (10 * Math.random())) % 3;  
+            
+            // could also be 1 + Math.floor (3 * Math.random())
+            // as implemented 0,3,6,9 results in 1 ; 1,4,7 results in 2 ; 2,5,8 result in 3
+            
+            if(parseInt(guess) === randomValue){ // you could also remove parseInt and test condition with ==
+                document.getElementById("el-parafo").innerHTML = 'Got it. It was ' + randomValue;
+            }else{
+                document.getElementById("el-parafo").innerHTML = 'No mijo no. It was ' + randomValue;
+            } 
+       }
+   </script>
+</body>
+
+</html>
