@@ -1,0 +1,109 @@
+<html>
+
+<head>
+    <title>Test Reaction time</title>
+    <style>
+        #game-space{ 
+            border:1px solid royalblue;
+            min-height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Test your reaction time.</h1>
+    <h2>Click on the figure as soon as you can !</h2>
+    <div id="timer-space">
+        <p>Reaction Time : <span id="clock"></span></p>
+    </div>
+    <div id="button-space">
+        <p><button id="start-game-button">Start</button>
+           <button id="stop-game-button">Stop</button></p>
+    </div>    
+    <div id="game-space">
+        <div id="figure"></div>
+    </div>
+
+    <script>
+        main();
+        function main(){
+            playing = false;
+            enableButton('start-game-button');
+            disableButton('stop-game-button');
+            document.getElementById("start-game-button").onclick = function(){
+                playing = true;
+                enableButton('stop-game-button');
+                disableButton('start-game-button');
+                //while(playing){
+                    randomWait();
+                    showFigure();
+                    startClock();
+                //}
+            }
+            document.getElementById("stop-game-button").onclick = function(){
+                playing = false;
+                enableButton('start-game-button');
+                disableButton('stop-game-button');
+            }
+        }
+        function randomWait(){
+            let randomWait = 3000 * Math.random(); // max wait is 3 seconds
+            let time1 = new Date().getTime();
+            let time2 = new Date().getTime();
+            while((time2 - time1) < randomWait){
+                console.log(time1);
+                console.log(time2);
+                console.log(randomWait);
+                time2 = new Date().getTime();
+            }
+        }
+        function showFigure(){
+            let width  = 50 + Math.floor(100 * Math.random()); // from 50 to 149
+            let height = '';
+            let borderRadius = '';
+            let figureChooser = Math.floor(3 * Math.random());
+            if(figureChooser == 0){   // rectangle 
+                height = 50 + Math.floor(100 * Math.random());
+                borderRadius = 5;
+            }else if(figureChooser == 1){ // square
+                height = width;
+                borderRadius = 5;
+            }else{  // circle
+                height = width;
+                borderRadius = 0.5 * width;
+            }  
+            let red = Math.floor(256 * Math.random());
+            let blue = Math.floor(256 * Math.random());
+            let green = Math.floor(256 * Math.random());
+
+            document.getElementById('figure').style.height = height + "px";
+            document.getElementById('figure').style.width = width + "px";
+            document.getElementById('figure').style.borderRadius = borderRadius + "px";
+            document.getElementById("figure").style.backgroundColor = "rgb("+red+","+green+","+blue+")";
+            
+            // set position
+        }
+        
+        function startClock(){
+            let time1 = new Date().getTime();
+            let time2 = '';
+            document.getElementById("figure").onclick = function(){
+                time2 = new Date().getTime();
+                showClock(time2 - time1);
+            }           
+        }
+        function showClock(t){
+            document.getElementById("clock").innerHTML = t + ' milli seconds';
+        }
+
+        function enableButton(id){
+            document.getElementById(id).disabled = false;
+        }
+        function disableButton(id){
+            document.getElementById(id).disabled = true;
+        }        
+    </script>
+    
+</body>
+
+</html>

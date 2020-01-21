@@ -25,13 +25,13 @@
                 document.getElementById("el-parafo").innerHTML = '';
 
                 while(valueGiven != computerGuess){
-                    document.getElementById("el-parafo").innerHTML += '<br>Guess ' + numberOfTries + ' :: ' + computerGuess + ' looking for ' + valueGiven + '.';
+                    document.getElementById("el-parafo").innerHTML += '<br>Guess ' + numberOfTries + '.  Computer guesses ' + computerGuess + ', looking for ' + valueGiven + '.';
 
                     computerGuess = 1 + Math.floor (5 * Math.random()); 
                     numberOfTries++;
                 }
         
-                document.getElementById("el-parafo").innerHTML += '<br>Guess ' + numberOfTries + ' :: ' + computerGuess + ' looking for ' + valueGiven + '.';
+                document.getElementById("el-parafo").innerHTML += '<br>Guess ' + numberOfTries + '.  Computer guesses ' + computerGuess + ', looking for ' + valueGiven + '.';
             }
        }
    </script>
