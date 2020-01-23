@@ -1,0 +1,66 @@
+<html>
+
+
+<head>
+    <title>jQuery</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../jquery/jquery.js"></script>
+    <style  type="text/css">
+        .circle{
+            width:100px;
+            height:100px;
+            border-radius:50px;
+            margin:20px;
+        }
+        .rectangle{
+            width:100px;
+            height:150px;
+            border-radius:5px;
+            margin:20px;
+        }
+        .izq{
+            float:left;
+        }
+        .azul{
+            background-color:cornflowerblue;
+        }
+        .verde{
+            background-color:chartreuse;
+        }
+        .justToClear{
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="circle verde izq"></div>
+    <div class="rectangle azul izq" id="r1"></div>
+    <div class="rectangle azul izq" id="r2"></div>
+    <div class="justToClear"></div>
+    <p id="feedback1"></p>
+    
+    <script type="text/javascript">
+        $r1 = jQuery('#r1');
+        $r1.click( function(){
+            jQuery("#feedback1").html("rectangle 1 disappeared.") ; 
+            $r1.css('display', 'none');
+       } ); 
+
+       $r2 = jQuery("#r2");
+       $r2.click( function(){
+           jQuery("#feedback1").html("rectangle 2 disappeared."); 
+           $r2.css("display", "none");
+       } );
+
+       $c = jQuery('.circle');
+       $c.click( function(){
+           jQuery("#feedback1").html("circle disappeared."); 
+           $c.css('visibility', 'hidden');
+       } );
+
+    </script>
+</body>
+
+
+</html>
