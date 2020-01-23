@@ -1,0 +1,30 @@
+<html>
+
+
+<head>
+    <title>jQuery</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../jquery/jquery.js"></script>
+    <style>
+        iframe{
+            width:1000px;
+            height:500px;
+            border:3px solid cornflowerblue;
+        }
+    </style>
+</head>
+
+<body>
+    <iframe src="http://www.clasificadosonline.com"></iframe>
+    <p>Hoverea sobre boton para ir al proximo site.</p>
+    <button type="button"> Proximo </button>
+
+    <script type="text/javascript">
+        jQuery("button").hover( function(){
+            jQuery('iframe').attr('src', 'http://www.elpais.com');
+        } );
+    </script>
+</body>
+
+
+</html>
