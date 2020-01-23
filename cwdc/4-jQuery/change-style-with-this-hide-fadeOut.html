@@ -41,22 +41,18 @@
     <p id="feedback1"></p>
     
     <script type="text/javascript">
-        $r1 = jQuery('#r1');
-        $r1.click( function(){
-            jQuery("#feedback1").html("rectangle 1 dissappeared.") ; 
-            $r1.css('display', 'none');
+    // select ANY rectangle, then use this to get the id attribute
+    // and change the css of the specific rectangle element clicked
+        $r = jQuery('.rectangle');
+        $r.click( function(){
+            jQuery("#feedback1").html("rectangle with id= " + $(this).attr('id') + ", dissappeared.") ; 
+            $(this).hide(); // same as .css("display", "none");
        } ); 
-
-       $r2 = jQuery("#r2");
-       $r2.click( function(){
-           jQuery("#feedback1").html("rectangle 2 dissappeared."); 
-           $r2.css("display", "none");  // same as .hide()
-       } );
 
        $c = jQuery('.circle');
        $c.click( function(){
            jQuery("#feedback1").html("circle dissappeared."); 
-           $c.css('visibility', 'hidden');
+           $c.fadeOut(); // changes opacity value and uses display none 
        } );
 
     </script>
