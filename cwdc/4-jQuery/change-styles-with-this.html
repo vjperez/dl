@@ -41,10 +41,11 @@
     <p id="feedback1"></p>
     
     <script type="text/javascript">
-    // select ANY rectangle, then use this to change the css of the specific rectangle element clicked
+    // select ANY rectangle, then use this to get the id attribute
+    // and change the css of the specific rectangle element clicked
         $r = jQuery('.rectangle');
         $r.click( function(){
-            jQuery("#feedback1").html("rectangle with id " + $(this).attr('id') + " dissappeared.") ; 
+            jQuery("#feedback1").html("rectangle with id= " + $(this).attr('id') + ", dissappeared.") ; 
             $(this).css('display', 'none');
        } ); 
 
