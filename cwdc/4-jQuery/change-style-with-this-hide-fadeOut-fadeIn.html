@@ -39,22 +39,37 @@
     <div class="rectangle azul izq" id="r2"></div>
     <div class="justToClear"></div>
     <p id="feedback1"></p>
+    <button type="button" id="b1">Fade in circle</button>
+    <button type="button" id="b2">Fade in Rectangles</button>
     
     <script type="text/javascript">
+        $fb = jQuery("#feedback1");
+
     // select ANY rectangle, then use this to get the id attribute
     // and change the css of the specific rectangle element clicked
         $r = jQuery('.rectangle');
         $r.click( function(){
-            jQuery("#feedback1").html("rectangle with id= " + $(this).attr('id') + ", dissappeared.") ; 
+            $fb.html("rectangle with id= " + $(this).attr('id') + ", dissappeared.") ; 
             $(this).hide(); // same as .css("display", "none");
        } ); 
 
        $c = jQuery('.circle');
        $c.click( function(){
-           jQuery("#feedback1").html("circle dissappeared."); 
+           $fb.html("circle dissappeared."); 
            $c.fadeOut('slow'); // changes opacity value and uses display none 
        } );
 
+       $b1 = jQuery('#b1');     
+       $b2 = jQuery('#b2');
+       $b1.click( function(){
+           $c.fadeIn();
+           $fb.html("circle is back."); 
+
+       } );
+       $b2.click( function(){
+           $r.fadeIn();
+           $fb.html("rectangles are back."); 
+       } );
     </script>
 </body>
 
