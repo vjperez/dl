@@ -1,0 +1,47 @@
+<!--  the server needs to be running for this to work  -->
+
+<html>
+
+
+<head>
+    <title>jQuery</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../jquery/jquery.js"></script>
+
+    <style>
+        #text-from-server{
+            background-color:darksalmon;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="file-name"></p>
+    <p>El siguiente parafo viene del server...</p>
+    <p id="text-from-server"></p>
+    
+    <script type="text/javascript">
+        let elFile = 'http://localhost/miCasaLaTuya.txt';
+        jQuery.ajax(elFile)
+            .done(
+                function(texto){
+                    jQuery('#text-from-server').css('background-color', 'darkseagreen');
+                    jQuery('#text-from-server').html(texto);
+                }
+            )
+            .fail(
+                function(){
+                    jQuery('#text-from-server').css('background-color', 'deeppink');
+                    jQuery('#text-from-server').html('hubo algun error...');
+                }
+            )
+            .always(
+                function(){
+                    jQuery('#file-name').html('File: ' + elFile);
+                }
+            );
+    </script>
+</body>
+
+
+</html>
