@@ -7,7 +7,7 @@
     <script type="text/javascript" src="../../../jquery/jquery.js"></script>
     <style>
         body{
-            min-width:550px;
+            min-width:600px;
         }
         nav h1{
             border:1px solid darksalmon;  width:25%;  display: inline-block;  margin-right:25%;
@@ -15,14 +15,19 @@
         nav button{
             margin-right:3%;
         }
-        main section{
-            /* de 800 pa lante vertical */
-            border:1px solid darkkhaki;  width:25%;  display: inline-block;  
-            box-sizing: border-box; margin:-4px;  text-align:center;
-            /* hasta 800 horizontal */
+        main section{              
+            box-sizing: border-box;   border:1px solid darkkhaki;       
+            text-align:center;
+            margin-bottom:50px;
         }
-        main section h4{
-            
+        main section textarea{
+            border:1px solid darkorange;
+            width:100%;
+        }       
+        @media screen  and (min-width:800px){
+            main section{ 
+                display: inline-block;    width:25%;    vertical-align:top;
+            }
         }
     </style>
 </head>
@@ -38,15 +43,24 @@
     <main>
         <section id="html">
             <h4>html</h4>
-        </section>
-        <section id="css">
+            <textarea>
+
+            </textarea>
+        </section><section id="css">
             <h4>css</h4>
-        </section>
-        <section id="js">
+            <textarea>
+
+            </textarea>
+        </section><section id="js">
             <h4>js</h4>
-        </section>
-        <section id="output">
+            <textarea>
+                
+            </textarea>
+        </section><section id="output">
             <h4>output</h4>
+            <textarea>
+                
+            </textarea>
         </section>
     </main>
     <footer></footer>
