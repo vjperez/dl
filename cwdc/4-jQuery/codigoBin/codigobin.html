@@ -5,7 +5,7 @@
     <title>codigo bin</title>
     <meta charset="UTF-8">
     <script type="text/javascript" src="../../../jquery/jquery.js"></script>
-    <style>
+    <style type="text/css">
         body{
             min-width:600px;
         }
@@ -13,7 +13,7 @@
             border:1px solid darksalmon;  width:25%;  display: inline-block;  margin-right:25%;
         }
         nav button{
-            margin-right:3%;
+            margin-right:0%;
         }
         main section{              
             box-sizing: border-box;   border:1px solid darkkhaki;       
@@ -35,37 +35,118 @@
 <body>
     <nav>
         <h1>codigo bin</h1>
-        <button type="button">html</button>
-        <button type="button">css</button>
-        <button type="button">js</button>
-        <button type="button">output</button>
+        <button type="button" id="htmlbutton">html</button>
+        <button type="button" id="cssbutton">css</button>
+        <button type="button" id="cssbuttonapp">apply css</button>
+        <button type="button" id="jsbutton">js</button>
+        <button type="button" id="jsbuttonapp">apply js</button>
+        <button type="button" id="outputbutton">output</button>
     </nav>
     <main>
         <section id="html">
             <h4>html</h4>
-            <textarea>
-
-            </textarea>
+            <textarea></textarea>
         </section><section id="css">
             <h4>css</h4>
-            <textarea>
-
-            </textarea>
+            <textarea></textarea>
         </section><section id="js">
             <h4>js</h4>
-            <textarea>
-                
-            </textarea>
+            <textarea></textarea>
         </section><section id="output">
             <h4>output</h4>
-            <textarea>
-                
-            </textarea>
+            <article></article> 
         </section>
     </main>
     <footer></footer>
     <script type="text/javascript">
-        
+        let sections = 4;
+        let sectionSizePx = [100, 50, 33, 25];
+
+        let originalcss = jQuery('style').html();
+        htmlTextAreaToOutputArticle();
+        cssTextAreaToOutputArticle(originalcss);
+        evaluajs();
+
+        jQuery('#html textarea').keyup(function(){
+            htmlTextAreaToOutputArticle();
+        });
+        jQuery('#css textarea').keyup(function(){
+            cssTextAreaToOutputArticle(originalcss);
+        });
+        jQuery('#js textarea').keyup(function(){
+            evaluajs();
+        });
+
+
+        function htmlTextAreaToOutputArticle(){
+            let htmlTextArea = jQuery('#html textarea').val();
+            console.log(htmlTextArea);
+            jQuery('#output article').html(htmlTextArea);
+        }
+        function cssTextAreaToOutputArticle(originalcss){
+            let cssTextArea = jQuery('#css textarea').val();
+            console.log(cssTextArea);
+            let newcss = originalcss + ' ' + cssTextArea ;
+            jQuery('style').html(newcss);
+            console.log(newcss);
+        }
+        function evaluajs(){
+            let jsTextArea = jQuery('#js textarea').val();
+            console.log(jsTextArea);
+            eval(jsTextArea);
+        }
+       
+        jQuery('#htmlbutton').click(function(){
+            jQuery('#html').toggle();
+            //console.log(jQuery('#html').css('display'));  //display property of section with id=html
+            //console.log(jQuery('html').css('width'));     //width in pixels of complete html document
+            //console.log(jQuery('html').width());          //width (number only) of complete html document
+            if(           jQuery('html').width()  >= 800){  //width (number only) of complete html document
+                if(jQuery('#html').css('display') == "none"){
+                    sections--;
+                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                }else{ // jQuery('#html').css('display') == 'inline-block'
+                    sections++;
+                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                }
+            }
+        });
+        jQuery('#cssbutton').click(function(){
+            jQuery('#css').toggle();
+            if(           jQuery('html').width()  >= 800){  //width (number only) of complete html document
+                if(jQuery('#css').css('display') == "none"){
+                    sections--;
+                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                }else{ // jQuery('#css').css('display') == 'inline-block'
+                    sections++;
+                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                }
+            }
+        });
+        jQuery('#jsbutton').click(function(){
+            jQuery('#js').toggle();
+            if(           jQuery('html').width()  >= 800){  //width (number only) of complete html document
+                if(jQuery('#js').css('display') == "none"){
+                    sections--;
+                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                }else{ // jQuery('#js').css('display') == 'inline-block'
+                    sections++;
+                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                }
+            }
+        });
+        jQuery('#outputbutton').click(function(){
+            jQuery('#output').toggle();
+            if(           jQuery('html').width()  >= 800){  //width (number only) of complete html document
+                if(jQuery('#output').css('display') == "none"){
+                    sections--;
+                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                }else{ // jQuery('#output').css('display') == 'inline-block'
+                    sections++;
+                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                }
+            }
+        });
     </script>
 </body>
 
