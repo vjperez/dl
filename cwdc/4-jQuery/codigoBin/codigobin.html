@@ -59,10 +59,11 @@
     </main>
     <footer></footer>
     <script type="text/javascript">
-        let sections = 4;
-        let sectionSizePx = [100, 50, 33, 25];
+        let sections = 4;  //number of sections; it changes when buttons are pressed
+        let sectionSize = [100, 50, 33, 25]; //width of sections in percent ; depends on how many sections we are displaying
 
         let originalcss = jQuery('style').html();
+        
         htmlTextAreaToOutputArticle();
         cssTextAreaToOutputArticle(originalcss);
         evaluajs();
@@ -101,49 +102,49 @@
             //console.log(jQuery('#html').css('display'));  //display property of section with id=html
             //console.log(jQuery('html').css('width'));     //width in pixels of complete html document
             //console.log(jQuery('html').width());          //width (number only) of complete html document
-            if(           jQuery('html').width()  >= 800){  //width (number only) of complete html document
+            if(           jQuery('html').width()  >= 800){  //width (number only) of complete html document ; 800 matches number given on css
                 if(jQuery('#html').css('display') == "none"){
                     sections--;
-                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                    jQuery('main section').css('width', sectionSize[-1+sections] + '%');
                 }else{ // jQuery('#html').css('display') == 'inline-block'
                     sections++;
-                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                    jQuery('main section').css('width', sectionSize[-1+sections] + '%');
                 }
             }
         });
         jQuery('#cssbutton').click(function(){
             jQuery('#css').toggle();
-            if(           jQuery('html').width()  >= 800){  //width (number only) of complete html document
+            if(           jQuery('html').width()  >= 800){  //width (number only) of complete html document  ; 800 matches number given on css
                 if(jQuery('#css').css('display') == "none"){
                     sections--;
-                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                    jQuery('main section').css('width', sectionSize[-1+sections] + '%');
                 }else{ // jQuery('#css').css('display') == 'inline-block'
                     sections++;
-                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                    jQuery('main section').css('width', sectionSize[-1+sections] + '%');
                 }
             }
         });
         jQuery('#jsbutton').click(function(){
             jQuery('#js').toggle();
-            if(           jQuery('html').width()  >= 800){  //width (number only) of complete html document
+            if(           jQuery('html').width()  >= 800){  //width (number only) of complete html document ; 800 matches number given on css
                 if(jQuery('#js').css('display') == "none"){
                     sections--;
-                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                    jQuery('main section').css('width', sectionSize[-1+sections] + '%');
                 }else{ // jQuery('#js').css('display') == 'inline-block'
                     sections++;
-                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                    jQuery('main section').css('width', sectionSize[-1+sections] + '%');
                 }
             }
         });
         jQuery('#outputbutton').click(function(){
             jQuery('#output').toggle();
-            if(           jQuery('html').width()  >= 800){  //width (number only) of complete html document
+            if(           jQuery('html').width()  >= 800){  //width (number only) of complete html document ; 800 matches number given on css
                 if(jQuery('#output').css('display') == "none"){
                     sections--;
-                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                    jQuery('main section').css('width', sectionSize[-1+sections] + '%');
                 }else{ // jQuery('#output').css('display') == 'inline-block'
                     sections++;
-                    jQuery('main section').css('width', sectionSizePx[-1+sections] + '%');
+                    jQuery('main section').css('width', sectionSize[-1+sections] + '%');
                 }
             }
         });
