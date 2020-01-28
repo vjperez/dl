@@ -1,0 +1,32 @@
+for the version on server:
+
+    </section><section id="output">
+            <h4>output</h4>
+            <iframe src="http://localhost/WebDevelopmentStuff/cwdc/4-jQuery/codigoBin/toOutput.html">
+            </iframe> 
+    </section>
+
+ <script type="text/javascript">
+        jQuery('#html').change(function(){
+            htmlTextAreaToOutpuFile();
+            bringOutputFileToFrame();
+        });
+
+        function htmlTextAreaToOutpuFile(){
+            let htmlTextArea = jQuery('#html textarea').val();
+
+        }
+        function bringOutputFileToFrame(){
+
+        }
+</script>
+
+when over 800px
+	use buttons to toggle sections display property -- DONE
+	
+	resize section horizontally  -- DONE
+
+    use buttons to apply or NOT css and js
+
+when under 800px 
+	reorder the sections up and down
