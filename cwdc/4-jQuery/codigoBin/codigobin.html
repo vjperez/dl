@@ -19,11 +19,16 @@
             box-sizing: border-box;   border:1px solid darkkhaki;       
             text-align:center;
             margin-bottom:50px;
+            background-color:gainsboro;
         }
-        main section textarea{
+        main section textarea, main section article{
             border:1px solid darkorange;
             width:100%;
-        }       
+            min-height:500px;
+        }   
+        main section article{
+            background-color:whitesmoke;
+        }    
         @media screen  and (min-width:800px){
             main section{ 
                 display: inline-block;    width:25%;    vertical-align:top;
@@ -37,9 +42,9 @@
         <h1>codigo bin</h1>
         <button type="button" id="htmlbutton">html</button>
         <button type="button" id="cssbutton">css</button>
-        <button type="button" id="cssbuttonapp">apply css</button>
+        <!--  <button type="button" id="cssbuttonapp">apply css</button>  -->
         <button type="button" id="jsbutton">js</button>
-        <button type="button" id="jsbuttonapp">apply js</button>
+        <!--  <button type="button" id="jsbuttonapp">apply js</button>  -->
         <button type="button" id="outputbutton">output</button>
     </nav>
     <main>
@@ -66,7 +71,7 @@
         
         htmlTextAreaToOutputArticle();
         cssTextAreaToOutputArticle(originalcss);
-        evaluajs();
+        evaluatejs();
 
         jQuery('#html textarea').keyup(function(){
             htmlTextAreaToOutputArticle();
@@ -75,7 +80,7 @@
             cssTextAreaToOutputArticle(originalcss);
         });
         jQuery('#js textarea').keyup(function(){
-            evaluajs();
+            evaluatejs();
         });
 
 
@@ -91,7 +96,7 @@
             jQuery('style').html(newcss);
             console.log(newcss);
         }
-        function evaluajs(){
+        function evaluatejs(){
             let jsTextArea = jQuery('#js textarea').val();
             console.log(jsTextArea);
             eval(jsTextArea);
