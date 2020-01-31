@@ -13,9 +13,13 @@
     <style> 
         div[data-spy="scroll"]  {
             overflow-y:scroll;  height:250px;
-            position:relative; top:100px; 
-            border:3px solid darkcyan;
         }  
+        .bordea{
+            border:3px solid darkorange;
+        }
+        div.container{
+            position:relative; top:100px; 
+        }
     </style>
   </head>
   <body>
@@ -44,7 +48,7 @@
 
     <h2> why data-offset="50" ?? try zero ??</h2>
 
-    <div class="container">
+    <div class="container bordea">
     <div class="row">
     <div data-spy="scroll" data-target="#navbar-example2" data-offset="50">
         <h4 id="fat">@fat</h4>
