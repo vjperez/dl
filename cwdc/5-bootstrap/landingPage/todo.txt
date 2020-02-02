@@ -1,0 +1,11 @@
+App marketing - Landing Page
+
+nav bar - sign in forms
+jumbotron - free hi res photo (google it) --> unsplash
+
+sign up forms
+cards in 3 columns and font awesome
+
+wide footer with call to action
+
+conected with scrollspy
