@@ -12,7 +12,7 @@ function creaFiles(){
     fwrite($fileRecientes, $strRecientes);
 }
 //  call this function to create new earthquake files, fuertes.txt and recientes.txt
-//creaFiles();
+creaFiles();
 
 function fileToArray($urlFile){
     $tenStringsStr = file_get_contents($urlFile);
