@@ -36,9 +36,12 @@ function fileToArray($urlFile){
               preg_match_all('/<a[\s]*href=".+<\/a>/', $sitioTemblor[0], $sitioTemblor);
               $sitioTemblorArr = $sitioTemblor[0]; 
 
-              preg_match('/\([\s]*[\d]+[\.]*[\d]*[\s]*miles[\s]*\)/', $str, $distanciaTemblor);
-              preg_match('/[\d]+[\.]*[\d]*[\s]*miles/', $distanciaTemblor[0], $distanciaTemblor);
-              $distanciaTemblor = $distanciaTemblor[0];
+              if( preg_match('/\([\s]*[\d]+[\.]*[\d]*[\s]*miles[\s]*\)/', $str, $distanciaTemblor) ){
+                preg_match('/[\d]+[\.]*[\d]*[\s]*miles/', $distanciaTemblor[0], $distanciaTemblor); // pude haber removido parentesis usando algun replace
+                $distanciaTemblor = $distanciaTemblor[0];
+              }else{
+                $distanciaTemblor = '<span class="text-danger">No Sabemos !</span>';
+              }
 
               preg_match('/<p>Depth:[\s]*[\d]+[\.]*[\d]*[\s]*km[\s]*<\/p>/', $str, $profundidadTemblor);
               preg_match('/Depth:[\s]*[\d]+[\.]*[\d]*[\s]*km[\s]*/', $profundidadTemblor[0], $profundidadTemblor);
@@ -58,9 +61,9 @@ function fileToArray($urlFile){
 function echoArray($temblores){
     for($i=1; $i <= 10; $i++){ 
           echo '<br><br><br>';
-          echo 'temblor ' . $i . ': <br>' .
-               'magnitud : ' . $temblores[$i]['magnitude'] . '<br>' .
-               'hora : ' . $temblores[$i]['hora'] .  '<br>' ;
+          echo 'Temblor ' . $i . ': <br>' .
+               'magnitud : ' . '<span class="text-danger font-weight-bold">' . $temblores[$i]['magnitude'] . '</span>' . '<br>' .
+               'hora : ' . '<span class="text-info font-weight-bold">'. $temblores[$i]['hora'] . '</span>' .  '<br>' ;
           echo 'sitio: ' . $temblores[$i]['sitioArr'][0];
                for($j=1; $j < count($temblores[$i]['sitioArr']); $j++){ 
                  echo ', ' . $temblores[$i]['sitioArr'][$j];
