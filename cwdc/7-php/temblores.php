@@ -86,6 +86,12 @@ function echoArray($temblores){
     <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
 
     <title>Temblores</title>
+
+    <style type="text/css">
+      div[class='container mb-5 border']{
+        height:350px;  overflow-y:scroll;
+      }
+    </style>
   </head>
   <body>
       <div class="container my-3">
@@ -95,25 +101,23 @@ function echoArray($temblores){
       </div>
 
       <div class="container my-5 border">
-        <div class="container my-3 border">
-            <h3 class="">Recientes</h3>
 
+        <h3 class="text-center">Recientes</h3>
+        <div class="container mb-5 border">
             <?php
               $urlFile = 'recientes.txt';
               echoArray(fileToArray($urlFile));
             ?>
-
         </div>
-        <div class="container my-3 border">
-            <h3 class="">Los mas fuertes</h3>
-            <small>mas de 3, ultimas 24 horas</small>
 
+        <h3 class="text-center">Fuertes</h3>
+        <div class="container mb-5 border">
             <?php
               $urlFile = 'fuertes.txt';
               echoArray(fileToArray($urlFile));
             ?>
-
         </div>
+
       </div>
 
       <!-- Optional JavaScript -->
