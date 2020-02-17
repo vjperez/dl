@@ -12,7 +12,7 @@ function creaFiles(){
     fwrite($fileRecientes, $strRecientes);
 }
 //  call this function to create new earthquake files, fuertes.txt and recientes.txt
-creaFiles();
+//creaFiles();
 
 function fileToArray($urlFile){
     $tenStringsStr = file_get_contents($urlFile);
@@ -32,11 +32,9 @@ function fileToArray($urlFile){
 
 
               //  '/<br\/>[\s]*<a[\s]*href=".+<\/a>[\s]*,[\s]*<a[\s]*href=".+<\/a>[\s]*,[\s]*<a[\s]*href=".+<\/a>[\s]*<\/div>/'
-              preg_match('/<br\/>[\s]*<a[\s]*href=".+<\/a>[\s]*,[\s]*<a[\s]*href=".+<\/a>[\s]*,[\s]*<a[\s]*href=".+<\/a>[\s]*<\/div>/', $str, $sitioTemblor);
+              preg_match('/<br\/>[\s]*<a[\s]*href=".+<\/a>[\s]*(,[\s]*<a[\s]*href=".+<\/a>[\s]*)*<\/div>/', $str, $sitioTemblor);
               preg_match_all('/<a[\s]*href=".+<\/a>/', $sitioTemblor[0], $sitioTemblor);
-              $sitioTemblor1 = $sitioTemblor[0][0]; 
-              $sitioTemblor2 = $sitioTemblor[0][1]; 
-              $sitioTemblor3 = $sitioTemblor[0][2]; 
+              $sitioTemblorArr = $sitioTemblor[0]; 
 
               preg_match('/\([\s]*[\d]+[\.]*[\d]*[\s]*miles[\s]*\)/', $str, $distanciaTemblor);
               preg_match('/[\d]+[\.]*[\d]*[\s]*miles/', $distanciaTemblor[0], $distanciaTemblor);
@@ -48,9 +46,7 @@ function fileToArray($urlFile){
 
               $temblores[$index]['magnitude'] = $magnitudeTemblor;
               $temblores[$index]['hora'] =   date("l jS \of F Y", strtotime($horaTemblor)) . ' at: ' . date("h:i:s A", strtotime($horaTemblor));
-              $temblores[$index]['sitio1'] = $sitioTemblor1;
-              $temblores[$index]['sitio2'] = $sitioTemblor2;
-              $temblores[$index]['sitio3'] = $sitioTemblor3;
+              $temblores[$index]['sitioArr'] = $sitioTemblorArr;
               $temblores[$index]['distancia'] = $distanciaTemblor;
               $temblores[$index]['profundidad'] = $profundidadTemblor;
           }
@@ -63,13 +59,15 @@ function echoArray($temblores){
     for($i=1; $i <= 10; $i++){ 
           echo '<br><br><br>';
           echo 'temblor ' . $i . ': <br>' .
-              'magnitud : ' . $temblores[$i]['magnitude'] . '<br>' .
-              'hora : ' . $temblores[$i]['hora'] .  '<br>' .
-              'sitio 1 : ' . $temblores[$i]['sitio1'] .  '<br>' .
-              'sitio 2 : ' . $temblores[$i]['sitio2'] .  '<br>' .
-              'sitio 3 : ' . $temblores[$i]['sitio3'] .  '<br>' .
-              'distancia : ' . $temblores[$i]['distancia']  .  '<br>' .
-              'profundidad : ' . $temblores[$i]['profundidad'] . '<br>';
+               'magnitud : ' . $temblores[$i]['magnitude'] . '<br>' .
+               'hora : ' . $temblores[$i]['hora'] .  '<br>' ;
+          echo 'sitio: ' . $temblores[$i]['sitioArr'][0];
+               for($j=1; $j < count($temblores[$i]['sitioArr']); $j++){ 
+                 echo ', ' . $temblores[$i]['sitioArr'][$j];
+               }
+               echo '<br>';
+          echo 'distancia : ' . $temblores[$i]['distancia']  .  '<br>' .
+               'profundidad : ' . $temblores[$i]['profundidad'] . '<br>';
     }
 }
 ?>
