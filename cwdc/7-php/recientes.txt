@@ -17,7 +17,7 @@
 <script src="/assets/application-c2cf9e70799adffd4d5322febb2ffd0dd8338a6ae1aa7a27d2301f6502049e49.js" async="async"></script>
 <script src="/packs/js/application-ff84530237cd80c26bf1.js"></script>
 
-<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"a42cfc00f1","applicationID":"228451","transactionName":"IQ1cEBMODwkDERtFRwMJVxdOEwYGAw1A","queueTime":0,"applicationTime":297,"agent":""}</script>
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"a42cfc00f1","applicationID":"228451","transactionName":"IQ1cEBMODwkDERtFRwMJVxdOEwYGAw1A","queueTime":0,"applicationTime":291,"agent":""}</script>
 <script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"UA8PUl5ACgEIUFRT",licenseKey:"a42cfc00f1",applicationID:"228451"};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o||e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e,n){function r(t){try{s.console&&console.log(t)}catch(e){}}var o,i=t("ee"),a=t(25),s={};try{o=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(s.console=!0,o.indexOf("dev")!==-1&&(s.dev=!0),o.indexOf("nr_dev")!==-1&&(s.nrDev=!0))}catch(c){}s.nrDev&&i.on("internal-error",function(t){r(t.stack)}),s.dev&&i.on("fn-err",function(t,e,n){r(n.stack)}),s.dev&&(r("NR AGENT IN DEVELOPMENT MODE"),r("flags: "+a(s,function(t,e){return t}).join(", ")))},{}],2:[function(t,e,n){function r(t,e,n,r,s){try{l?l-=1:o(s||new UncaughtException(t,e,n),!0)}catch(f){try{i("ierr",[f,c.now(),!0])}catch(d){}}return"function"==typeof u&&u.apply(this,a(arguments))}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function o(t,e){var n=e?null:c.now();i("err",[t,n])}var i=t("handle"),a=t(26),s=t("ee"),c=t("loader"),f=t("gos"),u=window.onerror,d=!1,p="nr@seenError",l=0;c.features.err=!0,t(1),window.onerror=r;try{throw new Error}catch(h){"stack"in h&&(t(13),t(12),"addEventListener"in window&&t(6),c.xhrWrappable&&t(14),d=!0)}s.on("fn-start",function(t,e,n){d&&(l+=1)}),s.on("fn-err",function(t,e,n){d&&!n[p]&&(f(n,p,function(){return!0}),this.thrown=!0,o(n))}),s.on("fn-end",function(){d&&!this.thrown&&l>0&&(l-=1)}),s.on("internal-error",function(t){i("ierr",[t,c.now(),!0])})},{}],3:[function(t,e,n){t("loader").features.ins=!0},{}],4:[function(t,e,n){function r(){L++,C=g.hash,this[u]=y.now()}function o(){L--,g.hash!==C&&i(0,!0);var t=y.now();this[h]=~~this[h]+t-this[u],this[d]=t}function i(t,e){E.emit("newURL",[""+g,e])}function a(t,e){t.on(e,function(){this[e]=y.now()})}var s="-start",c="-end",f="-body",u="fn"+s,d="fn"+c,p="cb"+s,l="cb"+c,h="jsTime",m="fetch",v="addEventListener",w=window,g=w.location,y=t("loader");if(w[v]&&y.xhrWrappable){var x=t(10),b=t(11),E=t(8),O=t(6),R=t(13),P=t(7),T=t(14),N=t(9),M=t("ee"),S=M.get("tracer");t(16),y.features.spa=!0;var C,L=0;M.on(u,r),M.on(p,r),M.on(d,o),M.on(l,o),M.buffer([u,d,"xhr-done","xhr-resolved"]),O.buffer([u]),R.buffer(["setTimeout"+c,"clearTimeout"+s,u]),T.buffer([u,"new-xhr","send-xhr"+s]),P.buffer([m+s,m+"-done",m+f+s,m+f+c]),E.buffer(["newURL"]),x.buffer([u]),b.buffer(["propagate",p,l,"executor-err","resolve"+s]),S.buffer([u,"no-"+u]),N.buffer(["new-jsonp","cb-start","jsonp-error","jsonp-end"]),a(T,"send-xhr"+s),a(M,"xhr-resolved"),a(M,"xhr-done"),a(P,m+s),a(P,m+"-done"),a(N,"new-jsonp"),a(N,"jsonp-end"),a(N,"cb-start"),E.on("pushState-end",i),E.on("replaceState-end",i),w[v]("hashchange",i,!0),w[v]("load",i,!0),w[v]("popstate",function(){i(0,L>1)},!0)}},{}],5:[function(t,e,n){function r(t){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var o=t("ee"),i=t("handle"),a=t(13),s=t(12),c="learResourceTimings",f="addEventListener",u="resourcetimingbufferfull",d="bstResource",p="resource",l="-start",h="-end",m="fn"+l,v="fn"+h,w="bstTimer",g="pushState",y=t("loader");y.features.stn=!0,t(8),"addEventListener"in window&&t(6);var x=NREUM.o.EV;o.on(m,function(t,e){var n=t[0];n instanceof x&&(this.bstStart=y.now())}),o.on(v,function(t,e){var n=t[0];n instanceof x&&i("bst",[n,e,this.bstStart,y.now()])}),a.on(m,function(t,e,n){this.bstStart=y.now(),this.bstType=n}),a.on(v,function(t,e){i(w,[e,this.bstStart,y.now(),this.bstType])}),s.on(m,function(){this.bstStart=y.now()}),s.on(v,function(t,e){i(w,[e,this.bstStart,y.now(),"requestAnimationFrame"])}),o.on(g+l,function(t){this.time=y.now(),this.startPath=location.pathname+location.hash}),o.on(g+h,function(t){i("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),f in window.performance&&(window.performance["c"+c]?window.performance[f](u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["c"+c]()},!1):window.performance[f]("webkit"+u,function(t){i(d,[window.performance.getEntriesByType(p)]),window.performance["webkitC"+c]()},!1)),document[f]("scroll",r,{passive:!0}),document[f]("keypress",r,!1),document[f]("click",r,!1)}},{}],6:[function(t,e,n){function r(t){for(var e=t;e&&!e.hasOwnProperty(u);)e=Object.getPrototypeOf(e);e&&o(e)}function o(t){s.inPlace(t,[u,d],"-",i)}function i(t,e){return t[1]}var a=t("ee").get("events"),s=t("wrap-function")(a,!0),c=t("gos"),f=XMLHttpRequest,u="addEventListener",d="removeEventListener";e.exports=a,"getPrototypeOf"in Object?(r(document),r(window),r(f.prototype)):f.prototype.hasOwnProperty(u)&&(o(window),o(f.prototype)),a.on(u+"-start",function(t,e){var n=t[1],r=c(n,"nr@wrapped",function(){function t(){if("function"==typeof n.handleEvent)return n.handleEvent.apply(n,arguments)}var e={object:t,"function":n}[typeof n];return e?s(e,"fn-",null,e.name||"anonymous"):n});this.wrapped=t[1]=r}),a.on(d+"-start",function(t){t[1]=this.wrapped||t[1]})},{}],7:[function(t,e,n){function r(t,e,n){var r=t[e];"function"==typeof r&&(t[e]=function(){var t=i(arguments),e={};o.emit(n+"before-start",[t],e);var a;e[m]&&e[m].dt&&(a=e[m].dt);var s=r.apply(this,t);return o.emit(n+"start",[t,a],s),s.then(function(t){return o.emit(n+"end",[null,t],s),t},function(t){throw o.emit(n+"end",[t],s),t})})}var o=t("ee").get("fetch"),i=t(26),a=t(25);e.exports=o;var s=window,c="fetch-",f=c+"body-",u=["arrayBuffer","blob","json","text","formData"],d=s.Request,p=s.Response,l=s.fetch,h="prototype",m="nr@context";d&&p&&l&&(a(u,function(t,e){r(d[h],e,f),r(p[h],e,f)}),r(s,"fetch",c),o.on(c+"end",function(t,e){var n=this;if(e){var r=e.headers.get("content-length");null!==r&&(n.rxSize=r),o.emit(c+"done",[null,e],n)}else o.emit(c+"done",[t],n)}))},{}],8:[function(t,e,n){var r=t("ee").get("history"),o=t("wrap-function")(r);e.exports=r;var i=window.history&&window.history.constructor&&window.history.constructor.prototype,a=window.history;i&&i.pushState&&i.replaceState&&(a=i),o.inPlace(a,["pushState","replaceState"],"-")},{}],9:[function(t,e,n){function r(t){function e(){c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}function n(){c.emit("jsonp-error",[],p),c.emit("jsonp-end",[],p),t.removeEventListener("load",e,!1),t.removeEventListener("error",n,!1)}var r=t&&"string"==typeof t.nodeName&&"script"===t.nodeName.toLowerCase();if(r){var o="function"==typeof t.addEventListener;if(o){var a=i(t.src);if(a){var u=s(a),d="function"==typeof u.parent[u.key];if(d){var p={};f.inPlace(u.parent,[u.key],"cb-",p),t.addEventListener("load",e,!1),t.addEventListener("error",n,!1),c.emit("new-jsonp",[t.src],p)}}}}}function o(){return"addEventListener"in window}function i(t){var e=t.match(u);return e?e[1]:null}function a(t,e){var n=t.match(p),r=n[1],o=n[3];return o?a(o,e[r]):e[r]}function s(t){var e=t.match(d);return e&&e.length>=3?{key:e[2],parent:a(e[1],window)}:{key:t,parent:window}}var c=t("ee").get("jsonp"),f=t("wrap-function")(c);if(e.exports=c,o()){var u=/[?&](?:callback|cb)=([^&#]+)/,d=/(.*)\.([^.]+)/,p=/^(\w+)(\.|$)(.*)$/,l=["appendChild","insertBefore","replaceChild"];Node&&Node.prototype&&Node.prototype.appendChild?f.inPlace(Node.prototype,l,"dom-"):(f.inPlace(HTMLElement.prototype,l,"dom-"),f.inPlace(HTMLHeadElement.prototype,l,"dom-"),f.inPlace(HTMLBodyElement.prototype,l,"dom-")),c.on("dom-start",function(t){r(t[0])})}},{}],10:[function(t,e,n){var r=t("ee").get("mutation"),o=t("wrap-function")(r),i=NREUM.o.MO;e.exports=r,i&&(window.MutationObserver=function(t){return this instanceof i?new i(o(t,"fn-")):i.apply(this,arguments)},MutationObserver.prototype=i.prototype)},{}],11:[function(t,e,n){function r(t){var e=a.context(),n=s(t,"executor-",e),r=new f(n);return a.context(r).getCtx=function(){return e},a.emit("new-promise",[r,e],e),r}function o(t,e){return e}var i=t("wrap-function"),a=t("ee").get("promise"),s=i(a),c=t(25),f=NREUM.o.PR;e.exports=a,f&&(window.Promise=r,["all","race"].forEach(function(t){var e=f[t];f[t]=function(n){function r(t){return function(){a.emit("propagate",[null,!o],i),o=o||!t}}var o=!1;c(n,function(e,n){Promise.resolve(n).then(r("all"===t),r(!1))});var i=e.apply(f,arguments),s=f.resolve(i);return s}}),["resolve","reject"].forEach(function(t){var e=f[t];f[t]=function(t){var n=e.apply(f,arguments);return t!==n&&a.emit("propagate",[t,!0],n),n}}),f.prototype["catch"]=function(t){return this.then(null,t)},f.prototype=Object.create(f.prototype,{constructor:{value:r}}),c(Object.getOwnPropertyNames(f),function(t,e){try{r[e]=f[e]}catch(n){}}),a.on("executor-start",function(t){t[0]=s(t[0],"resolve-",this),t[1]=s(t[1],"resolve-",this)}),a.on("executor-err",function(t,e,n){t[1](n)}),s.inPlace(f.prototype,["then"],"then-",o),a.on("then-start",function(t,e){this.promise=e,t[0]=s(t[0],"cb-",this),t[1]=s(t[1],"cb-",this)}),a.on("then-end",function(t,e,n){this.nextPromise=n;var r=this.promise;a.emit("propagate",[r,!0],n)}),a.on("cb-end",function(t,e,n){a.emit("propagate",[n,!0],this.nextPromise)}),a.on("propagate",function(t,e,n){this.getCtx&&!e||(this.getCtx=function(){if(t instanceof Promise)var e=a.context(t);return e&&e.getCtx?e.getCtx():this})}),r.toString=function(){return""+f})},{}],12:[function(t,e,n){var r=t("ee").get("raf"),o=t("wrap-function")(r),i="equestAnimationFrame";e.exports=r,o.inPlace(window,["r"+i,"mozR"+i,"webkitR"+i,"msR"+i],"raf-"),r.on("raf-start",function(t){t[0]=o(t[0],"fn-")})},{}],13:[function(t,e,n){function r(t,e,n){t[0]=a(t[0],"fn-",null,n)}function o(t,e,n){this.method=n,this.timerDuration=isNaN(t[1])?0:+t[1],t[0]=a(t[0],"fn-",this,n)}var i=t("ee").get("timer"),a=t("wrap-function")(i),s="setTimeout",c="setInterval",f="clearTimeout",u="-start",d="-";e.exports=i,a.inPlace(window,[s,"setImmediate"],s+d),a.inPlace(window,[c],c+d),a.inPlace(window,[f,"clearImmediate"],f+d),i.on(c+u,r),i.on(s+u,o)},{}],14:[function(t,e,n){function r(t,e){d.inPlace(e,["onreadystatechange"],"fn-",s)}function o(){var t=this,e=u.context(t);t.readyState>3&&!e.resolved&&(e.resolved=!0,u.emit("xhr-resolved",[],t)),d.inPlace(t,g,"fn-",s)}function i(t){y.push(t),h&&(b?b.then(a):v?v(a):(E=-E,O.data=E))}function a(){for(var t=0;t<y.length;t++)r([],y[t]);y.length&&(y=[])}function s(t,e){return e}function c(t,e){for(var n in t)e[n]=t[n];return e}t(6);var f=t("ee"),u=f.get("xhr"),d=t("wrap-function")(u),p=NREUM.o,l=p.XHR,h=p.MO,m=p.PR,v=p.SI,w="readystatechange",g=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"],y=[];e.exports=u;var x=window.XMLHttpRequest=function(t){var e=new l(t);try{u.emit("new-xhr",[e],e),e.addEventListener(w,o,!1)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}return e};if(c(l,x),x.prototype=l.prototype,d.inPlace(x.prototype,["open","send"],"-xhr-",s),u.on("send-xhr-start",function(t,e){r(t,e),i(e)}),u.on("open-xhr-start",r),h){var b=m&&m.resolve();if(!v&&!m){var E=1,O=document.createTextNode(E);new h(a).observe(O,{characterData:!0})}}else f.on("fn-end",function(t){t[0]&&t[0].type===w||a()})},{}],15:[function(t,e,n){function r(t){if(!i(t))return null;var e=window.NREUM;if(!e.loader_config)return null;var n=(e.loader_config.accountID||"").toString()||null,r=(e.loader_config.agentID||"").toString()||null,s=(e.loader_config.trustKey||"").toString()||null;if(!n||!r)return null;var c=a.generateCatId(),f=a.generateCatId(),u=Date.now(),d=o(c,f,u,n,r,s);return{header:d,guid:c,traceId:f,timestamp:u}}function o(t,e,n,r,o,i){var a="btoa"in window&&"function"==typeof window.btoa;if(!a)return null;var s={v:[0,1],d:{ty:"Browser",ac:r,ap:o,id:t,tr:e,ti:n}};return i&&r!==i&&(s.d.tk=i),btoa(JSON.stringify(s))}function i(t){var e=!1,n=!1,r={};if("init"in NREUM&&"distributed_tracing"in NREUM.init&&(r=NREUM.init.distributed_tracing,n=!!r.enabled),n)if(t.sameOrigin)e=!0;else if(r.allowed_origins instanceof Array)for(var o=0;o<r.allowed_origins.length;o++){var i=s(r.allowed_origins[o]);if(t.hostname===i.hostname&&t.protocol===i.protocol&&t.port===i.port){e=!0;break}}return n&&e}var a=t(23),s=t(17);e.exports={generateTracePayload:r,shouldGenerateTrace:i}},{}],16:[function(t,e,n){function r(t){var e=this.params,n=this.metrics;if(!this.ended){this.ended=!0;for(var r=0;r<p;r++)t.removeEventListener(d[r],this.listener,!1);e.aborted||(n.duration=a.now()-this.startTime,this.loadCaptureCalled||4!==t.readyState?null==e.status&&(e.status=0):i(this,t),n.cbTime=this.cbTime,u.emit("xhr-done",[t],t),s("xhr",[e,n,this.startTime]))}}function o(t,e){var n=c(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.parsedOrigin=c(e),t.sameOrigin=t.parsedOrigin.sameOrigin}function i(t,e){t.params.status=e.status;var n=v(e,t.lastSize);if(n&&(t.metrics.rxSize=n),t.sameOrigin){var r=e.getResponseHeader("X-NewRelic-App-Data");r&&(t.params.cat=r.split(", ").pop())}t.loadCaptureCalled=!0}var a=t("loader");if(a.xhrWrappable){var s=t("handle"),c=t(17),f=t(15).generateTracePayload,u=t("ee"),d=["load","error","abort","timeout"],p=d.length,l=t("id"),h=t(21),m=t(20),v=t(18),w=window.XMLHttpRequest;a.features.xhr=!0,t(14),t(7),u.on("new-xhr",function(t){var e=this;e.totalCbs=0,e.called=0,e.cbTime=0,e.end=r,e.ended=!1,e.xhrGuids={},e.lastSize=null,e.loadCaptureCalled=!1,t.addEventListener("load",function(n){i(e,t)},!1),h&&(h>34||h<10)||window.opera||t.addEventListener("progress",function(t){e.lastSize=t.loaded},!1)}),u.on("open-xhr-start",function(t){this.params={method:t[0]},o(this,t[1]),this.metrics={}}),u.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid);var n=f(this.parsedOrigin);n&&n.header&&(e.setRequestHeader("newrelic",n.header),this.dt=n)}),u.on("send-xhr-start",function(t,e){var n=this.metrics,r=t[0],o=this;if(n&&r){var i=m(r);i&&(n.txSize=i)}this.startTime=a.now(),this.listener=function(t){try{"abort"!==t.type||o.loadCaptureCalled||(o.params.aborted=!0),("load"!==t.type||o.called===o.totalCbs&&(o.onloadCalled||"function"!=typeof e.onload))&&o.end(e)}catch(n){try{u.emit("internal-error",[n])}catch(r){}}};for(var s=0;s<p;s++)e.addEventListener(d[s],this.listener,!1)}),u.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),u.on("xhr-load-added",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),u.on("xhr-load-removed",function(t,e){var n=""+l(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),u.on("addEventListener-end",function(t,e){e instanceof w&&"load"===t[0]&&u.emit("xhr-load-added",[t[1],t[2]],e)}),u.on("removeEventListener-end",function(t,e){e instanceof w&&"load"===t[0]&&u.emit("xhr-load-removed",[t[1],t[2]],e)}),u.on("fn-start",function(t,e,n){e instanceof w&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=a.now()))}),u.on("fn-end",function(t,e){this.xhrCbStart&&u.emit("xhr-cb-time",[a.now()-this.xhrCbStart,this.onload,e],e)}),u.on("fetch-before-start",function(t){var e,n=t[1]||{};"string"==typeof t[0]?e=t[0]:t[0]&&t[0].url&&(e=t[0].url),e&&(this.parsedOrigin=c(e),this.sameOrigin=this.parsedOrigin.sameOrigin);var r=f(this.parsedOrigin);if(r&&r.header){var o=r.header;if("string"==typeof t[0]){var i={};for(var a in n)i[a]=n[a];i.headers=new Headers(n.headers||{}),i.headers.set("newrelic",o),this.dt=r,t.length>1?t[1]=i:t.push(i)}else t[0]&&t[0].headers&&(t[0].headers.append("newrelic",o),this.dt=r)}})}},{}],17:[function(t,e,n){var r={};e.exports=function(t){if(t in r)return r[t];var e=document.createElement("a"),n=window.location,o={};e.href=t,o.port=e.port;var i=e.href.split("://");!o.port&&i[1]&&(o.port=i[1].split("/")[0].split("@").pop().split(":")[1]),o.port&&"0"!==o.port||(o.port="https"===i[0]?"443":"80"),o.hostname=e.hostname||n.hostname,o.pathname=e.pathname,o.protocol=i[0],"/"!==o.pathname.charAt(0)&&(o.pathname="/"+o.pathname);var a=!e.protocol||":"===e.protocol||e.protocol===n.protocol,s=e.hostname===document.domain&&e.port===n.port;return o.sameOrigin=a&&(!e.hostname||s),"/"===o.pathname&&(r[t]=o),o}},{}],18:[function(t,e,n){function r(t,e){var n=t.responseType;return"json"===n&&null!==e?e:"arraybuffer"===n||"blob"===n||"json"===n?o(t.response):"text"===n||"document"===n||""===n||void 0===n?o(t.responseText):void 0}var o=t(20);e.exports=r},{}],19:[function(t,e,n){function r(){}function o(t,e,n){return function(){return i(t,[f.now()].concat(s(arguments)),e?null:this,n),e?void 0:this}}var i=t("handle"),a=t(25),s=t(26),c=t("ee").get("tracer"),f=t("loader"),u=NREUM;"undefined"==typeof window.newrelic&&(newrelic=u);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(t,e){u[e]=o(p+e,!0,"api")}),u.addPageAction=o(p+"addPageAction",!0),u.setCurrentRouteName=o(p+"routeName",!0),e.exports=newrelic,u.interaction=function(){return(new r).get()};var h=r.prototype={createTracer:function(t,e){var n={},r=this,o="function"==typeof e;return i(l+"tracer",[f.now(),t,n],r),function(){if(c.emit((o?"":"no-")+"fn-start",[f.now(),r,o],n),o)try{return e.apply(this,arguments)}catch(t){throw c.emit("fn-err",[arguments,this,t],n),t}finally{c.emit("fn-end",[f.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(t,e){h[e]=o(l+e)}),newrelic.noticeError=function(t,e){"string"==typeof t&&(t=new Error(t)),i("err",[t,f.now(),!1,e])}},{}],20:[function(t,e,n){e.exports=function(t){if("string"==typeof t&&t.length)return t.length;if("object"==typeof t){if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if(!("undefined"!=typeof FormData&&t instanceof FormData))try{return JSON.stringify(t).length}catch(e){return}}}},{}],21:[function(t,e,n){var r=0,o=navigator.userAgent.match(/Firefox[\/\s](\d+\.\d+)/);o&&(r=+o[1]),e.exports=r},{}],22:[function(t,e,n){function r(t,e){var n=t.getEntries();n.forEach(function(t){"first-paint"===t.name?c("timing",["fp",Math.floor(t.startTime)]):"first-contentful-paint"===t.name&&c("timing",["fcp",Math.floor(t.startTime)])})}function o(t,e){var n=t.getEntries();n.length>0&&c("lcp",[n[n.length-1]])}function i(t){if(t instanceof u&&!p){var e,n=Math.round(t.timeStamp);e=n>1e12?Date.now()-n:f.now()-n,p=!0,c("timing",["fi",n,{type:t.type,fid:e}])}}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var a,s,c=t("handle"),f=t("loader"),u=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){a=new PerformanceObserver(r),s=new PerformanceObserver(o);try{a.observe({entryTypes:["paint"]}),s.observe({entryTypes:["largest-contentful-paint"]})}catch(d){}}if("addEventListener"in document){var p=!1,l=["click","keydown","mousedown","pointerdown","touchstart"];l.forEach(function(t){document.addEventListener(t,i,!1)})}}},{}],23:[function(t,e,n){function r(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&(e=r.getRandomValues(new Uint8Array(31)));for(var o,i="xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx",a="",s=0;s<i.length;s++)o=i[s],"x"===o?a+=t().toString(16):"y"===o?(o=3&t()|8,a+=o.toString(16)):a+=o;return a}function o(){function t(){return e?15&e[n++]:16*Math.random()|0}var e=null,n=0,r=window.crypto||window.msCrypto;r&&r.getRandomValues&&Uint8Array&&(e=r.getRandomValues(new Uint8Array(31)));for(var o=[],i=0;i<16;i++)o.push(t().toString(16));return o.join("")}e.exports={generateUuid:r,generateCatId:o}},{}],24:[function(t,e,n){function r(t,e){if(!o)return!1;if(t!==o)return!1;if(!e)return!0;if(!i)return!1;for(var n=i.split("."),r=e.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var o=null,i=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var s=navigator.userAgent,c=s.match(a);c&&s.indexOf("Chrome")===-1&&s.indexOf("Chromium")===-1&&(o="Safari",i=c[1])}e.exports={agent:o,version:i,match:r}},{}],25:[function(t,e,n){function r(t,e){var n=[],r="",i=0;for(r in t)o.call(t,r)&&(n[i]=e(r,t[r]),i+=1);return n}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],26:[function(t,e,n){function r(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(o<0?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=r},{}],27:[function(t,e,n){e.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(t,e,n){function r(){}function o(t){function e(t){return t&&t instanceof r?t:t?c(t,s,i):i()}function n(n,r,o,i){if(!p.aborted||i){t&&t(n,r,o);for(var a=e(o),s=m(n),c=s.length,f=0;f<c;f++)s[f].apply(a,r);var d=u[y[n]];return d&&d.push([x,n,r,a]),a}}function l(t,e){g[t]=m(t).concat(e)}function h(t,e){var n=g[t];if(n)for(var r=0;r<n.length;r++)n[r]===e&&n.splice(r,1)}function m(t){return g[t]||[]}function v(t){return d[t]=d[t]||o(n)}function w(t,e){f(t,function(t,n){e=e||"feature",y[n]=e,e in u||(u[e]=[])})}var g={},y={},x={on:l,addEventListener:l,removeEventListener:h,emit:n,get:v,listeners:m,context:e,buffer:w,abort:a,aborted:!1};return x}function i(){return new r}function a(){(u.api||u.feature)&&(p.aborted=!0,u=p.backlog={})}var s="nr@context",c=t("gos"),f=t(25),u={},d={},p=e.exports=o();p.backlog=u},{}],gos:[function(t,e,n){function r(t,e,n){if(o.call(t,e))return t[e];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:r,writable:!0,enumerable:!1}),r}catch(i){}return t[e]=r,r}var o=Object.prototype.hasOwnProperty;e.exports=r},{}],handle:[function(t,e,n){function r(t,e,n,r){o.buffer([t],r),o.emit(t,e,n)}var o=t("ee").get("handle");e.exports=r,r.ee=o},{}],id:[function(t,e,n){function r(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:a(t,i,function(){return o++})}var o=1,i="nr@id",a=t("gos");e.exports=r},{}],loader:[function(t,e,n){function r(){if(!E++){var t=b.info=NREUM.info,e=l.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(t&&t.licenseKey&&t.applicationID&&e))return u.abort();f(y,function(e,n){t[e]||(t[e]=n)}),c("mark",["onload",a()+b.offset],null,"api");var n=l.createElement("script");n.src="https://"+t.agent,e.parentNode.insertBefore(n,e)}}function o(){"complete"===l.readyState&&i()}function i(){c("mark",["domContent",a()+b.offset],null,"api")}function a(){return O.exists&&performance.now?Math.round(performance.now()):(s=Math.max((new Date).getTime(),s))-b.offset}var s=(new Date).getTime(),c=t("handle"),f=t(25),u=t("ee"),d=t(24),p=window,l=p.document,h="addEventListener",m="attachEvent",v=p.XMLHttpRequest,w=v&&v.prototype;NREUM.o={ST:setTimeout,SI:p.setImmediate,CT:clearTimeout,XHR:v,REQ:p.Request,EV:p.Event,PR:p.Promise,MO:p.MutationObserver};var g=""+location,y={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-spa-1167.min.js"},x=v&&w&&w[h]&&!/CriOS/.test(navigator.userAgent),b=e.exports={offset:s,now:a,origin:g,features:{},xhrWrappable:x,userAgent:d};t(19),t(22),l[h]?(l[h]("DOMContentLoaded",i,!1),p[h]("load",r,!1)):(l[m]("onreadystatechange",o),p[m]("onload",r)),c("mark",["firstbyte",s],null,"api");var E=0,O=t(27)},{}],"wrap-function":[function(t,e,n){function r(t){return!(t&&t instanceof Function&&t.apply&&!t[a])}var o=t("ee"),i=t(26),a="nr@original",s=Object.prototype.hasOwnProperty,c=!1;e.exports=function(t,e){function n(t,e,n,o){function nrWrapper(){var r,a,s,c;try{a=this,r=i(arguments),s="function"==typeof n?n(r,a):n||{}}catch(f){p([f,"",[r,a,o],s])}u(e+"start",[r,a,o],s);try{return c=t.apply(a,r)}catch(d){throw u(e+"err",[r,a,d],s),d}finally{u(e+"end",[r,a,c],s)}}return r(t)?t:(e||(e=""),nrWrapper[a]=t,d(t,nrWrapper),nrWrapper)}function f(t,e,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<e.length;c++)s=e[c],a=t[s],r(a)||(t[s]=n(a,f?s+o:o,i,s))}function u(n,r,o){if(!c||e){var i=c;c=!0;try{t.emit(n,r,o,e)}catch(a){p([a,n,r,o])}c=i}}function d(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){p([r])}for(var o in t)s.call(t,o)&&(e[o]=t[o]);return e}function p(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=o),n.inPlace=f,n.flag=a,n}},{}]},{},["loader",2,16,5,3,4]);</script>
 <title>Today's Earthquakes</title>
 <meta name="referrer" content="never">
@@ -40,7 +40,7 @@
 <meta content='width=device-width' name='viewport'>
 <meta content='https://earthquaketrack.com/assets/preview.jpg' property='og:image'>
 <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="Ougcm5fhumxkX9IwdfsaiKqxSc8htAesTdiMLjxTPPEIeykOUKAYa5MSGadi6YbVgu8RWEFhhuSpbNG8DssTHQ==" />
+<meta name="csrf-token" content="Bb1L/ht3pJ5G0Cnvrtt/W4c2XeqOqolHCBbHdGvTnANspiaADFiFj6ylPsxwKIErTKFhyQy8ipRs/ZEm30h67A==" />
 </head>
 <body>
 <nav class='navbar navbar-default navbar-static-top col-lg-12' id='header'>
@@ -208,11 +208,11 @@ Places
       <small><em>(M1.5 or greater)</em></small>
     </h4>
     <ul class="list-unstyled">
-      <li>124 earthquakes in the past 24 hours
+      <li>128 earthquakes in the past 24 hours
       </li>
-      <li>981 earthquakes in the past 7 days</li>
-      <li>5,412 earthquakes in the past 30 days</li>
-      <li>62,443 earthquakes in the past 365 days</li>
+      <li>980 earthquakes in the past 7 days</li>
+      <li>5,401 earthquakes in the past 30 days</li>
+      <li>62,452 earthquakes in the past 365 days</li>
     </ul>
   </div>
 
@@ -335,9 +335,9 @@ Places
     <div class="quakes-near row">
   <div class="quakes-multi-map col-lg-8 col-sm-6">
     <div class="quakes-multi-map-canvas"
-      data-coordinates="19.23,-155.419;19.216,-155.424;17.998,-66.797;17.803,-66.826;17.816,-66.835;61.041,-148.288;36.377,-98.144;60.572,-141.701;27.171,54.747;-33.118,179.948"
-      data-magnitudes="2.2;2.4;2.7;2.4;2.5;1.5;2.0;1.6;4.0;5.5"
-      data-depths ="33;33;17;9;5;0;3;7;10;148"
+      data-coordinates="19.224,-155.408;17.866,-66.884;-7.415,105.886;61.369,-150.076;38.797,-122.815;17.939,-66.988;35.726,-117.533;17.922,-66.897;17.962,-66.861;17.992,-66.705"
+      data-magnitudes="1.8;2.5;4.7;1.6;2.4;2.8;2.1;3.6;3.0;2.6"
+      data-depths ="33;12;59;36;3;10;6;10;14;14"
        >
   </div>
 <br class="clear"/>
@@ -346,12 +346,12 @@ Places
           <div class="quake-info odd col-lg-12">
   <div class=" pull-left label marker-wrap" data-quakeIndex="0">A</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-17-02-56-52-utc-2-2-33">
-    <abbr class="timeago" title="2020-02-17T02:56:52Z">
-      2020-02-17 02:56:52 UTC
+  <a href="/quakes/2020-02-17-12-39-45-utc-1-8-33">
+    <abbr class="timeago" title="2020-02-17T12:39:45Z">
+      2020-02-17 12:39:45 UTC
     </abbr>
   </a>
-  <span class="text-muted">2.2 magnitude</span>, 33 km depth
+  <span class="text-muted">1.8 magnitude</span>, 33 km depth
   <br/>
       <a href="/us-hi-pahala/recent">Pāhala</a>,
         <a href="/p/united-states/hawaii/recent">Hawaii</a>,
@@ -359,21 +359,21 @@ Places
 
 </div>
 <div class="quake-info-window" data-quakeIndex="0">
-  <h4 class='title text-muted'>2.2 magnitude earthquake</h4>
+  <h4 class='title text-muted'>1.8 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-17-02-56-52-utc-2-2-33">
+    <a href="/quakes/2020-02-17-12-39-45-utc-1-8-33">
     Today
-    <abbr class="timeago" title="2020-02-17T02:56:52Z">
-      2020-02-17 02:56:52 UTC
+    <abbr class="timeago" title="2020-02-17T12:39:45Z">
+      2020-02-17 12:39:45 UTC
     </abbr>
-    at 02:56 <br/>February 17, 2020 UTC
+    at 12:39 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 19.23, -155.419
+    Epicenter at 19.224, -155.408
       <br/>
-      6.2 km from
+      7.2 km from
   <a href="/us-hi-pahala/recent">Pāhala</a>
     (4.2 miles)
 
@@ -391,44 +391,44 @@ Places
           <div class="quake-info even col-lg-12">
   <div class=" pull-left label marker-wrap" data-quakeIndex="1">B</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-17-02-47-39-utc-2-4-33">
-    <abbr class="timeago" title="2020-02-17T02:47:39Z">
-      2020-02-17 02:47:39 UTC
+  <a href="/quakes/2020-02-17-12-13-58-utc-2-5-12">
+    <abbr class="timeago" title="2020-02-17T12:13:58Z">
+      2020-02-17 12:13:58 UTC
     </abbr>
   </a>
-  <span class="text-muted">2.4 magnitude</span>, 33 km depth
+  <span class="text-muted">2.5 magnitude</span>, 12 km depth
   <br/>
-      <a href="/us-hi-pahala/recent">Pāhala</a>,
-        <a href="/p/united-states/hawaii/recent">Hawaii</a>,
-      <a href="/p/united-states/recent">United States</a>
+      <a href="/pr-055-guanica/recent">Guánica</a>,
+        <a href="/p/puerto-rico/guanica/recent">Guanica</a>,
+      <a href="/p/puerto-rico/recent">Puerto Rico</a>
 
 </div>
 <div class="quake-info-window" data-quakeIndex="1">
-  <h4 class='title text-muted'>2.4 magnitude earthquake</h4>
+  <h4 class='title text-muted'>2.5 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-17-02-47-39-utc-2-4-33">
+    <a href="/quakes/2020-02-17-12-13-58-utc-2-5-12">
     Today
-    <abbr class="timeago" title="2020-02-17T02:47:39Z">
-      2020-02-17 02:47:39 UTC
+    <abbr class="timeago" title="2020-02-17T12:13:58Z">
+      2020-02-17 12:13:58 UTC
     </abbr>
-    at 02:47 <br/>February 17, 2020 UTC
+    at 12:13 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 19.216, -155.424
+    Epicenter at 17.866, -66.884
       <br/>
-      5.2 km from
-  <a href="/us-hi-pahala/recent">Pāhala</a>
-    (3.2 miles)
+      11.2 km from
+  <a href="/pr-055-guanica/recent">Guánica</a>
+    (7.2 miles)
 
 
   </p>
 
       <p>
-    <a href="/r/island-of-hawaii-hawaii/recent">Island Of Hawaii, Hawaii</a>
+    <a href="/r/puerto-rico/recent">Puerto Rico</a>
       </p>
-  <p>Depth: 33 km</p>
+  <p>Depth: 12 km</p>
 </div>
 
 </div>
@@ -436,44 +436,44 @@ Places
           <div class="quake-info odd col-lg-12">
   <div class=" pull-left label marker-wrap" data-quakeIndex="2">C</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-17-02-27-45-utc-2-7-17">
-    <abbr class="timeago" title="2020-02-17T02:27:45Z">
-      2020-02-17 02:27:45 UTC
+  <a href="/quakes/2020-02-17-12-11-46-utc-4-7-59">
+    <abbr class="timeago" title="2020-02-17T12:11:46Z">
+      2020-02-17 12:11:46 UTC
     </abbr>
   </a>
-  <span class="text-muted">2.7 magnitude</span>, 17 km depth
+  <span class="text-warning">4.7 magnitude</span>, 59 km depth
   <br/>
-      <a href="/pr-059-guayanilla/recent">Guayanilla</a>,
-        <a href="/p/puerto-rico/guayanilla/recent">Guayanilla</a>,
-      <a href="/p/puerto-rico/recent">Puerto Rico</a>
+      <a href="/id-30-pelabuhanratu/recent">Pelabuhanratu</a>,
+        <a href="/p/indonesia/west-java/recent">West Java</a>,
+      <a href="/p/indonesia/recent">Indonesia</a>
 
 </div>
 <div class="quake-info-window" data-quakeIndex="2">
-  <h4 class='title text-muted'>2.7 magnitude earthquake</h4>
+  <h4 class='title text-warning'>4.7 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-17-02-27-45-utc-2-7-17">
+    <a href="/quakes/2020-02-17-12-11-46-utc-4-7-59">
     Today
-    <abbr class="timeago" title="2020-02-17T02:27:45Z">
-      2020-02-17 02:27:45 UTC
+    <abbr class="timeago" title="2020-02-17T12:11:46Z">
+      2020-02-17 12:11:46 UTC
     </abbr>
-    at 02:27 <br/>February 17, 2020 UTC
+    at 12:11 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 17.998, -66.797
+    Epicenter at -7.415, 105.886
       <br/>
-      2.2 km from
-  <a href="/pr-059-guayanilla/recent">Guayanilla</a>
-    (1.2 miles)
+      87.2 km from
+  <a href="/id-30-pelabuhanratu/recent">Pelabuhanratu</a>
+    (54.2 miles)
 
 
   </p>
 
       <p>
-    <a href="/r/puerto-rico/recent">Puerto Rico</a>
+    <a href="/r/java-indonesia/recent">Java, Indonesia</a>
       </p>
-  <p>Depth: 17 km</p>
+  <p>Depth: 59 km</p>
 </div>
 
 </div>
@@ -481,44 +481,44 @@ Places
           <div class="quake-info even col-lg-12">
   <div class=" pull-left label marker-wrap" data-quakeIndex="3">D</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-17-02-02-52-utc-2-4-9">
-    <abbr class="timeago" title="2020-02-17T02:02:52Z">
-      2020-02-17 02:02:52 UTC
+  <a href="/quakes/2020-02-17-12-11-23-utc-1-6-36">
+    <abbr class="timeago" title="2020-02-17T12:11:23Z">
+      2020-02-17 12:11:23 UTC
     </abbr>
   </a>
-  <span class="text-muted">2.4 magnitude</span>, 9 km depth
+  <span class="text-muted">1.6 magnitude</span>, 36 km depth
   <br/>
-      <a href="/pr-055-maria-antonia/recent">Maria Antonia</a>,
-        <a href="/p/puerto-rico/guanica/recent">Guanica</a>,
-      <a href="/p/puerto-rico/recent">Puerto Rico</a>
+      <a href="/us-ak-big-lake/recent">Big Lake</a>,
+        <a href="/p/united-states/alaska/recent">Alaska</a>,
+      <a href="/p/united-states/recent">United States</a>
 
 </div>
 <div class="quake-info-window" data-quakeIndex="3">
-  <h4 class='title text-muted'>2.4 magnitude earthquake</h4>
+  <h4 class='title text-muted'>1.6 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-17-02-02-52-utc-2-4-9">
+    <a href="/quakes/2020-02-17-12-11-23-utc-1-6-36">
     Today
-    <abbr class="timeago" title="2020-02-17T02:02:52Z">
-      2020-02-17 02:02:52 UTC
+    <abbr class="timeago" title="2020-02-17T12:11:23Z">
+      2020-02-17 12:11:23 UTC
     </abbr>
-    at 02:02 <br/>February 17, 2020 UTC
+    at 12:11 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 17.803, -66.826
+    Epicenter at 61.369, -150.076
       <br/>
-      20.2 km from
-  <a href="/pr-055-maria-antonia/recent">Maria Antonia</a>
-    (12.2 miles)
+      18.2 km from
+  <a href="/us-ak-big-lake/recent">Big Lake</a>
+    (11.2 miles)
 
 
   </p>
 
       <p>
-    <a href="/r/puerto-rico/recent">Puerto Rico</a>
+    <a href="/r/southern-alaska/recent">Southern Alaska</a>
       </p>
-  <p>Depth: 9 km</p>
+  <p>Depth: 36 km</p>
 </div>
 
 </div>
@@ -526,44 +526,44 @@ Places
           <div class="quake-info odd col-lg-12">
   <div class=" pull-left label marker-wrap" data-quakeIndex="4">E</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-17-01-44-42-utc-2-5-5">
-    <abbr class="timeago" title="2020-02-17T01:44:42Z">
-      2020-02-17 01:44:42 UTC
+  <a href="/quakes/2020-02-17-11-38-12-utc-2-4-3">
+    <abbr class="timeago" title="2020-02-17T11:38:12Z">
+      2020-02-17 11:38:12 UTC
     </abbr>
   </a>
-  <span class="text-muted">2.5 magnitude</span>, 5 km depth
+  <span class="text-muted">2.4 magnitude</span>, 3 km depth
   <br/>
-      <a href="/pr-055-maria-antonia/recent">Maria Antonia</a>,
-        <a href="/p/puerto-rico/guanica/recent">Guanica</a>,
-      <a href="/p/puerto-rico/recent">Puerto Rico</a>
+      <a href="/us-ca-cobb/recent">Cobb</a>,
+        <a href="/p/united-states/california/recent">California</a>,
+      <a href="/p/united-states/recent">United States</a>
 
 </div>
 <div class="quake-info-window" data-quakeIndex="4">
-  <h4 class='title text-muted'>2.5 magnitude earthquake</h4>
+  <h4 class='title text-muted'>2.4 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-17-01-44-42-utc-2-5-5">
+    <a href="/quakes/2020-02-17-11-38-12-utc-2-4-3">
     Today
-    <abbr class="timeago" title="2020-02-17T01:44:42Z">
-      2020-02-17 01:44:42 UTC
+    <abbr class="timeago" title="2020-02-17T11:38:12Z">
+      2020-02-17 11:38:12 UTC
     </abbr>
-    at 01:44 <br/>February 17, 2020 UTC
+    at 11:38 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 17.816, -66.835
+    Epicenter at 38.797, -122.815
       <br/>
-      18.2 km from
-  <a href="/pr-055-maria-antonia/recent">Maria Antonia</a>
-    (11.2 miles)
+      8.2 km from
+  <a href="/us-ca-cobb/recent">Cobb</a>
+    (5.2 miles)
 
 
   </p>
 
       <p>
-    <a href="/r/puerto-rico/recent">Puerto Rico</a>
+    <a href="/r/northern-california/recent">Northern California</a>
       </p>
-  <p>Depth: 5 km</p>
+  <p>Depth: 3 km</p>
 </div>
 
 </div>
@@ -571,44 +571,44 @@ Places
           <div class="quake-info even col-lg-12">
   <div class=" pull-left label marker-wrap" data-quakeIndex="5">F</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-17-01-44-28-utc-1-5-0">
-    <abbr class="timeago" title="2020-02-17T01:44:28Z">
-      2020-02-17 01:44:28 UTC
+  <a href="/quakes/2020-02-17-11-30-51-utc-2-8-10">
+    <abbr class="timeago" title="2020-02-17T11:30:51Z">
+      2020-02-17 11:30:51 UTC
     </abbr>
   </a>
-  <span class="text-muted">1.5 magnitude</span>, 0 km depth
+  <span class="text-muted">2.8 magnitude</span>, 10 km depth
   <br/>
-      <a href="/us-ak-girdwood/recent">Girdwood</a>,
-        <a href="/p/united-states/alaska/recent">Alaska</a>,
-      <a href="/p/united-states/recent">United States</a>
+      <a href="/pr-079-la-parguera/recent">La Parguera</a>,
+        <a href="/p/puerto-rico/lajas/recent">Lajas</a>,
+      <a href="/p/puerto-rico/recent">Puerto Rico</a>
 
 </div>
 <div class="quake-info-window" data-quakeIndex="5">
-  <h4 class='title text-muted'>1.5 magnitude earthquake</h4>
+  <h4 class='title text-muted'>2.8 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-17-01-44-28-utc-1-5-0">
+    <a href="/quakes/2020-02-17-11-30-51-utc-2-8-10">
     Today
-    <abbr class="timeago" title="2020-02-17T01:44:28Z">
-      2020-02-17 01:44:28 UTC
+    <abbr class="timeago" title="2020-02-17T11:30:51Z">
+      2020-02-17 11:30:51 UTC
     </abbr>
-    at 01:44 <br/>February 17, 2020 UTC
+    at 11:30 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 61.041, -148.288
+    Epicenter at 17.939, -66.988
       <br/>
-      48.2 km from
-  <a href="/us-ak-girdwood/recent">Girdwood</a>
-    (30.2 miles)
+      7.2 km from
+  <a href="/pr-079-la-parguera/recent">La Parguera</a>
+    (4.2 miles)
 
 
   </p>
 
       <p>
-    <a href="/r/southern-alaska/recent">Southern Alaska</a>
+    <a href="/r/puerto-rico/recent">Puerto Rico</a>
       </p>
-  <p>Depth: 0 km</p>
+  <p>Depth: 10 km</p>
 </div>
 
 </div>
@@ -616,41 +616,44 @@ Places
           <div class="quake-info odd col-lg-12">
   <div class=" pull-left label marker-wrap" data-quakeIndex="6">G</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-17-00-57-12-utc-2-0-3">
-    <abbr class="timeago" title="2020-02-17T00:57:12Z">
-      2020-02-17 00:57:12 UTC
+  <a href="/quakes/2020-02-17-11-29-54-utc-2-1-6">
+    <abbr class="timeago" title="2020-02-17T11:29:54Z">
+      2020-02-17 11:29:54 UTC
     </abbr>
   </a>
-  <span class="text-muted">2.0 magnitude</span>, 3 km depth
+  <span class="text-muted">2.1 magnitude</span>, 6 km depth
   <br/>
-      <a href="/us-ok-helena/recent">Helena</a>,
-        <a href="/p/united-states/oklahoma/recent">Oklahoma</a>,
+      <a href="/us-ca-searles-valley/recent">Searles Valley</a>,
+        <a href="/p/united-states/california/recent">California</a>,
       <a href="/p/united-states/recent">United States</a>
 
 </div>
 <div class="quake-info-window" data-quakeIndex="6">
-  <h4 class='title text-muted'>2.0 magnitude earthquake</h4>
+  <h4 class='title text-muted'>2.1 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-17-00-57-12-utc-2-0-3">
+    <a href="/quakes/2020-02-17-11-29-54-utc-2-1-6">
     Today
-    <abbr class="timeago" title="2020-02-17T00:57:12Z">
-      2020-02-17 00:57:12 UTC
+    <abbr class="timeago" title="2020-02-17T11:29:54Z">
+      2020-02-17 11:29:54 UTC
     </abbr>
-    at 00:57 <br/>February 17, 2020 UTC
+    at 11:29 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 36.377, -98.144
+    Epicenter at 35.726, -117.533
       <br/>
-      23.2 km from
-  <a href="/us-ok-helena/recent">Helena</a>
-    (14.2 miles)
+      12.2 km from
+  <a href="/us-ca-searles-valley/recent">Searles Valley</a>
+    (7.2 miles)
 
 
   </p>
 
-  <p>Depth: 3 km</p>
+      <p>
+    <a href="/r/southern-california/recent">Southern California</a>
+      </p>
+  <p>Depth: 6 km</p>
 </div>
 
 </div>
@@ -658,36 +661,44 @@ Places
           <div class="quake-info even col-lg-12">
   <div class=" pull-left label marker-wrap" data-quakeIndex="7">H</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-17-00-45-35-utc-1-6-7">
-    <abbr class="timeago" title="2020-02-17T00:45:35Z">
-      2020-02-17 00:45:35 UTC
+  <a href="/quakes/2020-02-17-11-18-04-utc-3-6-10">
+    <abbr class="timeago" title="2020-02-17T11:18:04Z">
+      2020-02-17 11:18:04 UTC
     </abbr>
   </a>
-  <span class="text-muted">1.6 magnitude</span>, 7 km depth
+  <span class="text-success">3.6 magnitude</span>, 10 km depth
   <br/>
-      <a href="/r/southern-alaska/recent">Southern Alaska</a>
+      <a href="/pr-055-guanica/recent">Guánica</a>,
+        <a href="/p/puerto-rico/guanica/recent">Guanica</a>,
+      <a href="/p/puerto-rico/recent">Puerto Rico</a>
 
 </div>
 <div class="quake-info-window" data-quakeIndex="7">
-  <h4 class='title text-muted'>1.6 magnitude earthquake</h4>
+  <h4 class='title text-success'>3.6 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-17-00-45-35-utc-1-6-7">
+    <a href="/quakes/2020-02-17-11-18-04-utc-3-6-10">
     Today
-    <abbr class="timeago" title="2020-02-17T00:45:35Z">
-      2020-02-17 00:45:35 UTC
+    <abbr class="timeago" title="2020-02-17T11:18:04Z">
+      2020-02-17 11:18:04 UTC
     </abbr>
-    at 00:45 <br/>February 17, 2020 UTC
+    at 11:18 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 60.572, -141.701
+    Epicenter at 17.922, -66.897
+      <br/>
+      5.2 km from
+  <a href="/pr-055-guanica/recent">Guánica</a>
+    (3.2 miles)
+
+
   </p>
 
       <p>
-    <a href="/r/southern-alaska/recent">Southern Alaska</a>
+    <a href="/r/puerto-rico/recent">Puerto Rico</a>
       </p>
-  <p>Depth: 7 km</p>
+  <p>Depth: 10 km</p>
 </div>
 
 </div>
@@ -695,44 +706,44 @@ Places
           <div class="quake-info odd col-lg-12">
   <div class=" pull-left label marker-wrap" data-quakeIndex="8">I</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-17-00-29-20-utc-4-0-10">
-    <abbr class="timeago" title="2020-02-17T00:29:20Z">
-      2020-02-17 00:29:20 UTC
+  <a href="/quakes/2020-02-17-10-58-21-utc-3-0-14">
+    <abbr class="timeago" title="2020-02-17T10:58:21Z">
+      2020-02-17 10:58:21 UTC
     </abbr>
   </a>
-  <span class="text-warning">4.0 magnitude</span>, 10 km depth
+  <span class="text-success">3.0 magnitude</span>, 14 km depth
   <br/>
-      <a href="/ir-11-bandar-e-lengeh/recent">Bandar-e Lengeh</a>,
-        <a href="/p/iran/hormozgan/recent">Hormozgan</a>,
-      <a href="/p/iran/recent">Iran</a>
+      <a href="/pr-055-maria-antonia/recent">Maria Antonia</a>,
+        <a href="/p/puerto-rico/guanica/recent">Guanica</a>,
+      <a href="/p/puerto-rico/recent">Puerto Rico</a>
 
 </div>
 <div class="quake-info-window" data-quakeIndex="8">
-  <h4 class='title text-warning'>4.0 magnitude earthquake</h4>
+  <h4 class='title text-success'>3.0 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-17-00-29-20-utc-4-0-10">
+    <a href="/quakes/2020-02-17-10-58-21-utc-3-0-14">
     Today
-    <abbr class="timeago" title="2020-02-17T00:29:20Z">
-      2020-02-17 00:29:20 UTC
+    <abbr class="timeago" title="2020-02-17T10:58:21Z">
+      2020-02-17 10:58:21 UTC
     </abbr>
-    at 00:29 <br/>February 17, 2020 UTC
+    at 10:58 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 27.171, 54.747
+    Epicenter at 17.962, -66.861
       <br/>
-      69.2 km from
-  <a href="/ir-11-bandar-e-lengeh/recent">Bandar-e Lengeh</a>
-    (43.2 miles)
+      3.2 km from
+  <a href="/pr-055-maria-antonia/recent">Maria Antonia</a>
+    (2.2 miles)
 
 
   </p>
 
       <p>
-    <a href="/r/southern-iran/recent">Southern Iran</a>
+    <a href="/r/puerto-rico/recent">Puerto Rico</a>
       </p>
-  <p>Depth: 10 km</p>
+  <p>Depth: 14 km</p>
 </div>
 
 </div>
@@ -740,36 +751,44 @@ Places
           <div class="quake-info even col-lg-12">
   <div class=" pull-left label marker-wrap" data-quakeIndex="9">J</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-17-00-28-15-utc-5-5-148">
-    <abbr class="timeago" title="2020-02-17T00:28:15Z">
-      2020-02-17 00:28:15 UTC
+  <a href="/quakes/2020-02-17-10-30-21-utc-2-6-14">
+    <abbr class="timeago" title="2020-02-17T10:30:21Z">
+      2020-02-17 10:30:21 UTC
     </abbr>
   </a>
-  <span class="text-warning">5.5 magnitude</span>, 148 km depth
+  <span class="text-muted">2.6 magnitude</span>, 14 km depth
   <br/>
-      <a href="/r/south-of-kermadec-islands/recent">South Of Kermadec Islands</a>
+      <a href="/pr-111-tallaboa/recent">Tallaboa</a>,
+        <a href="/p/puerto-rico/penuelas/recent">Penuelas</a>,
+      <a href="/p/puerto-rico/recent">Puerto Rico</a>
 
 </div>
 <div class="quake-info-window" data-quakeIndex="9">
-  <h4 class='title text-warning'>5.5 magnitude earthquake</h4>
+  <h4 class='title text-muted'>2.6 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-17-00-28-15-utc-5-5-148">
+    <a href="/quakes/2020-02-17-10-30-21-utc-2-6-14">
     Today
-    <abbr class="timeago" title="2020-02-17T00:28:15Z">
-      2020-02-17 00:28:15 UTC
+    <abbr class="timeago" title="2020-02-17T10:30:21Z">
+      2020-02-17 10:30:21 UTC
     </abbr>
-    at 00:28 <br/>February 17, 2020 UTC
+    at 10:30 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at -33.118, 179.948
+    Epicenter at 17.992, -66.705
+      <br/>
+      1.2 km from
+  <a href="/pr-111-tallaboa/recent">Tallaboa</a>
+    (0.2 miles)
+
+
   </p>
 
       <p>
-    <a href="/r/south-of-kermadec-islands/recent">South Of Kermadec Islands</a>
+    <a href="/r/puerto-rico/recent">Puerto Rico</a>
       </p>
-  <p>Depth: 148 km</p>
+  <p>Depth: 14 km</p>
 </div>
 
 </div>
@@ -845,9 +864,9 @@ Places
     <div class="quakes-near row">
   <div class="quakes-multi-map col-lg-8 col-sm-6">
     <div class="quakes-multi-map-canvas"
-      data-coordinates="17.873,-66.888;64.945,-147.292;36.218,70.149;39.018,-123.707;17.933,-66.816;34.964,-97.69;17.832,-66.881;-21.954,-68.534;61.465,-151.529;35.715,-117.553"
-      data-magnitudes="2.4;1.5;4.0;2.9;1.9;2.8;2.4;5.2;1.9;2.1"
-      data-depths ="12;0;128;2;9;1;6;107;89;2"
+      data-coordinates="18.023,-66.855;39.572,-122.03;39.433,-123.102;19.22,-155.402;38.814,-122.787;57.489,-156.03;17.959,-66.946;63.07,-149.93;17.895,-66.837;59.969,-151.807"
+      data-magnitudes="3.0;2.8;2.5;2.4;2.0;4.7;2.5;1.9;2.5;1.8"
+      data-depths ="9;23;0;32;1;98;12;33;12;41"
        >
   </div>
 <br class="clear"/>
@@ -856,35 +875,379 @@ Places
           <div class="quake-info odd col-lg-12">
   <div class=" pull-left label marker-wrap" data-quakeIndex="0">A</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-17-00-23-52-utc-2-4-12">
-    <abbr class="timeago" title="2020-02-17T00:23:52Z">
-      2020-02-17 00:23:52 UTC
+  <a href="/quakes/2020-02-17-10-15-35-utc-3-0-9">
+    <abbr class="timeago" title="2020-02-17T10:15:35Z">
+      2020-02-17 10:15:35 UTC
     </abbr>
   </a>
-  <span class="text-muted">2.4 magnitude</span>, 12 km depth
+  <span class="text-success">3.0 magnitude</span>, 9 km depth
+  <br/>
+      <a href="/pr-153-yauco/recent">Yauco</a>,
+        <a href="/p/puerto-rico/yauco/recent">Yauco</a>,
+      <a href="/p/puerto-rico/recent">Puerto Rico</a>
+
+</div>
+<div class="quake-info-window" data-quakeIndex="0">
+  <h4 class='title text-success'>3.0 magnitude earthquake</h4>
+  <p>
+    <a href="/quakes/2020-02-17-10-15-35-utc-3-0-9">
+    Today
+    <abbr class="timeago" title="2020-02-17T10:15:35Z">
+      2020-02-17 10:15:35 UTC
+    </abbr>
+    at 10:15 <br/>February 17, 2020 UTC
+    </a>
+  </p>
+  <p>
+    Location:<br/>
+    Epicenter at 18.023, -66.855
+      <br/>
+      1.2 km from
+  <a href="/pr-153-yauco/recent">Yauco</a>
+    (0.2 miles)
+
+
+  </p>
+
+      <p>
+    <a href="/r/puerto-rico/recent">Puerto Rico</a>
+      </p>
+  <p>Depth: 9 km</p>
+</div>
+
+</div>
+
+          <div class="quake-info even col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="1">B</div>
+  <div class="quiet row" >
+  <a href="/quakes/2020-02-17-09-46-47-utc-2-8-23">
+    <abbr class="timeago" title="2020-02-17T09:46:47Z">
+      2020-02-17 09:46:47 UTC
+    </abbr>
+  </a>
+  <span class="text-muted">2.8 magnitude</span>, 23 km depth
+  <br/>
+      <a href="/us-ca-willows/recent">Willows</a>,
+        <a href="/p/united-states/california/recent">California</a>,
+      <a href="/p/united-states/recent">United States</a>
+
+</div>
+<div class="quake-info-window" data-quakeIndex="1">
+  <h4 class='title text-muted'>2.8 magnitude earthquake</h4>
+  <p>
+    <a href="/quakes/2020-02-17-09-46-47-utc-2-8-23">
+    Today
+    <abbr class="timeago" title="2020-02-17T09:46:47Z">
+      2020-02-17 09:46:47 UTC
+    </abbr>
+    at 09:46 <br/>February 17, 2020 UTC
+    </a>
+  </p>
+  <p>
+    Location:<br/>
+    Epicenter at 39.572, -122.03
+      <br/>
+      15.2 km from
+  <a href="/us-ca-willows/recent">Willows</a>
+    (9.2 miles)
+
+
+  </p>
+
+      <p>
+    <a href="/r/northern-california/recent">Northern California</a>
+      </p>
+  <p>Depth: 23 km</p>
+</div>
+
+</div>
+
+          <div class="quake-info odd col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="2">C</div>
+  <div class="quiet row" >
+  <a href="/quakes/2020-02-17-09-37-47-utc-2-5-0">
+    <abbr class="timeago" title="2020-02-17T09:37:47Z">
+      2020-02-17 09:37:47 UTC
+    </abbr>
+  </a>
+  <span class="text-muted">2.5 magnitude</span>, 0 km depth
+  <br/>
+      <a href="/us-ca-redwood-valley/recent">Redwood Valley</a>,
+        <a href="/p/united-states/california/recent">California</a>,
+      <a href="/p/united-states/recent">United States</a>
+
+</div>
+<div class="quake-info-window" data-quakeIndex="2">
+  <h4 class='title text-muted'>2.5 magnitude earthquake</h4>
+  <p>
+    <a href="/quakes/2020-02-17-09-37-47-utc-2-5-0">
+    Today
+    <abbr class="timeago" title="2020-02-17T09:37:47Z">
+      2020-02-17 09:37:47 UTC
+    </abbr>
+    at 09:37 <br/>February 17, 2020 UTC
+    </a>
+  </p>
+  <p>
+    Location:<br/>
+    Epicenter at 39.433, -123.102
+      <br/>
+      20.2 km from
+  <a href="/us-ca-redwood-valley/recent">Redwood Valley</a>
+    (12.2 miles)
+
+
+  </p>
+
+      <p>
+    <a href="/r/northern-california/recent">Northern California</a>
+      </p>
+  <p>Depth: 0 km</p>
+</div>
+
+</div>
+
+          <div class="quake-info even col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="3">D</div>
+  <div class="quiet row" >
+  <a href="/quakes/2020-02-17-09-26-58-utc-2-4-32">
+    <abbr class="timeago" title="2020-02-17T09:26:58Z">
+      2020-02-17 09:26:58 UTC
+    </abbr>
+  </a>
+  <span class="text-muted">2.4 magnitude</span>, 32 km depth
+  <br/>
+      <a href="/us-hi-pahala/recent">Pāhala</a>,
+        <a href="/p/united-states/hawaii/recent">Hawaii</a>,
+      <a href="/p/united-states/recent">United States</a>
+
+</div>
+<div class="quake-info-window" data-quakeIndex="3">
+  <h4 class='title text-muted'>2.4 magnitude earthquake</h4>
+  <p>
+    <a href="/quakes/2020-02-17-09-26-58-utc-2-4-32">
+    Today
+    <abbr class="timeago" title="2020-02-17T09:26:58Z">
+      2020-02-17 09:26:58 UTC
+    </abbr>
+    at 09:26 <br/>February 17, 2020 UTC
+    </a>
+  </p>
+  <p>
+    Location:<br/>
+    Epicenter at 19.22, -155.402
+      <br/>
+      8.2 km from
+  <a href="/us-hi-pahala/recent">Pāhala</a>
+    (5.2 miles)
+
+
+  </p>
+
+      <p>
+    <a href="/r/island-of-hawaii-hawaii/recent">Island Of Hawaii, Hawaii</a>
+      </p>
+  <p>Depth: 32 km</p>
+</div>
+
+</div>
+
+          <div class="quake-info odd col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="4">E</div>
+  <div class="quiet row" >
+  <a href="/quakes/2020-02-17-09-19-40-utc-2-0-1">
+    <abbr class="timeago" title="2020-02-17T09:19:40Z">
+      2020-02-17 09:19:40 UTC
+    </abbr>
+  </a>
+  <span class="text-muted">2.0 magnitude</span>, 1 km depth
+  <br/>
+      <a href="/us-ca-cobb/recent">Cobb</a>,
+        <a href="/p/united-states/california/recent">California</a>,
+      <a href="/p/united-states/recent">United States</a>
+
+</div>
+<div class="quake-info-window" data-quakeIndex="4">
+  <h4 class='title text-muted'>2.0 magnitude earthquake</h4>
+  <p>
+    <a href="/quakes/2020-02-17-09-19-40-utc-2-0-1">
+    Today
+    <abbr class="timeago" title="2020-02-17T09:19:40Z">
+      2020-02-17 09:19:40 UTC
+    </abbr>
+    at 09:19 <br/>February 17, 2020 UTC
+    </a>
+  </p>
+  <p>
+    Location:<br/>
+    Epicenter at 38.814, -122.787
+      <br/>
+      5.2 km from
+  <a href="/us-ca-cobb/recent">Cobb</a>
+    (3.2 miles)
+
+
+  </p>
+
+      <p>
+    <a href="/r/northern-california/recent">Northern California</a>
+      </p>
+  <p>Depth: 1 km</p>
+</div>
+
+</div>
+
+          <div class="quake-info even col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="5">F</div>
+  <div class="quiet row" >
+  <a href="/quakes/2020-02-17-09-18-06-utc-4-7-98">
+    <abbr class="timeago" title="2020-02-17T09:18:06Z">
+      2020-02-17 09:18:06 UTC
+    </abbr>
+  </a>
+  <span class="text-warning">4.7 magnitude</span>, 98 km depth
+  <br/>
+      <a href="/r/alaska-peninsula/recent">Alaska Peninsula</a>
+
+</div>
+<div class="quake-info-window" data-quakeIndex="5">
+  <h4 class='title text-warning'>4.7 magnitude earthquake</h4>
+  <p>
+    <a href="/quakes/2020-02-17-09-18-06-utc-4-7-98">
+    Today
+    <abbr class="timeago" title="2020-02-17T09:18:06Z">
+      2020-02-17 09:18:06 UTC
+    </abbr>
+    at 09:18 <br/>February 17, 2020 UTC
+    </a>
+  </p>
+  <p>
+    Location:<br/>
+    Epicenter at 57.489, -156.03
+  </p>
+
+      <p>
+    <a href="/r/alaska-peninsula/recent">Alaska Peninsula</a>
+      </p>
+  <p>Depth: 98 km</p>
+</div>
+
+</div>
+
+          <div class="quake-info odd col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="6">G</div>
+  <div class="quiet row" >
+  <a href="/quakes/2020-02-17-09-08-35-utc-2-5-12">
+    <abbr class="timeago" title="2020-02-17T09:08:35Z">
+      2020-02-17 09:08:35 UTC
+    </abbr>
+  </a>
+  <span class="text-muted">2.5 magnitude</span>, 12 km depth
   <br/>
       <a href="/pr-055-guanica/recent">Guánica</a>,
         <a href="/p/puerto-rico/guanica/recent">Guanica</a>,
       <a href="/p/puerto-rico/recent">Puerto Rico</a>
 
 </div>
-<div class="quake-info-window" data-quakeIndex="0">
-  <h4 class='title text-muted'>2.4 magnitude earthquake</h4>
+<div class="quake-info-window" data-quakeIndex="6">
+  <h4 class='title text-muted'>2.5 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-17-00-23-52-utc-2-4-12">
+    <a href="/quakes/2020-02-17-09-08-35-utc-2-5-12">
     Today
-    <abbr class="timeago" title="2020-02-17T00:23:52Z">
-      2020-02-17 00:23:52 UTC
+    <abbr class="timeago" title="2020-02-17T09:08:35Z">
+      2020-02-17 09:08:35 UTC
     </abbr>
-    at 00:23 <br/>February 17, 2020 UTC
+    at 09:08 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 17.873, -66.888
+    Epicenter at 17.959, -66.946
       <br/>
-      11.2 km from
+      4.2 km from
   <a href="/pr-055-guanica/recent">Guánica</a>
+    (2.2 miles)
+
+
+  </p>
+
+      <p>
+    <a href="/r/puerto-rico/recent">Puerto Rico</a>
+      </p>
+  <p>Depth: 12 km</p>
+</div>
+
+</div>
+
+          <div class="quake-info even col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="7">H</div>
+  <div class="quiet row" >
+  <a href="/quakes/2020-02-17-09-08-35-utc-1-9-33">
+    <abbr class="timeago" title="2020-02-17T09:08:35Z">
+      2020-02-17 09:08:35 UTC
+    </abbr>
+  </a>
+  <span class="text-muted">1.9 magnitude</span>, 33 km depth
+  <br/>
+      <a href="/r/central-alaska/recent">Central Alaska</a>
+
+</div>
+<div class="quake-info-window" data-quakeIndex="7">
+  <h4 class='title text-muted'>1.9 magnitude earthquake</h4>
+  <p>
+    <a href="/quakes/2020-02-17-09-08-35-utc-1-9-33">
+    Today
+    <abbr class="timeago" title="2020-02-17T09:08:35Z">
+      2020-02-17 09:08:35 UTC
+    </abbr>
+    at 09:08 <br/>February 17, 2020 UTC
+    </a>
+  </p>
+  <p>
+    Location:<br/>
+    Epicenter at 63.07, -149.93
+  </p>
+
+      <p>
+    <a href="/r/central-alaska/recent">Central Alaska</a>
+      </p>
+  <p>Depth: 33 km</p>
+</div>
+
+</div>
+
+          <div class="quake-info odd col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="8">I</div>
+  <div class="quiet row" >
+  <a href="/quakes/2020-02-17-09-01-55-utc-2-5-12">
+    <abbr class="timeago" title="2020-02-17T09:01:55Z">
+      2020-02-17 09:01:55 UTC
+    </abbr>
+  </a>
+  <span class="text-muted">2.5 magnitude</span>, 12 km depth
+  <br/>
+      <a href="/pr-055-maria-antonia/recent">Maria Antonia</a>,
+        <a href="/p/puerto-rico/guanica/recent">Guanica</a>,
+      <a href="/p/puerto-rico/recent">Puerto Rico</a>
+
+</div>
+<div class="quake-info-window" data-quakeIndex="8">
+  <h4 class='title text-muted'>2.5 magnitude earthquake</h4>
+  <p>
+    <a href="/quakes/2020-02-17-09-01-55-utc-2-5-12">
+    Today
+    <abbr class="timeago" title="2020-02-17T09:01:55Z">
+      2020-02-17 09:01:55 UTC
+    </abbr>
+    at 09:01 <br/>February 17, 2020 UTC
+    </a>
+  </p>
+  <p>
+    Location:<br/>
+    Epicenter at 17.895, -66.837
+      <br/>
+      10.2 km from
+  <a href="/pr-055-maria-antonia/recent">Maria Antonia</a>
     (6.2 miles)
 
 
@@ -899,392 +1262,46 @@ Places
 </div>
 
           <div class="quake-info even col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="1">B</div>
+  <div class=" pull-left label marker-wrap" data-quakeIndex="9">J</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-17-00-13-20-utc-1-5-0">
-    <abbr class="timeago" title="2020-02-17T00:13:20Z">
-      2020-02-17 00:13:20 UTC
+  <a href="/quakes/2020-02-17-08-41-26-utc-1-8-41">
+    <abbr class="timeago" title="2020-02-17T08:41:26Z">
+      2020-02-17 08:41:26 UTC
     </abbr>
   </a>
-  <span class="text-muted">1.5 magnitude</span>, 0 km depth
+  <span class="text-muted">1.8 magnitude</span>, 41 km depth
   <br/>
-      <a href="/us-ak-badger/recent">Badger</a>,
+      <a href="/us-ak-anchor-point/recent">Anchor Point</a>,
         <a href="/p/united-states/alaska/recent">Alaska</a>,
       <a href="/p/united-states/recent">United States</a>
 
 </div>
-<div class="quake-info-window" data-quakeIndex="1">
-  <h4 class='title text-muted'>1.5 magnitude earthquake</h4>
-  <p>
-    <a href="/quakes/2020-02-17-00-13-20-utc-1-5-0">
-    Today
-    <abbr class="timeago" title="2020-02-17T00:13:20Z">
-      2020-02-17 00:13:20 UTC
-    </abbr>
-    at 00:13 <br/>February 17, 2020 UTC
-    </a>
-  </p>
-  <p>
-    Location:<br/>
-    Epicenter at 64.945, -147.292
-      <br/>
-      19.2 km from
-  <a href="/us-ak-badger/recent">Badger</a>
-    (12.2 miles)
-
-
-  </p>
-
-      <p>
-    <a href="/r/central-alaska/recent">Central Alaska</a>
-      </p>
-  <p>Depth: 0 km</p>
-</div>
-
-</div>
-
-          <div class="quake-info odd col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="2">C</div>
-  <div class="quiet row" >
-  <a href="/quakes/2020-02-16-23-34-28-utc-4-0-128">
-    <abbr class="timeago" title="2020-02-16T23:34:28Z">
-      2020-02-16 23:34:28 UTC
-    </abbr>
-  </a>
-  <span class="text-warning">4.0 magnitude</span>, 128 km depth
-  <br/>
-      <a href="/af-26-farkhar/recent">Farkhār</a>,
-        <a href="/p/afghanistan/takhar/recent">Takhār</a>,
-      <a href="/p/afghanistan/recent">Afghanistan</a>
-
-</div>
-<div class="quake-info-window" data-quakeIndex="2">
-  <h4 class='title text-warning'>4.0 magnitude earthquake</h4>
-  <p>
-    <a href="/quakes/2020-02-16-23-34-28-utc-4-0-128">
-    Today
-    <abbr class="timeago" title="2020-02-16T23:34:28Z">
-      2020-02-16 23:34:28 UTC
-    </abbr>
-    at 23:34 <br/>February 16, 2020 UTC
-    </a>
-  </p>
-  <p>
-    Location:<br/>
-    Epicenter at 36.218, 70.149
-      <br/>
-      47.2 km from
-  <a href="/af-26-farkhar/recent">Farkhār</a>
-    (29.2 miles)
-
-
-  </p>
-
-      <p>
-    <a href="/r/hindu-kush-afghanistan/recent">Hindu Kush, Afghanistan</a>
-      </p>
-  <p>Depth: 128 km</p>
-</div>
-
-</div>
-
-          <div class="quake-info even col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="3">D</div>
-  <div class="quiet row" >
-  <a href="/quakes/2020-02-16-23-09-31-utc-2-9-2">
-    <abbr class="timeago" title="2020-02-16T23:09:31Z">
-      2020-02-16 23:09:31 UTC
-    </abbr>
-  </a>
-  <span class="text-muted">2.9 magnitude</span>, 2 km depth
-  <br/>
-      <a href="/us-ca-boonville/recent">Boonville</a>,
-        <a href="/p/united-states/california/recent">California</a>,
-      <a href="/p/united-states/recent">United States</a>
-
-</div>
-<div class="quake-info-window" data-quakeIndex="3">
-  <h4 class='title text-muted'>2.9 magnitude earthquake</h4>
-  <p>
-    <a href="/quakes/2020-02-16-23-09-31-utc-2-9-2">
-    Today
-    <abbr class="timeago" title="2020-02-16T23:09:31Z">
-      2020-02-16 23:09:31 UTC
-    </abbr>
-    at 23:09 <br/>February 16, 2020 UTC
-    </a>
-  </p>
-  <p>
-    Location:<br/>
-    Epicenter at 39.018, -123.707
-      <br/>
-      29.2 km from
-  <a href="/us-ca-boonville/recent">Boonville</a>
-    (18.2 miles)
-
-
-  </p>
-
-      <p>
-    <a href="/r/northern-california/recent">Northern California</a>
-      </p>
-  <p>Depth: 2 km</p>
-</div>
-
-</div>
-
-          <div class="quake-info odd col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="4">E</div>
-  <div class="quiet row" >
-  <a href="/quakes/2020-02-16-22-55-25-utc-1-9-9">
-    <abbr class="timeago" title="2020-02-16T22:55:25Z">
-      2020-02-16 22:55:25 UTC
-    </abbr>
-  </a>
-  <span class="text-muted">1.9 magnitude</span>, 9 km depth
-  <br/>
-      <a href="/pr-059-indios/recent">Indios</a>,
-        <a href="/p/puerto-rico/guayanilla/recent">Guayanilla</a>,
-      <a href="/p/puerto-rico/recent">Puerto Rico</a>
-
-</div>
-<div class="quake-info-window" data-quakeIndex="4">
-  <h4 class='title text-muted'>1.9 magnitude earthquake</h4>
-  <p>
-    <a href="/quakes/2020-02-16-22-55-25-utc-1-9-9">
-    Today
-    <abbr class="timeago" title="2020-02-16T22:55:25Z">
-      2020-02-16 22:55:25 UTC
-    </abbr>
-    at 22:55 <br/>February 16, 2020 UTC
-    </a>
-  </p>
-  <p>
-    Location:<br/>
-    Epicenter at 17.933, -66.816
-      <br/>
-      6.2 km from
-  <a href="/pr-059-indios/recent">Indios</a>
-    (4.2 miles)
-
-
-  </p>
-
-      <p>
-    <a href="/r/puerto-rico/recent">Puerto Rico</a>
-      </p>
-  <p>Depth: 9 km</p>
-</div>
-
-</div>
-
-          <div class="quake-info even col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="5">F</div>
-  <div class="quiet row" >
-  <a href="/quakes/2020-02-16-22-24-35-utc-2-8-1">
-    <abbr class="timeago" title="2020-02-16T22:24:35Z">
-      2020-02-16 22:24:35 UTC
-    </abbr>
-  </a>
-  <span class="text-muted">2.8 magnitude</span>, 1 km depth
-  <br/>
-      <a href="/us-ok-lindsay/recent">Lindsay</a>,
-        <a href="/p/united-states/oklahoma/recent">Oklahoma</a>,
-      <a href="/p/united-states/recent">United States</a>
-
-</div>
-<div class="quake-info-window" data-quakeIndex="5">
-  <h4 class='title text-muted'>2.8 magnitude earthquake</h4>
-  <p>
-    <a href="/quakes/2020-02-16-22-24-35-utc-2-8-1">
-    Today
-    <abbr class="timeago" title="2020-02-16T22:24:35Z">
-      2020-02-16 22:24:35 UTC
-    </abbr>
-    at 22:24 <br/>February 16, 2020 UTC
-    </a>
-  </p>
-  <p>
-    Location:<br/>
-    Epicenter at 34.964, -97.69
-      <br/>
-      16.2 km from
-  <a href="/us-ok-lindsay/recent">Lindsay</a>
-    (10.2 miles)
-
-
-  </p>
-
-  <p>Depth: 1 km</p>
-</div>
-
-</div>
-
-          <div class="quake-info odd col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="6">G</div>
-  <div class="quiet row" >
-  <a href="/quakes/2020-02-16-22-19-23-utc-2-4-6">
-    <abbr class="timeago" title="2020-02-16T22:19:23Z">
-      2020-02-16 22:19:23 UTC
-    </abbr>
-  </a>
-  <span class="text-muted">2.4 magnitude</span>, 6 km depth
-  <br/>
-      <a href="/pr-055-guanica/recent">Guánica</a>,
-        <a href="/p/puerto-rico/guanica/recent">Guanica</a>,
-      <a href="/p/puerto-rico/recent">Puerto Rico</a>
-
-</div>
-<div class="quake-info-window" data-quakeIndex="6">
-  <h4 class='title text-muted'>2.4 magnitude earthquake</h4>
-  <p>
-    <a href="/quakes/2020-02-16-22-19-23-utc-2-4-6">
-    Today
-    <abbr class="timeago" title="2020-02-16T22:19:23Z">
-      2020-02-16 22:19:23 UTC
-    </abbr>
-    at 22:19 <br/>February 16, 2020 UTC
-    </a>
-  </p>
-  <p>
-    Location:<br/>
-    Epicenter at 17.832, -66.881
-      <br/>
-      15.2 km from
-  <a href="/pr-055-guanica/recent">Guánica</a>
-    (9.2 miles)
-
-
-  </p>
-
-      <p>
-    <a href="/r/puerto-rico/recent">Puerto Rico</a>
-      </p>
-  <p>Depth: 6 km</p>
-</div>
-
-</div>
-
-          <div class="quake-info even col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="7">H</div>
-  <div class="quiet row" >
-  <a href="/quakes/2020-02-16-22-05-45-utc-5-2-107">
-    <abbr class="timeago" title="2020-02-16T22:05:45Z">
-      2020-02-16 22:05:45 UTC
-    </abbr>
-  </a>
-  <span class="text-warning">5.2 magnitude</span>, 107 km depth
-  <br/>
-      <a href="/cl-03-calama/recent">Calama</a>,
-        <a href="/p/chile/antofagasta/recent">Antofagasta</a>,
-      <a href="/p/chile/recent">Chile</a>
-
-</div>
-<div class="quake-info-window" data-quakeIndex="7">
-  <h4 class='title text-warning'>5.2 magnitude earthquake</h4>
-  <p>
-    <a href="/quakes/2020-02-16-22-05-45-utc-5-2-107">
-    Today
-    <abbr class="timeago" title="2020-02-16T22:05:45Z">
-      2020-02-16 22:05:45 UTC
-    </abbr>
-    at 22:05 <br/>February 16, 2020 UTC
-    </a>
-  </p>
-  <p>
-    Location:<br/>
-    Epicenter at -21.954, -68.534
-      <br/>
-      68.2 km from
-  <a href="/cl-03-calama/recent">Calama</a>
-    (42.2 miles)
-
-
-  </p>
-
-  <p>Depth: 107 km</p>
-</div>
-
-</div>
-
-          <div class="quake-info odd col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="8">I</div>
-  <div class="quiet row" >
-  <a href="/quakes/2020-02-16-21-59-21-utc-1-9-89">
-    <abbr class="timeago" title="2020-02-16T21:59:21Z">
-      2020-02-16 21:59:21 UTC
-    </abbr>
-  </a>
-  <span class="text-muted">1.9 magnitude</span>, 89 km depth
-  <br/>
-      <a href="/r/southern-alaska/recent">Southern Alaska</a>
-
-</div>
-<div class="quake-info-window" data-quakeIndex="8">
-  <h4 class='title text-muted'>1.9 magnitude earthquake</h4>
-  <p>
-    <a href="/quakes/2020-02-16-21-59-21-utc-1-9-89">
-    Today
-    <abbr class="timeago" title="2020-02-16T21:59:21Z">
-      2020-02-16 21:59:21 UTC
-    </abbr>
-    at 21:59 <br/>February 16, 2020 UTC
-    </a>
-  </p>
-  <p>
-    Location:<br/>
-    Epicenter at 61.465, -151.529
-  </p>
-
-      <p>
-    <a href="/r/southern-alaska/recent">Southern Alaska</a>
-      </p>
-  <p>Depth: 89 km</p>
-</div>
-
-</div>
-
-          <div class="quake-info even col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="9">J</div>
-  <div class="quiet row" >
-  <a href="/quakes/2020-02-16-21-56-07-utc-2-1-2">
-    <abbr class="timeago" title="2020-02-16T21:56:07Z">
-      2020-02-16 21:56:07 UTC
-    </abbr>
-  </a>
-  <span class="text-muted">2.1 magnitude</span>, 2 km depth
-  <br/>
-      <a href="/us-ca-searles-valley/recent">Searles Valley</a>,
-        <a href="/p/united-states/california/recent">California</a>,
-      <a href="/p/united-states/recent">United States</a>
-
-</div>
 <div class="quake-info-window" data-quakeIndex="9">
-  <h4 class='title text-muted'>2.1 magnitude earthquake</h4>
+  <h4 class='title text-muted'>1.8 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-16-21-56-07-utc-2-1-2">
+    <a href="/quakes/2020-02-17-08-41-26-utc-1-8-41">
     Today
-    <abbr class="timeago" title="2020-02-16T21:56:07Z">
-      2020-02-16 21:56:07 UTC
+    <abbr class="timeago" title="2020-02-17T08:41:26Z">
+      2020-02-17 08:41:26 UTC
     </abbr>
-    at 21:56 <br/>February 16, 2020 UTC
+    at 08:41 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 35.715, -117.553
+    Epicenter at 59.969, -151.807
       <br/>
-      14.2 km from
-  <a href="/us-ca-searles-valley/recent">Searles Valley</a>
-    (9.2 miles)
+      21.2 km from
+  <a href="/us-ak-anchor-point/recent">Anchor Point</a>
+    (13.2 miles)
 
 
   </p>
 
       <p>
-    <a href="/r/southern-california/recent">Southern California</a>
+    <a href="/r/kenai-peninsula-alaska/recent">Kenai Peninsula, Alaska</a>
       </p>
-  <p>Depth: 2 km</p>
+  <p>Depth: 41 km</p>
 </div>
 
 </div>
@@ -1360,9 +1377,9 @@ Places
     <div class="quakes-near row">
   <div class="quakes-multi-map col-lg-8 col-sm-6">
     <div class="quakes-multi-map-canvas"
-      data-coordinates="17.819,-66.85;62.211,-148.673;37.664,-118.857;17.935,-66.928;19.2,-155.417;17.949,-66.963;37.663,-118.858;19.008,-67.776;17.94,-67.021;19.405,-155.285"
-      data-magnitudes="2.7;2.2;1.6;2.3;2.0;1.9;1.6;3.1;1.9;1.9"
-      data-depths ="7;18;2;9;30;10;2;10;5;0"
+      data-coordinates="52.257,-170.084;19.197,-155.468;19.089,-67.855;17.935,-67.024;36.505,-120.916;37.714,-122.11;59.533,-153.424;63.373,-151.363;19.573,-155.716;32.063,-116.363"
+      data-magnitudes="4.1;2.2;3.3;3.5;2.4;1.9;2.0;1.8;2.1;2.2"
+      data-depths ="35;34;28;5;14;4;112;7;7;17"
        >
   </div>
 <br class="clear"/>
@@ -1371,44 +1388,36 @@ Places
           <div class="quake-info odd col-lg-12">
   <div class=" pull-left label marker-wrap" data-quakeIndex="0">A</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-16-21-39-02-utc-2-7-7">
-    <abbr class="timeago" title="2020-02-16T21:39:02Z">
-      2020-02-16 21:39:02 UTC
+  <a href="/quakes/2020-02-17-08-34-56-utc-4-1-35">
+    <abbr class="timeago" title="2020-02-17T08:34:56Z">
+      2020-02-17 08:34:56 UTC
     </abbr>
   </a>
-  <span class="text-muted">2.7 magnitude</span>, 7 km depth
+  <span class="text-warning">4.1 magnitude</span>, 35 km depth
   <br/>
-      <a href="/pr-055-guanica/recent">Guánica</a>,
-        <a href="/p/puerto-rico/guanica/recent">Guanica</a>,
-      <a href="/p/puerto-rico/recent">Puerto Rico</a>
+      <a href="/r/fox-islands-aleutian-islands/recent">Fox Islands, Aleutian Islands</a>
 
 </div>
 <div class="quake-info-window" data-quakeIndex="0">
-  <h4 class='title text-muted'>2.7 magnitude earthquake</h4>
+  <h4 class='title text-warning'>4.1 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-16-21-39-02-utc-2-7-7">
+    <a href="/quakes/2020-02-17-08-34-56-utc-4-1-35">
     Today
-    <abbr class="timeago" title="2020-02-16T21:39:02Z">
-      2020-02-16 21:39:02 UTC
+    <abbr class="timeago" title="2020-02-17T08:34:56Z">
+      2020-02-17 08:34:56 UTC
     </abbr>
-    at 21:39 <br/>February 16, 2020 UTC
+    at 08:34 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 17.819, -66.85
-      <br/>
-      17.2 km from
-  <a href="/pr-055-guanica/recent">Guánica</a>
-    (11.2 miles)
-
-
+    Epicenter at 52.257, -170.084
   </p>
 
       <p>
-    <a href="/r/puerto-rico/recent">Puerto Rico</a>
+    <a href="/r/fox-islands-aleutian-islands/recent">Fox Islands, Aleutian Islands</a>
       </p>
-  <p>Depth: 7 km</p>
+  <p>Depth: 35 km</p>
 </div>
 
 </div>
@@ -1416,171 +1425,36 @@ Places
           <div class="quake-info even col-lg-12">
   <div class=" pull-left label marker-wrap" data-quakeIndex="1">B</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-16-21-35-58-utc-2-2-18">
-    <abbr class="timeago" title="2020-02-16T21:35:58Z">
-      2020-02-16 21:35:58 UTC
+  <a href="/quakes/2020-02-17-08-16-05-utc-2-2-34">
+    <abbr class="timeago" title="2020-02-17T08:16:05Z">
+      2020-02-17 08:16:05 UTC
     </abbr>
   </a>
-  <span class="text-muted">2.2 magnitude</span>, 18 km depth
-  <br/>
-      <a href="/us-ak-sutton-alpine/recent">Sutton-Alpine</a>,
-        <a href="/p/united-states/alaska/recent">Alaska</a>,
-      <a href="/p/united-states/recent">United States</a>
-
-</div>
-<div class="quake-info-window" data-quakeIndex="1">
-  <h4 class='title text-muted'>2.2 magnitude earthquake</h4>
-  <p>
-    <a href="/quakes/2020-02-16-21-35-58-utc-2-2-18">
-    Today
-    <abbr class="timeago" title="2020-02-16T21:35:58Z">
-      2020-02-16 21:35:58 UTC
-    </abbr>
-    at 21:35 <br/>February 16, 2020 UTC
-    </a>
-  </p>
-  <p>
-    Location:<br/>
-    Epicenter at 62.211, -148.673
-      <br/>
-      48.2 km from
-  <a href="/us-ak-sutton-alpine/recent">Sutton-Alpine</a>
-    (30.2 miles)
-
-
-  </p>
-
-      <p>
-    <a href="/r/central-alaska/recent">Central Alaska</a>
-      </p>
-  <p>Depth: 18 km</p>
-</div>
-
-</div>
-
-          <div class="quake-info odd col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="2">C</div>
-  <div class="quiet row" >
-  <a href="/quakes/2020-02-16-21-29-48-utc-1-6-2">
-    <abbr class="timeago" title="2020-02-16T21:29:48Z">
-      2020-02-16 21:29:48 UTC
-    </abbr>
-  </a>
-  <span class="text-muted">1.6 magnitude</span>, 2 km depth
-  <br/>
-      <a href="/us-ca-mammoth-lakes/recent">Mammoth Lakes</a>,
-        <a href="/p/united-states/california/recent">California</a>,
-      <a href="/p/united-states/recent">United States</a>
-
-</div>
-<div class="quake-info-window" data-quakeIndex="2">
-  <h4 class='title text-muted'>1.6 magnitude earthquake</h4>
-  <p>
-    <a href="/quakes/2020-02-16-21-29-48-utc-1-6-2">
-    Today
-    <abbr class="timeago" title="2020-02-16T21:29:48Z">
-      2020-02-16 21:29:48 UTC
-    </abbr>
-    at 21:29 <br/>February 16, 2020 UTC
-    </a>
-  </p>
-  <p>
-    Location:<br/>
-    Epicenter at 37.664, -118.857
-      <br/>
-      10.2 km from
-  <a href="/us-ca-mammoth-lakes/recent">Mammoth Lakes</a>
-    (6.2 miles)
-
-
-  </p>
-
-      <p>
-    <a href="/r/long-valley-area-california/recent">Long Valley Area, California</a>
-      </p>
-  <p>Depth: 2 km</p>
-</div>
-
-</div>
-
-          <div class="quake-info even col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="3">D</div>
-  <div class="quiet row" >
-  <a href="/quakes/2020-02-16-21-27-58-utc-2-3-9">
-    <abbr class="timeago" title="2020-02-16T21:27:58Z">
-      2020-02-16 21:27:58 UTC
-    </abbr>
-  </a>
-  <span class="text-muted">2.3 magnitude</span>, 9 km depth
-  <br/>
-      <a href="/pr-055-guanica/recent">Guánica</a>,
-        <a href="/p/puerto-rico/guanica/recent">Guanica</a>,
-      <a href="/p/puerto-rico/recent">Puerto Rico</a>
-
-</div>
-<div class="quake-info-window" data-quakeIndex="3">
-  <h4 class='title text-muted'>2.3 magnitude earthquake</h4>
-  <p>
-    <a href="/quakes/2020-02-16-21-27-58-utc-2-3-9">
-    Today
-    <abbr class="timeago" title="2020-02-16T21:27:58Z">
-      2020-02-16 21:27:58 UTC
-    </abbr>
-    at 21:27 <br/>February 16, 2020 UTC
-    </a>
-  </p>
-  <p>
-    Location:<br/>
-    Epicenter at 17.935, -66.928
-      <br/>
-      4.2 km from
-  <a href="/pr-055-guanica/recent">Guánica</a>
-    (2.2 miles)
-
-
-  </p>
-
-      <p>
-    <a href="/r/puerto-rico/recent">Puerto Rico</a>
-      </p>
-  <p>Depth: 9 km</p>
-</div>
-
-</div>
-
-          <div class="quake-info odd col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="4">E</div>
-  <div class="quiet row" >
-  <a href="/quakes/2020-02-16-21-18-59-utc-2-0-30">
-    <abbr class="timeago" title="2020-02-16T21:18:59Z">
-      2020-02-16 21:18:59 UTC
-    </abbr>
-  </a>
-  <span class="text-muted">2.0 magnitude</span>, 30 km depth
+  <span class="text-muted">2.2 magnitude</span>, 34 km depth
   <br/>
       <a href="/us-hi-pahala/recent">Pāhala</a>,
         <a href="/p/united-states/hawaii/recent">Hawaii</a>,
       <a href="/p/united-states/recent">United States</a>
 
 </div>
-<div class="quake-info-window" data-quakeIndex="4">
-  <h4 class='title text-muted'>2.0 magnitude earthquake</h4>
+<div class="quake-info-window" data-quakeIndex="1">
+  <h4 class='title text-muted'>2.2 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-16-21-18-59-utc-2-0-30">
+    <a href="/quakes/2020-02-17-08-16-05-utc-2-2-34">
     Today
-    <abbr class="timeago" title="2020-02-16T21:18:59Z">
-      2020-02-16 21:18:59 UTC
+    <abbr class="timeago" title="2020-02-17T08:16:05Z">
+      2020-02-17 08:16:05 UTC
     </abbr>
-    at 21:18 <br/>February 16, 2020 UTC
+    at 08:16 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 19.2, -155.417
+    Epicenter at 19.197, -155.468
       <br/>
-      6.2 km from
+      1.2 km from
   <a href="/us-hi-pahala/recent">Pāhala</a>
-    (4.2 miles)
+    (0.2 miles)
 
 
   </p>
@@ -1588,171 +1462,81 @@ Places
       <p>
     <a href="/r/island-of-hawaii-hawaii/recent">Island Of Hawaii, Hawaii</a>
       </p>
-  <p>Depth: 30 km</p>
-</div>
-
-</div>
-
-          <div class="quake-info even col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="5">F</div>
-  <div class="quiet row" >
-  <a href="/quakes/2020-02-16-21-06-12-utc-1-9-10">
-    <abbr class="timeago" title="2020-02-16T21:06:12Z">
-      2020-02-16 21:06:12 UTC
-    </abbr>
-  </a>
-  <span class="text-muted">1.9 magnitude</span>, 10 km depth
-  <br/>
-      <a href="/pr-055-guanica/recent">Guánica</a>,
-        <a href="/p/puerto-rico/guanica/recent">Guanica</a>,
-      <a href="/p/puerto-rico/recent">Puerto Rico</a>
-
-</div>
-<div class="quake-info-window" data-quakeIndex="5">
-  <h4 class='title text-muted'>1.9 magnitude earthquake</h4>
-  <p>
-    <a href="/quakes/2020-02-16-21-06-12-utc-1-9-10">
-    Today
-    <abbr class="timeago" title="2020-02-16T21:06:12Z">
-      2020-02-16 21:06:12 UTC
-    </abbr>
-    at 21:06 <br/>February 16, 2020 UTC
-    </a>
-  </p>
-  <p>
-    Location:<br/>
-    Epicenter at 17.949, -66.963
-      <br/>
-      6.2 km from
-  <a href="/pr-055-guanica/recent">Guánica</a>
-    (3.2 miles)
-
-
-  </p>
-
-      <p>
-    <a href="/r/puerto-rico/recent">Puerto Rico</a>
-      </p>
-  <p>Depth: 10 km</p>
+  <p>Depth: 34 km</p>
 </div>
 
 </div>
 
           <div class="quake-info odd col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="6">G</div>
+  <div class=" pull-left label marker-wrap" data-quakeIndex="2">C</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-16-20-43-43-utc-1-6-2">
-    <abbr class="timeago" title="2020-02-16T20:43:43Z">
-      2020-02-16 20:43:43 UTC
+  <a href="/quakes/2020-02-17-07-41-13-utc-3-3-28">
+    <abbr class="timeago" title="2020-02-17T07:41:13Z">
+      2020-02-17 07:41:13 UTC
     </abbr>
   </a>
-  <span class="text-muted">1.6 magnitude</span>, 2 km depth
-  <br/>
-      <a href="/us-ca-mammoth-lakes/recent">Mammoth Lakes</a>,
-        <a href="/p/united-states/california/recent">California</a>,
-      <a href="/p/united-states/recent">United States</a>
-
-</div>
-<div class="quake-info-window" data-quakeIndex="6">
-  <h4 class='title text-muted'>1.6 magnitude earthquake</h4>
-  <p>
-    <a href="/quakes/2020-02-16-20-43-43-utc-1-6-2">
-    Today
-    <abbr class="timeago" title="2020-02-16T20:43:43Z">
-      2020-02-16 20:43:43 UTC
-    </abbr>
-    at 20:43 <br/>February 16, 2020 UTC
-    </a>
-  </p>
-  <p>
-    Location:<br/>
-    Epicenter at 37.663, -118.858
-      <br/>
-      10.2 km from
-  <a href="/us-ca-mammoth-lakes/recent">Mammoth Lakes</a>
-    (6.2 miles)
-
-
-  </p>
-
-      <p>
-    <a href="/r/long-valley-area-california/recent">Long Valley Area, California</a>
-      </p>
-  <p>Depth: 2 km</p>
-</div>
-
-</div>
-
-          <div class="quake-info even col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="7">H</div>
-  <div class="quiet row" >
-  <a href="/quakes/2020-02-16-20-29-42-utc-3-1-10">
-    <abbr class="timeago" title="2020-02-16T20:29:42Z">
-      2020-02-16 20:29:42 UTC
-    </abbr>
-  </a>
-  <span class="text-success">3.1 magnitude</span>, 10 km depth
+  <span class="text-success">3.3 magnitude</span>, 28 km depth
   <br/>
       <a href="/r/puerto-rico/recent">Puerto Rico</a>
 
 </div>
-<div class="quake-info-window" data-quakeIndex="7">
-  <h4 class='title text-success'>3.1 magnitude earthquake</h4>
+<div class="quake-info-window" data-quakeIndex="2">
+  <h4 class='title text-success'>3.3 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-16-20-29-42-utc-3-1-10">
+    <a href="/quakes/2020-02-17-07-41-13-utc-3-3-28">
     Today
-    <abbr class="timeago" title="2020-02-16T20:29:42Z">
-      2020-02-16 20:29:42 UTC
+    <abbr class="timeago" title="2020-02-17T07:41:13Z">
+      2020-02-17 07:41:13 UTC
     </abbr>
-    at 20:29 <br/>February 16, 2020 UTC
+    at 07:41 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 19.008, -67.776
+    Epicenter at 19.089, -67.855
   </p>
 
       <p>
     <a href="/r/puerto-rico/recent">Puerto Rico</a>
       </p>
-  <p>Depth: 10 km</p>
+  <p>Depth: 28 km</p>
 </div>
 
 </div>
 
-          <div class="quake-info odd col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="8">I</div>
+          <div class="quake-info even col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="3">D</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-16-20-22-40-utc-1-9-5">
-    <abbr class="timeago" title="2020-02-16T20:22:40Z">
-      2020-02-16 20:22:40 UTC
+  <a href="/quakes/2020-02-17-07-34-10-utc-3-5-5">
+    <abbr class="timeago" title="2020-02-17T07:34:10Z">
+      2020-02-17 07:34:10 UTC
     </abbr>
   </a>
-  <span class="text-muted">1.9 magnitude</span>, 5 km depth
+  <span class="text-success">3.5 magnitude</span>, 5 km depth
   <br/>
       <a href="/pr-079-la-parguera/recent">La Parguera</a>,
         <a href="/p/puerto-rico/lajas/recent">Lajas</a>,
       <a href="/p/puerto-rico/recent">Puerto Rico</a>
 
 </div>
-<div class="quake-info-window" data-quakeIndex="8">
-  <h4 class='title text-muted'>1.9 magnitude earthquake</h4>
+<div class="quake-info-window" data-quakeIndex="3">
+  <h4 class='title text-success'>3.5 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-16-20-22-40-utc-1-9-5">
+    <a href="/quakes/2020-02-17-07-34-10-utc-3-5-5">
     Today
-    <abbr class="timeago" title="2020-02-16T20:22:40Z">
-      2020-02-16 20:22:40 UTC
+    <abbr class="timeago" title="2020-02-17T07:34:10Z">
+      2020-02-17 07:34:10 UTC
     </abbr>
-    at 20:22 <br/>February 16, 2020 UTC
+    at 07:34 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 17.94, -67.021
+    Epicenter at 17.935, -67.024
       <br/>
-      4.2 km from
+      5.2 km from
   <a href="/pr-079-la-parguera/recent">La Parguera</a>
-    (2.2 miles)
+    (3.2 miles)
 
 
   </p>
@@ -1765,39 +1549,203 @@ Places
 
 </div>
 
-          <div class="quake-info even col-lg-12">
-  <div class=" pull-left label marker-wrap" data-quakeIndex="9">J</div>
+          <div class="quake-info odd col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="4">E</div>
   <div class="quiet row" >
-  <a href="/quakes/2020-02-16-20-15-31-utc-1-9-0">
-    <abbr class="timeago" title="2020-02-16T20:15:31Z">
-      2020-02-16 20:15:31 UTC
+  <a href="/quakes/2020-02-17-07-27-56-utc-2-4-14">
+    <abbr class="timeago" title="2020-02-17T07:27:56Z">
+      2020-02-17 07:27:56 UTC
     </abbr>
   </a>
-  <span class="text-muted">1.9 magnitude</span>, 0 km depth
+  <span class="text-muted">2.4 magnitude</span>, 14 km depth
   <br/>
-      <a href="/us-hi-volcano/recent">Volcano</a>,
-        <a href="/p/united-states/hawaii/recent">Hawaii</a>,
+      <a href="/us-ca-greenfield/recent">Greenfield</a>,
+        <a href="/p/united-states/california/recent">California</a>,
       <a href="/p/united-states/recent">United States</a>
 
 </div>
-<div class="quake-info-window" data-quakeIndex="9">
-  <h4 class='title text-muted'>1.9 magnitude earthquake</h4>
+<div class="quake-info-window" data-quakeIndex="4">
+  <h4 class='title text-muted'>2.4 magnitude earthquake</h4>
   <p>
-    <a href="/quakes/2020-02-16-20-15-31-utc-1-9-0">
+    <a href="/quakes/2020-02-17-07-27-56-utc-2-4-14">
     Today
-    <abbr class="timeago" title="2020-02-16T20:15:31Z">
-      2020-02-16 20:15:31 UTC
+    <abbr class="timeago" title="2020-02-17T07:27:56Z">
+      2020-02-17 07:27:56 UTC
     </abbr>
-    at 20:15 <br/>February 16, 2020 UTC
+    at 07:27 <br/>February 17, 2020 UTC
     </a>
   </p>
   <p>
     Location:<br/>
-    Epicenter at 19.405, -155.285
+    Epicenter at 36.505, -120.916
       <br/>
-      6.2 km from
-  <a href="/us-hi-volcano/recent">Volcano</a>
-    (4.2 miles)
+      35.2 km from
+  <a href="/us-ca-greenfield/recent">Greenfield</a>
+    (22.2 miles)
+
+
+  </p>
+
+      <p>
+    <a href="/r/central-california/recent">Central California</a>
+      </p>
+  <p>Depth: 14 km</p>
+</div>
+
+</div>
+
+          <div class="quake-info even col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="5">F</div>
+  <div class="quiet row" >
+  <a href="/quakes/2020-02-17-07-04-37-utc-1-9-4">
+    <abbr class="timeago" title="2020-02-17T07:04:37Z">
+      2020-02-17 07:04:37 UTC
+    </abbr>
+  </a>
+  <span class="text-muted">1.9 magnitude</span>, 4 km depth
+  <br/>
+      <a href="/us-ca-ashland/recent">Ashland</a>,
+        <a href="/p/united-states/california/recent">California</a>,
+      <a href="/p/united-states/recent">United States</a>
+
+</div>
+<div class="quake-info-window" data-quakeIndex="5">
+  <h4 class='title text-muted'>1.9 magnitude earthquake</h4>
+  <p>
+    <a href="/quakes/2020-02-17-07-04-37-utc-1-9-4">
+    Today
+    <abbr class="timeago" title="2020-02-17T07:04:37Z">
+      2020-02-17 07:04:37 UTC
+    </abbr>
+    at 07:04 <br/>February 17, 2020 UTC
+    </a>
+  </p>
+  <p>
+    Location:<br/>
+    Epicenter at 37.714, -122.11
+      <br/>
+      2.2 km from
+  <a href="/us-ca-ashland/recent">Ashland</a>
+    (1.2 miles)
+
+
+  </p>
+
+      <p>
+    <a href="/r/san-francisco-bay-california/recent">San Francisco Bay, California</a>
+      </p>
+  <p>Depth: 4 km</p>
+</div>
+
+</div>
+
+          <div class="quake-info odd col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="6">G</div>
+  <div class="quiet row" >
+  <a href="/quakes/2020-02-17-07-00-47-utc-2-0-112">
+    <abbr class="timeago" title="2020-02-17T07:00:47Z">
+      2020-02-17 07:00:47 UTC
+    </abbr>
+  </a>
+  <span class="text-muted">2.0 magnitude</span>, 112 km depth
+  <br/>
+      <a href="/r/southern-alaska/recent">Southern Alaska</a>
+
+</div>
+<div class="quake-info-window" data-quakeIndex="6">
+  <h4 class='title text-muted'>2.0 magnitude earthquake</h4>
+  <p>
+    <a href="/quakes/2020-02-17-07-00-47-utc-2-0-112">
+    Today
+    <abbr class="timeago" title="2020-02-17T07:00:47Z">
+      2020-02-17 07:00:47 UTC
+    </abbr>
+    at 07:00 <br/>February 17, 2020 UTC
+    </a>
+  </p>
+  <p>
+    Location:<br/>
+    Epicenter at 59.533, -153.424
+  </p>
+
+      <p>
+    <a href="/r/southern-alaska/recent">Southern Alaska</a>
+      </p>
+  <p>Depth: 112 km</p>
+</div>
+
+</div>
+
+          <div class="quake-info even col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="7">H</div>
+  <div class="quiet row" >
+  <a href="/quakes/2020-02-17-06-45-41-utc-1-8-7">
+    <abbr class="timeago" title="2020-02-17T06:45:41Z">
+      2020-02-17 06:45:41 UTC
+    </abbr>
+  </a>
+  <span class="text-muted">1.8 magnitude</span>, 7 km depth
+  <br/>
+      <a href="/r/central-alaska/recent">Central Alaska</a>
+
+</div>
+<div class="quake-info-window" data-quakeIndex="7">
+  <h4 class='title text-muted'>1.8 magnitude earthquake</h4>
+  <p>
+    <a href="/quakes/2020-02-17-06-45-41-utc-1-8-7">
+    Today
+    <abbr class="timeago" title="2020-02-17T06:45:41Z">
+      2020-02-17 06:45:41 UTC
+    </abbr>
+    at 06:45 <br/>February 17, 2020 UTC
+    </a>
+  </p>
+  <p>
+    Location:<br/>
+    Epicenter at 63.373, -151.363
+  </p>
+
+      <p>
+    <a href="/r/central-alaska/recent">Central Alaska</a>
+      </p>
+  <p>Depth: 7 km</p>
+</div>
+
+</div>
+
+          <div class="quake-info odd col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="8">I</div>
+  <div class="quiet row" >
+  <a href="/quakes/2020-02-17-06-45-32-utc-2-1-7">
+    <abbr class="timeago" title="2020-02-17T06:45:32Z">
+      2020-02-17 06:45:32 UTC
+    </abbr>
+  </a>
+  <span class="text-muted">2.1 magnitude</span>, 7 km depth
+  <br/>
+      <a href="/us-hi-honaunau-napoopoo/recent">Honaunau-Napoopoo</a>,
+        <a href="/p/united-states/hawaii/recent">Hawaii</a>,
+      <a href="/p/united-states/recent">United States</a>
+
+</div>
+<div class="quake-info-window" data-quakeIndex="8">
+  <h4 class='title text-muted'>2.1 magnitude earthquake</h4>
+  <p>
+    <a href="/quakes/2020-02-17-06-45-32-utc-2-1-7">
+    Today
+    <abbr class="timeago" title="2020-02-17T06:45:32Z">
+      2020-02-17 06:45:32 UTC
+    </abbr>
+    at 06:45 <br/>February 17, 2020 UTC
+    </a>
+  </p>
+  <p>
+    Location:<br/>
+    Epicenter at 19.573, -155.716
+      <br/>
+      20.2 km from
+  <a href="/us-hi-honaunau-napoopoo/recent">Honaunau-Napoopoo</a>
+    (12.2 miles)
 
 
   </p>
@@ -1805,7 +1753,49 @@ Places
       <p>
     <a href="/r/island-of-hawaii-hawaii/recent">Island Of Hawaii, Hawaii</a>
       </p>
-  <p>Depth: 0 km</p>
+  <p>Depth: 7 km</p>
+</div>
+
+</div>
+
+          <div class="quake-info even col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="9">J</div>
+  <div class="quiet row" >
+  <a href="/quakes/2020-02-17-06-33-10-utc-2-2-17">
+    <abbr class="timeago" title="2020-02-17T06:33:10Z">
+      2020-02-17 06:33:10 UTC
+    </abbr>
+  </a>
+  <span class="text-muted">2.2 magnitude</span>, 17 km depth
+  <br/>
+      <a href="/mx-02-fraccionamiento-del-valle/recent">Fraccionamiento del Valle</a>,
+        <a href="/p/mexico/baja-california/recent">Baja California</a>,
+      <a href="/p/mexico/recent">Mexico</a>
+
+</div>
+<div class="quake-info-window" data-quakeIndex="9">
+  <h4 class='title text-muted'>2.2 magnitude earthquake</h4>
+  <p>
+    <a href="/quakes/2020-02-17-06-33-10-utc-2-2-17">
+    Today
+    <abbr class="timeago" title="2020-02-17T06:33:10Z">
+      2020-02-17 06:33:10 UTC
+    </abbr>
+    at 06:33 <br/>February 17, 2020 UTC
+    </a>
+  </p>
+  <p>
+    Location:<br/>
+    Epicenter at 32.063, -116.363
+      <br/>
+      19.2 km from
+  <a href="/mx-02-fraccionamiento-del-valle/recent">Fraccionamiento del Valle</a>
+    (12.2 miles)
+
+
+  </p>
+
+  <p>Depth: 17 km</p>
 </div>
 
 </div>
