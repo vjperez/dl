@@ -5,10 +5,10 @@ if($_POST){
     $telefono    = $_POST['telefononame'];
     $informacion = $_POST['informacionname'];
     $emilio      = $_POST['emilioname'];
-    $nombreregexp      = "/^[\s\w]*[a-zA-Z]+[\s\w]*$/";
+    $nombreregexp      = "/^[\s\w\x{00E1}\x{00E9}\x{00ED}\x{00F3}\x{00FA}\x{00C1}\x{00C9}\x{00CD}\x{00D3}\x{00DA}]*[a-zA-Z\x{00E1}\x{00E9}\x{00ED}\x{00F3}\x{00FA}\x{00C1}\x{00C9}\x{00CD}\x{00D3}\x{00DA}]+[\s\w\x{00E1}\x{00E9}\x{00ED}\x{00F3}\x{00FA}\x{00C1}\x{00C9}\x{00CD}\x{00D3}\x{00DA}]*$/u";
     $telefonoregexp    = "/^[\s]*[0-9]{3}-[0-9]{3}-[0-9]{4}[\s]*$/";
     $emilioregexp      = "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/";
-    $informacionregexp = "/^[:.?=&-\[\]\(\)!@\s\w\/]*[a-zA-Z]+[:.?=&-\[\]\(\)!@\s\w\/]*$/";
+    $informacionregexp = "/^[:.,?=&-\[\]\(\)!@\/\s\w\x{00E1}\x{00E9}\x{00ED}\x{00F3}\x{00FA}\x{00C1}\x{00C9}\x{00CD}\x{00D3}\x{00DA}]*[a-zA-Z\x{00E1}\x{00E9}\x{00ED}\x{00F3}\x{00FA}\x{00C1}\x{00C9}\x{00CD}\x{00D3}\x{00DA}]+[:.,?=&-\[\]\(\)!@\/\s\w\x{00E1}\x{00E9}\x{00ED}\x{00F3}\x{00FA}\x{00C1}\x{00C9}\x{00CD}\x{00D3}\x{00DA}]*$/u";
     if(preg_match($nombreregexp, $nombre))           $phpValidation = $phpValidation . '<div class="alert alert-success" role="alert"> nombre: ' . $nombre . '</div>';             else $phpValidation = $phpValidation . '<div class="alert alert-danger" role="alert"> invalid nombre </div>';
     if(preg_match($telefonoregexp, $telefono))       $phpValidation = $phpValidation . '<div class="alert alert-success" role="alert"> telefono: ' . $telefono . '</div>';         else $phpValidation = $phpValidation . '<div class="alert alert-danger" role="alert"> invalid telefono </div>';
     if(preg_match($emilioregexp, $emilio))           $phpValidation = $phpValidation . '<div class="alert alert-success" role="alert"> email: ' . $emilio . '</div>';              else $phpValidation = $phpValidation . '<div class="alert alert-danger" role="alert"> invalid email </div>';
@@ -73,7 +73,7 @@ if($_POST){
               <label for="informacion" class="font-weight-bold text-info">Informacion</label>
               <textarea class="form-control" id="informacion" rows="18" name="informacionname" 
               placeholder="Tu facebook, twitter, web page, instagram y/o tu email" maxlength="1000" required
-              pattern="^[:.,?=&-\[\]\(\)!@\s\w\/\u00E1\u00E9\u00ED\u00F3\u00FA\u00C1\u00C9\u00CD\u00D3\u00DA]*[a-zA-Z\u00E1\u00E9\u00ED\u00F3\u00FA\u00C1\u00C9\u00CD\u00D3\u00DA]+[:.,?=&-\[\]\(\)!@\s\w\/\u00E1\u00E9\u00ED\u00F3\u00FA\u00C1\u00C9\u00CD\u00D3\u00DA]*$"></textarea>
+              pattern="^[:.,?=&-\[\]\(\)!@\/\s\w\u00E1\u00E9\u00ED\u00F3\u00FA\u00C1\u00C9\u00CD\u00D3\u00DA]*[a-zA-Z\u00E1\u00E9\u00ED\u00F3\u00FA\u00C1\u00C9\u00CD\u00D3\u00DA]+[:.,?=&-\[\]\(\)!@\/\s\w\u00E1\u00E9\u00ED\u00F3\u00FA\u00C1\u00C9\u00CD\u00D3\u00DA]*$"></textarea>
               <!-- pattern no funciona en html5 pero jQuery lo lee ; (attr pattern)-->
               <small class="text-muted">Formato: Letras, numeros, espacios, y/o   : . , ? = & - [] () ! @ /</small>
           </div>
