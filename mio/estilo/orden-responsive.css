@@ -1,7 +1,7 @@
 /*todo lo q sea borde aqui, va pa fuera*/
 .ver-borde { border-style:solid; border-width:1pt; border-color:#ff0000; }
 
-[class*="ancho-sensi"] { width:96%; }
+[class*="ancho-sensi"] { width:100%; }
 .ancho-sensi-cell-1de2 { width:50%; }
 .alto-sensi-cell-1de2 { height:107pt; } /* 400(.5) (8/15) ;en opciones, mas o menos 400pt de ancho (min 320pt) entre 4 pa cada foto ; la proporcion de una foto 300px x 168 px es (15/8)*/
 

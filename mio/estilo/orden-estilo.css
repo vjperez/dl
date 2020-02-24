@@ -10,8 +10,8 @@ body { margin:0px auto; min-width:280pt; max-width:960pt; }
 div#header { border-bottom:2pt solid #909090; }
 div#header img { width:100%; vertical-align:text-bottom; max-height:50pt; }
 div#footer { min-height:107pt; overflow:auto; }
-div#footer ul { text-align:center; list-style-type:none; padding:0; }
-div#footer li { display:inline-block; float:left; }
+div#footer ul { text-align:left; list-style-type:none; padding:0; }
+div#footer li { display:inline-block; padding-left:1em;}
 div#navega    { border-bottom:1pt solid #dadada; }
 div#navega ul { text-align:left; list-style-type:none; margin:0pt; padding:0; }
 div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; }
@@ -53,11 +53,11 @@ a.link li:hover, a.link li:focus { text-decoration:underline; }
 
 div#navega a.navelink { font-family:serif, mono, monospace; font-size:0.8em; }
 h1, h2, h3, h4, label { font-family:'Bree Serif', courier, mono, monospace; }
-div#footer h3.footertitulo { font-family:Pacifico, serif, fantasy, mono, monospace;  text-align:right; color:beige; letter-spacing:0.20em; }
-div#footer h5 { font-family:serif, fantasy, mono, monospace;  text-align:right; color:beige; letter-spacing:0.10em; }
+div#footer h3.footertitulo { font-family:serixxxf, fanxxxtasy, mono, monospace;  text-align:center; color:white; letter-spacing:0.25em; }
+div#footer h5 { font-family:serif, fantasy, mono, monospace;  text-align:right; margin-right:1em; color:white; letter-spacing:0.10em; }
 div#footer a.footerlink { font-family:courier, mono, monospace; font-size:0.75em; }
 div#footer a.footerlink:link,     a.footerlink:visited { color:white; }
-div#footer { background-color:#27ae60; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
+div#footer { background-color:#16a085; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
 
 
 
