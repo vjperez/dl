@@ -37,6 +37,7 @@ h1 { letter-spacing:0.40em; }
 h2 { letter-spacing:0.30em; }
 h3 { letter-spacing:0.25em; }
 h4 { letter-spacing:0.15em; }
+h5 { letter-spacing:0.10em; }
 /*estilo : error y look de portada cuando javascript disabled*/
 div#main h1, div#main h2, div#main h3, div#main h4 { color:#c0392b; }
 p, td { line-height:2em; }
@@ -53,21 +54,23 @@ a.link li:hover, a.link li:focus { text-decoration:underline; }
 
 div#navega a.navelink { font-family:serif, mono, monospace; font-size:0.8em; }
 h1, h2, h3, h4, label { font-family:'Bree Serif', courier, mono, monospace; }
-div#footer h3.footertitulo { font-family:serixxxf, fanxxxtasy, mono, monospace;  text-align:center; color:white; letter-spacing:0.25em; }
-div#footer h5 { font-family:serif, fantasy, mono, monospace;  text-align:right; margin-right:1em; color:white; letter-spacing:0.10em; }
+div#footer h3.footertitulo { font-family:mono, monospace, serif, fantasy;  text-align:center; color:white; }
+div#footer h4.subtitulo {    font-family:mono, monospace, serif, fantasy;  text-align:center; color:white; }
+div#footer h5 {              font-family:serif, fantasy, mono, monospace;  text-align:right;  color:white; margin-right:1em; }
+
 div#footer a.footerlink { font-family:courier, mono, monospace; font-size:0.75em; }
 div#footer a.footerlink:link,     a.footerlink:visited { color:white; }
-div#footer { background-color:#16a085; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
+div#footer { background-color:#067060; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
 
 
 
 
 /*orden : busca */
-form#queDondeForm { margin-left:auto; margin-right:auto; }
-form#queDondeForm label { float:left; clear:left; width:90%; text-align:left; }
-form#queDondeForm input { float:left; clear:left; width:90%; margin-bottom:20pt; }
-form#queDondeForm button { width:25%; position:relative; left:37.5%; }
-form#queDondeForm h3 { text-align:center; }
+form[id$=Form] { margin-left:auto; margin-right:auto; }
+form[id$=Form] label { float:left; clear:left; width:90%; text-align:left; }
+form[id$=Form] input { float:left; clear:left; width:90%; margin-bottom:20pt; }
+form[id$=Form] button { width:25%; position:relative; left:37.5%; }
+form[id$=Form] h3 { text-align:center; }
 /*
 old side arrangement
 form#creaDuenoForm { margin-left:auto; margin-right:auto; }
@@ -81,11 +84,11 @@ form#creaDuenoForm h3 { text-align:center; }
 
 /*estilo : busca */
 form#queDondeForm label { font-size:1.5em; letter-spacing:0.30em; font-weight:bolder; color:#16a085; }
-form#queDondeForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
-form#queDondeForm input:focus { background-color:#dadada; }
-form#queDondeForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; }
-form#queDondeForm button:hover, form#queDondeForm button:focus { background-color:#7fb3d5; }
-form#queDondeForm h3 { font-family:serif, Times, times; color:#16a085; }
+form[id$=Form] input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
+form[id$=Form] input:focus { background-color:#dadada; }
+form[id$=Form] button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; }
+form[id$=Form] button:hover, form[id$=Form] button:focus { background-color:#7fb3d5; }
+form[id$=Form] h3 { font-family:serif, Times, times; color:#16a085; }
 
 
 
@@ -163,47 +166,51 @@ div#main .opcionesfotos h3 { color:#16a085;}
 
 /*orden : login */
 /*casi una copia de busca*/
+/*
 form#loginForm { margin-left:auto; margin-right:auto; }
 form#loginForm label { float:left; clear:left; width:90%; text-align:left; }
 form#loginForm input { float:left; clear:left; width:90%; margin-bottom:20pt; }
 form#loginForm button { width:25%; position:relative; left:37.5%; }
 form#loginForm h3 { text-align:center; }
-
+*/
 
 
 
 /*estilo : login */
 /*casi una copia de busca*/
 form#loginForm label { font-size:1.5em; letter-spacing:0.3em; font-weight:bolder; color:#16a085; }
+/*
 form#loginForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#loginForm input:focus { background-color:#dadada; }
 form#loginForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; }
 form#loginForm button:hover, form#loginForm button:focus { background-color:#7fb3d5; }
 form#loginForm h3 { font-family:serif, Times, times; color:#16a085; }
-
+*/
 
 
 
 /*orden : creaDueno */
 /*casi una copia de busca*/
+/*
 form#creaDuenoForm { margin-left:auto; margin-right:auto; }
 form#creaDuenoForm label { float:left; clear:left; width:90%; text-align:left; }
 form#creaDuenoForm input { float:left; clear:left; width:90%; margin-bottom:20pt; }
 form#creaDuenoForm button { width:25%; position:relative; left:37.5%;   }
 form#creaDuenoForm h3 { text-align:center; }
-
+*/
 
 
 
 /*estilo : creaDueno */
 /*casi una copia de busca*/
 form#creaDuenoForm label { font-size:1.5em; letter-spacing:0.3em; font-weight:bolder; color:#16a085; }
+/*
 form#creaDuenoForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#creaDuenoForm input:focus { background-color:#dadada; }
 form#creaDuenoForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; }
 form#creaDuenoForm button:hover, form#creaDuenoForm button:focus { background-color:#7fb3d5; }
 form#creaDuenoForm h3 { font-family:serif, Times, times; color:#16a085; }
-
+*/
 
 
 
@@ -270,10 +277,14 @@ form#editDuenoDataForm h3 { text-align:center; }
 /*estilo : editDuenoData*/
 form#editDuenoDataForm label, div#empresas label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#16a085; display:block; }
 /* div#empresas label { color:#16a085; } */
+
+/*
 form#editDuenoDataForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#editDuenoDataForm input:focus { background-color:#dadada; }
 form#editDuenoDataForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; }
 form#editDuenoDataForm button:hover, form#editDuenoDataForm button:focus { background-color:#7fb3d5; }
+form#editDuenoDataForm h3 { font-family:serif, Times, times; color:#16a085; }
+*/
 form#editDuenoDataForm label.explica { color:#2980b9; font-size:0.85em; letter-spacing:0.2em; }
 
 form#editDuenoDataForm fieldset.primario, div#empresas fieldset.primario { margin:0pt; padding:0pt; padding-bottom:50pt; }
@@ -284,4 +295,4 @@ form#editDuenoDataForm fieldset.secundario label.explica { font-size:0.85em; let
 form#editDuenoDataForm p { margin-top:2pt; margin-bottom:30pt; }
 form#editDuenoDataForm button { display:block; margixxxn-bottom:30pt; }
 form#editDuenoDataForm button { width:25%; position:relative; left:37.5%; }
-form#editDuenoDataForm h3 { font-family:serif, Times, times; color:#16a085; }
+
