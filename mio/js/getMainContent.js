@@ -2,16 +2,6 @@ jQuery(document).ready(
 	function(){
 		var look = jQuery.urlParam('look');
 		switch(look) {
-			//you can join the null case and busca case together, should avoid requesting portada.html
-			//twice when there is NO look parameter (null)
-			case null:
-				//when in running mode
-				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
-				jQuery.get('looks/lookIsNull.html', function(datosDeRespuesta, estatus, xhrObjeto){
-					var mainDeNull = jQuery(datosDeRespuesta).filter('#main');
-					jQuery('#containerForMain').html(mainDeNull);
-				});	
-			break;
 			case 'busca':
 				jQuery('#navBusca').hide();
 				jQuery.get('looks/busca.html', function(datosDeRespuesta, estatus, xhrObjeto){
@@ -200,6 +190,16 @@ jQuery(document).ready(
 						jQuery.toggleOnClick();
 					}
 				});
+			break;
+			//you can join the null case and busca case together, should avoid requesting portada.html
+			//twice when there is NO look parameter (null)
+			case null:
+				//when in running mode
+				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+				jQuery.get('looks/lookIsNull.html', function(datosDeRespuesta, estatus, xhrObjeto){
+					var mainDeNull = jQuery(datosDeRespuesta).filter('#main');
+					jQuery('#containerForMain').html(mainDeNull);
+				});	
 			break;
 			default :
 				//when in running mode
