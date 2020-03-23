@@ -42,7 +42,8 @@ h5 { letter-spacing:0.10em; }
 div#main h1, div#main h2, div#main h3, div#main h4 { color:#c0392b; }
 p, td { line-height:2em; }
 p::first-letter{ font-size:1.3em; }
-.colorenfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#16a085;}
+.color01enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#16a085;}
+.color02enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#ff0000;}
 .sizeenfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace;}
 a.link { text-decoration:none; font-weight:bolder; }
 a.link:link,     a.link:visited { color:#2980b9; }
