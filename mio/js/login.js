@@ -17,7 +17,7 @@ jQuery.handleLoginSubmit = function(){
 					datosJSObj = JSON.parse(datosJSONStr);
 					//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 				}catch(errorParseo){
-					jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/login.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
+					jQuery.fallas(new Object(), 'Error parseando la siguiente respuesta del server en escritos/login.php<br>' + errorParseo.name + ' mensaje= ' + errorParseo.message, datosJSONStr);
 				}
 				if(datosJSObj.loguea){
 					jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId);
@@ -29,4 +29,8 @@ jQuery.handleLoginSubmit = function(){
 			.fail(  jQuery.fallas  );//fail
 		}
 	});
+	jQuery('form#loginForm  input[name=password]').keyup(function(){
+		jQuery.feedback('form#loginForm h3', '');
+	});
+
 }
