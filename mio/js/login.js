@@ -1,4 +1,4 @@
-jQuery.handleSubmit = function(){
+jQuery.handleLoginSubmit = function(){
 	jQuery('form#loginForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action.
 		var user = jQuery('#usernameId').val();

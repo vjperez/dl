@@ -1,3 +1,12 @@
+jQuery.dameLook = function(pageName){
+	jQuery.get(pageName, function(datosDeRespuesta, estatus, xhrObjeto){
+		//console.log(datosDeRespuesta);
+		var elMain = jQuery(datosDeRespuesta).filter('#main');
+		//console.log(mainDeBusca);
+		jQuery('#containerForMain').html(elMain);
+	});	
+}
+
 //extracs parameters from the url
 jQuery.urlParam = function(name){
 	var str = window.location.href;

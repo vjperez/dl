@@ -4,12 +4,9 @@ jQuery(document).ready(
 		switch(look) {
 			case 'busca':
 				jQuery('#navBusca').hide();
-				jQuery.get('looks/busca.html', function(datosDeRespuesta, estatus, xhrObjeto){
-					//console.log(datosDeRespuesta);
-					var mainDeBusca = jQuery(datosDeRespuesta).filter('#main');
-					//console.log(mainDeBusca);
-					jQuery('#containerForMain').html(mainDeBusca);
-				});
+
+				jQuery.dameLook('looks/busca.html');
+		
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
 					//This code runs when get isCompleted and IF the get was requesting busca.html
@@ -55,6 +52,21 @@ jQuery(document).ready(
 				})
 				.fail(	jQuery.fallas  );
 			break;
+			case 'login':
+				//remove navegation before requesting new html.  Less likely user will notice it going away.
+				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+				//get login look
+				jQuery.dameLook('looks/login.html');
+
+				//once look is in, use jQuery on loaded elements to get values
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					//This code runs when get isCompleted and IF the get was requesting login.html
+					if(settingsObjeto.url === 'looks/login.html'){
+						//when ajax complete ; handle form submit and make post
+						jQuery.handleLoginSubmit();
+					}//if
+				});//ajax complete
+			break;
 			case 'profile':
 				//get meId then
 				var meId = jQuery.urlParam('meId');
@@ -63,10 +75,8 @@ jQuery(document).ready(
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					//Once the data is in, get profile look
-					jQuery.get('looks/profile.html', function(datosDeRespuesta, estatus, xhrObjeto){
-						var mainDeProfile = jQuery(datosDeRespuesta).filter('#main');
-						jQuery('#containerForMain').html(mainDeProfile);
-					});
+					jQuery.dameLook('looks/profile.html');
+
 					//Once the look is in (ajaxComplete), then insert json data into profile look
 					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 						if(settingsObjeto.url === 'looks/profile.html'){
@@ -76,37 +86,18 @@ jQuery(document).ready(
 				})//done
 				.fail(  jQuery.fallas  );//fail
 			break;
-			case 'login':
-				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
-				//get login look
-				jQuery.get('looks/login.html', function(datosDeRespuesta, estatus, xhrObjeto){
-					var mainDeLogin = jQuery(datosDeRespuesta).filter('#main');
-					jQuery('#containerForMain').html(mainDeLogin);
-				});
-				//once look is in, use jQuery on loaded elements to get values
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					//This code runs when get isCompleted and IF the get was requesting login.html
-					if(settingsObjeto.url === 'looks/login.html'){
-						//when ajax complete ; handle form submit and make post
-						jQuery.handleSubmit();
-					}//if
-				});//ajax complete
-			break;
 			case 'creaDueno':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
 				//get creaDueno look
-				jQuery.get('looks/creaDueno.html', function(datosDeRespuesta, estatus, xhrObjeto){
-					var mainDeRegistro = jQuery(datosDeRespuesta).filter('#main');
-					jQuery('#containerForMain').html(mainDeRegistro);
-				});
+				jQuery.dameLook('looks/creaDueno.html');
+
 				//once look is in, use jQuery on loaded elements to get values
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//This code runs when get isCompleted and IF the get was requesting creaDueno.html
 					if(settingsObjeto.url === 'looks/creaDueno.html'){
 						//when ajax complete ; handle form submit and make post
-						jQuery.handleSubmit();
+						jQuery.handleCreaDuenoSubmit();
 					}//if
 				});//ajax complete
 			break;
@@ -116,10 +107,8 @@ jQuery(document).ready(
 				//get duenoId
 				var duenoId = jQuery.urlParam('duenoId');
 
-				jQuery.get('looks/editDuenoShowEmpresas.html', function(datosDeRespuesta, estatus, xhrObjeto){
-					var mainDeDuenoData = jQuery(datosDeRespuesta).filter('#main');
-					jQuery('#containerForMain').html(mainDeDuenoData);
-				});
+				jQuery.dameLook('looks/editDuenoShowEmpresas.html');
+
 				//once look is in, use jQuery to update look with profile values
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/editDuenoShowEmpresas.html'){
@@ -133,17 +122,14 @@ jQuery(document).ready(
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
 
-				jQuery.get('looks/createMicroEmpre.html', function(datosDeRespuesta, estatus, xhrObjeto){
-					var mainDeMicroEmpreData = jQuery(datosDeRespuesta).filter('#main');
-					jQuery('#containerForMain').html(mainDeMicroEmpreData);
-				});
+				jQuery.dameLook('looks/createMicroEmpre.html');
 
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/createMicroEmpre.html'){
 						//get duenoId
 						var duenoId = jQuery.urlParam('duenoId');
 						//task 1 when ajax complete ; handle form submit and make post
-						jQuery.handleSubmit(duenoId);
+						jQuery.handleCreaNepeSubmit(duenoId);
 						//submit event listener and handler
 					}//if
 				});//ajaxComplete
@@ -152,10 +138,7 @@ jQuery(document).ready(
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
 
-				jQuery.get('looks/updateMicroEmpre.html', function(datosDeRespuesta, estatus, xhrObjeto){
-					var mainDeMicroEmpreData = jQuery(datosDeRespuesta).filter('#main');
-					jQuery('#containerForMain').html(mainDeMicroEmpreData);
-				});
+				jQuery.dameLook('looks/updateMicroEmpre.html');
 
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/updateMicroEmpre.html'){
@@ -173,16 +156,14 @@ jQuery(document).ready(
 						.fail(  jQuery.fallas  );
 													
 						//task 2 when ajax complete ; handle form submit and make post
-						jQuery.handleSubmit(duenoId, meId);
+						jQuery.handleUpdateNepeSubmit(duenoId, meId);
 						//submit event listener and handler
 					}//if
 				});//ajaxComplete
 			break;			
 			case 'faq':
-				jQuery.get('looks/faq.html', function(datosDeRespuesta, estatus, xhrObjeto){
-					var mainDeFaq = jQuery(datosDeRespuesta).filter('#main');
-					jQuery('#containerForMain').html(mainDeFaq);
-				});
+				jQuery.dameLook('looks/faq.html');
+
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
 					//This code runs when get isCompleted and IF the get was requesting faq.html
@@ -194,20 +175,13 @@ jQuery(document).ready(
 			//you can join the null case and busca case together, should avoid requesting portada.html
 			//twice when there is NO look parameter (null)
 			case null:
-				//when in running mode
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
-				jQuery.get('looks/lookIsNull.html', function(datosDeRespuesta, estatus, xhrObjeto){
-					var mainDeNull = jQuery(datosDeRespuesta).filter('#main');
-					jQuery('#containerForMain').html(mainDeNull);
-				});	
+				jQuery.dameLook('looks/lookIsNull.html');
+
 			break;
 			default :
-				//when in running mode
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
-				jQuery.get('looks/default.html', function(datosDeRespuesta, estatus, xhrObjeto){
-					var mainDeDefault = jQuery(datosDeRespuesta).filter('#main');
-					jQuery('#containerForMain').html(mainDeDefault);
-				});
+				jQuery.dameLook('looks/default.html');
 			break;
 		}//switch
 

@@ -7,6 +7,6 @@
 	*/
 	define("HOST", "host=localhost");
 	define("PORT", " port=5432");
-	define("DBNAME",  " dbname=donpapo");
+	define("DBNAME",  " dbname=nepeype");
 	define("USUARIO", " user=victordbu password=kt");
 ?>
