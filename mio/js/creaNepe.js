@@ -3,7 +3,7 @@ var reducedImagesArray = [];
 
 //major task 1
 //when ajax complete ; build formdata and make post
-jQuery.handleSubmit = function(duenoId){
+jQuery.handleCreaNepeSubmit = function(duenoId){
 	jQuery('form#createMicroEmpreForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action
 		var submitVote1 = jQuery.haveAtLeast1Handle();

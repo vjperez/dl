@@ -58,10 +58,9 @@ jQuery.fallas = function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentBySer
 //to redirect here PHP Exceptions from the login section,
 //i have to explicitly try the JSON parse in a try-catch block, and when a parsing error
 //is catched, call this function.
-	jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
-		var mainDeError = jQuery(datosDeRespuesta).filter('#main');
-		jQuery('#containerForMain').html(mainDeError);
-	});
+	//get creaDueno look
+	jQuery.dameLook('looks/error.html');
+
 	jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 		if(settingsObjeto.url === 'looks/error.html'){
 			losLis = '<br><hr>';

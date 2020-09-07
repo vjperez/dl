@@ -118,14 +118,14 @@ jQuery(document).ready(
 
 
 			break;
-			case 'createMicroEmpre':
+			case 'creaNepe':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
 
-				jQuery.dameLook('looks/createMicroEmpre.html');
+				jQuery.dameLook('looks/creaNepe.html');
 
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/createMicroEmpre.html'){
+					if(settingsObjeto.url === 'looks/creaNepe.html'){
 						//get duenoId
 						var duenoId = jQuery.urlParam('duenoId');
 						//task 1 when ajax complete ; handle form submit and make post
