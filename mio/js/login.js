@@ -29,8 +29,13 @@ jQuery.handleLoginSubmit = function(){
 			.fail(  jQuery.fallas  );//fail
 		}
 	});
+
 	jQuery('form#loginForm  input[name=password]').keyup(function(){
 		jQuery.feedback('form#loginForm h3', '');
 	});
 
+	jQuery('form#loginForm  input[name=username]').keyup(function(){
+		jQuery.feedback('form#loginForm h3', '');
+	});
+	
 }
