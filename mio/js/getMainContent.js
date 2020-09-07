@@ -1,6 +1,6 @@
 jQuery(document).ready(
 	function(){
-		var look = jQuery.urlParam('look');
+		var look = jQuery.urlParametro('look');
 		switch(look) {
 			case 'busca':
 				jQuery('#navBusca').hide();
@@ -20,8 +20,8 @@ jQuery(document).ready(
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 			//concatenating strings inside an each loop, with the requested JSON datos.
-				var que = jQuery.urlParam('que');      //a string with : as delimiter between  words
-				var donde = jQuery.urlParam('donde');  //a string with : as delimiter between  words
+				var que = jQuery.urlParametro('que');      //a string with : as delimiter between  words
+				var donde = jQuery.urlParametro('donde');  //a string with : as delimiter between  words
 				jQuery.getJSON('escritos/getOpciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
@@ -69,7 +69,7 @@ jQuery(document).ready(
 			break;
 			case 'profile':
 				//get meId then
-				var meId = jQuery.urlParam('meId');
+				var meId = jQuery.urlParametro('meId');
 				//request get JSON data for that meId
 				jQuery.getJSON('escritos/getMicroEmpre.php', {meId:meId} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
@@ -105,7 +105,7 @@ jQuery(document).ready(
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
 				//get duenoId
-				var duenoId = jQuery.urlParam('duenoId');
+				var duenoId = jQuery.urlParametro('duenoId');
 
 				jQuery.dameLook('looks/editDuenoShowEmpresas.html');
 
@@ -127,7 +127,7 @@ jQuery(document).ready(
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/creaNepe.html'){
 						//get duenoId
-						var duenoId = jQuery.urlParam('duenoId');
+						var duenoId = jQuery.urlParametro('duenoId');
 						//task 1 when ajax complete ; handle form submit and make post
 						jQuery.handleCreaNepeSubmit(duenoId);
 						//submit event listener and handler
@@ -143,9 +143,9 @@ jQuery(document).ready(
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/updateMicroEmpre.html'){
 						//get meId
-						var meId = jQuery.urlParam('meId');  
+						var meId = jQuery.urlParametro('meId');  
 						//get duenoId
-						var duenoId = jQuery.urlParam('duenoId');
+						var duenoId = jQuery.urlParametro('duenoId');
 
 						//task 1 when ajax complete get that data
 						//alert('meId : ' + meId);

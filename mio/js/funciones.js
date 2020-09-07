@@ -8,7 +8,7 @@ jQuery.dameLook = function(pageName){
 }
 
 //extracs parameters from the url
-jQuery.urlParam = function(name){
+jQuery.urlParametro = function(name){
 	var str = window.location.href;
 	var patron = new RegExp('[\?&]' + name + '=([^&#]*)');
 	var results = patron.exec(str);  //searches str for a pattern described in patron
