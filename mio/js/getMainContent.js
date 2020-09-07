@@ -20,8 +20,8 @@ jQuery(document).ready(
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 			//concatenating strings inside an each loop, with the requested JSON datos.
-				var que = jQuery.urlParametro('que');      //a string with : as delimiter between  words
-				var donde = jQuery.urlParametro('donde');  //a string with : as delimiter between  words
+				var que = jQuery.urlParametro('que');      //funcion transforma que into a string with : as delimiter between  words
+				var donde = jQuery.urlParametro('donde');  //funcion transforma que into a string with : as delimiter between  words
 				jQuery.getJSON('escritos/getOpciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
@@ -38,9 +38,11 @@ jQuery(document).ready(
 								mainDeOpciones += '<h3>'  + donde.replace(/:/g, ' ') + '</h3>';
 							}
 							jQuery.each(trios, function(index, pares){
-								jQuery.each(pares, function(meId, fotoSrc){
-									mainDeOpciones += '<a href="portada.html?look=profile&meId=' + meId + '"><img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ancho-sensi-desk-1de4 alto-sensi-cell-1de2 alto-sensi-ipad-1de3 alto-sensi-desk-1de4 ver-borde" ';
-									mainDeOpciones += ' src="imagenes/profile/subidas/' + fotoSrc + '"></a>';
+								jQuery.each(pares, function(nepeId, fotoSrc){
+									mainDeOpciones += '<a href="portada.html?look=profile&meId=' + nepeId + '">' +
+									'<img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ancho-sensi-desk-1de4 alto-sensi-cell-1de2 alto-sensi-ipad-1de3 alto-sensi-desk-1de4 ver-borde" ';
+									mainDeOpciones += ' src="imagenes/profile/subidas/' + fotoSrc + '">'  + 
+									'</a>';
 								});
 							}); // each in trios
 							mainDeOpciones += '</div>'; // <div class="ver-borde opcionesfotos">
