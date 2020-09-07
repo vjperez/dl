@@ -27,7 +27,7 @@ $result = array();  //array con pares fotoSrc => id
 			$parIndex++;
 		}
 	}else{
-		throw new Exception('Mal query.  Sin RECURSO.  Busca Mode: ' .  $buscaMode  .  '.');
+		throw new Exception('Mal query.  Sin RECURSO en ' . __FILE__ . '.  Busca Mode: ' .  $buscaMode  .  '.');
 	}
 
 echo json_encode($result);
