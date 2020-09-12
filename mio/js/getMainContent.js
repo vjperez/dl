@@ -69,6 +69,23 @@ jQuery(document).ready(
 					}//if
 				});//ajax complete
 			break;
+			case 'editDuenoShowNepes':
+				//remove navegation before requesting new html.  Less likely user will notice it going away.
+				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+				//get duenoId
+				var duenoId = jQuery.urlParametro('duenoId');
+
+				jQuery.dameLook('looks/editDuenoShowNepes.html');
+
+				//once look is in, use jQuery to update look with profile values
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'looks/editDuenoShowNepes.html'){
+						jQuery.editDuenoShowNepes(duenoId);
+					}//if
+				});//ajaxComplete
+
+
+			break;			
 			case 'profile':
 				//get meId then
 				var meId = jQuery.urlParametro('meId');
@@ -102,23 +119,6 @@ jQuery(document).ready(
 						jQuery.handleCreaDuenoSubmit();
 					}//if
 				});//ajax complete
-			break;
-			case 'editDuenoShowEmpresas':
-				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
-				//get duenoId
-				var duenoId = jQuery.urlParametro('duenoId');
-
-				jQuery.dameLook('looks/editDuenoShowEmpresas.html');
-
-				//once look is in, use jQuery to update look with profile values
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/editDuenoShowEmpresas.html'){
-						jQuery.editDuenoShowEmpresas(duenoId);
-					}//if
-				});//ajaxComplete
-
-
 			break;
 			case 'creaNepe':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.

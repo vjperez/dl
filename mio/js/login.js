@@ -20,7 +20,7 @@ jQuery.handleLoginSubmit = function(){
 					jQuery.fallas(new Object(), 'Error parseando la siguiente respuesta del server en escritos/login.php<br>' + errorParseo.name + ' mensaje= ' + errorParseo.message, datosJSONStr);
 				}
 				if(datosJSObj.loguea){
-					jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId);
+					jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes&duenoId=' + datosJSObj.duenoId);
 				}else{
 					//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 					jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
@@ -29,11 +29,11 @@ jQuery.handleLoginSubmit = function(){
 			.fail(  jQuery.fallas  );//fail
 		}
 	});
-
+	//erase feedback when user writting
 	jQuery('form#loginForm  input[name=password]').keyup(function(){
 		jQuery.feedback('form#loginForm h3', '');
 	});
-
+	//erase feedback when user writting
 	jQuery('form#loginForm  input[name=username]').keyup(function(){
 		jQuery.feedback('form#loginForm h3', '');
 	});

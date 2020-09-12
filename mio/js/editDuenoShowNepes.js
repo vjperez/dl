@@ -1,6 +1,6 @@
-jQuery.editDuenoShowEmpresas = function(duenoId){	
+jQuery.editDuenoShowNepes = function(duenoId){	
 
-	//do this when form submitted ; editDuenoShowEmpresas task 1
+	//do this when form submitted ; editDuenoShowNepes task 1
 	jQuery('form#editDuenoDataForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action.
 		var user = 'valorDummy';
@@ -32,13 +32,13 @@ jQuery.editDuenoShowEmpresas = function(duenoId){
 		}
 	});
 
-	//show empresas ; editDuenoShowEmpresas task 2
-	jQuery.getJSON('escritos/showEmpresasGetIds.php', {duenoId:duenoId} )
+	//show empresas ; editDuenoShowNepes task 2
+	jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 		var labelAndTable = '<label class="notHidable">Tus NePes:</label>';
 		labelAndTable   +=  '<table class="hidaxxxble">';
 			jQuery.each(datos, function(index, meId, nombre){
-				labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateMicroEmpre&meId=' + datos[index].meId + '&duenoId=' + duenoId + '">' + datos[index].nombre + '</a></td></tr>';
+				labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateMicroEmpre&meId=' + datos[index].nepeId + '&duenoId=' + duenoId + '">' + datos[index].nepeNombre + '</a></td></tr>';
 			});
 			labelAndTable += '<tr><td><a class="link" href="portada.html?look=createMicroEmpre&duenoId=' + duenoId + '">' + 'Crea NePe' + '</a></td></tr>';
 			labelAndTable += '</table>';
@@ -47,7 +47,7 @@ jQuery.editDuenoShowEmpresas = function(duenoId){
 	.fail(  jQuery.fallas  );//fail
 	
 	
-	//hide, show on click ; editDuenoShowEmpresas task 3
+	//hide, show on click ; editDuenoShowNepes task 3
 	jQuery.toggleOnClick();
 	
 }

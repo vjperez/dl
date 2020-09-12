@@ -64,9 +64,11 @@ jQuery.fallas = function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentBySer
 	jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 		if(settingsObjeto.url === 'looks/error.html'){
 			losLis = '<br><hr>';
-			losLis += '<li>' + xhrObjetoForFAIL.responseText + '</li>';
+			
 			losLis += '<li>' + estatusForFAIL + '</li>';
-			losLis += '<li><span class="colorenfasis">Message sent by servidor PHP:<br></span>' + errorMessageSentByServer + '</li>';
+			losLis += '<li><span class="colorenfasis">Mensaje del servidor:<br></span>' + errorMessageSentByServer + '</li>';
+			losLis += '<li><span class="colorenfasis">Texto respuesta:<br></span>'      + xhrObjetoForFAIL.responseText + '</li>';
+			
 			losLis += '<br><hr>';
 			jQuery('#containerForErrors').append(losLis);
 		}
