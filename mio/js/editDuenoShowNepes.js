@@ -37,10 +37,13 @@ jQuery.editDuenoShowNepes = function(duenoId){
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 		var labelAndTable = '<label class="notHidable">Tus NePes:</label>';
 		labelAndTable   +=  '<table class="hidaxxxble">';
-			jQuery.each(datos, function(index, meId, nombre){
-				labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateMicroEmpre&meId=' + datos[index].nepeId + '&duenoId=' + duenoId + '">' + datos[index].nepeNombre + '</a></td></tr>';
+			jQuery.each(datos, function(index){
+				labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + duenoId 
+				+  '&nepeId=' + datos[index].nepeId  + '">' + datos[index].nepeNombre + '</a></td></tr>';
 			});
-			labelAndTable += '<tr><td><a class="link" href="portada.html?look=createMicroEmpre&duenoId=' + duenoId + '">' + 'Crea NePe' + '</a></td></tr>';
+			
+			labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' + duenoId 
+			+ '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
 			labelAndTable += '</table>';
 		jQuery('#labelAndTableContainer').html(labelAndTable);
 	})

@@ -20,7 +20,7 @@ if($recurso){
 //Send data from server in json format
 	echo json_encode($empresas);
 }else{
-	throw new Exception('Mal query.  Sin RECURSO en: ' . __FILE__ . ' .victor perez');
+	throw new Exception('Mal query.  Sin RECURSO en: ' . __FILE__  );
 	//echo "<li>Error, pg_query, no produjo un recurso para result... en getMicroEmpreData</li>";
 }
 pg_close($cnx); //maybe not needed but doesn't hurt

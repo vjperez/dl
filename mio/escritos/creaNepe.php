@@ -36,7 +36,7 @@ if(strcmp($_POST['aTuCasa'] , 'si') === 0){
 		$a_tu_casa = 'false' ;
 }
 
-$micro_empre_id = $_POST['meId'];
+$nepe_id = $_POST['nepeId'];
 $dueno_id = $_POST['duenoId'];
 // i already have the post values
 
@@ -90,8 +90,8 @@ $quien_foto_srcPosgreArray = $quien_foto_srcPosgreArray . '}';
 require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
-if( ! isset($micro_empre_id) || trim($micro_empre_id) === ''){
-	require_once 'editMicroEmpreData/insert/insertMicroEmpreData.php';
+if( ! isset($nepe_id) || trim($nepe_id) === ''){
+	require_once 'creaNepe/crea/creaNepe.php';
 }else{
 	require_once 'editMicroEmpreData/update/updateMicroEmpreData.php';
 }

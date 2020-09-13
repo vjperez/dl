@@ -53,7 +53,7 @@ jQuery.populateForm = function(datos){
 
 //major task 2
 //when ajax complete ; build formdata and make post
-jQuery.handleSubmit = function(duenoId, meId){
+jQuery.handleUpdateNepeSubmit = function(duenoId, meId){
 	jQuery('form#createMicroEmpreForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action
 		var submitVote1 = jQuery.haveAtLeast1Handle();

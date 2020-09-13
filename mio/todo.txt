@@ -1,3 +1,12 @@
+me quede hiendo desde js login.js, hacia
+ window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId
+ 
+
+
+============================================================================================= 
+
+
+
 Crea miniprojects que te permitan repasar cosas especificas
 	subes a vjperez.com
 	github

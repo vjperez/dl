@@ -136,21 +136,21 @@ jQuery(document).ready(
 					}//if
 				});//ajaxComplete
 			break;
-			case 'updateMicroEmpre':
+			case 'updateNepe':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
 
-				jQuery.dameLook('looks/updateMicroEmpre.html');
+				jQuery.dameLook('looks/updateNepe.html');
 
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/updateMicroEmpre.html'){
-						//get meId
-						var meId = jQuery.urlParametro('meId');  
+					if(settingsObjeto.url === 'looks/updateNepe.html'){
+						//get nepeId
+						var nepeId = jQuery.urlParametro('nepeId');  
 						//get duenoId
 						var duenoId = jQuery.urlParametro('duenoId');
 
 						//task 1 when ajax complete get that data
-						//alert('meId : ' + meId);
+						//alert('nepeId : ' + nepeId);
 						jQuery.getJSON('escritos/getMicroEmpreData.php', {meId:meId} )
 						.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 							jQuery.populateForm(datos);

@@ -66,8 +66,8 @@ jQuery.fallas = function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentBySer
 			losLis = '<br><hr>';
 			
 			losLis += '<li>' + estatusForFAIL + '</li>';
-			losLis += '<li><span class="colorenfasis">Mensaje del servidor:<br></span>' + errorMessageSentByServer + '</li>';
-			losLis += '<li><span class="colorenfasis">Texto respuesta:<br></span>'      + xhrObjetoForFAIL.responseText + '</li>';
+			losLis += '<li><span class="color01enfasis">Mensaje del servidor:<br></span>' + errorMessageSentByServer + '</li>';
+			losLis += '<li><span class="color01enfasis">Texto respuesta:<br></span>'      + xhrObjetoForFAIL.responseText + '</li>';
 			
 			losLis += '<br><hr>';
 			jQuery('#containerForErrors').append(losLis);
@@ -90,7 +90,7 @@ jQuery.toggleOnClick = function(){
 	var $todosLosHidable = jQuery('.hidable');
 	$todosLosHidable.hide();
 	$todosLosNotHidable.on('click', function(evento){
-		var $toToggle = jQuery(evento.currentTarget).siblings('.hidable');
+		var $toToggle = jQuery(evento.currentTarget).next('.hidable');
 		$toToggle.toggle();
 	});
 }

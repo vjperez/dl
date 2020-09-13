@@ -5,8 +5,8 @@
 // In order to form a postgresql array, i first extract the elements and then 
 // aggregate them into a postgresql array.  So this query should manage data
 // sent by any language as long as they send it in JSON strinngify format
-$queryInsertMicroEmpreReturningId = "INSERT INTO
-	micro_empre (revisado, nombre, media_video_url, media_social_handle, media_foto_url, cuando, que, donde, nombre_que_vector, donde_vector, a_tu_casa)
+$queryCreaNepeReturningId = "INSERT INTO
+	nepe (revisado, nombre, media_video_url, media_social_handle, media_foto_url, cuando, que, donde, nombre_que_vector, donde_vector, a_tu_casa)
  	VALUES (NOW()::date,
 	'$nombre',
 	'$videoUrl',
@@ -21,8 +21,5 @@ $queryInsertMicroEmpreReturningId = "INSERT INTO
 
 ;
 
-SELECT currval('micro_empre_micro_empre_id_seq')";
-
-
-
+SELECT currval('nepe_id_seq')";
 ?>
