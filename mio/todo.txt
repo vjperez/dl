@@ -5,7 +5,11 @@ editDuenoShowNepe.js
 	41 updateNepe
 	45 creaNepe
 	
-	escape como como victor's store
+	escape como victor's store
+	
+	haz cosas como conecta/conecta con funciones en vez de require (_once)
+	
+	todas las funciones de crea y update nepe js , ponlas en un  sitio comun y que las usen ambos files 
 
 
 ============================================================================================= 

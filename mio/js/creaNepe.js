@@ -67,8 +67,7 @@ jQuery.handleCreaNepeSubmit = function(duenoId){
 			formData.append('donde', donde);
 
 			formData.append('duenoId', duenoId);
-			///////////////////////////////////////////// solo para nepe update  /////////////////////////////////////////////
-			//formData.append('nepeId', nepeId);
+			//formData.append('nepeId', nepeId);				////// solo para nepe update  ////////////////////
 
 			console.log("form built");
 			for (var value of formData.values()) {
@@ -100,9 +99,9 @@ jQuery.handleCreaNepeSubmit = function(duenoId){
 		}  // submitVote1 && submitVote2
 		else
 		{
-			// not posting ...  validation by haveAtLeast1Handle() and have5OrLessImages()  failed
-			// no aditional feedback needed
-			// all feedback given at haveAtLeast1Handle() and have5OrLessImages() when they run to handle change events
+			//not posting ...  validation by haveAtLeast1Handle() and have5OrLessImages()  failed
+			//no aditional feedback needed
+			//all feedback given at haveAtLeast1Handle() and have5OrLessImages() when they run to handle change events
 		}
 	});  //jQuery submit
 	

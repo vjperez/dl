@@ -8,29 +8,29 @@ var reducedImagesArray = [];
 //when ajax complete ; if already existing micro empre then populate form using that data
 jQuery.populateForm = function(datos){
 	//nombre y video
-	jQuery('form#createMicroEmpreForm input[name=nombre]').val(datos.nombre);
-	jQuery('form#createMicroEmpreForm textarea[name=videoUrl]').val(datos.videoUrl);
+	jQuery('form#updateNepeForm input[name=nombre]').val(datos.nombre);
+	jQuery('form#updateNepeForm textarea[name=videoUrl]').val(datos.videoUrl);
 	//quien
-	jQuery('form#createMicroEmpreForm input[name=red1]').val(datos.quienSocialHandle.fbk);
-	jQuery('form#createMicroEmpreForm input[name=red2]').val(datos.quienSocialHandle.tt);
-	jQuery('form#createMicroEmpreForm input[name=red3]').val(datos.quienSocialHandle.igrm);
-	jQuery('form#createMicroEmpreForm input[name=red4]').val(datos.quienSocialHandle.phn);
+	jQuery('form#updateNepeForm input[name=red1]').val(datos.quienSocialHandle.fbk);
+	jQuery('form#updateNepeForm input[name=red2]').val(datos.quienSocialHandle.tt);
+	jQuery('form#updateNepeForm input[name=red3]').val(datos.quienSocialHandle.igrm);
+	jQuery('form#updateNepeForm input[name=red4]').val(datos.quienSocialHandle.phn);
 
 	//falta each para array de fotos
-	jQuery('form#createMicroEmpreForm input[name=fotoArr]').prop('required', false);
+	jQuery('form#updateNepeForm input[name=fotoArr]').prop('required', false);
 
 	//cuando
-	jQuery('form#createMicroEmpreForm input[name=dia1]').val(datos.cuando.lun);
-	jQuery('form#createMicroEmpreForm input[name=dia2]').val(datos.cuando.mar);
-	jQuery('form#createMicroEmpreForm input[name=dia3]').val(datos.cuando.mier);
-	jQuery('form#createMicroEmpreForm input[name=dia4]').val(datos.cuando.jue);
-	jQuery('form#createMicroEmpreForm input[name=dia5]').val(datos.cuando.vier);
-	jQuery('form#createMicroEmpreForm input[name=dia6]').val(datos.cuando.sab);
-	jQuery('form#createMicroEmpreForm input[name=dia7]').val(datos.cuando.dom);
+	jQuery('form#updateNepeForm input[name=dia1]').val(datos.cuando.lun);
+	jQuery('form#updateNepeForm input[name=dia2]').val(datos.cuando.mar);
+	jQuery('form#updateNepeForm input[name=dia3]').val(datos.cuando.mier);
+	jQuery('form#updateNepeForm input[name=dia4]').val(datos.cuando.jue);
+	jQuery('form#updateNepeForm input[name=dia5]').val(datos.cuando.vier);
+	jQuery('form#updateNepeForm input[name=dia6]').val(datos.cuando.sab);
+	jQuery('form#updateNepeForm input[name=dia7]').val(datos.cuando.dom);
 	
 	//following code works when there are 10 or less 'que' coming from getJSON.
 	//the html is prepared for a max of 10 'que'
-	jQuery('form#createMicroEmpreForm input[name^=que]').each(function(index){
+	jQuery('form#updateNepeForm input[name^=que]').each(function(index){
 		if(index < datos.que.length) { jQuery(this).val(datos.que[index]); }
 		else {  } //en el task3 aqui, entran al arreglo de ques, solo los cleaned ques que no son vacioStrs,
 				  // ; en html profile solo se muestran los input field q entraron al arreglo los demas se remueven
@@ -38,14 +38,14 @@ jQuery.populateForm = function(datos){
 
 	//following code works when there are 5 or less 'donde' coming from getJSON.
 	//the html is prepared for a max of 5 'donde'
-	jQuery('form#createMicroEmpreForm input[name^=donde]').each(function(index){
+	jQuery('form#updateNepeForm input[name^=donde]').each(function(index){
 		if(index < datos.donde.length) { jQuery(this).val(datos.donde[index]); }
 		else {  } //en el task3 aqui, entran al arreglo de dondes, solo los cleaned dondes que no son vacioStrs,
 				  // ; en html profile solo se muestran los input field q entraron al arreglo los demas se remueven
 	});
 
-	jQuery('form#createMicroEmpreForm input[value=si]').prop('checked', datos.atucasa);
-	jQuery('form#createMicroEmpreForm input[value=no]').prop('checked', !datos.atucasa);
+	jQuery('form#updateNepeForm input[value=si]').prop('checked', datos.atucasa);
+	jQuery('form#updateNepeForm input[value=no]').prop('checked', !datos.atucasa);
 }
 
 
@@ -54,20 +54,20 @@ jQuery.populateForm = function(datos){
 //major task 2
 //when ajax complete ; build formdata and make post
 jQuery.handleUpdateNepeSubmit = function(duenoId, meId){
-	jQuery('form#createMicroEmpreForm').submit(function(evento){
+	jQuery('form#updateNepeForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action
 		var submitVote1 = jQuery.haveAtLeast1Handle();
 		// var submitVote2 es false por default, puede cambiar solo en have5OrLessImages() que corre como handler de un change event, este event es requerido ya que el input de fotoArr esta required en HTML
 		if(submitVote1 && submitVote2){ // 2 votes come from validation by haveAtLeast1Handle() and have5OrLessImages()
 			// 1) build and edit formdata
-			var forma = document.getElementById('createMicroEmpreForm');
+			var forma = document.getElementById('updateNepeForm');
 			var formData = new FormData(forma);
 
 			//nombre y video
 
 			//quienSocialHandle is a JS array object, it is stringified before sending it
-			var quienSocialHandle = {fbk:jQuery('form#createMicroEmpreForm input[name=red1]').val(), tt:jQuery('form#createMicroEmpreForm input[name=red2]').val(),
-									igrm:jQuery('form#createMicroEmpreForm input[name=red3]').val(),phn:jQuery('form#createMicroEmpreForm input[name=red4]').val()};
+			var quienSocialHandle = {fbk:jQuery('form#updateNepeForm input[name=red1]').val(), tt:jQuery('form#updateNepeForm input[name=red2]').val(),
+									igrm:jQuery('form#updateNepeForm input[name=red3]').val(),phn:jQuery('form#updateNepeForm input[name=red4]').val()};
 			formData.delete("red1"); //sending reds in array so delete them individually from formData
 			formData.delete("red2"); //sending reds in array so delete them individually from formData
 			formData.delete("red3"); //sending reds in array so delete them individually from formData
@@ -82,10 +82,10 @@ jQuery.handleUpdateNepeSubmit = function(duenoId, meId){
 			});
 
 			//cuando is a JS array object, it is stringified before sending it
-			var cuando = {lun:jQuery('form#createMicroEmpreForm input[name=dia1]').val(), mar:jQuery('form#createMicroEmpreForm input[name=dia2]').val(),
-						  mier:jQuery('form#createMicroEmpreForm input[name=dia3]').val(), jue:jQuery('form#createMicroEmpreForm input[name=dia4]').val(),
-						  vier:jQuery('form#createMicroEmpreForm input[name=dia5]').val(), sab:jQuery('form#createMicroEmpreForm input[name=dia6]').val(),
-						  dom:jQuery('form#createMicroEmpreForm input[name=dia7]').val()};
+			var cuando = {lun:jQuery('form#updateNepeForm input[name=dia1]').val(), mar:jQuery('form#updateNepeForm input[name=dia2]').val(),
+						  mier:jQuery('form#updateNepeForm input[name=dia3]').val(), jue:jQuery('form#updateNepeForm input[name=dia4]').val(),
+						  vier:jQuery('form#updateNepeForm input[name=dia5]').val(), sab:jQuery('form#updateNepeForm input[name=dia6]').val(),
+						  dom:jQuery('form#updateNepeForm input[name=dia7]').val()};
 			formData.delete("dia1"); //sending dias in array so delete them individually from formData
 			formData.delete("dia2"); //sending dias in array so delete them individually from formData
 			formData.delete("dia3"); //sending dias in array so delete them individually from formData
@@ -98,7 +98,7 @@ jQuery.handleUpdateNepeSubmit = function(duenoId, meId){
 
 			//sending ques in array
 			var que = new Array();
-			jQuery('form#createMicroEmpreForm input[name^=que]').each(function(index){
+			jQuery('form#updateNepeForm input[name^=que]').each(function(index){
 				var cleanedQue = jQuery.cleanStr(jQuery(this).val());
 				if(jQuery.isVacioStr(cleanedQue)) {  } else { que[index] = cleanedQue; }
 				formData.delete(jQuery(this).attr("name")); //sending ques in array so delete them individually from formData
@@ -108,7 +108,7 @@ jQuery.handleUpdateNepeSubmit = function(duenoId, meId){
 
 			//sending dondes in array
 			var donde = new Array();
-			jQuery('form#createMicroEmpreForm input[name^=donde]').each(function(index){
+			jQuery('form#updateNepeForm input[name^=donde]').each(function(index){
 				var cleanedDonde = jQuery.cleanStr(jQuery(this).val());
 				if(jQuery.isVacioStr(cleanedDonde)) {  } else { donde[index] = cleanedDonde; }
 				formData.delete(jQuery(this).attr("name")); //sending dondes in array so delete them individually from formData
@@ -141,7 +141,7 @@ jQuery.handleUpdateNepeSubmit = function(duenoId, meId){
 				if(datosJSObj.actualizado){
 					jQuery(window.location).attr('href', window.location.pathname + '?look=profile&meId=' + datosJSObj.meId);
 				}else{
-					//jQuery.feedback('form#createMicroEmpreForm h3', datosJSObj.feedback);
+					//jQuery.feedback('form#updateNepeForm h3', datosJSObj.feedback);
 				}
 			})
 			.fail(  jQuery.fallas  );  //failing post
@@ -149,11 +149,16 @@ jQuery.handleUpdateNepeSubmit = function(duenoId, meId){
 		}  // submitVote1 && submitVote2
 		else
 		{
-					// not posting ...  validation by haveAtLeast1Handle() and have5OrLessImages()  failed
-					//no aditional feedback needed
-			    //all feedback given at haveAtLeast1Handle() and have5OrLessImages() when they run to handle change events
+			//not posting ...  validation by haveAtLeast1Handle() and have5OrLessImages()  failed
+			//no aditional feedback needed
+			//all feedback given at haveAtLeast1Handle() and have5OrLessImages() when they run to handle change events
 		}
 	});  //jQuery submit
+	
+	
+	//hide, show on click ; editDuenoShowNepes task 3
+	jQuery.toggleOnClick();
+
 }//  handleSubmit
 
 
@@ -161,8 +166,8 @@ jQuery.handleUpdateNepeSubmit = function(duenoId, meId){
 
 //validation logic run as change event handler
 jQuery.haveAtLeast1Handle = function(){
-	if(jQuery.isVacioStr(jQuery('form#createMicroEmpreForm input[name=red1]').val()) &&  jQuery.isVacioStr(jQuery('form#createMicroEmpreForm input[name=red2]').val()) &&
-	   jQuery.isVacioStr(jQuery('form#createMicroEmpreForm input[name=red3]').val()) &&  jQuery.isVacioStr(jQuery('form#createMicroEmpreForm input[name=red4]').val()) ) {
+	if(jQuery.isVacioStr(jQuery('form#updateNepeForm input[name=red1]').val()) &&  jQuery.isVacioStr(jQuery('form#updateNepeForm input[name=red2]').val()) &&
+	   jQuery.isVacioStr(jQuery('form#updateNepeForm input[name=red3]').val()) &&  jQuery.isVacioStr(jQuery('form#updateNepeForm input[name=red4]').val()) ) {
 			jQuery.feedback('fieldset#socialHandleFieldset h3', 'Minimo 1 contacto');
 			jQuery('fieldset#socialHandleFieldset').addClass('warn');
 			jQuery.feedback('fieldset#submitButtonFieldset h3#handlesFeedback', 'Verifica secci\u00F3n : QUIEN');
@@ -186,7 +191,7 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 	fotoSrcFieldsetAddWarningClassVote1 = false;
 	fotoSrcFieldsetAddWarningClassVote2 = false;
 	// question 1
-	if(jQuery('form#createMicroEmpreForm input#fotosId')[0].files.length > 5 ){
+	if(jQuery('form#updateNepeForm input#fotosId')[0].files.length > 5 ){
 		jQuery.feedback('fieldset#fotoSrcFieldset h3#max5Feedback', 'Maximo 5 fotos');
 		fotoSrcFieldsetAddWarningClassVote1 = true;
 	}else{
@@ -218,7 +223,7 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 
 
 jQuery.getReducedImagesArray = function(){ //helper function for jQuery.have5OrLessImages
-			var forma = document.getElementById('createMicroEmpreForm');
+			var forma = document.getElementById('updateNepeForm');
 			var formData = new FormData(forma);
 		 	var fotoFilesFromFormData = formData.getAll("fotoArr[]");
 			formData.delete("fotoArr[]");
@@ -262,10 +267,10 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 
 jQuery.isNotImage = function(){ //helper function for jQuery.have5OrLessImages
 	var i;
-	for (i = 0; i < jQuery('form#createMicroEmpreForm input#fotosId')[0].files.length; i++) {
+	for (i = 0; i < jQuery('form#updateNepeForm input#fotosId')[0].files.length; i++) {
 		//var imageType = /image.*/;
 		//file.type.match(imageType)     ;   instead of toLowerCase() and startsWith() you could use the previous regular expression
-		if( ! jQuery('form#createMicroEmpreForm input#fotosId')[0].files[i].type.toLowerCase().startsWith("image") ) return true; // if not an image, return true and break for loop
+		if( ! jQuery('form#updateNepeForm input#fotosId')[0].files[i].type.toLowerCase().startsWith("image") ) return true; // if not an image, return true and break for loop
 	}
 	return false;
 }
@@ -301,11 +306,11 @@ var dataURLToBlob = function(dataURL) {
 
 
 //validation logic functions are run as handlers to change events
-var $redInputs = jQuery('form#createMicroEmpreForm input[name^=red]');
+var $redInputs = jQuery('form#updateNepeForm input[name^=red]');
 $redInputs.on('change', function(evento){
 	jQuery.haveAtLeast1Handle();
 });
-var $fotoInput = jQuery('form#createMicroEmpreForm input#fotosId');
+var $fotoInput = jQuery('form#updateNepeForm input#fotosId');
 $fotoInput.on('change', function(evento){
 	jQuery.have5OrLessImages();
 });
