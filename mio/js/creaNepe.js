@@ -67,7 +67,8 @@ jQuery.handleCreaNepeSubmit = function(duenoId){
 			formData.append('donde', donde);
 
 			formData.append('duenoId', duenoId);
-			formData.append('nepeId', nepeId);
+			///////////////////////////////////////////// solo para nepe update  /////////////////////////////////////////////
+			//formData.append('nepeId', nepeId);
 
 			console.log("form built");
 			for (var value of formData.values()) {
@@ -88,7 +89,7 @@ jQuery.handleCreaNepeSubmit = function(duenoId){
 				}catch(errorParseo){
 					jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server desde escritos/creaNepe.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
 				}
-				if(datosJSObj.creado){
+				if(datosJSObj.nepeYBregandoCreado && datosJSObj.mediaFotoUrlActualizado){
 					jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
 				}else{
 					//jQuery.feedback('form#creaNepeForm h3', datosJSObj.feedback);
@@ -209,6 +210,7 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 			//reducedImagesArray.push( dataBlob );
 			reducedImagesArray.push( unFotoFile );  // no reduction
 			//debugger;
+	////////////////////////////////////////////////////////////////////////////////////////
 		}
 		nuevaImagen.src = reader.result;
 	}

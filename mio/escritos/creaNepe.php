@@ -36,8 +36,11 @@ if(strcmp($_POST['aTuCasa'] , 'si') === 0){
 		$a_tu_casa = 'false' ;
 }
 
-$nepe_id = $_POST['nepeId'];
+/////////////////////////////////// solo para nepe update  /////////////////////////////////////
+//$nepe_id = $_POST['nepeId'];
+////////////////////////////////////////////////////////////////////////////////////////////////
 $dueno_id = $_POST['duenoId'];
+
 // i already have the post values
 
 /*
@@ -79,11 +82,6 @@ error 1= 0
 
 
 
-//check for foto errors now   ;   move fotos   ;   build a $quien_foto_src postgresql type array
-$quien_foto_srcPosgreArray = '{';
-require_once 'checkFotoUploadErrorAndMove/checkFotoUploadErrorAndMove.php';
-$quien_foto_srcPosgreArray = $quien_foto_srcPosgreArray . '}';
-
 
 
 //conecta al db
@@ -91,7 +89,11 @@ require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
 if( ! isset($nepe_id) || trim($nepe_id) === ''){
+	$mediaFotoUrlPosgreArray = '{vacio}';
 	require_once 'creaNepe/crea/creaNepe.php';
+	//check for foto errors   ;   move fotos   ;   build a $fotoUrlPosgreArray postgresql type array and insert array into db
+	require_once 'creaNepe/checkFotoUploadErrorAndMove/checkFotoUploadErrorAndMove.php';
+	require_once 'creaNepe/update/updateMediaFotoUrl.php';
 }else{
 	require_once 'editMicroEmpreData/update/updateMicroEmpreData.php';
 }
