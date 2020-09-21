@@ -90,7 +90,7 @@ jQuery(document).ready(
 				//get meId then
 				var meId = jQuery.urlParametro('meId');
 				//request get JSON data for that meId
-				jQuery.getJSON('escritos/getMicroEmpre.php', {meId:meId} )
+				jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
 					//Once the data is in, get profile look
@@ -151,9 +151,9 @@ jQuery(document).ready(
 
 						//task 1 when ajax complete get that data
 						//alert('nepeId : ' + nepeId);
-						jQuery.getJSON('escritos/getMicroEmpreData.php', {meId:meId} )
+						jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
 						.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-							jQuery.populateForm(datos);
+							jQuery.populateUpdateNepeForm(datos);
 						})
 						.fail(  jQuery.fallas  );
 													

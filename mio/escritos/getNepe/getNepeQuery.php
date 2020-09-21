@@ -20,6 +20,6 @@ $query = "SELECT
 	media_video_url,
 	media_social_handle,
 	array_to_json(media_foto_url)
-FROM micro_empre
-WHERE id = $meId";
+FROM nepe
+WHERE id = $nepeId";
 ?>
