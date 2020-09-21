@@ -1,6 +1,13 @@
 me quede hiendo desde js login.js, hacia
  window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId
  
+lo ultimo q hice fue loguearme como vito e ir 
+	desde
+	http://localhost/WebDevelopmentStuff/mio/portada.html?look=editDuenoShowNepes&duenoId=14
+	hasta
+	http://localhost/WebDevelopmentStuff/mio/portada.html?look=updateNepe&duenoId=14&nepeId=29
+	
+ 
 editDuenoShowNepe.js
 	41 updateNepe
 	45 creaNepe
