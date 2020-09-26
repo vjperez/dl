@@ -7,6 +7,8 @@ lo ultimo q hice fue loguearme como vito e ir
 	hasta
 	http://localhost/WebDevelopmentStuff/mio/portada.html?look=updateNepe&duenoId=14&nepeId=29
 	
+updatet nepe
+	
  
 editDuenoShowNepe.js
 	41 updateNepe

@@ -53,7 +53,7 @@ jQuery.populateUpdateNepeForm = function(datos){
 
 //major task 2
 //when ajax complete ; build formdata and make post
-jQuery.handleUpdateNepeSubmit = function(duenoId, meId){
+jQuery.handleUpdateNepeSubmit = function(duenoId, nepeId){
 	jQuery('form#updateNepeForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action
 		var submitVote1 = jQuery.haveAtLeast1Handle();
@@ -117,7 +117,7 @@ jQuery.handleUpdateNepeSubmit = function(duenoId, meId){
 			formData.append('donde', donde);
 
 			formData.append('duenoId', duenoId);
-			formData.append('meId', meId);
+			formData.append('nepeId', nepeId);
 
 			console.log("form built");
 			for (var value of formData.values()) {
@@ -127,7 +127,7 @@ jQuery.handleUpdateNepeSubmit = function(duenoId, meId){
 
 
 			// 2) do the post submition
-			jQuery.ajax({method:"POST", url:"escritos/editMicroEmpreData.php", data:formData, processData:false, contentType:false, cache:false})
+			jQuery.ajax({method:"POST", url:"escritos/updateNepe.php", data:formData, processData:false, contentType:false, cache:false})
 			.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 				//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
 				//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
@@ -157,7 +157,7 @@ jQuery.handleUpdateNepeSubmit = function(duenoId, meId){
 	
 	
 	//hide, show on click ; editDuenoShowNepes task 3
-	jQuery.toggleOnClick();
+	//jQuery.toggleOnClick();
 
 }//  handleSubmit
 

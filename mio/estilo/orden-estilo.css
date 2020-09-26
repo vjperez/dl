@@ -274,6 +274,64 @@ form#creaNepeForm fieldset#socialHandleFieldset.warn  { border-color:#ff0000; }
 form#creaNepeForm fieldset#fotoSrcFieldset.warn       { border-color:#ff0000; }
 
 
+
+
+
+/* orden : updateNepe */
+div#updateNepe { margin-left:auto; margin-right:auto;  padding-bottom:50pt;}
+form#updateNepeForm { margin-left:auto; margin-right:auto; }
+form#updateNepeForm input[type='text'],
+form#updateNepeForm input[type='tel'],
+form#updateNepeForm textarea,
+form#updateNepeForm input[type='file'] { width:100%; }
+
+form#updateNepeForm input[type='radio'] { width:15pt; }
+form#updateNepeForm p.conMargen { margin-left:60pt; }
+
+
+form#updateNepeForm fieldset#socialHandleFieldset input,
+form#updateNepeForm fieldset#fotoSrcFieldset input[type='file'],
+form#updateNepeForm fieldset#cuandoFieldset input { margin-bottom:20pt; }
+
+form#updateNepeForm fieldset#socialHandleFieldset h3 { text-align:center; }
+form#updateNepeForm fieldset#fotoSrcFieldset      h3 { text-align:center; }
+form#updateNepeForm fieldset#submitButtonFieldset h3 { text-align:center; }
+
+
+/*estilo : updateNepe*/
+form#updateNepeForm label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
+
+form#updateNepeForm input[type='text']       { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
+form#updateNepeForm textarea[name='videoUrl']{ font-size:1.5em; border-radius:5pt; background-color:#ebebeb; font-weight:bold; }
+form#updateNepeForm input[type='tel']        { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
+
+
+form#updateNepeForm input:focus { background-color:#dadada; }
+form#updateNepeForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; }
+form#updateNepeForm button:hover, form#updateNepeForm button:focus { background-color:#7fb3d5; }
+form#updateNepeForm label.explica { color:#16a085; font-size:0.85em; letter-spacing:0.2em; }
+form#updateNepeForm textarea:focus { background-color:#dadada; }
+
+form#updateNepeForm fieldset.primario { padding-bottom:5pt; }
+form#updateNepeForm fieldset.secundario { margin-top:0pt; }
+form#updateNepeForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
+form#updateNepeForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#16a085; }
+
+
+
+form#updateNepeForm button { display:block; margixxxn-bottom:30pt; }
+form#updateNepeForm button { width:25%; position:relative; left:37.5%; }
+div#updateNepe h1 { color:#16a085; }
+form#updateNepeForm fieldset#socialHandleFieldset.warn h3 { font-family:serif, Times, times; color:#ff0000; }
+form#updateNepeForm fieldset#fotoSrcFieldset.warn      h3 { font-family:serif, Times, times; color:#ff0000; }
+form#updateNepeForm fieldset#submitButtonFieldset h3.warn { font-family:serif, Times, times; color:#ff0000; }
+form#updateNepeForm fieldset#socialHandleFieldset.warn  { border-color:#ff0000; }
+form#updateNepeForm fieldset#fotoSrcFieldset.warn       { border-color:#ff0000; }
+
+
+
+
+
 /* orden : editDuenoData */
 form#editDuenoDataForm, div#empresas { margin-left:auto; margin-right:auto; }
 form#editDuenoDataForm input[type='password']{ width:100%; }
