@@ -1,4 +1,4 @@
-jQuery.handleSubmit = function(){
+jQuery.handleCreaDuenoSubmit = function(){
 	jQuery('form#creaDuenoForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action
 		var usertb = jQuery('#usernameId').val();

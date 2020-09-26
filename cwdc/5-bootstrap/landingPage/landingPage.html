@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="../../../bootstrap/css/bootstrap.css">
+
+      <title>Victor Landing Page</title>
+      <style>
+        div.container{
+          margin-bottom:4rem;  
+        }  
+        .jumbotron {
+          background-image: linear-gradient( rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6) ),url("doctor.jpg");
+          background-size: cover;
+        }
+        .jumbotron p, .jumbotron h1 {
+          font-weight:bold;  color:white;
+        }
+        div[data-spy="scroll"]{
+          height:200px;  overflow-y:scroll;
+        }
+        .bordea{
+            border:3px solid tomato;
+        }
+        .elfooter{
+          color:#ffffff;
+          background-color:#23272b;
+        }
+        .list-group-item.active {
+          z-index: 2;
+          color: #fff;
+          /*  background-color: #007bff;  border-color: #007bff;  yo puse abajo y saque este */
+          background-color: #23272b;
+          border-color: #23272b;
+        }
+        .navbar-dark .navbar-nav .nav-link {
+          /* color:   rgba(255, 255, 255, 0.5);   yo puse abajo y saque este  */
+          color: rgba(255, 255, 255, 0.99);
+        }
+      </style>
+  </head>
+  <body>
+  <main>  
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="#">Features</a>
+          <a class="nav-item nav-link" href="#">Pricing</a>
+          <a class="nav-item nav-link" href="#">Cosa</a>
+        </div>
+      </div>
+
+      <form class="form-inline ml-auto">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+    </nav>
+    </div>
+
+    <div class="container">
+      <div class="jumbotron">              
+        <h1 class="display-4">Hello, world!</h1>
+        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <hr class="my-4">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <a class="btn btn-light btn-lg" href="#" role="button">Learn more</a>      
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+        
+          <div id="list-example" class="list-group col-md-3">
+            <a class="list-group-item list-group-item-action" href="#list-item-1">Item 1</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-2">Item 2</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-3">Item 3</a>
+            <a class="list-group-item list-group-item-action" href="#list-item-4">Item 4</a>
+          </div>
+        
+          <div data-spy="scroll" data-target="#list-example" data-offset="50" class="scrollspy-example col-md-9">
+            <h4 id="list-item-1">Item 1</h4>
+            <p>
+              The first known settlers in Taiwan are Austronesian tribal people thought to have come from modern day southern China.
+              The island first appears in Chinese records in AD239, when China sent an expeditionary force to explore - a fact Beijing uses to back its territorial claim.
+              After a brief spell as a Dutch colony (1624-1661) Taiwan was unquestionably administered by China's Qing dynasty from 1683 to 1895. 
+            </p>
+            <h4 id="list-item-2">Item 2</h4>
+            <p>
+              The first known settlers in Taiwan are Austronesian tribal people thought to have come from modern day southern China.
+              The island first appears in Chinese records in AD239, when China sent an expeditionary force to explore - a fact Beijing uses to back its territorial claim.
+              After a brief spell as a Dutch colony (1624-1661) Taiwan was unquestionably administered by China's Qing dynasty from 1683 to 1895. 
+            </p>
+            <h4 id="list-item-3">Item 3</h4>
+            <p>
+              The first known settlers in Taiwan are Austronesian tribal people thought to have come from modern day southern China.
+              The island first appears in Chinese records in AD239, when China sent an expeditionary force to explore - a fact Beijing uses to back its territorial claim.
+              After a brief spell as a Dutch colony (1624-1661) Taiwan was unquestionably administered by China's Qing dynasty from 1683 to 1895. 
+            </p>
+            <h4 id="list-item-4">Item 4</h4>
+            <p>
+              The first known settlers in Taiwan are Austronesian tribal people thought to have come from modern day southern China.
+              The island first appears in Chinese records in AD239, when China sent an expeditionary force to explore - a fact Beijing uses to back its territorial claim.
+              After a brief spell as a Dutch colony (1624-1661) Taiwan was unquestionably administered by China's Qing dynasty from 1683 to 1895. 
+            </p>
+          </div>  <!--  dataspy  -->
+        
+        </div>  <!-- row -->
+    </div>  <!-- container -->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="card">
+            <img class="card-img-top" src="pastilla.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-dark">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="card">
+            <img class="card-img-top" src="placa.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-dark">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+  <footer>
+    <div class="elfooter text-center py-5">© 2020 Copyright:
+      <a href=""> donviejo.com </a>
+    </div>
+  </footer>
+
+
+  
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../../../jquery/jquery.js"></script>
+    <!-- <script src="../../poppermio/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>  -->
+    <script src="../../../bootstrap/js/bootstrap.js"></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>javascript</title>
+</head>
+
+<body>
+    <p>How many random guesses will it take the computer to guess a number 1, 2, 3, 4 or 5 ?</p>
+    <input id="el-input" type="text">
+    <button id="el-boton">Let the computer guess!</button>
+   
+    <p id="el-parafo"></p>
+
+   <script>
+       document.getElementById("el-boton").onclick = function(){
+            let valueGiven =  document.getElementById("el-input").value;
+            if(isNaN(valueGiven)){
+                document.getElementById("el-parafo").innerHTML += '<br>Value given, ' + valueGiven + ',  Is not a number.';
+            }else if(valueGiven >= 6 || valueGiven < 1){
+                document.getElementById("el-parafo").innerHTML += '<br>Value given, ' + valueGiven + ',  Is too big or to small.';
+            }else{
+                valueGiven = Math.floor(valueGiven); // to avoid infinite loop when value given have decimal part
+                let computerGuess = 1 + Math.floor (5 * Math.random());  
+                let numberOfTries = 1;
+                document.getElementById("el-parafo").innerHTML = '';
+
+                while(valueGiven != computerGuess){
+                    document.getElementById("el-parafo").innerHTML += '<br>Guess ' + numberOfTries + '.  Computer guesses ' + computerGuess + ', looking for ' + valueGiven + '.';
+
+                    computerGuess = 1 + Math.floor (5 * Math.random()); 
+                    numberOfTries++;
+                }
+        
+                document.getElementById("el-parafo").innerHTML += '<br>Guess ' + numberOfTries + '.  Computer guesses ' + computerGuess + ', looking for ' + valueGiven + '.';
+            }
+       }
+   </script>
+</body>
+
+</html>

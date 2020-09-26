@@ -19,7 +19,7 @@ if($recurso){
 //Send data from server in json format
 echo json_encode($respuesta);		
 }else{
-	throw new Exception('Mal query.  Sin RECURSO, para query loginQuery');
+	throw new Exception('Mal query.  Sin RECURSO, para query loginQuery en :' . __FILE__ );
 	//echo "<li>Error, pg_query, no produjo un recurso para result... en escritos\login</li>";
 }
 pg_close($cnx); //maybe not needed but doesn't hurt	

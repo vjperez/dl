@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.css">
+
+    <title>Que tal victor</title>
+  </head>
+  <body>
+    <h1>victor testing frameworks are loaded...</h1>
+    <h3>jquery does not load with cross origin present...</h3>
+    <h3>tested jquery and bootstrap css so far... not bootstrap js... dont have to download popper (just change bootstrap to bootstrap.bundle)</h3>
+    
+    <div class="alert alert-success" role="alert">
+      A simple success alert—check it out!
+      <p id="result"></p>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="../../jquery/jquery.js"></script>
+    <script src="../../poppermio/npm/popper.js@1.16.0/dist/umd/popper.min.js"  crossorigin="anonymous"></script>
+    <script src="../../bootstrap/js/bootstrap.js"></script>
+
+    <script>
+        console.log(typeof jQuery);
+        if(typeof jQuery == "function"){
+            document.getElementById('result').innerText = 'Reconocido jQuery as a function ... so it is loaded.';
+        }else{
+            document.getElementById('result').innerText = 'jQuery was NOT Reconocido ... so it is not loaded.';
+        }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,131 @@
+<!-- setTimeout is not doing what i expected -->
+<html>
+
+<head>
+    <title>Test Reaction time</title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        #game-space{ 
+            border:1px solid royalblue;
+            height: 400px;
+            width:800px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Test your reaction time.</h1>
+    <h2>Click on the figure as soon as you can !</h2>
+    <div id="timer-space">
+        <p>Reaction Time : <span id="clock"></span></p>
+    </div>
+    <div id="button-space">
+        <p><button id="start-game-button">Start</button>
+           <button id="stop-game-button">Stop</button></p>
+    </div>    
+    <div id="game-space">
+        <div id="figure"></div>
+    </div>
+
+    <script type="text/javascript">
+        init();
+
+        function init(){
+            enableButton('start-game-button');
+            disableButton('stop-game-button');
+
+            //  play and enable stop button
+            document.getElementById("start-game-button").onclick = function(){
+                enableButton('stop-game-button');
+                disableButton('start-game-button');
+                document.getElementById('figure').style.display = "block";  // needed to display when reloading page after a stop button is pressed
+                play();
+            }
+            //  stop play and enable start button
+            document.getElementById("stop-game-button").onclick = function(){
+                enableButton('start-game-button');
+                disableButton('stop-game-button');
+                document.getElementById('figure').style.display = "none";
+            }
+        }
+
+        function play(){
+            randomWait();
+            showFigure();
+            startClock();
+        }
+        
+        function randomWait(){
+            console.log('Randomly waiting to produce figure ...');
+            let randomWait = 1000 * Math.random(); // max wait is 1 seconds
+            let time1 = new Date().getTime();
+            let time2 = new Date().getTime();
+            while((time2 - time1) < randomWait){
+                //console.log(time1);
+                //console.log(time2);
+                //console.log(randomWait);
+                time2 = new Date().getTime();
+            }
+        }
+
+        function showFigure(){
+            let width  = 50 + Math.floor(100 * Math.random()); // from 50 to 149
+            let height = '';
+            let borderRadius = '';
+            let figureChooser = Math.floor(3 * Math.random());
+            if(figureChooser == 0){   // rectangle 
+                height = 50 + Math.floor(100 * Math.random());
+                borderRadius = 5;
+            }else if(figureChooser == 1){ // square
+                height = width;
+                borderRadius = 5;
+            }else{  // circle
+                height = width;
+                borderRadius = 0.5 * width;
+            }  
+            let red = Math.floor(256 * Math.random()); // 256 color from 0 to 255
+            let blue = Math.floor(256 * Math.random());
+            let green = Math.floor(256 * Math.random());
+
+            document.getElementById('figure').style.height = height + "px";
+            document.getElementById('figure').style.width = width + "px";
+            document.getElementById('figure').style.borderRadius = borderRadius + "px";
+            document.getElementById("figure").style.backgroundColor = "rgb("+red+","+green+","+blue+")";
+            
+            // set position
+            let x = Math.floor(800 * Math.random()) - 0.5*width;  // 800 was defined as game space width in css
+            let y = Math.floor(400 * Math.random()) - 0.5*height; // 400 was defined in css also
+            document.getElementById('figure').style.position = "relative";
+            document.getElementById('figure').style.left = x + "px";
+            document.getElementById('figure').style.top = y + "px";
+        }
+        
+        function startClock(){
+            let time1 = new Date().getTime();
+            wait(time1);           
+        }
+
+        function wait(t1){    
+            let time2 = '';
+            document.getElementById("figure").onclick = function(){   
+                time2 = new Date().getTime();
+                showClock(time2 - t1);
+            }
+        }
+
+        function showClock(t){
+            document.getElementById("clock").innerHTML = t + ' milli seconds.   (' + (t/1000) + ' secs).';
+            setTimeout(play(), 5000);   //not doing what i expected
+        }
+
+        function enableButton(id){
+            document.getElementById(id).disabled = false;
+        }
+        function disableButton(id){
+            document.getElementById(id).disabled = true;
+        }        
+    </script>
+    
+</body>
+
+</html>

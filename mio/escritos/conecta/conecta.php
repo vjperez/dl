@@ -5,7 +5,7 @@ $cnx = pg_connect(HOST . PORT . DBNAME . USUARIO);
 if($cnx){
 	//echo "Conectado a $dbname en $host.";
 }else{
-	throw new Exception('Sin coneccion a BASEDATOS.');
+	throw new Exception('Sin coneccion a BASEDATOS en : ' . __FILE__ );
 	//echo "<li>Error conectando a $dbname en $host.</li>";
 }
 

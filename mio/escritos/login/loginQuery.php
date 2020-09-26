@@ -1,4 +1,5 @@
 <?php
+// podrias sacar el id primero y setear last log usando id
 $query = "UPDATE 
 		dueno
 SET last_log = NOW()::date 
@@ -8,7 +9,7 @@ AND password = '$pass'
  ;
 
 	SELECT 
-	dueno_id
+	id
 FROM dueno 
 WHERE username = '$user'
 AND password = '$pass'";

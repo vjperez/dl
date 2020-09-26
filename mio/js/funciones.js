@@ -1,5 +1,14 @@
+jQuery.dameLook = function(pageName){
+	jQuery.get(pageName, function(datosDeRespuesta, estatus, xhrObjeto){
+		//console.log(datosDeRespuesta);
+		var elMain = jQuery(datosDeRespuesta).filter('#main');
+		//console.log(mainDeBusca);
+		jQuery('#containerForMain').html(elMain);
+	});	
+}
+
 //extracs parameters from the url
-jQuery.urlParam = function(name){
+jQuery.urlParametro = function(name){
 	var str = window.location.href;
 	var patron = new RegExp('[\?&]' + name + '=([^&#]*)');
 	var results = patron.exec(str);  //searches str for a pattern described in patron
@@ -49,16 +58,17 @@ jQuery.fallas = function(xhrObjetoForFAIL, estatusForFAIL, errorMessageSentBySer
 //to redirect here PHP Exceptions from the login section,
 //i have to explicitly try the JSON parse in a try-catch block, and when a parsing error
 //is catched, call this function.
-	jQuery.get('looks/error.html', function(datosDeRespuesta, estatus, xhrObjeto){
-		var mainDeError = jQuery(datosDeRespuesta).filter('#main');
-		jQuery('#containerForMain').html(mainDeError);
-	});
+	//get creaDueno look
+	jQuery.dameLook('looks/error.html');
+
 	jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 		if(settingsObjeto.url === 'looks/error.html'){
 			losLis = '<br><hr>';
-			losLis += '<li>' + xhrObjetoForFAIL.responseText + '</li>';
+			
 			losLis += '<li>' + estatusForFAIL + '</li>';
-			losLis += '<li><span class="colorenfasis">Message sent by servidor PHP:<br></span>' + errorMessageSentByServer + '</li>';
+			losLis += '<li><span class="color01enfasis">Mensaje del servidor:<br></span>' + errorMessageSentByServer + '</li>';
+			losLis += '<li><span class="color01enfasis">Texto respuesta:<br></span>'      + xhrObjetoForFAIL.responseText + '</li>';
+			
 			losLis += '<br><hr>';
 			jQuery('#containerForErrors').append(losLis);
 		}
@@ -80,7 +90,7 @@ jQuery.toggleOnClick = function(){
 	var $todosLosHidable = jQuery('.hidable');
 	$todosLosHidable.hide();
 	$todosLosNotHidable.on('click', function(evento){
-		var $toToggle = jQuery(evento.currentTarget).siblings('.hidable');
+		var $toToggle = jQuery(evento.currentTarget).next('.hidable');
 		$toToggle.toggle();
 	});
 }

@@ -1,0 +1,47 @@
+ <div class="quake-info odd col-lg-12">
+  <div class=" pull-left label marker-wrap" data-quakeIndex="2">C</div>
+  
+  
+    <div class="quiet row" >
+        <a href="/quakes/2020-02-15-14-35-54-utc-3-6-28">
+            <abbr class="timeago" title="2020-02-15T14:35:54Z">
+                2020-02-15 14:35:54 UTC
+            </abbr>
+        </a>
+        <span class="text-success">81.71 magnitude</span>, 
+        28 km depth
+        <br/>
+        <a href="/pr-005-san-antonio/recent">San Antonio</a>,
+        <a href="/p/puerto-rico/aguadilla/recent">Aguadilla</a>,
+        <a href="/p/puerto-rico/recent">Puerto Rico</a>
+
+    </div>
+    
+    
+    <div class="quake-info-window" data-quakeIndex="2">
+        <h4 class='title text-success'>37.46 magnitude earthquake</h4>
+        <p>
+            <a href="/quakes/2020-02-15-14-35-54-utc-3-6-28">
+                Today
+                <abbr class="timeago" title="2020-02-15T14:35:54Z">
+                    2020-02-15 14:35:54 UTC
+                </abbr>
+                at 14:35 <br/>February 15, 2020 UTC
+            </a>
+        </p>
+        <p>
+            Location:<br/>
+            Epicenter at 18.948, -67.67
+            <br/>
+            78.2 km from
+            <a href="/pr-005-san-antonio/recent">San Antonio</a>
+            (48.2 miles)
+        </p>
+        <p>
+            <a href="/r/puerto-rico/recent">Puerto Rico</a>
+        </p>
+        <p>Depth: 28 km</p>
+    </div>
+
+
+</div>

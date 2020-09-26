@@ -1,0 +1,53 @@
+<html>
+
+
+<head>
+    <title>jQuery</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../jquery/jquery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .circle{
+            width:10px;  height:10px;  border-radius:50%;  
+        }
+        .rojo{
+            background-color: crimson;
+        }
+        #bola{
+            position: relative;     left:50px;  top:0px;
+        }
+        hr{
+            position: relative;     top:200px;
+        }
+        button{
+            position: relative;     top:220px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="circle rojo" id="bola"></div>
+    <hr>
+    <button type="button">Drop it!</button>
+
+    <script type="text/javascript">
+        $boton = jQuery('button'); // only one button
+        $bola = jQuery('#bola');
+        $boton.click(function(){
+            $bola.animate({
+                top:'200px',
+            }, 3000, finalAzul);
+        });
+
+        //callback after animation
+        finalAzul = function(){ $(this).css('background-color', 'blue'); }
+    </script>
+</body>
+
+
+</html>

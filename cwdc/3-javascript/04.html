@@ -1,0 +1,53 @@
+<html>
+<head>
+    <title>Disapering Circles</title>
+
+    <style>
+        .formaCirculo{
+            width:100px;
+            height:100px;
+            border-radius:50%;
+            margin-right:25px;
+        }
+        .izq{
+            float:left;
+        }
+        #uno { background-color:#aa0000;}
+        #dos { background-color:#00aa00;}
+        #tres{ background-color:#0000aa;}
+    </style>
+
+</head>
+
+
+<body>
+   <div id="uno"  class="formaCirculo izq">1</div>
+   <div id="dos"  class="formaCirculo izq">2</div>
+   <div id="tres" class="formaCirculo izq">3</div>
+
+    <script>
+        let unoElement =  document.getElementById("uno" );
+        let dosElement =  document.getElementById("dos" );
+        let tresElement = document.getElementById("tres");
+        
+        unoElement.onclick = function(){
+            if(window.getComputedStyle(unoElement).visibility === "visible"){
+                 unoElement.style.visibility = "hidden";
+            }else{// trying to make visible a hidden element;  
+                  // BUT apparently getElementById do not work when element is hidden
+                  //you need to make it visible using OTHER element
+                 unoElement.style.visibility = "visible";
+            } 
+        }
+
+        dosElement.onclick = function(){
+            dosElement.style.visibility = "hidden";
+        }
+        
+        tresElement.onclick = function(){
+            tresElement.style.visibility = "hidden";
+        }
+    </script>
+
+</body>
+</html>

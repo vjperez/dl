@@ -1,9 +1,11 @@
 /*todo lo q sea borde aqui, va pa fuera*/
 .ver-borde { border-style:solid; border-width:1pt; border-color:#ff0000; }
 
-[class*="ancho-sensi"] { width:96%; }
+/**/
+[class*="ancho-sensi"] { width:100%; }
 .ancho-sensi-cell-1de2 { width:50%; }
 .alto-sensi-cell-1de2 { height:107pt; } /* 400(.5) (8/15) ;en opciones, mas o menos 400pt de ancho (min 320pt) entre 4 pa cada foto ; la proporcion de una foto 300px x 168 px es (15/8)*/
+
 
 @media only screen and (max-width: 480pt) {
 	body { border:2pt solid #00ff00; }
@@ -39,7 +41,6 @@
 	.alto-sensi-desk-1de4 { height:115pt; } /* 860(.25) (8/15) ;en opciones, mas o menos 860pt de ancho max(960pt) entre 4 pa cada foto ; la proporcion de una foto 300px x 168 px es (15/8)*/
 	.alto-sensi-desk-1de3 { height:151pt; } /* 860(.33) (8/15) ;en profile,  mas o menos 860pt de ancho max(960pt) entre 4 pa cada foto ; la proporcion de una foto 300px x 168 px es (15/8)*/
 	.alto-sensi-desk-2de4 { height:229pt; } /* 860(.50) (8/15) ;en profile,  mas o menos 860pt de ancho max(960pt) entre 4 pa cada foto ; la proporcion de una foto 300px x 168 px es (15/8)*/
-
 	}
 
 

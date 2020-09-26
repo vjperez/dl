@@ -1,0 +1,24 @@
+<html>
+
+
+<head>
+    <title>jQuery</title>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="../../jquery/jquery.js"></script>
+</head>
+
+<body>
+    <h1>Testing jQuery is loaded.</h1>
+    <p id="result"></p>
+    <script type="text/javascript">
+        console.log(typeof jQuery);
+        if(typeof jQuery == "function"){
+            document.getElementById('result').innerText = 'Recognized jQuery as a function ... so it is loaded.';
+        }else{
+            document.getElementById('result').innerText = 'jQuery was NOT Recognized ... so it is not loaded.';
+        }
+    </script>
+</body>
+
+
+</html>

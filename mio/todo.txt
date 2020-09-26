@@ -1,25 +1,44 @@
-:crea y edita nepes en paginas dieferentes ; ?que qjkeres editar? ; envia cada seccion individualmente
+me quede hiendo desde js login.js, hacia
+ window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId
+ 
+lo ultimo q hice fue loguearme como vito e ir 
+	desde
+	http://localhost/WebDevelopmentStuff/mio/portada.html?look=editDuenoShowNepes&duenoId=14
+	hasta
+	http://localhost/WebDevelopmentStuff/mio/portada.html?look=updateNepe&duenoId=14&nepeId=29
+	
+ 
+editDuenoShowNepe.js
+	41 updateNepe
+	45 creaNepe
+	
+	escape como victor's store
+	
+	haz cosas como conecta/conecta con funciones en vez de require (_once)
+	
+	todas las funciones de crea y update nepe js , ponlas en un  sitio comun y que las usen ambos files 
 
-:replace watch for embed when loading image
 
-:estoy logueado ... y sigo editando sin loguearme de nuevo.
-
-:show pic on database when editing nepe
-
-:pq 2 veces fotos ???
-
-:solo muestra en el search los nepes de los duenos q marquen trabajando : HOY
-	usa HOY: horario ; highlight it in profile en vez de cuando; usa revisado
-:add 'final_date' to usuario para q venza a los 30 dias por ejemplo
-
-:video y fotos, QUE, DONDE, CUANDO Hoy Lunes ...., QUIEN
+============================================================================================= 
 
 
 
+Crea miniprojects que te permitan repasar cosas especificas
+	subes a vjperez.com
+	github
+	resume.
+Cuando tengas 10 proyectos recientes entonces bregas con google recommended interview book 
+	email de feedback
+	google computer science interview questions
+
+Cuando resize
+	:en las imagenes del barbero, cuando subes una cuadrada peq 200x200 y la deformas a 320x160
+	para luego mostrarla 620x310 aprox NO VALE LA PENA, aumentas el size solo pa q se vea peor
+	En cambio cuando subes una 2040x1030 aprox si la reduces y si se ve muy bien 
 
 
 
-DONE
+How Search
 :make a vector column for each micro empre
 	using tsquery and tsvector, you no longer need embedded queries, just rank matches 
 :find out what happens when you use empty tsqueries
@@ -29,72 +48,76 @@ DONE
 	FROM micro_empre, to_tsquery('spanish', 'dulce') que_query,  to_tsquery('simple', 'yauco') donde_query
 	WHERE que_query @@ nombre_que_vector OR donde_query @@ donde_vector 
 	ORDER BY ranqueo DESC;
+
+
+
+Tipos de data
+	1
+    La interfase esta ready pa: 
+	el SOCIAL HANDLES y los CUANDO que el miembro no provea guardalo por default, y envia JSON 
+			"fbk":"", "igrm":"@tito_en_insta", "phn":"", "mier":"", "vier":""
+			(pq son "key":value members of js objects (desde postgresql))
+	Recibir por JSON un date de la forma "07/25/1994". 
 	
-	
+	Recibir por JSON  10 QUE o menos, 5 DONDE o menos, 5 FOTOS o menos  ...no envies ni null ni "" por JSON
+			(pq son arreglos (aun desde postgresql) que manejas con each y remove en profile; jaja...)
+	2
+	Just use json desde postgresql for everything
+		que: 10   donde: 5   cuando: 7    media social handle: 4   media foto url: 5
 
 
-:ir contruyendo un web de que verbo o nombre estan relacionados, segun los links de la gente
 
-:lista de texto de opciones (orden alfabetico)
-
+Tips
+Crea y edita nepes en paginas diferentes ; ?que qjkeres editar? ; envia cada seccion individualmente
+For youtube, replace watch for embed when loading image
+Show pic on database when editing nepe
 :pon mi profile con id zero, faq lo necesita.
 
 
+Ideas Nuevas
+:solo muestra en el search los nepes de los duenos q marquen trabajando : HOY
+	usa HOY: horario ; highlight it in profile en vez de cuando; usa revisado
+:add 'final_date' to usuario para q venza a los 30 dias por ejemplo
+:ir contruyendo un web de que verbo o nombre estan relacionados, segun los links de la gente
+:lista de texto de opciones (orden alfabetico)
+:que aparezca en el heading de opciones "lavar carro" from los que del micro empre, no el que introducido en busca
+NLP
+:que "lavado a mano de carros" machee "lavar carro" when > 40% words are 'alike' not equal
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-check for a 2 way substring relation  
-	:  que "lavado a mano de carros" machee "lavar carro" when > 40% words are 'alike' not equal
-	:  que aparezca en el heading de opciones "lavar carro" from los que del micro empre, no el que introducido en busca
-	explain in postgrsql
-	unnest
-	index for arrays			Can i use indexes when searchng for que and donde ?
-
-
-    La interfase esta ready pa: 
-	el social handle y los cuando que el miembro no provea guardalo por default, y envia JSON 
-			"fbk":"", "igrm":"@tito_en_insta", "phn":"", "mier":"", "vier":""
-			(pq son "key":value members of js objects)
-	Recibir por JSON un date de la forma "07/25/1994". 
-	Recibir por JSON 5 fotos o menos, 10 QUE o menos, 5 DONDE o menos, no envies ni null ni "" por JSON
-			(pq son arreglos que manejas con each y remove en profile; jaja...)
 	
-	Lo que pongas en un placeholder de un requerido, sale pero solo una vez, no sale a los registrados pq lo borraran de una.
-	Lo que pongas en otro placeholder seguira saliendo, hasta q no escriban ahi.
+
+Info Display
+:video y fotos, QUE, DONDE, CUANDO Hoy Lunes ...., QUIEN
+
+
+
+
+
+
+
 	
+
+	
+	
+
+
+
 REM 
 	) promo yourself en pueblos con festivales o juegos; do business with namero aguada , parcha pepino, delacremapr hatillo quesos y leche
 	) no quiero q usen redes personales para evitar pago, promocionate o ve donde gente como ronald, joshua, tipo comun, cristian colon, molusco
 	) ve a un lugar con variedad agricola y vende agrobox a US
 	) laboreo y/o codeAVictor
+	) mientras NO tengas una cantidad minima de profiles (en Aguadilla?), no ofrezcas busca.  Llega a faq, primeras 2 preguntas con un video
+	 que entre otras cosas muestres que al cliquear labels, sale mas contenido. 	
 
-hacer hoy 
+
 	 ) google search : post image php
 			http://talkerscode.com/webtricks/upload%20image%20to%20database%20and%20server%20using%20HTML,PHP%20and%20MySQL.php
 	 ) google search : mysql vs postgresql
 			http://blog.dumper.io/showdown-mysql-8-vs-postgresql-10/
 			
-	 ) google search : css accordion image
 
-	 ) mientras NO tengas una cantidad minima de profiles (en Aguadilla?), no ofrezcas busca.  Llega a faq, primeras 2 preguntas con un video
-	 que entre otras cosas muestres que al cliquear labels, sale mas contenido. 
+
 
 				
 	 ) registro, login, micuenta, papo00, object oriented js to simplify js code at portada, put a portada that
@@ -103,13 +126,8 @@ hacer hoy
 			: google for 'css display flex' 
 			https://codepen.io/anon/pen/NYrbWK
 			https://medium.freecodecamp.org/learn-css-flexbox-in-5-minutes-b941f0affc34
-	 ) error handle in jquery
-	 ) name enfasis ; otras busquedas ; linea profile
+	
 
-
-	) muestra social media handles only on click and tap   
-    
-    ) en mi cuenta faltan username y passwords
     
     ) icons for log in (una llave), registro (un lapiz) y busca [fontawesome css] ; a usarse en registro.html y login.html ; tambien en nav
     
@@ -118,16 +136,10 @@ hacer hoy
 	) cuando se logueen y registren : ve a mi cuenta ; muestra  una forma que tenga los datos que
 		el miembro ha llenado en su profile. Tienes esto ... quieres editar ? 
 		: debes ensenar profile siguiendo un link que diga "como luciria tu profile" )
-		: usa js para esconder secciones
 		: indica que tiene y que falta en el profile
 
 		
 done
-	) ***presentado los datos en mi cuenta cuando alguien se loguea, sigue ahi***
-	) un solo html con todos los faqs del footer y le apuntas con ids
-	
-	) a tu casa : si o no en seccion donde, usa el mismo image de ahora mismo
-	
 	) instalar server(apache, lighttpd, or Nginx) + php ::: luego sigue con los ejemplos de jQuery (load, get, post, ....)
 	 ) profile what data makes it; move it from php to jquery using json
 	 ) tengo unos cambios en el profile para usar h3 mostrando social media handles	
@@ -137,3 +149,4 @@ find out
 	) qure reglas tiene youTube y vimeo to embed video on my site
 	) como te logueas con facebook?
 	) Android Pay, IPhone Pay, Tarjeta de credito 
+	)index for arrays			Can i use indexes when searchng for que and donde ?
