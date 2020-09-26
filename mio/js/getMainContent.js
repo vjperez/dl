@@ -158,7 +158,7 @@ jQuery(document).ready(
 						.fail(  jQuery.fallas  );
 													
 						//task 2 when ajax complete ; handle form submit and make post
-						jQuery.handleUpdateNepeSubmit(duenoId, meId);
+						jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
 						//submit event listener and handler
 					}//if
 				});//ajaxComplete

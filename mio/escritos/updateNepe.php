@@ -99,6 +99,7 @@ if( ! isset($nepe_id) || trim($nepe_id) === ''){
 	require_once 'creaNepe/update/updateMediaFotoUrl.php';
 }else{
 */
+require_once 'updateNepe/checkFotoUploadErrorAndMove/checkFotoUploadErrorAndMove.php';
 require_once 'updateNepe/update/updateNepe.php';
 
 /*
