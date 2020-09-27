@@ -37,7 +37,7 @@ ALTER TABLE public.bregando OWNER TO victordbu;
 --
 
 CREATE SEQUENCE public.bregando_bregando_id_seq
-    AS integer
+--    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -76,7 +76,7 @@ ALTER TABLE public.dueno OWNER TO victordbu;
 --
 
 CREATE SEQUENCE public.dueno_dueno_id_seq
-    AS integer
+--    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -121,7 +121,7 @@ ALTER TABLE public.nepe OWNER TO victordbu;
 --
 
 CREATE SEQUENCE public.nepe_id_seq
-    AS integer
+--    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
