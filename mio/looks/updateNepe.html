@@ -25,14 +25,7 @@
 			<p><input id="nombreId"  type="text"  name="nombre"     maxlength="50" placeholder="" required=true></p>
 		</fieldset>
 
-		<fieldset class="primario notHidable">
- 	    	<label>Video</label>
-        	<label class="explica">Link a video con info de tu NePe.</label>
- 	    	<label class="explica">(requerido)</label>
-		</fieldset>
-		<fieldset class="secundario hidable">
-			<p><textarea id="videoUrlId"  name="videoUrl"  rows="6" cols="50" placeholder="" required=true></textarea></p>
-		</fieldset>
+
 
  	    <fieldset class="primario notHidable">
  	    	<label>Qui&eacute;n</label>
@@ -52,50 +45,8 @@
 			<input id="red4Id"     type="tel" name="red4"  maxlength="50"   placeholder=""></p>
 			<h3></h3>
 		</fieldset>
-
-
- 	    <fieldset class="primario notHidable">
- 	    	<label>Fotos</label>
- 	    	<label class="explica">Fotos de tu NePe</label>
-		</fieldset>	
-		<fieldset id="fotoSrcFieldset" class="secundario hidable">
-			<input type="hidden" name="MAX_FILE_SIZE" value="1000000"> <!-- 2MB  200 000B-->
-			<p><label for="fotosId">Fotos:</label>
-			<input id="fotosId"  type="file" name="fotoArr[]" multiple></p>
-			<h3 id="max5Feedback"></h3>
-			<h3 id="isImageFeedback"></h3>
-		</fieldset>
-
-
-		<fieldset class="primario notHidable">
-			<label>Cuando</label>
-			<label class="explica">Horario de tu NePe</label>
-		</fieldset>
-		<fieldset id="cuandoFieldset" class="secundario hidable">
-			<p><label for="dia1Id">Lunes</label>
-			<input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder=""></p>
-			<p><label for="dia2Id">Martes</label>
-			<input id="dia2Id" type="text" name="dia2" maxlength="50" placeholder=""></p>
-			<p><label for="dia3Id">Miercoles</label>
-			<input id="dia3Id" type="text" name="dia3" maxlength="50" placeholder=""></p>
-			<p><label for="dia4Id">Jueves</label>
-			<input id="dia4Id" type="text" name="dia4" maxlength="50" placeholder=""></p>
-			<p><label for="dia5Id">Viernes</label>
-			<input id="dia5Id" type="text" name="dia5" maxlength="50" placeholder=""></p>
-			<p><label for="dia6Id">Sabado</label>
-			<input id="dia6Id" type="text" name="dia6" maxlength="50" placeholder=""></p>
-			<p><label for="dia7Id">Domingo</label>
-			<input id="dia7Id" type="text" name="dia7" maxlength="50" placeholder=""></p>
-		</fieldset>
-		<!--
- 	       <fieldset class="secundario">
- 	         <label>Ahora Mismo</label>
- 	         <label class="explica">&iquest;Trabajando ahora mismo?</label>
- 	         <span>Si</span><input type="radio" name="ahoraMismo" value="si" class="si">
-             <span>No</span><input type="radio" name="ahoraMismo" value="no">
-           </fieldset>
-		-->
-
+		
+		
 
 		<fieldset class="primario notHidable">
 			<label>Qu&eacute;</label>
@@ -141,6 +92,63 @@
 		</fieldset>
 
 
+
+		<fieldset class="primario notHidable">
+			<label>Cuando</label>
+			<label class="explica">Horario de tu NePe</label>
+		</fieldset>
+		<fieldset id="cuandoFieldset" class="secundario hidable">
+			<p><label for="dia1Id">Lunes</label>
+			<input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder=""></p>
+			<p><label for="dia2Id">Martes</label>
+			<input id="dia2Id" type="text" name="dia2" maxlength="50" placeholder=""></p>
+			<p><label for="dia3Id">Miercoles</label>
+			<input id="dia3Id" type="text" name="dia3" maxlength="50" placeholder=""></p>
+			<p><label for="dia4Id">Jueves</label>
+			<input id="dia4Id" type="text" name="dia4" maxlength="50" placeholder=""></p>
+			<p><label for="dia5Id">Viernes</label>
+			<input id="dia5Id" type="text" name="dia5" maxlength="50" placeholder=""></p>
+			<p><label for="dia6Id">Sabado</label>
+			<input id="dia6Id" type="text" name="dia6" maxlength="50" placeholder=""></p>
+			<p><label for="dia7Id">Domingo</label>
+			<input id="dia7Id" type="text" name="dia7" maxlength="50" placeholder=""></p>
+		</fieldset>
+		<!--
+ 	       <fieldset class="secundario">
+ 	         <label>Ahora Mismo</label>
+ 	         <label class="explica">&iquest;Trabajando ahora mismo?</label>
+ 	         <span>Si</span><input type="radio" name="ahoraMismo" value="si" class="si">
+             <span>No</span><input type="radio" name="ahoraMismo" value="no">
+           </fieldset>
+		-->
+
+
+ 	    <fieldset class="primario notHidable">
+ 	    	<label>Fotos</label>
+ 	    	<label class="explica">Fotos de tu NePe</label>
+		</fieldset>	
+		<fieldset id="fotoSrcFieldset" class="secundario hidable">
+			<input type="hidden" name="MAX_FILE_SIZE" value="1000000"> <!-- 2MB  200 000B-->
+			<p><label for="fotosId">Fotos:</label>
+			<input id="fotosId"  type="file" name="fotoArr[]" multiple></p>
+			<h3 id="max5Feedback"></h3>
+			<h3 id="isImageFeedback"></h3>
+		</fieldset>
+
+
+
+		<fieldset class="primario notHidable">
+ 	    	<label>Video</label>
+        	<label class="explica">Link a video con info de tu NePe.</label>
+ 	    	<label class="explica">(requerido)</label>
+		</fieldset>
+		<fieldset class="secundario hidable">
+			<p><textarea id="videoUrlId"  name="videoUrl"  rows="6" cols="50" placeholder="" required=true></textarea></p>
+		</fieldset>
+		
+		
+		
+		
 		<fieldset id="submitButtonFieldset">
 		<p><button type="submit"><img src="imagenes/lapiz.png" alt="Revisa"></button></p>
 		<h3 id="handlesFeedback" class="warn"></h3>
