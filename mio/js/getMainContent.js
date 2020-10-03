@@ -39,7 +39,7 @@ jQuery(document).ready(
 							}
 							jQuery.each(trios, function(index, pares){
 								jQuery.each(pares, function(nepeId, fotoSrc){
-									mainDeOpciones += '<a href="portada.html?look=profile&meId=' + nepeId + '">' +
+									mainDeOpciones += '<a href="portada.html?look=profile&nepeId=' + nepeId + '">' +
 									'<img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ancho-sensi-desk-1de4 alto-sensi-cell-1de2 alto-sensi-ipad-1de3 alto-sensi-desk-1de4 ver-borde" ';
 									mainDeOpciones += ' src="imagenes/profile/subidas/' + fotoSrc + '">'  + 
 									'</a>';
@@ -87,8 +87,8 @@ jQuery(document).ready(
 
 			break;			
 			case 'profile':
-				//get meId then
-				var meId = jQuery.urlParametro('meId');
+				//get nepeId then
+				var nepeId = jQuery.urlParametro('nepeId');
 				//request get JSON data for that meId
 				jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){

@@ -1,24 +1,12 @@
-me quede hiendo desde js login.js, hacia
- window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId
- 
-lo ultimo q hice fue loguearme como vito e ir 
-	desde
-	http://localhost/WebDevelopmentStuff/mio/portada.html?look=editDuenoShowNepes&duenoId=14
-	hasta
-	http://localhost/WebDevelopmentStuff/mio/portada.html?look=updateNepe&duenoId=14&nepeId=29
+estoy subiendo  fotos doble
+
+tengo 2 versiones de checkFotoUploadErrorAndMove - una en creaNepe la otra en updateNepe
 	
-updatet nepe
+escape nombres como victor's store
 	
- 
-editDuenoShowNepe.js
-	41 updateNepe
-	45 creaNepe
+haz cosas como conecta/conecta con funciones en vez de require (_once)
 	
-	escape como victor's store
-	
-	haz cosas como conecta/conecta con funciones en vez de require (_once)
-	
-	todas las funciones de crea y update nepe js , ponlas en un  sitio comun y que las usen ambos files 
+todas las funciones de crea y update nepe js , ponlas en un  sitio comun y que las usen ambos files 
 
 
 ============================================================================================= 

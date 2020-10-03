@@ -7,6 +7,8 @@
 //otherwise it simply receives text, and you get hard to debug,
 //wrong results.
 
+
+
 //query returns arrays, bool values ... everything in JSON format (read data from postgre, as json)
 $query = "SELECT
 	to_json(id),
@@ -14,12 +16,12 @@ $query = "SELECT
 	to_char(revisado, 'Mon/DD/YYYY'),
 	array_to_json(que),
 	array_to_json(donde),	
-	cuando,
-	to_json(a_tu_casa),
+	cuando, 
+	to_json(a_tu_casa), 
 
-	media_video_url,
-	media_social_handle,
-	array_to_json(media_foto_url)
-FROM nepe
-WHERE id = $nepeId";
+	media_video_url, 
+	media_social_handle, 
+	array_to_json(media_foto_url) 
+FROM nepe 
+WHERE id = '$nepe_id'";
 ?>

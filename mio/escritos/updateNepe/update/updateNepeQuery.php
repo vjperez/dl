@@ -4,17 +4,17 @@
 // aggregate them into a postgresql array.  So this query should manage data
 // sent by any language as long as they send it in JSON strinngify format
 $query = "UPDATE
-	micro_empre
+	nepe
 SET revisado = NOW()::date,
 nombre = '$nombre',
 media_video_url = '$videoUrl',
 media_social_handle = '$quien_social_handle',
-media_foto_url = '$quien_foto_srcPosgreArray',
+media_foto_url = '$mediaFotoUrlPosgreArray',
 cuando = '$cuando',
 que   = '$quePosgreArray',
 donde = '$dondePosgreArray',
 nombre_que_vector =	to_tsvector('spanish', '$nombre' || ' ' || '$quePosgreArray' ),
 donde_vector = to_tsvector('simple', '$dondePosgreArray' ),
 a_tu_casa = '$a_tu_casa'
-WHERE micro_empre_id = '$micro_empre_id'";
+WHERE id = '$nepe_id'";
 ?>

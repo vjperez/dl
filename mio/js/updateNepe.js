@@ -136,10 +136,10 @@ jQuery.handleUpdateNepeSubmit = function(duenoId, nepeId){
 					datosJSObj = JSON.parse(datosJSONStr);
 					//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
 				}catch(errorParseo){
-					jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server desde escritos/editMicroEmpreData.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
+					jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server desde escritos/updateNepe.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
 				}
 				if(datosJSObj.actualizado){
-					jQuery(window.location).attr('href', window.location.pathname + '?look=profile&meId=' + datosJSObj.meId);
+					jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
 				}else{
 					//jQuery.feedback('form#updateNepeForm h3', datosJSObj.feedback);
 				}

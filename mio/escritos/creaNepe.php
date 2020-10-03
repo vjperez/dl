@@ -1,9 +1,15 @@
 <?php
+
+/////////////////////////////////// solo para nepe update  /////////////////////////////////////
+//$nepe_id = $_POST['nepeId'];
+////////////////////////////////////////////////////////////////////////////////////////////////
+$dueno_id = $_POST['duenoId'];
+
 //saca los valores de POST
 $nombre = $_POST['nombre'];
-$videoUrl = $_POST['videoUrl'];
 $quien_social_handle = $_POST['quienSocialHandle'];
-$cuando = $_POST['cuando'];
+
+
 
 //build a postgresql type array using 'que' data
 $quePHP = str_replace(":", " ", json_decode($_POST['que']));
@@ -17,6 +23,8 @@ foreach($quePHP as $key => $element){
 }
 $quePosgreArray = $quePosgreArray . '}';
 
+
+
 //build a postgresql type array using 'donde' data
 $dondePHP = str_replace(":", " ", json_decode($_POST['donde']));
 $dondePosgreArray = '{';
@@ -29,17 +37,16 @@ foreach($dondePHP as $key => $element){
 }
 $dondePosgreArray = $dondePosgreArray . '}';
 
-
 if(strcmp($_POST['aTuCasa'] , 'si') === 0){
 		$a_tu_casa = 'true';
 }else{
 		$a_tu_casa = 'false' ;
 }
 
-/////////////////////////////////// solo para nepe update  /////////////////////////////////////
-//$nepe_id = $_POST['nepeId'];
-////////////////////////////////////////////////////////////////////////////////////////////////
-$dueno_id = $_POST['duenoId'];
+$cuando = $_POST['cuando'];
+
+$videoUrl = $_POST['videoUrl'];
+
 
 // i already have the post values
 

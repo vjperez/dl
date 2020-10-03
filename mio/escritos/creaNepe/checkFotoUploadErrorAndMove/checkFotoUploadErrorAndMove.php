@@ -1,4 +1,7 @@
 <?php
+
+$mediaFotoUrlPosgreArray = '';
+
 //is there an error loading any of the files ?
 foreach ($_FILES['fotoArr']['error'] as $key => $error) {
 	if($error > 0){
@@ -12,19 +15,17 @@ foreach ($_FILES['fotoArr']['error'] as $key => $error) {
 		    7 => 'Failed to write file to disk.',
 		    8 => 'A PHP extension stopped the file upload.',
 		);
-		throw new Exception('Error subiendo foto. Foto: ' . $key . '  Codigo: ' . $error . '.    Mensaje (Razon): ' . $phpFileUploadErrors[$error]);
+		throw new Exception('Error subiendo foto. Foto: ' . $key . '  Codigo: ' . $error . '.    Mensaje (Razon): ' . $phpFileUploadErrors[$error] . ' en ' . __FILE__ );
 	}
 }
 
-
-$mediaFotoUrlPosgreArray = '';
 
 //is any of the uploaded files targeting a system file ? ; @ suppresses errors
 //is any of the uploaded files NOT an image ? ; @ suppresses errors
 //was the file movement a success ?
 foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
 	if(!is_uploaded_file($tmpn)){ // si el file no es uploaded file
-		throw new Exception('Error subiendo foto. Foto: ' . $key . '.  Esta NO es uploaded file!, tmp_name es: ' . $tmpn . '.');
+		throw new Exception('Error subiendo foto. Foto: ' . $key . '.  Esta NO es uploaded file!, tmp_name es: ' . $tmpn . '.' . ' En ' . __FILE__ );
 	}
 	/*
 	//inspecting getimagesize() array response ; curiosity and debugging
@@ -35,7 +36,7 @@ foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
 	}
 	*/
 	if( stripos(getimagesize($tmpn)['mime'],  'image') !== 0 ) { // si getimagesize no devuelve 'image/blahblah' en la posicion cero del index 'mime'
-		throw new Exception('Error subiendo foto. Foto: ' . $key . '.  Esta file, segun getimagesize($tmpn), NO es una imagen!, tmp_name es: ' . $tmpn . ', tipo de file es: ' . $_FILES['fotoArr']['type'][$key] . '.');
+		throw new Exception('Error subiendo foto. Foto: ' . $key . '.  Esta file, segun getimagesize($tmpn), NO es una imagen!, tmp_name es: ' . $tmpn . ', tipo de file es: ' . $_FILES['fotoArr']['type'][$key] . '.' . ' En ' . __FILE__ );
 	}
 	//if there are no foto errors, prepare to move the images
 	require_once 'configConstants/constants.php';
