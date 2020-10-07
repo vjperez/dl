@@ -43,8 +43,8 @@ foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn){
 //for ($i = 0; $i < 5; $i++) {  // 5 is maximum amount of photos allowed ; this should be a php constant // needs to match the 5 in js/creaNepe
 require_once 'configConstants/constants.php';
 $fotoTarget = $fotos_subidas_dir . $nepe_id;
-foreach(glob("'$fotoTarget'*") as $fotoToErase){
-	if(file_exists ("$fotoToErase")) unlink("$fotoToErase");
+foreach(glob($fotoTarget . '*') as $fotoToErase){
+	if(file_exists ($fotoToErase)) unlink($fotoToErase);
 }
 //}
 
@@ -57,8 +57,7 @@ foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
 	$toLetter = array(0=>"a", 1=>"b", 2=>"c", 3=>"d", 4=>"e");
 	$tipo = str_replace("image/", "", getimagesize($tmpn)['mime']);  //convierte 'image/png' en 'png'
 	$foto = $fotos_subidas_dir . $nepe_id . $toLetter[$key] . '.' . $tipo;  // filesystem path
-   // dont overwrite, unlink before moving
-	if(file_exists ("$foto")) unlink("$foto");
+   
 	if(!move_uploaded_file($tmpn, $foto )){ // si el file no se pudo mover
 		throw new Exception('Error moviendo foto. Foto: ' . $key . '.  No se pudo mover la imagen!, tmp_name es: ' . $tmpn . '.' . ' En ' . __FILE__  );
 	}

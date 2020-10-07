@@ -1,8 +1,6 @@
 <?php
 
-$mediaFotoUrlPosgreArray = '';
-
-//is there an error loading any of the files ?
+//are there errors loading any of the files ?
 foreach ($_FILES['fotoArr']['error'] as $key => $error) {
 	if($error > 0){
 		$phpFileUploadErrors = array(
@@ -22,7 +20,6 @@ foreach ($_FILES['fotoArr']['error'] as $key => $error) {
 
 //is any of the uploaded files targeting a system file ? ; @ suppresses errors
 //is any of the uploaded files NOT an image ? ; @ suppresses errors
-//was the file movement a success ?
 foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
 	if(!is_uploaded_file($tmpn)){ // si el file no es uploaded file
 		throw new Exception('Error subiendo foto. Foto: ' . $key . '.  Esta NO es uploaded file!, tmp_name es: ' . $tmpn . '.' . ' En ' . __FILE__ );
@@ -38,21 +35,25 @@ foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
 	if( stripos(getimagesize($tmpn)['mime'],  'image') !== 0 ) { // si getimagesize no devuelve 'image/blahblah' en la posicion cero del index 'mime'
 		throw new Exception('Error subiendo foto. Foto: ' . $key . '.  Esta file, segun getimagesize($tmpn), NO es una imagen!, tmp_name es: ' . $tmpn . ', tipo de file es: ' . $_FILES['fotoArr']['type'][$key] . '.' . ' En ' . __FILE__ );
 	}
-	//if there are no foto errors, prepare to move the images
+}
+
+
+$mediaFotoUrlPosgreArray = '';
+//can we move the files successly ?
+foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {	
 	require_once 'configConstants/constants.php';
 	$toLetter = array(0=>"a", 1=>"b", 2=>"c", 3=>"d", 4=>"e");
-	$tipo = str_replace("image/", "", getimagesize($tmpn)['mime']);  //convierte 'mime/png' en 'png'
+	//$tipo = str_replace("image/", "", getimagesize($tmpn)['mime']);  //convierte 'mime/png' en 'png'
+	$tipo = str_replace("image/", "", $_FILES['fotoArr']['type'][$key]);  //convierte 'mime/png' en 'png'
 	$foto = $fotos_subidas_dir . $nepe_id . $toLetter[$key] . '.' . $tipo;  // filesystem path
-   // dont overwrite, unlink before moving
-	if(file_exists ("$foto")) unlink("$foto");
+   
 	if(!move_uploaded_file($tmpn, $foto )){ // si el file no se pudo mover
-		throw new Exception('Error moviendo foto. Foto: ' . $key . '.  No se pudo mover la imagen!, tmp_name es: ' . $tmpn . '.');
+		throw new Exception('Error moviendo foto. Foto: ' . $key . '.  No se pudo mover la imagen!, tmp_name es: ' . $tmpn . '.' . ' En ' . __FILE__ );
 	}
 	//building $mediaFotoUrlPosgreArray
 	if($key > 0) $mediaFotoUrlPosgreArray = $mediaFotoUrlPosgreArray . ',';
 	$mediaFotoUrlPosgreArray = $mediaFotoUrlPosgreArray . $nepe_id . $toLetter[$key] . '.' . $tipo;
 }
-
 $mediaFotoUrlPosgreArray = '{' . $mediaFotoUrlPosgreArray . '}';
 
 // only for updates
