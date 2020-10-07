@@ -29,9 +29,12 @@ if($recurso){
 	$nepeDato['cuando'] = json_decode($fila[5]);
 	$nepeDato['atucasa'] = json_decode($fila[6]);
 	
-	$nepeDato['videoUrl'] = $fila[7];
+	$nepeDato['videoUrl'] = $fila[7];	
+	
 	$nepeDato['quienSocialHandle'] = json_decode($fila[8]);
 	$nepeDato['quienFotoSrc'] = json_decode($fila[9]);
+
+	$nepeDato['validVideoUrl'] = validVideoUrl( $fila[7] );
 //Send data from server in json format
 	echo json_encode($nepeDato);
 }else{
@@ -45,4 +48,31 @@ pg_close($cnx); //maybe not needed but doesn't hurt
 //es la mismo info q hace falta sacar para mostrar el profile del nepe publicamente
 //en look=profile 
 //Solo que en update nepe tambien se anaden los datos del admin.
+
+
+
+function validVideoUrl($url) { // run broken-links.php
+	if (strlen(substr($url, -11)) < 11){
+		return false;
+	}elseif (strpos($url, 'youtu') === false){
+		return false;
+	}else{ 
+		$jeders = check_url( 'http://youtu.be/' .  substr($url, -11) );
+		return strpos($jeders['http_code'], '302') === 0;
+	}
+}
+
+function check_url($url) {  // run broken-links.php 
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HEADER, 1);
+    curl_setopt($ch , CURLOPT_RETURNTRANSFER, 1);
+    $data = curl_exec($ch);
+    $headers = curl_getinfo($ch);
+    curl_close($ch);
+
+	return $headers;
+    //return $headers['http_code'];
+}
+
 ?>

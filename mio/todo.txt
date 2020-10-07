@@ -1,15 +1,34 @@
 estoy subiendo  fotos doble
 
+
+estoy haciendo updates solo cuando el arreglo de fotos  isset() en updateNepe
+		
+otro nepe de lola tiene broken video link y sale NOT Found - arregla ,  borra nepe y crea otro para testear la version de checkFotoUploadErrorAndMove
+	getNepe esta enviando video link con embed, so en updateNepe sale embed, you only want this to show profile, for updateNepe you show what user sent 
+
 tengo 2 versiones de checkFotoUploadErrorAndMove - una en creaNepe la otra en updateNepe
-	
+		update version : saca tipo usando getImageSize() y borra  usando glob() y unlink()
+		crea version : saca tipo usando  $_FILES['fotoArr']['type'][$key]
+		
+		
+doQueries tiene base de datos don papo...
+
+
 escape nombres como victor's store
 	
 haz cosas como conecta/conecta con funciones en vez de require (_once)
 	
 todas las funciones de crea y update nepe js , ponlas en un  sitio comun y que las usen ambos files 
 
-
-============================================================================================= 
+not use in crea:
+// Using != would not work as expected because for example, when the position of 'a' in 'abc' is 0, 
+// the statement (0 != false) evaluates to false. php.net. 
+if(strpos($_POST['videoUrl'], 'youtu') !== false  && substr($_POST['videoUrl'], -11) !== false){
+	$videoUrl = 'good=' . substr($_POST['videoUrl'], -11);
+}else{
+	$videoUrl = 'bad=' . $_POST['videoUrl'];
+}
+=============================================================================================
 
 
 

@@ -4,7 +4,13 @@ jQuery.populateProfile = function(datos){
 	jQuery('#video h5').text('Revisado: ' + date.substring(0, -1+date.indexOf('00:00:00')));
 	jQuery('#video h1').text(datos.nombre);
 	//alert('url: ' + datos.videoUrl + '\nEmpre id: ' + datos.microEmpreId + ' de tipo: ' + typeof datos.microEmpreId);
-	jQuery('#video iframe').attr('src', datos.videoUrl);
+	if(datos.validVideoUrl){
+		var str = datos.videoUrl;
+		jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + str.substring(str.length - 11, str.length)); 
+	}else{
+		//jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '00000000000');
+		jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '6qpudAhYhpc');  // hacker movie
+	}
 	//alert(datos.quienSocialHandle);
 	if(datos.quienSocialHandle.tt != '')   jQuery('#quien h3.tt').text(datos.quienSocialHandle.tt);    // si no cambias valores, se quedan los de looks/profile.html
 	if(datos.quienSocialHandle.fbk != '')  jQuery('#quien h3.fbk').text(datos.quienSocialHandle.fbk);

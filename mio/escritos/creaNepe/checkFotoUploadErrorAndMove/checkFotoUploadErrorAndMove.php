@@ -56,13 +56,5 @@ foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
 }
 $mediaFotoUrlPosgreArray = '{' . $mediaFotoUrlPosgreArray . '}';
 
-// only for updates
-//erase previously loaded EXTRA photos ; those that were NOT overwritten
-//no podria ser foreach
-/*
-for ($i = count($_FILES['fotoArr']['tmp_name']); $i < 5; $i++) {  // 5 is maximum amount of photos allowed ; this should be a php constant // needs to match the 5 in js/createMicroEmpre
-	$foto = $fotos_subidas_dir . $nepe_id . $toLetter[$i];
-	if(file_exists ("$foto")) unlink("$foto");
-}
-*/
+
 ?>
