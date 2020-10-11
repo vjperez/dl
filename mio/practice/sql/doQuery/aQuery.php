@@ -2,8 +2,8 @@
 require_once 'conecta.php';
 
 $query = 'SELECT username, nombre FROM bregando 
-			INNER JOIN micro_empre ON bregando.micro_empre_id = micro_empre.micro_empre_id
-			INNER JOIN usuario     ON bregando.usuario_id     = usuario.usuario_id';
+			INNER JOIN  nepe   ON bregando.nepe_id   = nepe.id
+			INNER JOIN  dueno  ON bregando.dueno_id  = dueno.id';
 $resource = pg_query($cnx, $query);
 if($resource){
 	echo "<br><br>Query result:<br><br>";
@@ -16,6 +16,7 @@ if($resource){
 	echo '<br>';
 	if(pg_close($cnx))   echo 'Coneccion cerrada.';  else echo 'Coneccion sigue abierta.';  
 }else{
-	echo "Error en el result resource...";
+	echo "<br><br>Error en el result resource...<br><br>";
+	throw new Exception('Sin recurso en : ' . __FILE__ );
 }
 ?>

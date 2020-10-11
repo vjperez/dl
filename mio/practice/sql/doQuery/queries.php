@@ -14,7 +14,8 @@ if($resource){
 	}
 	echo json_encode($ul);
 }else{
-	echo "<li>Error, pg_query no produjo un result resource...</li>";
+	echo "<br><li>Error, pg_query no produjo un result resource...</li><br>";
+	throw new Exception('Sin recurso en : ' . __FILE__ );
 }
 pg_close($cnx); //maybe not needed but doesn't hurt
 ?>

@@ -1,4 +1,9 @@
-estoy subiendo  fotos doble
+doQueries tiene base de datos don papo fix it and list and delete stuff there...
+
+
+
+estoy subiendo  fotos doble  :: ya no, estoy subiendo el reduced data blob en ambas creaNepe.js y updateNepe.js
+
 
 
 DONE:
@@ -8,6 +13,7 @@ estoy haciendo updates solo cuando el arreglo de fotos  isset() en updateNepe.ph
 
 DONE:		
 otro nepe de lola tiene broken video link y sale NOT Found - arregla ,  borra nepe y crea otro para testear la version de checkFotoUploadErrorAndMove
+
 DONE:
 getNepe esta enviando video link con embed, so en updateNepe sale embed, you only want this to show profile, for updateNepe you show what user sent 
 
@@ -18,7 +24,7 @@ tengo 2 versiones de checkFotoUploadErrorAndMove - una en creaNepe la otra en up
 		crea version : saca tipo usando  $_FILES['fotoArr']['type'][$key]
 		
 		
-doQueries tiene base de datos don papo...
+
 
 
 escape nombres como victor's store
