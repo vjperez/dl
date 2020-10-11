@@ -1,5 +1,22 @@
-doQueries tiene base de datos don papo fix it and list and delete stuff there...
 
+
+8
+Estoy enviando la funcion fallas a look= "error" .... ?
+	por ejemplo si pones vito's delivery en updateNepe ... no llegas a look='error'
+	no tengo case 'error' en getMainContent ... should I? should fallas function end in case 'error' en getMainContent?
+Manejar errores con una funcion debug print y debugMode constant definition ... por ejemplo el text de los Exceptions iria aqui ... ya esta entre barras gris
+
+PQ el libro necesita un SITE_ROOT ...
+En el profile, si pones un id random ... llegas a una pagina generica... q en realidad no quieres q se vea.
+
+9
+Images are binary data
+
+Still missing the DELETE
+doQueries tiene base de datos don papo fix it, ... DONE ... and list and delete stuff there...
+
+
+si pones un fake profile number, el profile te daun empty shell ... sin error warning
 
 
 estoy subiendo  fotos doble  :: ya no, estoy subiendo el reduced data blob en ambas creaNepe.js y updateNepe.js
@@ -44,6 +61,9 @@ Crea miniprojects que te permitan repasar cosas especificas
 Cuando tengas 10 proyectos recientes entonces bregas con google recommended interview book 
 	email de feedback
 	google computer science interview questions
+
+
+
 
 Cuando resize
 	:en las imagenes del barbero, cuando subes una cuadrada peq 200x200 y la deformas a 320x160
