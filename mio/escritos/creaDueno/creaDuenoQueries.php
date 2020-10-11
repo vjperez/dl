@@ -1,7 +1,7 @@
 <?php
 //case sensitive PostgreSQL search tito and tiTo are diferent
 $queryCheckUserName = "SELECT 
-	dueno_id
+	id
 FROM dueno
 WHERE username = '$usertb'";
 

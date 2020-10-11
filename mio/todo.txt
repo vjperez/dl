@@ -1,7 +1,11 @@
 estoy subiendo  fotos doble
 
 
-estoy haciendo updates solo cuando el arreglo de fotos  isset() en updateNepe
+
+estoy haciendo updates solo cuando el arreglo de fotos  isset() en updateNepe.php 
+		Ya no!, si no toco las fotos o si no escojo ninguna isset( $_FILES['fotoArr'] ) da falso y se hace el update usando  'updateNepe/update/updateNepeNoFotoUpdate.php';
+
+
 		
 otro nepe de lola tiene broken video link y sale NOT Found - arregla ,  borra nepe y crea otro para testear la version de checkFotoUploadErrorAndMove
 	getNepe esta enviando video link con embed, so en updateNepe sale embed, you only want this to show profile, for updateNepe you show what user sent 

@@ -21,7 +21,7 @@ jQuery.handleCreaDuenoSubmit = function(){
 					jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/creaDueno.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
 				}
 				if(datosJSObj.registrado){
-					jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowEmpresas&duenoId=' + datosJSObj.duenoId);
+					jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes&duenoId=' + datosJSObj.duenoId);
 				}else{ // usuario es repetido en el database, por eso se chequea despues del post
 					jQuery.feedback('form#creaDuenoForm h3', datosJSObj.feedback);
 				}
