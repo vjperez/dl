@@ -102,13 +102,13 @@ if( ! isset($nepe_id) || trim($nepe_id) === ''){
 	//check for foto errors   ;   move fotos   ;   build a $fotoUrlPosgreArray postgresql type array and insert array into db
 	require_once 'creaNepe/checkFotoUploadErrorAndMove/checkFotoUploadErrorAndMove.php';
 	require_once 'creaNepe/update/updateMediaFotoUrl.php';
-}else{
+}else{ }
 */
+
 if(isset( $_FILES['fotoArr'] )){
-require_once 'updateNepe/checkFotoUploadErrorAndMove/checkFotoUploadErrorAndMove.php';
-require_once 'updateNepe/update/updateNepe.php';
+	require_once 'updateNepe/checkFotoUploadErrorAndMove/checkFotoUploadErrorAndMove.php';
+	require_once 'updateNepe/update/updateNepe.php';
+}else{
+	require_once 'updateNepe/update/updateNepeNoFotoUpdate.php';
 }
-/*
-}
-*/
 ?>
