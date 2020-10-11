@@ -239,10 +239,12 @@ jQuery.getReducedImagesArray = function(){ //helper function for jQuery.have5OrL
 
 jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.handleSubmit
 	var reader = new FileReader();
-	reader.onload = function(evento){
-		
+	reader.readAsDataURL(unFotoFile);
+	console.log('resizeImage:read as data url... ' + index);
+	reader.onload = function(evento){	
 		console.log('resizeImage:reader onload... ' + index);
 		var nuevaImagen = new Image();
+		nuevaImagen.src = reader.result;
 		nuevaImagen.onload = function(evento){
 			console.log('resizeImage:nuevaImagen onload... ' + index);
 			//var canvas = document.getElementById('elCanvas');
@@ -253,14 +255,13 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 			var dataURL = canvas.toDataURL('image/jpeg', 0.95);
 			console.log(index + ': dataURL: ' + dataURL);
 			var dataBlob = dataURLToBlob( dataURL );
+			/////////////////////////////////////////////////////////////
 			reducedImagesArray.push( dataBlob );
-			reducedImagesArray.push( unFotoFile );  // no reduction
+			//reducedImagesArray.push( unFotoFile ); 
 			//debugger;
+			/////////////////////////////////////////////////////////////
 		}
-		nuevaImagen.src = reader.result;
 	}
-	reader.readAsDataURL(unFotoFile);
-	console.log('resizeImage:read as data url... ' + index);
 }
 
 
