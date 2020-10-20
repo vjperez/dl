@@ -1,0 +1,57 @@
+Ch 09
+
+1 MB : reasonable for profile pics; about 25 microsoft word pages
+
+libro usa @ in front of is_uploaded_file, get_image_size and move_uploaded_file
+para suprimir el error y manejarlo con handle_error
+function () or handle_error
+si pareas @ con handle_eror custom function ademas de una variable debug mode
+entonces podrias ver errores en debug mode y suprimirlos o loguearlos en normal mode  
+
+
+do you have a handle error equivalent ? do you get to that page displayinh "Error ... " .  Does "error" needs to be a view on getmain content?
+
+
+find out your max size file size : there is one in php.ini and another is set at your html 
+
+how do you set directory listing? it is good for debugging but unsafe ....
+
+use firebug debugger tool : getfirebug.com
+
+write a small script to show $_SERVER['DOCUMENT_ROOT']
+
+in my program i am not storing neiither absolute nor relative paths in my database,
+i am simply storing the filename (image name) !?!?
+
+if using a single database with multiple web servers ... 
+or changing web hosting providers ...
+there is a disadvantage when storing images on your web server. You would have to store the same image in every web server ?!?!? 
+
+
+Ch 10 : all your app including your images ... inside the database ... skip for now
+
+Ch 11 admin interfaces
+	list all user, link to user profiles, delete users (multiple)... confirm before delete, update users information
+		1-write a short and quick delete user, with no 2nd chance warnings or anything just delete
+		2-on a second version you can use javascript confirm to give the user a warning and use php to decide (with isset)
+		whether or not to show an alert after a user has been deleted
+		3- www.jqueryui.com/demos/dialog and modal confirm windows - use on the confirm BEFORE deleting users
+		4- use feedback messages (like those with bootstrap colors) 
+			... AFTER deleting, to say 'yeah you deleted this or that'
+			... when unable to delete, 'only an admin can do that...'
+			
+	heredoc : mark the beginning and end of text ... everithing in between treated as pure text ... no need to escape characters
+	
+Use few top level functions that at the same time call more(many) smaller functions, each dealing with specific tasks.
+	you should get a cleaner code at the top level
+	you should get a nice variety of smaller functions that you can combine in a variety of ways
+
+Ch 12 : secure them
+
+with basic authenticacion, you send two headers and you can obtain what the user entered on the screen using $_SERVER
+
+what if you do an while( !isset ... ) {headers} on page 391 ? 
+
+once username and password are entered, the browser recalls the script from the top.  p392 it's almost as though the server is giving you a 
+free while loop
+		while( wrong credentials ) { askk for credentials again }
