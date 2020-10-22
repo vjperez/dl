@@ -55,3 +55,11 @@ what if you do an while( !isset ... ) {headers} on page 391 ?
 once username and password are entered, the browser recalls the script from the top.  p392 it's almost as though the server is giving you a 
 free while loop
 		while( wrong credentials ) { askk for credentials again }
+
+
+As long as you dont close the browser, you can access pages using the same realm without introducing you credentials again...
+
+Can you make a login, so that the password is sent everytime to a cell phone ?!?! Like Amazon verification...
+Use JQuery for validation on form ... passwords, jquery plugins etc
+
+page 407 Inserting ... 
