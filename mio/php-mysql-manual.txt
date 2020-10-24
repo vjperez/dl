@@ -31,8 +31,19 @@ there is a disadvantage when storing images on your web server. You would have t
 Ch 10 : all your app including your images ... inside the database ... skip for now
 
 Ch 11 admin interfaces
-	list all user, link to user profiles, delete users (multiple)... confirm before delete, update users information
+	list all user, link to user profiles, delete users (multiple)... confirm before delete, update users information, give priviledges to some users
+	
+	list: with pics, allow multiple users selection
+	
+	deleting: 
 		1-write a short and quick delete user, with no 2nd chance warnings or anything just delete
+		
+		A script like delete which sends HTTP location headers, cannot do any output either before or after sending those headers...
+		it just deletes a user and redirects output to a view script.
+			-exit(): used to guarantiee nothing else is done after redirecting
+			-delete must send messages to the view script after it with (success or fail messages)
+			-so the view script must be ready to receive potential messages
+		
 		2-on a second version you can use javascript confirm to give the user a warning and use php to decide (with isset)
 		whether or not to show an alert after a user has been deleted
 		3- www.jqueryui.com/demos/dialog and modal confirm windows - use on the confirm BEFORE deleting users
@@ -41,6 +52,8 @@ Ch 11 admin interfaces
 			... when unable to delete, 'only an admin can do that...'
 			
 	heredoc : mark the beginning and end of text ... everithing in between treated as pure text ... no need to escape characters
+	sprintf : great for inserting into databases, but can use it anywhere
+	
 	
 Use few top level functions that at the same time call more(many) smaller functions, each dealing with specific tasks.
 	you should get a cleaner code at the top level
@@ -57,9 +70,12 @@ free while loop
 		while( wrong credentials ) { askk for credentials again }
 
 
-As long as you dont close the browser, you can access pages using the same realm without introducing you credentials again...
+As long as you dont close the browser, you can access pages using the same realm without introducing your credentials again...
+
 
 Can you make a login, so that the password is sent everytime to a cell phone ?!?! Like Amazon verification...
 Use JQuery for validation on form ... passwords, jquery plugins etc
 
-page 407 Inserting ... 
+postgre equivalent of real escape 
+
+php crypt
