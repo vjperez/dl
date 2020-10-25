@@ -22,13 +22,13 @@ $result = array();  //array con pares
 			// hum maybe pero tendrias q construir el filename de la foto on the fly
 			$fotos = json_decode($fila[1]);  // todas las fotos de un nepe changed from json to php array
 			$randomIndex = rand(0, -1 + count($fotos));
-			$randomMicroEmpreFoto = $fotos[$randomIndex];
+			$randomNepeFoto = $fotos[$randomIndex];
 			
-			$result["$buscaMode"][$parIndex][$nepeId] = $randomMicroEmpreFoto;
+			$result["$buscaMode"][$parIndex][$nepeId] = $randomNepeFoto;
 			$parIndex++;
 		}
 	}else{
-		throw new Exception('Mal query.  Sin RECURSO en ' . __FILE__ . '.  Busca Mode: ' .  $buscaMode  .  '.');
+		throw new Exception('Mal query.  Sin RECURSO en getOpciones.php : ' . __FILE__ . '.  Busca Mode: ' .  $buscaMode  .  '.');
 	}
 
 echo json_encode($result);

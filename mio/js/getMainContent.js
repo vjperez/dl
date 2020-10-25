@@ -20,8 +20,8 @@ jQuery(document).ready(
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 			//concatenating strings inside an each loop, with the requested JSON datos.
-				var que = jQuery.urlParametro('que');      //funcion transforma que into a string with : as delimiter between  words
-				var donde = jQuery.urlParametro('donde');  //funcion transforma que into a string with : as delimiter between  words
+				var que = jQuery.urlParametro('que');      
+				var donde = jQuery.urlParametro('donde');  
 				jQuery.getJSON('escritos/getOpciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
@@ -52,7 +52,10 @@ jQuery(document).ready(
 					mainDeOpciones += '</div>'; //  <div id="main" class="contenido margen">
 					jQuery('#containerForMain').html(mainDeOpciones);
 				})
-				.fail(	jQuery.fallas  );
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAIL, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
+				});
 			break;
 			case 'login':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
@@ -103,7 +106,10 @@ jQuery(document).ready(
 						}//if
 					});//ajax complete
 				})//done
-				.fail(  jQuery.fallas  );//fail
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAIL, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
+				});
 			break;
 			case 'creaDueno':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
@@ -155,7 +161,10 @@ jQuery(document).ready(
 						.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 							jQuery.populateUpdateNepeForm(datos);
 						})
-						.fail(  jQuery.fallas  );
+						.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+							var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAIL, textoEstatus, elError);
+							jQuery(window.location).attr('href', path); 
+						});
 													
 						//task 2 when ajax complete ; handle form submit and make post
 						jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
@@ -179,6 +188,25 @@ jQuery(document).ready(
 			case null:
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 				jQuery.dameLook('looks/lookIsNull.html');
+			break;
+			case 'error':
+				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+				jQuery.dameLook('looks/error.html');
+				
+				if(DEBUGUEO){
+					var xhrObjetoForFAILTexto = decodeURIComponent (jQuery.urlParametro('xhrObjetoForFAILTexto'));
+					var textoEstatus          = decodeURIComponent (jQuery.urlParametro('textoEstatus'));
+					var elError               = decodeURIComponent (jQuery.urlParametro('elError'));
+					
+					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+						//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
+						//This code runs when get isCompleted and IF the get was requesting error.html
+						if(settingsObjeto.url === 'looks/error.html'){ // === means true without type coersion - the type and value most both be equal
+							//when ajax complete ; 
+							jQuery.fallas( xhrObjetoForFAILTexto, textoEstatus, elError );  
+						}//if
+					}); //ajax complete
+				}
 
 			break;
 			default :

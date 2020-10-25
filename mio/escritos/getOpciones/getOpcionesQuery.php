@@ -1,7 +1,7 @@
 <?php
 //saca los valores de GET
-$queLiteralStr   = str_replace(":", " | ", $_GET['que']);   //here 'que' and 'donde' come as STRINGS with ':' as delimiters between words, delimeter is changed to " "
-$dondeLiteralStr = str_replace(":", " | ", $_GET['donde']); //here 'que' and 'donde' come as STRINGS with ':' as delimiters between words, delimeter is changed to " "
+$queLiteralStr   = str_replace(":", " | ", $_GET['que']);   //here 'que' and 'donde' come as STRINGS with ':' as delimiters between words, delimeter is changed to " | "
+$dondeLiteralStr = str_replace(":", " | ", $_GET['donde']); //here 'que' and 'donde' come as STRINGS with ':' as delimiters between words, delimeter is changed to " | "
 //str_replace("world","Peter","Hello world!");   produces "Hello Peter!"
 
 
@@ -9,7 +9,7 @@ $dondeLiteralStr = str_replace(":", " | ", $_GET['donde']); //here 'que' and 'do
 if(strlen($queLiteralStr) == 0 && strlen($dondeLiteralStr) >  0) $buscaMode = 'buscaDonde';
 elseif(strlen($queLiteralStr) >  0 && strlen($dondeLiteralStr) == 0) $buscaMode = 'buscaQue';
 elseif(strlen($queLiteralStr) >  0 && strlen($dondeLiteralStr) >  0) $buscaMode = 'buscaBoth';
-else throw new Exception('No tengo un Busca Mode, en opcionesQuery.php.'); // sholud not get here ; throw warning
+else throw new Exception('No tengo un Busca Mode, en getOpcionesQuery.php : ' . __FILE__ ); // sholud not get here ; throw warning
 
 //select query to be used based on $buscaMode
 //switch structure is not necessary, $query could be built inside above if/elseif structure

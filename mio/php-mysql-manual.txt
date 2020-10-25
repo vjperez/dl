@@ -41,15 +41,38 @@ Ch 11 admin interfaces
 		A script like delete which sends HTTP location headers, cannot do any output either before or after sending those headers...
 		it just deletes a user and redirects output to a view script.
 			-exit(): used to guarantiee nothing else is done after redirecting
+		
+		2-on a second version you can 
+			use javascript confirm to give the user a warning 
+				on html use href='javascript:functionName()'
+				functionName() is a javascript function defined on your <script> section of your showUsers.php html
+				it calls a php script on your server to delete users. window.location = delete users.php?user= + id
+				the delete php script uses HTTP location headers to call back your show users php file
+			use php inside <script> section of show users, to decide (with isset) whether or not to show an alert after a user has been deleted
+			that is, inside javascript <script> section of showusers.php, php isset() decides whether or not javascript window.onload = function() { alert( msgFromDelete) }
+			runs or not
+				that is - you can use php inside javascript, just like you use php inside html
+ 
 			-delete must send messages to the view script after it with (success or fail messages)
 			-so the view script must be ready to receive potential messages
-		
-		2-on a second version you can use javascript confirm to give the user a warning and use php to decide (with isset)
-		whether or not to show an alert after a user has been deleted
+
 		3- www.jqueryui.com/demos/dialog and modal confirm windows - use on the confirm BEFORE deleting users
+		
+		Standard messages: ( replaces javascript alert() )
 		4- use feedback messages (like those with bootstrap colors) 
 			... AFTER deleting, to say 'yeah you deleted this or that'
 			... when unable to delete, 'only an admin can do that...'
+
+		a function dislpay_message() : that receives $msg and $httmlClass as parameters
+			$htmlClass can be predefined using define() in php
+		a function display_messages() : can call display_message () many times with diferent pre defined htmlClasses
+			when $msg is null, this function will not call display_message() using is_null( $msg )
+
+		a function to handle the html head section plus any POSSIBLE javascript
+
+		all this functions can be placed in a file containing utility view functions view.php
+
+		
 			
 	heredoc : mark the beginning and end of text ... everithing in between treated as pure text ... no need to escape characters
 	sprintf : great for inserting into databases, but can use it anywhere
