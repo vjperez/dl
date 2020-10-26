@@ -17,7 +17,11 @@ jQuery.handleLoginSubmit = function(){
 					datosJSObj = JSON.parse(datosJSONStr);
 					//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 				}catch(errorParseo){
-					jQuery.fallas(new Object(), 'Error parseando la siguiente respuesta del server en escritos/login.php<br>' + errorParseo.name + ' mensaje= ' + errorParseo.message, datosJSONStr);
+					var textoEstatus = errorParseo.name + '<br>Error parseando la siguiente respuesta del server en escritos/login.php :<br> Mensaje: ' + errorParseo.message;
+					var elError = datosJSONStr;
+					
+					var path = jQuery.encodeAndGetErrorPath(new Object(), textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
+					jQuery(window.location).attr('href', path); 
 				}
 				if(datosJSObj.loguea){
 					jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes&duenoId=' + datosJSObj.duenoId);
@@ -26,7 +30,10 @@ jQuery.handleLoginSubmit = function(){
 					jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
 				}
 			})
-			.fail(  jQuery.fallas  );//fail
+			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+				var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAIL, textoEstatus, elError);
+				jQuery(window.location).attr('href', path); 
+			});
 		}
 	});
 	//erase feedback when user writting
