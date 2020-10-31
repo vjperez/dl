@@ -53,7 +53,8 @@ jQuery(document).ready(
 					jQuery('#containerForMain').html(mainDeOpciones);
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAIL, textoEstatus, elError);
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
 			break;
@@ -107,7 +108,8 @@ jQuery(document).ready(
 					});//ajax complete
 				})//done
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAIL, textoEstatus, elError);
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
 			break;
@@ -162,7 +164,8 @@ jQuery(document).ready(
 							jQuery.populateUpdateNepeForm(datos);
 						})
 						.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-							var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAIL, textoEstatus, elError);
+							var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+							var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 							jQuery(window.location).attr('href', path); 
 						});
 													

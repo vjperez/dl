@@ -17,10 +17,11 @@ jQuery.handleLoginSubmit = function(){
 					datosJSObj = JSON.parse(datosJSONStr);
 					//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 				}catch(errorParseo){
-					var textoEstatus = errorParseo.name + '<br>Error parseando la siguiente respuesta del server en escritos/login.php :<br> Mensaje: ' + errorParseo.message;
-					var elError = datosJSONStr;
+					var datosJSONStrAsXHRTexto = datosJSONStr;
+					var textoEstatus = '<br>Error parseando la siguiente respuesta del server en escritos/login.php :<br> Mensaje: ' + errorParseo.message;
+					var elError = errorParseo.name;
 					
-					var path = jQuery.encodeAndGetErrorPath(new Object(), textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
+					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
 					jQuery(window.location).attr('href', path); 
 				}
 				if(datosJSObj.loguea){
@@ -31,7 +32,8 @@ jQuery.handleLoginSubmit = function(){
 				}
 			})
 			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-				var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAIL, textoEstatus, elError);
+				var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+				var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 				jQuery(window.location).attr('href', path); 
 			});
 		}

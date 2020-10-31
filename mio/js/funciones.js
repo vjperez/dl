@@ -50,9 +50,9 @@ jQuery.isNotVacioStr = function(str){
 }
 
 
-jQuery.encodeAndGetErrorPath = function(xhrObjetoForFAIL, textoEstatus, elError){
+jQuery.encodeAndGetErrorPath = function(xhrObjetoForFAILTexto, textoEstatus, elError){
 	if(DEBUGUEO){
-		var xhrObjetoForFAILTexto = encodeURIComponent( xhrObjetoForFAIL.responseText );
+		xhrObjetoForFAILTexto     = encodeURIComponent( xhrObjetoForFAILTexto );
 		textoEstatus              = encodeURIComponent( textoEstatus );
 		elError                   = encodeURIComponent( elError );
 		var path  = window.location.pathname + '?look=' + 'error' + '&xhrObjetoForFAILTexto=' + xhrObjetoForFAILTexto + '&textoEstatus=' + textoEstatus + 		'&elError=' + elError;

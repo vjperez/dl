@@ -29,8 +29,8 @@ jQuery.fallas = function(xhrObjetoForFAILTexto, textEstatus, elError){
 	
 	losLis = '<br><hr>';
 			
+	losLis += '<li><span class="color01enfasis">El error:<br></span>' + elError + '<br><br></li>';		
 	losLis += '<li><span class="color01enfasis">Texto Estatus:<br></span>' + textEstatus + '<br><br></li>';
-	losLis += '<li><span class="color01enfasis">El error:<br></span>' + elError + '<br><br></li>';
 	losLis += '<li><span class="color01enfasis">xhr Objecto Texto:<br></span>'      + xhrObjetoForFAILTexto + '</li>';
 		
 	losLis += '<br><hr>';
