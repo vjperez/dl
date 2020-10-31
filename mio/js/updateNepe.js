@@ -136,7 +136,12 @@ jQuery.handleUpdateNepeSubmit = function(duenoId, nepeId){
 					datosJSObj = JSON.parse(datosJSONStr);
 					//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
 				}catch(errorParseo){
-					jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server desde escritos/updateNepe.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
+					var datosJSONStrAsXHRTexto = datosJSONStr;
+					var textoEstatus = 'Error parseando la siguiente respuesta del server en escritos/updateNepe.php :<br> Mensaje: ' + errorParseo.message;
+					var elError = errorParseo.name;
+					
+					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
+					jQuery(window.location).attr('href', path); 					
 				}
 				if(datosJSObj.actualizado){
 					jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
@@ -144,7 +149,11 @@ jQuery.handleUpdateNepeSubmit = function(duenoId, nepeId){
 					//jQuery.feedback('form#updateNepeForm h3', datosJSObj.feedback);
 				}
 			})
-			.fail(  jQuery.fallas  );  //failing post
+			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+				var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+				var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+				jQuery(window.location).attr('href', path); 
+			});
 			// post made
 		}  // submitVote1 && submitVote2
 		else
