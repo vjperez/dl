@@ -1,4 +1,4 @@
-jQuery.fallas = function(xhrObjetoForFAILTexto, textEstatus, elError){            
+jQuery.appendDebugErrors = function(xhrObjetoForFAILTexto, textEstatus, elError){            
 //Called at getJSON .fail and jQuery post when parsing errors (caused by PHP Exceptions), and
 //other errors are found.
 //jQuery getJSON will throw an error and run the .fail code whenever it cannot

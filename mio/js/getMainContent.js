@@ -206,7 +206,7 @@ jQuery(document).ready(
 						//This code runs when get isCompleted and IF the get was requesting error.html
 						if(settingsObjeto.url === 'looks/error.html'){ // === means true without type coersion - the type and value most both be equal
 							//when ajax complete ; 
-							jQuery.fallas( xhrObjetoForFAILTexto, textoEstatus, elError );  
+							jQuery.appendDebugErrors( xhrObjetoForFAILTexto, textoEstatus, elError );  
 						}//if
 					}); //ajax complete
 				}
