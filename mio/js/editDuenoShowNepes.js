@@ -20,7 +20,12 @@ jQuery.editDuenoShowNepes = function(duenoId){
 					datosJSObj = JSON.parse(datosJSONStr);
 					//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 				}catch(errorParseo){
-					jQuery.fallas(new Object(), 'Error parsing la siguiente respuesta del server en escritos/editDuenoContrasena.php<br>' + errorParseo.name + ' : ' + errorParseo.message, datosJSONStr);
+					var datosJSONStrAsXHRTexto = datosJSONStr;
+					var textoEstatus = '<br>Error parseando la siguiente respuesta del servidor en escritos/editDuenoContrasena.php :<br> Mensaje: ' + errorParseo.message;
+					var elError = errorParseo.name;
+					
+					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
+					jQuery(window.location).attr('href', path);				
 				}
 				if(datosJSObj.cambiado){
 					jQuery.feedback('form#editDuenoDataForm h3', 'Tu contrasena fue cambiada.');
@@ -28,7 +33,11 @@ jQuery.editDuenoShowNepes = function(duenoId){
 					jQuery.feedback('form#editDuenoDataForm h3', 'Trata otra vez. No cambiamos NADA !');
 				}
 			})
-			.fail(  jQuery.fallas  );//fail
+			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+				var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+				var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+				jQuery(window.location).attr('href', path); 
+			});
 		}
 	});
 
@@ -47,7 +56,11 @@ jQuery.editDuenoShowNepes = function(duenoId){
 			labelAndTable += '</table>';
 		jQuery('#labelAndTableContainer').html(labelAndTable);
 	})
-	.fail(  jQuery.fallas  );//fail
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	});
 	
 	
 	//hide, show on click ; editDuenoShowNepes task 3
