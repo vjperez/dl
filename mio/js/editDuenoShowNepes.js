@@ -21,7 +21,7 @@ jQuery.editDuenoShowNepes = function(duenoId){
 					//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 				}catch(errorParseo){
 					var datosJSONStrAsXHRTexto = datosJSONStr;
-					var textoEstatus = '<br>Error parseando la siguiente respuesta del servidor en escritos/editDuenoContrasena.php :<br> Mensaje: ' + errorParseo.message;
+					var textoEstatus = 'Error parseando la siguiente respuesta del servidor en escritos/editDuenoContrasena.php :<br> Mensaje: ' + errorParseo.message;
 					var elError = errorParseo.name;
 					
 					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined

@@ -23,7 +23,7 @@ if($recurso){
 			$respuesta = json_decode('{"registrado":true, "feedback":"Ya estas registrado.  Directo a mi cuenta, no uso esto.", "duenoId":'  .  $dueno_id  . '}');
 		}else{
 			pg_close($cnx); //maybe not needed but doesn't hurt
-			throw new Exception('Mal query.  Sin RECURSO, para queryRegisterUserReturningId.  (username es nuevo, pero hubo error.)');
+			throw new Exception('Mal query. Sin RECURSO, para queryRegisterUserReturningId. (username es nuevo, pero hubo error en: )' . __FILE__ );
 		}
 	}else{
 		$respuesta = json_decode('{"registrado":false, "feedback":"Usuario no disponible."}');
@@ -32,7 +32,7 @@ if($recurso){
 	echo json_encode ($respuesta);
 }else{
 	pg_close($cnx); //maybe not needed but doesn't hurt
-	throw new Exception('Mal query.  Sin RECURSO, para queryCheckUserName.  (Ni se chequio el username.)');
+	throw new Exception('Mal query.  Sin RECURSO, para queryCheckUserName.  (Ni se chequio el username.) en: ' . __FILE__ );
 	//echo "<li>Error, pg_query, no produjo un recurso para result... en escritos\login</li>";
 }
 
