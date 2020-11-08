@@ -102,3 +102,30 @@ Use JQuery for validation on form ... passwords, jquery plugins etc
 postgre equivalent of real escape 
 
 php crypt
+
+
+
+
+Arch Linux packages
+============================================================================================================================
+
+base linux linux-firmware
+
+netctl
+dialog
+
+dhcpcp-ui
+
+
+
+xorg     xorg-xinit  xorg-twm   xterm   nano
+openbox obconf menumaker
+
+
+notepadqq
+
+atril
+
+firebox
+
+man-db    man-pages
