@@ -111,14 +111,17 @@ Arch Linux packages
 
 base linux linux-firmware
 
+pa wifi:
 netctl
 dialog
+wpa_supplicant
 
+pa ethernet:
 dhcpcp-ui
 
 
 
-xorg     xorg-xinit  xorg-twm   xterm   nano
+xorg     xorg-xinit    xorg-twm   xterm   nano
 openbox obconf menumaker
 
 
