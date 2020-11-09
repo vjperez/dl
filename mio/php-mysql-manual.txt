@@ -104,31 +104,13 @@ postgre equivalent of real escape
 php crypt
 
 
+Ch 13
+Users can delete, create and modify the cookies you place in their computers
 
+setcookie("unNombre", "unValor");
 
-Arch Linux packages
-============================================================================================================================
-
-base linux linux-firmware
-
-pa wifi:
-netctl
-dialog
-wpa_supplicant
-
-pa ethernet:
-dhcpcp-ui
+usa el valor del cookie:  $_COOKIE['unNombre']
 
 
 
-xorg     xorg-xinit    xorg-twm   xterm   nano
-openbox obconf menumaker
-
-
-notepadqq
-
-atril
-
-firebox
-
-man-db    man-pages
+p 426 	Logging In with Cookies
