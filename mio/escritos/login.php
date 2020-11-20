@@ -13,6 +13,7 @@ if($recurso){
 	if($fila = pg_fetch_row($recurso)){
 		$dueno_id = $fila[0];
 		$respuesta = json_decode('{"loguea":true,  "duenoId":' . $dueno_id . '}');
+		setcookie('duenoID', $dueno_id, 3600*24 + time();
 	}else{
 		$respuesta = json_decode('{"loguea":false}');
 	}

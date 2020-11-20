@@ -3,7 +3,7 @@ jQuery.handleLoginSubmit = function(){
 		evento.preventDefault(); //not making a submit (POST request) from html action.
 		var user = jQuery('#usernameId').val();
 		var pass = jQuery('#passwordId').val();
-		if( jQuery.areValidUserYPass(user, pass, pass, "generalFeedback", 'form#loginForm h3') ){
+		if( jQuery.areValidUserYPass(user, pass, pass, "genericFeedback", 'form#loginForm h3') ){
 			//Valid values son los q cumplen estas 3 cosas.
 			//Estas cosas se pueden chequear antes del post y evito post sin sentido
 			// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
@@ -25,7 +25,8 @@ jQuery.handleLoginSubmit = function(){
 					jQuery(window.location).attr('href', path); 
 				}
 				if(datosJSObj.loguea){
-					jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes&duenoId=' + datosJSObj.duenoId);
+					//jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes&duenoId=' + datosJSObj.duenoId);
+					  jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes';
 				}else{
 					//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 					jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
