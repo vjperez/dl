@@ -76,15 +76,17 @@ jQuery(document).ready(
 			case 'editDuenoShowNepes':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+				
 				//get duenoId
-				var duenoId = jQuery.urlParametro('duenoId');
+				//var duenoId = jQuery.urlParametro('duenoId');
 
 				jQuery.dameLook('looks/editDuenoShowNepes.html');
 
 				//once look is in, use jQuery to update look with profile values
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/editDuenoShowNepes.html'){
-						jQuery.editDuenoShowNepes(duenoId);
+						//jQuery.editDuenoShowNepes(duenoId);
+						  jQuery.editDuenoShowNepes();
 					}//if
 				});//ajaxComplete
 

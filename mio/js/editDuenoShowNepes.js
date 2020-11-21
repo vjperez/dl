@@ -1,5 +1,7 @@
-jQuery.editDuenoShowNepes = function(duenoId){	
+jQuery.editDuenoShowNepes = function(){	
+//jQuery.editDuenoShowNepes = function(duenoId){	
 
+	
 	//do this when form submitted ; editDuenoShowNepes task 1
 	jQuery('form#editDuenoDataForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action.
@@ -40,19 +42,20 @@ jQuery.editDuenoShowNepes = function(duenoId){
 			});
 		}
 	});
+	
 
 	//show empresas ; editDuenoShowNepes task 2
-	jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
+	//jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
+	jQuery.getJSON('escritos/showNepesGetIds.php')
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 		var labelAndTable = '<label class="notHidable">Tus NePes:</label>';
 		labelAndTable   +=  '<table class="hidaxxxble">';
 			jQuery.each(datos, function(index){
-				labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + duenoId 
+				labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
 				+  '&nepeId=' + datos[index].nepeId  + '">' + datos[index].nepeNombre + '</a></td></tr>';
 			});
 			
-			labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' + duenoId 
-			+ '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
+			labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
 			labelAndTable += '</table>';
 		jQuery('#labelAndTableContainer').html(labelAndTable);
 	})
@@ -63,7 +66,9 @@ jQuery.editDuenoShowNepes = function(duenoId){
 	});
 	
 	
+	
 	//hide, show on click ; editDuenoShowNepes task 3
 	jQuery.toggleOnClick();
+	
 	
 }
