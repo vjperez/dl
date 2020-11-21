@@ -26,7 +26,7 @@ jQuery.handleLoginSubmit = function(){
 				}
 				if(datosJSObj.loguea){
 					//jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes&duenoId=' + datosJSObj.duenoId);
-					  jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes';
+					  jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes');
 				}else{
 					//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 					jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
@@ -39,6 +39,7 @@ jQuery.handleLoginSubmit = function(){
 			});
 		}
 	});
+	
 	//erase feedback when user writting
 	jQuery('form#loginForm  input[name=password]').keyup(function(){
 		jQuery.feedback('form#loginForm h3', '');
