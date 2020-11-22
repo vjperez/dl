@@ -3,7 +3,7 @@ jQuery(document).ready(
 		var look = jQuery.urlParametro('look');
 		switch(look) {
 			case 'busca':
-				jQuery('#navBusca').hide();
+				jQuery('#navBusca').hide();  jQuery('#navLogout').hide();
 
 				jQuery.dameLook('looks/busca.html');
 		
@@ -60,7 +60,7 @@ jQuery(document).ready(
 			break;
 			case 'login':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navLogout').hide(); jQuery('#navSignUp').hide();
 				//get login look
 				jQuery.dameLook('looks/login.html');
 
@@ -89,8 +89,6 @@ jQuery(document).ready(
 						  jQuery.editDuenoShowNepes();
 					}//if
 				});//ajaxComplete
-
-
 			break;			
 			case 'profile':
 				//get nepeId then
