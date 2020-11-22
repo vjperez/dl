@@ -73,6 +73,11 @@ jQuery.editDuenoShowNepes = function(){
 	
 	//hide, show on click ; editDuenoShowNepes task 3
 	jQuery.toggleOnClick();
+
+	//erase feedback when user writting
+	jQuery('form#editDuenoDataForm  input[name^=password]').keyup(function(){
+		jQuery.feedback('form#editDuenoDataForm h3', '');
+	});
 	
 	
 }
