@@ -12,7 +12,6 @@ if(isset($_COOKIE['dueno_id'])){
 		require_once 'showNepesGetIds/showNepesGetIdsQuery.php';
 		$empresa =  array();
 		$empresas = array();
-		$empresas['duenoId'] = $dueno_id;
 		$recurso = pg_query($cnx, $getNepeIdsQuery);
 		if($recurso){
 			$index = 0;
