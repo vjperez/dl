@@ -26,7 +26,8 @@ jQuery.handleCreaDuenoSubmit = function(){
 					jQuery(window.location).attr('href', path); 					
 				}
 				if(datosJSObj.registrado){
-					jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes&duenoId=' + datosJSObj.duenoId);
+					jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes');
+					//jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes&duenoId=' + datosJSObj.duenoId);
 				}else{ // usuario es repetido en el database, por eso se chequea despues del post
 					jQuery.feedback('form#creaDuenoForm h3', datosJSObj.feedback);
 				}
