@@ -137,9 +137,11 @@ jQuery(document).ready(
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/creaNepe.html'){
 						//get duenoId
-						var duenoId = jQuery.urlParametro('duenoId');
+						//var duenoId = jQuery.urlParametro('duenoId');
+						
 						//task 1 when ajax complete ; handle form submit and make post
-						jQuery.handleCreaNepeSubmit(duenoId);
+						//jQuery.handleCreaNepeSubmit(duenoId);
+						jQuery.handleCreaNepeSubmit();
 						//submit event listener and handler
 					}//if
 				});//ajaxComplete
@@ -154,8 +156,9 @@ jQuery(document).ready(
 					if(settingsObjeto.url === 'looks/updateNepe.html'){
 						//get nepeId
 						var nepeId = jQuery.urlParametro('nepeId');  
+						
 						//get duenoId
-						var duenoId = jQuery.urlParametro('duenoId');
+						//var duenoId = jQuery.urlParametro('duenoId');
 
 						//task 1 when ajax complete get that data
 						//alert('nepeId : ' + nepeId);
@@ -170,7 +173,8 @@ jQuery(document).ready(
 						});
 													
 						//task 2 when ajax complete ; handle form submit and make post
-						jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
+						//jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
+						jQuery.handleUpdateNepeSubmit(nepeId);
 						//submit event listener and handler
 					}//if
 				});//ajaxComplete

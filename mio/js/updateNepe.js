@@ -53,7 +53,8 @@ jQuery.populateUpdateNepeForm = function(datos){
 
 //major task 2
 //when ajax complete ; build formdata and make post
-jQuery.handleUpdateNepeSubmit = function(duenoId, nepeId){
+//jQuery.handleUpdateNepeSubmit = function(duenoId, nepeId){
+jQuery.handleUpdateNepeSubmit = function(nepeId){
 	jQuery('form#updateNepeForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action
 		var submitVote1 = jQuery.haveAtLeast1Handle();
@@ -116,7 +117,7 @@ jQuery.handleUpdateNepeSubmit = function(duenoId, nepeId){
 			donde = JSON.stringify(donde);  //alert(donde);
 			formData.append('donde', donde);
 
-			formData.append('duenoId', duenoId);
+			//formData.append('duenoId', duenoId);			////// using cookies now	///////////////
 			formData.append('nepeId', nepeId);
 
 			console.log("form built");
@@ -321,6 +322,7 @@ var $redInputs = jQuery('form#updateNepeForm input[name^=red]');
 $redInputs.on('change', function(evento){
 	jQuery.haveAtLeast1Handle();
 });
+
 var $fotoInput = jQuery('form#updateNepeForm input#fotosId');
 $fotoInput.on('change', function(evento){
 	jQuery.have5OrLessImages();

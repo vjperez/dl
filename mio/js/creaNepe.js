@@ -3,7 +3,8 @@ var reducedImagesArray = [];
 
 //major task 1
 //when ajax complete ; build formdata and make post
-jQuery.handleCreaNepeSubmit = function(duenoId){
+//jQuery.handleCreaNepeSubmit = function(duenoId){
+jQuery.handleCreaNepeSubmit = function(){
 	jQuery('form#creaNepeForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action
 		var submitVote1 = jQuery.haveAtLeast1Handle();
@@ -66,7 +67,7 @@ jQuery.handleCreaNepeSubmit = function(duenoId){
 			donde = JSON.stringify(donde);  //alert(donde);
 			formData.append('donde', donde);
 
-			formData.append('duenoId', duenoId);
+			//formData.append('duenoId', duenoId);				////// using cookies now	///////////////
 			//formData.append('nepeId', nepeId);				////// solo para nepe update  ////////////////////
 
 			console.log("form built");
@@ -115,7 +116,7 @@ jQuery.handleCreaNepeSubmit = function(duenoId){
 	});  //jQuery submit
 	
 	
-	//hide, show on click ; editDuenoShowNepes task 3
+	//hide, show on click ; creaNepe task 3
 	jQuery.toggleOnClick();
 	
 }//  handleSubmit
@@ -273,6 +274,7 @@ var $redInputs = jQuery('form#creaNepeForm input[name^=red]');
 $redInputs.on('change', function(evento){
 	jQuery.haveAtLeast1Handle();
 });
+
 var $fotoInput = jQuery('form#creaNepeForm input#fotosId');
 $fotoInput.on('change', function(evento){
 	jQuery.have5OrLessImages();
