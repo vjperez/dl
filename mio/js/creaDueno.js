@@ -39,4 +39,14 @@ jQuery.handleCreaDuenoSubmit = function(){
 			});
 		}
 	});
+
+	//erase feedback when user writting
+	jQuery('form#creaDuenoForm  input[name^=password]').keyup(function(){
+		jQuery.feedback('form#creaDuenoForm h3', '');
+	});
+	//erase feedback when user writting
+	jQuery('form#creaDuenoForm  input[name=username]').keyup(function(){
+		jQuery.feedback('form#creaDuenoForm h3', '');
+	});
+
 }
