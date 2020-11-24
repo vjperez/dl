@@ -1,6 +1,5 @@
-jQuery.editDuenoShowNepes = function(){	
 //jQuery.editDuenoShowNepes = function(duenoId){	
-
+jQuery.editDuenoShowNepes = function(){	
 	
 	//do this when form submitted ; editDuenoShowNepes task 1
 	jQuery('form#editDuenoDataForm').submit(function(evento){
@@ -14,7 +13,7 @@ jQuery.editDuenoShowNepes = function(){
 			// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
 			//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
 			
-			//jQuery.post('escritos/editDuenoContrasena.php', {duenoId:duenoId, pass01:pass01} )
+	      //jQuery.post('escritos/editDuenoContrasena.php', {duenoId:duenoId, pass01:pass01} )
 			jQuery.post('escritos/editDuenoContrasena.php', {pass01:pass01} )
 			.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 				//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
@@ -47,18 +46,18 @@ jQuery.editDuenoShowNepes = function(){
 	
 
 	//show empresas ; editDuenoShowNepes task 2
-	//jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
+  //jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
 	jQuery.getJSON('escritos/showNepesGetIds.php')
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 		var labelAndTable = '<label class="notHidable">Tus NePes:</label>';
 		labelAndTable   +=  '<table class="hidaxxxble">';
 			jQuery.each(datos, function(index){
-				//labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
+			  //labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
 				labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'
 				+  '&nepeId=' + datos[index].nepeId  + '">' + datos[index].nepeNombre + '</a></td></tr>';
 			});
 			
-			//labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
+		  //labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
 			labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe' + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
 			labelAndTable += '</table>';
 		jQuery('#labelAndTableContainer').html(labelAndTable);

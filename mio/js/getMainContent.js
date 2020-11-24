@@ -58,6 +58,29 @@ jQuery(document).ready(
 					jQuery(window.location).attr('href', path); 
 				});
 			break;
+			case 'profile':
+				//get nepeId then
+				var nepeId = jQuery.urlParametro('nepeId');
+				//request get JSON data for that meId
+				jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+					//alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
+					//Once the data is in, get profile look
+					jQuery.dameLook('looks/profile.html');
+
+					//Once the look is in (ajaxComplete), then insert json data into profile look
+					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+						if(settingsObjeto.url === 'looks/profile.html'){
+							jQuery.populateProfile(datos);
+						}//if
+					});//ajax complete
+				})//done
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
+				});
+			break;						
 			case 'login':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navLogout').hide(); jQuery('#navSignUp').hide();
@@ -90,44 +113,6 @@ jQuery(document).ready(
 					}//if
 				});//ajaxComplete
 			break;			
-			case 'profile':
-				//get nepeId then
-				var nepeId = jQuery.urlParametro('nepeId');
-				//request get JSON data for that meId
-				jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-					//alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
-					//Once the data is in, get profile look
-					jQuery.dameLook('looks/profile.html');
-
-					//Once the look is in (ajaxComplete), then insert json data into profile look
-					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						if(settingsObjeto.url === 'looks/profile.html'){
-							jQuery.populateProfile(datos);
-						}//if
-					});//ajax complete
-				})//done
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
-				});
-			break;
-			case 'creaDueno':
-				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
-				//get creaDueno look
-				jQuery.dameLook('looks/creaDueno.html');
-
-				//once look is in, use jQuery on loaded elements to get values
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					//This code runs when get isCompleted and IF the get was requesting creaDueno.html
-					if(settingsObjeto.url === 'looks/creaDueno.html'){
-						//when ajax complete ; handle form submit and make post
-						jQuery.handleCreaDuenoSubmit();
-					}//if
-				});//ajax complete
-			break;
 			case 'creaNepe':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
@@ -140,7 +125,7 @@ jQuery(document).ready(
 						//var duenoId = jQuery.urlParametro('duenoId');
 						
 						//task 1 when ajax complete ; handle form submit and make post
-						//jQuery.handleCreaNepeSubmit(duenoId);
+					  //jQuery.handleCreaNepeSubmit(duenoId);
 						jQuery.handleCreaNepeSubmit();
 						//submit event listener and handler
 					}//if
@@ -179,6 +164,21 @@ jQuery(document).ready(
 					}//if
 				});//ajaxComplete
 			break;			
+			case 'creaDueno':
+				//remove navegation before requesting new html.  Less likely user will notice it going away.
+				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+				//get creaDueno look
+				jQuery.dameLook('looks/creaDueno.html');
+
+				//once look is in, use jQuery on loaded elements to get values
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					//This code runs when get isCompleted and IF the get was requesting creaDueno.html
+					if(settingsObjeto.url === 'looks/creaDueno.html'){
+						//when ajax complete ; handle form submit and make post
+						jQuery.handleCreaDuenoSubmit();
+					}//if
+				});//ajax complete
+			break;				
 			case 'faq':
 				jQuery.dameLook('looks/faq.html');
 

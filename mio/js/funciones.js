@@ -106,7 +106,7 @@ jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatEl
 			jQuery.feedback(whatElement, 'Trata otra vez.');
 		}
 		return false;
-	}else if(pass01 !== pass02){  //same type, same value, no type conversion, case sensitive
+	}else if( ! pass01.equals(pass02)){  //same type, same value, no type conversion, case sensitive
 		if(feedbackType.indexOf('fullFeedback') !== -1){
 			jQuery.feedback(whatElement, 'Las contrase\u00f1as son diferentes.');
 		}else if(feedbackType.indexOf('genericFeedback') !== -1){

@@ -26,6 +26,6 @@ if(isset($_COOKIE['dueno_id'])){
 		}
 		pg_close($cnx); //maybe not needed but doesn't hurt	
 }else{
-	throw new Exception('Sin cookie en: ' . __FILE__  );
+		throw new Exception('Sin cookie en: ' . __FILE__  );
 }
 ?>
