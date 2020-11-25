@@ -75,8 +75,8 @@ jQuery.feedback = function(elementoDonde, mensaje, forma){
 
 jQuery.toggleOnClick = function(){
 	var $todosLosNotHidable = jQuery('.notHidable');
-	var $todosLosHidable = jQuery('.hidable');
-	$todosLosHidable.hide();
+	// var $todosLosHidable = jQuery('.hidable');
+	// $todosLosHidable.hide();
 	$todosLosNotHidable.on('click', function(evento){
 		var $toToggle = jQuery(evento.currentTarget).next('.hidable');
 		$toToggle.toggle();

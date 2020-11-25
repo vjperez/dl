@@ -97,15 +97,11 @@ if(isset($_COOKIE['dueno_id'])){
 	require_once 'conecta/conecta.php';
 	//i am sure i have a connection, because an exception was NOT thrown at conecta
 
-	//if( ! isset($nepe_id) || trim($nepe_id) === ''){
 	$mediaFotoUrlPosgreArray = '{vacio}';
 	require_once 'creaNepe/crea/creaNepe.php';
 	//check for foto errors   ;   move fotos   ;   build a $fotoUrlPosgreArray postgresql type array and insert array into db
 	require_once 'creaNepe/checkFotoUploadErrorAndMove/checkFotoUploadErrorAndMove.php';
 	require_once 'creaNepe/update/updateMediaFotoUrl.php';
-	//}else{
-		//require_once 'editMicroEmpreData/update/updateMicroEmpreData.php';
-	//}
 
 }else{
 	throw new Exception('Sin cookie en: ' . __FILE__  );

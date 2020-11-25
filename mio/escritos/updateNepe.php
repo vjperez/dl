@@ -4,9 +4,9 @@
 //$dueno_id = $_POST['duenoId'];
 
 if(isset($_COOKIE['dueno_id'])){
-	$nepe_id = $_POST['nepeId'];
 	$dueno_id = $_COOKIE['dueno_id'];
-	$nombre = $_POST['nombre'];
+	$nepe_id = $_POST['nepeId'];
+	$nombre  = $_POST['nombre'];
 	$quien_social_handle = $_POST['quienSocialHandle'];
 
 
