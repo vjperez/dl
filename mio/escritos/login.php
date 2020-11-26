@@ -14,7 +14,7 @@ if($recurso){
 		$dueno_id = $fila[0];
 	  //$respuesta = json_decode('{"loguea":true,  "duenoId":' . $dueno_id . '}');
 		$respuesta = json_decode('{"loguea":true}');
-		setcookie('dueno_id', $dueno_id, 3600*24 + time());
+		setcookie('dueno_id', $dueno_id, 3600*24 + time(), '/');
 	}else{
 		$respuesta = json_decode('{"loguea":false}');
 	}

@@ -3,7 +3,9 @@ jQuery(document).ready(
 		var look = jQuery.urlParametro('look');
 		switch(look) {
 			case 'busca':
-				jQuery('#navBusca').hide();  jQuery('#navLogout').hide();
+				jQuery('#navBusca').hide();
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide();}
 
 				jQuery.dameLook('looks/busca.html');
 		
@@ -17,6 +19,8 @@ jQuery(document).ready(
 				}); //ajax complete
 			break;
 			case 'opciones':
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide();}
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 			//concatenating strings inside an each loop, with the requested JSON datos.
@@ -59,6 +63,9 @@ jQuery(document).ready(
 				});
 			break;
 			case 'profile':
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide();}
+
 				//get nepeId then
 				var nepeId = jQuery.urlParametro('nepeId');
 				//request get JSON data for that meId
@@ -82,8 +89,11 @@ jQuery(document).ready(
 				});
 			break;						
 			case 'login':
+				jQuery('#navLogin').hide();
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navLogout').hide(); jQuery('#navSignUp').hide();
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide();}
+
 				//get login look
 				jQuery.dameLook('looks/login.html');
 
@@ -98,7 +108,8 @@ jQuery(document).ready(
 			break;
 			case 'editDuenoShowNepes':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide();}
 				
 				//get duenoId
 				//var duenoId = jQuery.urlParametro('duenoId');
@@ -115,7 +126,8 @@ jQuery(document).ready(
 			break;			
 			case 'creaNepe':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide();}
 
 				jQuery.dameLook('looks/creaNepe.html');
 
@@ -133,7 +145,8 @@ jQuery(document).ready(
 			break;
 			case 'updateNepe':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide();}
 
 				jQuery.dameLook('looks/updateNepe.html');
 
@@ -166,7 +179,9 @@ jQuery(document).ready(
 			break;			
 			case 'creaDueno':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				jQuery('#navBusca').hide(); jQuery('#navLogin').hide(); jQuery('#navSignUp').hide();
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide();}
+
 				//get creaDueno look
 				jQuery.dameLook('looks/creaDueno.html');
 
@@ -180,6 +195,9 @@ jQuery(document).ready(
 				});//ajax complete
 			break;				
 			case 'faq':
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide();}
+
 				jQuery.dameLook('looks/faq.html');
 
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
@@ -193,10 +211,16 @@ jQuery(document).ready(
 			//you can join the null case and busca case together, should avoid requesting portada.html
 			//twice when there is NO look parameter (null)
 			case null:
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide();}
+
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 				jQuery.dameLook('looks/lookIsNull.html');
 			break;
 			case 'error':
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide();}
+
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 				jQuery.dameLook('looks/error.html');
 				
@@ -217,6 +241,9 @@ jQuery(document).ready(
 
 			break;
 			default :
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide();}
+
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 				jQuery.dameLook('looks/default.html');
 			break;

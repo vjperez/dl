@@ -106,7 +106,7 @@ jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatEl
 			jQuery.feedback(whatElement, 'Trata otra vez.');
 		}
 		return false;
-	}else if( ! pass01.equals(pass02)){  //same type, same value, no type conversion, case sensitive
+	}else if(pass01 !== pass02){  //same type, same value, no type conversion, case sensitive
 		if(feedbackType.indexOf('fullFeedback') !== -1){
 			jQuery.feedback(whatElement, 'Las contrase\u00f1as son diferentes.');
 		}else if(feedbackType.indexOf('genericFeedback') !== -1){
@@ -116,4 +116,22 @@ jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatEl
 	}else{
 		return true;
 	}
+}
+
+jQuery.isSetCookie = function(cookieName){
+	var isSet = false;
+	var allcookies = document.cookie;
+
+	//alert(allcookies);
+
+	cookiearray = allcookies.split(';');
+	for(var i=0; i < cookiearray.length; i++) {
+		name = cookiearray[i].split('=')[0];
+		//value = cookiearray[i].split('=')[1];
+
+		//alert('indexName=' + name + ' Parametro=' + cookieName + ' Iguales=' + (name === cookieName));
+
+		if(name === cookieName) {isSet = true; break;}
+	}
+	return isSet;
 }
