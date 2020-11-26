@@ -202,6 +202,8 @@ jQuery(document).ready(
 				jQuery('#navSignup').hide();
 				if( jQuery.isSetCookie('dueno_id') )  {
 					jQuery('#navLogin').hide();
+				}else{
+					jQuery('#navLogout').hide();
 					
 					//get creaDueno look
 					jQuery.dameLook('looks/creaDueno.html');
@@ -214,8 +216,6 @@ jQuery(document).ready(
 							jQuery.handleCreaDuenoSubmit();
 						}//if
 					});//ajax complete
-				}else{
-					jQuery('#navLogout').hide();
 				}
 			break;				
 			case 'faq':
