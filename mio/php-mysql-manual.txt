@@ -111,6 +111,11 @@ setcookie("unNombre", "unValor");
 
 usa el valor del cookie:  $_COOKIE['unNombre']
 
+Consolida looks ... dentro de null maybe.
+En updateNepe un dueno todavia puede actualizar los nepes de otro dueno.
+Delete a user ... o nepes
+ch 14
 
+Bluehost ....
 
 

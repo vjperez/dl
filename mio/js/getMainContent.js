@@ -100,112 +100,126 @@ jQuery(document).ready(
 			case 'login':
 				jQuery('#navLogin').hide();
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide();}
+				if( jQuery.isSetCookie('dueno_id') )  {
+					jQuery('#navSignup').hide();
+				}else{
+					jQuery('#navLogout').hide();
 
-				//get login look
-				jQuery.dameLook('looks/login.html');
+					//get login look
+					jQuery.dameLook('looks/login.html');
 
-				//once look is in, use jQuery on loaded elements to get values
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					//This code runs when get isCompleted and IF the get was requesting login.html
-					if(settingsObjeto.url === 'looks/login.html'){
-						//when ajax complete ; handle form submit and make post
-						jQuery.handleLoginSubmit();
-					}//if
-				});//ajax complete
+					//once look is in, use jQuery on loaded elements to get values
+					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+						//This code runs when get isCompleted and IF the get was requesting login.html
+						if(settingsObjeto.url === 'looks/login.html'){
+							//when ajax complete ; handle form submit and make post
+							jQuery.handleLoginSubmit();
+						}//if
+					});//ajax complete
+				}
 			break;
 			case 'editDuenoShowNepes':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide();}
+				if( jQuery.isSetCookie('dueno_id') )  {
+					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 				
-				//get duenoId
-				//var duenoId = jQuery.urlParametro('duenoId');
+					//get duenoId
+					//var duenoId = jQuery.urlParametro('duenoId');
 
-				jQuery.dameLook('looks/editDuenoShowNepes.html');
+					jQuery.dameLook('looks/editDuenoShowNepes.html');
 
-				//once look is in, use jQuery to update look with profile values
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/editDuenoShowNepes.html'){
-						//jQuery.editDuenoShowNepes(duenoId);
-						  jQuery.editDuenoShowNepes();
-					}//if
-				});//ajaxComplete
+					//once look is in, use jQuery to update look with profile values
+					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+						if(settingsObjeto.url === 'looks/editDuenoShowNepes.html'){
+							//jQuery.editDuenoShowNepes(duenoId);
+							jQuery.editDuenoShowNepes();
+						}//if
+					});//ajaxComplete
+				}else{
+					jQuery('#navLogout').hide();
+				}
 			break;			
 			case 'creaNepe':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide();}
+				if( jQuery.isSetCookie('dueno_id') )  {
+					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 
-				jQuery.dameLook('looks/creaNepe.html');
+					jQuery.dameLook('looks/creaNepe.html');
 
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/creaNepe.html'){
-						//get duenoId
-						//var duenoId = jQuery.urlParametro('duenoId');
-						
-						//task 1 when ajax complete ; handle form submit and make post
-					  //jQuery.handleCreaNepeSubmit(duenoId);
-						jQuery.handleCreaNepeSubmit();
-						//submit event listener and handler
-					}//if
-				});//ajaxComplete
+					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+						if(settingsObjeto.url === 'looks/creaNepe.html'){
+							//get duenoId
+							//var duenoId = jQuery.urlParametro('duenoId');
+							
+							//task 1 when ajax complete ; handle form submit and make post
+						  //jQuery.handleCreaNepeSubmit(duenoId);
+							jQuery.handleCreaNepeSubmit();
+							//submit event listener and handler
+						}//if
+					});//ajaxComplete
+				}else{
+					jQuery('#navLogout').hide();
+				}
 			break;
 			case 'updateNepe':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide();}
+				if( jQuery.isSetCookie('dueno_id') )  {
+					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 
-				jQuery.dameLook('looks/updateNepe.html');
+					jQuery.dameLook('looks/updateNepe.html');
 
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/updateNepe.html'){
-						//get nepeId
-						var nepeId = jQuery.urlParametro('nepeId');  
-						
-						//get duenoId
-						//var duenoId = jQuery.urlParametro('duenoId');
-
-						//task 1 when ajax complete get that data
-						//alert('nepeId : ' + nepeId);
-						jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
-						.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-							jQuery.populateUpdateNepeForm(datos);
-						})
-						.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-							var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-							var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-							jQuery(window.location).attr('href', path); 
-						});
-													
-						//task 2 when ajax complete ; handle form submit and make post
-						//jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
-						jQuery.handleUpdateNepeSubmit(nepeId);
-						//submit event listener and handler
-					}//if
-				});//ajaxComplete
+					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+						if(settingsObjeto.url === 'looks/updateNepe.html'){
+							//get nepeId
+							var nepeId = jQuery.urlParametro('nepeId');  
+							
+							//get duenoId
+							//var duenoId = jQuery.urlParametro('duenoId');
+	
+							//task 1 when ajax complete get that data
+							//alert('nepeId : ' + nepeId);
+							jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
+							.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+								jQuery.populateUpdateNepeForm(datos);
+							})
+							.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+								var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+								var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+								jQuery(window.location).attr('href', path); 
+							});
+														
+							//task 2 when ajax complete ; handle form submit and make post
+							//jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
+							jQuery.handleUpdateNepeSubmit(nepeId);
+							//submit event listener and handler
+						}//if
+					});//ajaxComplete
+				}else{
+					jQuery('#navLogout').hide();
+				}
 			break;			
 			case 'creaDueno':
 				jQuery('#navSignup').hide();
-				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();}
-				else                                  {jQuery('#navLogout').hide();}
+				if( jQuery.isSetCookie('dueno_id') )  {
+					jQuery('#navLogin').hide();
+					
+					//get creaDueno look
+					jQuery.dameLook('looks/creaDueno.html');
 
-				//get creaDueno look
-				jQuery.dameLook('looks/creaDueno.html');
-
-				//once look is in, use jQuery on loaded elements to get values
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					//This code runs when get isCompleted and IF the get was requesting creaDueno.html
-					if(settingsObjeto.url === 'looks/creaDueno.html'){
-						//when ajax complete ; handle form submit and make post
-						jQuery.handleCreaDuenoSubmit();
-					}//if
-				});//ajax complete
+					//once look is in, use jQuery on loaded elements to get values
+					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+						//This code runs when get isCompleted and IF the get was requesting creaDueno.html
+						if(settingsObjeto.url === 'looks/creaDueno.html'){
+							//when ajax complete ; handle form submit and make post
+							jQuery.handleCreaDuenoSubmit();
+						}//if
+					});//ajax complete
+				}else{
+					jQuery('#navLogout').hide();
+				}
 			break;				
 			case 'faq':
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide();}
 
 				jQuery.dameLook('looks/faq.html');
@@ -221,14 +235,14 @@ jQuery(document).ready(
 			//you can join the null case and busca case together, should avoid requesting portada.html
 			//twice when there is NO look parameter (null)
 			case null:
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide();}
 
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 				jQuery.dameLook('looks/lookIsNull.html');
 			break;
 			case 'error':
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide();}
 
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
@@ -251,7 +265,7 @@ jQuery(document).ready(
 
 			break;
 			default :
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide();}
 
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
