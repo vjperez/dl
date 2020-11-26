@@ -33,7 +33,7 @@ if($recurso){
 		$nepeDato['quienSocialHandle'] = json_decode($fila[8]);
 		$nepeDato['quienFotoSrc'] = json_decode($fila[9]);
 
-		$nepeDato['isValidVideoUrl'] = isValidVideoUrl( $fila[7] );
+		$nepeDato['isValidVideoUrl'] = json_decode(isValidVideoUrl( $fila[7] ));
 		//Send data from server in json format
 		echo json_encode($nepeDato);
 	}else{

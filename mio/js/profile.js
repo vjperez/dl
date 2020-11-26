@@ -3,13 +3,15 @@ jQuery.populateProfile = function(datos){
 	var date = new Date(datos.revisado).toString();
 	jQuery('#video h5').text('Revisado: ' + date.substring(0, -1+date.indexOf('00:00:00')));
 	jQuery('#video h1').text(datos.nombre);
-	//alert('url: ' + datos.videoUrl + '\nEmpre id: ' + datos.microEmpreId + ' de tipo: ' + typeof datos.microEmpreId);
-	if(datos.validVideoUrl){
+	alert('url: ' + datos.videoUrl + '\nis Valid Video Url: ' + datos.isValidVideoUrl);
+	if(datos.isValidVideoUrl){
 		var str = datos.videoUrl;
 		jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + str.substring(str.length - 11, str.length)); 
 	}else{
-		jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '00000000000');
-		//jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '6qpudAhYhpc');  // hacker movie
+		//jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '00000000000');
+		jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '6qpudAhYhpc');  // hacker movie
+		//var str = datos.videoUrl;
+		//jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + str.substring(str.length - 11, str.length)); 
 	}
 	//alert(datos.quienSocialHandle);
 	if(datos.quienSocialHandle.tt != '')   jQuery('#quien h3.tt').text(datos.quienSocialHandle.tt);    // si no cambias valores, se quedan los de looks/profile.html
