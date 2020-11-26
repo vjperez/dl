@@ -1,5 +1,13 @@
 jQuery(document).ready(
 	function(){
+
+		var acto = jQuery.urlParametro('acto');
+		switch(acto){
+			case 'logout':
+				document.cookie = "dueno_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+			break;
+		}
+
 		var look = jQuery.urlParametro('look');
 		switch(look) {
 			case 'busca':
@@ -21,6 +29,7 @@ jQuery(document).ready(
 			case 'opciones':
 				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide();}
+			
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 			//concatenating strings inside an each loop, with the requested JSON datos.
@@ -91,7 +100,7 @@ jQuery(document).ready(
 			case 'login':
 				jQuery('#navLogin').hide();
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide();}
 
 				//get login look
@@ -178,8 +187,9 @@ jQuery(document).ready(
 				});//ajaxComplete
 			break;			
 			case 'creaDueno':
+				jQuery('#navSignup').hide();
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();}
 				else                                  {jQuery('#navLogout').hide();}
 
 				//get creaDueno look
@@ -248,7 +258,7 @@ jQuery(document).ready(
 				jQuery.dameLook('looks/default.html');
 			break;
 		}//switch
-
+	
 	}); // ready function and statement
 
 

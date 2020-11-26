@@ -122,14 +122,14 @@ jQuery.isSetCookie = function(cookieName){
 	var isSet = false;
 	var allcookies = document.cookie;
 
-	//alert(allcookies);
+	alert(allcookies);
 
 	cookiearray = allcookies.split(';');
 	for(var i=0; i < cookiearray.length; i++) {
 		name = cookiearray[i].split('=')[0];
 		//value = cookiearray[i].split('=')[1];
 
-		//alert('indexName=' + name + ' Parametro=' + cookieName + ' Iguales=' + (name === cookieName));
+		alert('indexName=' + name + ' Parametro=' + cookieName + ' Iguales=' + (name === cookieName));
 
 		if(name === cookieName) {isSet = true; break;}
 	}
