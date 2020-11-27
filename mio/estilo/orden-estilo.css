@@ -17,6 +17,8 @@ div#navega ul { text-align:left; list-style-type:none; margin:0pt; padding:0; }
 div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; }
 div#navega li img { vertical-align:middle; }
 
+.centro { margin-left:auto; margin-right:auto; }
+
 
 
 
