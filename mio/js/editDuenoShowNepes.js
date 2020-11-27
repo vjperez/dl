@@ -1,7 +1,32 @@
 //jQuery.editDuenoShowNepes = function(duenoId){	
 jQuery.editDuenoShowNepes = function(){	
+
+	//show empresas ; editDuenoShowNepes task 1
+  //jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
+	jQuery.getJSON('escritos/showNepesGetIds.php')
+	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+		var labelAndTable = '<label class="notHidable">Tus NePes:</label>';
+		labelAndTable   +=  '<table class="hidaxxxble">';
+			jQuery.each(datos, function(index){
+			  //labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
+				labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'
+				+  '&nepeId=' + datos[index].nepeId  + '">' + datos[index].nepeNombre + '</a></td></tr>';
+			});
+			
+		  //labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
+			labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe' + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
+			labelAndTable += '</table>';
+		jQuery('#labelAndTableContainer').html(labelAndTable);
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	});
 	
-	//do this when form submitted ; editDuenoShowNepes task 1
+	
+	
+	//do this when form submitted ; editDuenoShowNepes task 2
 	jQuery('form#editDuenoDataForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action.
 		var user = 'valorDummy';
@@ -42,31 +67,7 @@ jQuery.editDuenoShowNepes = function(){
 				jQuery(window.location).attr('href', path); 
 			});
 		}
-	});
-	
-
-	//show empresas ; editDuenoShowNepes task 2
-  //jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
-	jQuery.getJSON('escritos/showNepesGetIds.php')
-	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-		var labelAndTable = '<label class="notHidable">Tus NePes:</label>';
-		labelAndTable   +=  '<table class="hidaxxxble">';
-			jQuery.each(datos, function(index){
-			  //labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
-				labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'
-				+  '&nepeId=' + datos[index].nepeId  + '">' + datos[index].nepeNombre + '</a></td></tr>';
-			});
-			
-		  //labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
-			labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe' + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
-			labelAndTable += '</table>';
-		jQuery('#labelAndTableContainer').html(labelAndTable);
-	})
-	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-		jQuery(window.location).attr('href', path); 
-	});
+	});	
 	
 	
 	
