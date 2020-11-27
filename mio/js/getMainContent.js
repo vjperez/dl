@@ -37,33 +37,35 @@ jQuery(document).ready(
 				var donde = jQuery.urlParametro('donde');  
 				jQuery.getJSON('escritos/getOpciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-					//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
-					var mainDeOpciones = '<div id="main" class="contenido margen">';
-					jQuery.each(datos, function(buscaMode, trios){
+					if(datos.cuantasOpciones > 0){
+						//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
+						var mainDeOpciones = '<div id="main" class="contenido margen">';
+						jQuery.each(datos.opciones, function(buscaMode, trios){
 
-						
-							mainDeOpciones += '<div class="ver-borde opcionesfotos">';
-							if(buscaMode.indexOf("buscaBoth") > -1){
-								mainDeOpciones += '<h3>'  + que.replace(/:/g, ' ') + ' + ' + donde.replace(/:/g, ' ') + '</h3>';
-							}else if (buscaMode.indexOf("buscaQue") > -1){
-								mainDeOpciones += '<h3>'  + que.replace(/:/g, ' ') + '</h3>';
-							}else if (buscaMode.indexOf("buscaDonde") > -1){
-								mainDeOpciones += '<h3>'  + donde.replace(/:/g, ' ') + '</h3>';
-							}
-							jQuery.each(trios, function(index, pares){
-								jQuery.each(pares, function(nepeId, fotoSrc){
-									mainDeOpciones += '<a href="portada.html?look=profile&nepeId=' + nepeId + '">' +
-									'<img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ancho-sensi-desk-1de4 alto-sensi-cell-1de2 alto-sensi-ipad-1de3 alto-sensi-desk-1de4 ver-borde" ';
-									mainDeOpciones += ' src="imagenes/profile/subidas/' + fotoSrc + '">'  + 
-									'</a>';
-								});
-							}); // each in trios
-							mainDeOpciones += '</div>'; // <div class="ver-borde opcionesfotos">
-						
+								mainDeOpciones += '<div class="ver-borde opcionesfotos">';
+								if(buscaMode.indexOf("buscaBoth") > -1){
+									mainDeOpciones += '<h3>'  + que.replace(/:/g, ' ') + ' + ' + donde.replace(/:/g, ' ') + '</h3>';
+								}else if (buscaMode.indexOf("buscaQue") > -1){
+									mainDeOpciones += '<h3>'  + que.replace(/:/g, ' ') + '</h3>';
+								}else if (buscaMode.indexOf("buscaDonde") > -1){
+									mainDeOpciones += '<h3>'  + donde.replace(/:/g, ' ') + '</h3>';
+								}
+								jQuery.each(trios, function(index, pares){
+									jQuery.each(pares, function(nepeId, fotoSrc){
+										mainDeOpciones += '<a href="portada.html?look=profile&nepeId=' + nepeId + '">' +
+										'<img class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ancho-sensi-desk-1de4 alto-sensi-cell-1de2 alto-sensi-ipad-1de3 alto-sensi-desk-1de4 ver-borde" ';
+										mainDeOpciones += ' src="imagenes/profile/subidas/' + fotoSrc + '">'  + 
+										'</a>';
+									});
+								}); // each in trios
+								mainDeOpciones += '</div>'; // <div class="ver-borde opcionesfotos">
 
-					}); // each in datos
-					mainDeOpciones += '</div>'; //  <div id="main" class="contenido margen">
-					jQuery('#containerForMain').html(mainDeOpciones);
+						}); // each in datos
+						mainDeOpciones += '</div>'; //  <div id="main" class="contenido margen">
+						jQuery('#containerForMain').html(mainDeOpciones);
+					}else{
+						jQuery(window.location).attr('href', window.location.pathname + '?look=nada');  
+					}
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -241,6 +243,13 @@ jQuery(document).ready(
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 				jQuery.dameLook('looks/lookIsNull.html');
 			break;
+			case 'nada':
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide();}
+
+				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+				jQuery.dameLook('looks/nada.html');
+			break;				
 			case 'error':
 				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide();}

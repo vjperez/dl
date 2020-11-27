@@ -24,9 +24,10 @@ $result = array();  //array con pares
 			$randomIndex = rand(0, -1 + count($fotos));
 			$randomNepeFoto = $fotos[$randomIndex];
 			
-			$result["$buscaMode"][$parIndex][$nepeId] = $randomNepeFoto;
+			$result['opciones']["$buscaMode"][$parIndex][$nepeId] = $randomNepeFoto;
 			$parIndex++;
 		}
+		$result['cuantasOpciones'] = $parIndex;
 	}else{
 		throw new Exception('Mal query.  Sin RECURSO en getOpciones.php : ' . __FILE__ . '.  Busca Mode: ' .  $buscaMode  .  '.');
 	}

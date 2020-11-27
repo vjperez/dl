@@ -6,7 +6,7 @@ $dondeLiteralStr = str_replace(":", " | ", $_GET['donde']); //here 'que' and 'do
 
 
 //define buscaMode
-if(strlen($queLiteralStr) == 0 && strlen($dondeLiteralStr) >  0) $buscaMode = 'buscaDonde';
+if(strlen($queLiteralStr) == 0 && strlen($dondeLiteralStr) >  0)     $buscaMode = 'buscaDonde';
 elseif(strlen($queLiteralStr) >  0 && strlen($dondeLiteralStr) == 0) $buscaMode = 'buscaQue';
 elseif(strlen($queLiteralStr) >  0 && strlen($dondeLiteralStr) >  0) $buscaMode = 'buscaBoth';
 else throw new Exception('No tengo un Busca Mode, en getOpcionesQuery.php : ' . __FILE__ ); // sholud not get here ; throw warning
