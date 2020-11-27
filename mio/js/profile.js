@@ -3,7 +3,7 @@ jQuery.populateProfile = function(datos){
 	var date = new Date(datos.revisado).toString();
 	jQuery('#video h5').text('Revisado: ' + date.substring(0, -1+date.indexOf('00:00:00')));
 	jQuery('#video h1').text(datos.nombre);
-	alert('url: ' + datos.videoUrl + '\nis Valid Video Url: ' + datos.isValidVideoUrl);
+	//alert('url: ' + datos.videoUrl + '\nis Valid Video Url: ' + datos.isValidVideoUrl);
 	if(datos.isValidVideoUrl){
 		var str = datos.videoUrl;
 		jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + str.substring(str.length - 11, str.length)); 
