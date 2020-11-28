@@ -113,7 +113,10 @@ usa el valor del cookie:  $_COOKIE['unNombre']
 
 
 ========================================================================
-DONE		Consolida looks ... dentro de null maybe.						Falta los look q no debes accesar por tu cookie  ----> mandalos a error.
+DONE		Consolida looks ... dentro de null maybe.						
+			portada solo mandalo a portada busca
+			default y null looks mandalos a error tambien
+			center vacio look image
 =============================================================================================================================
 DONE			En updateNepe un dueno todavia puede actualizar los nepes de otro dueno.
 
@@ -128,3 +131,5 @@ DONE		Falta un HOME boton (jeder link) para ir a editDuenoShowNepes cuando estes
 Bluehost ....
 
 
+El issue de subir fotos es exclusivo en linux.
+back db up since you made changes to nepe id 11
