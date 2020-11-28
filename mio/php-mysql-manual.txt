@@ -115,23 +115,8 @@ usa el valor del cookie:  $_COOKIE['unNombre']
 ========================================================================
 DONE		Consolida looks ... dentro de null maybe.
 =============================================================================================================================
-WORKING			En updateNepe un dueno todavia puede actualizar los nepes de otro dueno.
-To store the array values in cookie, first you need to convert them to string, so here is some options.
-Storing cookies as JSON
+DONE			En updateNepe un dueno todavia puede actualizar los nepes de otro dueno.
 
-Storing code
-
-setcookie('your_cookie_name', json_encode($info), time()+3600);
-
-Reading code
-
-$data = json_decode($_COOKIE['your_cookie_name'], true);
-
-JSON can be good choose also if you need read cookie in front end with JavaScript.
-
-Actually you can use any encrypt_array_to_string/decrypt_array_from_string methods group that will convert 
-array to string and convert string back to same array. For example you can also use explode/implode 
-for array of integers.
 ==============================================================================================================================
 
 Delete a user ... o nepes

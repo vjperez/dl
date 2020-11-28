@@ -5,6 +5,7 @@ jQuery(document).ready(
 		switch(acto){
 			case 'logout':
 				document.cookie = "dueno_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+				document.cookie = "own_nepes=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 			break;
 		}
 
@@ -168,34 +169,44 @@ jQuery(document).ready(
 				if( jQuery.isSetCookie('dueno_id') )  {
 					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 
-					jQuery.dameLook('looks/updateNepe.html');
+					var nepeId = jQuery.urlParametro('nepeId');
+					if( jQuery.isNepeIdOnOwnNepesCookie(nepeId) ){
+							jQuery.dameLook('looks/updateNepe.html');
 
-					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						if(settingsObjeto.url === 'looks/updateNepe.html'){
-							//get nepeId
-							var nepeId = jQuery.urlParametro('nepeId');  
+							jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+								if(settingsObjeto.url === 'looks/updateNepe.html'){
+									//get nepeId
+									//var nepeId = jQuery.urlParametro('nepeId');  
+									
+									//get duenoId
+									//var duenoId = jQuery.urlParametro('duenoId');
+			
+									//task 1 when ajax complete get that data
+									//alert('nepeId : ' + nepeId);
+									jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
+									.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+										jQuery.populateUpdateNepeForm(datos);
+									})
+									.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+										var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+										var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+										jQuery(window.location).attr('href', path); 
+									});
+																
+									//task 2 when ajax complete ; handle form submit and make post
+									//jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
+									jQuery.handleUpdateNepeSubmit(nepeId);
+									//submit event listener and handler
+								}//if
+							});//ajaxComplete
+					}else{
+							var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+							var textoEstatus = 'Error, usuario solicito editar nepe q no es de el.';
+							var elError = 'Error humano.';
 							
-							//get duenoId
-							//var duenoId = jQuery.urlParametro('duenoId');
-	
-							//task 1 when ajax complete get that data
-							//alert('nepeId : ' + nepeId);
-							jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
-							.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-								jQuery.populateUpdateNepeForm(datos);
-							})
-							.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-								var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-								var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-								jQuery(window.location).attr('href', path); 
-							});
-														
-							//task 2 when ajax complete ; handle form submit and make post
-							//jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
-							jQuery.handleUpdateNepeSubmit(nepeId);
-							//submit event listener and handler
-						}//if
-					});//ajaxComplete
+							var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+							jQuery(window.location).attr('href', path);								
+					}
 				}else{
 					jQuery('#navLogout').hide();
 				}

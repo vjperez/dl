@@ -121,13 +121,45 @@ jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatEl
 jQuery.isSetCookie = function(cookieName){
 	var isSet = false;
 	var allcookies = document.cookie;
-	//alert(allcookies);
+	alert('all cookies: ' + allcookies);
 	cookiearray = allcookies.split(';');
 	for(var i=0; i < cookiearray.length; i++) {
-		name = cookiearray[i].split('=')[0];
+		var name = cookiearray[i].trim().split('=')[0];
 		//value = cookiearray[i].split('=')[1];
-		//alert('indexName=' + name + '\nParametro=' + cookieName + '\nIguales=' + (name === cookieName));
+		alert('current cookie name=' + name + '\nBuscando Parametro=' + cookieName + '\nLo q buscas?=' + (name === cookieName));
 		if(name === cookieName) {isSet = true; break;}
 	}
 	return isSet;
+}
+
+jQuery.getCookieValue = function(cookieName){
+	var allcookies = document.cookie;
+	//alert(allcookies);
+	//alert(json_decode(allcookies));
+	cookiearray = allcookies.split(';');
+	for(var i=0; i < cookiearray.length; i++) {
+		var name = cookiearray[i].trim().split('=')[0]; // me hace falta trim pq en los cookies juntos hay un espacio antes del nombre
+		value = JSON.parse( decodeURIComponent( cookiearray[i].split('=')[1] )  ); 
+		// me hace falta decodeURI pq cookie value viene encoded desde php (usando json encode)
+		// me hace falta JSON.parse pa q javascript parsee/compare valores en el arreglo original, no texto letra por letra de lo enviado por php
+		alert('current cookie ame=' + name + '\nBuscando Parametro=' + cookieName + '\nValue=' + value + '\nLo q buscas?=' + (name === cookieName));
+		if(name === cookieName) {
+			return value;
+		}
+	}
+	return null;
+}
+
+jQuery.isNepeIdOnOwnNepesCookie = function(nepeIdTocheck){
+	alert( 'is own nepe cookie set: ' + jQuery.isSetCookie('own_nepes') );
+	if( jQuery.isSetCookie('own_nepes') ){
+		var own_nepes = jQuery.getCookieValue('own_nepes');
+		for(var index=0; index < own_nepes.length; index++){
+			alert('nepe id to check: ' + nepeIdTocheck + '   current value on own nepes: ' + own_nepes[index])
+			if(own_nepes[index] == nepeIdTocheck) { return true; }
+		}
+		return false;
+	}else{
+		return false;
+	}
 }
