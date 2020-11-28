@@ -13,8 +13,8 @@ jQuery(document).ready(
 		switch(look) {
 			case 'busca':
 				jQuery('#navBusca').hide();
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide();}
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 
 				jQuery.dameLook('looks/busca.html');
 		
@@ -28,8 +28,8 @@ jQuery(document).ready(
 				}); //ajax complete
 			break;
 			case 'opciones':
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide();}
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 			
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
@@ -75,8 +75,8 @@ jQuery(document).ready(
 				});
 			break;
 			case 'profile':
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide();}
+				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 
 				//get nepeId then
 				var nepeId = jQuery.urlParametro('nepeId');
@@ -106,7 +106,7 @@ jQuery(document).ready(
 				if( jQuery.isSetCookie('dueno_id') )  {
 					jQuery('#navSignup').hide();
 				}else{
-					jQuery('#navLogout').hide();
+					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 
 					//get login look
 					jQuery.dameLook('looks/login.html');
@@ -122,6 +122,7 @@ jQuery(document).ready(
 				}
 			break;
 			case 'editDuenoShowNepes':
+				jQuery('#navHome').hide();
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				if( jQuery.isSetCookie('dueno_id') )  {
 					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
@@ -161,7 +162,7 @@ jQuery(document).ready(
 						}//if
 					});//ajaxComplete
 				}else{
-					jQuery('#navLogout').hide();
+					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 				}
 			break;
 			case 'updateNepe':
@@ -208,7 +209,7 @@ jQuery(document).ready(
 							jQuery(window.location).attr('href', path);								
 					}
 				}else{
-					jQuery('#navLogout').hide();
+					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 				}
 			break;			
 			case 'creaDueno':
@@ -216,7 +217,7 @@ jQuery(document).ready(
 				if( jQuery.isSetCookie('dueno_id') )  {
 					jQuery('#navLogin').hide();
 				}else{
-					jQuery('#navLogout').hide();
+					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 					
 					//get creaDueno look
 					jQuery.dameLook('looks/creaDueno.html');
@@ -233,7 +234,7 @@ jQuery(document).ready(
 			break;				
 			case 'faq':
 				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide();}
+				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 
 				jQuery.dameLook('looks/faq.html');
 
@@ -249,21 +250,21 @@ jQuery(document).ready(
 			//twice when there is NO look parameter (null)
 			case null:
 				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide();}
+				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 				jQuery.dameLook('looks/lookIsNull.html');
 			break;
 			case 'nada':
 				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide();}
+				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 				jQuery.dameLook('looks/nada.html');
 			break;				
 			case 'error':
 				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide();}
+				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 				jQuery.dameLook('looks/error.html');
@@ -282,11 +283,10 @@ jQuery(document).ready(
 						}//if
 					}); //ajax complete
 				}
-
 			break;
 			default :
 				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide();}
+				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 				jQuery.dameLook('looks/default.html');
