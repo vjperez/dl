@@ -246,27 +246,14 @@ jQuery(document).ready(
 					}
 				});
 			break;
-			//you can join the null case and busca case together, should avoid requesting portada.html
-			//twice when there is NO look parameter (null)
-			case null:
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-
-				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
-				jQuery.dameLook('looks/lookIsNull.html');
-			break;
 			case 'nada':
 				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-
-				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 				jQuery.dameLook('looks/nada.html');
 			break;				
 			case 'error':
 				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-
-				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 				jQuery.dameLook('looks/error.html');
 				
 				if(DEBUGUEO){
@@ -284,13 +271,43 @@ jQuery(document).ready(
 					}); //ajax complete
 				}
 			break;
-			default :
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+			//you can join the null and default case, either into busca case or into error case. 
+			case null:
+			// (1) redirecting to busca
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
-				jQuery.dameLook('looks/default.html');
+			// (2) null look				
+				//if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
+				//jQuery.dameLook('looks/lookIsNull.html');
+			//
+			// (3) redirect to error
+			var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+			var textoEstatus = 'Error, usuario quito look del address bar.';
+			var elError = 'Error humano.';
+		
+			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+			jQuery(window.location).attr('href', path);	
+			//
 			break;
+			default :
+			// (1) redirecting to busca
+				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+			// (2) default look
+				//if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
+				//jQuery.dameLook('looks/default.html');
+			//
+			// (3) redirect to error
+			var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+			var textoEstatus = 'Error, usuario puso un look=algo,  pero algo no esta en el switch.';
+			var elError = 'Error humano.';
+			
+			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+			jQuery(window.location).attr('href', path);	
+			//
+			break;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		}//switch
 	
 	}); // ready function and statement
