@@ -113,7 +113,7 @@ usa el valor del cookie:  $_COOKIE['unNombre']
 
 
 ========================================================================
-DONE		Consolida looks ... dentro de null maybe.
+DONE		Consolida looks ... dentro de null maybe.						Falta los look q no debes accesar por tu cookie  ----> mandalos a error.
 =============================================================================================================================
 DONE			En updateNepe un dueno todavia puede actualizar los nepes de otro dueno.
 
@@ -123,7 +123,7 @@ Delete a user ... o nepes
 DONE		Video  no se ven ...
 ch 14
 
-Falta un HOME boton (jeder link) para ir a editDuenoShowNepes cuando estes logueado ...
+DONE		Falta un HOME boton (jeder link) para ir a editDuenoShowNepes cuando estes logueado ...
 
 Bluehost ....
 
