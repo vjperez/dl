@@ -142,3 +142,6 @@ Bluehost .... a2hosting
 
 Can you make a python script to back the db up,  since you made changes to nepe id 11
 Can you make a script to find file and number lines as outputs, from a dir and keyWord as input   (make it easier to remove ver-borde from html files, not just bad name it in css)
+
+GoDaddy transfer - donlibre
+32RTC2C:$#+%4131
