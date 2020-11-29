@@ -114,16 +114,17 @@ usa el valor del cookie:  $_COOKIE['unNombre']
 
 ========================================================================
 DONE		Consolida looks ... dentro de null maybe.						
-			portada solo mandalo a portada busca
-			default y null looks mandalos a error tambien
-			center vacio look image
+DONE			portada solo (o sea null) mandalo a portada busca
+DONE			default y null looks mandalos a error tambien
+DONE			center vacio look image
 =============================================================================================================================
 DONE			En updateNepe un dueno todavia puede actualizar los nepes de otro dueno.
-
 ==============================================================================================================================
 
 Delete a user ... o nepes
+
 DONE		Video  no se ven ...
+
 ch 14
 
 DONE		Falta un HOME boton (jeder link) para ir a editDuenoShowNepes cuando estes logueado ...
@@ -131,5 +132,7 @@ DONE		Falta un HOME boton (jeder link) para ir a editDuenoShowNepes cuando estes
 Bluehost ....
 
 
-El issue de subir fotos es exclusivo en linux.
-back db up since you made changes to nepe id 11
+DONE		El issue de subir fotos es exclusivo en linux.
+
+Can you make a python script to back the db up,  since you made changes to nepe id 11
+Can you make a script to find file and number lines as outputs, from a dir and keyWord as input
