@@ -1,5 +1,5 @@
-/*todo lo q sea borde aqui, va pa fuera*/
-.ver-borde { border-style:solid; border-width:1pt; border-color:#ff0000; }
+/* tenia red green y blue como colores de body border pa distinguir cuando cambiaba de ... diferente media based css*/
+.ver--xxx--borde { border-style:solid; border-width:1pt; border-color:#ff0000; }
 
 /**/
 [class*="ancho-sensi"] { width:100%; }
@@ -8,14 +8,14 @@
 
 
 @media only screen and (max-width: 480pt) {
-	body { border:2pt solid #00ff00; }
+	body { border:1pt solid #dadada; }
 	div#header img { height:107pt; }
 	/*div#navega li { position:relative; top:-80pt; }*/
 }
 
 
 @media only screen and (min-width: 480pt) {
-	body { border:2pt solid #0000ff; }
+	body { border:1pt solid #dadada; }
 	div#header img { height:133pt; }
 	/*div#navega li { position:relative; top:-99pt; }*/
 	.ancho-sensi-ipad-1de3 { width:33.3%; }
@@ -29,7 +29,7 @@
 
 
 @media only screen and (min-width: 768pt) {
-	body { border:2pt solid #f9ab00; }
+	body { border:1pt solid #dadada; }
 	div#header img { height:178pt; }
 	/*div#navega li { position:relative; top:-133pt; }*/
 	.ancho-sensi-desk-1de3 { width:33.33%; }

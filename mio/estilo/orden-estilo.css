@@ -92,7 +92,7 @@ form#creaDuenoForm h3 { text-align:center; }
 form#queDondeForm label { font-size:1.5em; letter-spacing:0.30em; font-weight:bolder; color:#16a085; }
 form[id$=Form] input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form[id$=Form] input:focus { background-color:#dadada; }
-form[id$=Form] button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; }
+form[id$=Form] button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
 form[id$=Form] button:hover, form[id$=Form] button:focus { background-color:#7fb3d5; }
 form[id$=Form] h3 { font-family:serif, Times, times; color:#16a085; }
 
@@ -141,7 +141,7 @@ div#cuando td.hora { font-weight:bold; }
 a.clavelink:link, a.clavelink:visited {
     background-color:white;
     color:black;
-    border-color:#4285f4;
+    border-color:#1f5aa0;
     border-style:solid;     border-width:1pt;  border-radius:5pt;
 	 /*border-top-left-radius:40% 50%; border-top-right-radius:40% 50%; border-bottom-left-radius:20% 50%; border-bottom-right-radius:20% 50%;*/
     padding:0.25em 0.5em 0em 0.5em; }
@@ -188,7 +188,7 @@ form#loginForm label { font-size:1.5em; letter-spacing:0.3em; font-weight:bolder
 /*
 form#loginForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#loginForm input:focus { background-color:#dadada; }
-form#loginForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; }
+form#loginForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
 form#loginForm button:hover, form#loginForm button:focus { background-color:#7fb3d5; }
 form#loginForm h3 { font-family:serif, Times, times; color:#16a085; }
 */
@@ -213,7 +213,7 @@ form#creaDuenoForm label { font-size:1.5em; letter-spacing:0.3em; font-weight:bo
 /*
 form#creaDuenoForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#creaDuenoForm input:focus { background-color:#dadada; }
-form#creaDuenoForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; }
+form#creaDuenoForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
 form#creaDuenoForm button:hover, form#creaDuenoForm button:focus { background-color:#7fb3d5; }
 form#creaDuenoForm h3 { font-family:serif, Times, times; color:#16a085; }
 */
@@ -257,7 +257,7 @@ form#creaNepeForm input[type='tel']        { font-size:1.5em; border-radius:5pt;
 
 
 form#creaNepeForm input:focus { background-color:#dadada; }
-form#creaNepeForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; }
+form#creaNepeForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
 form#creaNepeForm button:hover, form#creaNepeForm button:focus { background-color:#7fb3d5; }
 form#creaNepeForm label.explica { color:#16a085; font-size:0.85em; letter-spacing:0.2em; }
 form#creaNepeForm textarea:focus { background-color:#dadada; }
@@ -312,7 +312,7 @@ form#updateNepeForm input[type='tel']        { font-size:1.5em; border-radius:5p
 
 
 form#updateNepeForm input:focus { background-color:#dadada; }
-form#updateNepeForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; }
+form#updateNepeForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
 form#updateNepeForm button:hover, form#updateNepeForm button:focus { background-color:#7fb3d5; }
 form#updateNepeForm label.explica { color:#16a085; font-size:0.85em; letter-spacing:0.2em; }
 form#updateNepeForm textarea:focus { background-color:#dadada; }
@@ -349,7 +349,7 @@ form#editDuenoDataForm label, div#empresas label { font-size:1.7em; letter-spaci
 /*
 form#editDuenoDataForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#editDuenoDataForm input:focus { background-color:#dadada; }
-form#editDuenoDataForm button { border-radius:5pt; background-color:white; border-color:#4285f4; border-style:solid;  border-width:2pt; }
+form#editDuenoDataForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
 form#editDuenoDataForm button:hover, form#editDuenoDataForm button:focus { background-color:#7fb3d5; }
 form#editDuenoDataForm h3 { font-family:serif, Times, times; color:#16a085; }
 */
