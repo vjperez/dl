@@ -115,6 +115,9 @@ usa el valor del cookie:  $_COOKIE['unNombre']
 ========================================================================
 DONE		Consolida looks ... dentro de null maybe.						
 DONE			portada solo (o sea null) mandalo a portada busca
+			Estos 'looks' donde llegas pero no deberias estar ahi sin logearte ... o logueado, mandalos a ... error!.
+			Cuando haces search por 'uni' q salga universidad, con mali q salga malinois.
+
 DONE			default y null looks mandalos a error tambien
 DONE			center vacio look image
 =============================================================================================================================
