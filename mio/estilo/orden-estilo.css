@@ -13,7 +13,7 @@ div#header img { width:100%; vertical-align:text-bottom; max-height:50pt; }
 div#footer { min-height:107pt; overflow:auto; }
 div#footer ul { text-align:left; list-style-type:none; padding:0; }
 div#footer li { display:inline-block; padding-left:1em;}
-div#navega    { border-bottom:1pt solid #dadada; }
+div#navega    {  background-color:white; border-bottom:1pt solid #dadada; }
 div#navega ul { text-align:left; list-style-type:none; margin:0pt; padding:0; }
 div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; }
 div#navega li img { vertical-align:middle; }
@@ -49,7 +49,8 @@ p::first-letter{ font-size:1.3em; }
 .color02enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#ff0000;}
 .sizeenfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace;}
 a.link { text-decoration:none; font-weight:bolder; }
-a.link:link,     a.link:visited { color:#2980b9; }
+/* color:#2980b9; */
+a.link:link,     a.link:visited { color:black}
 a.link:hover, a.link:focus { text-decoration:underline; }
 a.link li:hover, a.link li:focus { text-decoration:underline; }
 
@@ -64,7 +65,8 @@ div#footer h5 {              font-family:serif, fantasy, mono, monospace;  text-
 
 div#footer a.footerlink { font-family:courier, mono, monospace; font-size:0.75em; }
 div#footer a.footerlink:link,     a.footerlink:visited { color:white; }
-div#footer { background-color:#067060; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
+/* footer color was 067060*/
+div#footer { background-color:#1f5aa0; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
 
 
 
