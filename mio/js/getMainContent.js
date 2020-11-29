@@ -105,6 +105,13 @@ jQuery(document).ready(
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				if( jQuery.isSetCookie('dueno_id') )  {
 					jQuery('#navSignup').hide();
+					
+						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+						var textoEstatus = 'Error, usuario solicito login look, estando logueado.';
+						var elError = 'Error humano.';
+
+						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+						jQuery(window.location).attr('href', path);						
 				}else{
 					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 
@@ -141,6 +148,13 @@ jQuery(document).ready(
 					});//ajaxComplete
 				}else{
 					jQuery('#navLogout').hide();
+					
+					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+					var textoEstatus = 'Error, usuario solicito home (editDuenoShowNepes) look, sin estar logueado.';
+					var elError = 'Error humano.';
+
+					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+					jQuery(window.location).attr('href', path);						
 				}
 			break;			
 			case 'creaNepe':
@@ -163,6 +177,13 @@ jQuery(document).ready(
 					});//ajaxComplete
 				}else{
 					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+					
+					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+					var textoEstatus = 'Error, usuario solicito creaNepe look, sin estar logueado.';
+					var elError = 'Error humano.';
+
+					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+					jQuery(window.location).attr('href', path);						
 				}
 			break;
 			case 'updateNepe':
@@ -210,12 +231,26 @@ jQuery(document).ready(
 					}
 				}else{
 					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+					
+					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+					var textoEstatus = 'Error, usuario solicito updateNepe look, sin estar logueado.';
+					var elError = 'Error humano.';
+
+					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+					jQuery(window.location).attr('href', path);						
 				}
 			break;			
 			case 'creaDueno':
 				jQuery('#navSignup').hide();
 				if( jQuery.isSetCookie('dueno_id') )  {
 					jQuery('#navLogin').hide();
+					
+					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+					var textoEstatus = 'Error, usuario solicito creaDueno look, estando logueado.';
+					var elError = 'Error humano.';
+
+					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+					jQuery(window.location).attr('href', path);						
 				}else{
 					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 					
