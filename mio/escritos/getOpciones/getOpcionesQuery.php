@@ -17,21 +17,21 @@ else throw new Exception('No tengo un Busca Mode, en getOpcionesQuery.php : ' . 
 switch($buscaMode){
 	case 'buscaQue':
 		$query = "SELECT id, array_to_json(media_foto_url), ts_rank_cd(nombre_que_vector, el_query) AS ranqueo
-		FROM nepe, to_tsquery('spanish', '$queLiteralStr') el_query
+		FROM nepe, to_tsquery('spanish', '$queLiteralStr:*') el_query
 		WHERE el_query @@ nombre_que_vector
 		ORDER BY ranqueo DESC
 		";
 		break;
 	case 'buscaDonde':
 		$query = "SELECT id, array_to_json(media_foto_url), ts_rank_cd(donde_vector, el_query) AS ranqueo
-		FROM nepe, to_tsquery('simple', '$dondeLiteralStr') el_query
+		FROM nepe, to_tsquery('simple', '$dondeLiteralStr:*') el_query
 		WHERE el_query @@ donde_vector
 		ORDER BY ranqueo DESC
 		";
 		break;
 	case 'buscaBoth':
 		$query = "SELECT id, array_to_json(media_foto_url), ts_rank_cd(nombre_que_vector, que_query) + ts_rank_cd(donde_vector, donde_query) AS ranqueo
-		FROM nepe, to_tsquery('spanish', '$queLiteralStr') que_query,  to_tsquery('simple', '$dondeLiteralStr') donde_query
+		FROM nepe, to_tsquery('spanish', '$queLiteralStr:*') que_query,  to_tsquery('simple', '$dondeLiteralStr:*') donde_query
 		WHERE que_query @@ nombre_que_vector AND donde_query @@ donde_vector 
 		ORDER BY ranqueo DESC
 		";

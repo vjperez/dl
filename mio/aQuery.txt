@@ -1,0 +1,5 @@
+select to_tsquery('spanish', 'mali:*') ;
+
+select to_tsvector('spanish', 'belga malinois') ;
+
+select to_tsquery('spanish', 'mali:*')  @@ to_tsvector('spanish', 'belga malinois') ;
