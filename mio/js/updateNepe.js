@@ -250,18 +250,19 @@ jQuery.getReducedImagesArray = function(){ //helper function for jQuery.have5OrL
 jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.handleSubmit
 	var reader = new FileReader();
 	reader.readAsDataURL(unFotoFile);
-	console.log('resizeImage:read as data url... ' + index);
+	console.log('resizeImage():read as data url() :' + index);
 	reader.onload = function(evento){	
-		console.log('resizeImage:reader onload... ' + index);
-		var nuevaImagen = new Image();
-		nuevaImagen.src = reader.result;
-		nuevaImagen.onload = function(evento){
-			console.log('resizeImage:nuevaImagen onload... ' + index);
+		console.log('resizeImage():reader onload() :' + index);
+		var imagen = new Image();
+		imagen.src = reader.result;
+		imagen.onload = function(evento){
+			console.log('resizeImage:imagen onload() :' + index);
+			var imagenRatio = this.height / this.width;  
 			//var canvas = document.getElementById('elCanvas');
 			var canvas = document.createElement("canvas");
-			/*canvas.width = 320; */		canvas.width = 640;
-			/*canvas.height = 160;*/	   canvas.height = 320;
-			canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 640, 320);
+			/*canvas.width = 320; */		canvas.width  = 640;
+			/*canvas.height = 160;*/	    canvas.height = 640 * imagenRatio;
+			canvas.getContext("2d").drawImage(imagen, 0, 0, canvas.width, canvas.height);
 			var dataURL = canvas.toDataURL('image/jpeg', 0.95);
 			console.log(index + ': dataURL: ' + dataURL);
 			var dataBlob = dataURLToBlob( dataURL );

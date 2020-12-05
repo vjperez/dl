@@ -126,7 +126,7 @@ DONE		Bluehost .... a2hosting
 DONE			En updateNepe un dueno todavia puede actualizar los nepes de otro dueno.
 ==============================================================================================================================
 DONE		Cuando haces search por 'uni' q salga universidad, con mali q salga malinois.
-			reducing pics ?
+			reducing pics ? : 																																				ready to test rezize image
 			donlibre.com
 			Lee faq
 			Explain (with video) on profile 1024; KIM explain how search: que solo, donde solo, ambos (hace AND entre QUE y DONDE).  En los tres casos matchea el principio de la palabra.
