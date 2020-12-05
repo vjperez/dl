@@ -112,25 +112,34 @@ setcookie("unNombre", "unValor");
 usa el valor del cookie:  $_COOKIE['unNombre']
 
 
-========================================================================
-DONE		Consolida looks ... dentro de null maybe.						
-THINK			portada solo (o sea null) mandalo a portada busca
+============================================================================================================================
+DONE		Consolida looks ... dentro de null maybe.	
 DONE			Estos 'looks' donde llegas pero no deberias estar ahi sin logearte ... o logueado, mandalos a ... error!.
 DONE			Back up and  restore postgres (en torre ahora y en otro proyecto) 
 DONE			El issue de subir fotos es exclusivo en linux.
-HALF			Make it easy to change colors.  Broown -  Verde y  links azul.  Las formas de Busca,  Login y Registro el principal color de texto debe ser Brown.
-
 DONE			default y null looks mandalos a error tambien
 DONE			center vacio look image
 DONE		Video  no se ven ...
 DONE		Falta un HOME boton (jeder link) para ir a editDuenoShowNepes cuando estes logueado ...
 DONE		Bluehost .... a2hosting
-=============================================================================================================================
+==============================================================================================================================
 DONE			En updateNepe un dueno todavia puede actualizar los nepes de otro dueno.
 ==============================================================================================================================
 			Cuando haces search por 'uni' q salga universidad, con mali q salga malinois.
+			reducing pics ?
+			donlibre.com
 			Lee faq
+			Explain (with video) on profile 1024
 			Delete a user ... o nepes
+			Unir codigo update y crea nepe
+-------
+HALF			Make it easy to change colors.  Broown -  Verde y  links azul.  Las formas de Busca,  Login y Registro el principal color de texto debe ser Brown.
+-------
+-------
+THINK		portada solo (o sea null) mandalo a portada busca
+			Clear portada...
+			send null to Busca y send default to error  (maybe alreadt done)
+-------
 
 ch 14
 
