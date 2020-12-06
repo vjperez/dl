@@ -8,4 +8,8 @@ pg_dump.exe -U victordbu -d 4bolas -t foto  -t entrada -t '*id_seq' -f C:\Users\
 
 
 ==================================================================
-Linux command :    pg_dump -c -U victordbu nepeype > nepeype.sql
+Linux command :
+To dump:    
+pg_dump -c -U victordbu nepeype > nepeype.sql
+To restore:
+psql -U username -d dbname < filename.sql
