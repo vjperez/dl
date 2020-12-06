@@ -182,49 +182,55 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 
 
 
+
+
 jQuery.getReducedImagesArray = function(){ //helper function for jQuery.have5OrLessImages
-	var forma = document.getElementById('creaNepeForm');
-	var formData = new FormData(forma);
-	var fotoFilesFromFormData = formData.getAll("fotoArr[]");
-
-	formData.delete("fotoArr[]");
-
-	for(var index = 0; index < fotoFilesFromFormData.length; index++){
-		var unFotoFile = fotoFilesFromFormData[index];
-		console.log("calling resizeImage for index: " + index);
-		jQuery.resizeImage(index, unFotoFile);
-	}
+			var forma = document.getElementById('updateNepeForm');
+			var formData = new FormData(forma);
+		 	var fotoFilesFromFormData = formData.getAll("fotoArr[]");
+			formData.delete("fotoArr[]");
+			for(var index = 0; index < fotoFilesFromFormData.length; index++){
+				var unFotoFile = fotoFilesFromFormData[index];
+				console.log("calling resize image " + index);
+				jQuery.resizeImage(index, unFotoFile);
+			}
 }
-
-
 
 
 jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.handleSubmit
 	var reader = new FileReader();
 	reader.readAsDataURL(unFotoFile);
-	console.log('resizeImage: reader.readAsDataUrl for index: ' + index);
-	reader.onload = function(evento){
-		console.log('resizeImage: reader.onload for index:  ' + index);
-		var nuevaImagen = new Image();
-		nuevaImagen.src = reader.result;
-		nuevaImagen.onload = function(evento){
-			console.log('resizeImage: nuevaImagen.onload for index: ' + index);
-			//var canvas = document.getElementById('elCanvas');
-			var canvas = document.createElement("canvas");
-			canvas.width = 320;
-			canvas.height = 160;
-			canvas.getContext("2d").drawImage(nuevaImagen, 0, 0, 320, 160);
-			var dataURL = canvas.toDataURL('image/jpeg', 0.95);
-			console.log('dataURL for index: ' + index + '.  : ' + dataURL);
-			var dataBlob = dataURLToBlob( dataURL );
-	////////////////////////////////////////////////////////////////////////////////////////		
-			reducedImagesArray.push( dataBlob );
-			//reducedImagesArray.push( unFotoFile ); 
-			//debugger;
-	////////////////////////////////////////////////////////////////////////////////////////
+	console.log('resizeImage():read as data url() :' + index);
+	reader.onload = function(evento){	
+		console.log('resizeImage():reader onload() :' + index);
+		var imagen = new Image();
+		imagen.src = reader.result;
+		imagen.onload = function(evento){
+			console.log('resizeImage:imagen onload() :' + index + '.  image width: ' + this.width);
+			if(this.width > 640){		
+				// reduce size to  width of 640 ////////////////////////////////////////////////////////////////
+				var imagenRatio = this.height / this.width;  
+				//var canvas = document.getElementById('elCanvas');
+				var canvas = document.createElement("canvas");
+				/*canvas.width = 320; */		canvas.width  = 640;
+				/*canvas.height = 160;*/	    canvas.height = 640 * imagenRatio;
+				canvas.getContext("2d").drawImage(imagen, 0, 0, canvas.width, canvas.height);
+				var dataURL = canvas.toDataURL('image/jpeg', 0.95);
+				console.log(index + ': dataURL: ' + dataURL);
+				var dataBlob = dataURLToBlob( dataURL );
+				reducedImagesArray.push( dataBlob ); 
+				//debugger;   ?
+				///////////////////////////////////////////////////////////////////////////////////////////////
+			}else{
+				reducedImagesArray.push( unFotoFile );
+			}
 		}
 	}
 }
+
+
+
+
 
 
 
