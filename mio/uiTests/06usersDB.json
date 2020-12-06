@@ -1,8 +1,0 @@
-[
-  {"user":"tito",   "pass":"1111", "id":1}, 
-  {"user":"lola",   "pass":"2222", "id":2}, 
-  {"user":"chucho", "pass":"3333", "id":3},
-  {"user":"papito", "pass":"4444", "id":4}, 
-  {"user":"luis",   "pass":"5555", "id":5}, 
-  {"user":"cheo",   "pass":"6666", "id":6}  
-]
