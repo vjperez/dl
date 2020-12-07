@@ -2,14 +2,14 @@ To rewrite data, you should either drop tables first or pg_dump -F c and pg_rest
 Warning - in both cases it will destroy old data (this seems what you want though)
 
 
-pg_dump.exe -U victordbu -d nepeype -t dueno -t nepe -t bregando -t '*id_seq' -f C:\Users\victor\Desktop\nepeype.sql
+pg_dump.exe -U userdb -d dbname -t dueno -t nepe -t bregando -t '*id_seq' -f C:\Users\victor\Desktop\filename.sql
 
-pg_dump.exe -U victordbu -d 4bolas -t foto  -t entrada -t '*id_seq' -f C:\Users\victor\Desktop\4bolas.sql
+pg_dump.exe -U userdb -d 4bolas -t foto  -t entrada -t '*id_seq' -f C:\Users\victor\Desktop\4bolas.sql
 
 
 ==================================================================
 Linux command :
 To dump:    
-pg_dump -c -U victordbu nepeype > nepeype.sql
+pg_dump -c -U userdb dbname > filename.sql
 To restore:
-psql -U username -d dbname < filename.sql
+psql -U userdb -d dbname < filename.sql
