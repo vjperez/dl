@@ -307,15 +307,16 @@ jQuery(document).ready(
 				}
 			break;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			//you can join the null and default case, either into busca case or into error case. 
+			//you can redirect null and default cases, either into busca case,  into error case or into their own looks 
 			case null:
 			// (1) redirecting to busca
-				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+				jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 			// (2) null look				
 				//if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 				//jQuery.dameLook('looks/lookIsNull.html');
 			//
+				/*
 			// (3) redirect to error
 			var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 			var textoEstatus = 'Error, usuario quito look del address bar.';
@@ -323,16 +324,18 @@ jQuery(document).ready(
 		
 			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 			jQuery(window.location).attr('href', path);	
-			//
+			//// (3) to error 
+				*/
 			break;
 			default :
 			// (1) redirecting to busca
-				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+				jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 			// (2) default look
 				//if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 				//jQuery.dameLook('looks/default.html');
 			//
+				/*
 			// (3) redirect to error
 			var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 			var textoEstatus = 'Error, usuario puso un look=algo,  pero algo no esta en el switch.';
@@ -340,7 +343,8 @@ jQuery(document).ready(
 			
 			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 			jQuery(window.location).attr('href', path);	
-			//
+			// (3) to error
+				*/
 			break;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		}//switch
