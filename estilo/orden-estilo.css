@@ -366,5 +366,5 @@ form#editDuenoDataForm button { width:25%; position:relative; left:37.5%; }
 
 
 
-h3#nadah3 { display: block; width: 34%; margin-left:auto; margin-right:auto; }
+h3#nadah3   { text-align: center; }
 img#nadaPic { display: block; width: 34%; margin-left:auto; margin-right:auto; }

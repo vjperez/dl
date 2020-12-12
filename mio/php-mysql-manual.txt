@@ -144,6 +144,7 @@ THINK		portada solo (o sea null) mandalo a portada busca
 -------
 			Subir de sitio conecta/datisconectar y configConstanta/constanta pq q no sean accesibles !
 			Cuando busco san sebastian del pepino , busca cada palabra individualmente ??
+			24horas: la mejor oferta : resetea si no ahi acuerdo
 
 ch 14
 
