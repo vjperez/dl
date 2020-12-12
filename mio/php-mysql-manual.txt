@@ -137,10 +137,11 @@ HALF			Make it easy to change colors.  Broown -  Verde y  links azul.  Las forma
 				Lee faq
 -------
 -------
-THINK		portada solo (o sea null) mandalo a portada busca
+DONE THought:	portada solo (o sea null) mandalo a portada busca	:	send null to Busca y send default to error==> both send to busca
+			
 			Clear portada...
-			send null to Busca y send default to error  (maybe alreadt done)
-			make an index.php
+			
+DONE			make an index.php
 -------
 			Subir de sitio conecta/datisconectar y configConstanta/constanta pq q no sean accesibles !
 			Cuando busco san sebastian del pepino , busca cada palabra individualmente ??
