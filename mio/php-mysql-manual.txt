@@ -128,18 +128,22 @@ DONE			En updateNepe un dueno todavia puede actualizar los nepes de otro dueno.
 DONE		Cuando haces search por 'uni' q salga universidad, con mali q salga malinois.
 			reducing pics ? : 																																				ready to test rezize image
 			donlibre.com
-			Lee faq
+			
 			Explain (with video) on profile 1024; KIM explain how search: que solo, donde solo, ambos (hace AND entre QUE y DONDE).  En los tres casos matchea el principio de la palabra.
 			Delete a user ... o nepes
 			Unir codigo update y crea nepe
 -------
 HALF			Make it easy to change colors.  Broown -  Verde y  links azul.  Las formas de Busca,  Login y Registro el principal color de texto debe ser Brown.
+				Lee faq
 -------
 -------
 THINK		portada solo (o sea null) mandalo a portada busca
 			Clear portada...
 			send null to Busca y send default to error  (maybe alreadt done)
+			make an index.php
 -------
+			Subir de sitio conecta/datisconectar y configConstanta/constanta pq q no sean accesibles !
+			Cuando busco san sebastian del pepino , busca cada palabra individualmente ??
 
 ch 14
 
