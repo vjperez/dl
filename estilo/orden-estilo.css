@@ -49,8 +49,7 @@ p::first-letter{ font-size:1.3em; }
 .color02enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#ff0000;}
 .sizeenfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace;}
 a.link { text-decoration:none; font-weight:bolder; }
-/* color:#2980b9; */
-a.link:link,     a.link:visited { color:black}
+a.link:link,     a.link:visited { color:#2980b9 }
 a.link:hover, a.link:focus { text-decoration:underline; }
 a.link li:hover, a.link li:focus { text-decoration:underline; }
 
@@ -66,7 +65,7 @@ div#footer h5 {              font-family:serif, fantasy, mono, monospace;  text-
 div#footer a.footerlink { font-family:courier, mono, monospace; font-size:0.75em; }
 div#footer a.footerlink:link,     a.footerlink:visited { color:white; }
 /* footer color was 067060*/
-div#footer { background-color:#1f5aa0; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
+div#footer { background-color:#2980b9; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
 
 
 
@@ -89,7 +88,7 @@ form#creaDuenoForm h3 { text-align:center; }
 
 
 /*estilo : busca */
-form#queDondeForm label { font-size:1.5em; letter-spacing:0.30em; font-weight:bolder; color:#16a085; }
+form#queDondeForm label { font-size:1.7em; letter-spacing:0.40em; font-weight:bolder; color:#c0392b; display: block; }
 form[id$=Form] input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form[id$=Form] input:focus { background-color:#dadada; }
 form[id$=Form] button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
@@ -130,13 +129,13 @@ div#quien ul li img { width:25pt; }
 
 
 /*estilo : profile */
-div#video h1 { color:#16a085; }
+div#video h1 { color:#c0392b; }
 div#que h2, div#donde h2, div#cuando h2, div#quien h2 { color:#c0392b; }
 /*div#cuando h3 { color:#f1c40f; } */
 /*font para #que #donde #cuando*/
 a.clavelink { font-family:'Slabo 27px', Times, times, courier, mono, monospace; letter-spacing:0.1em; }
 div#cuando td, div#video h5, div#quien h3, div#donde h3 { font-weight:bolder; font-family:serif, Times, times; color:#16a085;}
-div#video h5 { color:#c0392b; text-align:right; }
+div#video h5 { color:#16a085; text-align:right; font-weight: bolder; }
 div#cuando td.hora { font-weight:bold; }
 a.clavelink:link, a.clavelink:visited {
     background-color:white;
@@ -184,7 +183,7 @@ form#loginForm h3 { text-align:center; }
 
 /*estilo : login */
 /*casi una copia de busca*/
-form#loginForm label { font-size:1.5em; letter-spacing:0.3em; font-weight:bolder; color:#16a085; }
+form#loginForm label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 /*
 form#loginForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#loginForm input:focus { background-color:#dadada; }
@@ -209,7 +208,7 @@ form#creaDuenoForm h3 { text-align:center; }
 
 /*estilo : creaDueno */
 /*casi una copia de busca*/
-form#creaDuenoForm label { font-size:1.5em; letter-spacing:0.3em; font-weight:bolder; color:#16a085; }
+form#creaDuenoForm label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b;  display:block;}
 /*
 form#creaDuenoForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
 form#creaDuenoForm input:focus { background-color:#dadada; }
@@ -229,6 +228,7 @@ form#creaDuenoForm h3 { font-family:serif, Times, times; color:#16a085; }
 
 /* orden : creaNepeData */
 div#creaNepe { margin-left:auto; margin-right:auto;  padding-bottom:50pt;}
+div#creaNepe h1 { text-align:center; }
 form#creaNepeForm { margin-left:auto; margin-right:auto; }
 form#creaNepeForm input[type='text'],
 form#creaNepeForm input[type='tel'],
@@ -271,7 +271,7 @@ form#creaNepeForm fieldset.secundario label.explica { font-size:0.85em; letter-s
 
 form#creaNepeForm button { display:block; margixxxn-bottom:30pt; }
 form#creaNepeForm button { width:25%; position:relative; left:37.5%; }
-div#creaNepe h1 { color:#16a085; }
+div#creaNepe h1 { color:#c0392b; }
 form#creaNepeForm fieldset#socialHandleFieldset.warn h3 { font-family:serif, Times, times; color:#ff0000; }
 form#creaNepeForm fieldset#fotoSrcFieldset.warn      h3 { font-family:serif, Times, times; color:#ff0000; }
 form#creaNepeForm fieldset#submitButtonFieldset h3.warn { font-family:serif, Times, times; color:#ff0000; }
@@ -284,6 +284,7 @@ form#creaNepeForm fieldset#fotoSrcFieldset.warn       { border-color:#ff0000; }
 
 /* orden : updateNepe */
 div#updateNepe { margin-left:auto; margin-right:auto;  padding-bottom:50pt;}
+div#updateNepe h1 { text-align:center; }
 form#updateNepeForm { margin-left:auto; margin-right:auto; }
 form#updateNepeForm input[type='text'],
 form#updateNepeForm input[type='tel'],
@@ -326,7 +327,7 @@ form#updateNepeForm fieldset.secundario label.explica { font-size:0.85em; letter
 
 form#updateNepeForm button { display:block; margixxxn-bottom:30pt; }
 form#updateNepeForm button { width:25%; position:relative; left:37.5%; }
-div#updateNepe h1 { color:#16a085; }
+div#updateNepe h1 { color:#c0392b; }
 form#updateNepeForm fieldset#socialHandleFieldset.warn h3 { font-family:serif, Times, times; color:#ff0000; }
 form#updateNepeForm fieldset#fotoSrcFieldset.warn      h3 { font-family:serif, Times, times; color:#ff0000; }
 form#updateNepeForm fieldset#submitButtonFieldset h3.warn { font-family:serif, Times, times; color:#ff0000; }
@@ -343,7 +344,7 @@ form#editDuenoDataForm input[type='password']{ width:100%; }
 form#editDuenoDataForm h3 { text-align:center; }
 
 /*estilo : editDuenoData*/
-form#editDuenoDataForm label, div#empresas label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#16a085; display:block; }
+form#editDuenoDataForm label, div#empresas label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 /* div#empresas label { color:#16a085; } */
 
 /*
@@ -353,12 +354,12 @@ form#editDuenoDataForm button { border-radius:5pt; background-color:white; borde
 form#editDuenoDataForm button:hover, form#editDuenoDataForm button:focus { background-color:#7fb3d5; }
 form#editDuenoDataForm h3 { font-family:serif, Times, times; color:#16a085; }
 */
-form#editDuenoDataForm label.explica { color:#2980b9; font-size:0.85em; letter-spacing:0.2em; }
+form#editDuenoDataForm label.explica { color:#16a085; font-size:0.85em; letter-spacing:0.2em; }
 
 form#editDuenoDataForm fieldset.primario, div#empresas fieldset.primario { margin:0pt; padding:0pt; padding-bottom:50pt; }
 form#editDuenoDataForm fieldset.secundario { margin-top:0pt; }
 form#editDuenoDataForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
-form#editDuenoDataForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#16a000; }
+/* form#editDuenoDataForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#16a000; } */
 
 form#editDuenoDataForm p { margin-top:2pt; margin-bottom:30pt; }
 form#editDuenoDataForm button { display:block; margixxxn-bottom:30pt; }

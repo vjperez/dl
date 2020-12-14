@@ -145,7 +145,8 @@ DONE			make an index.php
 -------
 			Subir de sitio conecta/datisconectar y configConstanta/constanta pq q no sean accesibles !
 			Cuando busco san sebastian del pepino , busca cada palabra individualmente ??
-			24horas: la mejor oferta : resetea si no ahi acuerdo
+			24horas: la mejor oferta : se puede hacer ofertas, mientras no pasen 24 horas : 
+									: no se hacen mas oertas si nadie oferta en 24 horas: al final ambas partes deciden si laoferta final va o no
 
 ch 14
 
