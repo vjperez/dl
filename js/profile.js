@@ -1,7 +1,14 @@
 jQuery.populateProfile = function(datos){
 	//insert json data into profile look
-	var date = new Date(datos.revisado).toString();
-	jQuery('#video h5').text('Revisado: ' + date.substring(0, -1+date.indexOf('00:00:00')));
+	
+	//var date = new Date(datos.revisado).toString();
+	//alert('datos revisado: ' + datos.revisado + ' date: ' + date);
+	//jQuery('#video h5').text('Revisado: ' + date.substring(0, -1+date.indexOf('00:00:00')));
+	
+	var date = new Date(datos.revisado);
+	var opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+	jQuery('#video h5').text('Revisado: ' + date.toLocaleDateString('es-ES', opciones)); 
+	
 	jQuery('#video h1').text(datos.nombre);
 	//alert('url: ' + datos.videoUrl + '\nis Valid Video Url: ' + datos.isValidVideoUrl);
 	if(datos.isValidVideoUrl){
