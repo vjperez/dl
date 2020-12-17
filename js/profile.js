@@ -6,7 +6,7 @@ jQuery.populateProfile = function(datos){
 	//jQuery('#video h5').text('Revisado: ' + date.substring(0, -1+date.indexOf('00:00:00')));
 	
 	var date = new Date(datos.revisado);
-	alert(date);
+	//alert(date);
 	var opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 	jQuery('#video h5').text('Revisado: ' + date.toLocaleDateString('es-ES', opciones)); 
 	

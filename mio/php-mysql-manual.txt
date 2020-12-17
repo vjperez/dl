@@ -144,7 +144,10 @@ DONE			Clear portada ... (ahora como q brinca)
 DONE			make an index.php
 -------
 			Subir de sitio conecta/datisconectar y configConstanta/constanta pq q no sean accesibles !
-			Cuando busco san sebastian del pepino , busca cada palabra individualmente ??
+DONE		revisado js no sale phone -- postgre enviaba formato Mon/DD/YYYY, algunos browser solo entienden MM/DD/YYYY
+			ancho minimo q se vea en iphone
+			Cuando busco san sebastian del pepino , busca cada palabra individualmente ??  como las ordena??
+			sube y edita profile, testea
 			24horas: la mejor oferta : se puede hacer ofertas, mientras no pasen 24 horas : 
 									: no se hacen mas oertas si nadie oferta en 24 horas: al final ambas partes deciden si laoferta final va o no
 
