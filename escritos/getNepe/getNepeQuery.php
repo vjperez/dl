@@ -13,7 +13,7 @@
 $query = "SELECT
 	to_json(id),
 	nombre,
-	to_char(revisado, 'Mon/DD/YYYY'),
+	to_char(revisado, 'MM/DD/YYYY'),
 	array_to_json(que),
 	array_to_json(donde),	
 	cuando, 
