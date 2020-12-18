@@ -8,7 +8,7 @@
 
 
 @media only screen and (max-width: 480pt) {
-	body { border:1pt solid #dadada; }
+	body { border:1pt solid #550000; }
 	div#header img { height:107pt; }
 	/*div#navega li { position:relative; top:-80pt; }*/
 }
@@ -50,6 +50,7 @@
 /*profile */
 /*the order of this file depends on screen width*/
 @media only screen and (max-width: 480pt) {
+	div#video h5 { text-align:center; }
 	div#video iframe { height:250pt; }
 	div#quien div#profilefotos img { display:block; margin-left:auto; margin-right:auto; }    }
 @media only screen and (min-width: 480pt) {

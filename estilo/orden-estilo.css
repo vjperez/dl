@@ -3,7 +3,7 @@
 /*orden  : comun*/
 /*This makes sure that the padding and border are included in the total width and height of the elements. */
 * { box-sizing:border-box; }
-body { margin:0px auto; min-width:280pt; max-width:960pt; }
+body { margin:0px auto; min-width:240pt; max-width:960pt; }
 .margen { margin-left:1%; margin-right:1%; }
 .contenido { margin-bottom:50pt; margin-top:50pt; }
 .centro { margin-left:auto; margin-right:auto; }
@@ -366,6 +366,6 @@ form#editDuenoDataForm button { display:block; margixxxn-bottom:30pt; }
 form#editDuenoDataForm button { width:25%; position:relative; left:37.5%; }
 
 
-
+/*estilo : nada*/
 h3#nadah3   { text-align: center; }
 img#nadaPic { display: block; width: 34%; margin-left:auto; margin-right:auto; }
