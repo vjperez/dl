@@ -33,7 +33,7 @@ if($recurso){
 		$nepeDato['quienSocialHandle'] = json_decode($fila[8]);
 		$nepeDato['quienFotoSrc'] = json_decode($fila[9]);
 
-		$nepeDato['isValidVideoUrl'] = json_decode(isValidVideoUrl( $fila[7] ));
+		$nepeDato['has11CharsVideoUrl'] = json_decode(has11CharsVideoUrl( $fila[7] ));
 		//Send data from server in json format
 		echo json_encode($nepeDato);
 	}else{
@@ -53,28 +53,15 @@ pg_close($cnx); //maybe not needed but doesn't hurt
 
 
 
-function isValidVideoUrl($url) { // run broken-links.php
+function has11CharsVideoUrl($url) { // mide al menos 11 y tiene youtu; youtu123456 aun siendo invalido,devuelve true
 	if (strlen(substr($url, -11)) < 11){
 		return false;
 	}elseif (strpos($url, 'youtu') === false){
 		return false;
 	}else{ 
-		$jeders = check_url( 'http://youtu.be/' .  substr($url, -11) );
-		return strpos($jeders['http_code'], '302') === 0;
+		return true;
 	}
-}
-
-function check_url($url) {  // run broken-links.php 
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_HEADER, 1);
-    curl_setopt($ch , CURLOPT_RETURNTRANSFER, 1);
-    $data = curl_exec($ch);
-    $headers = curl_getinfo($ch);
-    curl_close($ch);
-
-	return $headers;
-    //return $headers['http_code'];
-}
+} 
+ 
 
 ?>
