@@ -3,7 +3,7 @@
 /*orden  : comun*/
 /*This makes sure that the padding and border are included in the total width and height of the elements. */
 * { box-sizing:border-box; }
-body { margin:0px auto; min-width:240pt; max-width:960pt; }
+body { margin:0px auto; min-width:300pt; max-width:960pt; }
 .margen { margin-left:1%; margin-right:1%; }
 .contenido { margin-bottom:50pt; margin-top:50pt; }
 .centro { margin-left:auto; margin-right:auto; }
@@ -42,7 +42,7 @@ div#main h1, div#main h2, div#main h3, div#main h4 { color:#c0392b; }
 p, td { line-height:2em; }
 p::first-letter{ font-size:1.3em; }
 .color01enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#29b963;}
-.color02enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#ff0000;}
+.color02enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#c03829;}
 .sizeenfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace;}
 a.link { text-decoration:none; font-weight:bolder; }
 a.link:link,     a.link:visited { color:#2980b9 }
