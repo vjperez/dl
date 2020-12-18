@@ -1,5 +1,5 @@
 /* tenia red green y blue como colores de body border pa distinguir cuando cambiaba de ... diferente media based css*/
-.ver-borde { border-style:solid; border-width:1pt; border-color:#ff0000; }
+.ver-borde { border-style:solid; border-width:1pt; border-color:#c03829; }
 
 /**/
 [class*="ancho-sensi"] { width:100%; }
