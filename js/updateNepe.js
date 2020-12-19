@@ -144,7 +144,7 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
 					jQuery(window.location).attr('href', path); 					
 				}
-				if(datosJSObj.actualizado){
+				if(datosJSObj.actualizado){		//maybe if is not needed after try catch block
 					jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
 				}else{
 					//jQuery.feedback('form#updateNepeForm h3', datosJSObj.feedback);
@@ -156,9 +156,7 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 				jQuery(window.location).attr('href', path); 
 			});
 			// post made
-		}  // submitVote1 && submitVote2
-		else
-		{
+		}else{	  // submitVote1 && submitVote2
 			//not posting ...  validation by haveAtLeast1Handle() and have5OrLessImages()  failed
 			//no aditional feedback needed
 			//all feedback given at haveAtLeast1Handle() and have5OrLessImages() when they run to handle change events
@@ -245,7 +243,8 @@ jQuery.getReducedImagesArray = function(){ //helper function for jQuery.have5OrL
 }
 
 
-jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.handleSubmit
+
+jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.have5OrLessImages
 	var reader = new FileReader();
 	reader.readAsDataURL(unFotoFile);
 	console.log('resizeImage():read as data url() :' + index);
@@ -255,13 +254,14 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 		imagen.src = reader.result;
 		imagen.onload = function(evento){
 			console.log('resizeImage:imagen onload() :' + index + '.  image width: ' + this.width);
-			if(this.width > 640){		
-				// reduce size to  width of 640 ////////////////////////////////////////////////////////////////
+			var imageMaxWidth  = 640;
+			if(this.width > imageMaxWidth){		
+				// reduce size to  width of imageMaxWidth ////////////////////////////////////////////////////////////////
 				var imagenRatio = this.height / this.width;  
 				//var canvas = document.getElementById('elCanvas');
 				var canvas = document.createElement("canvas");
-				/*canvas.width = 320; */		canvas.width  = 640;
-				/*canvas.height = 160;*/	    canvas.height = 640 * imagenRatio;
+				/*canvas.width = 320; */		canvas.width  = imageMaxWidth;
+				/*canvas.height = 160;*/	    canvas.height = imageMaxWidth * imagenRatio;
 				canvas.getContext("2d").drawImage(imagen, 0, 0, canvas.width, canvas.height);
 				var dataURL = canvas.toDataURL('image/jpeg', 0.95);
 				console.log(index + ': dataURL: ' + dataURL);
@@ -279,20 +279,7 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 
 
 
-jQuery.isNotImage = function(){ //helper function for jQuery.have5OrLessImages
-	var i;
-	for (i = 0; i < jQuery('form#updateNepeForm input#fotosId')[0].files.length; i++) {
-		//var imageType = /image.*/;
-		//file.type.match(imageType)     ;   instead of toLowerCase() and startsWith() you could use the previous regular expression
-		if( ! jQuery('form#updateNepeForm input#fotosId')[0].files[i].type.toLowerCase().startsWith("image") ) return true; // if not an image, return true and break for loop
-	}
-	return false;
-}
-
-
-
-
-var dataURLToBlob = function(dataURL) {
+var dataURLToBlob = function(dataURL) {		//helper function for jQuery.have5OrLessImages
     var BASE64_MARKER = ';base64,';
     if (dataURL.indexOf(BASE64_MARKER) == -1) {
         var parts = dataURL.split(',');
@@ -315,6 +302,21 @@ var dataURLToBlob = function(dataURL) {
 
     return new Blob([uInt8Array], {type: contentType});
 }
+
+
+
+jQuery.isNotImage = function(){ //helper function for jQuery.have5OrLessImages
+	var i;
+	for (i = 0; i < jQuery('form#updateNepeForm input#fotosId')[0].files.length; i++) {
+		//var imageType = /image.*/;
+		//file.type.match(imageType)     ;   instead of toLowerCase() and startsWith() you could use the previous regular expression
+		if( ! jQuery('form#updateNepeForm input#fotosId')[0].files[i].type.toLowerCase().startsWith("image") ) return true; // if not an image, return true and break for loop
+	}
+	return false;
+}
+
+
+
 
 
 
