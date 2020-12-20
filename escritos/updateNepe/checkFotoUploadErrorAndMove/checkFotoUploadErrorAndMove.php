@@ -42,7 +42,7 @@ foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn){
 //erase all pic with same $foto = $fotos_subidas_dir . $nepe_id 
 //for ($i = 0; $i < 5; $i++) {  // 5 is maximum amount of photos allowed ; this should be a php constant // needs to match the 5 in js/creaNepe
 require_once 'configConstants/constants.php';
-$fotoTarget = $fotos_subidas_dir . $nepe_id;
+$fotoTarget = $fotos_subidas_dir . $nepe_id . '[abcde].';
 foreach(glob($fotoTarget . '*') as $fotoToErase){
 	if(file_exists ($fotoToErase)) unlink($fotoToErase);
 }
