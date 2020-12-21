@@ -1,7 +1,7 @@
 <?php
 //saca los valores de GET
-$queLiteralStr   = str_replace(":", " | ", $_GET['que']);   //here 'que' and 'donde' come as STRINGS with ':' as delimiters between words, delimeter is changed to " | "
-$dondeLiteralStr = str_replace(":", " | ", $_GET['donde']); //here 'que' and 'donde' come as STRINGS with ':' as delimiters between words, delimeter is changed to " | "
+$queLiteralStr   = str_replace(":", ":* | ", $_GET['que']);   //here 'que' and 'donde' come as STRINGS with ':' as delimiters between words, delimeter is changed to " | ", an OR for ts query     :* means begins with on a ts query, add it to every word not just the last as would be if only added on the switch below 
+$dondeLiteralStr = str_replace(":", ":* & ", $_GET['donde']); //here 'que' and 'donde' come as STRINGS with ':' as delimiters between words, delimeter is changed to " | ", an OR for ts query.    :* means begins with on a ts query, add it to every word not just the last as would be if only added on the switch below
 //str_replace("world","Peter","Hello world!");   produces "Hello Peter!"
 
 
@@ -15,6 +15,7 @@ else throw new Exception('No tengo un Busca Mode, en getOpcionesQuery.php : ' . 
 //switch structure is not necessary, $query could be built inside above if/elseif structure
 //but maybe this is clearer ... maybe not
 switch($buscaMode){
+		//:* so that the last word in the query, also get the benefit of :* in the ts query
 	case 'buscaQue':
 		$query = "SELECT id, array_to_json(media_foto_url), ts_rank_cd(nombre_que_vector, el_query) AS ranqueo
 		FROM nepe, to_tsquery('spanish', '$queLiteralStr:*') el_query
