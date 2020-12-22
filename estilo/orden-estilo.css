@@ -155,7 +155,7 @@ div#quien ul img:hover, div#quien ul img:focus, div#quien ul img.current { borde
 
 /*orden : opciones */
 div.opcionesfotos { overflow:auto; }
-div.opcionesfotos img { /*display inline is a default for img */ display:inline; float:left; padding-left:1pt;  padding-bottom:2pt;}
+div.opcionesfotos img { /*display inline is a default for img */ display:inline; float:left; padding-left:1pt;  padding-bottom:2pt; }
 /*estilo : opciones */
 div#main .opcionesfotos h3 { color:#29b963;}
 /* div#main .opcionesfotos h3 { font-weight:bold; } */

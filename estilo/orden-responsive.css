@@ -53,11 +53,14 @@
 @media only screen and (max-width: 480pt) {
 	div#video h5 { text-align:center; }
 	div#video iframe { height:250pt; }
-	div#quien div#profilefotos img { display:block; margin-left:auto; margin-right:auto; }    }
+	div#quien div#profilefotos img { display:block; margin-left:auto; margin-right:auto;  padding-bottom:2pt;  } 
+}
 @media only screen and (min-width: 480pt) {
 	div#video iframe { height:275pt; }
-	div#quien div#profilefotos img { display:block; margin-left:auto; margin-right:auto; }    }
+	div#quien div#profilefotos img { display:block; margin-left:auto; margin-right:auto;  padding-bottom:2pt; }  
+}
 @media only screen and (min-width: 768pt) {
 	div#video iframe { width:576pt; height:329pt; }
 	div#quien div#profilefotos { overflow:auto; }
-	div#quien div#profilefotos img { display:inline; float:left; }	   }
+	div#quien div#profilefotos img { display:inline; float:left;  padding-left:1pt;  padding-bottom:2pt; }	
+}
