@@ -277,7 +277,7 @@ form#creaNepeForm fieldset#fotoSrcFieldset.warn       { border-color:#ff0000; }
 
 
 /* orden : updateNepe */
-div#updateNepe { margin-left:auto; margin-right:auto;  padding-bottom:50pt;}
+div#updateNepe { margin-left:auto; margin-right:auto;  padding-bottom:30pt;}
 div#updateNepe h1 { text-align:center; }
 form#updateNepeForm { margin-left:auto; margin-right:auto; }
 form#updateNepeForm input[type='text'],
@@ -312,14 +312,15 @@ form#updateNepeForm button:hover, form#updateNepeForm button:focus { background-
 form#updateNepeForm label.explica { color:#29b963; font-size:0.85em; letter-spacing:0.2em; }
 form#updateNepeForm textarea:focus { background-color:#dadada; }
 
-form#updateNepeForm fieldset.primario { padding-bottom:5pt; }
+form#updateNepeForm fieldset.primario { padding-bottom:5pt; margin-top:30pt; }
+form#updateNepeForm fieldset#submitButtonFieldset { padding-bottom:5pt; margin-top:30pt; }
 form#updateNepeForm fieldset.secundario { margin-top:0pt; }
 form#updateNepeForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
 form#updateNepeForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#29b963; }
 
 
 
-form#updateNepeForm button { display:block; margixxxn-bottom:30pt; }
+form#updateNepeForm button { display:block; marxxxgin-bottom:30pt; }
 form#updateNepeForm button { width:25%; position:relative; left:37.5%; }
 div#updateNepe h1 { color:#c0392b; }
 form#updateNepeForm fieldset#socialHandleFieldset.warn h3 { font-family:serif, Times, times; color:#ff0000; }

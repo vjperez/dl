@@ -166,6 +166,8 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 	
 	//hide, show on click ; editDuenoShowNepes task 3
 	jQuery.toggleOnClick();
+	//hide them  ; editDuenoShowNepes task 4
+	jQuery.hideThem();
 
 }//  handleSubmit
 
