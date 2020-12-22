@@ -83,6 +83,13 @@ jQuery.toggleOnClick = function(){
 	});
 }
 
+jQuery.hideThem = function(){
+	var $todosLosNotHidable = jQuery('.notHidable');
+	// var $todosLosHidable = jQuery('.hidable');
+	// $todosLosHidable.hide();
+	var $toHide = $todosLosNotHidable.next('.hidable');
+	$toHide.hide();
+}
 
 jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatElement){
 	//Esta funcion la usan login y registra

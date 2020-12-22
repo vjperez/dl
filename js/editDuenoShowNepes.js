@@ -5,7 +5,7 @@ jQuery.editDuenoShowNepes = function(){
   //jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
 	jQuery.getJSON('escritos/showNepesGetIds.php')
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-		var labelAndTable = '<label class="notHidable">Tus NePes:</label>';
+		var labelAndTable = '<label class="notHidable">Tus Negocios:</label>';
 		labelAndTable   +=  '<table class="hidaxxxble">';
 			jQuery.each(datos, function(index){
 			  //labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
@@ -14,7 +14,7 @@ jQuery.editDuenoShowNepes = function(){
 			});
 			
 		  //labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
-			labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe' + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
+			labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe' + '">' + 'Crea Nuevo Negocio' + '</a></td></tr>';
 			labelAndTable += '</table>';
 		jQuery('#labelAndTableContainer').html(labelAndTable);
 	})
@@ -56,7 +56,7 @@ jQuery.editDuenoShowNepes = function(){
 					jQuery(window.location).attr('href', path);				
 				}
 				if(datosJSObj.cambiado){
-					jQuery.feedback('form#editDuenoDataForm h3', 'Tu contrasena fue cambiada.');
+					jQuery.feedback('form#editDuenoDataForm h3', 'Tu password fue cambiado.');
 				}else{
 					jQuery.feedback('form#editDuenoDataForm h3', 'Trata otra vez. No cambiamos NADA !');
 				}
@@ -73,6 +73,8 @@ jQuery.editDuenoShowNepes = function(){
 	
 	//hide, show on click ; editDuenoShowNepes task 3
 	jQuery.toggleOnClick();
+	//hide them  ; editDuenoShowNepes task 4
+	jQuery.hideThem();
 
 	//erase feedback when user writting
 	jQuery('form#editDuenoDataForm  input[name^=password]').keyup(function(){
