@@ -116,6 +116,9 @@ jQuery.handleCreaNepeSubmit = function(){
 	
 	//hide, show on click ; creaNepe task 3
 	jQuery.toggleOnClick();
+	//hide them  ; editDuenoShowNepes task 4
+	jQuery.hideThem();
+	
 	
 }//  handleSubmit
 
