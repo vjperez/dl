@@ -42,7 +42,7 @@ jQuery.cleanStr = function(str){
 
 jQuery.isVacioStr = function(str){
 	if (str === null) return true;
-	else return str.length == 0;
+	else return str.trim().length == 0;
 }
 
 jQuery.isNotVacioStr = function(str){
