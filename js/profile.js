@@ -16,12 +16,12 @@ jQuery.populateProfile = function(datos){
 	if(datos.videoCode == 0){
 	    jQuery('#video iframe').hide();
 	}else if(datos.videoCode == 1){
-		//jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '123456789');
-		jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '6qpudAhYhpc');  // hacker movie
-	}else {		//  if(datos.videoCode == 2)
 		var str = datos.videoUrl;
 		//alert( 'https://www.youtube.com/embed/' + str.substring(str.length - 11, str.length) );
-		jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + str.substring(str.length - 11, str.length)); 
+		jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + str.substring(str.length - 11, str.length)); 		
+	}else {		//  if(datos.videoCode == 2)
+		//jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '123456789');
+		jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '6qpudAhYhpc');  // hacker movie
 	}
 	
 	
