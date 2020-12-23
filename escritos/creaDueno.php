@@ -28,7 +28,7 @@ if($recurso){
 			throw new Exception('Mal query. Sin RECURSO, para queryRegisterUserReturningId. (username es nuevo, pero hubo error en: )' . __FILE__ );
 		}
 	}else{
-		$respuesta = json_decode('{"registrado":false, "feedback":"Usuario no disponible."}');
+		$respuesta = json_decode('{"registrado":false, "feedback":"Username no disponible."}');
 	}
 	pg_close($cnx); //maybe not needed but doesn't hurt
 	echo json_encode ($respuesta);

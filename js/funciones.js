@@ -101,7 +101,7 @@ jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatEl
 	pass02Check = pass02.replace(/[^a-z0-9_-]/gi, '');
 	if(usertb.length < MINIMUM_USER_PASS_LENGTH || pass01.length < MINIMUM_USER_PASS_LENGTH || pass02.length < MINIMUM_USER_PASS_LENGTH){
 		if(feedbackType.indexOf('fullFeedback') !== -1){
-			jQuery.feedback(whatElement, "Usuario o contrase\u00f1a es muy corto.");
+			jQuery.feedback(whatElement, "Username o contrase\u00f1a es muy corto.");
 		}else if(feedbackType.indexOf('genericFeedback') !== -1){
 			jQuery.feedback(whatElement, 'Trata otra vez.');
 		}
