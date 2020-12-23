@@ -11,14 +11,20 @@ jQuery.populateProfile = function(datos){
 	jQuery('#video h5').text('' + date.toLocaleDateString('es-ES', opciones)); 
 	
 	jQuery('#video h1').text(datos.nombre);
+	
 	//alert('url: ' + datos.videoUrl + '\nis Valid Video Url: ' + datos.isValidVideoUrl);
-	if(datos.has11CharsVideoUrl){
+	if(datos.videoCode == 0){
+	    jQuery('#video iframe').hide();
+	}else if(datos.videoCode == 1){
+		//jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '123456789');
+		jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '6qpudAhYhpc');  // hacker movie
+	}else {		//  if(datos.videoCode == 2)
 		var str = datos.videoUrl;
+		//alert( 'https://www.youtube.com/embed/' + str.substring(str.length - 11, str.length) );
 		jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + str.substring(str.length - 11, str.length)); 
-	}else{
-		jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '123456789');
-		//jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '6qpudAhYhpc');  // hacker movie
 	}
+	
+	
 	//alert(datos.quienSocialHandle);
 	if(datos.quienSocialHandle.tt != '')   jQuery('#quien h3.tt').text(datos.quienSocialHandle.tt);    // si no cambias valores, se quedan los de looks/profile.html
 	if(datos.quienSocialHandle.fbk != '')  jQuery('#quien h3.fbk').text(datos.quienSocialHandle.fbk);

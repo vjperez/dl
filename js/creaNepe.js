@@ -69,6 +69,11 @@ jQuery.handleCreaNepeSubmit = function(){
 
 			//formData.append('duenoId', duenoId);				////// using cookies now	///////////////
 			//formData.append('nepeId', nepeId);				////// solo para nepe update  ////////////////////
+			
+			var videoUrl = jQuery('form#creaNepeForm textarea#videoUrlId').val();
+			if(jQuery.isVacioStr(videoUrl)){
+				formData.delete("videoUrl");	formData.append('videoUrl', 'no video');
+			}else{ }
 
 			console.log("form built");
 			for (var value of formData.values()) {

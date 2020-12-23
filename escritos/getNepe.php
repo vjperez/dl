@@ -33,7 +33,7 @@ if($recurso){
 		$nepeDato['quienSocialHandle'] = json_decode($fila[8]);
 		$nepeDato['quienFotoSrc'] = json_decode($fila[9]);
 
-		$nepeDato['has11CharsVideoUrl'] = json_decode(has11CharsVideoUrl( $fila[7] ));
+		$nepeDato['videoCode'] = videoCode( $fila[7] );
 		//Send data from server in json format
 		echo json_encode($nepeDato);
 	}else{
@@ -53,13 +53,13 @@ pg_close($cnx); //maybe not needed but doesn't hurt
 
 
 
-function has11CharsVideoUrl($url) { // mide al menos 11 y tiene youtu; youtu123456 aun siendo invalido,devuelve true
-	if (strlen(substr($url, -11)) < 11){
-		return false;
-	}elseif (strpos($url, 'youtu') === false){
-		return false;
-	}else{ 
-		return true;
+function videoCode($url) { // mide al menos 11 y tiene youtu; youtu123456 aun siendo invalido,devuelve true
+	if(strpos($url, 'no video') === 0){
+		return 0;  
+	}elseif ( strpos($url, 'youtu') === false  ){
+		return 1;
+	}else {
+		return 2;
 	}
 } 
  
