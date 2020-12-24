@@ -161,8 +161,8 @@ DONE		round border on forms
 			clasificados del oeste
 			https
 			facebook video
-			js warning on portada
-			sacar victor de profile
+DONE		js warning on portada
+DONE		sacar victor de profile
 			
 DONE		aqui pon tu link de whatsapp en crea y update nepe
 
