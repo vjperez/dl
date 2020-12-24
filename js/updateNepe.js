@@ -161,7 +161,7 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 				jQuery(window.location).attr('href', path); 
 			});
 			// post made
-		}else{	  // submitVote1 && submitVote2
+		}else{	  // submitVote1 && submitVote2; visible only after all html required fields are filled but js stop the submission
 			//not posting ...  validation by haveAtLeast1Handle() and have5OrLessImages()  failed
 			//no aditional feedback needed
 			//all feedback given at haveAtLeast1Handle() and have5OrLessImages() when they run to handle change events

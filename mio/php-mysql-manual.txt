@@ -156,6 +156,10 @@ DONE		ancho minimo q se vea en iphone
 			24horas: la mejor oferta : se puede hacer ofertas, mientras no pasen 24 horas : 
 									: no se hacen mas oertas si nadie oferta en 24 horas: al final ambas partes deciden si laoferta final va o no
 
+			verifica q alla el delivery y chucho borraron fotos viejas ....
+DONE		aqui pon tu link de whatsapp en crea y update nepe
+
+
 ch 14
 Full text search postgre docu
 

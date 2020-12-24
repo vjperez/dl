@@ -13,6 +13,8 @@
 	ipad 3 de 4 lo re escribe para ipad y al no re escribir para desk, sigue aplicando en desk las dimensiones q se dieron para ipad -->
     <div id="creaNepe" class="ancho-sensi-ipad-2de3 ver-borde">
 	<h1>Crea nuevo Negocio:</h1>
+	<label class="explica">Usa los titulos color <span class="color02enfasis">marr&oacute;n</span>, para ver secciones.</label>
+	<label class="explica">Consulta dudas por whatsApp: <span class="color02enfasis"> 939 217 1734</span>.</label>
 	</div><!-- creaNepe -->
  	<form id="creaNepeForm" class="ancho-sensi-ipad-2de3 ver-borde" action="XXXeditcuenta.phpXXX" enctype="multipart/form-data" method="post">
 
@@ -29,7 +31,8 @@
 
  	    <fieldset class="primario notHidable">
  	    	<label>Qui&eacute;n</label>
- 	    	<label class="explica">minimo 1 contacto de tu Negocio</label>
+ 	    	<label class="explica">Contacto de tu Negocio</label>
+			<label class="explica">(requerido 1, maximo 4)</label>
 		</fieldset>
 		<fieldset id="socialHandleFieldset" class="secundario hidable">
 			<p><label for="red1Id">Facebook</label>
@@ -99,6 +102,7 @@
 		<fieldset class="primario notHidable">
 			<label>Cuando</label>
 			<label class="explica">Horario de tu Negocio</label>
+			<label class="explica">(opcional)</label>
 		</fieldset>
 		<fieldset id="cuandoFieldset" class="secundario hidable">
 			<p><label for="dia1Id">Lunes</label>
@@ -129,6 +133,7 @@
  	    <fieldset class="primario notHidable">
  	    	<label>Fotos</label>
  	    	<label class="explica">Fotos de tu Negocio</label>
+			<label class="explica">(requerido 1, maximo 5)</label>
 		</fieldset>	
 		<fieldset id="fotoSrcFieldset" class="secundario hidable">
 			<input type="hidden" name="MAX_FILE_SIZE" value="1000000"> <!-- 1MB  1 000 000 Bytes-->
@@ -141,7 +146,7 @@
 
 		<fieldset class="primario notHidable">
  	    	<label>Video</label>
-        	<label class="explica">Link a un video con info de tu Negocio.</label>
+        	<label class="explica">Link a un video en youtube con info de tu Negocio.</label>
  	    	<label class="explica">(opcional)</label>
 		</fieldset>
 		<fieldset class="secundario hidable">
@@ -153,6 +158,7 @@
 		<p><button type="submit"><img src="imagenes/lapiz.png" alt="Revisa"></button></p>
 		<h3 id="handlesFeedback" class="warn"></h3>
 		<h3 id="fotosFeedback" class="warn"></h3>
+		<h3 id="buttonFeedback" class="warn"></h3>
  	   </fieldset>
 
  	</form>
