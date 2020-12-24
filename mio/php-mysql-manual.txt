@@ -156,7 +156,14 @@ DONE		ancho minimo q se vea en iphone
 			24horas: la mejor oferta : se puede hacer ofertas, mientras no pasen 24 horas : 
 									: no se hacen mas oertas si nadie oferta en 24 horas: al final ambas partes deciden si laoferta final va o no
 
-			verifica q alla el delivery y chucho borraron fotos viejas ....
+			verifica q alla el delivery y chucho borraron fotos viejas ....		haz una nueva db alla (bakea lo q ahy para debugging) con victor nepe on id=1; anuncia q los primeros 3,000 negocios siempre seran gratis						
+DONE		round border on forms
+			clasificados del oeste
+			https
+			facebook video
+			js warning on portada
+			sacar victor de profile
+			
 DONE		aqui pon tu link de whatsapp en crea y update nepe
 
 
