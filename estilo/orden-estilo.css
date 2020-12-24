@@ -42,7 +42,7 @@ div#main h1, div#main h2, div#main h3, div#main h4 { color:#c0392b; }
 p, td { line-height:2em; }
 p::first-letter{ font-size:1.3em; }
 .color01enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#29b963;}
-.color02enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#c03829;}
+.color02enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#c0392b;}
 .sizeenfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace;}
 a.link { text-decoration:none; font-weight:bolder; }
 a.link:link,     a.link:visited { color:#2980b9 }
@@ -222,7 +222,8 @@ form#creaDuenoForm h3 { font-family:serif, Times, times; color:#29b963; }
 
 /* orden : creaNepeData */
 div#creaNepe { margin-left:auto; margin-right:auto;  padding-bottom:30pt;}
-div#creaNepe h1 { text-align:center; }
+div#creaNepe h1, div#creaNepe label.explica { text-align:center; }
+
 form#creaNepeForm { margin-left:auto; margin-right:auto; }
 form#creaNepeForm input[type='text'],
 form#creaNepeForm input[type='tel'],
@@ -243,6 +244,8 @@ form#creaNepeForm fieldset#submitButtonFieldset h3 { text-align:center; }
 
 
 /*estilo : creaNepeData*/
+div#creaNepe label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#29b963; display:block;  }
+
 form#creaNepeForm label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 
 form#creaNepeForm input[type='text']       { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
@@ -279,7 +282,8 @@ form#creaNepeForm fieldset#fotoSrcFieldset.warn       { border-color:#ff0000; }
 
 /* orden : updateNepe */
 div#updateNepe { margin-left:auto; margin-right:auto;  padding-bottom:30pt;}
-div#updateNepe h1 { text-align:center; }
+div#updateNepe h1, div#updateNepe label.explica { text-align:center; }
+
 form#updateNepeForm { margin-left:auto; margin-right:auto; }
 form#updateNepeForm input[type='text'],
 form#updateNepeForm input[type='tel'],
@@ -300,6 +304,8 @@ form#updateNepeForm fieldset#submitButtonFieldset h3 { text-align:center; }
 
 
 /*estilo : updateNepe*/
+div#updateNepe label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:#29b963; display:block; }
+
 form#updateNepeForm label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 
 form#updateNepeForm input[type='text']       { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
