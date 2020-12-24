@@ -259,7 +259,7 @@ form#creaNepeForm button:hover, form#creaNepeForm button:focus { background-colo
 form#creaNepeForm label.explica { color:#29b963; font-size:0.85em; letter-spacing:0.2em; }
 form#creaNepeForm textarea:focus { background-color:#dadada; }
 
-form#creaNepeForm fieldset.primario, form#creaNepeForm fieldset#submitButtonFieldset { padding-bottom:5pt; margin-top:30pt; border-radius:10pt; }
+form#creaNepeForm fieldset.primario, form#creaNepeForm fieldset#submitButtonFieldset { padding-bottom:5pt; margin-top:30pt; border-radius:10pt 10pt 0pt 0pt; }
 form#creaNepeForm fieldset.secundario { margin-top:0pt; }
 form#creaNepeForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
 form#creaNepeForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#29b963; }
@@ -319,7 +319,7 @@ form#updateNepeForm label.explica { color:#29b963; font-size:0.85em; letter-spac
 form#updateNepeForm textarea:focus { background-color:#dadada; }
 
 
-form#updateNepeForm fieldset.primario, form#updateNepeForm fieldset#submitButtonFieldset { padding-bottom:5pt; margin-top:30pt; border-radius:10pt; }
+form#updateNepeForm fieldset.primario, form#updateNepeForm fieldset#submitButtonFieldset { padding-bottom:5pt; margin-top:30pt; border-radius:10pt 10pt 0pt 0pt; }
 form#updateNepeForm fieldset.secundario { margin-top:0pt; }
 form#updateNepeForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
 form#updateNepeForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#29b963; }
@@ -340,7 +340,7 @@ form#updateNepeForm fieldset#fotoSrcFieldset.warn       { border-color:#ff0000; 
 
 
 /* orden : editDuenoData */
-form#editDuenoDataForm, div#empresas { margin-left:auto; margin-right:auto; margin-top:50pt; margin-bottom:50pt; }
+form#editDuenoDataForm, div#empresas { margin-left:auto; margin-right:auto; margin-top:50pt; margin-bottom:50pt;  }
 form#editDuenoDataForm input[type='password']{ width:100%; }
 form#editDuenoDataForm h3 { text-align:center; }
 
@@ -357,7 +357,7 @@ form#editDuenoDataForm h3 { font-family:serif, Times, times; color:#29b963; }
 */
 form#editDuenoDataForm label.explica { color:#29b963; font-size:0.85em; letter-spacing:0.2em; }
 
-form#editDuenoDataForm fieldset.primario, div#empresas fieldset.primario { margin:0pt; padding:0pt; padding-bottom:0pt; }
+form#editDuenoDataForm fieldset.primario, div#empresas fieldset.primario { margin:0pt; padding:0pt; padding-bottom:0pt; border-radius:10pt 10pt 0pt 0pt; }
 form#editDuenoDataForm fieldset.secundario { margin-top:0pt; }
 form#editDuenoDataForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
 /* form#editDuenoDataForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#16a000; } */
