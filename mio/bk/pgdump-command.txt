@@ -7,9 +7,43 @@ pg_dump.exe -U userdb -d dbname -t dueno -t nepe -t bregando -t '*id_seq' -f C:\
 pg_dump.exe -U userdb -d 4bolas -t foto  -t entrada -t '*id_seq' -f C:\Users\victor\Desktop\4bolas.sql
 
 
-==================================================================
+================================================================================================================================
 Linux command :
 To dump:    
 pg_dump -c -U userdb dbname > filename.sql
 To restore:
 psql -U userdb -d dbname < filename.sql
+
+
+================================================================================================================================
+https://www.postgresqltutorial.com/postgresql-backup-database/
+How to backup one database
+
+To backup one database, you can use the  pg_dump tool. The  pg_dump dumps out the content of all database objects into a single file.
+
+First, navigate to PostgreSQL bin folder:
+
+C:\>cd C:\Program Files\PostgreSQL\12\bin
+
+Second, execute the  pg_dump program and use the following options to backup the dvdrentaldatabase to the  dvdrental.tar file in the  c:\pgbackup\ folder.
+
+pg_dump -U postgres -W -F t dvdrental > c:\pgbackup\dvdrental.tar
+
+Let’s examine the options in more detail.
+
+-U postgres:  specifies the user to connect to the PostgreSQL database server. We used the postgres in this example.
+
+-W:  forces pg_dump to prompt for the password before connecting to the PostgreSQL database server. After you hit enter, pg_dump will prompt for the password of postgres user.
+
+-F : specifies the output file format that can be one of the following:
+
+    c: custom-format archive file format
+    d: directory-format archive
+    t: tar
+    p: plain-text SQL script file).
+
+In this example, we use  -F t to specify the output file as a tar file.
+
+dvdrental: is the name of the database that you want to back up.
+
+> c:\pgbackup\dvdrental.tar is the output backup file path.
