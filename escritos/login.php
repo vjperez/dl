@@ -2,6 +2,7 @@
 //saca los valores de POST
 $user = $_POST['user'];
 $pass = $_POST['pass'];
+$hashed_pass = password_hash($pass , PASSWORD_ARGON2I);
 
 //conecta al db
 require_once 'conecta/conecta.php';

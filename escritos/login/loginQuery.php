@@ -4,7 +4,7 @@ $query = "UPDATE
 		dueno
 SET last_log = NOW()::date 
 WHERE username = '$user'
-AND password = '$pass'
+AND password = '$hashed_pass'
 
  ;
 
@@ -12,5 +12,5 @@ AND password = '$pass'
 	id
 FROM dueno 
 WHERE username = '$user'
-AND password = '$pass'";
+AND password = '$hashed_pass'";
 ?>
