@@ -17,6 +17,7 @@ if($recurso){
 		$isNewName = true;
 	}
 	if($isNewName){
+		$hashed_pass01 = password_hash($pass01 , PASSWORD_ARGON2I);
 		$recurso = pg_query($cnx, $queryRegisterUserReturningId);
 		if($recurso && $filaConId = pg_fetch_row ($recurso)){
 			$dueno_id = $filaConId[0];

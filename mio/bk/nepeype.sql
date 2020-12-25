@@ -62,7 +62,7 @@ ALTER SEQUENCE public.bregando_id_seq OWNED BY public.bregando.id;
 CREATE TABLE public.dueno (
     id integer NOT NULL,
     username character varying(64) NOT NULL,
-    password character varying(64) NOT NULL,
+    password character varying(256) NOT NULL,
     last_log date DEFAULT '2010-01-01'::date NOT NULL,
     first_log date DEFAULT '2010-01-01'::date NOT NULL,
     CONSTRAINT dueno_first_log_check CHECK ((first_log > '2009-12-31'::date)),
