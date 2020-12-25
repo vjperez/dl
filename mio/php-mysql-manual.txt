@@ -165,6 +165,7 @@ DONE		js warning on portada
 DONE		sacar victor de profile
 			
 DONE		aqui pon tu link de whatsapp en crea y update nepe
+			encrypt password
 
 
 ch 14
