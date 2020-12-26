@@ -49,10 +49,9 @@ a.link:link,     a.link:visited { color:#2980b9 }
 a.link:hover, a.link:focus { text-decoration:underline; }
 a.link li:hover, a.link li:focus { text-decoration:underline; }
 
-/*
-div#main label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#29b963; display:block;  }
-div#main label.explica { text-align:center; }
-*/
+
+label#portada-warning.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#29b963; display:block; text-align:center; }
+
 
 div#navega a.navelink { font-family:serif, mono, monospace; font-size:0.8em; }
 h1, h2, h3, h4, label { font-family:'Bree Serif', courier, mono, monospace; }
