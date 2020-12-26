@@ -2,27 +2,38 @@
 //saca los valores de POST
 $user = $_POST['user'];
 $pass = $_POST['pass'];
-$hashed_pass = password_hash($pass , PASSWORD_ARGON2I);
 
 //conecta al db
 require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
-require_once 'login/loginQuery.php';
-$recurso = pg_query($cnx, $query);
+require_once 'login/getIdAndPasswordQuery.php';
+$recurso = pg_query($cnx, $queryGetIdAndPassword);
 if($recurso){		 
 	if($fila = pg_fetch_row($recurso)){
 		$dueno_id = $fila[0];
-	  //$respuesta = json_decode('{"loguea":true,  "duenoId":' . $dueno_id . '}');
-		$respuesta = json_decode('{"loguea":true}');
-		setcookie('dueno_id', $dueno_id, 3600*24 + time(), '/');
-	}else{
+		$password_from_db = $fila[1];
+		if( password_verify($pass, $password_from_db) ){
+					require_once 'login/updateQuery.php';
+					$recurso = pg_query($cnx, $queryUpdate);
+					if($recurso){
+					  //$respuesta = json_decode('{"loguea":true,  "duenoId":' . $dueno_id . '}');
+						$respuesta = json_decode('{"loguea":true}');
+						setcookie('dueno_id', $dueno_id, 3600*24 + time(), '/');
+					}else{
+						throw new Exception('Mal query.  Sin RECURSO, para queryUpdate en :' . __FILE__ );
+						//echo "<li>Error, pg_query, no produjo un recurso para result... en escritos\login</li>";	
+					}
+		}else{	// pass incorrecto
+			$respuesta = json_decode('{"loguea":false}');	
+		}
+	}else{	// cheo no existe
 		$respuesta = json_decode('{"loguea":false}');
 	}
 //Send data from server in json format
 echo json_encode($respuesta);		
 }else{
-	throw new Exception('Mal query.  Sin RECURSO, para query loginQuery en :' . __FILE__ );
+	throw new Exception('Mal query.  Sin RECURSO, para query queryGetIdAndPassword en :' . __FILE__ );
 	//echo "<li>Error, pg_query, no produjo un recurso para result... en escritos\login</li>";
 }
 pg_close($cnx); //maybe not needed but doesn't hurt	
