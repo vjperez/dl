@@ -2,6 +2,7 @@
 //saca los valores de POST
 $usertb = $_POST['usertb'];
 $pass01 = $_POST['pass01'];
+$hashed_pass01 = password_hash($pass01 , PASSWORD_ARGON2I);
 
 //conecta al db
 require_once 'conecta/conecta.php';
@@ -17,7 +18,6 @@ if($recurso){
 		$isNewName = true;
 	}
 	if($isNewName){
-		$hashed_pass01 = password_hash($pass01 , PASSWORD_ARGON2I);
 		$recurso = pg_query($cnx, $queryRegisterUserReturningId);
 		if($recurso && $filaConId = pg_fetch_row ($recurso)){
 			$dueno_id = $filaConId[0];

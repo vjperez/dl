@@ -12,5 +12,5 @@ $queryRegisterUserReturningId = "INSERT INTO
 
 	;
 
-	SELECT currval('dueno_dueno_id_seq')";
+	SELECT currval('dueno_id_seq')";
 ?>
