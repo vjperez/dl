@@ -5,7 +5,7 @@
 * { box-sizing:border-box; }
 body { margin:0px auto; min-width:320pt; max-width:960pt; }
 .margen { margin-left:1%; margin-right:1%; }
-.contenido { margin-bottom:50pt; margin-top:50pt; }
+.contenido { margin-bottom:100pt; margin-top:100pt; }
 .centro { margin-left:auto; margin-right:auto; }
 /*vertical-align pone la imagen en el fondo del texto q iria alrededor de un elemento inline como lo son las imagenes, sino creas un gap entre la img y el containing div */
 div#header { border-bottom:2pt solid #909090; }
@@ -371,5 +371,5 @@ form#editDuenoDataForm button { width:25%; position:relative; left:37.5%; }
 
 
 /*estilo : nada*/
-h3#nadah3   { text-align: center; }
+h3.nadah3   { text-align: center; }
 img#nadaPic { display: block; width: 34%; margin-left:auto; margin-right:auto; }
