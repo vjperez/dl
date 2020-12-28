@@ -111,6 +111,10 @@ setcookie("unNombre", "unValor");
 
 usa el valor del cookie:  $_COOKIE['unNombre']
 
+ch 14
+Full text search postgre docu
+
+
 
 ============================================================================================================================
 DONE		Consolida looks ... dentro de null maybe.	
@@ -126,15 +130,17 @@ DONE		Bluehost .... a2hosting
 DONE			En updateNepe un dueno todavia puede actualizar los nepes de otro dueno.
 ==============================================================================================================================
 DONE		Cuando haces search por 'uni' q salga universidad, con mali q salga malinois.
-			reducing pics ? : 																											ready to test rezize image
+			reducing pics ? : 																	ready to test rezize image
 			donlibre.com
 			
 			Explain (with video) on profile 1024; KIM explain how search: que solo, donde solo, ambos (hace AND entre QUE y DONDE).  En los tres casos matchea el principio de la palabra.
-			Delete a user ... o nepes
+			
+--			Delete a user ... o nepes  ;  Delete automatically profiles not revisado in 1 month  ;   add to all profiles a seriousness rank 1-10, show on searches only when rank > 5
+			
 			Unir codigo update y crea nepe
 -------
 HALF			Make it easy to change colors.  Broown -  Verde y  links azul.  Las formas de Busca,  Login y Registro el principal color de texto debe ser Brown.
-				Lee faq
+DONE			Lee faq
 -------
 -------
 DONE THought:	portada solo (o sea null) mandalo a portada busca	:	send null to Busca y send default to error==> both send to busca
@@ -153,26 +159,27 @@ DONE		revisado js no sale phone -- postgre enviaba formato Mon/DD/YYYY, algunos 
 DONE		ancho minimo q se vea en iphone
 			que los social links, te lleven  a las socialmedia
 			sube y edita profile, testea
-			24horas: la mejor oferta : se puede hacer ofertas, mientras no pasen 24 horas : 
-									: no se hacen mas oertas si nadie oferta en 24 horas: al final ambas partes deciden si laoferta final va o no
 
 			verifica q alla el delivery y chucho borraron fotos viejas ....		haz una nueva db alla (bakea lo q ahy para debugging) con victor nepe on id=1; anuncia q los primeros 3,000 negocios siempre seran gratis						
 DONE		round border on forms
 			clasificados del oeste
-			https
+--			https
 			facebook video
+--			facebook adds
+
 DONE		js warning on portada
 DONE		sacar victor de profile
 			
 DONE		aqui pon tu link de whatsapp en crea y update nepe
-			encrypt password
+DONE		encrypt password
 
 
-ch 14
-Full text search postgre docu
+
 
 
 
 Can you make a python script to back the db up,  since you made changes to nepe id 11
 Can you make a script to find file and number lines as outputs, from a dir and keyWord as input   (make it easier to remove ver-borde from html files, not just bad name it in css)
 
+24horas: la mejor oferta : se puede hacer ofertas, mientras no pasen 24 horas : 
+	: no se hacen mas oertas si nadie oferta en 24 horas: al final ambas partes deciden si laoferta final va o no
