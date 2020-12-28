@@ -5,6 +5,7 @@
 if(isset($_COOKIE['dueno_id'])){
 		$dueno_id = $_COOKIE['dueno_id'];
 		$pass01 = $_POST['pass01'];
+		$hashed_pass01 = password_hash($pass01 , PASSWORD_ARGON2I);
 
 		//conecta al db
 		require_once 'conecta/conecta.php';

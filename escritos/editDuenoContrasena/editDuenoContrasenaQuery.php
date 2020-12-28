@@ -1,6 +1,6 @@
 <?php
 $query = "UPDATE 
 	dueno
-SET password = '$pass01'
+SET password = '$hashed_pass01'
 WHERE id = '$dueno_id'";
 ?>
