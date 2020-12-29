@@ -13,7 +13,7 @@ div#header img { width:100%; vertical-align:text-bottom; max-height:50pt; }
 div#footer { min-height:107pt; overflow:auto; }
 div#footer ul { text-align:left; list-style-type:none; padding:0; }
 div#footer li { display:inline-block; padding-left:1em;  }
-div#navega    {  background-color:white; border-bottom:1pt solid #dadada; }
+div#navega    {  background-color:white; border-bottom:2pt solid #909090; }
 div#navega ul { text-align:left; list-style-type:none; margin:0pt; padding:0; }
 div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; }
 div#navega li img { vertical-align:middle; }
