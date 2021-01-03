@@ -134,9 +134,12 @@ DONE		Cuando haces search por 'uni' q salga universidad, con mali q salga malino
 			donlibre.com
 			
 			Explain (with video) on profile 1024; KIM explain how search: que solo, donde solo, ambos (hace AND entre QUE y DONDE).  En los tres casos matchea el principio de la palabra.
-			
+		
+		
 --			Delete a user ... o nepes  ;  Delete automatically profiles not revisado in 1 month  ;   add to all profiles a seriousness rank 1-10, show on searches only when rank > 5
-			
+			View user, bregando and nepes on my interface
+		
+			guardar los en el database, los QUE y DONDE introducidos por la gente ; que guarde search keys y lo use pa sugerir
 			Unir codigo update y crea nepe
 -------
 HALF			Make it easy to change colors.  Broown -  Verde y  links azul.  Las formas de Busca,  Login y Registro el principal color de texto debe ser Brown.
@@ -152,7 +155,7 @@ DONE			make an index.php
 			Subir de sitio conecta/datisconectar y configConstanta/constanta pq q no sean accesibles !
 			ts vector en english tambien y q haga un union de los findings
 			
-			que guarde search keys y lo use pa sugerir
+			
 			embedd vimeo
 DONE-THINK	Cuando busco san sebastian del pepino , busca cada palabra individualmente ??  como las ordena?? : Puedes poner cada parte del nombre del pueblo usando | o usando & en el tsquery
 DONE		revisado js no sale phone -- postgre enviaba formato Mon/DD/YYYY, algunos browser solo entienden MM/DD/YYYY
@@ -160,12 +163,14 @@ DONE		ancho minimo q se vea en iphone
 			que los social links, te lleven  a las socialmedia
 			sube y edita profile, testea
 
+			snapchat as contact
 			verifica q alla el delivery y chucho borraron fotos viejas ....		haz una nueva db alla (bakea lo q ahy para debugging) con victor nepe on id=1; anuncia q los primeros 3,000 negocios siempre seran gratis						
+
 DONE		round border on forms
 			clasificados del oeste
---			https
+DONE		https
 			facebook video
---			facebook adds
+DOING		facebook adds
 
 DONE		js warning on portada
 DONE		sacar victor de profile
