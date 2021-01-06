@@ -1,11 +1,8 @@
 <?php
-//saca los valores de POST
-//$nepe_id = $_POST['nepeId'];
-//$dueno_id = $_POST['duenoId'];
-
-if(isset($_COOKIE['dueno_id'])){
-	$dueno_id = $_COOKIE['dueno_id'];
-	$nepe_id = $_POST['nepeId'];
+session_start();
+if(isset($_SESSION['dueno_id'])){
+	$dueno_id = $_SESSION['dueno_id'];
+	$nepe_id = $_POST['nepeId'];							// verify
 	$nombre  = $_POST['nombre'];
 	$quien_social_handle = $_POST['quienSocialHandle'];
 
@@ -114,7 +111,7 @@ if(isset($_COOKIE['dueno_id'])){
 		require_once 'updateNepe/update/updateNepeNoFotoUpdate.php';
 	}
 }else{
-	throw new Exception('Sin cookie en: ' . __FILE__  );
+	throw new Exception('Session no seteada en: ' . __FILE__  );
 }
 
 ?>

@@ -21,11 +21,10 @@ if($recurso){
 		$recurso = pg_query($cnx, $queryRegisterUserReturningId);
 		if($recurso && $filaConId = pg_fetch_row ($recurso)){
 			$dueno_id = $filaConId[0];
-		  //$respuesta = json_decode('{"registrado":true, "feedback":"Ya estas registrado.  Directo a mi cuenta, no uso esto.", "duenoId":'  .  $dueno_id  . '}');
 			$respuesta = json_decode('{"registrado":true, "feedback":"Ya estas registrado.  Directo a mi cuenta, no uso esto."}');
 			pg_close($cnx);
 			echo json_encode ($respuesta);
-			setcookie('dueno_id', $dueno_id, 3600*24 + time(), '/');
+			session_start();	$_SESSION['dueno_id'] = $dueno_id; 
 		}else{
 			pg_close($cnx);
 			throw new Exception('Mal query. Sin RECURSO, para queryRegisterUserReturningId. (username es nuevo, pero hubo error en: )' . __FILE__ );

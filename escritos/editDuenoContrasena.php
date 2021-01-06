@@ -2,8 +2,9 @@
 //saca los valores de POST
 //$dueno_id = $_POST['duenoId'];
 
-if(isset($_COOKIE['dueno_id'])){
-		$dueno_id = $_COOKIE['dueno_id'];
+session_start();
+if(isset($_SESSION['dueno_id'])){
+		$dueno_id = $_SESSION['dueno_id'];
 		$pass01 = $_POST['pass01'];
 		$hashed_pass01 = password_hash($pass01 , PASSWORD_ARGON2I);
 
@@ -28,6 +29,6 @@ if(isset($_COOKIE['dueno_id'])){
 			throw new Exception('Mal query.  Sin RECURSO, para editDuenoContrasenaQuery en: '  . __FILE__ );
 		}
 }else{
-		throw new Exception('Sin cookie en: ' . __FILE__  );
+		throw new Exception('Session no seteada en: ' . __FILE__  );
 }
 ?>

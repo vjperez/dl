@@ -17,11 +17,10 @@ if($recurso){
 					require_once 'login/updateQuery.php';
 					$recurso = pg_query($cnx, $queryUpdate);
 					if($recurso){
-					  //$respuesta = json_decode('{"loguea":true,  "duenoId":' . $dueno_id . '}');
 						$respuesta = json_decode('{"loguea":true}');
 						pg_close($cnx);
 						echo json_encode ($respuesta);
-						setcookie('dueno_id', $dueno_id, 3600*24 + time(), '/');
+					    session_start();	$_SESSION['dueno_id'] = $dueno_id;
 					}else{
 						pg_close($cnx);
 						throw new Exception('Mal query.  Sin RECURSO, para queryUpdate en :' . __FILE__ );

@@ -1,9 +1,7 @@
 <?php
-//saca los valores de GET
-//$duenoId = $_GET['duenoId'];
-
-if(isset($_COOKIE['dueno_id'])){
-		$dueno_id = $_COOKIE['dueno_id'];	
+session_start();
+if(isset($_SESSION['dueno_id'])){
+		$dueno_id = $_SESSION['dueno_id'];	
 	
 		//conecta al db
 		require_once 'conecta/conecta.php';
@@ -24,13 +22,13 @@ if(isset($_COOKIE['dueno_id'])){
 			}
 			pg_close($cnx);
 			echo json_encode($empresas);
-			//Store own nepes on cookie in json format
-			setcookie('own_nepes', json_encode($ownNepes), 3600*24 + time(), '/');
+			//Store own nepes on session in json format
+			$_SESSION['own_nepes'] = json_encode($ownNepes); 
 		}else{
 			pg_close($cnx); //maybe not needed but doesn't hurt
 			throw new Exception('Mal query.  Sin RECURSO en: ' . __FILE__  );
 		}
 }else{
-	throw new Exception('Sin cookie en: ' . __FILE__  );
+	throw new Exception('Session no seteada en: ' . __FILE__  );
 }
 ?>
