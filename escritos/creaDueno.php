@@ -23,20 +23,21 @@ if($recurso){
 			$dueno_id = $filaConId[0];
 			//$respuesta = json_decode('{"registrado":true, "feedback":"Ya estas registrado.  Directo a mi cuenta, no uso este feedback.", "duenoId":'  .  $dueno_id  . '}');
 			$respuesta = json_decode('{"registrado":true, "feedback":"Ya estas registrado.  Directo a mi cuenta, no uso esto."}');
+			pg_close($cnx);
+			echo json_encode ($respuesta);
 			setcookie('dueno_id', $dueno_id, 3600*24 + time(), '/');
 		}else{
-			pg_close($cnx); //maybe not needed but doesn't hurt
+			pg_close($cnx);
 			throw new Exception('Mal query. Sin RECURSO, para queryRegisterUserReturningId. (username es nuevo, pero hubo error en: )' . __FILE__ );
 		}
 	}else{
 		$respuesta = json_decode('{"registrado":false, "feedback":"Username no disponible."}');
+		pg_close($cnx);
+		echo json_encode ($respuesta);
 	}
-	pg_close($cnx); //maybe not needed but doesn't hurt
-	echo json_encode ($respuesta);
 }else{
-	pg_close($cnx); //maybe not needed but doesn't hurt
+	pg_close($cnx);		//maybe not needed but doesn't hurt
 	throw new Exception('Mal query.  Sin RECURSO, para queryCheckUserName.  (Ni se chequio el username.) en: ' . __FILE__ );
-	//echo "<li>Error, pg_query, no produjo un recurso para result... en escritos\login</li>";
 }
 
 ?>

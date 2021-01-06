@@ -16,16 +16,17 @@ if(isset($_COOKIE['dueno_id'])){
 		if($recurso){		 
 			if(pg_affected_rows($recurso) == 1){
 				$respuesta = json_decode('{"cambiado":true}');
+				pg_close($cnx);
+				echo json_encode($respuesta);
 			}elseif(pg_affected_rows($recurso) == 0){
 				$respuesta = json_decode('{"cambiado":false}');
-			}
-		//Send data from server in json format
-		echo json_encode($respuesta);		
+				pg_close($cnx);
+				echo json_encode($respuesta);
+			}		
 		}else{
+			pg_close($cnx); //maybe not needed but doesn't hurt	
 			throw new Exception('Mal query.  Sin RECURSO, para editDuenoContrasenaQuery en: '  . __FILE__ );
-			//echo "<li>Error, pg_query, no produjo un recurso para result... en escritos\login</li>";
 		}
-		pg_close($cnx); //maybe not needed but doesn't hurt	
 }else{
 		throw new Exception('Sin cookie en: ' . __FILE__  );
 }
