@@ -19,23 +19,25 @@ if($recurso){
 					if($recurso){
 					  //$respuesta = json_decode('{"loguea":true,  "duenoId":' . $dueno_id . '}');
 						$respuesta = json_decode('{"loguea":true}');
+						pg_close($cnx);
+						echo json_encode ($respuesta);
 						setcookie('dueno_id', $dueno_id, 3600*24 + time(), '/');
 					}else{
+						pg_close($cnx);
 						throw new Exception('Mal query.  Sin RECURSO, para queryUpdate en :' . __FILE__ );
-						//echo "<li>Error, pg_query, no produjo un recurso para result... en escritos\login</li>";	
 					}
 		}else{	// pass incorrecto
-			$respuesta = json_decode('{"loguea":false}');	
+			$respuesta = json_decode('{"loguea":false}');
+			pg_close($cnx);
+			echo json_encode ($respuesta);	
 		}
 	}else{	// cheo no existe
 		$respuesta = json_decode('{"loguea":false}');
-	}
-//Send data from server in json format
-echo json_encode($respuesta);		
+		pg_close($cnx);
+		echo json_encode ($respuesta);
+	}	
 }else{
+	pg_close($cnx); //maybe not needed but doesn't hurt	
 	throw new Exception('Mal query.  Sin RECURSO, para query queryGetIdAndPassword en :' . __FILE__ );
-	//echo "<li>Error, pg_query, no produjo un recurso para result... en escritos\login</li>";
 }
-pg_close($cnx); //maybe not needed but doesn't hurt	
-
 ?>
