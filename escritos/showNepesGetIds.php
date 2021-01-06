@@ -22,15 +22,14 @@ if(isset($_COOKIE['dueno_id'])){
 				$empresas[$index]['nepeNombre'] = $empresa[1];
 				$index++;
 			}
+			pg_close($cnx);
+			echo json_encode($empresas);
 			//Store own nepes on cookie in json format
 			setcookie('own_nepes', json_encode($ownNepes), 3600*24 + time(), '/');
-			//Send data from server in json format
-			echo json_encode($empresas);
 		}else{
+			pg_close($cnx); //maybe not needed but doesn't hurt
 			throw new Exception('Mal query.  Sin RECURSO en: ' . __FILE__  );
-			//echo "<li>Error, pg_query, no produjo un recurso para result... en getMicroEmpreData</li>";
 		}
-		pg_close($cnx); //maybe not needed but doesn't hurt
 }else{
 	throw new Exception('Sin cookie en: ' . __FILE__  );
 }
