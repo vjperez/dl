@@ -145,11 +145,12 @@ jQuery.getCookieValue = function(cookieName){
 	//alert('document dot cookie: ' + document.cookie + '\nall cookies: ' + allcookies  + '\ncookie array: ' + cookiearray + '\ncookie array lenght: ' + cookiearray.length  );
 	for(var i=0; i < cookiearray.length; i++) {
 		var name = cookiearray[i].trim().split('=')[0]; // me hace falta trim pq en los cookies juntos hay un espacio antes del nombre
-		value = JSON.parse( decodeURIComponent( cookiearray[i].split('=')[1] )  ); 
-		// me hace falta decodeURI pq cookie value viene encoded desde php (usando json encode)
-		// me hace falta JSON.parse pa q javascript parsee/compare valores en el arreglo original, no texto letra por letra de lo enviado por php
-		//alert('current cookie name=' + name + '\nBuscando Parametro=' + cookieName + '\nCookie Value=' + value + '\nLo q buscas?=' + (name === cookieName));
+		//alert('current cookie name=' + name + '\nBuscando Parametro=' + cookieName + '\nLo q buscas?=' + (name === cookieName));
 		if(name === cookieName) {
+			value = JSON.parse( decodeURIComponent( cookiearray[i].split('=')[1] )  ); 
+			// me hace falta decodeURI pq cookie value viene encoded desde php (usando json encode)
+			// me hace falta JSON.parse pa q javascript parsee/compare valores en el arreglo original, no texto letra por letra de lo enviado por php
+			//alert('current cookie name=' + name + '\nBuscando Parametro=' + cookieName + '\nCookie Value=' + value + '\nLo q buscas?=' + (name === cookieName));
 			return value;
 		}
 	}
