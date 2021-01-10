@@ -4,8 +4,7 @@ jQuery(document).ready(
 		var acto = jQuery.urlParametro('acto');
 		switch(acto){
 			case 'logout':
-				document.cookie = "dueno_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-				document.cookie = "own_nepes=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+				jQuery.logout();
 			break;
 			case null:
 			default :
