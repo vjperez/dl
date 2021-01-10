@@ -7,13 +7,17 @@ jQuery(document).ready(
 				document.cookie = "dueno_id=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 				document.cookie = "own_nepes=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 			break;
+			case null:
+			default :
+
+			break;
 		}
 
 		var look = jQuery.urlParametro('look');
 		switch(look) {
 			case 'busca':
 				jQuery('#navBusca').hide();
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+				if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 
 				jQuery.dameLook('looks/busca.html');
@@ -28,7 +32,7 @@ jQuery(document).ready(
 				}); //ajax complete
 			break;
 			case 'opciones':
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+				if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 			
 			//This look completely depends on the amount of options to be presented.  It doesn't make
@@ -75,7 +79,7 @@ jQuery(document).ready(
 				});
 			break;
 			case 'profile':
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+				if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 
 				//get nepeId then
@@ -103,7 +107,7 @@ jQuery(document).ready(
 			case 'login':
 				jQuery('#navLogin').hide();
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSetCookie('dueno_id') )  {
+				if( jQuery.isSessionSet('dueno_id') )  {
 					jQuery('#navSignup').hide();
 					
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
@@ -131,7 +135,7 @@ jQuery(document).ready(
 			case 'editDuenoShowNepes':
 				jQuery('#navHome').hide();
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSetCookie('dueno_id') )  {
+				if( jQuery.isSessionSet('dueno_id') )  {
 					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 				
 					//get duenoId
@@ -159,7 +163,7 @@ jQuery(document).ready(
 			break;			
 			case 'creaNepe':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSetCookie('dueno_id') )  {
+				if( jQuery.isSessionSet('dueno_id') )  {
 					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 
 					jQuery.dameLook('looks/creaNepe.html');
@@ -188,11 +192,11 @@ jQuery(document).ready(
 			break;
 			case 'updateNepe':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSetCookie('dueno_id') )  {
+				if( jQuery.isSessionSet('dueno_id') )  {
 					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 
 					var nepeId = jQuery.urlParametro('nepeId');
-					if( jQuery.isNepeIdOnOwnNepesCookie(nepeId) ){
+					if( jQuery.isNepeIdOnOwnNepesSession(nepeId) ){
 							jQuery.dameLook('looks/updateNepe.html');
 
 							jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
@@ -242,7 +246,7 @@ jQuery(document).ready(
 			break;			
 			case 'creaDueno':
 				jQuery('#navSignup').hide();
-				if( jQuery.isSetCookie('dueno_id') )  {
+				if( jQuery.isSessionSet('dueno_id') )  {
 					jQuery('#navLogin').hide();
 					
 					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
@@ -268,7 +272,7 @@ jQuery(document).ready(
 				}
 			break;				
 			case 'faq':
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+				if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 
 				jQuery.dameLook('looks/faq.html');
@@ -282,12 +286,12 @@ jQuery(document).ready(
 				});
 			break;
 			case 'nada':
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+				if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 				jQuery.dameLook('looks/nada.html');
 			break;				
 			case 'error':
-				if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+				if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 				jQuery.dameLook('looks/error.html');
 				
@@ -312,7 +316,7 @@ jQuery(document).ready(
 			// (1) redirecting to busca
 				jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 			// (2) null look				
-				//if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 				//jQuery.dameLook('looks/lookIsNull.html');
 			//
@@ -331,7 +335,7 @@ jQuery(document).ready(
 			// (1) redirecting to busca
 				jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 			// (2) default look
-				//if( jQuery.isSetCookie('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
 				//jQuery.dameLook('looks/default.html');
 			//

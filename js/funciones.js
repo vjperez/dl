@@ -170,3 +170,38 @@ jQuery.isNepeIdOnOwnNepesCookie = function(nepeIdTocheck){
 		return false;
 	}
 }
+
+
+
+jQuery.isSessionSet = function(key){
+	return ! (jQuery.getSessionValue(key) == null);
+}
+
+jQuery.getSessionValue = function(key){
+	jQuery.getJSON('escritos/getSessionValue.php', {key:key})
+	.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+		return datos.valor;
+	})
+	/*
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	}) 
+	*/
+	;
+}
+
+jQuery.isNepeIdOnOwnNepesSession = function(nepeIdTocheck){
+	var sessionValue = jQuery.getSessionValue('own_nepes');
+	if( ! (sessionValue == null) ){
+		var own_nepes = sessionValue;
+		for(var index=0; index < own_nepes.length; index++){
+			//alert('nepe id to check: ' + nepeIdTocheck + '   current value on own nepes: ' + own_nepes[index])
+			if(own_nepes[index] == nepeIdTocheck) { return true; }
+		}
+		return false;
+	}else{
+		return false;
+	}
+}
