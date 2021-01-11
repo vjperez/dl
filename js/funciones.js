@@ -174,15 +174,26 @@ jQuery.isNepeIdOnOwnNepesCookie = function(nepeIdTocheck){
 
 
 jQuery.isSessionSet = function(key){
-	if(jQuery.getSessionValue(key) === false) return false;
-	else return true;
+	jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+	.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+		alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+		return datos.isSet;
+	})
+	/*
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	}) 
+	*/
+	;
 }
 
 jQuery.getSessionValue = function(key){
 	jQuery.getJSON('escritos/getSessionValue.php', {key:key})
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-		alert('key: ' + key + ' datos.valor: ' + datos.valor);
-		return datos.valor;
+		alert('key: ' + key + '\ndatos: ' + datos);
+		return datos;
 	})
 	/*
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -195,9 +206,8 @@ jQuery.getSessionValue = function(key){
 }
 
 jQuery.isNepeIdOnOwnNepesSession = function(nepeIdTocheck){
-	var sessionValue = jQuery.getSessionValue('own_nepes');
-	if( ! (sessionValue === false) ){
-		var own_nepes = sessionValue;
+	if( jQuery.isSessionSet('own_nepes') ){
+		var own_nepes = jQuery.getSessionValue('own_nepes');
 		for(var index=0; index < own_nepes.length; index++){
 			//alert('nepe id to check: ' + nepeIdTocheck + '   current value on own nepes: ' + own_nepes[index])
 			if(own_nepes[index] == nepeIdTocheck) { return true; }
