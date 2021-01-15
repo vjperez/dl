@@ -188,3 +188,7 @@ Can you make a script to find file and number lines as outputs, from a dir and k
 
 24horas: la mejor oferta : se puede hacer ofertas, mientras no pasen 24 horas : 
 	: no se hacen mas oertas si nadie oferta en 24 horas: al final ambas partes deciden si laoferta final va o no
+
+
+
+falta update nepe

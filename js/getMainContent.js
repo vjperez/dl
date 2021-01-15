@@ -16,9 +16,7 @@ jQuery(document).ready(
 		switch(look) {
 			case 'busca':
 				jQuery('#navBusca').hide();
-				if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-
+				var session =  jQuery.isSessionSet('dueno_id') ;
 				jQuery.dameLook('looks/busca.html');
 		
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
@@ -28,12 +26,20 @@ jQuery(document).ready(
 						//when ajax complete ; handle form submit and go to opciones
 						jQuery.handleBuscaSubmit();
 					}//if
+					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
+						if(session)  {jQuery('#navLogin').hide();   jQuery('#navSignup').hide();}
+						else         {jQuery('#navLogout').hide();  jQuery('#navHome').hide();}
+					}//if
 				}); //ajax complete
 			break;
 			case 'opciones':
-				if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-			
+				var session =  jQuery.isSessionSet('dueno_id') ;
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
+						if(session)  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+						else         {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
+					}
+				}); //ajax complete
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 			//concatenating strings inside an each loop, with the requested JSON datos.
@@ -78,8 +84,13 @@ jQuery(document).ready(
 				});
 			break;
 			case 'profile':
-				if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
+				var session =  jQuery.isSessionSet('dueno_id') ;
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
+						if(session)  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+						else         {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
+					}
+				}); //ajax complete
 
 				//get nepeId then
 				var nepeId = jQuery.urlParametro('nepeId');
@@ -106,173 +117,194 @@ jQuery(document).ready(
 			case 'login':
 				jQuery('#navLogin').hide();
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSessionSet('dueno_id') )  {
-					jQuery('#navSignup').hide();
-					
-						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-						var textoEstatus = 'Error, usuario solicito login look, estando logueado.';
-						var elError = 'Error humano.';
+				var session =  jQuery.isSessionSet('dueno_id') ;
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
+						if(session){
+							jQuery('#navSignup').hide();
+							
+								var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+								var textoEstatus = 'Error, usuario solicito login look, estando logueado.';
+								var elError = 'Error humano.';
 
-						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-						jQuery(window.location).attr('href', path);						
-				}else{
-					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+								var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+								jQuery(window.location).attr('href', path);						
+						}else{
+							jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 
-					//get login look
-					jQuery.dameLook('looks/login.html');
+							//get login look
+							jQuery.dameLook('looks/login.html');
 
-					//once look is in, use jQuery on loaded elements to get values
-					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						//This code runs when get isCompleted and IF the get was requesting login.html
-						if(settingsObjeto.url === 'looks/login.html'){
-							//when ajax complete ; handle form submit and make post
-							jQuery.handleLoginSubmit();
-						}//if
-					});//ajax complete
-				}
+							//once look is in, use jQuery on loaded elements to get values
+							jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+								//This code runs when get isCompleted and IF the get was requesting login.html
+								if(settingsObjeto.url === 'looks/login.html'){
+									//when ajax complete ; handle form submit and make post
+									jQuery.handleLoginSubmit();
+								}//if
+							});//ajax complete
+						}
+					}
+				}); //ajax complete
 			break;
 			case 'editDuenoShowNepes':
 				jQuery('#navHome').hide();
-				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSessionSet('dueno_id') )  {
-					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
-				
-					//get duenoId
-					//var duenoId = jQuery.urlParametro('duenoId');
-
-					jQuery.dameLook('looks/editDuenoShowNepes.html');
-
-					//once look is in, use jQuery to update look with profile values
-					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						if(settingsObjeto.url === 'looks/editDuenoShowNepes.html'){
-							//jQuery.editDuenoShowNepes(duenoId);
-							jQuery.editDuenoShowNepes();
-						}//if
-					});//ajaxComplete
-				}else{
-					jQuery('#navLogout').hide();
-					
-					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-					var textoEstatus = 'Error, usuario solicito home (editDuenoShowNepes) look, sin estar logueado.';
-					var elError = 'Error humano.';
-
-					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-					jQuery(window.location).attr('href', path);						
-				}
-			break;			
-			case 'creaNepe':
-				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSessionSet('dueno_id') )  {
-					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
-
-					jQuery.dameLook('looks/creaNepe.html');
-
-					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						if(settingsObjeto.url === 'looks/creaNepe.html'){
+				var session =  jQuery.isSessionSet('dueno_id') ;
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
+						if(session)  {
+							jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
+						
 							//get duenoId
 							//var duenoId = jQuery.urlParametro('duenoId');
+
+							jQuery.dameLook('looks/editDuenoShowNepes.html');
+
+							//once look is in, use jQuery to update look with profile values
+							jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+								if(settingsObjeto.url === 'looks/editDuenoShowNepes.html'){
+									//jQuery.editDuenoShowNepes(duenoId);
+									jQuery.editDuenoShowNepes();
+								}//if
+							});//ajaxComplete
+						}else{
+							jQuery('#navLogout').hide();
 							
-							//task 1 when ajax complete ; handle form submit and make post
-						  //jQuery.handleCreaNepeSubmit(duenoId);
-							jQuery.handleCreaNepeSubmit();
-							//submit event listener and handler
-						}//if
-					});//ajaxComplete
-				}else{
-					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-					
-					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-					var textoEstatus = 'Error, usuario solicito creaNepe look, sin estar logueado.';
-					var elError = 'Error humano.';
+							var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+							var textoEstatus = 'Error, usuario solicito home (editDuenoShowNepes) look, sin estar logueado.';
+							var elError = 'Error humano.';
 
-					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-					jQuery(window.location).attr('href', path);						
-				}
-			break;
-			case 'updateNepe':
-				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				if( jQuery.isSessionSet('dueno_id') )  {
-					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
+							var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+							jQuery(window.location).attr('href', path);						
+						}
+					}
+				}); //ajax complete
+			break;			
+			case 'creaNepe':
+				var session =  jQuery.isSessionSet('dueno_id') ;
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
+						if(session)  {
+							jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 
-					var nepeId = jQuery.urlParametro('nepeId');
-					if( jQuery.isNepeIdOnOwnNepesSession(nepeId) ){
-							jQuery.dameLook('looks/updateNepe.html');
+							jQuery.dameLook('looks/creaNepe.html');
 
 							jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-								if(settingsObjeto.url === 'looks/updateNepe.html'){
-									//get nepeId
-									//var nepeId = jQuery.urlParametro('nepeId');  
-									
+								if(settingsObjeto.url === 'looks/creaNepe.html'){
 									//get duenoId
 									//var duenoId = jQuery.urlParametro('duenoId');
-			
-									//task 1 when ajax complete get that data
-									//alert('nepeId : ' + nepeId);
-									jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
-									.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-										jQuery.populateUpdateNepeForm(datos);
-									})
-									.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-										var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-										var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-										jQuery(window.location).attr('href', path); 
-									});
-																
-									//task 2 when ajax complete ; handle form submit and make post
-									//jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
-									jQuery.handleUpdateNepeSubmit(nepeId);
+									
+									//task 1 when ajax complete ; handle form submit and make post
+								//jQuery.handleCreaNepeSubmit(duenoId);
+									jQuery.handleCreaNepeSubmit();
 									//submit event listener and handler
 								}//if
 							});//ajaxComplete
-					}else{
-							var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-							var textoEstatus = 'Error, usuario solicito editar nepe q no es de el.';
-							var elError = 'Error humano.';
+						}else{
+							jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 							
-							var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-							jQuery(window.location).attr('href', path);								
-					}
-				}else{
-					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-					
-					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-					var textoEstatus = 'Error, usuario solicito updateNepe look, sin estar logueado.';
-					var elError = 'Error humano.';
+							var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+							var textoEstatus = 'Error, usuario solicito creaNepe look, sin estar logueado.';
+							var elError = 'Error humano.';
 
-					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-					jQuery(window.location).attr('href', path);						
-				}
+							var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+							jQuery(window.location).attr('href', path);						
+						}
+					}
+				}); //ajax complete
+			break;
+			case 'updateNepe':
+				var session =  jQuery.isSessionSet('dueno_id') ;
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
+						if(session)  {
+							jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
+
+							var nepeId = jQuery.urlParametro('nepeId');
+							if( jQuery.isNepeIdOnOwnNepesSession(nepeId) ){
+									jQuery.dameLook('looks/updateNepe.html');
+
+									jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+										if(settingsObjeto.url === 'looks/updateNepe.html'){
+											//get nepeId
+											//var nepeId = jQuery.urlParametro('nepeId');  
+											
+											//get duenoId
+											//var duenoId = jQuery.urlParametro('duenoId');
+					
+											//task 1 when ajax complete get that data
+											//alert('nepeId : ' + nepeId);
+											jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
+											.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+												jQuery.populateUpdateNepeForm(datos);
+											})
+											.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+												var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+												var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+												jQuery(window.location).attr('href', path); 
+											});
+																		
+											//task 2 when ajax complete ; handle form submit and make post
+											//jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
+											jQuery.handleUpdateNepeSubmit(nepeId);
+											//submit event listener and handler
+										}//if
+									});//ajaxComplete
+							}else{
+									var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+									var textoEstatus = 'Error, usuario solicito editar nepe q no es de el.';
+									var elError = 'Error humano.';
+									
+									var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+									jQuery(window.location).attr('href', path);								
+							}
+						}else{
+							jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+							
+							var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+							var textoEstatus = 'Error, usuario solicito updateNepe look, sin estar logueado.';
+							var elError = 'Error humano.';
+
+							var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+							jQuery(window.location).attr('href', path);						
+						}
+					}
+				}); //ajax complete
 			break;			
 			case 'creaDueno':
 				jQuery('#navSignup').hide();
-				if( jQuery.isSessionSet('dueno_id') )  {
-					jQuery('#navLogin').hide();
-					
-					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-					var textoEstatus = 'Error, usuario solicito creaDueno look, estando logueado.';
-					var elError = 'Error humano.';
+				var session =  jQuery.isSessionSet('dueno_id') ;
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
+						if(session)  {
+							jQuery('#navLogin').hide();
+							
+							var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+							var textoEstatus = 'Error, usuario solicito creaDueno look, estando logueado.';
+							var elError = 'Error humano.';
 
-					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-					jQuery(window.location).attr('href', path);						
-				}else{
-					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-					
-					//get creaDueno look
-					jQuery.dameLook('looks/creaDueno.html');
+							var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+							jQuery(window.location).attr('href', path);						
+						}else{
+							jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+							
+							//get creaDueno look
+							jQuery.dameLook('looks/creaDueno.html');
 
-					//once look is in, use jQuery on loaded elements to get values
-					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						//This code runs when get isCompleted and IF the get was requesting creaDueno.html
-						if(settingsObjeto.url === 'looks/creaDueno.html'){
-							//when ajax complete ; handle form submit and make post
-							jQuery.handleCreaDuenoSubmit();
-						}//if
-					});//ajax complete
-				}
+							//once look is in, use jQuery on loaded elements to get values
+							jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+								//This code runs when get isCompleted and IF the get was requesting creaDueno.html
+								if(settingsObjeto.url === 'looks/creaDueno.html'){
+									//when ajax complete ; handle form submit and make post
+									jQuery.handleCreaDuenoSubmit();
+								}//if
+							});//ajax complete
+						}
+					}//if
+				});//ajax complete
 			break;				
 			case 'faq':
-				if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
+				var session =  jQuery.isSessionSet('dueno_id') ;
 
 				jQuery.dameLook('looks/faq.html');
 
@@ -282,18 +314,36 @@ jQuery(document).ready(
 					if(settingsObjeto.url === 'looks/faq.html'){ // === means true without type coersion - the type and value most both be equal
 						jQuery.toggleOnClick();
 					}
+					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
+						if(session)  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+						else         {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
+					}
 				});
 			break;
 			case 'nada':
-				if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
+				var session =  jQuery.isSessionSet('dueno_id') ;
+
 				jQuery.dameLook('looks/nada.html');
+
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
+						if(session)  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+						else         {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
+					}
+				});
 			break;				
 			case 'error':
-				if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
+				var session =  jQuery.isSessionSet('dueno_id') ;
+
 				jQuery.dameLook('looks/error.html');
 				
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
+						if(session)  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
+						else         {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
+					}
+				});
+
 				if(DEBUGUEO){
 					var xhrObjetoForFAILTexto = decodeURIComponent (jQuery.urlParametro('xhrObjetoForFAILTexto'));
 					var textoEstatus          = decodeURIComponent (jQuery.urlParametro('textoEstatus'));
