@@ -124,6 +124,9 @@ jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatEl
 		return true;
 	}
 }
+
+
+
 /*
 jQuery.isSetCookie = function(cookieName){
 	var isSet = false;
@@ -173,20 +176,19 @@ jQuery.isNepeIdOnOwnNepesCookie = function(nepeIdTocheck){
 */
 
 
+
+/*
 jQuery.isSessionSet = function(key){
 	jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 		alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 		return datos.isSet;
-	})
-	/*
-	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-		jQuery(window.location).attr('href', path); 
-	}) 
-	*/
-	;
+	});
+	//.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+	//	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+	//	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+	//	jQuery(window.location).attr('href', path); 
+	//}) 
 }
 
 jQuery.getSessionValue = function(key){
@@ -194,16 +196,16 @@ jQuery.getSessionValue = function(key){
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 		alert('key: ' + key + '\ndatos: ' + datos);
 		return datos;
-	})
-	/*
-	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-		jQuery(window.location).attr('href', path); 
-	}) 
-	*/
-	;
+	});
+	//.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+	//	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+	//	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+	//	jQuery(window.location).attr('href', path); 
+	//}) 
 }
+*/
+
+
 
 jQuery.isNepeIdOnOwnNepesSession = function(ownNepes, nepeIdTocheck){
 	for(var index=0; index < ownNepes.length; index++){
@@ -216,14 +218,10 @@ jQuery.isNepeIdOnOwnNepesSession = function(ownNepes, nepeIdTocheck){
 jQuery.logout = function(){
 	jQuery.get('escritos/logout.php')
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-		
-	})
-	/*
-	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-		jQuery(window.location).attr('href', path); 
-	}) 
-	*/
-	;
+	});
+	//.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+	//	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+	//	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+	//	jQuery(window.location).attr('href', path); 
+	//}) 
 }
