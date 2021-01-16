@@ -123,7 +123,7 @@ jQuery(document).ready(
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-					if(datos.isSet)  {  
+					if(datos.isSet){  
 						jQuery('#navSignup').hide();
 							
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
@@ -133,7 +133,7 @@ jQuery(document).ready(
 						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 						jQuery(window.location).attr('href', path);	
 					}
-					else             { 
+					else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 
 						//get login look
@@ -147,41 +147,42 @@ jQuery(document).ready(
 								jQuery.handleLoginSubmit();
 							}//if
 						});//ajax complete
-					 }
+					}
 				});				
 			break;
 			case 'editDuenoShowNepes':
 				jQuery('#navHome').hide();
-				var session =  jQuery.isSessionSet('dueno_id') ;
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
-						if(session)  {
-							jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
+				var key = 'dueno_id';
+				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					if(datos.isSet){ 
+						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 						
-							//get duenoId
-							//var duenoId = jQuery.urlParametro('duenoId');
+						//get duenoId
+						//var duenoId = jQuery.urlParametro('duenoId');
 
-							jQuery.dameLook('looks/editDuenoShowNepes.html');
+						jQuery.dameLook('looks/editDuenoShowNepes.html');
 
-							//once look is in, use jQuery to update look with profile values
-							jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-								if(settingsObjeto.url === 'looks/editDuenoShowNepes.html'){
-									//jQuery.editDuenoShowNepes(duenoId);
-									jQuery.editDuenoShowNepes();
-								}//if
-							});//ajaxComplete
-						}else{
-							jQuery('#navLogout').hide();
-							
-							var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-							var textoEstatus = 'Error, usuario solicito home (editDuenoShowNepes) look, sin estar logueado.';
-							var elError = 'Error humano.';
-
-							var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-							jQuery(window.location).attr('href', path);						
-						}
+						//once look is in, use jQuery to update look with profile values
+						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+							if(settingsObjeto.url === 'looks/editDuenoShowNepes.html'){
+								//jQuery.editDuenoShowNepes(duenoId);
+								jQuery.editDuenoShowNepes();
+							}//if
+						});//ajaxComplete
 					}
-				}); //ajax complete
+					else{
+						jQuery('#navLogout').hide();
+							
+						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+						var textoEstatus = 'Error, usuario solicito home (editDuenoShowNepes) look, sin estar logueado.';
+						var elError = 'Error humano.';
+
+						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+						jQuery(window.location).attr('href', path);	
+					}
+				});
 			break;			
 			case 'creaNepe':
 				var session =  jQuery.isSessionSet('dueno_id') ;
