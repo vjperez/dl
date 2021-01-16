@@ -35,13 +35,13 @@ jQuery(document).ready(
 				}); //ajax complete
 			break;
 			case 'opciones':
-				var session =  jQuery.isSessionSet('dueno_id') ;
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
-						if(session)  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-						else         {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-					}
-				}); //ajax complete
+				var key = 'dueno_id';
+				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
+					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
+				});
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 			//concatenating strings inside an each loop, with the requested JSON datos.
