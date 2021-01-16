@@ -296,35 +296,36 @@ jQuery(document).ready(
 			break;			
 			case 'creaDueno':
 				jQuery('#navSignup').hide();
-				var session =  jQuery.isSessionSet('dueno_id') ;
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
-						if(session)  {
-							jQuery('#navLogin').hide();
-							
-							var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-							var textoEstatus = 'Error, usuario solicito creaDueno look, estando logueado.';
-							var elError = 'Error humano.';
 
-							var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-							jQuery(window.location).attr('href', path);						
-						}else{
-							jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+				var key = 'dueno_id';
+				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					if(datos.isSet){  
+						jQuery('#navLogin').hide();
 							
-							//get creaDueno look
-							jQuery.dameLook('looks/creaDueno.html');
+						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+						var textoEstatus = 'Error, usuario solicito creaDueno look, estando logueado.';
+						var elError = 'Error humano.';
 
-							//once look is in, use jQuery on loaded elements to get values
-							jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-								//This code runs when get isCompleted and IF the get was requesting creaDueno.html
-								if(settingsObjeto.url === 'looks/creaDueno.html'){
-									//when ajax complete ; handle form submit and make post
-									jQuery.handleCreaDuenoSubmit();
-								}//if
-							});//ajax complete
-						}
-					}//if
-				});//ajax complete
+						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+						jQuery(window.location).attr('href', path);	
+					}else{ 
+						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+							
+						//get creaDueno look
+						jQuery.dameLook('looks/creaDueno.html');
+
+						//once look is in, use jQuery on loaded elements to get values
+						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+							//This code runs when get isCompleted and IF the get was requesting creaDueno.html
+							if(settingsObjeto.url === 'looks/creaDueno.html'){
+								//when ajax complete ; handle form submit and make post
+								jQuery.handleCreaDuenoSubmit();
+							}//if
+						});//ajax complete
+					}
+				});
 			break;				
 			case 'faq':
 				var session =  jQuery.isSessionSet('dueno_id') ;
