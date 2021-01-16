@@ -206,16 +206,25 @@ jQuery.getSessionValue = function(key){
 }
 
 jQuery.isNepeIdOnOwnNepesSession = function(nepeIdTocheck){
-	if( jQuery.isSessionSet('own_nepes') ){
-		var own_nepes = jQuery.getSessionValue('own_nepes');
-		for(var index=0; index < own_nepes.length; index++){
-			//alert('nepe id to check: ' + nepeIdTocheck + '   current value on own nepes: ' + own_nepes[index])
-			if(own_nepes[index] == nepeIdTocheck) { return true; }
+	var session = jQuery.isSessionSet('own_nepes');
+	jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+		if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal	
+			if(session){
+				var own_nepes = jQuery.getSessionValue('own_nepes');
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'escritos/getSessionValue.php'){ // === means true without type coersion - the type and value most both be equal
+						for(var index=0; index < own_nepes.length; index++){
+							//alert('nepe id to check: ' + nepeIdTocheck + '   current value on own nepes: ' + own_nepes[index])
+							if(own_nepes[index] == nepeIdTocheck) { return true; }
+						}
+						return false;
+					}
+				}); //ajax complete			
+			}else{
+				return false;
+			}
 		}
-		return false;
-	}else{
-		return false;
-	}
+	}); //ajax complete
 }
 
 jQuery.logout = function(){
