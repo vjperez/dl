@@ -124,6 +124,10 @@ jQuery(document).ready(
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){  
+						//1) redirect to home, when already logged
+						jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes');
+						//2) redirect to error, when already logged
+						/*
 						jQuery('#navSignup').hide();
 							
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
@@ -132,6 +136,7 @@ jQuery(document).ready(
 
 						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 						jQuery(window.location).attr('href', path);	
+						*/
 					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 
@@ -301,7 +306,11 @@ jQuery(document).ready(
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-					if(datos.isSet){  
+					if(datos.isSet){
+						//1) redirect to home, when already logged
+						jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes');
+						//2) redirect to error look, when logged 
+						/*
 						jQuery('#navLogin').hide();
 							
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
@@ -310,6 +319,7 @@ jQuery(document).ready(
 
 						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 						jQuery(window.location).attr('href', path);	
+						*/
 					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 							
