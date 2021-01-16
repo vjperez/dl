@@ -119,35 +119,36 @@ jQuery(document).ready(
 			case 'login':
 				jQuery('#navLogin').hide();
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
-				var session =  jQuery.isSessionSet('dueno_id') ;
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
-						if(session){
-							jQuery('#navSignup').hide();
+				var key = 'dueno_id';
+				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					if(datos.isSet)  {  
+						jQuery('#navSignup').hide();
 							
-								var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-								var textoEstatus = 'Error, usuario solicito login look, estando logueado.';
-								var elError = 'Error humano.';
+						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+						var textoEstatus = 'Error, usuario solicito login look, estando logueado.';
+						var elError = 'Error humano.';
 
-								var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-								jQuery(window.location).attr('href', path);						
-						}else{
-							jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-
-							//get login look
-							jQuery.dameLook('looks/login.html');
-
-							//once look is in, use jQuery on loaded elements to get values
-							jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-								//This code runs when get isCompleted and IF the get was requesting login.html
-								if(settingsObjeto.url === 'looks/login.html'){
-									//when ajax complete ; handle form submit and make post
-									jQuery.handleLoginSubmit();
-								}//if
-							});//ajax complete
-						}
+						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+						jQuery(window.location).attr('href', path);	
 					}
-				}); //ajax complete
+					else             { 
+						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+
+						//get login look
+						jQuery.dameLook('looks/login.html');
+
+						//once look is in, use jQuery on loaded elements to get values
+						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+							//This code runs when get isCompleted and IF the get was requesting login.html
+							if(settingsObjeto.url === 'looks/login.html'){
+								//when ajax complete ; handle form submit and make post
+								jQuery.handleLoginSubmit();
+							}//if
+						});//ajax complete
+					 }
+				});				
 			break;
 			case 'editDuenoShowNepes':
 				jQuery('#navHome').hide();
