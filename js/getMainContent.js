@@ -223,44 +223,65 @@ jQuery(document).ready(
 					if(datos.isSet){
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 
-						var nepeId = jQuery.urlParametro('nepeId');
-						if( jQuery.isNepeIdOnOwnNepesSession(nepeId) ){
-								jQuery.dameLook('looks/updateNepe.html');
+						key = 'own_nepes';
+						jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+						.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+							alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+							if(datos.isSet){  
 
-								jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-									if(settingsObjeto.url === 'looks/updateNepe.html'){
-										//get nepeId
-										//var nepeId = jQuery.urlParametro('nepeId');  
-										
-										//get duenoId
-										//var duenoId = jQuery.urlParametro('duenoId');
+								key = 'own_nepes';
+								jQuery.getJSON('escritos/getSessionValue.php', {key:key})
+								.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+									alert('key: ' + key + '\ndatos: ' + datos);
+									var nepeId = jQuery.urlParametro('nepeId');
+											if( jQuery.isNepeIdOnOwnNepesSession(datos, nepeId) ){
 				
-										//task 1 when ajax complete get that data
-										//alert('nepeId : ' + nepeId);
-										jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
-										.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-											jQuery.populateUpdateNepeForm(datos);
-										})
-										.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-											var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-											var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-											jQuery(window.location).attr('href', path); 
-										});
-																	
-										//task 2 when ajax complete ; handle form submit and make post
-										//jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
-										jQuery.handleUpdateNepeSubmit(nepeId);
-										//submit event listener and handler
-									}//if
-								});//ajaxComplete
-						}else{
+												jQuery.dameLook('looks/updateNepe.html');
+				
+												jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+													if(settingsObjeto.url === 'looks/updateNepe.html'){
+														//get nepeId
+														//var nepeId = jQuery.urlParametro('nepeId');  
+														
+														//get duenoId
+														//var duenoId = jQuery.urlParametro('duenoId');
+								
+														//task 1 when ajax complete get that data
+														//alert('nepeId : ' + nepeId);
+														jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
+														.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+															jQuery.populateUpdateNepeForm(datos);
+														})
+														.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+															var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+															var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+															jQuery(window.location).attr('href', path); 
+														});
+																					
+														//task 2 when ajax complete ; handle form submit and make post
+														//jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
+														jQuery.handleUpdateNepeSubmit(nepeId);
+														//submit event listener and handler
+													}//if
+												});//ajaxComplete
+											}else{
+												var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+												var textoEstatus = 'Error, usuario solicito editar nepe q no es de el.';
+												var elError = 'Error humano.';
+												
+												var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+												jQuery(window.location).attr('href', path);								
+											}
+								});
+							}else{  
 								var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-								var textoEstatus = 'Error, usuario solicito editar nepe q no es de el.';
+								var textoEstatus = 'Error, usuario esta logueado pero sin own_nepes seteado. (for whatever reason)';
 								var elError = 'Error humano.';
 								
 								var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-								jQuery(window.location).attr('href', path);								
-						}
+								jQuery(window.location).attr('href', path);	
+							}
+						});
 					}else{  
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 							
@@ -272,12 +293,6 @@ jQuery(document).ready(
 						jQuery(window.location).attr('href', path);	
 					}
 				});
-
-
-						
-					
-
-
 			break;			
 			case 'creaDueno':
 				jQuery('#navSignup').hide();
