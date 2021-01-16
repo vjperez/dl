@@ -86,13 +86,13 @@ jQuery(document).ready(
 				});
 			break;
 			case 'profile':
-				var session =  jQuery.isSessionSet('dueno_id') ;
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
-						if(session)  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-						else         {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-					}
-				}); //ajax complete
+				var key = 'dueno_id';
+				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
+					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
+				});
 
 				//get nepeId then
 				var nepeId = jQuery.urlParametro('nepeId');
