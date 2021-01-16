@@ -14,7 +14,9 @@ jQuery.editDuenoShowNepes = function(){
 			});
 			
 		  //labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
-			labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe' + '">' + 'Registra Negocio' + '</a></td></tr>';
+			labelAndTable += '<tr><td></td></tr>';
+			labelAndTable += '<tr><td></td></tr>';
+			labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe' + '">' + 'Registra Nuevo Negocio' + '</a></td></tr>';
 			labelAndTable += '</table>';
 		jQuery('#labelAndTableContainer').html(labelAndTable);
 	})
