@@ -132,8 +132,7 @@ jQuery(document).ready(
 
 						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 						jQuery(window.location).attr('href', path);	
-					}
-					else{ 
+					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 
 						//get login look
@@ -171,8 +170,7 @@ jQuery(document).ready(
 								jQuery.editDuenoShowNepes();
 							}//if
 						});//ajaxComplete
-					}
-					else{
+					}else{
 						jQuery('#navLogout').hide();
 							
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
@@ -185,37 +183,37 @@ jQuery(document).ready(
 				});
 			break;			
 			case 'creaNepe':
-				var session =  jQuery.isSessionSet('dueno_id') ;
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
-						if(session)  {
-							jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
+				var key = 'dueno_id';
+				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					if(datos.isSet){
+						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 
-							jQuery.dameLook('looks/creaNepe.html');
+						jQuery.dameLook('looks/creaNepe.html');
 
-							jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-								if(settingsObjeto.url === 'looks/creaNepe.html'){
-									//get duenoId
-									//var duenoId = jQuery.urlParametro('duenoId');
-									
-									//task 1 when ajax complete ; handle form submit and make post
-								//jQuery.handleCreaNepeSubmit(duenoId);
-									jQuery.handleCreaNepeSubmit();
-									//submit event listener and handler
-								}//if
-							});//ajaxComplete
-						}else{
-							jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+							if(settingsObjeto.url === 'looks/creaNepe.html'){
+								//get duenoId
+								//var duenoId = jQuery.urlParametro('duenoId');
+								
+								//task 1 when ajax complete ; handle form submit and make post
+							//jQuery.handleCreaNepeSubmit(duenoId);
+								jQuery.handleCreaNepeSubmit();
+								//submit event listener and handler
+							}//if
+						});//ajaxComplete
+					}else{ 
+						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 							
-							var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-							var textoEstatus = 'Error, usuario solicito creaNepe look, sin estar logueado.';
-							var elError = 'Error humano.';
+						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+						var textoEstatus = 'Error, usuario solicito creaNepe look, sin estar logueado.';
+						var elError = 'Error humano.';
 
-							var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-							jQuery(window.location).attr('href', path);						
-						}
+						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+						jQuery(window.location).attr('href', path);							   
 					}
-				}); //ajax complete
+				});				
 			break;
 			case 'updateNepe':
 				var session =  jQuery.isSessionSet('dueno_id') ;
