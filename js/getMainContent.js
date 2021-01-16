@@ -346,28 +346,26 @@ jQuery(document).ready(
 				});
 			break;
 			case 'nada':
-				var session =  jQuery.isSessionSet('dueno_id') ;
+				var key = 'dueno_id';
+				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
+					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
+				});
 
 				jQuery.dameLook('looks/nada.html');
-
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
-						if(session)  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-						else         {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-					}
-				});
 			break;				
 			case 'error':
-				var session =  jQuery.isSessionSet('dueno_id') ;
-
-				jQuery.dameLook('looks/error.html');
-				
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'escritos/isSessionSet.php'){ // === means true without type coersion - the type and value most both be equal
-						if(session)  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-						else         {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-					}
+				var key = 'dueno_id';
+				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
+					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 				});
+				
+				jQuery.dameLook('looks/error.html');
 
 				if(DEBUGUEO){
 					var xhrObjetoForFAILTexto = decodeURIComponent (jQuery.urlParametro('xhrObjetoForFAILTexto'));
