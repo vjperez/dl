@@ -91,6 +91,14 @@ jQuery.hideThem = function(){
 	$toHide.hide();
 }
 
+jQuery.showThem = function(){
+	var $todosLosNotHidable = jQuery('.notHidable');
+	// var $todosLosHidable = jQuery('.hidable');
+	// $todosLosHidable.hide();
+	var $toShow = $todosLosNotHidable.next('.hidable');
+	$toShow.show();
+}
+
 jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatElement){
 	//Esta funcion la usan login y registra
 	//para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.

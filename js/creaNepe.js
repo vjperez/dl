@@ -124,6 +124,9 @@ jQuery.handleCreaNepeSubmit = function(){
 	//hide them  ; editDuenoShowNepes task 4
 	jQuery.hideThem();
 	
+	jQuery('fieldset#submitButtonFieldset button').on('click', function(evento){
+		jQuery.showThem();
+	});
 	
 }//  handleSubmit
 
