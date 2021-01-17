@@ -20,7 +20,7 @@ jQuery(document).ready(
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 				});
@@ -38,7 +38,7 @@ jQuery(document).ready(
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 				});
@@ -89,7 +89,7 @@ jQuery(document).ready(
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 				});
@@ -122,7 +122,7 @@ jQuery(document).ready(
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){  
 						//1) redirect to home, when already logged
 						jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes');
@@ -159,7 +159,7 @@ jQuery(document).ready(
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){ 
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 						
@@ -191,7 +191,7 @@ jQuery(document).ready(
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 
@@ -224,20 +224,20 @@ jQuery(document).ready(
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 
 						key = 'own_nepes';
 						jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 						.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-							alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+							//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 							if(datos.isSet){  
 
 								key = 'own_nepes';
 								jQuery.getJSON('escritos/getSessionValue.php', {key:key})
 								.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-									alert('key: ' + key + '\ndatos: ' + datos);
+									//alert('key: ' + key + '\ndatos: ' + datos);
 									var nepeId = jQuery.urlParametro('nepeId');
 											if( jQuery.isNepeIdOnOwnNepesSession(datos, nepeId) ){
 				
@@ -305,7 +305,7 @@ jQuery(document).ready(
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){
 						//1) redirect to home, when already logged
 						jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes');
@@ -341,7 +341,7 @@ jQuery(document).ready(
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 				});
@@ -359,7 +359,7 @@ jQuery(document).ready(
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 				});
@@ -370,7 +370,7 @@ jQuery(document).ready(
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 				});
