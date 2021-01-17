@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['dueno_id'] && isset($_SESSION['own_nepes'])){
+if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 	$dueno_id = $_SESSION['dueno_id'];
 	$nepe_id = $_POST['nepeId'];							// verify
 	$nombre  = $_POST['nombre'];

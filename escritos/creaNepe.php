@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['dueno_id'])){
+if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 	$dueno_id = $_SESSION['dueno_id'];
 	//saca los valores de POST
 	$nombre = $_POST['nombre'];
