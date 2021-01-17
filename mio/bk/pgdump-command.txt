@@ -1,10 +1,4 @@
-To rewrite data, you should either drop tables first or pg_dump -F c and pg_restore -c.
-Warning - in both cases it will destroy old data (this seems what you want though)
-
-
-pg_dump.exe -U userdb -d dbname -t dueno -t nepe -t bregando -t '*id_seq' -f C:\Users\victor\Desktop\filename.sql
-
-pg_dump.exe -U userdb -d 4bolas -t foto  -t entrada -t '*id_seq' -f C:\Users\victor\Desktop\4bolas.sql
+pg_dump -U postgres -W -F p dvdrental > C:\Users\victor\Desktop\filename.sql
 
 
 ================================================================================================================================

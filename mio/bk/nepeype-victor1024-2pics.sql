@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.4
--- Dumped by pg_dump version 12.4
+-- Dumped from database version 11.0
+-- Dumped by pg_dump version 11.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -12,13 +12,12 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
-SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
 SET default_tablespace = '';
 
-SET default_table_access_method = heap;
+SET default_with_oids = false;
 
 --
 -- Name: bregando; Type: TABLE; Schema: public; Owner: victordbu
@@ -165,6 +164,7 @@ ALTER TABLE ONLY public.nepe ALTER COLUMN id SET DEFAULT nextval('public.nepe_id
 --
 
 COPY public.bregando (dueno_id, nepe_id, id) FROM stdin;
+1024	1024	1024
 \.
 
 
@@ -173,6 +173,7 @@ COPY public.bregando (dueno_id, nepe_id, id) FROM stdin;
 --
 
 COPY public.dueno (id, username, password, last_log, first_log) FROM stdin;
+1024	victor	$argon2i$v=19$m=1024,t=2,p=2$b1hvdy92WHQvZkxIaC5UUQ$XdDnrTtUSD4vdCtMpFFjvXpMAa9OY0/jl8VAFMyohxQ	2021-01-16	2020-12-26
 \.
 
 
@@ -181,6 +182,7 @@ COPY public.dueno (id, username, password, last_log, first_log) FROM stdin;
 --
 
 COPY public.nepe (id, nombre, revisado, media_video_url, media_social_handle, media_foto_url, que, donde, a_tu_casa, nombre_que_vector, donde_vector, cuando) FROM stdin;
+1024	victor web development	2020-12-26	https://www.youtube.com/watch?v=zuxzE7--RYM	{"fbk":"","tt":"","igrm":"","phn":"939 260 1734"}	{1024a.jpeg,1024b.jpeg}	{"web development","paginas web","full stack web development"}	{"las marias puerto rico"}	t	'development':3,5,11 'full':8 'pagin':6 'stack':9 'victor':1 'web':2,4,7,10	'las':1 'marias':2 'puerto':3 'rico':4	{"lun":"","mar":"","mier":"","jue":"","vier":"","sab":"5am - 10pm","dom":"5am - 10pm"}
 \.
 
 
@@ -188,21 +190,21 @@ COPY public.nepe (id, nombre, revisado, media_video_url, media_social_handle, me
 -- Name: bregando_id_seq; Type: SEQUENCE SET; Schema: public; Owner: victordbu
 --
 
-SELECT pg_catalog.setval('public.bregando_id_seq', 1024, false);
+SELECT pg_catalog.setval('public.bregando_id_seq', 1024, true);
 
 
 --
 -- Name: dueno_id_seq; Type: SEQUENCE SET; Schema: public; Owner: victordbu
 --
 
-SELECT pg_catalog.setval('public.dueno_id_seq', 1024, false);
+SELECT pg_catalog.setval('public.dueno_id_seq', 1024, true);
 
 
 --
 -- Name: nepe_id_seq; Type: SEQUENCE SET; Schema: public; Owner: victordbu
 --
 
-SELECT pg_catalog.setval('public.nepe_id_seq', 1024, false);
+SELECT pg_catalog.setval('public.nepe_id_seq', 1024, true);
 
 
 --

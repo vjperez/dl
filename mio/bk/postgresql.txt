@@ -1,0 +1,2 @@
+SELECT setval('payments_id_seq', 21, true);  # next value will be 22
+
