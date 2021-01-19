@@ -191,4 +191,10 @@ Can you make a script to find file and number lines as outputs, from a dir and k
 
 
 
-hosting, fool, facebook, m1, venmo
+
+
+think
+usernames - victor vs victoR
+busca search gato vs Gato
+
+Check for variables that come from users ... and then the vars is  used to build quieries  .... MYSQL solution is mysqli_real_escape string (avoids sql injection)

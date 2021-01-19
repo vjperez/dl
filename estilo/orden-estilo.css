@@ -1,4 +1,4 @@
-/* My selector are too specific, they should apply more generally */
+/* My selectors are too specific, they should apply more generally */
 
 /*orden  : comun*/
 /*This makes sure that the padding and border are included in the total width and height of the elements. */
@@ -53,11 +53,12 @@ p::first-letter{ font-size:1.3em; }
 .color02enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#c0392b;}
 .sizeenfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace;}
 a.link { text-decoration:none; font-weight:bolder; }
-a.link:link,     a.link:visited { color:#2980b9 }
+a.link:link,     a.link:visited { color:#2980b9 }    /* links on faq do not have any other class changing their color */
 a.link:hover, a.link:focus { text-decoration:underline; }
 a.link li:hover, a.link li:focus { text-decoration:underline; }
 
 div#navega a.navelink { font-family:serif, mono, monospace; font-size:0.8em; }
+div#navega a.navelink:link,     a.navelink:visited { color:white; }  /* changed in pinta header links ()  */
 h1, h2, h3, h4, label { font-family:'Bree Serif', courier, mono, monospace; }
 div#footer h2.footertitulo { font-family:mono, monospace, serif, fantasy;  text-align:center; color:white; }
 div#footer h5.footersubtitulo {    font-family:mono, monospace, serif, fantasy;  text-align:center; color:white;   margin-bottom:50pt;}

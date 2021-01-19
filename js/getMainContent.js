@@ -434,7 +434,11 @@ jQuery(document).ready(
 			break;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		}//switch
-	
+		
+		jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+			jQuery.pintaHeaderLinks();
+		});	
+		
 	}); // ready function and statement
 
 
