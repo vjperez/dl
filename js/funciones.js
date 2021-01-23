@@ -112,9 +112,9 @@ jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatEl
 	//para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.
 	//Chequear Usuario repetido requiere hacer el post, pq requiere info de database.
 	// 1)lenght >= 4; 2)only numbers or letters  _ y -; 3)both pass are equal; se puede chequear antes del post
-	usertbCheck = usertb.replace(/[^a-z0-9_.+-@]/gi, '');  //same as replace(/[^a-zA-Z0-9]/g, ''); JavaScript is a case-sensitive language
-	pass01Check = pass01.replace(/[^a-z0-9_.+-@]/gi, '');
-	pass02Check = pass02.replace(/[^a-z0-9_.+-@]/gi, '');
+	usertbCheck = usertb.replace(/[^a-z0-9@\._\-+]/gi, '');  //same as replace(/[^a-zA-Z0-9@\._\-+]/g, '');  escaping dot and minus;  JavaScript is a case-sensitive language
+	pass01Check = pass01.replace(/[^a-z0-9@\._\-+]/gi, '');
+	pass02Check = pass02.replace(/[^a-z0-9@\._\-+]/gi, '');
 	if(usertb.length < MINIMUM_USER_NAME_LENGTH || pass01.length < MINIMUM_USER_PASS_LENGTH || pass02.length < MINIMUM_USER_PASS_LENGTH){
 		if(feedbackType.indexOf('fullFeedback') !== -1){
 			jQuery.feedback(whatElement, "Username o contrase\u00f1a es muy corto.");

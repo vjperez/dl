@@ -65,20 +65,20 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 			var formData = new FormData(forma);
 
 			//nombre y video
-			var regexp = new RegExp(/[^a-z0-9\._+-@]/gi);	//	allowing letters, numbers plus los de login   . _ +-@
+			var regexp = new RegExp(/[^a-z0-9@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +
 			var nombre = jQuery.cleanStr( jQuery('form#updateNepeForm input[name=nombre]').val(), regexp );
 			formData.delete("nombre"); 
 			formData.append('nombre', nombre);
 			
 			//jQuery('form#updateNepeForm input[name^=videoUrl]')
-			regexp = new RegExp(/[^a-z0-9\.:\/=\?_+-@]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=? plus los de login   . _ +-@
+			regexp = new RegExp(/[^a-z0-9\.:\/=\?@\._\-+]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=? plus los de login   @ . _ - +
 			var videoUrl = jQuery.cleanStr( jQuery('form#updateNepeForm textarea[name=videoUrl]').val(), regexp );
 			formData.delete("videoUrl"); 
 			formData.append('videoUrl', videoUrl);
 			
 
 			//quienSocialHandle is a JS array object, it is stringified before sending it
-			regexp = new RegExp(/[^a-z0-9\._+-@]/gi);	//	allowing letters, numbers plus los de login   . _ +-@
+			regexp = new RegExp(/[^a-z0-9@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +
 			var quienSocialHandle = {fbk:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red1]').val(), regexp ),
 									  tt:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red2]').val(), regexp ),
 								    igrm:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red3]').val(), regexp ), 
