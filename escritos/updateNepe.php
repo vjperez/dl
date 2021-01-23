@@ -4,7 +4,7 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 	$dueno_id = $_SESSION['dueno_id'];
 	$nepe_id = $_POST['nepeId'];							// verify
 	$nombre = str_replace("%", " ", $_POST['nombre']);
-	$quien_social_handle = str_replace("%", " ", $_POST['quienSocialHandle']);
+	$quien_social_handle = str_replace("%", " ", json_decode($_POST['quienSocialHandle']));
 
 
 
@@ -42,7 +42,7 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 
 
 
-	$cuando = $_POST['cuando'];
+	$cuando = str_replace("%", " ", json_decode($_POST['cuando']));
 
 	$videoUrl = str_replace("%", "", $_POST['videoUrl']);
 

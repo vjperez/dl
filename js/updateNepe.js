@@ -83,7 +83,7 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 									  tt:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red2]').val(), regexp ),
 								    igrm:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red3]').val(), regexp ), 
 									 phn:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red4]').val(), regexp )
-									};
+			};
 			formData.delete("red1"); //sending reds in array so delete them individually from formData
 			formData.delete("red2"); //sending reds in array so delete them individually from formData
 			formData.delete("red3"); //sending reds in array so delete them individually from formData
@@ -98,10 +98,15 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 			});
 
 			//cuando is a JS array object, it is stringified before sending it
-			var cuando = {lun:jQuery('form#updateNepeForm input[name=dia1]').val(), mar:jQuery('form#updateNepeForm input[name=dia2]').val(),
-						  mier:jQuery('form#updateNepeForm input[name=dia3]').val(), jue:jQuery('form#updateNepeForm input[name=dia4]').val(),
-						  vier:jQuery('form#updateNepeForm input[name=dia5]').val(), sab:jQuery('form#updateNepeForm input[name=dia6]').val(),
-						  dom:jQuery('form#updateNepeForm input[name=dia7]').val()};
+			regexp = new RegExp(/[^a-z0-9@\._\-+:]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +		y :			escaping dot and minus
+			var cuando = { lun:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=dia1]').val(), regexp ), 
+						   mar:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=dia2]').val(), regexp ),
+						  mier:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=dia3]').val(), regexp ),
+						   jue:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=dia4]').val(), regexp ),
+						  vier:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=dia5]').val(), regexp ),
+						   sab:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=dia6]').val(), regexp ),
+						   dom:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=dia7]').val(), regexp )
+			};
 			formData.delete("dia1"); //sending dias in array so delete them individually from formData
 			formData.delete("dia2"); //sending dias in array so delete them individually from formData
 			formData.delete("dia3"); //sending dias in array so delete them individually from formData
@@ -115,7 +120,7 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 			//sending ques in array
 			var que = new Array();
 			jQuery('form#updateNepeForm input[name^=que]').each(function(index){
-				regexp = new RegExp(/[^a-z0-9+]/gi);	//	allowing letters, numbers and the plus sign
+				regexp = new RegExp(/[^a-z0-9@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
 				var cleanedQue = jQuery.cleanStr(jQuery(this).val(), regexp );
 				if(jQuery.isVacioStr(cleanedQue)) {  } else { que[index] = cleanedQue; }
 				formData.delete(jQuery(this).attr("name")); //sending ques in array so delete them individually from formData
@@ -126,7 +131,7 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 			//sending dondes in array
 			var donde = new Array();
 			jQuery('form#updateNepeForm input[name^=donde]').each(function(index){
-				regexp = new RegExp(/[^a-z0-9+]/gi);	//	allowing letters, numbers and the plus sign
+				regexp = new RegExp(/[^a-z0-9@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
 				var cleanedDonde = jQuery.cleanStr(jQuery(this).val(), regexp );
 				if(jQuery.isVacioStr(cleanedDonde)) {  } else { donde[index] = cleanedDonde; }
 				formData.delete(jQuery(this).attr("name")); //sending dondes in array so delete them individually from formData
