@@ -50,7 +50,8 @@ jQuery.handleCreaNepeSubmit = function(){
 			//sending ques in array
 			var que = new Array();
 			jQuery('form#creaNepeForm input[name^=que]').each(function(index){
-				var cleanedQue = jQuery.cleanStr(jQuery(this).val());
+				var regexp = new RegExp(/[^a-z0-9+]/gi);	//	allowing letters, numbers and the plus sign
+				var cleanedQue = jQuery.cleanStr(jQuery(this).val(), regexp );
 				if(jQuery.isVacioStr(cleanedQue)) {  } else { que[index] = cleanedQue; }
 				formData.delete(jQuery(this).attr("name")); //sending ques in array so delete them individually from formData
 			});
@@ -60,7 +61,8 @@ jQuery.handleCreaNepeSubmit = function(){
 			//sending dondes in array
 			var donde = new Array();
 			jQuery('form#creaNepeForm input[name^=donde]').each(function(index){
-				var cleanedDonde = jQuery.cleanStr(jQuery(this).val());
+				var regexp = new RegExp(/[^a-z0-9+]/gi);	//	allowing letters, numbers and the plus sign
+				var cleanedDonde = jQuery.cleanStr(jQuery(this).val(), regexp );
 				if(jQuery.isVacioStr(cleanedDonde)) {  } else { donde[index] = cleanedDonde; }
 				formData.delete(jQuery(this).attr("name")); //sending dondes in array so delete them individually from formData
 			});
