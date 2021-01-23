@@ -15,10 +15,23 @@ jQuery.handleCreaNepeSubmit = function(){
 			var formData = new FormData(forma);
 
 			//nombre y video
+			var regexp = new RegExp(/[^a-z0-9@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
+			var nombre = jQuery.cleanStr( jQuery('form#creaNepeForm input[name=nombre]').val(), regexp );
+			formData.delete("nombre"); 
+			formData.append('nombre', nombre);
+			
+			regexp = new RegExp(/[^a-z0-9\.:\/=\?@\._\-+]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=? plus los de login   @ . _ - +
+			var videoUrl = jQuery.cleanStr( jQuery('form#creaNepeForm textarea[name=videoUrl]').val(), regexp );
+			formData.delete("videoUrl"); 
+			formData.append('videoUrl', videoUrl);
 
 			//quienSocialHandle is a JS array object, it is stringified before sending it
-			var quienSocialHandle = {fbk:jQuery('form#creaNepeForm input[name=red1]').val(), tt:jQuery('form#creaNepeForm input[name=red2]').val(),
-									igrm:jQuery('form#creaNepeForm input[name=red3]').val(),phn:jQuery('form#creaNepeForm input[name=red4]').val()};
+			regexp = new RegExp(/[^a-z0-9@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
+			var quienSocialHandle = {fbk:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=red1]').val(), regexp ),
+									  tt:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=red2]').val(), regexp ),
+								    igrm:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=red3]').val(), regexp ), 
+									 phn:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=red4]').val(), regexp )
+			};
 			formData.delete("red1"); //sending reds in array so delete them individually from formData
 			formData.delete("red2"); //sending reds in array so delete them individually from formData
 			formData.delete("red3"); //sending reds in array so delete them individually from formData
@@ -33,10 +46,15 @@ jQuery.handleCreaNepeSubmit = function(){
 			});
 
 			//cuando is a JS array object, it is stringified before sending it
-			var cuando = { lun:jQuery('form#creaNepeForm input[name=dia1]').val(), mar:jQuery('form#creaNepeForm input[name=dia2]').val(),
-						  mier:jQuery('form#creaNepeForm input[name=dia3]').val(), jue:jQuery('form#creaNepeForm input[name=dia4]').val(),
-						  vier:jQuery('form#creaNepeForm input[name=dia5]').val(), sab:jQuery('form#creaNepeForm input[name=dia6]').val(),
-						   dom:jQuery('form#creaNepeForm input[name=dia7]').val()};
+			regexp = new RegExp(/[^a-z0-9@\._\-+:]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +		y :			escaping dot and minus
+			var cuando = { lun:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=dia1]').val(), regexp ), 
+						   mar:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=dia2]').val(), regexp ),
+						  mier:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=dia3]').val(), regexp ),
+						   jue:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=dia4]').val(), regexp ),
+						  vier:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=dia5]').val(), regexp ),
+						   sab:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=dia6]').val(), regexp ),
+						   dom:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=dia7]').val(), regexp )
+			};
 			formData.delete("dia1"); //sending dias in array so delete them individually from formData
 			formData.delete("dia2"); //sending dias in array so delete them individually from formData
 			formData.delete("dia3"); //sending dias in array so delete them individually from formData
@@ -50,7 +68,7 @@ jQuery.handleCreaNepeSubmit = function(){
 			//sending ques in array
 			var que = new Array();
 			jQuery('form#creaNepeForm input[name^=que]').each(function(index){
-				var regexp = new RegExp(/[^a-z0-9+]/gi);	//	allowing letters, numbers and the plus sign
+				regexp = new RegExp(/[^a-z0-9@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
 				var cleanedQue = jQuery.cleanStr(jQuery(this).val(), regexp );
 				if(jQuery.isVacioStr(cleanedQue)) {  } else { que[index] = cleanedQue; }
 				formData.delete(jQuery(this).attr("name")); //sending ques in array so delete them individually from formData
@@ -61,7 +79,7 @@ jQuery.handleCreaNepeSubmit = function(){
 			//sending dondes in array
 			var donde = new Array();
 			jQuery('form#creaNepeForm input[name^=donde]').each(function(index){
-				var regexp = new RegExp(/[^a-z0-9+]/gi);	//	allowing letters, numbers and the plus sign
+				regexp = new RegExp(/[^a-z0-9@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
 				var cleanedDonde = jQuery.cleanStr(jQuery(this).val(), regexp );
 				if(jQuery.isVacioStr(cleanedDonde)) {  } else { donde[index] = cleanedDonde; }
 				formData.delete(jQuery(this).attr("name")); //sending dondes in array so delete them individually from formData

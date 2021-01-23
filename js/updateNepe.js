@@ -70,7 +70,6 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 			formData.delete("nombre"); 
 			formData.append('nombre', nombre);
 			
-			//jQuery('form#updateNepeForm input[name^=videoUrl]')
 			regexp = new RegExp(/[^a-z0-9\.:\/=\?@\._\-+]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=? plus los de login   @ . _ - +
 			var videoUrl = jQuery.cleanStr( jQuery('form#updateNepeForm textarea[name=videoUrl]').val(), regexp );
 			formData.delete("videoUrl"); 
