@@ -65,6 +65,13 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 			var formData = new FormData(forma);
 
 			//nombre y video
+			var regexp = new RegExp(/[^a-z0-9+]/gi);	//	allowing letters, numbers and the plus sign
+			var nombre = jQuery.cleanStr( jQuery('form#updateNepeForm input[name=nombre]').val(), regexp );
+			formData.delete("nombre"); 
+			formData.append('nombre', nombre);
+			
+			//jQuery('form#updateNepeForm input[name^=videoUrl]')
+			
 
 			//quienSocialHandle is a JS array object, it is stringified before sending it
 			var quienSocialHandle = {fbk:jQuery('form#updateNepeForm input[name=red1]').val(), tt:jQuery('form#updateNepeForm input[name=red2]').val(),
@@ -100,7 +107,8 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 			//sending ques in array
 			var que = new Array();
 			jQuery('form#updateNepeForm input[name^=que]').each(function(index){
-				var cleanedQue = jQuery.cleanStr(jQuery(this).val());
+				regexp = new RegExp(/[^a-z0-9+]/gi);	//	allowing letters, numbers and the plus sign
+				var cleanedQue = jQuery.cleanStr(jQuery(this).val(), regexp );
 				if(jQuery.isVacioStr(cleanedQue)) {  } else { que[index] = cleanedQue; }
 				formData.delete(jQuery(this).attr("name")); //sending ques in array so delete them individually from formData
 			});
@@ -110,7 +118,8 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 			//sending dondes in array
 			var donde = new Array();
 			jQuery('form#updateNepeForm input[name^=donde]').each(function(index){
-				var cleanedDonde = jQuery.cleanStr(jQuery(this).val());
+				regexp = new RegExp(/[^a-z0-9+]/gi);	//	allowing letters, numbers and the plus sign
+				var cleanedDonde = jQuery.cleanStr(jQuery(this).val(), regexp );
 				if(jQuery.isVacioStr(cleanedDonde)) {  } else { donde[index] = cleanedDonde; }
 				formData.delete(jQuery(this).attr("name")); //sending dondes in array so delete them individually from formData
 			});
@@ -173,6 +182,10 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 	jQuery.toggleOnClick();
 	//hide them  ; editDuenoShowNepes task 4
 	jQuery.hideThem();
+	
+	jQuery('fieldset#submitButtonFieldset button').on('click', function(evento){
+		jQuery.showThem();
+	});
 
 }//  handleSubmit
 
