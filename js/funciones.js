@@ -25,9 +25,9 @@ jQuery.urlParametro = function(name){
 }
 
 
-jQuery.cleanStr = function(str){
-	var patron = /[^a-z0-9]/gi;  // Find any character NOT between the brackets, global, insensitive
-	str = str.replace(patron, '*'); // same as replace(/[^a-zA-Z0-9]/g, '*'); JavaScript is a case-sensitive language
+jQuery.cleanStr = function(str, patron){
+	//	var patron = /[^a-z0-9]/gi;  				// Find any character NOT between the brackets, global, insensitive
+	str = str.replace(patron, '*'); 				// same as replace(/[^a-zA-Z0-9]/g, '*'); JavaScript is a case-sensitive language
 	strArray = str.split('*');
 	result = '';
 	for(var i=0; i < strArray.length; i++){
@@ -124,7 +124,7 @@ jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatEl
 		return false;
 	}else if(usertbCheck.length < usertb.length  ||  pass01Check.length < pass01.length ||  pass02Check.length < pass02.length){
 		if(feedbackType.indexOf('fullFeedback') !== -1){
-			jQuery.feedback(whatElement, 'Usa solo letras, numeros,  y/o _ . + - @ ');
+			jQuery.feedback(whatElement, 'Usa solo letras, numeros y @ . _ - + ');
 		}else if(feedbackType.indexOf('genericFeedback') !== -1){
 			jQuery.feedback(whatElement, 'Trata otra vez.');
 		}

@@ -1,10 +1,11 @@
 jQuery.handleBuscaSubmit = function(){
 	jQuery('form').submit(function(evento){
 		evento.preventDefault(); //not making a submit (GET request) here. Lets do it at look=opciones
+		var regexp = new RegExp(/[^a-z0-9+]/gi);	//	allowing letters, numbers and the plus sign
 		var que = jQuery('#queId').val();
-		que = jQuery.cleanStr(que); // clean function returns cleaned str,  adds ':' as delimiter
+		que = jQuery.cleanStr(que, regexp); // clean function returns cleaned str,  adds ':' as delimiter
 		var donde = jQuery('#dondeId').val();
-		donde = jQuery.cleanStr(donde); // clean function returns cleaned str, adds  ':' as delimiter
+		donde = jQuery.cleanStr(donde, regexp); // clean function returns cleaned str, adds  ':' as delimiter
 		//alert('que=(' + que  + ')\ndonde=(' +  donde + ')');
 		if(que.length > 0 || donde.length > 0){//i'm looking for a non empty cleaned str
 			jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + que + '&donde=' + donde);
