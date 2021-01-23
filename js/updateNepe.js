@@ -65,7 +65,7 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 			var formData = new FormData(forma);
 
 			//nombre y video
-			var regexp = new RegExp(/[^a-z0-9+]/gi);	//	allowing letters, numbers and the plus sign
+			var regexp = new RegExp(/[^a-z0-9\._+-@]/gi);	//	allowing letters, numbers plus los de login   . _ +-@
 			var nombre = jQuery.cleanStr( jQuery('form#updateNepeForm input[name=nombre]').val(), regexp );
 			formData.delete("nombre"); 
 			formData.append('nombre', nombre);
@@ -78,8 +78,12 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 			
 
 			//quienSocialHandle is a JS array object, it is stringified before sending it
-			var quienSocialHandle = {fbk:jQuery('form#updateNepeForm input[name=red1]').val(), tt:jQuery('form#updateNepeForm input[name=red2]').val(),
-									igrm:jQuery('form#updateNepeForm input[name=red3]').val(),phn:jQuery('form#updateNepeForm input[name=red4]').val()};
+			regexp = new RegExp(/[^a-z0-9\._+-@]/gi);	//	allowing letters, numbers plus los de login   . _ +-@
+			var quienSocialHandle = {fbk:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red1]').val(), regexp ),
+									  tt:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red2]').val(), regexp ),
+								    igrm:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red3]').val(), regexp ), 
+									 phn:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red4]').val(), regexp )
+									};
 			formData.delete("red1"); //sending reds in array so delete them individually from formData
 			formData.delete("red2"); //sending reds in array so delete them individually from formData
 			formData.delete("red3"); //sending reds in array so delete them individually from formData
