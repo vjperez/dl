@@ -186,6 +186,8 @@ DONE		encrypt password
 Can you make a python script to back the db up,  since you made changes to nepe id 11
 Can you make a script to find file and number lines as outputs, from a dir and keyWord as input   (make it easier to remove ver-borde from html files, not just bad name it in css)
 
+
+
 24horas: la mejor oferta : se puede hacer ofertas, mientras no pasen 24 horas : 
 	: no se hacen mas oertas si nadie oferta en 24 horas: al final ambas partes deciden si laoferta final va o no
 
@@ -194,7 +196,8 @@ Can you make a script to find file and number lines as outputs, from a dir and k
 
 
 think
-usernames - victor vs victoR
-busca search gato vs Gato
+usernames - victor vs victoR : Done
+busca - gato vs Gato : Done
 
-Check for variables that come from users ... and then the vars is  used to build quieries  .... MYSQL solution is mysqli_real_escape string (avoids sql injection)
+Check for variables that come from users ... and then the vars is  used to build quieries  
+.... MYSQL solution is mysqli_real_escape string (avoids sql injection)
