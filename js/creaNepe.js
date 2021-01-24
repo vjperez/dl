@@ -17,14 +17,20 @@ jQuery.handleCreaNepeSubmit = function(){
 			//nombre y video
 			var regexp = new RegExp(/[^a-z0-9@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
 			var nombre = jQuery.cleanStr( jQuery('form#creaNepeForm input[name=nombre]').val(), regexp );
-			formData.delete("nombre"); 
-			formData.append('nombre', nombre);
+			if(jQuery.isVacioStr(nombre)){
+				formData.delete("nombre"); 			formData.append('nombre', '---');
+			}else{
+				formData.delete("nombre"); 			formData.append('nombre', nombre);
+			}
 			
 			regexp = new RegExp(/[^a-z0-9\.:\/=\?@\._\-+]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=? plus los de login   @ . _ - +
 			var videoUrl = jQuery.cleanStr( jQuery('form#creaNepeForm textarea[name=videoUrl]').val(), regexp );
-			formData.delete("videoUrl"); 
-			formData.append('videoUrl', videoUrl);
-
+			if(jQuery.isVacioStr(videoUrl)){
+				formData.delete("videoUrl");	formData.append('videoUrl', 'no video');
+			}else{ 
+				formData.delete("videoUrl"); 	formData.append('videoUrl', videoUrl);
+			}
+			
 			//quienSocialHandle is a JS array object, it is stringified before sending it
 			regexp = new RegExp(/[^a-z0-9@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
 			var quienSocialHandle = {fbk:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=red1]').val(), regexp ),
@@ -89,11 +95,7 @@ jQuery.handleCreaNepeSubmit = function(){
 
 			//formData.append('duenoId', duenoId);				////// using cookies now	///////////////
 			//formData.append('nepeId', nepeId);				////// solo para nepe update  ////////////////////
-			
-			var videoUrl = jQuery('form#creaNepeForm textarea#videoUrlId').val();
-			if(jQuery.isVacioStr(videoUrl)){
-				formData.delete("videoUrl");	formData.append('videoUrl', 'no video');
-			}else{ }
+
 
 			console.log("form built");
 			for (var value of formData.values()) {
