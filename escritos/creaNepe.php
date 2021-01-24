@@ -44,7 +44,7 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 
 	$cuando = str_replace("%", " ", $_POST['cuando']);
 
-	$videoUrl = str_replace("%", "", $_POST['videoUrl']);
+	$videoUrl = str_replace("%", " ", $_POST['videoUrl']);
 
 
 	// i already have the post values
