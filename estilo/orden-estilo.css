@@ -375,6 +375,15 @@ form#editDuenoDataForm button { display:block; margixxxn-bottom:30pt; }
 form#editDuenoDataForm button { width:25%; position:relative; left:37.5%; }
 
 
+
+/* orden : recentNepes */
+div#recentNepes { margin-left:auto; margin-right:auto; margin-top:50pt; margin-bottom:50pt;  }
+/* estilo : recentNepes */
+div#recentNepes label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
+div#recentNepes fieldset.primario { margin:0pt; padding:0pt; padding-bottom:0pt; border-radius:10pt 10pt 0pt 0pt; }
+
+
+
 /*estilo : nada*/
 h3.nadah3   { text-align: center; }
 img#nadaPic { display: block; width: 34%; margin-left:auto; margin-right:auto; }

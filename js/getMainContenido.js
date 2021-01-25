@@ -349,7 +349,26 @@ jQuery(document).ready(
 						});//ajax complete
 					}
 				});
-			break;				
+			break;	
+			case 'recentNepes':
+				var key = 'dueno_id';
+				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
+					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
+					jQuery.pintaHeaderLinks();
+				});
+
+				jQuery.dameLook('looks/recentNepes.html');
+		
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
+					if(settingsObjeto.url === 'looks/recentNepes.html'){ // === means true without type coersion - the type and value most both be equal
+						jQuery.getRecentNepes();	
+					}//if
+				}); //ajax complete
+			break;			
 			case 'faq':
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
