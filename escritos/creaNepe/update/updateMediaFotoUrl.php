@@ -9,6 +9,6 @@ if($recurso){
 }else{
 	pg_close($cnx); //maybe not needed but doesn't hurt
 	//echo $query;
-	throw new Exception('Mal query.  Sin RECURSO, para query '  .  $query  .  ' en : '  .  __FILE__);
+	throw new Exception('Mal query.  Sin RECURSO, para updateMediaFotoUrlQuery  en : '  .  __FILE__);
 }
 ?>

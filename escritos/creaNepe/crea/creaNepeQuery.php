@@ -9,21 +9,15 @@
 // inserts a into db a nepe with fotos
 
 $queryCreaNepe = "INSERT INTO
-	nepe (revisado, nombre, media_video_url, media_social_handle, media_foto_url, cuando, que, donde, a_tu_casa, nombre_que_vector, donde_vector)
- 	VALvUES (NOW()::date,
-	$1,
-	$2,
-	$3,
-	$4,
-	$5, 
-	$6,
-	$7,
-	$8,
-	to_tsvector('spanish', $1 || ' ' || $6 ),
-	to_tsvector('simple', $7 )    )";
+	nepe (nombre, media_video_url, media_social_handle, media_foto_url, cuando, que, donde, a_tu_casa, nombre_que_vector, donde_vector)
+ 	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, to_tsvector('spanish', $9), to_tsvector('simple', $10) )";
 
-	pg_prepare($cnx, "preparo", $queryCreaNepe);
-	$recurso = pg_execute($cnx, "preparo", array($nombre, $videoUrl, $quien_social_handle, $mediaFotoUrlPosgreArray, $cuando, $quePosgreArray, $dondePosgreArray, $a_tu_casa));
+	pg_prepare($cnx, "preparedQueryCreaNepe", $queryCreaNepe);
+	$recurso = pg_execute($cnx, "preparedQueryCreaNepe", array($nombre, $videoUrl, $quien_social_handle, $mediaFotoUrlPosgreArray, 
+												 $cuando, $quePosgreArray, $dondePosgreArray, $a_tu_casa,
+												 $nombre . ' ' . $quePosgreArray,
+												 $dondePosgreArray
+												));
 
 
 
