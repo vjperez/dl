@@ -8,7 +8,6 @@ require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
 require_once 'login/getIdAndPasswordQuery.php';
-$recurso = pg_query($cnx, $queryGetIdAndPassword);
 if($recurso){		 
 	if($fila = pg_fetch_row($recurso)){
 		$dueno_id = $fila[0];
