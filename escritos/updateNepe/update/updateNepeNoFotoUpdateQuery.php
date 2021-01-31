@@ -14,7 +14,8 @@ SET
 	donde = $6,
 	a_tu_casa = $7,
 	nombre_que_vector =	to_tsvector('spanish', $8),
-	donde_vector = to_tsvector('simple', $9)
+	donde_vector = to_tsvector('simple', $9),
+	revisado = NOW()::date 
 WHERE id = $10";
 
 pg_prepare($cnx, "preparedQueryUpdateNepe", $queryUpdateNepe);
