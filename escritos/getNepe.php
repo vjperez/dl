@@ -7,9 +7,6 @@ require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
 require_once 'getNepe/getNepeQuery.php';
-$fila = array();
-$nepeDato = array();
-$recurso = pg_query($cnx, $query);
 if($recurso){
 //When you put bool values, arrays, or integers like the nepe Id, into a json format it allows
 //the later use of functions like json_decode().  This makes possible
@@ -18,6 +15,8 @@ if($recurso){
 //with the correct datatypes only if you preserve those datatypes,
 //otherwise it simply receives text, and you get hard to debug,
 //wrong results.
+	$fila = array();
+	$nepeDato = array();
 	if($fila = pg_fetch_row($recurso)){
 		//Read data already in json format, and decode it into PHP variables with correct datatype
 		$nepeDato['nepeId'] = json_decode($fila[0]);
@@ -34,16 +33,18 @@ if($recurso){
 		$nepeDato['quienFotoSrc'] = json_decode($fila[9]);
 
 		$nepeDato['videoCode'] = videoCode( $fila[7] );
+		pg_close($cnx); 
 		//Send data from server in json format
 		echo json_encode($nepeDato);
 	}else{
-		throw new Exception('Mal query.  Con RECURSO, pero sin $fila, (nepe id no existe) en :'  .  __FILE__  .  '.');	
+		pg_close($cnx); //maybe not needed but doesn't hurt
+		throw new Exception('Vacio query.  Con RECURSO, pero sin $fila, (nepe id no existe) en :'  .  __FILE__  .  '.');	
 	}
 }else{
+	pg_close($cnx); //maybe not needed but doesn't hurt
 	throw new Exception('Mal query.  Sin RECURSO en :'  .  __FILE__  .  '.');
 	//echo "<li>Error, pg_query, no produjo un recurso ... en .....</li>";
 }
-pg_close($cnx); //maybe not needed but doesn't hurt
 
 
 //lo que hay q sacar de la basedatos para q al loguarte hacer updateNepe

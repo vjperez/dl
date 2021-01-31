@@ -23,5 +23,7 @@ $query = "SELECT
 	media_social_handle, 
 	array_to_json(media_foto_url) 
 FROM nepe 
-WHERE id = '$nepe_id'";
+WHERE id = $1";
+pg_prepare($cnx, "preparo", $query);
+$recurso = pg_execute($cnx, "preparo", array($nepe_id));
 ?>
