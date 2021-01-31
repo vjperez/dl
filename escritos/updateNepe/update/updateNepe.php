@@ -1,6 +1,5 @@
 <?php
 require_once 'updateNepeQuery.php';
-$recurso = pg_query($cnx, $query);
 if($recurso){
 	$respuesta = json_decode('{"actualizado":true, "feedback":"Nepe actualizado, incluyendo fotos.", "nepeId":' . $nepe_id . '}');
 	pg_close($cnx); //maybe not needed but doesn't hurt
