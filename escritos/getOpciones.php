@@ -26,10 +26,10 @@ require_once 'getOpciones/getOpcionesQuery.php';
 			$parIndex++;
 		}
 		$result['cuantasOpciones'] = $parIndex;
-		echo json_encode($result);
 		pg_close($cnx); 
+		echo json_encode($result);
 	}else{
-		throw new Exception('Mal query.  Sin RECURSO en getOpciones.php : ' . __FILE__ . '.  Busca Mode: ' .  $buscaMode  .  '.');
 		pg_close($cnx); //maybe not needed but doesn't hurt
+		throw new Exception('Mal query.  Sin RECURSO en getOpciones.php : ' . __FILE__ . '.  Busca Mode: ' .  $buscaMode  .  '.');
 	}
 ?>

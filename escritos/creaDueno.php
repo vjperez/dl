@@ -9,7 +9,7 @@ require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
 require_once 'creaDueno/creaDuenoQueries.php';
-$recurso = pg_query($cnx, $queryCheckUserName);
+$recurso = pg_execute($cnx, "preparadoQueryCheckUserName", array($usertb));
 if($recurso){
 	$isNewName;
 	if($fila = pg_fetch_row($recurso)){
@@ -18,8 +18,10 @@ if($recurso){
 		$isNewName = true;
 	}
 	if($isNewName){
-		$recurso = pg_query($cnx, $queryRegisterUserReturningId);
-		if($recurso && $filaConId = pg_fetch_row ($recurso)){
+		$recurso = pg_execute($cnx, "preparadoQueryRegisterUser", array($usertb, $hashed_pass01));
+		if($recurso){
+			$recurso = pg_query($cnx, "SELECT currval('dueno_id_seq')");
+			$filaConId = pg_fetch_row ($recurso);
 			$dueno_id = $filaConId[0];
 			$respuesta = json_decode('{"registrado":true, "feedback":"Ya estas registrado.  Directo a mi cuenta, no uso esto."}');
 			pg_close($cnx);
@@ -27,7 +29,7 @@ if($recurso){
 			session_start();	$_SESSION['dueno_id'] = $dueno_id; 
 		}else{
 			pg_close($cnx);
-			throw new Exception('Mal query. Sin RECURSO, para queryRegisterUserReturningId. (username es nuevo, pero hubo error en: )' . __FILE__ );
+			throw new Exception('Mal query. Sin RECURSO, para queryRegisterUser. (username es nuevo, pero hubo error en: )' . __FILE__ );
 		}
 	}else{
 		$respuesta = json_decode('{"registrado":false, "feedback":"Username no disponible."}');

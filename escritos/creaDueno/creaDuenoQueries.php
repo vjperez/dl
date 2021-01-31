@@ -3,14 +3,17 @@
 $queryCheckUserName = "SELECT 
 	id
 FROM dueno
-WHERE username = '$usertb'";
+WHERE username = $1";
 
-//double query
-$queryRegisterUserReturningId = "INSERT INTO
+pg_prepare($cnx, "preparadoQueryCheckUserName", $queryCheckUserName);
+
+
+
+
+
+$queryRegisterUser = "INSERT INTO
 	dueno(username, password, first_log, last_log)
-	VALUES('$usertb', '$hashed_pass01', NOW()::date, NOW()::date)
+	VALUES($1, $2, NOW()::date, NOW()::date)";
 
-	;
-
-	SELECT currval('dueno_id_seq')";
+pg_prepare($cnx, "preparadoQueryRegisterUser", $queryRegisterUser);
 ?>
