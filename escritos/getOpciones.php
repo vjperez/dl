@@ -8,10 +8,8 @@ require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
 require_once 'getOpciones/getOpcionesQuery.php';
-$result = array();  //array con pares
-
-	$recurso = pg_query($cnx, $query);
 	if($recurso){
+		$result = array();  //array con pares
 		$parIndex = 0;  // para ordenar los pares $fila[0] , $randomNepeFoto.  
 						// $fila 0 viene de nepe_id y $randomNepeFoto es una de las fotos de media_foto_url 
 		while($fila = pg_fetch_row($recurso)){
@@ -28,10 +26,10 @@ $result = array();  //array con pares
 			$parIndex++;
 		}
 		$result['cuantasOpciones'] = $parIndex;
+		echo json_encode($result);
+		pg_close($cnx); 
 	}else{
 		throw new Exception('Mal query.  Sin RECURSO en getOpciones.php : ' . __FILE__ . '.  Busca Mode: ' .  $buscaMode  .  '.');
+		pg_close($cnx); //maybe not needed but doesn't hurt
 	}
-
-echo json_encode($result);
-pg_close($cnx); //maybe not needed but doesn't hurt
 ?>
