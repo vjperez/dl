@@ -13,7 +13,6 @@ if(isset($_SESSION['dueno_id'])){
 		//i am sure i have a connection, because an exception was NOT thrown at conecta
 
 		require_once 'editDuenoContrasena/editDuenoContrasenaQuery.php';
-		$recurso = pg_query($cnx, $query);
 		if($recurso){		 
 			if(pg_affected_rows($recurso) == 1){
 				$respuesta = json_decode('{"cambiado":true}');
