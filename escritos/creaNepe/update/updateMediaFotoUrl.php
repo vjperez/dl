@@ -1,6 +1,5 @@
 <?php
 require_once 'updateMediaFotoUrlQuery.php';
-$recurso = pg_query($cnx, $query);
 if($recurso){
 	//$respuesta which was not built on creaNepe.php
 	

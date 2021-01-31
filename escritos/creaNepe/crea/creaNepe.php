@@ -1,11 +1,10 @@
 <?php
-require_once 'creaNepeQuery.php';
-$recurso = pg_query($cnx, $queryCreaNepeReturningId);
+require_once 'creaNepeQuery.php'; // defines recurso
 if($recurso){
+	$recurso = pg_query($cnx, $querySelectNepeIdCurrval);
 	$fila = pg_fetch_row($recurso);
 	$nepe_id = $fila[0];
-	require_once 'bregandoQuery.php';
-	$recurso = pg_query($cnx, $queryInsertBregando);
+	require_once 'bregandoQuery.php';  // redefines recurso
 	if($recurso){
 		// crea nepe va bien hasta ahora pero con MediaFotoUrl vacio
 		
@@ -23,6 +22,6 @@ if($recurso){
 	}
 }else{
 	pg_close($cnx); //maybe not needed but doesn't hurt
-	throw new Exception('Mal query.  Sin RECURSO, para queryCreaNepeReturningId en: ' . __FILE__ );
+	throw new Exception('Mal query.  Sin RECURSO, para queryCreaNepe en: ' . __FILE__ );
 }
 ?>
