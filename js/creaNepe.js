@@ -15,7 +15,7 @@ jQuery.handleCreaNepeSubmit = function(){
 			var formData = new FormData(forma);
 
 			//nombre y video
-			var regexp = new RegExp(/[^a-z0-9@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
+			var regexp = new RegExp(/[^a-z0-9ñáéíóúü@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
 			var nombre = jQuery.cleanStr( jQuery('form#creaNepeForm input[name=nombre]').val(), regexp );
 			if(jQuery.isVacioStr(nombre)){
 				formData.delete("nombre"); 			formData.append('nombre', '---');
@@ -23,7 +23,7 @@ jQuery.handleCreaNepeSubmit = function(){
 				formData.delete("nombre"); 			formData.append('nombre', nombre);
 			}
 			
-			regexp = new RegExp(/[^a-z0-9\.:\/=\?@\._\-+]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=? plus los de login   @ . _ - +
+			regexp = new RegExp(/[^a-z0-9ñáéíóúü\.:\/=\?@\._\-+]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=? plus los de login   @ . _ - +
 			var videoUrl = jQuery.cleanStr( jQuery('form#creaNepeForm textarea[name=videoUrl]').val(), regexp );
 			if(jQuery.isVacioStr(videoUrl)){
 				formData.delete("videoUrl");	formData.append('videoUrl', 'no video');
@@ -32,7 +32,7 @@ jQuery.handleCreaNepeSubmit = function(){
 			}
 			
 			//quienSocialHandle is a JS array object, it is stringified before sending it
-			regexp = new RegExp(/[^a-z0-9@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
+			regexp = new RegExp(/[^a-z0-9ñáéíóúü@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
 			var quienSocialHandle = {fbk:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=red1]').val(), regexp ),
 									  tt:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=red2]').val(), regexp ),
 								    igrm:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=red3]').val(), regexp ), 
@@ -52,7 +52,7 @@ jQuery.handleCreaNepeSubmit = function(){
 			});
 
 			//cuando is a JS array object, it is stringified before sending it
-			regexp = new RegExp(/[^a-z0-9@\._\-+:]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +		y :			escaping dot and minus
+			regexp = new RegExp(/[^a-z0-9ñáéíóúü@\._\-+:]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +		y :			escaping dot and minus
 			var cuando = { lun:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=dia1]').val(), regexp ), 
 						   mar:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=dia2]').val(), regexp ),
 						  mier:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=dia3]').val(), regexp ),
@@ -74,7 +74,7 @@ jQuery.handleCreaNepeSubmit = function(){
 			//sending ques in array
 			var que = new Array();
 			jQuery('form#creaNepeForm input[name^=que]').each(function(index){
-				regexp = new RegExp(/[^a-z0-9@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
+				regexp = new RegExp(/[^a-z0-9ñáéíóúü@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
 				var cleanedQue = jQuery.cleanStr(jQuery(this).val(), regexp );
 				if(jQuery.isVacioStr(cleanedQue)) {  } else { que[index] = cleanedQue; }
 				formData.delete(jQuery(this).attr("name")); //sending ques in array so delete them individually from formData
@@ -85,7 +85,7 @@ jQuery.handleCreaNepeSubmit = function(){
 			//sending dondes in array
 			var donde = new Array();
 			jQuery('form#creaNepeForm input[name^=donde]').each(function(index){
-				regexp = new RegExp(/[^a-z0-9@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
+				regexp = new RegExp(/[^a-z0-9ñáéíóúü@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
 				var cleanedDonde = jQuery.cleanStr(jQuery(this).val(), regexp );
 				if(jQuery.isVacioStr(cleanedDonde)) {  } else { donde[index] = cleanedDonde; }
 				formData.delete(jQuery(this).attr("name")); //sending dondes in array so delete them individually from formData
