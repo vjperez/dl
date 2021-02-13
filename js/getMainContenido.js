@@ -47,8 +47,8 @@ jQuery(document).ready(
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 			//concatenating strings inside an each loop, with the requested JSON datos.
-				var que = jQuery.urlParametro('que');      
-				var donde = jQuery.urlParametro('donde');  
+				var que = decodeURIComponent( jQuery.urlParametro('que') );      
+				var donde = decodeURIComponent( jQuery.urlParametro('donde') );  
 				jQuery.getJSON('escritos/getOpciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					if(datos.cuantasOpciones > 0){
