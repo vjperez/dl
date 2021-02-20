@@ -10,7 +10,7 @@
 
 $queryCreaNepe = "INSERT INTO
 	nepe (nombre, media_video_url, media_social_handle, media_foto_url, cuando, que, donde, a_tu_casa, nombre_que_vector, donde_vector, revisado)
- 	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, to_tsvector('spanish', $9), to_tsvector('simple', $10), NOW()::date )";
+ 	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, to_tsvector('spanish', unaccent($9)), to_tsvector('simple', unaccent($10)), NOW()::date )";
 
 	pg_prepare($cnx, "preparedQueryCreaNepe", $queryCreaNepe);
 	$recurso = pg_execute($cnx, "preparedQueryCreaNepe", array($nombre, $videoUrl, $quien_social_handle, $mediaFotoUrlPosgreArray, 

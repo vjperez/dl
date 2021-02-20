@@ -18,7 +18,7 @@ switch($buscaMode){
 		//:* so that the last word in the query, also get the benefit of :* in the ts query
 	case 'buscaQue':
 		$query = "SELECT id, array_to_json(media_foto_url), ts_rank_cd(nombre_que_vector, el_query) AS ranqueo
-		FROM nepe, to_tsquery('spanish', $1) el_query
+		FROM nepe, to_tsquery('spanish', unaccent($1)) el_query
 		WHERE el_query @@ nombre_que_vector
 		ORDER BY ranqueo DESC
 		";
@@ -27,7 +27,7 @@ switch($buscaMode){
 		break;
 	case 'buscaDonde':
 		$query = "SELECT id, array_to_json(media_foto_url), ts_rank_cd(donde_vector, el_query) AS ranqueo
-		FROM nepe, to_tsquery('simple', $1) el_query
+		FROM nepe, to_tsquery('simple', unaccent($1)) el_query
 		WHERE el_query @@ donde_vector
 		ORDER BY ranqueo DESC
 		";
@@ -36,7 +36,7 @@ switch($buscaMode){
 		break;
 	case 'buscaBoth':
 		$query = "SELECT id, array_to_json(media_foto_url), ts_rank_cd(nombre_que_vector, que_query) + ts_rank_cd(donde_vector, donde_query) AS ranqueo
-		FROM nepe, to_tsquery('spanish', $1) que_query,  to_tsquery('simple', $2) donde_query
+		FROM nepe, to_tsquery('spanish', unaccent($1)) que_query,  to_tsquery('simple', unaccent($2)) donde_query
 		WHERE que_query @@ nombre_que_vector AND donde_query @@ donde_vector 
 		ORDER BY ranqueo DESC
 		";

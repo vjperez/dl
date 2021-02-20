@@ -13,8 +13,8 @@ SET
 	que   = $5,
 	donde = $6,
 	a_tu_casa = $7,
-	nombre_que_vector =	to_tsvector('spanish', $8),
-	donde_vector = to_tsvector('simple', $9),
+	nombre_que_vector =	to_tsvector('spanish', unaccent($8)),
+	donde_vector = to_tsvector('simple', unaccent($9)),
 	revisado = NOW()::date 
 WHERE id = $10";
 
