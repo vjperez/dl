@@ -1,0 +1,5 @@
+git stash -u                                stashing including untracked
+
+git reset --hard master@{"21 hours ago"}    resetea pa tras 
+
+git stash pop                               pon lo estacheado ... encima del punto de reset
