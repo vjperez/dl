@@ -18,7 +18,7 @@ jQuery.editDuenoShowNepes = function(){
 			labelTable += '<tr><td></td></tr>';
 			labelTable += '</table>';
 			
-		jQuery('fieldset#labelTableContainer').html(labelTable);
+		jQuery('fieldset#labelTableContainer').prepend(labelTable);
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
