@@ -347,13 +347,13 @@ form#updateNepeForm fieldset#fotoSrcFieldset.warn       { border-color:#ff0000; 
 
 
 /* orden : editDuenoData */
-form#editDuenoDataForm, div#empresas { margin-left:auto; margin-right:auto; margin-top:50pt; margin-bottom:50pt;  }
+form#editDuenoDataForm, div#nepes { margin-left:auto; margin-right:auto; margin-top:50pt; margin-bottom:50pt;  }
 form#editDuenoDataForm input[type='password']{ width:100%; }
 form#editDuenoDataForm h3 { text-align:center; }
 
 /*estilo : editDuenoData*/
-form#editDuenoDataForm label, div#empresas label { font-size:1.7em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
-/* div#empresas label { color:#29b963; } */
+form#editDuenoDataForm label, div#nepes label { font-size:1.0em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
+/* div#nepes label { color:#29b963; } */
 
 /*
 form#editDuenoDataForm input { font-size:1.5em; border-radius:5pt; background-color:#ebebeb; }
@@ -364,7 +364,7 @@ form#editDuenoDataForm h3 { font-family:serif, Times, times; color:#29b963; }
 */
 form#editDuenoDataForm label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#29b963; display:block; text-align:left; }
 
-form#editDuenoDataForm fieldset.primario, div#empresas fieldset.primario { margin:0pt; padding:0pt; padding-bottom:0pt; border-radius:10pt 10pt 0pt 0pt; }
+form#editDuenoDataForm fieldset.primario, div#nepes fieldset.primario { padding-bottom:5pt; margin-top:30pt; border-radius:10pt 10pt 0pt 0pt; border:none; border-bottom: 1pt solid #909090; }
 form#editDuenoDataForm fieldset.secundario { margin-top:0pt; }
 form#editDuenoDataForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
 /* form#editDuenoDataForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#16a000; } */

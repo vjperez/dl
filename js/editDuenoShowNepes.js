@@ -5,20 +5,20 @@ jQuery.editDuenoShowNepes = function(){
   //jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
 	jQuery.getJSON('escritos/showNepesGetIds.php')
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-		var labelAndTable = '<label class="notHidable">Tus Negocios:</label>';
-		labelAndTable   +=  '<table class="hidaxxxble">';
+		var labelTable = '<label class="notHidable">Tus Negocios:</label>';
+		labelTable   +=  '<table class="hidaxxxble">';
 			jQuery.each(datos, function(index){
-			  //labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
-				labelAndTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'
+			  //labelTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
+				labelTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'
 				+  '&nepeId=' + datos[index].nepeId  + '">' + datos[index].nepeNombre + '</a></td></tr>';
 			});
 			
-		  //labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
-			labelAndTable += '<tr><td></td></tr>';
-			labelAndTable += '<tr><td></td></tr>';
-			labelAndTable += '<tr><td><a class="link" href="portada.html?look=creaNepe' + '">' + 'Registra Nuevo Negocio' + '</a></td></tr>';
-			labelAndTable += '</table>';
-		jQuery('#labelAndTableContainer').html(labelAndTable);
+		  //labelTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
+			labelTable += '<tr><td></td></tr>';
+			labelTable += '<tr><td></td></tr>';
+			labelTable += '</table>';
+			
+		jQuery('fieldset#labelTableContainer').html(labelTable);
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -83,5 +83,8 @@ jQuery.editDuenoShowNepes = function(){
 		jQuery.feedback('form#editDuenoDataForm h3', '');
 	});
 	
-	
+	jQuery('div#nepes :button').click(function(){
+		//alert(window.location.pathname + '?look=creaNepe'); 
+		jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
+	});
 }
