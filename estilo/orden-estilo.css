@@ -254,9 +254,9 @@ div#creaNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-weigh
 
 form#creaNepeForm label { font-size:1.0em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 
-form#creaNepeForm input[type='text']       { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1px solid #909090;}
+form#creaNepeForm input[type='text']       { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1pt solid #909090;}
 form#creaNepeForm textarea[name='videoUrl']{ font-size:1.5em; border-radius:5pt; background-color:#ebebeb; font-weight:bold; }
-form#creaNepeForm input[type='tel']        { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1px solid #909090;}
+form#creaNepeForm input[type='tel']        { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1pt solid #909090;}
 form#creaNepeForm input:focus { background-color:white; }
 
 form#creaNepeForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
@@ -264,8 +264,9 @@ form#creaNepeForm button:hover, form#creaNepeForm button:focus { background-colo
 form#creaNepeForm label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#29b963; display:block; text-align:left; }
 form#creaNepeForm textarea:focus { background-color:#dadada; }
 
-form#creaNepeForm fieldset.primario, form#creaNepeForm fieldset#submitButtonFieldset { padding-bottom:5pt; margin-top:30pt; border-radius:10pt 10pt 0pt 0pt; }
-form#creaNepeForm fieldset.secundario { margin-top:0pt; }
+form#creaNepeForm fieldset.primario { padding-bottom:5pt; margin-top:30pt; border-radius:10pt 10pt 0pt 0pt; border:none; border-bottom: 1pt solid #909090; }
+form#creaNepeForm fieldset#submitButtonFieldset { padding-bottom:5pt; margin-top:30pt; border-width:0pt; }
+form#creaNepeForm fieldset.secundario { margin-top:0pt; border-width:0pt; }
 form#creaNepeForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
 form#creaNepeForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#29b963; }
 
@@ -312,9 +313,9 @@ div#updateNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-wei
 
 form#updateNepeForm label { font-size:1.0em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 
-form#updateNepeForm input[type='text']       { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1px solid #909090;}
+form#updateNepeForm input[type='text']       { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1pt solid #909090;}
 form#updateNepeForm textarea[name='videoUrl']{ font-size:1.5em; border-radius:5pt; background-color:#ebebeb; font-weight:bold; }
-form#updateNepeForm input[type='tel']        { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1px solid #909090;}
+form#updateNepeForm input[type='tel']        { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1pt solid #909090;}
 form#updateNepeForm input:focus { background-color:white; }
 
 
@@ -324,8 +325,9 @@ form#updateNepeForm label.explica { font-size:0.85em; letter-spacing:0.2em; font
 form#updateNepeForm textarea:focus { background-color:#dadada; }
 
 
-form#updateNepeForm fieldset.primario, form#updateNepeForm fieldset#submitButtonFieldset { padding-bottom:5pt; margin-top:30pt; border-radius:10pt 10pt 0pt 0pt; }
-form#updateNepeForm fieldset.secundario { margin-top:0pt; }
+form#updateNepeForm fieldset.primario { padding-bottom:5pt; margin-top:30pt; border-radius:10pt 10pt 0pt 0pt; border:none; border-bottom: 1pt solid #909090; }
+form#updateNepeForm fieldset#submitButtonFieldset { padding-bottom:5pt; margin-top:30pt; border-width:0pt; }
+form#updateNepeForm fieldset.secundario { margin-top:0pt; border-width:0pt; }
 form#updateNepeForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
 form#updateNepeForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#29b963; }
 
