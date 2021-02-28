@@ -142,8 +142,7 @@ jQuery.handleCreaNepeSubmit = function(){
 	
 	
 	//hide, show on click ; creaNepe task 3
-	var showing = true;
-	jQuery.toggleOnClick(showing);
+	jQuery.toggleOnClick();
 	//hide them  ; editDuenoShowNepes task 4
 	jQuery.hideThem();
 	

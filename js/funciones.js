@@ -74,20 +74,18 @@ jQuery.feedback = function(elementoDonde, mensaje, forma){
 }
 
 
-jQuery.toggleOnClick = function(showing){
+jQuery.toggleOnClick = function(){
 	var $todosLosNotHidable = jQuery('.notHidable');
 	// var $todosLosHidable = jQuery('.hidable');
 	// $todosLosHidable.hide();
 	$todosLosNotHidable.on('click', function(evento){
 		var $toToggle = jQuery(evento.currentTarget).next('.hidable');
-		if (showing === true) {
-			$toToggle.show(); 
-			showing = false; 
-			jQuery(evento.currentTarget).css({border:'none'});
-		}else{
+		if ($toToggle.is(':visible')) {
 			$toToggle.hide(); 
-			showing = true; 
 			jQuery(evento.currentTarget).css({border:'none', borderBottomWidth:'1pt', borderBottomStyle:'solid', borderBottomColor:'#909090'});
+		}else{
+			$toToggle.show(); 
+			jQuery(evento.currentTarget).css({border:'none'});
 		}
 	});
 }
