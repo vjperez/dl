@@ -376,7 +376,7 @@ form#editDuenoDataForm p,       div#nepes      p{ margin-top:2pt; margin-bottom:
 form#editDuenoDataForm button,  div#nepes button{ display:block; margixxxn-bottom:30pt; }
 form#editDuenoDataForm button,  div#nepes button{ width:25%; position:relative; left:37.5%; }
 
-div#nepes button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; margin-top: 20pt; font-weight: bolder; }
+div#nepes button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; margin-top: 20pt; font-weight: bolder; font-size:24px; }
 div#nepes button:hover, form#editDuenoDataForm button:focus { background-color:#7fb3d5; }
 
 
