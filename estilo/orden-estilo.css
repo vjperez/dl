@@ -252,7 +252,7 @@ form#creaNepeForm fieldset#submitButtonFieldset h3 { text-align:center; }
 /*estilo : creaNepeData*/
 div#creaNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#29b963; display:block;  }
 
-form#creaNepeForm label { font-size:1.0em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
+form#creaNepeForm label { font-size:1.15em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 
 form#creaNepeForm input[type='text']       { font-size:1.5em; border-radius:0pt; background-color:#fdfdfd; border:none; border-bottom: 1pt solid #909090;}
 form#creaNepeForm textarea[name='videoUrl']{ font-size:1.5em; border-radius:5pt; background-color:#fdfdfd; font-weight:bold; }
@@ -311,7 +311,7 @@ form#updateNepeForm fieldset#submitButtonFieldset h3 { text-align:center; }
 /*estilo : updateNepe*/
 div#updateNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:#29b963; display:block; }
 
-form#updateNepeForm label { font-size:1.0em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
+form#updateNepeForm label { font-size:1.15em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 
 form#updateNepeForm input[type='text']       { font-size:1.5em; border-radius:0pt; background-color:#fdfdfd; border:none; border-bottom: 1pt solid #909090;}
 form#updateNepeForm textarea[name='videoUrl']{ font-size:1.5em; border-radius:5pt; background-color:#fdfdfd; font-weight:bold; }
@@ -353,7 +353,7 @@ form#editDuenoDataForm input[type='password']{ width:100%; }
 form#editDuenoDataForm h3 { text-align:center; }
 
 /*estilo : editDuenoData*/
-form#editDuenoDataForm label, div#nepes label { font-size:1.0em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
+form#editDuenoDataForm label, div#nepes label { font-size:1.15em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 form#editDuenoDataForm input { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1px solid #909090; }
 form#editDuenoDataForm input:focus { background-color:white; }
 /* div#nepes label { color:#29b963; } */
