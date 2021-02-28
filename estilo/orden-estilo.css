@@ -267,8 +267,8 @@ form#creaNepeForm textarea:focus { background-color:#ebebeb; }
 form#creaNepeForm fieldset.primario { padding-bottom:5pt; margin-top:30pt;  border:none; border-bottom: 1pt solid #909090; }
 form#creaNepeForm fieldset#submitButtonFieldset { padding-bottom:5pt; margin-top:30pt; border-width:0pt; }
 form#creaNepeForm fieldset.secundario { margin-top:0pt; border-width:0pt; }
-form#creaNepeForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
-form#creaNepeForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#29b963; }
+form#creaNepeForm fieldset.secundario label { font-size:0.85em; letter-spacing:0.00em; color:#000000; }
+form#creaNepeForm fieldset.secundario label.explica { font-size:0.8em; letter-spacing:0.2em; color:#29b963; }
 
 
 
@@ -328,8 +328,8 @@ form#updateNepeForm textarea:focus { background-color:#ebebeb; }
 form#updateNepeForm fieldset.primario { padding-bottom:5pt; margin-top:30pt;  border:none; border-bottom: 1pt solid #909090; }
 form#updateNepeForm fieldset#submitButtonFieldset { padding-bottom:5pt; margin-top:30pt; border-width:0pt; }
 form#updateNepeForm fieldset.secundario { margin-top:0pt; border-width:0pt; }
-form#updateNepeForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
-form#updateNepeForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#29b963; }
+form#updateNepeForm fieldset.secundario label { font-size:0.85em; letter-spacing:0.00em; color:#000000; }
+form#updateNepeForm fieldset.secundario label.explica { font-size:0.8em; letter-spacing:0.2em; color:#29b963; }
 
 
 
@@ -369,8 +369,8 @@ form#editDuenoDataForm label.explica { font-size:0.85em; letter-spacing:0.2em; f
 
 form#editDuenoDataForm fieldset.primario, div#nepes fieldset.primario { padding-bottom:5pt; margin-top:50pt;  border:none; border-bottom: 1pt solid #909090; }
 form#editDuenoDataForm fieldset.secundario { margin-top:0pt; border-width:0pt; }
-form#editDuenoDataForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
-/* form#editDuenoDataForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#16a000; } */
+form#editDuenoDataForm fieldset.secundario label { font-size:0.85em; letter-spacing:0.00em; color:#000000; }
+/* form#editDuenoDataForm fieldset.secundario label.explica { font-size:0.8em; letter-spacing:0.2em; color:#16a000; } */
 
 form#editDuenoDataForm p,       div#nepes      p{ margin-top:2pt; margin-bottom:0pt; }
 form#editDuenoDataForm button,  div#nepes button{ display:block; margixxxn-bottom:30pt; }
