@@ -254,10 +254,10 @@ div#creaNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-weigh
 
 form#creaNepeForm label { font-size:1.0em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 
-form#creaNepeForm input[type='text']       { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1pt solid #909090;}
+form#creaNepeForm input[type='text']       { font-size:1.5em; border-radius:0pt; background-color:#ebebeb; border:none; border-bottom: 1pt solid #909090;}
 form#creaNepeForm textarea[name='videoUrl']{ font-size:1.5em; border-radius:5pt; background-color:#ebebeb; font-weight:bold; }
-form#creaNepeForm input[type='tel']        { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1pt solid #909090;}
-form#creaNepeForm input:focus { background-color:white; }
+form#creaNepeForm input[type='tel']        { font-size:1.5em; border-radius:0pt; background-color:#ebebeb; border:none; border-bottom: 1pt solid #909090;}
+form#creaNepeForm input:focus { background-color:#dadada; }
 
 form#creaNepeForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
 form#creaNepeForm button:hover, form#creaNepeForm button:focus { background-color:#7fb3d5; }
@@ -313,10 +313,10 @@ div#updateNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-wei
 
 form#updateNepeForm label { font-size:1.0em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 
-form#updateNepeForm input[type='text']       { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1pt solid #909090;}
+form#updateNepeForm input[type='text']       { font-size:1.5em; border-radius:0pt; background-color:#ebebeb; border:none; border-bottom: 1pt solid #909090;}
 form#updateNepeForm textarea[name='videoUrl']{ font-size:1.5em; border-radius:5pt; background-color:#ebebeb; font-weight:bold; }
-form#updateNepeForm input[type='tel']        { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1pt solid #909090;}
-form#updateNepeForm input:focus { background-color:white; }
+form#updateNepeForm input[type='tel']        { font-size:1.5em; border-radius:0pt; background-color:#ebebeb; border:none; border-bottom: 1pt solid #909090;}
+form#updateNepeForm input:focus { background-color:#dadada; }
 
 
 form#updateNepeForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
@@ -365,13 +365,16 @@ form#editDuenoDataForm h3 { font-family:serif, Times, times; color:#29b963; }
 form#editDuenoDataForm label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#29b963; display:block; text-align:left; }
 
 form#editDuenoDataForm fieldset.primario, div#nepes fieldset.primario { padding-bottom:5pt; margin-top:30pt; border-radius:10pt 10pt 0pt 0pt; border:none; border-bottom: 1pt solid #909090; }
-form#editDuenoDataForm fieldset.secundario { margin-top:0pt; }
+form#editDuenoDataForm fieldset.secundario { margin-top:0pt; border-width:0pt; }
 form#editDuenoDataForm fieldset.secundario label { font-size:1.2em; letter-spacing:0.00em; color:#000000; }
 /* form#editDuenoDataForm fieldset.secundario label.explica { font-size:0.85em; letter-spacing:0.2em; color:#16a000; } */
 
-form#editDuenoDataForm p { margin-top:2pt; margin-bottom:0pt; }
-form#editDuenoDataForm button { display:block; margixxxn-bottom:30pt; }
-form#editDuenoDataForm button { width:25%; position:relative; left:37.5%; }
+form#editDuenoDataForm p,       div#nepes      p{ margin-top:2pt; margin-bottom:0pt; }
+form#editDuenoDataForm button,  div#nepes button{ display:block; margixxxn-bottom:30pt; }
+form#editDuenoDataForm button,  div#nepes button{ width:25%; position:relative; left:37.5%; }
+
+div#nepes button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
+div#nepes button:hover, form#editDuenoDataForm button:focus { background-color:#7fb3d5; }
 
 
 
