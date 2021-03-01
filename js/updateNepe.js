@@ -8,6 +8,7 @@ var reducedImagesArray = [];
 //when ajax complete ; if already existing micro empre then populate form using that data
 jQuery.populateUpdateNepeForm = function(datos){
 	//nombre y video
+	jQuery('div#updateNepe h3').text(datos.nombre);
 	jQuery('form#updateNepeForm input[name=nombre]').val(datos.nombre);
 	jQuery('form#updateNepeForm textarea[name=videoUrl]').val(datos.videoUrl);
 	//quien
