@@ -22,7 +22,7 @@ div#navega ul { text-align:left; list-style-type:none; margin:0pt; padding:0; }
 div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; }
 div#navega li img { vertical-align:middle; }
 
-label#portada-warning.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#29b963; display:block; text-align:center; }
+label#portada-warning.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#2bb2c0; display:block; text-align:center; }
 label#portada-warning.explica { margin-top:600pt; }
 
 
@@ -31,13 +31,15 @@ label#portada-warning.explica { margin-top:600pt; }
 /*
 .color01{ color:#c0392b } labels y h2s de profile faq y creaNepeData. try rojito #fd341d;                             ::: google 'RED' ea4335
 .color02{ color:#27ae60 } profile video h1 y footer background                          ::: google 'GREEN' 34a853
-.color03{ color:#29b963 } label de busca, login y creaDueno, div#cuando td, .colorenfasis, label.explica, div#quien ul img:hover, div#quien h3, div#donde h3  for verde try 00e356
+.color03{ color:#2bb2c0 } label de busca, login y creaDueno, div#cuando td, .colorenfasis, label.explica, div#quien ul img:hover, div#quien h3, div#donde h3  for verde try 00e356
 .color04{ color:#7fb3d5 } button link hover background
 .color05{ color:#4285f4 } button link border                                                   ::: google 'BLUE' 4285f4
 .color06{ color:#f1c40f } currentl not used                                                    ::: google 'YELLOW' f9ab00
 2980b9 normal links and nav links
 909090 header bottom y footer borders
 c0c0c0 border bottom navega
+
+color:#29b963; era label explica
 */
 body { background-color:white; font-family:'Slabo 27px', Times, times, serif; font-weight:normal; letter-spacing:0.1em; } /*like faq paragraph*/
 h1 { letter-spacing:0.40em; }
@@ -49,7 +51,7 @@ h5 { letter-spacing:0.10em; }
 div#main h1, div#main h2, div#main h3, div#main h4 { color:#c0392b; }
 p, td { line-height:2em; }
 p::first-letter{ font-size:1.3em; }
-.color01enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#29b963;}
+.color01enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#2bb2c0;}
 .color02enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#c0392b;}
 .sizeenfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace;}
 a.link { text-decoration:none; font-weight:bolder; }
@@ -95,7 +97,7 @@ form[id$=Form] input { font-size:1.5em; border-radius:5pt; background-color:#fdf
 form[id$=Form] input:focus { background-color:#ebebeb; }
 form[id$=Form] button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
 form[id$=Form] button:hover, form[id$=Form] button:focus { background-color:#7fb3d5; }
-form[id$=Form] h3 { font-family:serif, Times, times; color:#29b963; }
+form[id$=Form] h3 { font-family:serif, Times, times; color:#2bb2c0; }
 
 
 
@@ -136,8 +138,8 @@ div#que h2, div#donde h2, div#cuando h2, div#quien h2 { color:#c0392b; }
 /*div#cuando h3 { color:#f1c40f; } */
 /*font para #que #donde #cuando*/
 a.clavelink { font-family:'Slabo 27px', Times, times, courier, mono, monospace; letter-spacing:0.1em; }
-div#cuando td, div#video h5, div#quien h3, div#donde h3 { font-weight:bolder; font-family:serif, Times, times; color:#29b963;}
-div#video h5 { color:#29b963; text-align:right; font-weight: bolder; }
+div#cuando td, div#video h5, div#quien h3, div#donde h3 { font-weight:bolder; font-family:serif, Times, times; color:#2bb2c0;}
+div#video h5 { color:#2bb2c0; text-align:right; font-weight: bolder; }
 div#cuando td.hora { font-weight:bold; }
 a.clavelink:link, a.clavelink:visited {
     background-color:white;
@@ -153,7 +155,7 @@ a.clavelink:hover, a.clavelink:focus {
 
 div#que ul, div#donde ul, div#quien ul { list-style-type:none; }
 div#quien ul img { border-color:#000000;  border-style:solid;  border-width:1pt;  border-radius:5pt; padding:0.2em; }
-div#quien ul img:hover, div#quien ul img:focus, div#quien ul img.current { border-color:#29b963; border-width:3pt; }
+div#quien ul img:hover, div#quien ul img:focus, div#quien ul img.current { border-color:#2bb2c0; border-width:3pt; }
 
 
 
@@ -165,7 +167,7 @@ div#quien ul img:hover, div#quien ul img:focus, div#quien ul img.current { borde
 div.opcionesfotos { overflow:auto; }
 div.opcionesfotos img { /*display inline is a default for img */ display:inline; float:left; padding-left:1pt;  padding-bottom:2pt; }
 /*estilo : opciones */
-div#main .opcionesfotos h3 { color:#29b963;}
+div#main .opcionesfotos h3 { color:#2bb2c0;}
 /* div#main .opcionesfotos h3 { font-weight:bold; } */
 
 
@@ -190,7 +192,7 @@ form#loginForm input { font-size:1.5em; border-radius:0pt; background-color:whit
 form#loginForm input:focus { background-color:white; }
 /*form#loginForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
 form#loginForm button:hover, form#loginForm button:focus { background-color:#7fb3d5; }
-form#loginForm h3 { font-family:serif, Times, times; color:#29b963; }
+form#loginForm h3 { font-family:serif, Times, times; color:#2bb2c0; }
 */
 
 
@@ -214,7 +216,7 @@ form#creaDuenoForm input:focus { background-color:white; }
 /*
 form#creaDuenoForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
 form#creaDuenoForm button:hover, form#creaDuenoForm button:focus { background-color:#7fb3d5; }
-form#creaDuenoForm h3 { font-family:serif, Times, times; color:#29b963; }
+form#creaDuenoForm h3 { font-family:serif, Times, times; color:#2bb2c0; }
 */
 
 
@@ -228,7 +230,7 @@ form#creaDuenoForm h3 { font-family:serif, Times, times; color:#29b963; }
 
 /* orden : creaNepeData */
 div#creaNepe { margin-left:auto; margin-right:auto;  padding-bottom:30pt;}
-div#creaNepe h1, div#creaNepe  label.explica { text-align:center; }
+div#creaNepe h3, div#creaNepe  label.explica { text-align:center; }
 
 form#creaNepeForm { margin-left:auto; margin-right:auto; }
 form#creaNepeForm input[type='text'],
@@ -250,7 +252,7 @@ form#creaNepeForm fieldset#submitButtonFieldset h3 { text-align:center; }
 
 
 /*estilo : creaNepeData*/
-div#creaNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#29b963; display:block;  }
+div#creaNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#2bb2c0; display:block;  }
 
 form#creaNepeForm label { font-size:1.15em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 
@@ -261,14 +263,14 @@ form#creaNepeForm input:focus { background-color:#ebebeb; }
 
 form#creaNepeForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
 form#creaNepeForm button:hover, form#creaNepeForm button:focus { background-color:#7fb3d5; }
-form#creaNepeForm label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#29b963; display:block; text-align:left; }
+form#creaNepeForm label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#2bb2c0; display:block; text-align:left; }
 form#creaNepeForm textarea:focus { background-color:#ebebeb; }
 
 form#creaNepeForm fieldset.primario { padding-bottom:5pt; margin-top:30pt;  border:none; border-bottom: 1pt solid #909090; }
 form#creaNepeForm fieldset#submitButtonFieldset { padding-bottom:5pt; margin-top:30pt; border-width:0pt; }
 form#creaNepeForm fieldset.secundario { margin-top:0pt; border-width:0pt; }
 form#creaNepeForm fieldset.secundario label { font-size:0.85em; letter-spacing:0.00em; color:#000000; }
-form#creaNepeForm fieldset.secundario label.explica { font-size:0.8em; letter-spacing:0.2em; color:#29b963; }
+form#creaNepeForm fieldset.secundario label.explica { font-size:0.8em; letter-spacing:0.2em; color:#2bb2c0; }
 
 
 
@@ -287,7 +289,7 @@ form#creaNepeForm fieldset#fotoSrcFieldset.warn       { border-color:#ff0000; }
 
 /* orden : updateNepe */
 div#updateNepe { margin-left:auto; margin-right:auto;  padding-bottom:30pt;}
-div#updateNepe h1, div#updateNepe  label.explica { text-align:center; }
+div#updateNepe h3, div#updateNepe  label.explica { text-align:center; }
 
 form#updateNepeForm { margin-left:auto; margin-right:auto; }
 form#updateNepeForm input[type='text'],
@@ -309,7 +311,7 @@ form#updateNepeForm fieldset#submitButtonFieldset h3 { text-align:center; }
 
 
 /*estilo : updateNepe*/
-div#updateNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:#29b963; display:block; }
+div#updateNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:#2bb2c0; display:block; }
 
 form#updateNepeForm label { font-size:1.15em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 
@@ -321,7 +323,7 @@ form#updateNepeForm input:focus { background-color:#ebebeb; }
 
 form#updateNepeForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
 form#updateNepeForm button:hover, form#updateNepeForm button:focus { background-color:#7fb3d5; }
-form#updateNepeForm label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#29b963; display:block; text-align:left; }
+form#updateNepeForm label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#2bb2c0; display:block; text-align:left; }
 form#updateNepeForm textarea:focus { background-color:#ebebeb; }
 
 
@@ -329,7 +331,7 @@ form#updateNepeForm fieldset.primario { padding-bottom:5pt; margin-top:30pt;  bo
 form#updateNepeForm fieldset#submitButtonFieldset { padding-bottom:5pt; margin-top:30pt; border-width:0pt; }
 form#updateNepeForm fieldset.secundario { margin-top:0pt; border-width:0pt; }
 form#updateNepeForm fieldset.secundario label { font-size:0.85em; letter-spacing:0.00em; color:#000000; }
-form#updateNepeForm fieldset.secundario label.explica { font-size:0.8em; letter-spacing:0.2em; color:#29b963; }
+form#updateNepeForm fieldset.secundario label.explica { font-size:0.8em; letter-spacing:0.2em; color:#2bb2c0; }
 
 
 
@@ -356,16 +358,16 @@ form#editDuenoDataForm h3 { text-align:center; }
 form#editDuenoDataForm label, div#nepes label { font-size:1.15em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 form#editDuenoDataForm input { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1px solid #909090; }
 form#editDuenoDataForm input:focus { background-color:white; }
-/* div#nepes label { color:#29b963; } */
+/* div#nepes label { color:#2bb2c0; } */
 
 /*
 form#editDuenoDataForm input { font-size:1.5em; border-radius:5pt; background-color:#fdfdfd; }
 form#editDuenoDataForm input:focus { background-color:#ebebeb; }
 form#editDuenoDataForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
 form#editDuenoDataForm button:hover, form#editDuenoDataForm button:focus { background-color:#7fb3d5; }
-form#editDuenoDataForm h3 { font-family:serif, Times, times; color:#29b963; }
+form#editDuenoDataForm h3 { font-family:serif, Times, times; color:#2bb2c0; }
 */
-form#editDuenoDataForm label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#29b963; display:block; text-align:left; }
+form#editDuenoDataForm label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#2bb2c0; display:block; text-align:left; }
 
 form#editDuenoDataForm fieldset.primario, div#nepes fieldset.primario { padding-bottom:5pt; margin-top:50pt;  border:none; border-bottom: 1pt solid #909090; }
 form#editDuenoDataForm fieldset.secundario { margin-top:0pt; border-width:0pt; }
@@ -376,7 +378,7 @@ form#editDuenoDataForm p,       div#nepes      p{ margin-top:2pt; margin-bottom:
 form#editDuenoDataForm button,  div#nepes button{ display:block; margixxxn-bottom:30pt; }
 form#editDuenoDataForm button,  div#nepes button{ width:25%; position:relative; left:37.5%; }
 
-div#nepes button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; margin-top: 20pt; font-weight: bolder; font-size:24px; }
+div#nepes button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; margin-top: 20pt; }
 div#nepes button:hover, form#editDuenoDataForm button:focus { background-color:#7fb3d5; }
 
 
