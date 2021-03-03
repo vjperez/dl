@@ -109,7 +109,7 @@ jQuery.showThem = function(){
 jQuery.pintaHeaderLinks = function(){
 	var $headerLinks = jQuery('div#navega a.navelink');
 	$headerLinks.css({
-    	color:'#2980b9'
+    	color:'#2b68c0'
 	});
 }
 

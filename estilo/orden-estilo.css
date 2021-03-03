@@ -5,7 +5,7 @@
 * { box-sizing:border-box; }
 body { margin:0px auto; min-width:320pt; max-width:960pt; }
 .margen { margin-left:1%; margin-right:1%; }
-.contenido { margin-bottom:100pt; margin-top:100pt; }
+.contenido { margin-bottom:200pt; margin-top:100pt; }
 .centro { margin-left:auto; margin-right:auto; }
 
 /*vertical-align pone la imagen en el fondo del texto q iria alrededor de un elemento inline como lo son las imagenes, sino creas un gap entre la img y el containing div */
@@ -35,11 +35,14 @@ label#portada-warning.explica { margin-top:600pt; }
 .color04{ color:#7fb3d5 } button link hover background
 .color05{ color:#4285f4 } button link border                                                   ::: google 'BLUE' 4285f4
 .color06{ color:#f1c40f } currentl not used                                                    ::: google 'YELLOW' f9ab00
-2980b9 normal links and nav links
+2980b9 normal links and nav links y footer background
 909090 header bottom y footer borders
 c0c0c0 border bottom navega
 
 color:#29b963; era label explica
+color:#1f5aa0; era borde de button
+color:#7fb3d5; era button link hover background
+color:#2980b9; era normal links and nav links y footer background
 */
 body { background-color:white; font-family:'Slabo 27px', Times, times, serif; font-weight:normal; letter-spacing:0.1em; } /*like faq paragraph*/
 h1 { letter-spacing:0.40em; }
@@ -55,21 +58,21 @@ p::first-letter{ font-size:1.3em; }
 .color02enfasis{ font-size:1.1em; font-weight:bold; font-family:mono, monospace; color:#c0392b;}
 .sizeenfasis { font-size:1.2em; font-weight:bold; font-family:mono, monospace;}
 a.link { text-decoration:none; font-weight:bolder; }
-a.link:link,     a.link:visited { color:#2980b9 }    /* links on faq do not have any other class changing their color */
+a.link:link,     a.link:visited { color:#2b68c0 }    /* links on faq do not have any other class changing their color */
 a.link:hover, a.link:focus { text-decoration:underline; }
 a.link li:hover, a.link li:focus { text-decoration:underline; }
 
 div#navega a.navelink { font-family:serif, mono, monospace; font-size:0.8em; }
 div#navega a.navelink:link,     a.navelink:visited { color:white; }  /* changed in pinta header links ()  */
 h1, h2, h3, h4, label { font-family:'Bree Serif', courier, mono, monospace; }
-div#footer h2.footertitulo { font-family:mono, monospace, serif, fantasy;  text-align:center; color:white; }
-div#footer h5.footersubtitulo {    font-family:mono, monospace, serif, fantasy;  text-align:center; color:white;   margin-bottom:50pt;}
-div#footer h5 {              font-family:serif, fantasy, mono, monospace;  text-align:right;  color:white; margin-right:1em; }
+div#footer h2.footertitulo { font-family:mono, monospace, serif, fantasy;  text-align:center; color:black; }
+div#footer h5.footersubtitulo {    font-family:mono, monospace, serif, fantasy;  text-align:center; color:black;   margin-bottom:50pt;}
+div#footer h5 {              font-family:serif, fantasy, mono, monospace;  text-align:right;  color:red; margin-right:1em; }
 
 div#footer a.footerlink { font-family:courier, mono, monospace; font-size:0.75em; }
-div#footer a.footerlink:link,     a.footerlink:visited { color:white; }
+div#footer a.footerlink:link,     a.footerlink:visited { color:#2b68c0; }
 /* footer color was 067060*/
-div#footer { background-color:#2980b9; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
+div#footer { background-color:white; border-top:2pt solid #909090; border-bottom:2pt solid #909090; }
 
 
 
@@ -95,8 +98,8 @@ form#creaDuenoForm h3 { text-align:center; }
 form#queDondeForm label { font-size:1.7em; letter-spacing:0.40em; font-weight:bolder; color:#c0392b; display: block; }
 form[id$=Form] input { font-size:1.5em; border-radius:5pt; background-color:#fdfdfd; }
 form[id$=Form] input:focus { background-color:#ebebeb; }
-form[id$=Form] button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
-form[id$=Form] button:hover, form[id$=Form] button:focus { background-color:#7fb3d5; }
+form[id$=Form] button { border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; }
+form[id$=Form] button:hover, form[id$=Form] button:focus { background-color:#ebebeb; }
 form[id$=Form] h3 { font-family:serif, Times, times; color:#2bb2c0; }
 
 
@@ -144,14 +147,14 @@ div#cuando td.hora { font-weight:bold; }
 a.clavelink:link, a.clavelink:visited {
     background-color:white;
     color:black;
-    border-color:#1f5aa0;
+    border-color:#2b68c0;
     border-style:solid;     border-width:1pt;  border-radius:5pt;
 	 /*border-top-left-radius:40% 50%; border-top-right-radius:40% 50%; border-bottom-left-radius:20% 50%; border-bottom-right-radius:20% 50%;*/
     padding:0.25em 0.5em 0em 0.5em; }
 a.clavelink:hover, a.clavelink:focus {
 	text-decoration:none; /*todos los .link aqui subrayan, pero este NO*/
-    background-color:#7fb3d5;
-    color:#ffffff;  }
+    background-color:#ebebeb;
+    color:black;  }
 
 div#que ul, div#donde ul, div#quien ul { list-style-type:none; }
 div#quien ul img { border-color:#000000;  border-style:solid;  border-width:1pt;  border-radius:5pt; padding:0.2em; }
@@ -190,8 +193,8 @@ form#loginForm h3 { text-align:center; }
 form#loginForm label { font-size:1.0em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 form#loginForm input { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1px solid #909090; }
 form#loginForm input:focus { background-color:white; }
-/*form#loginForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
-form#loginForm button:hover, form#loginForm button:focus { background-color:#7fb3d5; }
+/*form#loginForm button { border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; }
+form#loginForm button:hover, form#loginForm button:focus { background-color:#ebebeb; }
 form#loginForm h3 { font-family:serif, Times, times; color:#2bb2c0; }
 */
 
@@ -214,8 +217,8 @@ form#creaDuenoForm label { font-size:1.0em; letter-spacing:0.4em; font-weight:bo
 form#creaDuenoForm input { font-size:1.5em; border-radius:0pt; background-color:white; border:none; border-bottom: 1px solid #909090; }
 form#creaDuenoForm input:focus { background-color:white; }
 /*
-form#creaDuenoForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
-form#creaDuenoForm button:hover, form#creaDuenoForm button:focus { background-color:#7fb3d5; }
+form#creaDuenoForm button { border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; }
+form#creaDuenoForm button:hover, form#creaDuenoForm button:focus { background-color:#ebebeb; }
 form#creaDuenoForm h3 { font-family:serif, Times, times; color:#2bb2c0; }
 */
 
@@ -252,7 +255,7 @@ form#creaNepeForm fieldset#submitButtonFieldset h3 { text-align:center; }
 
 
 /*estilo : creaNepeData*/
-div#creaNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#2bb2c0; display:block;  }
+div#creaNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#000000; display:block;  }
 
 form#creaNepeForm label { font-size:1.15em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 
@@ -261,8 +264,8 @@ form#creaNepeForm textarea[name='videoUrl']{ font-size:1.5em; border-radius:5pt;
 form#creaNepeForm input[type='tel']        { font-size:1.5em; border-radius:0pt; background-color:#fdfdfd; border:none; border-bottom: 1pt solid #909090;}
 form#creaNepeForm input:focus { background-color:#ebebeb; }
 
-form#creaNepeForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
-form#creaNepeForm button:hover, form#creaNepeForm button:focus { background-color:#7fb3d5; }
+form#creaNepeForm button { border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; }
+form#creaNepeForm button:hover, form#creaNepeForm button:focus { background-color:#ebebeb; }
 form#creaNepeForm label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#2bb2c0; display:block; text-align:left; }
 form#creaNepeForm textarea:focus { background-color:#ebebeb; }
 
@@ -311,7 +314,7 @@ form#updateNepeForm fieldset#submitButtonFieldset h3 { text-align:center; }
 
 
 /*estilo : updateNepe*/
-div#updateNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:#2bb2c0; display:block; }
+div#updateNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:#000000; display:block; }
 
 form#updateNepeForm label { font-size:1.15em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 
@@ -321,8 +324,8 @@ form#updateNepeForm input[type='tel']        { font-size:1.5em; border-radius:0p
 form#updateNepeForm input:focus { background-color:#ebebeb; }
 
 
-form#updateNepeForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
-form#updateNepeForm button:hover, form#updateNepeForm button:focus { background-color:#7fb3d5; }
+form#updateNepeForm button { border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; }
+form#updateNepeForm button:hover, form#updateNepeForm button:focus { background-color:#ebebeb; }
 form#updateNepeForm label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#2bb2c0; display:block; text-align:left; }
 form#updateNepeForm textarea:focus { background-color:#ebebeb; }
 
@@ -363,8 +366,8 @@ form#editDuenoDataForm input:focus { background-color:white; }
 /*
 form#editDuenoDataForm input { font-size:1.5em; border-radius:5pt; background-color:#fdfdfd; }
 form#editDuenoDataForm input:focus { background-color:#ebebeb; }
-form#editDuenoDataForm button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; }
-form#editDuenoDataForm button:hover, form#editDuenoDataForm button:focus { background-color:#7fb3d5; }
+form#editDuenoDataForm button { border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; }
+form#editDuenoDataForm button:hover, form#editDuenoDataForm button:focus { background-color:#ebebeb; }
 form#editDuenoDataForm h3 { font-family:serif, Times, times; color:#2bb2c0; }
 */
 form#editDuenoDataForm label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#2bb2c0; display:block; text-align:left; }
@@ -378,8 +381,8 @@ form#editDuenoDataForm p,       div#nepes      p{ margin-top:2pt; margin-bottom:
 form#editDuenoDataForm button,  div#nepes button{ display:block; margixxxn-bottom:30pt; }
 form#editDuenoDataForm button,  div#nepes button{ width:25%; position:relative; left:37.5%; }
 
-div#nepes button { border-radius:5pt; background-color:white; border-color:#1f5aa0; border-style:solid;  border-width:2pt; margin-top: 20pt; }
-div#nepes button:hover, form#editDuenoDataForm button:focus { background-color:#7fb3d5; }
+div#nepes button { border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; margin-top: 20pt; }
+div#nepes button:hover, form#editDuenoDataForm button:focus { background-color:#ebebeb; }
 
 
 
