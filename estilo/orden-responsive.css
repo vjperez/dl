@@ -9,14 +9,14 @@
 
 
 @media only screen and (max-width: 480pt) {
-	body { border:1pt solid #dadada; }
+	body { border:0pt solid #ff0000; }
 	div#header img { height:107pt; }
 	/*div#navega li { position:relative; top:-80pt; }*/
 }
 
 
 @media only screen and (min-width: 480pt) {
-	body { border:1pt solid #dadada; }
+	body { border:0pt solid #00ff00; }
 	div#header img { height:133pt; }
 	/*div#navega li { position:relative; top:-99pt; }*/
 	.ancho-sensi-ipad-1de3 { width:33.3%; }
@@ -30,7 +30,7 @@
 
 
 @media only screen and (min-width: 768pt) {
-	body { border:1pt solid #dadada; }
+	body { border:0pt solid #0000ff; }
 	div#header img { height:178pt; }
 	/*div#navega li { position:relative; top:-133pt; }*/
 	.ancho-sensi-desk-1de3 { width:33.33%; }
