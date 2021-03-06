@@ -65,9 +65,9 @@ a.link li:hover, a.link li:focus { text-decoration:underline; }
 div#navega a.navelink { font-family:serif, mono, monospace; font-size:0.8em; }
 div#navega a.navelink:link,     a.navelink:visited { color:white; }  /* changed in pinta header links ()  */
 h1, h2, h3, h4, label { font-family:'Bree Serif', courier, mono, monospace; }
-div#footer h2.footertitulo { font-family:mono, monospace, serif, fantasy;  text-align:center; color:black; }
-div#footer h5.footersubtitulo {    font-family:mono, monospace, serif, fantasy;  text-align:center; color:black;   margin-bottom:50pt;}
-div#footer h5 {              font-family:serif, fantasy, mono, monospace;  text-align:right;  color:red; margin-right:1em; }
+div#footer h2.footertitulo    { font-family:mono, monospace, serif, fantasy;  text-align:center; color:black; }
+div#footer h5.footersubtitulo { font-family:mono, monospace, serif, fantasy;  text-align:center; color:black;   margin-bottom:0pt;}
+div#footer h5 {                 font-family:serif, fantasy, mono, monospace;  text-align:right;  color:red; margin-right:1em; }
 
 div#footer a.footerlink { font-family:courier, mono, monospace; font-size:0.75em; }
 div#footer a.footerlink:link,     a.footerlink:visited { color:#2b68c0; }
