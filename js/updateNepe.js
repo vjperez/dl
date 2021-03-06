@@ -13,7 +13,7 @@ jQuery.populateUpdateNepeForm = function(datos){
 	jQuery('form#updateNepeForm textarea[name=videoUrl]').val(datos.videoUrl);
 	//quien
 	jQuery('form#updateNepeForm input[name=red1]').val(datos.quienSocialHandle.fbk);
-	jQuery('form#updateNepeForm input[name=red2]').val(datos.quienSocialHandle.tt);
+	jQuery('form#updateNepeForm input[name=red2]').val(datos.quienSocialHandle.email);
 	jQuery('form#updateNepeForm input[name=red3]').val(datos.quienSocialHandle.igrm);
 	jQuery('form#updateNepeForm input[name=red4]').val(datos.quienSocialHandle.phn);
 
@@ -85,7 +85,7 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 			//quienSocialHandle is a JS array object, it is stringified before sending it
 			regexp = new RegExp(/[^a-z0-9ñáéíóúü@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
 			var quienSocialHandle = {fbk:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red1]').val(), regexp ),
-									  tt:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red2]').val(), regexp ),
+									  email:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red2]').val(), regexp ),
 								    igrm:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red3]').val(), regexp ), 
 									 phn:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red4]').val(), regexp )
 			};

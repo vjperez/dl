@@ -34,7 +34,7 @@ jQuery.handleCreaNepeSubmit = function(){
 			//quienSocialHandle is a JS array object, it is stringified before sending it
 			regexp = new RegExp(/[^a-z0-9ñáéíóúü@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
 			var quienSocialHandle = {fbk:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=red1]').val(), regexp ),
-									  tt:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=red2]').val(), regexp ),
+								  email:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=red2]').val(), regexp ),
 								    igrm:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=red3]').val(), regexp ), 
 									 phn:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=red4]').val(), regexp )
 			};

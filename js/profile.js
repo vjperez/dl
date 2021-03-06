@@ -26,7 +26,7 @@ jQuery.populateProfile = function(datos){
 	
 	
 	//alert(datos.quienSocialHandle);
-	if(datos.quienSocialHandle.tt != '')   jQuery('#quien h3.tt').text(datos.quienSocialHandle.tt);    // si no cambias valores, se quedan los de looks/profile.html
+	if(datos.quienSocialHandle.email != '')   jQuery('#quien h3.email').text(datos.quienSocialHandle.email);    // si no cambias valores, se quedan los de looks/profile.html
 	if(datos.quienSocialHandle.fbk != '')  jQuery('#quien h3.fbk').text(datos.quienSocialHandle.fbk);
 	if(datos.quienSocialHandle.igrm != '') jQuery('#quien h3.igrm').text(datos.quienSocialHandle.igrm);
 	if(datos.quienSocialHandle.phn != '')  jQuery('#quien h3.phn').text(datos.quienSocialHandle.phn);
