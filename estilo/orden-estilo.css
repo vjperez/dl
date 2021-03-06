@@ -96,10 +96,10 @@ form#creaDuenoForm h3 { text-align:center; }
 
 /*estilo : busca */
 form#queDondeForm label { font-size:1.7em; letter-spacing:0.40em; font-weight:bolder; color:#c0392b; display: block; }
-form[id$=Form] input { font-size:1.5em; border-radius:5pt; background-color:#fdfdfd; }
-form[id$=Form] input:focus { background-color:#ebebeb; }
+form[id$=Form] input { font-size:1.5em; border-radius:5pt; background-color:#e8e8e8; }
+form[id$=Form] input:focus { background-color:#d8d8d8; }
 form[id$=Form] button { border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; }
-form[id$=Form] button:hover, form[id$=Form] button:focus { background-color:#ebebeb; }
+form[id$=Form] button:hover, form[id$=Form] button:focus { background-color:#d8d8d8; }
 form[id$=Form] h3 { font-family:serif, Times, times; color:#2bb2c0; }
 
 
@@ -259,15 +259,15 @@ div#creaNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-weigh
 
 form#creaNepeForm label { font-size:1.15em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 
-form#creaNepeForm input[type='text']       { font-size:1.5em; border-radius:0pt; background-color:#fdfdfd; border:none; border-bottom: 1pt solid #909090;}
-form#creaNepeForm textarea[name='videoUrl']{ font-size:1.5em; border-radius:5pt; background-color:#fdfdfd; font-weight:bold; }
-form#creaNepeForm input[type='tel']        { font-size:1.5em; border-radius:0pt; background-color:#fdfdfd; border:none; border-bottom: 1pt solid #909090;}
-form#creaNepeForm input:focus { background-color:#ebebeb; }
+form#creaNepeForm input[type='text']       { font-size:1.5em; border-radius:0pt; background-color:#e8e8e8; border:none; border-bottom: 1pt solid #909090;}
+form#creaNepeForm textarea[name='videoUrl']{ font-size:1.5em; border-radius:5pt; background-color:#e8e8e8; font-weight:bold; }
+form#creaNepeForm input[type='tel']        { font-size:1.5em; border-radius:0pt; background-color:#e8e8e8; border:none; border-bottom: 1pt solid #909090;}
+form#creaNepeForm input:focus { background-color:#d8d8d8; }
 
 form#creaNepeForm button { border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; }
-form#creaNepeForm button:hover, form#creaNepeForm button:focus { background-color:#ebebeb; }
+form#creaNepeForm button:hover, form#creaNepeForm button:focus { background-color:#d8d8d8; }
 form#creaNepeForm label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#2bb2c0; display:block; text-align:left; }
-form#creaNepeForm textarea:focus { background-color:#ebebeb; }
+form#creaNepeForm textarea:focus { background-color:#d8d8d8; }
 
 form#creaNepeForm fieldset.primario { padding-bottom:5pt; margin-top:30pt;  border:none; border-bottom: 1pt solid #dadada; }
 form#creaNepeForm fieldset#submitButtonFieldset { padding-bottom:5pt; margin-top:30pt; border-width:0pt; }
@@ -318,16 +318,16 @@ div#updateNepe  label.explica { font-size:0.85em; letter-spacing:0.2em; font-wei
 
 form#updateNepeForm label { font-size:1.15em; letter-spacing:0.4em; font-weight:bolder; color:#c0392b; display:block; }
 
-form#updateNepeForm input[type='text']       { font-size:1.5em; border-radius:0pt; background-color:#fdfdfd; border:none; border-bottom: 1pt solid #909090;}
-form#updateNepeForm textarea[name='videoUrl']{ font-size:1.5em; border-radius:5pt; background-color:#fdfdfd; font-weight:bold; }
-form#updateNepeForm input[type='tel']        { font-size:1.5em; border-radius:0pt; background-color:#fdfdfd; border:none; border-bottom: 1pt solid #909090;}
-form#updateNepeForm input:focus { background-color:#ebebeb; }
+form#updateNepeForm input[type='text']       { font-size:1.5em; border-radius:0pt; background-color:#e8e8e8; border:none; border-bottom: 1pt solid #909090;}
+form#updateNepeForm textarea[name='videoUrl']{ font-size:1.5em; border-radius:5pt; background-color:#e8e8e8; font-weight:bold; }
+form#updateNepeForm input[type='tel']        { font-size:1.5em; border-radius:0pt; background-color:#e8e8e8; border:none; border-bottom: 1pt solid #909090;}
+form#updateNepeForm input:focus { background-color:#d8d8d8; }
 
 
 form#updateNepeForm button { border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; }
-form#updateNepeForm button:hover, form#updateNepeForm button:focus { background-color:#ebebeb; }
+form#updateNepeForm button:hover, form#updateNepeForm button:focus { background-color:#d8d8d8; }
 form#updateNepeForm label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#2bb2c0; display:block; text-align:left; }
-form#updateNepeForm textarea:focus { background-color:#ebebeb; }
+form#updateNepeForm textarea:focus { background-color:#d8d8d8; }
 
 
 form#updateNepeForm fieldset.primario { padding-bottom:5pt; margin-top:30pt;  border:none; border-bottom: 1pt solid #dadada; }
@@ -382,7 +382,7 @@ form#editDuenoDataForm button,  div#nepes button{ display:block; margixxxn-botto
 form#editDuenoDataForm button,  div#nepes button{ width:25%; position:relative; left:37.5%; }
 
 div#nepes button { border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; margin-top: 20pt; }
-div#nepes button:hover, form#editDuenoDataForm button:focus { background-color:#ebebeb; }
+div#nepes button:hover, form#editDuenoDataForm button:focus { background-color:#d8d8d8; }
 
 
 
