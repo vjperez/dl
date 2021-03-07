@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 11.0
--- Dumped by pg_dump version 11.0
+-- Dumped from database version 9.6.19
+-- Dumped by pg_dump version 9.6.19
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -12,6 +12,7 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
@@ -37,7 +38,6 @@ ALTER TABLE public.bregando OWNER TO victordbu;
 --
 
 CREATE SEQUENCE public.bregando_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -61,7 +61,7 @@ ALTER SEQUENCE public.bregando_id_seq OWNED BY public.bregando.id;
 CREATE TABLE public.dueno (
     id integer NOT NULL,
     username character varying(64) NOT NULL,
-    password character varying(256) NOT NULL,
+    password character varying(64) NOT NULL,
     last_log date DEFAULT '2010-01-01'::date NOT NULL,
     first_log date DEFAULT '2010-01-01'::date NOT NULL,
     CONSTRAINT dueno_first_log_check CHECK ((first_log > '2009-12-31'::date)),
@@ -76,7 +76,6 @@ ALTER TABLE public.dueno OWNER TO victordbu;
 --
 
 CREATE SEQUENCE public.dueno_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -121,7 +120,6 @@ ALTER TABLE public.nepe OWNER TO victordbu;
 --
 
 CREATE SEQUENCE public.nepe_id_seq
-    AS integer
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -169,28 +167,19 @@ COPY public.bregando (dueno_id, nepe_id, id) FROM stdin;
 
 
 --
--- Data for Name: dueno; Type: TABLE DATA; Schema: public; Owner: victordbu
---
-
-COPY public.dueno (id, username, password, last_log, first_log) FROM stdin;
-1024	victor	$argon2i$v=19$m=1024,t=2,p=2$b1hvdy92WHQvZkxIaC5UUQ$XdDnrTtUSD4vdCtMpFFjvXpMAa9OY0/jl8VAFMyohxQ	2021-01-16	2020-12-26
-\.
-
-
---
--- Data for Name: nepe; Type: TABLE DATA; Schema: public; Owner: victordbu
---
-
-COPY public.nepe (id, nombre, revisado, media_video_url, media_social_handle, media_foto_url, que, donde, a_tu_casa, nombre_que_vector, donde_vector, cuando) FROM stdin;
-1024	victor web development	2020-12-26	https://www.youtube.com/watch?v=zuxzE7--RYM	{"fbk":"","tt":"","igrm":"","phn":"939 260 1734"}	{1024a.jpeg,1024b.jpeg}	{"web development","paginas web","full stack web development"}	{"las marias puerto rico"}	t	'development':3,5,11 'full':8 'pagin':6 'stack':9 'victor':1 'web':2,4,7,10	'las':1 'marias':2 'puerto':3 'rico':4	{"lun":"","mar":"","mier":"","jue":"","vier":"","sab":"5am - 10pm","dom":"5am - 10pm"}
-\.
-
-
---
 -- Name: bregando_id_seq; Type: SEQUENCE SET; Schema: public; Owner: victordbu
 --
 
 SELECT pg_catalog.setval('public.bregando_id_seq', 1024, true);
+
+
+--
+-- Data for Name: dueno; Type: TABLE DATA; Schema: public; Owner: victordbu
+--
+
+COPY public.dueno (id, username, password, last_log, first_log) FROM stdin;
+1024	victor	$2y$10$lQXZ3nMwc0Yab83RCNsyvexCg5o.8K7.aEVvZWomo.p4WpmYoYGpu	2021-03-06	2020-12-27
+\.
 
 
 --
@@ -201,10 +190,27 @@ SELECT pg_catalog.setval('public.dueno_id_seq', 1024, true);
 
 
 --
+-- Data for Name: nepe; Type: TABLE DATA; Schema: public; Owner: victordbu
+--
+
+COPY public.nepe (id, nombre, revisado, media_video_url, media_social_handle, media_foto_url, que, donde, a_tu_casa, nombre_que_vector, donde_vector, cuando) FROM stdin;
+1024	víctor web development	2021-02-20	https://www.youtube.com/watch?v=zuxzE7--RYM	{"fbk":"","tt":"","igrm":"","phn":"939 260 1734"}	{1024a.jpeg,1024b.jpeg}	{desarollo,"páginas web","web development","full stack web development"}	{"las marias puerto rico",mayagüéz}	t	'desaroll':4 'development':3,8,12 'full':9 'pagin':5 'stack':10 'victor':1 'web':2,6,7,11	'las':1 'marias':2 'mayaguez':5 'puerto':3 'rico':4	{"lun":"","mar":"2hrs y media","mier":"","jue":"2hrs y media","vier":"","sab":"5am - 10:30pm","dom":"5am - 10pm"}
+\.
+
+
+--
 -- Name: nepe_id_seq; Type: SEQUENCE SET; Schema: public; Owner: victordbu
 --
 
 SELECT pg_catalog.setval('public.nepe_id_seq', 1024, true);
+
+
+--
+-- Data for Name: spatial_ref_sys; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+--COPY public.spatial_ref_sys  FROM stdin;
+-- \.
 
 
 --
@@ -267,6 +273,27 @@ ALTER TABLE ONLY public.bregando
 
 ALTER TABLE ONLY public.bregando
     ADD CONSTRAINT bregando_nepe_id FOREIGN KEY (nepe_id) REFERENCES public.nepe(id);
+
+
+--
+-- Name: TABLE bregando; Type: ACL; Schema: public; Owner: victordbu
+--
+
+GRANT ALL ON TABLE public.bregando TO victordbu;
+
+
+--
+-- Name: TABLE dueno; Type: ACL; Schema: public; Owner: victordbu
+--
+
+GRANT ALL ON TABLE public.dueno TO victordbu;
+
+
+--
+-- Name: TABLE nepe; Type: ACL; Schema: public; Owner: victordbu
+--
+
+GRANT ALL ON TABLE public.nepe TO victordbu;
 
 
 --
