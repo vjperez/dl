@@ -5,6 +5,7 @@
 * { box-sizing:border-box; }
 body { margin:0px auto; min-width:320pt; max-width:960pt; }
 .margen { margin-left:1%; margin-right:1%; }
+.conMargen { margin-left: 60pt; }
 .contenido { margin-bottom:200pt; margin-top:100pt; }
 .centro { margin-left:auto; margin-right:auto; }
 
@@ -79,8 +80,8 @@ div#footer { background-color:white; border-top:2pt solid #909090; border-bottom
 
 /*orden : busca */
 form[id$=Form] { margin-left:auto; margin-right:auto; }
-form[id$=Form] label { float:left; clear:left; width:90%; text-align:left; }
-form[id$=Form] input { float:left; clear:left; width:90%; margin-bottom:20pt; }
+form[id$=Form] label { float:left; clear:left; width:100%; text-align:left; }
+form[id$=Form] input { float:left; clear:left; width:100%; margin-bottom:20pt; }
 form[id$=Form] button { width:25%; position:relative; left:37.5%; }
 form[id$=Form] h3 { text-align:center; }
 /*
@@ -242,9 +243,8 @@ form#creaNepeForm textarea,
 form#creaNepeForm input[type='file'] { width:100%; }
 
 form#creaNepeForm input[type='radio'] { width:15pt; }
-form#creaNepeForm p.conMargen { margin-left:60pt; }
-form#creaNepeForm p.conMargen label img{ border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; }
-form#creaNepeForm p.conMargen label img:focus, form#creaNepeForm p.conMargen label img:hover { background-color:#d8d8d8; }
+form#creaNepeForm p label img{ border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; }
+
 
 form#creaNepeForm fieldset#socialHandleFieldset input,
 form#creaNepeForm fieldset#fotoSrcFieldset input[type='file'],
@@ -302,9 +302,7 @@ form#updateNepeForm textarea,
 form#updateNepeForm input[type='file'] { width:100%; }
 
 form#updateNepeForm input[type='radio'] { width:15pt; }
-form#updateNepeForm p.conMargen { margin-left:60pt; }
-form#updateNepeForm p.conMargen label img { border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; }
-form#updateNepeForm p.conMargen label img:focus, form#updateNepeForm p.conMargen label img:hover { background-color:#d8d8d8; }
+form#updateNepeForm p label img { border-radius:5pt; background-color:white; border-color:#2b68c0; border-style:solid;  border-width:2pt; }
 
 form#updateNepeForm fieldset#socialHandleFieldset input,
 form#updateNepeForm fieldset#fotoSrcFieldset input[type='file'],

@@ -91,10 +91,10 @@
 			<label class="explica">&iquest;Trabajarias en casa del cliente?</label>
 			<label class="explica">(requerido)</label>
 		
-			<p class="conMargen"><label for="siRadio">Si</label>
-			<input id="siRadio" type="radio" name="aTuCasa" value="si" required></p>
-			<p class="conMargen"><label for="noRadio">No</label>
-			<input id="noRadio" type="radio" name="aTuCasa" value="no"></p> 		
+			<p><label for="siRadio"><span class="conMargen">Si</span></label>
+			<input class="conMargen" id="siRadio" type="radio" name="aTuCasa" value="si" required></p>
+			<p><label for="noRadio"><span class="conMargen">No</span></label>
+			<input class="conMargen" id="noRadio" type="radio" name="aTuCasa" value="no"></p> 		
 		</fieldset>
 
 
@@ -137,7 +137,7 @@
 		</fieldset>	
 		<fieldset id="fotoSrcFieldset" class="secundario hidable">
 			<input type="hidden" name="MAX_FILE_SIZE" value="1000000"> <!-- 1MB  1 000 000 Bytes-->
-			<p class="conMargen"><label for="fotosId"><img src="imagenes/sube.png" alt="sube"></label>
+			<p><label for="fotosId"><img class="conMargen" src="imagenes/sube.png" alt="sube"></label>
 			<input id="fotosId"  type="file" name="fotoArr[]" multiple hidden></p>
 			<h3 id="max5Feedback"></h3>
 			<h3 id="isImageFeedback"></h3>
