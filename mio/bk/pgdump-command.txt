@@ -41,3 +41,11 @@ In this example, we use  -F t to specify the output file as a tar file.
 dvdrental: is the name of the database that you want to back up.
 
 > c:\pgbackup\dvdrental.tar is the output backup file path.
+
+
+
+======================================================================
+server
+
+
+pg_dump -U donlibre_victordbu   -d donlibre_nepeype -n public > nepeype.sql
