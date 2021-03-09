@@ -23,7 +23,7 @@ div#navega ul { text-align:left; list-style-type:none; margin:0pt; padding:0; }
 div#navega li { display:inline-block; margin-right:25pt; padding:10pt 0; }
 div#navega li img { vertical-align:middle; }
 
-label#portada-warning.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:#2bb2c0; display:block; text-align:center; }
+label#portada-warning.explica { font-size:0.7em; letter-spacing:0.2em; font-weight:bolder; color:#e8e8e8; display:block; text-align:center; }
 label#portada-warning.explica { margin-top:600pt; }
 
 
