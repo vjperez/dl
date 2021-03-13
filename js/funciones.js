@@ -26,7 +26,7 @@ jQuery.urlParametro = function(name){
 
 
 jQuery.cleanStr = function(str, patron){
-	//patron comes mainly from crea y update nepe
+	//patron comes mainly from crea y update nepe, y busca
 	str = str.replace(patron, '*'); 				
 	strArray = str.split('*');
 	result = '';
