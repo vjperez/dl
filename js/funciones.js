@@ -33,7 +33,7 @@ jQuery.cleanStr = function(str, patron){
 	for(var i=0; i < strArray.length; i++){
 		//alert('parte de strArray=[' + strArray[i]  + ']');
 		if (strArray[i] !== '') {
-			if(result !== ''){result += '%';} //the first time, dont run this line of code, simply add the 'word', other times add a ':' before the word as delimiter
+			if(result !== ''){result += ' ';} //the first time, dont run this line of code, simply add the 'word', other times add a ' ' before the word as delimiter
 			result += strArray[i];
 		}
 	}

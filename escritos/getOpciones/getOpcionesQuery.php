@@ -1,7 +1,7 @@
 <?php
 //saca los valores de GET
-$queLiteralStr   = str_replace("%", ":* | ", $_GET['que'])   . ':*';   //here 'que' and 'donde' come as STRINGS with ':' as delimiters between words, delimeter is changed to " | ", an OR for ts query     :* means begins with on a ts query, add it to every word not just the last as would be if only added on the switch below 
-$dondeLiteralStr = str_replace("%", ":* | ", $_GET['donde']) . ':*';   //here 'que' and 'donde' come as STRINGS with ':' as delimiters between words, delimeter is changed to " | ", an OR for ts query.    :* means begins with on a ts query, add it to every word not just the last as would be if only added on the switch below
+$queLiteralStr   = str_replace(" ", ":* | ", $_GET['que'])   . ':*';   //here 'que' and 'donde' come as STRINGS with ' ' as delimiters between words, delimeter is changed to " | ", an OR for ts query     :* means begins with on a ts query, added it to every word not just the last 
+$dondeLiteralStr = str_replace(" ", ":* | ", $_GET['donde']) . ':*';   //here 'que' and 'donde' come as STRINGS with ' ' as delimiters between words, delimeter is changed to " | ", an OR for ts query.    :* means begins with on a ts query, added it to every word not just the last
 //str_replace("world","Peter","Hello world!");   produces "Hello Peter!"
 
 
