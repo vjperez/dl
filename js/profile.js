@@ -51,7 +51,7 @@ jQuery.populateProfile = function(datos){
 	jQuery('#que li a').each(function(index){
 		if(index < datos.que.length) {
 			jQuery(this).text(datos.que[index]);
-			jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent(datos.que[index].replace(/ /g, '%')) + '&donde=');
+			jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent(datos.que[index] + '&donde=');
 		} else { jQuery(this).remove(); }
 	});
 	//following code works when there are 5 or less 'donde' coming from getJSON.
@@ -60,7 +60,7 @@ jQuery.populateProfile = function(datos){
 	jQuery('#donde li a').each(function(index){
 		if(index < datos.donde.length) {
 			jQuery(this).text(datos.donde[index]);
-			jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + '&donde=' + encodeURIComponent(datos.donde[index].replace(/ /g, '%')));
+			jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + '&donde=' + encodeURIComponent(datos.donde[index]));
 		}else { jQuery(this).remove(); }
 	});
 	//alert('a tu casa: ' + datos.atucasa + '\ntipo: ' + typeof datos.atucasa);
