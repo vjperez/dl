@@ -8,14 +8,14 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 		imagen.src = reader.result;
 		imagen.onload = function(evento){
 			console.log('resizeImage:imagen onload() :' + index + '.  image width: ' + this.width);
-			var imageMaxWidth  = 640;
-			if(this.width > imageMaxWidth){		
-				// reduce size to  width of imageMaxWidth ////////////////////////////////////////////////////////////////
-				var imagenRatio = this.height / this.width;  
+			var imageMaxHeight  = 150;
+			if(this.height > imageMaxHeight){		
+				// reduce size to  height of imageMaxHeight ////////////////////////////////////////////////////////////////
+				var imagenRatio = this.width / this.height;  
 				//var canvas = document.getElementById('elCanvas');
 				var canvas = document.createElement("canvas");
-				/*canvas.width = 320; */		canvas.width  = imageMaxWidth;
-				/*canvas.height = 160;*/	    canvas.height = imageMaxWidth * imagenRatio;
+				canvas.height = imageMaxHeight;
+				canvas.width  = imageMaxHeight * imagenRatio;
 				canvas.getContext("2d").drawImage(imagen, 0, 0, canvas.width, canvas.height);
 				var dataURL = canvas.toDataURL('image/jpeg', 0.95);
 				console.log(index + ': dataURL: ' + dataURL);
@@ -30,7 +30,7 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 	}
 }
 
-
+ 
 
 
 var dataURLToBlob = function(dataURL) {		//helper function for jQuery.have5OrLessImages
