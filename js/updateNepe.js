@@ -173,7 +173,9 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 					jQuery(window.location).attr('href', path); 					
 				}
 				if(datosJSObj.actualizado){		//maybe if is not needed after try catch block
-					jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
+					jQuery('ul.navega li a.look-profile').data( 'nepeid', encodeURIComponent(datosJSObj.nepeId) );
+					jQuery('ul.navega li a.look-profile').click();
+					//jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
 				}else{
 					//jQuery.feedback('form#updateNepeForm h3', datosJSObj.feedback);
 				}
@@ -277,7 +279,7 @@ jQuery.getReducedImagesArray = function(){ //helper function for jQuery.have5OrL
 
 
 
-
+ 
 
 
 jQuery.isNotImage = function(){ //helper function for jQuery.have5OrLessImages
