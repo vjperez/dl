@@ -201,3 +201,7 @@ busca - gato vs Gato : Done
 
 Check for variables that come from users ... and then the vars is  used to build quieries  
 .... MYSQL solution is mysqli_real_escape string (avoids sql injection)
+
+
+email, snapchat
+ how I change password, when they forget
