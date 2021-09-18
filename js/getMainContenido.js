@@ -430,8 +430,9 @@ jQuery(document).ready(
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//you can redirect null and default cases, either into busca case,  into error case or into their own looks 
 			case null:
-			// (1) redirecting to busca
-				jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+			// (1) redirecting to portada
+				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+				jQuery(window.location).attr('href', window.location.pathname);
 			// (2) null look				
 				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
@@ -449,8 +450,9 @@ jQuery(document).ready(
 				*/
 			break;
 			default :
-			// (1) redirecting to busca
-				jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+			// (1) redirecting to portada
+				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+				jQuery(window.location).attr('href', window.location.pathname);
 			// (2) default look
 				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
