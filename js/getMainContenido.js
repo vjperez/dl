@@ -432,7 +432,8 @@ jQuery(document).ready(
 			case null:
 			// (1) redirecting to portada
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
-				jQuery(window.location).attr('href', window.location.pathname);
+				//jQuery(window.location).attr('href', window.location.pathname);
+
 			// (2) null look				
 				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
@@ -453,6 +454,7 @@ jQuery(document).ready(
 			// (1) redirecting to portada
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
 				jQuery(window.location).attr('href', window.location.pathname);
+				
 			// (2) default look
 				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
