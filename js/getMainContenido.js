@@ -430,9 +430,20 @@ jQuery(document).ready(
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//you can redirect null and default cases, either into busca case,  into error case or into their own looks 
 			case null:
-			// (1) redirecting to portada
-				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
-				//jQuery(window.location).attr('href', window.location.pathname);
+			// (1) redirecting to portada removing extra parameters after .html 
+				/*
+				var pathname = window.location.pathname; // Returns path only- http://localhost/WebDevelopmentStuff/mio/portada.html - saca parametros viejos
+				var url      = window.location.href;     // Returns full URL - http://localhost/WebDevelopmentStuff/mio/portada.html - deja parametros viejos
+				var origin   = window.location.origin;   // Returns base URL - localhost/
+				*/
+				var indexOfDotHtml = window.location.href.indexOf(".html");
+				var largo = window.location.href.length;
+				//alert('pathname: ' + window.location.pathname + '\nhref: ' + window.location.href + '\nindex: ' + indexOfDotHtml + '\nlargo: ' + largo);
+				if(indexOfDotHtml + 'html'.length + 1 == largo){ // if true, href does ends with .html, there is nothing else
+					//no hay nada en url, despues de portada.html
+				}else{//hay extra parameters pero ninguno es look=, 
+					jQuery(window.location).attr('href', window.location.pathname);
+				}
 
 			// (2) null look				
 				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
@@ -451,8 +462,12 @@ jQuery(document).ready(
 				*/
 			break;
 			default :
-			// (1) redirecting to portada
-				//jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+			// (1) redirecting to portada removing extra parameters after .html
+				/*
+				var pathname = window.location.pathname; // Returns path only- http://localhost/WebDevelopmentStuff/mio/portada.html - saca parametros viejos
+				var url      = window.location.href;     // Returns full URL - http://localhost/WebDevelopmentStuff/mio/portada.html - deja parametros viejos
+				var origin   = window.location.origin;   // Returns base URL - localhost/
+				*/
 				jQuery(window.location).attr('href', window.location.pathname);
 				
 			// (2) default look
@@ -476,10 +491,3 @@ jQuery(document).ready(
 		
 		
 	}); // ready function and statement
-
-
-/*
-var pathname = window.location.pathname; // Returns path only- http://localhost/WebDevelopmentStuff/mio/portada.html - saca parametros viejos
-var url      = window.location.href;     // Returns full URL - http://localhost/WebDevelopmentStuff/mio/portada.html - deja parametros viejos
-var origin   = window.location.origin;   // Returns base URL - localhost/
-*/
