@@ -1,85 +1,72 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-  <title>donLibre</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>donlibre</title>
+
   <meta http-equiv="author" content="Victor J. Perez">
-  
-  <link rel="stylesheet" href="./estilo/estilow3.css"        type="text/css">
-  <link rel="stylesheet" href="./estilo/css/fontawesome.css" type="text/css">
-  <link rel="stylesheet" href="./estilo/css/brands.css"      type="text/css">
-  <!--  <link href="./estilo/css/solid.css" rel="stylesheet">    -->
-  <!--  <link href="./estilo/css/regular.css" rel="stylesheet">  -->
+  <meta http-equiv="description" content="who is working NOW... on what and where ; trabaja cuando quieras, en lo que quieras, donde quieras.">
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Courgette|Bree+Serif">
+  <meta http-equiv="expira" content="-1">
+  <meta http-equiv="elcache" content="no-cache">
+  <meta http-equiv="elcache" content="NO-CACHE">
 
-  <style>
-    body {font-family: "Ubuntu", 'Times New Roman', Times, serif;}
-    h1 {letter-spacing: 8px; font-family: "Bree Serif", "Courgette", serif;}
-    .w3-row-padding img {margin-bottom: 15px; width:100%;}
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Slabo+27px|Bree+Serif">
+  <link rel="stylesheet" href="estilo/orden-estilo.css"  type="text/css">
+  <link rel="stylesheet" href="estilo/orden-responsive.css" type="text/css">
 </head>
-
-
 <body>
+  <!--
+  <div id="header">
+    <img src="imagenes/caribe-cielo.png" alt="caribe cielo">
+  </div>
+  --> 
+  <div id="navega" class="margen">
+    <ul>  
+      <a id="navBusca"   class="link navelink" href="portada.html?look=busca"><li>Busca</li></a>
+	  <a id="navHome"    class="link navelink" href="portada.html?look=editDuenoShowNepes"><li>Home</li></a>
+      <a id="navLogout"  class="link navelink" href="portada.html?look=busca&acto=logout"><li>Logout</li></a>
+	  <a id="navLogin"   class="link navelink" href="portada.html?look=login"><li>Login</li></a>
+      <a id="navSignup"  class="link navelink" href="portada.html?look=creaDueno"><li>Reg&iacute;strate</li></a>
+    </ul>
+  </div>
 
-  <!-- !PAGE CONTENT! -->
-  <div class="w3-content">
 
-    <!-- Header -->
-    <header class="w3-panel w3-center" style="padding:128px 16px">
-      <h1 class="w3-xxxlarge">don Libre</h1>
-      <h1 class="w3-small">negocio personal peque&ntilde;o</h1>
-      
-      <div class="w3-padding-32">
-        <div class="w3-bar">
-          <a href="portada.html?look=busca" class="w3-bar-item w3-button w3-border w3-border-rounded">Busca</a>
-          <!-- <a href="#" class="w3-bar-item w3-button w3-opacity-xmax"></a>  -->
-          <a href="#" class="w3-bar-item w3-button w3-border w3-border-rounded w3-margin-left">Anuncia</a>
-        </div>
-      </div>
-    </header>   <!-- End Header -->
-      
-    <div id="containerForMain" class="ver-borde">     <div id="main">	
-      
-        <!-- last nepes Photo Grid -->
-        <div class="w3-row-padding w3-grayscale">
-          <div class="w3-half">
-            <img src="imagenes/profile/subidas/1024a.jpeg">
-          </div>
-          <div class="w3-half">
-            <img src="imagenes/profile/subidas/1024b.jpeg">
-          </div>
-        </div>  <!--  last nepes Photo Grid -->
-      
-      </div>  <!-- main -->     </div>  <!-- containerForMain -->
+  <div id="containerForMain">
+	  
+      <div id="main" class="margen">	
+		  <label id="portada-warning" class="explica">Need to enable Javascript.</label>
+		  <!-- empty main
+				  <h3>Unchanged portada html look. Either ...</h3>
+				  <ul>
+					  <li>Javascript-not-working... please enable JavaScript on your browser.</li>
+					  <li>Javascript-is-too-slow... please give it a break.</li>
+				  </ul>
+		  --> 
+      </div>  <!-- main -->
+	  
+  </div>  <!-- containerForMain -->
 
-  </div>      <!-- End Page Content -->
-  
-  <!-- Footer -->
-  <footer class="w3-container w3-padding-64 w3-light-grey w3-center w3-large" style="margin-top:128px"> 
-      <!--  <i class="fab fa-snapchat w3-hover-opacity"></i>
-      <i class="fab fa-pinterest-p w3-hover-opacity"></i>
-      <i class="fab fa-twitter w3-hover-opacity"></i>
-      <i class="fab fa-linkedin w3-hover-opacity"></i>  -->
-      <p>Hecho por 
-        <a href="" target="_blank" class=""><i class="fab fa-facebook w3-hover-opacity"></i></a>
-        <a href="" target="_blank" class=""><i class="fab fa-instagram w3-hover-opacity"></i></a>
-      </p>
-      <ul class="w3-ul w3-row-padding">
-        <li class="w3-quarter"><a class="w3-hover-text-green" href="portada.html?look=faq#preg1">&iquest;Qu&eacute; es donLibre.com?</a></li>
-        <li class="w3-quarter"><a class="w3-hover-text-green" href="portada.html?look=faq#preg2">&iquest;Como se usa?</a></li>
-        <li class="w3-quarter"><a class="w3-hover-text-green" href="portada.html?look=faq#preg3">&iquest;Qu&iacute;en se registra?</a></li>
-        <li class="w3-quarter"><a class="w3-hover-text-green" href="portada.html?look=faq#preg4">&iquest;Como busco?</a></li>
-      </ul>
-  </footer>       <!-- End Footer -->
 
+
+  <div id="footer" class="margen">
+    <h2 class="footertitulo">donLibre.com</h2>  
+    <div class="margen">
+        <h5 class="footersubtitulo">hogar de los peque&ntilde;os negocios</h5><h5 class="footersubtitulo"></h5>
+    </div>
+    <ul>
+           <li class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ver-borde"><a class="link footerlink" href="portada.html?look=faq#preg1">&iquest;Qu&eacute; es donLibre.com?</a>
+      </li><li class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ver-borde"><a class="link footerlink" href="portada.html?look=faq#preg2">&iquest;Como se usa?</a>
+	    </li><li class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ver-borde"><a class="link footerlink" href="portada.html?look=faq#preg3">&iquest;Qu&iacute;en se registra?</a>
+      </li><li class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ver-borde"><a class="link footerlink" href="portada.html?look=faq#preg4">&iquest;Como busco?</a>
+      </li>
+    </ul>
+  </div>
 
   <script src="js/jquery-3.3.1.js"></script>
   <script src="js/funciones.js"></script>
   <script src="js/getMainContenido.js"></script>
-
 
 </body>
 </html>

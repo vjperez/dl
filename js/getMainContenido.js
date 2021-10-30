@@ -53,7 +53,7 @@ jQuery(document).ready(
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					if(datos.cuantasOpciones > 0){
 						//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
-						var mainDeOpciones = '<div id="main" class="contenido margen">';
+						var mainDeOpciones = '<div id="main" class="marxxxgen">';
 						jQuery.each(datos.opciones, function(buscaMode, trios){
 
 								mainDeOpciones += '<div class="ver-borde opcionesfotos">';
