@@ -53,10 +53,10 @@ jQuery(document).ready(
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					if(datos.cuantasOpciones > 0){
 						//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
-						var mainDeOpciones = '<div id="main" class="marxxxgen">';
+						var mainDeOpciones = '<div id="main" class="marxxxgen ver-borde">';
 						jQuery.each(datos.opciones, function(buscaMode, trios){
 
-								mainDeOpciones += '<div class="ver-borde opcionesfotos">';
+								mainDeOpciones += '<div id="opcionesdiv" class="opcionesfotos ancho-sensi-ipad-2de3 ver-borde ">';
 								if(buscaMode.indexOf("buscaBoth") > -1){
 									mainDeOpciones += '<h3>'  + que + ' + ' + donde + '</h3>';
 								}else if (buscaMode.indexOf("buscaQue") > -1){
