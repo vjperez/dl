@@ -82,10 +82,10 @@ jQuery.toggleOnClick = function(){
 		var $toToggle = jQuery(evento.currentTarget).next('.hidable');
 		if ($toToggle.is(':visible')) {
 			$toToggle.hide(); 
-			jQuery(evento.currentTarget).css({border:'none', borderBottomWidth:'1pt', borderBottomStyle:'solid', borderBottomColor:'#dadada'});
+			//jQuery(evento.currentTarget).css({border:'none', borderBottomWidth:'1pt', borderBottomStyle:'solid', borderBottomColor:'#dadada'});
 		}else{
 			$toToggle.show(); 
-			jQuery(evento.currentTarget).css({border:'none'});
+			//jQuery(evento.currentTarget).css({border:'none'});
 		}
 	});
 }
