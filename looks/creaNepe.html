@@ -7,7 +7,7 @@
 
 
 <!-- contenido -->
-    <div id="main" class="maxxxrgen ver-borde">
+    <div id="main" class="ver-borde">
 
     <!-- ancho-sensi aplica siempre; para cell, aqui no es re escrito, so por default aplica ancho-sensi (1de1 o sea 100%).
 	ipad 3 de 4 lo re escribe para ipad y al no re escribir para desk, sigue aplicando en desk las dimensiones q se dieron para ipad -->
@@ -27,8 +27,10 @@
 			<label class="explica">(requerido)</label>
 		</fieldset>
 		<fieldset class="secundario hidable">
-			<p><input id="nombreId"  type="text"  name="nombre"     maxlength="50" placeholder="" required=true></p>
+			<div class="">	<input id="nombreId"  type="text"  name="nombre"     maxlength="50" placeholder="" required=true>	</div>
 		</fieldset>
+
+
 
 
 
@@ -38,18 +40,18 @@
 			<label class="explica">(requerido 1, maximo 4)</label>
 		</fieldset>
 		<fieldset id="socialHandleFieldset" class="secundario hidable">
-			<p><label for="red1Id">Facebook</label>
+			<div class="">	<label for="red1Id">Facebook</label>											</div>
 			<!-- <label for="red1Id" class="explica">URL</label> -->
-			<input id="red1Id"     type="text" name="red1"  maxlength="50"  placeholder=""></p>
-			<p><label for="red2Id">Email</label>
+			<div class="">	<input id="red1Id"     type="text" name="red1"  maxlength="50"  placeholder="">	</div>
+			<div class="">	<label for="red2Id">Email</label>	   										    </div>
 			<!-- <label for="red2Id" class="explica">URL</label> -->
-			<input id="red2Id"     type="text" name="red2"  maxlength="50"  placeholder=""></p>
-			<p><label for="red3Id">Instagram</label>
+			<div class="">	<input id="red2Id"     type="text" name="red2"  maxlength="50"  placeholder=""> </div>
+			<div class="">  <label for="red3Id">Instagram</label>	  									    </div>
 			<!-- <label for="red3Id" class="explica">URL</label> -->
-			<input id="red3Id"     type="text" name="red3"  maxlength="50"  placeholder=""></p>
-			<p><label for="red4Id">Telefono</label>
-			<input id="red4Id"     type="tel" name="red4"  maxlength="50"   placeholder=""></p>
-			<h3></h3>
+			<div class="">	<input id="red3Id"     type="text" name="red3"  maxlength="50"  placeholder=""> </div>
+			<div class="">  <label for="red4Id">Telefono</label>										    </div>
+			<div class="">  <input id="red4Id"     type="tel" name="red4"  maxlength="50"   placeholder=""> </div>
+			<div class="">  <h3></h3>   																    </div>
 		</fieldset>
 
 
@@ -63,17 +65,20 @@
 			<label class="explica">(requerido 1, maximo 10)</label>
 		</fieldset>
 		<fieldset class="secundario hidable">
-			<p><input id="que1Id"  type="text" name="que1"  maxlength="50" placeholder="edito videos" required=true></p>
-			<p><input id="que2Id"  type="text" name="que2"  maxlength="50" placeholder="hago postres"></p>
-			<p><input id="que3Id"  type="text" name="que3"  maxlength="50" placeholder="soy tutor o personal trainer"></p>
-			<p><input id="que4Id"  type="text" name="que4"  maxlength="50" placeholder="corto grama"></p>
-			<p><input id="que5Id"  type="text" name="que5"  maxlength="50" placeholder="hago delivery"></p>
-			<p><input id="que6Id"  type="text" name="que6"  maxlength="50" placeholder="cuido ancianos en tu hogar"></p>
-			<p><input id="que7Id"  type="text" name="que7"  maxlength="50" placeholder="limpio hogares o cuartos"></p>
-			<p><input id="que8Id"  type="text" name="que8"  maxlength="50" placeholder="cocino almuerzos y desayunos"></p>
-			<p><input id="que9Id"  type="text" name="que9"  maxlength="50" placeholder="hago paginas web"></p>
-			<p><input id="que10Id" type="text" name="que10" maxlength="50" placeholder="soy influencer"></p>
+			<div class="">   <input id="que1Id"  type="text" name="que1"  maxlength="50" placeholder="edito videos" required=true>		</div>   
+			<div class="">   <input id="que2Id"  type="text" name="que2"  maxlength="50" placeholder="hago postres">					</div>   
+			<div class="">   <input id="que3Id"  type="text" name="que3"  maxlength="50" placeholder="soy tutor o personal trainer">	</div>   
+			<div class="">   <input id="que4Id"  type="text" name="que4"  maxlength="50" placeholder="corto grama">						</div>   
+			<div class="">   <input id="que5Id"  type="text" name="que5"  maxlength="50" placeholder="hago delivery">					</div>   
+			<div class="">   <input id="que6Id"  type="text" name="que6"  maxlength="50" placeholder="cuido ancianos en tu hogar">		</div>   
+			<div class="">   <input id="que7Id"  type="text" name="que7"  maxlength="50" placeholder="limpio hogares o cuartos">		</div>   
+			<div class="">   <input id="que8Id"  type="text" name="que8"  maxlength="50" placeholder="cocino almuerzos y desayunos">	</div>   
+			<div class="">   <input id="que9Id"  type="text" name="que9"  maxlength="50" placeholder="hago paginas web">				</div>   
+			<div class="">   <input id="que10Id" type="text" name="que10" maxlength="50" placeholder="soy influencer">					</div>   
 		</fieldset>
+
+
+
 
 
 		<fieldset class="primario notHidable">
@@ -83,21 +88,22 @@
 			<label class="explica">(requerido 1, maximo 5)</label>
 		</fieldset>
 		<fieldset class="secundario hidable">
-			<p><input id="donde1Id" type="text" name="donde1" maxlength="50" placeholder="moca" required=true></p>
-			<p><input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder="juncos"></p>
-			<p><input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder=""></p>
-			<p><input id="donde4Id" type="text" name="donde4" maxlength="50" placeholder=""></p>
-			<p><input id="donde5Id" type="text" name="donde5" maxlength="50" placeholder=""></p>
+			<div class="">   <input id="donde1Id" type="text" name="donde1" maxlength="50" placeholder="moca" required=true>   </div>
+			<div class="">   <input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder="juncos">			   </div>
+			<div class="">   <input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder="">					   </div>
+			<div class="">   <input id="donde4Id" type="text" name="donde4" maxlength="50" placeholder="">					   </div>
+			<div class="">   <input id="donde5Id" type="text" name="donde5" maxlength="50" placeholder="">					   </div>
 	
 			<label>A su casa</label>
 			<label class="explica">&iquest;Trabajarias en casa del cliente?</label>
 			<label class="explica">(requerido)</label>
 		
-			<p><label for="siRadio"><span class="conMargen">Si</span></label>
-			<input class="conMargen" id="siRadio" type="radio" name="aTuCasa" value="si" required></p>
-			<p><label for="noRadio"><span class="conMargen">No</span></label>
-			<input class="conMargen" id="noRadio" type="radio" name="aTuCasa" value="no"></p> 		
+			<div class="">   <label for="siRadio"><span class="conMargen">Si</span></label>								</div>
+			<div class="">	 <input class="conMargen" id="siRadio" type="radio" name="aTuCasa" value="si" required>		</div>
+			<div class="">   <label for="noRadio"><span class="conMargen">No</span></label>								</div>
+			<div class="">   <input class="conMargen" id="noRadio" type="radio" name="aTuCasa" value="no">				</div> 		
 		</fieldset>
+
 
 
 
@@ -108,21 +114,21 @@
 			<label class="explica">(opcional)</label>
 		</fieldset>
 		<fieldset id="cuandoFieldset" class="secundario hidable">
-			<p><label for="dia1Id">Lunes</label>
-			<input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder=""></p>
-			<p><label for="dia2Id">Martes</label>
-			<input id="dia2Id" type="text" name="dia2" maxlength="50" placeholder=""></p>
-			<p><label for="dia3Id">Miercoles</label>
-			<input id="dia3Id" type="text" name="dia3" maxlength="50" placeholder=""></p>
-			<p><label for="dia4Id">Jueves</label>
-			<input id="dia4Id" type="text" name="dia4" maxlength="50" placeholder=""></p>
-			<p><label for="dia5Id">Viernes</label>
-			<input id="dia5Id" type="text" name="dia5" maxlength="50" placeholder=""></p>
-			<p><label for="dia6Id">Sabado</label>
-			<input id="dia6Id" type="text" name="dia6" maxlength="50" placeholder=""></p>
-			<p><label for="dia7Id">Domingo</label>
-			<input id="dia7Id" type="text" name="dia7" maxlength="50" placeholder=""></p>
-		</fieldset>
+			<div class="">   <label for="dia1Id">Lunes</label>										     </div>	
+			<div class="">   <input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder="">   </div>
+			<div class="">   <label for="dia2Id">Martes</label>											 </div>
+			<div class="">   <input id="dia2Id" type="text" name="dia2" maxlength="50" placeholder="">   </div>
+			<div class="">   <label for="dia3Id">Miercoles</label>										 </div>	
+			<div class="">   <input id="dia3Id" type="text" name="dia3" maxlength="50" placeholder="">   </div>
+			<div class="">   <label for="dia4Id">Jueves</label>											 </div>
+			<div class="">   <input id="dia4Id" type="text" name="dia4" maxlength="50" placeholder="">   </div>
+			<div class="">   <label for="dia5Id">Viernes</label>										 </div>	
+			<div class="">   <input id="dia5Id" type="text" name="dia5" maxlength="50" placeholder="">   </div>
+			<div class="">   <label for="dia6Id">Sabado</label>											 </div>
+			<div class="">   <input id="dia6Id" type="text" name="dia6" maxlength="50" placeholder="">   </div>
+			<div class="">   <label for="dia7Id">Domingo</label>										 </div>	
+			<div class="">   <input id="dia7Id" type="text" name="dia7" maxlength="50" placeholder="">   </div>
+		</fieldset>											
 		<!--
  	       <fieldset class="secundario">
  	         <label>Ahora Mismo</label>
@@ -133,6 +139,9 @@
 		-->
 
 
+
+
+
  	    <fieldset class="primario notHidable">
  	    	<label>Fotos</label>
  	    	<label class="explica">Fotos de tu Negocio</label>
@@ -140,11 +149,14 @@
 		</fieldset>	
 		<fieldset id="fotoSrcFieldset" class="secundario hidable">
 			<input type="hidden" name="MAX_FILE_SIZE" value="1000000"> <!-- 1MB  1 000 000 Bytes-->
-			<p><label for="fotosId"><img class="conMargen" src="imagenes/sube.png" alt="sube"></label>
-			<input id="fotosId"  type="file" name="fotoArr[]" multiple hidden required=true></p>
-			<h3 id="max5Feedback"></h3>
-			<h3 id="isImageFeedback"></h3>
+			<div class="">   <label for="fotosId"><img class="conMargen" src="imagenes/sube.png" alt="sube"></label>  </div>
+			<input id="fotosId"  type="file" name="fotoArr[]" multiple hidden required=true>
+			<div class="">   <h3 id="max5Feedback"></h3>	  </div>
+			<div class="">   <h3 id="isImageFeedback"></h3>   </div>
 		</fieldset>
+
+
+
 
 
 		<fieldset class="primario notHidable">
@@ -153,15 +165,18 @@
  	    	<label class="explica">(opcional)</label>
 		</fieldset>
 		<fieldset class="secundario hidable">
-			<p><textarea id="videoUrlId"  name="videoUrl"  rows="3" cols="50" placeholder="https://www.youtube.com/watch?v=HxRcWFHZWIo" ></textarea></p>
+			<textarea id="videoUrlId"  name="videoUrl"  rows="3" cols="50" placeholder="https://www.youtube.com/watch?v=HxRcWFHZWIo" ></textarea>
 		</fieldset>
 
 
+
+
+		
 		<fieldset id="submitButtonFieldset">
-		<p><button type="submit"><img src="imagenes/lapiz.png" alt="Revisa"></button></p>
-		<h3 id="handlesFeedback" class="warn"></h3>
-		<h3 id="fotosFeedback" class="warn"></h3>
-		<h3 id="buttonFeedback" class="warn"></h3>
+			<div class="">   <button type="submit"><img src="imagenes/lapiz.png" alt="Revisa"></button>   </div>
+			<div class="">   <h3 id="handlesFeedback" class="warn"></h3>                                  </div>
+			<div class="">   <h3 id="fotosFeedback" class="warn"></h3>                                    </div>
+			<div class="">   <h3 id="buttonFeedback" class="warn"></h3>                                   </div>
  	   </fieldset>
 
  	</form>
