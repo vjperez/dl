@@ -492,4 +492,4 @@ jQuery(document).ready(
 		}//switch
 		
 		
-	}); // ready function and statement
+}); // ready function and statement
