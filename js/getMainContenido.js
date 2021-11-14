@@ -436,6 +436,7 @@ jQuery(document).ready(
 				var url      = window.location.href;     // Returns full URL - http://localhost/WebDevelopmentStuff/mio/portada.html - deja parametros viejos
 				var origin   = window.location.origin;   // Returns base URL - localhost/
 				*/
+					
 				var indexOfDotHtml = window.location.href.indexOf(".html");
 				var largo = window.location.href.length;
 				//alert('pathname: ' + window.location.pathname + '\nhref: ' + window.location.href + '\nindex: ' + indexOfDotHtml + '\nlargo: ' + largo);
@@ -443,12 +444,12 @@ jQuery(document).ready(
 					//no hay nada en url, despues de portada.html
 				}else{//hay extra parameters pero ninguno es look=, 
 					jQuery(window.location).attr('href', window.location.pathname);
-				}
-
+				}	
+				
 			// (2) null look				
 				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-				//jQuery.dameLook('looks/lookIsNull.html');
+				//jQuery.dameLook('looks/notused/lookIsNull.html');
 			//
 				/*
 			// (3) redirect to error
@@ -468,12 +469,13 @@ jQuery(document).ready(
 				var url      = window.location.href;     // Returns full URL - http://localhost/WebDevelopmentStuff/mio/portada.html - deja parametros viejos
 				var origin   = window.location.origin;   // Returns base URL - localhost/
 				*/
+
 				jQuery(window.location).attr('href', window.location.pathname);
 				
 			// (2) default look
 				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-				//jQuery.dameLook('looks/default.html');
+				//jQuery.dameLook('looks/notused/default.html');
 			//
 				/*
 			// (3) redirect to error
