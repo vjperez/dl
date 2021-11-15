@@ -1,7 +1,7 @@
 jQuery.handleBuscaSubmit = function(){
 	jQuery('form').submit(function(evento){
 		evento.preventDefault(); //not making a submit (GET request) here. Lets do it at look=opciones
-		var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú+]/gi);	//	allowing letters, numbers and the plus sign
+		var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú+]/gi);	//see 'negated or complemented character class'
 		var que = jQuery('#queId').val();
 		que = jQuery.cleanStr(que, regexp); // clean function returns cleaned str,  adds ':' as delimiter
 		var donde = jQuery('#dondeId').val();
