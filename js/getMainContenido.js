@@ -6,9 +6,9 @@ jQuery(document).ready(
 			case 'logout':
 				jQuery.logout();
 			break;
+			
 			case null:
 			default :
-
 			break;
 		}
 
