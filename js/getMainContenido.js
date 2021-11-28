@@ -120,7 +120,6 @@ jQuery(document).ready(
 				});
 			break;						
 			case 'login':
-				jQuery('#navLogin').addClass("activo");
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -143,6 +142,7 @@ jQuery(document).ready(
 						*/
 					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+						jQuery('#navLogin').addClass("activo");
 						jQuery.pintaHeaderLinks();
 						
 						//get login look
@@ -160,13 +160,13 @@ jQuery(document).ready(
 				});				
 			break;
 			case 'editDuenoShowNepes':
-				jQuery('#navHome').hide();
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){ 
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
+						jQuery('#navHome').addClass("activo");
 						jQuery.pintaHeaderLinks();
 						
 						//get duenoId
@@ -201,6 +201,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
+						jQuery('#navHome').addClass("activo");
 						jQuery.pintaHeaderLinks();
 						
 						jQuery.dameLook('looks/creaNepe.html');
@@ -236,6 +237,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
+						jQuery('#navHome').addClass("activo");
 						jQuery.pintaHeaderLinks();
 						
 						key = 'own_nepes';
@@ -311,8 +313,6 @@ jQuery(document).ready(
 				});
 			break;			
 			case 'creaDueno':
-				jQuery('#navSignup').addClass("activo");
-
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -334,6 +334,7 @@ jQuery(document).ready(
 						*/
 					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+						jQuery('#navSignup').addClass("activo");
 						jQuery.pintaHeaderLinks();
 						
 						//get creaDueno look
