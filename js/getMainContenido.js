@@ -15,7 +15,7 @@ jQuery(document).ready(
 		var look = jQuery.urlParametro('look');
 		switch(look) {
 			case 'busca':
-				jQuery('#navBusca').hide();
+				jQuery('#navBusca').addClass("activo");
 				
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -120,7 +120,7 @@ jQuery(document).ready(
 				});
 			break;						
 			case 'login':
-				jQuery('#navLogin').hide();
+				jQuery('#navLogin').addClass("activo");
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -311,7 +311,7 @@ jQuery(document).ready(
 				});
 			break;			
 			case 'creaDueno':
-				jQuery('#navSignup').hide();
+				jQuery('#navSignup').addClass("activo");
 
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -370,6 +370,7 @@ jQuery(document).ready(
 				}); //ajax complete
 			break;			
 			case 'faq':
+				jQuery('#navFaq').addClass("activo");
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  

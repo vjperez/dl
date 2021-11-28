@@ -19,12 +19,12 @@ ul.navega li a {
   float: none;
 }
  
-ul.navega li a.active {
+ul.navega li a.activo {
   background-color: #4CAF50;
   color: white;
 }
 
-ul.navega li a:hover:not(.active) {
+ul.navega li a:hover:not(.activo) {
   background-color: #555;
   color: white;
 }
