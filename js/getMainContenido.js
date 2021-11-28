@@ -387,6 +387,7 @@ jQuery(document).ready(
 					//This code runs when get isCompleted and IF the get was requesting faq.html
 					if(settingsObjeto.url === 'looks/faq.html'){ // === means true without type coersion - the type and value most both be equal
 						jQuery.toggleOnClick();
+						jQuery.hideThem();
 					}
 				});
 			break;
