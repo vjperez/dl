@@ -29,7 +29,7 @@ ul.navega li a:hover:not(.active) {
   color: white;
 }
 
-#containerForMain, #footer {margin-left: 0;}
+div#containerForMain, #footer {margin-left: 0;}
 
 
 @media screen and (min-width: 601px) {
@@ -46,7 +46,7 @@ ul.navega li a:hover:not(.active) {
 }
 
 @media screen and (min-width: 1001px) {
-    #containerForMain, #footer {
+    div#containerForMain, #footer {
         margin-left:25%;
     }
     
