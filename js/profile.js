@@ -65,8 +65,8 @@ jQuery.populateProfile = function(datos){
 	});
 	//alert('a tu casa: ' + datos.atucasa + '\ntipo: ' + typeof datos.atucasa);
 	var clase = 'no'; if(datos.atucasa) clase = 'si';
-	jQuery('#donde h3 span').attr('class', clase);
-	jQuery('#donde h3').append(clase);
+	jQuery('#donde i+span').attr('class', clase);
+	jQuery('#donde i+span').after(clase);
 
 	
 	//show only 1 social handle with class current
