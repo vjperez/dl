@@ -9,11 +9,11 @@ pg_prepare($cnx, "preparadoQueryCheckUserName", $queryCheckUserName);
 
 
 
-
-
-$queryRegisterUser = "INSERT INTO
+ 
+// query to insert new dueno on db
+$queryInsertDueno = "INSERT INTO
 	dueno(username, password, first_log, last_log)
 	VALUES($1, $2, NOW()::date, NOW()::date)";
 
-pg_prepare($cnx, "preparadoQueryRegisterUser", $queryRegisterUser);
+pg_prepare($cnx, "preparadoQueryInsertDueno", $queryInsertDueno);
 ?>

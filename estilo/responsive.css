@@ -1,0 +1,62 @@
+/*  responsive : comun  */
+
+body {margin: 0;}
+
+ul.navega {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #f1fafa;
+  overflow: auto;
+}
+ul.navega li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  
+  text-align: center;
+  float: none;
+}
+ 
+ul.navega li a.activo {
+  background-color: #4CAF50;
+  color: white;
+}
+
+ul.navega li a:hover:not(.activo) {
+  background-color: #555;
+  color: white;
+}
+
+div#containerForMain, #footer {margin-left: 0;}
+
+
+@media screen and (min-width: 601px) {
+  ul.navega {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  ul.navega li a {
+    float: left;
+    padding: 15px;
+  }
+}
+
+@media screen and (min-width: 1001px) {
+    div#containerForMain, #footer {
+        margin-left:25%;
+    }
+    
+    ul.navega {
+        width: 25%;
+        position: fixed;
+        height: 100%;
+    }
+    ul.navega li a {
+        text-align: left;
+        float: none;
+    }
+}

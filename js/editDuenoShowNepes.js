@@ -14,8 +14,7 @@ jQuery.editDuenoShowNepes = function(){
 			});
 			
 		  //labelTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
-			labelTable += '<tr><td></td></tr>';
-			labelTable += '<tr><td></td></tr>';
+		
 			labelTable += '</table>';
 			
 		jQuery('fieldset#labelTableContainer').prepend(labelTable);

@@ -12,15 +12,15 @@ require_once 'creaDueno/creaDuenoQueries.php';
 $recurso = pg_execute($cnx, "preparadoQueryCheckUserName", array($usertb));
 if($recurso){
 	$isNewName;
-	if($fila = pg_fetch_row($recurso)){
+	if($filaDeUsertbEnDB = pg_fetch_row($recurso)){
 		$isNewName = false;
 	}else{
 		$isNewName = true;
 	}
 	if($isNewName){
-		$recurso = pg_execute($cnx, "preparadoQueryRegisterUser", array($usertb, $hashed_pass01));
+		$recurso = pg_execute($cnx, "preparadoQueryInsertDueno", array($usertb, $hashed_pass01));
 		if($recurso){
-			$recurso = pg_query($cnx, "SELECT currval('dueno_id_seq')");
+			$recurso = pg_query($cnx, "SELECT currval('dueno_id_seq')"); //otro recurso, ahora con fila q tiene id
 			$filaConId = pg_fetch_row ($recurso);
 			$dueno_id = $filaConId[0];
 			$respuesta = json_decode('{"registrado":true, "feedback":"Ya estas registrado.  Directo a mi cuenta, no uso esto."}');
@@ -29,7 +29,7 @@ if($recurso){
 			session_start();	$_SESSION['dueno_id'] = $dueno_id; 
 		}else{
 			pg_close($cnx);
-			throw new Exception('Mal query. Sin RECURSO, para queryRegisterUser. (username es nuevo, pero hubo error en: )' . __FILE__ );
+			throw new Exception('Mal query. Sin RECURSO, para queryInsertDueno. (username es nuevo, quiza inserte,  pero hubo error en: )' . __FILE__ );
 		}
 	}else{
 		$respuesta = json_decode('{"registrado":false, "feedback":"Username no disponible."}');

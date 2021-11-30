@@ -13,60 +13,50 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Slabo+27px|Bree+Serif">
-  <link rel="stylesheet" href="estilo/orden-estilo.css"  type="text/css">
-  <link rel="stylesheet" href="estilo/orden-responsive.css" type="text/css">
+  <link rel="stylesheet" href="estilo/normaliza.css"  type="text/css">
+  <link rel="stylesheet" href="estilo/responsive.css" type="text/css">
+  <link rel="stylesheet" href="estilo/orden.css"  type="text/css">
+  <link rel="stylesheet" href="estilo/estilo.css"  type="text/css">
+  <link rel="stylesheet" href="estilo/css/all.css" type="text/css"> <!--   font awesome  -->
+  
 </head>
 <body>
-  <!--
-  <div id="header">
-    <img src="imagenes/caribe-cielo.png" alt="caribe cielo">
-  </div>
-  --> 
-  <div id="navega" class="margen">
-    <ul>  
-      <a id="navBusca"   class="link navelink" href="portada.html?look=busca"><li>Busca</li></a>
-	  <a id="navHome"    class="link navelink" href="portada.html?look=editDuenoShowNepes"><li>Home</li></a>
-      <a id="navLogout"  class="link navelink" href="portada.html?look=busca&acto=logout"><li>Logout</li></a>
-	  <a id="navLogin"   class="link navelink" href="portada.html?look=login"><li>Login</li></a>
-      <a id="navSignup"  class="link navelink" href="portada.html?look=creaDueno"><li>Reg&iacute;strate</li></a>
-    </ul>
-  </div>
+ 
+  
 
-
-  <div id="containerForMain">
-	  
-      <div id="main" class="contenido margen">	
-		  <label id="portada-warning" class="explica">Need to enable Javascript.</label>
-		  <!-- empty main
-				  <h3>Unchanged portada html look. Either ...</h3>
-				  <ul>
-					  <li>Javascript-not-working... please enable JavaScript on your browser.</li>
-					  <li>Javascript-is-too-slow... please give it a break.</li>
-				  </ul>
-		  --> 
-      </div>  <!-- main -->
-	  
-  </div>  <!-- containerForMain -->
+<ul class="navega">  
+  <li><a id="navBusca"   class="link" href="portada.html?look=busca"><i class="fas fa-search"></i>Busca</a></li>
+  <li><a id="navHome"    class="link" href="portada.html?look=editDuenoShowNepes"><i class="fas fa-house-user"></i>Home</a></li>
+  <li><a id="navLogout"  class="link" href="portada.html?look=busca&acto=logout"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+  <li><a id="navLogin"   class="link" href="portada.html?look=login"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+  <li><a id="navSignup"  class="link" href="portada.html?look=creaDueno"><i class="fas fa-user-plus"></i>Reg&iacute;strate</a></li>
+  <li><a id="navFaq"     class="link" href="portada.html?look=faq"><i class="fas fa-question-circle"></i>FAQs</a><li>
+</ul>
 
 
 
-  <div id="footer" class="margen">
-    <h2 class="footertitulo">donLibre.com</h2>  
-    <div class="margen">
-        <h5 class="footersubtitulo">hogar de los peque&ntilde;os negocios</h5><h5 class="footersubtitulo"></h5>
-    </div>
-    <ul>
-           <li class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ver-borde"><a class="link footerlink" href="portada.html?look=faq#preg1">&iquest;Qu&eacute; es donLibre.com?</a>
-      </li><li class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ver-borde"><a class="link footerlink" href="portada.html?look=faq#preg2">&iquest;Como se usa?</a>
-	    </li><li class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ver-borde"><a class="link footerlink" href="portada.html?look=faq#preg3">&iquest;Qu&iacute;en se registra?</a>
-      </li><li class="ancho-sensi-cell-1de2 ancho-sensi-ipad-1de3 ver-borde"><a class="link footerlink" href="portada.html?look=faq#preg4">&iquest;Como busco?</a>
-      </li>
-    </ul>
-  </div>
+<div id="containerForMain">
+  
+  <div id="main" class="">	
+    vacio aun
+  </div>  <!-- main -->
+  
+</div>  <!-- containerForMain -->
 
-  <script src="js/jquery-3.3.1.js"></script>
-  <script src="js/funciones.js"></script>
-  <script src="js/getMainContenido.js"></script>
+
+
+<div id="footer" class="">
+  <h2 class="footertitulo">donLibre.com</h2>  
+  <h5 class="footersubtitulo">hogar de los peque&ntilde;os negocios</h5><h5 class="footersubtitulo"></h5>
+</div>
+
+
+
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/funciones.js"></script>
+<script src="js/getMainContenido.js"></script>
+
+
 
 </body>
 </html>

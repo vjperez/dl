@@ -6,16 +6,16 @@ jQuery(document).ready(
 			case 'logout':
 				jQuery.logout();
 			break;
+			
 			case null:
 			default :
-
 			break;
 		}
 
 		var look = jQuery.urlParametro('look');
 		switch(look) {
 			case 'busca':
-				jQuery('#navBusca').hide();
+				jQuery('#navBusca').addClass("activo");
 				
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -53,10 +53,10 @@ jQuery(document).ready(
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					if(datos.cuantasOpciones > 0){
 						//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
-						var mainDeOpciones = '<div id="main" class="contenido margen">';
+						var mainDeOpciones = '<div id="main" class="marxxxgen ver-borde">';
 						jQuery.each(datos.opciones, function(buscaMode, trios){
 
-								mainDeOpciones += '<div class="ver-borde opcionesfotos">';
+								mainDeOpciones += '<div id="opcionesdiv" class="opcionesfotos ancho-sensi-ipad-2de3 ver-borde ">';
 								if(buscaMode.indexOf("buscaBoth") > -1){
 									mainDeOpciones += '<h3>'  + que + ' + ' + donde + '</h3>';
 								}else if (buscaMode.indexOf("buscaQue") > -1){
@@ -120,7 +120,6 @@ jQuery(document).ready(
 				});
 			break;						
 			case 'login':
-				jQuery('#navLogin').hide();
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -143,6 +142,7 @@ jQuery(document).ready(
 						*/
 					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+						jQuery('#navLogin').addClass("activo");
 						jQuery.pintaHeaderLinks();
 						
 						//get login look
@@ -160,13 +160,13 @@ jQuery(document).ready(
 				});				
 			break;
 			case 'editDuenoShowNepes':
-				jQuery('#navHome').hide();
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){ 
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
+						jQuery('#navHome').addClass("activo");
 						jQuery.pintaHeaderLinks();
 						
 						//get duenoId
@@ -201,6 +201,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
+						jQuery('#navHome').addClass("activo");
 						jQuery.pintaHeaderLinks();
 						
 						jQuery.dameLook('looks/creaNepe.html');
@@ -236,6 +237,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
+						jQuery('#navHome').addClass("activo");
 						jQuery.pintaHeaderLinks();
 						
 						key = 'own_nepes';
@@ -311,8 +313,6 @@ jQuery(document).ready(
 				});
 			break;			
 			case 'creaDueno':
-				jQuery('#navSignup').hide();
-
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -334,6 +334,7 @@ jQuery(document).ready(
 						*/
 					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+						jQuery('#navSignup').addClass("activo");
 						jQuery.pintaHeaderLinks();
 						
 						//get creaDueno look
@@ -370,6 +371,7 @@ jQuery(document).ready(
 				}); //ajax complete
 			break;			
 			case 'faq':
+				jQuery('#navFaq').addClass("activo");
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -385,6 +387,7 @@ jQuery(document).ready(
 					//This code runs when get isCompleted and IF the get was requesting faq.html
 					if(settingsObjeto.url === 'looks/faq.html'){ // === means true without type coersion - the type and value most both be equal
 						jQuery.toggleOnClick();
+						jQuery.hideThem();
 					}
 				});
 			break;
@@ -430,12 +433,26 @@ jQuery(document).ready(
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//you can redirect null and default cases, either into busca case,  into error case or into their own looks 
 			case null:
-			// (1) redirecting to busca
-				jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+			// (1) redirecting to portada removing extra parameters after .html 
+				/*
+				var pathname = window.location.pathname; // Returns path only- http://localhost/WebDevelopmentStuff/mio/portada.html - saca parametros viejos
+				var url      = window.location.href;     // Returns full URL - http://localhost/WebDevelopmentStuff/mio/portada.html - deja parametros viejos
+				var origin   = window.location.origin;   // Returns base URL - localhost/
+				*/
+					
+				var indexOfDotHtml = window.location.href.indexOf(".html");
+				var largo = window.location.href.length;
+				//alert('pathname: ' + window.location.pathname + '\nhref: ' + window.location.href + '\nindex: ' + indexOfDotHtml + '\nlargo: ' + largo);
+				if(indexOfDotHtml + 'html'.length + 1 == largo){ // if true, href does ends with .html, there is nothing else
+					//no hay nada en url, despues de portada.html
+				}else{//hay extra parameters pero ninguno es look=, 
+					jQuery(window.location).attr('href', window.location.pathname);
+				}	
+				
 			// (2) null look				
 				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-				//jQuery.dameLook('looks/lookIsNull.html');
+				//jQuery.dameLook('looks/notused/lookIsNull.html');
 			//
 				/*
 			// (3) redirect to error
@@ -449,12 +466,19 @@ jQuery(document).ready(
 				*/
 			break;
 			default :
-			// (1) redirecting to busca
-				jQuery(window.location).attr('href', window.location.pathname + '?look=busca');
+			// (1) redirecting to portada removing extra parameters after .html
+				/*
+				var pathname = window.location.pathname; // Returns path only- http://localhost/WebDevelopmentStuff/mio/portada.html - saca parametros viejos
+				var url      = window.location.href;     // Returns full URL - http://localhost/WebDevelopmentStuff/mio/portada.html - deja parametros viejos
+				var origin   = window.location.origin;   // Returns base URL - localhost/
+				*/
+
+				jQuery(window.location).attr('href', window.location.pathname);
+				
 			// (2) default look
 				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-				//jQuery.dameLook('looks/default.html');
+				//jQuery.dameLook('looks/notused/default.html');
 			//
 				/*
 			// (3) redirect to error
@@ -471,11 +495,4 @@ jQuery(document).ready(
 		}//switch
 		
 		
-	}); // ready function and statement
-
-
-/*
-var pathname = window.location.pathname; // Returns path only- http://localhost/WebDevelopmentStuff/mio/portada.html - saca parametros viejos
-var url      = window.location.href;     // Returns full URL - http://localhost/WebDevelopmentStuff/mio/portada.html - deja parametros viejos
-var origin   = window.location.origin;   // Returns base URL - localhost/
-*/
+}); // ready function and statement
