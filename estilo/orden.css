@@ -21,3 +21,6 @@ div#donde i+span.si, div#donde i+span.no, div#cuando i+span.si, div#cuando i+spa
 div#donde i+span.no, div#cuando i+span.no { background-position:0px -25px; }
 
 div#donde i{ margin-right:2pt; }
+
+/*  faq  */
+div#faqdiv i[class*="fa-chevron-circle"]{ margin-left:0.5em; }
