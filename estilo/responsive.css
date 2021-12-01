@@ -1,6 +1,6 @@
 /*  responsive : comun  */
 
-body {  margin: 0;  }
+body {  margin:0px auto; min-width:440pt; max-width:1040pt; }
 
 ul.navega { list-style-type: none;
   margin: 0;
