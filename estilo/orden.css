@@ -24,7 +24,8 @@ div#donde i{ margin-right:2pt; }
 /*  faq  */
 div#faqdiv i[class*="fa-chevron-circle"]{ margin-left:0.5em; }
 
-/*  faq  crea update nepe*/
-.notHidable{  margin-top:2em;  }
+/*  faq  crea update nepe edit dueno show nepes  */
+.notHidable{  margin-top:2.5em;  }
 
-/*  crea update nepe  */
+/*  crea update nepe  edit dueno show nepes  */
+.hidable, .subArea{  margin-top:1em;  }

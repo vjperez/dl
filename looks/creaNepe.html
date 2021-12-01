@@ -7,11 +7,11 @@
 
 
 <!-- contenido -->
-    <div id="main" class="ver-borde"> 
+    <div id="main" class=""> 
 
     <!-- ancho-sensi aplica siempre; para cell, aqui no es re escrito, so por default aplica ancho-sensi (1de1 o sea 100%).
 	ipad 3 de 4 lo re escribe para ipad y al no re escribir para desk, sigue aplicando en desk las dimensiones q se dieron para ipad -->
-    <div id="creaNepe" class="ancho-sensi-ipad-2de3 ver-borde">
+    <div id="creaNepe" class="ancho-sensi-ipad-2de3">
 	<h3>Negocio Nuevo</h3>
 	<label class="explica">Registrando!</label>	
 	<!--	
@@ -19,14 +19,14 @@
 	<label class="explica">Consulta dudas por whatsApp: <span class="color02enfasis"> 939 260 1734</span>.</label>
 	-->
 	</div><!-- creaNepe -->
- 	<form id="creaNepeForm" class="ancho-sensi-ipad-2de3 ver-borde" action="XXXeditcuenta.phpXXX" enctype="multipart/form-data" method="post">
+ 	<form id="creaNepeForm" class="ancho-sensi-ipad-2de3" action="XXXeditcuenta.phpXXX" enctype="multipart/form-data" method="post">
 
- 	    <fieldset class="primario notHidable">
+ 	    <fieldset class="notHidable">
  	    	<label>Nombre</label> 
  	    	<label class="explica">Nombre de tu Negocio</label>
 			<label class="explica">(requerido)</label>
 		</fieldset>
-		<fieldset class="secundario hidable">
+		<fieldset class="hidable">
 			<div class="">	<input id="nombreId"  type="text"  name="nombre"     maxlength="50" placeholder="" required=true>	</div>
 		</fieldset>
 
@@ -34,12 +34,12 @@
 
 
 
- 	    <fieldset class="primario notHidable">
+ 	    <fieldset class="notHidable">
  	    	<label>Qui&eacute;n</label>
  	    	<label class="explica">Contacto de tu Negocio</label>
 			<label class="explica">(requerido 1, maximo 4)</label>
 		</fieldset>
-		<fieldset id="socialHandleFieldset" class="secundario hidable">
+		<fieldset id="socialHandleFieldset" class="hidable">
 			<div class="">	<label for="red1Id">Facebook</label>											</div>
 			<!-- <label for="red1Id" class="explica">URL</label> -->
 			<div class="">	<input id="red1Id"     type="text" name="red1"  maxlength="50"  placeholder="">	</div>
@@ -58,13 +58,13 @@
 
 
 
-		<fieldset class="primario notHidable">
+		<fieldset class="notHidable">
 			<label>Qu&eacute;</label>
 			<label class="explica">Usando palabras claves, explica que haces.</label>
 			<label class="explica">Usado por clientes para encontrar tu Negocio!</label>
 			<label class="explica">(requerido 1, maximo 10)</label>
 		</fieldset>
-		<fieldset class="secundario hidable">
+		<fieldset class="hidable">
 			<div class="">   <input id="que1Id"  type="text" name="que1"  maxlength="50" placeholder="edito videos" required=true>		</div>   
 			<div class="">   <input id="que2Id"  type="text" name="que2"  maxlength="50" placeholder="hago postres">					</div>   
 			<div class="">   <input id="que3Id"  type="text" name="que3"  maxlength="50" placeholder="soy tutor o personal trainer">	</div>   
@@ -81,39 +81,40 @@
 
 
 
-		<fieldset class="primario notHidable">
+		<fieldset class="notHidable">
 			<label>Donde</label>
 			<label class="explica">Donde buscas clientes?</label>
 			<label class="explica">Usado por clientes para encontrar tu Negocio!</label>
 			<label class="explica">(requerido 1, maximo 5)</label>
 		</fieldset>
-		<fieldset class="secundario hidable">
+		<fieldset class="hidable">
 			<div class="">   <input id="donde1Id" type="text" name="donde1" maxlength="50" placeholder="moca" required=true>   </div>
 			<div class="">   <input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder="juncos">			   </div>
 			<div class="">   <input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder="">					   </div>
 			<div class="">   <input id="donde4Id" type="text" name="donde4" maxlength="50" placeholder="">					   </div>
 			<div class="">   <input id="donde5Id" type="text" name="donde5" maxlength="50" placeholder="">					   </div>
-	
-			<label>A su casa</label>
-			<label class="explica">&iquest;Trabajarias en casa del cliente?</label>
-			<label class="explica">(requerido)</label>
-		
-			<div class="">   <label for="siRadio"><span class="conMargen">Si</span></label>								
-							 <input class="conMargen" id="siRadio" type="radio" name="aTuCasa" value="si" required>		</div>
-			<div class="">   <label for="noRadio"><span class="conMargen">No</span></label>								
-							 <input class="conMargen" id="noRadio" type="radio" name="aTuCasa" value="no">				</div> 		
+			<fieldset class="subArea">
+				<label>A su casa</label>
+				<label class="explica">&iquest;Trabajarias en casa del cliente?</label>
+				<label class="explica">(requerido)</label>
+			
+				<div class="">   <label for="siRadio"><span class="conMargen">Si</span></label>								
+									<input class="conMargen" id="siRadio" type="radio" name="aTuCasa" value="si" required>		</div>
+				<div class="">   <label for="noRadio"><span class="conMargen">No</span></label>								
+									<input class="conMargen" id="noRadio" type="radio" name="aTuCasa" value="no">				</div> 	
+			</fieldset>	
 		</fieldset>
 
 
 
 
 
-		<fieldset class="primario notHidable">
+		<fieldset class="notHidable">
 			<label>Cuando</label>
 			<label class="explica">Horario de tu Negocio</label>
 			<label class="explica">(opcional)</label>
 		</fieldset>
-		<fieldset id="cuandoFieldset" class="secundario hidable">
+		<fieldset id="cuandoFieldset" class="hidable">
 			<div class="">   <label for="dia1Id">Lunes</label>										     </div>	
 			<div class="">   <input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder="">   </div>
 			<div class="">   <label for="dia2Id">Martes</label>											 </div>
@@ -127,27 +128,27 @@
 			<div class="">   <label for="dia6Id">Sabado</label>											 </div>
 			<div class="">   <input id="dia6Id" type="text" name="dia6" maxlength="50" placeholder="">   </div>
 			<div class="">   <label for="dia7Id">Domingo</label>										 </div>	
-			<div class="">   <input id="dia7Id" type="text" name="dia7" maxlength="50" placeholder="">   </div>
-		</fieldset>											
-		<!--
- 	       <fieldset class="secundario">
- 	         <label>Ahora Mismo</label>
- 	         <label class="explica">&iquest;Trabajando ahora mismo?</label>
- 	         <span>Si</span><input type="radio" name="ahoraMismo" value="si" class="si">
-             <span>No</span><input type="radio" name="ahoraMismo" value="no">
-           </fieldset>
-		-->
+			<div class="">   <input id="dia7Id" type="text" name="dia7" maxlength="50" placeholder="">   </div>									
+			<!--
+			<fieldset class="subArea">
+					<label>Ahora Mismo</label>
+					<label class="explica">&iquest;Trabajando ahora mismo?</label>
+					<span>Si</span><input type="radio" name="ahoraMismo" value="si" class="si">
+					<span>No</span><input type="radio" name="ahoraMismo" value="no">
+			</fieldset>
+			-->
+		</fieldset>
 
 
 
 
 
- 	    <fieldset class="primario notHidable">
+ 	    <fieldset class="notHidable">
  	    	<label>Fotos</label>
  	    	<label class="explica">Fotos de tu Negocio</label>
 			<label class="explica">(requerido 1, maximo 5)</label>
 		</fieldset>	
-		<fieldset id="fotoSrcFieldset" class="secundario hidable">
+		<fieldset id="fotoSrcFieldset" class="hidable">
 			<input type="hidden" name="MAX_FILE_SIZE" value="1000000"> <!-- 1MB  1 000 000 Bytes-->
 			<div class="">   <label for="fotosId"><i class="fas fa-upload"></i></label>  </div>
 			<input id="fotosId"  type="file" name="fotoArr[]" multiple hidden required=true>
@@ -159,12 +160,12 @@
 
 
 
-		<fieldset class="primario notHidable">
+		<fieldset class="notHidable">
  	    	<label>Video</label>
         	<label class="explica">Link a un video en youtube con info de tu Negocio.</label>
  	    	<label class="explica">(opcional)</label>
 		</fieldset>
-		<fieldset class="secundario hidable">
+		<fieldset class="hidable">
 			<textarea id="videoUrlId"  name="videoUrl"  rows="3" cols="50" placeholder="https://www.youtube.com/watch?v=HxRcWFHZWIo" ></textarea>
 		</fieldset>
 
@@ -172,8 +173,8 @@
 
 
 
-		<fieldset id="submitButtonFieldset" class="primario notHidable">
-			<div class="">   <button type="submit"><i class="fas fa-share-square"></i></button>   </div>
+		<fieldset id="submitButtonFieldset" class="notHidable">
+			<div class="">   <button type="submit">   <i class="fas fa-share-square"></i>   </button>     </div>
 			<div class="">   <h3 id="handlesFeedback" class="warn"></h3>                                  </div>
 			<div class="">   <h3 id="fotosFeedback" class="warn"></h3>                                    </div>
 			<div class="">   <h3 id="buttonFeedback" class="warn"></h3>                                   </div>

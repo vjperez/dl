@@ -5,8 +5,8 @@ jQuery.editDuenoShowNepes = function(){
   //jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
 	jQuery.getJSON('escritos/showNepesGetIds.php')
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-		var labelTable = '<label class="notHidable">Tus Negocios:</label>';
-		labelTable   +=  '<table class="hidaxxxble">';
+		var labelTable = '<label class="">Tus Negocios:</label>';
+		labelTable   +=  '<table class="subArea">';
 			jQuery.each(datos, function(index){
 			  //labelTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
 				labelTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'
