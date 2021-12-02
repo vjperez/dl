@@ -5,6 +5,10 @@ div#containerForMain { padding-top:100pt; padding-left:5%; padding-right:5%; }
 div#footer { margin-top:100pt; }
 div#footer h2.footertitulo    { text-align:center; }
 div#footer h5.footersubtitulo { text-align:center; }
+fieldset button[type="submit"], form button[type="submit"], div button[type="button"]
+{ display:block;   
+  width:150px;   
+  margin:0px auto;  }
 
 
 /* profile */
