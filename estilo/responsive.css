@@ -1,6 +1,6 @@
 /*  responsive : comun  */
 
-body {  margin:0px auto; min-width:440pt;  }
+body {  min-width:450px;  max-width:1024px;  margin:0px auto;  }
 
 ul.navega { list-style-type: none;
   margin: 0;
@@ -25,7 +25,7 @@ ul.navega li a:hover:not(.activo) {  background-color: black;
 div#containerForMain, #footer {  margin-left: 0;  }
 
 
-@media screen and (min-width: 601px) {
+@media screen and (min-width: 667px) {
   ul.navega {  width: 100%;
     height: auto;
     position: relative;  }
@@ -35,11 +35,11 @@ div#containerForMain, #footer {  margin-left: 0;  }
 }
 
 @media screen and (min-width: 1001px) {  
-  ul.navega {  width: 20%;
+  ul.navega {  width: 200px;
       position: fixed;
       height: 100%;  }
   ul.navega li a {  text-align: left;
       float: none;  }
 
-  div#containerForMain, #footer {  margin-left:20%;  }
+  div#containerForMain, #footer {  margin-left:200px;  }
 }
