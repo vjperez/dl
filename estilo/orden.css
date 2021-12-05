@@ -7,7 +7,7 @@ div#footer h2.footertitulo    { text-align:center; }
 div#footer h5.footersubtitulo { text-align:center; }
 form button[type="submit"], button[type="button"]
 { display:block;   
-  width:200px;   
+  width:200px;
   margin:2em auto 0em;  }
 
 
