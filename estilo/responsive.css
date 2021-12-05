@@ -7,7 +7,7 @@ body {  min-width:450px;  max-width:1024px;  margin:0px auto;  }
 ul.navega { list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color:hsla(180, 100%, 25%, 1);  /* #e1eaea; */   
+  background-color:hsla(180, 100%, 20%, 1);  /* #e1eaea; */   
   border-right:1px solid black;
   overflow: auto;  }
 
@@ -18,9 +18,9 @@ ul.navega li a { display: block;
   text-align: center;
   float: none;  }
  
-ul.navega li a.activo {  background-color: hsla(180, 100%, 40%, 1);  color: white;  }     /* 0c6f10  #4CAF50;   */
+ul.navega li a.activo {  background-color:black;  color: white;  }     /* 0c6f10  #4CAF50;   */
 
-ul.navega li a:hover:not(.activo) {  background-color: black;  color: white;  }
+ul.navega li a:hover:not(.activo) {  background-color: hsl(180, 100%, 15%);  color: white;  }
   
 div#containerForMain, #footer {  margin-left: 0;  }
 

@@ -5,7 +5,7 @@ div#containerForMain { padding-top:100pt; padding-left:5%; padding-right:5%;  }
 div#footer { padding-top:100pt;   padding-left:5%; padding-right:5%;  }
 div#footer h2.footertitulo    { text-align:center; }
 div#footer h5.footersubtitulo { text-align:center; }
-fieldset button[type="submit"], form button[type="submit"], div button[type="button"]
+form button[type="submit"], button[type="button"]
 { display:block;   
   width:200px;   
   margin:2em auto 0em;  }

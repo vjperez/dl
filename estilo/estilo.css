@@ -1,7 +1,13 @@
 html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
-
-
-
 /* ========================================================================================== */
 /*  estilo : comun  */
+form button[type="submit"], button[type="button"]{
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color:hsl(180, 100%, 15%);
+    color: white;
+    margin-top: 20px;
+}
