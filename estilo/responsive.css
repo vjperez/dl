@@ -16,30 +16,22 @@ ul.navega li a { display: block;
   text-align: center;
   float: none;  }
  
-ul.navega li a.activo {  background-color: hsla(180, 100%, 40%, 1);       /* 0c6f10  #4CAF50;   */
-  color: white;  }
+ul.navega li a.activo {  background-color: hsla(180, 100%, 40%, 1);  color: white;  }     /* 0c6f10  #4CAF50;   */
 
-ul.navega li a:hover:not(.activo) {  background-color: black;
-  color: white;  }
-
+ul.navega li a:hover:not(.activo) {  background-color: black;  color: white;  }
+  
 div#containerForMain, #footer {  margin-left: 0;  }
 
 
 @media screen and (min-width: 667px) {
-  ul.navega {  width: 100%;
-    height: auto;
-    position: relative;  }
+  ul.navega {  width: 100%;  height: auto;  position: relative;  }
   
-  ul.navega li a {  float: left;
-    padding: 15px;  }
+  ul.navega li a {  float: left;  padding: 15px;  }
 }
 
 @media screen and (min-width: 1001px) {  
-  ul.navega {  width: 200px;
-      position: fixed;
-      height: 100%;  }
-  ul.navega li a {  text-align: left;
-      float: none;  }
-
+  ul.navega {  width: 200px;  position: fixed;  height: 100%;  }
+  ul.navega li a {  text-align: left;  float: none;  }
   div#containerForMain, #footer {  margin-left:200px;  }
+  body {  width:1000px;  left:calc(0.5*(100% - 1000px));  }
 }
