@@ -1,4 +1,4 @@
-/*  orden : comun  */
+/*  orden : comun  */ 
 ul.navega i{ padding: 0em 0.333em; }
 
 div#containerForMain { padding-top:100pt; padding-left:5%; padding-right:5%;  }
@@ -9,6 +9,9 @@ form button[type="submit"], button[type="button"]
 { display:block;   
   width:200px;
   margin:2em auto 0em;  }
+
+
+  form[id$=Form] h3 { text-align:center; }
 
 
 /* profile */
