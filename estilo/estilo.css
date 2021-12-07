@@ -19,7 +19,7 @@ form button[type="submit"].peq, button[type="button"].peq{
 }
 
 input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], textarea{
-	border-radius: 20px;
+	border-radius: 8px;
     margin-bottom: 25px;
     padding: 10px 20px;
 }
