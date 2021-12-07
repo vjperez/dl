@@ -3,13 +3,19 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 /* ========================================================================================== */
 /*  estilo : comun  */
 form button[type="submit"], button[type="button"]{
-    border-radius: 30px;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 32px;
     background-color:hsl(180, 100%, 15%);
     color: white;
     margin-top: 20px;
+    width:80px;
+    height:80px;
+    border-radius: 50%;
+}
+form button[type="submit"].peq, button[type="button"].peq{
+    font-size: 19px;
+    margin-top: 12px;
+    width:48px;
+    height:48px;
 }
 
 input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], textarea{
