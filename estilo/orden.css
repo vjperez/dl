@@ -5,6 +5,8 @@ div#containerForMain { padding-top:100pt; padding-left:5%; padding-right:5%;  }
 div#footer { padding-top:100pt;   padding-left:5%; padding-right:5%;  }
 div#footer h2.footertitulo    { text-align:center; }
 div#footer h5.footersubtitulo { text-align:center; }
+
+
 form button[type="submit"], button[type="button"]
 { display:block;   
   width:200px;
@@ -12,6 +14,7 @@ form button[type="submit"], button[type="button"]
 
 
   form[id$=Form] h3 { text-align:center; }
+  div[id$=NepeTitulo] h3, div[id$=NepeTitulo] label.explica { text-align:center; }
 
 
 /* profile */

@@ -3,7 +3,7 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 /* ========================================================================================== */
 /*  estilo : comun  */
 ul.navega li a, h5.footersubtitulo{ font-family:mono, monospace; }
-h2.footertitulo{ font-family: 'Courgette', mono, monospace; }
+h2.footertitulo { font-family: 'Courgette', mono, monospace; }
 
 form button[type="submit"], button[type="button"]{
     font-size: 32px;
@@ -46,3 +46,5 @@ fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; font-w
 
 
 form[id$=Form] h3, fieldset.hidable h3{ font-family:serif, Times, times; font-weight:bolder;  color:hsl(0, 100%, 50%); }
+
+div#updateNepeTitulo h3, div#creaNepeTitulo h3 { font-family: 'Courgette', mono, monospace; font-size:1.7em; letter-spacing:0.40em;}
