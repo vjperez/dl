@@ -1,11 +1,20 @@
-/*  orden : comun  */
-ul.navega i{
-  padding: 0em 0.333em;
-}
-div#containerForMain { padding-top:100pt; padding-left:5%; padding-right:5%; }
-div#footer { margin-top:100pt; }
+/*  orden : comun  */ 
+ul.navega i{ padding: 0em 0.333em; }
+
+div#containerForMain { padding-top:100pt; padding-left:5%; padding-right:5%;  }
+div#footer { padding-top:100pt;   padding-left:5%; padding-right:5%;  }
 div#footer h2.footertitulo    { text-align:center; }
 div#footer h5.footersubtitulo { text-align:center; }
+
+
+form button[type="submit"], button[type="button"]
+{ display:block;   
+  width:200px;
+  margin:2em auto 0em;  }
+
+
+  form[id$=Form] h3 { text-align:center; }
+  div[id$=NepeTitulo] h3, div[id$=NepeTitulo] label.explica { text-align:center; }
 
 
 /* profile */
@@ -21,3 +30,12 @@ div#donde i+span.si, div#donde i+span.no, div#cuando i+span.si, div#cuando i+spa
 div#donde i+span.no, div#cuando i+span.no { background-position:0px -25px; }
 
 div#donde i{ margin-right:2pt; }
+
+/*  faq  */
+div#faqdiv i[class*="fa-chevron-circle"]{ margin-left:0.5em; }
+
+/*  faq  crea update nepe edit dueno show nepes  */
+.notHidable{  margin-top:2.5em;   padding:0px;  }
+
+/*  crea update nepe  edit dueno show nepes  */
+.hidable, .subArea{  margin-top:1em;  padding:0px;  }

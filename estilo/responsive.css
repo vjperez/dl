@@ -1,62 +1,40 @@
 /*  responsive : comun  */
 
-body {margin: 0;}
+#borde-derecha{  display:none;  }
 
-ul.navega {
-  list-style-type: none;
+body {  min-width:450px;  max-width:1024px;  margin:0px auto;  }
+
+ul.navega { list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: #f1fafa;
-  overflow: auto;
-}
-ul.navega li a {
-  display: block;
-  color: #000;
+  background-color:hsla(180, 100%, 20%, 1);  /* #e1eaea; */   
+  border-right:1px solid black;
+  overflow: auto;  }
+
+ul.navega li a { display: block;
+  color: white;
   padding: 8px 16px;
   text-decoration: none;
-  
   text-align: center;
-  float: none;
-}
+  float: none;  }
  
-ul.navega li a.activo {
-  background-color: #4CAF50;
-  color: white;
-}
+ul.navega li a.activo {  background-color:black;  color: white;  }     /* 0c6f10  #4CAF50;   */
 
-ul.navega li a:hover:not(.activo) {
-  background-color: #555;
-  color: white;
-}
-
-div#containerForMain, #footer {margin-left: 0;}
-
-
-@media screen and (min-width: 601px) {
-  ul.navega {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
+ul.navega li a:hover:not(.activo) {  background-color: hsl(180, 100%, 15%);  color: white;  }
   
-  ul.navega li a {
-    float: left;
-    padding: 15px;
-  }
+div#containerForMain, #footer {  margin-left: 0;  }
+
+
+@media screen and (min-width: 667px) {
+  ul.navega {  width: 100%;  height: auto;  position: relative;  }
+  
+  ul.navega li a {  float: left;  padding: 15px;  }
 }
 
-@media screen and (min-width: 1001px) {
-    div#containerForMain, #footer {
-        margin-left:25%;
-    }
-    
-    ul.navega {
-        width: 25%;
-        position: fixed;
-        height: 100%;
-    }
-    ul.navega li a {
-        text-align: left;
-        float: none;
-    }
+@media screen and (min-width: 1001px) {  
+  ul.navega {  width: 200px;  position: fixed;  height: 100%;  }
+  ul.navega li a {  text-align: left;  float: none;  }
+  div#containerForMain, #footer {  margin-left:200px;  }
+  body {  width:1000px;  left:calc(0.5*(100% - 1000px));  }
+  #borde-derecha{  display:block;  border:1px solid black;  position: fixed;  right:calc(0.5*(100% - 1000px)); height: 100%;}
 }

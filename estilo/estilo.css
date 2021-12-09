@@ -1,7 +1,50 @@
 html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
-
-
-
 /* ========================================================================================== */
 /*  estilo : comun  */
+ul.navega li a, h5.footersubtitulo{ font-family:mono, monospace; }
+h2.footertitulo { font-family: 'Courgette', mono, monospace; }
+
+form button[type="submit"], button[type="button"]{
+    font-size: 32px;
+    background-color:hsl(180, 100%, 20%);
+    border:2px solid black;
+    color: white;
+    margin-top: 20px;
+    width:80px;
+    height:80px;
+    border-radius: 50%;
+}
+form button[type="submit"].peq, button[type="button"].peq{
+    font-size: 19px;
+    margin-top: 12px;
+    width:48px;
+    height:48px;
+}
+form button[type="submit"]:hover, button[type="button"]:hover{  background-color:hsl(180, 100%, 15%);  }
+
+
+input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], textarea{
+	border-radius: 8px;         font-size:1.5em;
+    margin-bottom: 25px;        background-color:#e8e8e8;
+    padding: 10px 20px;         border:1px solid black;
+}
+input[type="text"]:focus, input[type="radio"]:focus, input[type="tel"]:focus, input[type="password"]:focus, textarea:focus{
+    background-color:#d8d8d8;
+}
+
+fieldset{ border:0px solid green;}
+
+form[id$=Form] label, fieldset.notHidable label { font-family:'Bree Serif', 'Courer Prime', mono, monospace;  }
+fieldset.notHxxxidable label.explixxxca { font-family:'Oswaxxld', mono, monospace;  }
+
+form[id$=Form] label, fieldset.notHidable label { font-size:1.7em; letter-spacing:0.40em; font-weight:bolder; color:hsl(0, 100%, 50%); display: block; }
+fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:black; display:block; text-align:left; }
+
+fieldset.hidable label {  font-size:1.25em; letter-spacing:0.20em; font-weight:bolder;  color:#000000;  }
+fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:black);  }
+
+
+form[id$=Form] h3, fieldset.hidable h3{ font-family:serif, Times, times; font-weight:bolder;  color:hsl(0, 100%, 50%); }
+
+div#updateNepeTitulo h3, div#creaNepeTitulo h3 { font-family: 'Courgette', mono, monospace; font-size:1.7em; letter-spacing:0.40em;}

@@ -79,13 +79,18 @@ jQuery.toggleOnClick = function(){
 	// var $todosLosHidable = jQuery('.hidable');
 	// $todosLosHidable.hide();
 	$todosLosNotHidable.on('click', function(evento){
-		var $toToggle = jQuery(evento.currentTarget).next('.hidable');
+		var $elNotHidable = jQuery(evento.currentTarget); 
+		var $toToggle = $elNotHidable.next('.hidable');
 		if ($toToggle.is(':visible')) {
 			$toToggle.hide(); 
 			//jQuery(evento.currentTarget).css({border:'none', borderBottomWidth:'1pt', borderBottomStyle:'solid', borderBottomColor:'#dadada'});
+			$elNotHidable.children('.fa-chevron-circle-up').hide();
+			$elNotHidable.children('.fa-chevron-circle-down').show();
 		}else{
 			$toToggle.show(); 
 			//jQuery(evento.currentTarget).css({border:'none'});
+			$elNotHidable.children('.fa-chevron-circle-down').hide();
+			$elNotHidable.children('.fa-chevron-circle-up').show();
 		}
 	});
 }
@@ -96,6 +101,10 @@ jQuery.hideThem = function(){
 	// $todosLosHidable.hide();
 	var $toHide = $todosLosNotHidable.next('.hidable');
 	$toHide.hide();
+	$toHide = $todosLosNotHidable.children('.fa-chevron-circle-up');
+	$toHide.hide();
+	var $toShow = $todosLosNotHidable.children('.fa-chevron-circle-down');
+	$toShow.show();
 }
 
 jQuery.showThem = function(){
@@ -103,6 +112,10 @@ jQuery.showThem = function(){
 	// var $todosLosHidable = jQuery('.hidable');
 	// $todosLosHidable.hide();
 	var $toShow = $todosLosNotHidable.next('.hidable');
+	$toShow.show();
+	var $toHide = $todosLosNotHidable.children('.fa-chevron-circle-down');
+	$toHide.hide();
+	$toShow = $todosLosNotHidable.children('.fa-chevron-circle-up');
 	$toShow.show();
 }
 
