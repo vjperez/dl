@@ -4,7 +4,11 @@
 
 session_start();
 if(isset($_SESSION['dueno_id'])){
-		$dueno_id = $_SESSION['dueno_id'];
+		if(isset( $_POST['userNumber'] )){
+			$dueno_to_edit = $_POST['userNumber'];
+		}else{
+			$dueno_to_edit = $_SESSION['dueno_id'];
+		}
 		$pass01 = $_POST['pass01'];
 		$hashed_pass01 = password_hash($pass01 , PASSWORD_DEFAULT);
 

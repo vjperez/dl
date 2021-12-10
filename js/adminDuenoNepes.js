@@ -23,7 +23,7 @@ jQuery.adminDuenoNepes = function(){
 
 
 
-	//do this when form submitted ; adminNepeForm
+	//do this when form submitted ; adminNepesForm
     jQuery('form#adminNepesForm').submit(function(evento){
         evento.preventDefault(); //not making a submit (POST request) from html action.
         jQuery.post('escritos/getHisNepes.php', {llave:llave} )
@@ -63,7 +63,8 @@ jQuery.adminDuenoNepes = function(){
 			// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
 			//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
 			
-			jQuery.post('escritos/editDuenoContrasena.php', {pass01:pass01}, jQuery('#userNumberId').val() )
+			var userNumber = jQuery('#userNumberId').val();
+			jQuery.post('escritos/editDuenoContrasena.php', {pass01:pass01, userNumber:userNumber} )
 			.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 				//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
 				//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
