@@ -370,6 +370,41 @@ jQuery(document).ready(
 					}//if
 				}); //ajax complete
 			break;			
+			case 'adminDuenoNepes':
+				var key = 'dueno_id';
+				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+					if(datos.isSet){ 
+						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
+						jQuery('#navHome').addClass("activo");
+						jQuery.pintaHeaderLinks();
+						
+						//get duenoId
+						//var duenoId = jQuery.urlParametro('duenoId');
+
+						jQuery.dameLook('looks/adminDuenoNepes.html');
+
+						//once look is in, use jQuery to update look with profile values
+						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+							if(settingsObjeto.url === 'looks/adminDuenoNepes.html'){
+								//jQuery.adminDuenoNepes(duenoId);
+								jQuery.adminDuenoNepes();
+							}//if
+						});//ajaxComplete
+					}else{
+						jQuery('#navLogout').hide();
+						jQuery.pintaHeaderLinks();
+						
+						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+						var textoEstatus = 'Error, usuario solicito admin (adminDuenoNepes) look, sin estar logueado.';
+						var elError = 'Error humano.';
+
+						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+						jQuery(window.location).attr('href', path);	
+					}
+				});
+			break;		
 			case 'faq':
 				jQuery('#navFaq').addClass("activo");
 				var key = 'dueno_id';
