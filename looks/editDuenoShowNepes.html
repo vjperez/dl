@@ -10,46 +10,41 @@
     <div id="main" class="">
 
 
+		<div id="editDuenoShowNepes">
 
+			<div id="nepes" class="">
+				<fieldset id="labelTableContainer" class="notHidable">
+			<!--
+				<label class="">Micro Empresas:</label>
+					<table class="subArea">
+						<tr><td><a href="portada.html?look=editMicroEmpreData&meId=0">Crea micro empresa</a></td></tr>
+					</table>
+			-->
+					<div>  <button type="button" class="peq"><i class="fas fa-plus-square"></i></button> 		    									</div>
+				</fieldset>
+			</div>
 
-
-    <!-- ancho-sensi aplica siempre; para cell, aqui no es re escrito, so por default aplica ancho-sensi (1de1 o sea 100%).
-	ipad 3 de 4 lo re escribe para ipad y al no re escribir para desk, sigue aplicando en desk las dimensiones q se dieron para ipad -->
-    <div id="editDuenoDataShowEmpres">
-
-		<div id="nepes" class="ancho-sensi-ipad-2de3">
-			<fieldset id="labelTableContainer" class="notHidable">
-        <!--
-			  <label class="">Micro Empresas:</label>
-        		<table class="subArea">
-           			<tr><td><a href="portada.html?look=editMicroEmpreData&meId=0">Crea micro empresa</a></td></tr>
-			    </table>
-         -->
-		 		<div>  <button type="button" class="peq"><i class="fas fa-plus-square"></i></button> 		    									</div>
-			</fieldset>
+			<form id="editDuenoForm" class="" action="XXXeditcontrasena.phpXXX" method="post">
+				<fieldset class="notHidable">
+					<label>Password</label>
+					<label class="explica">Cambia tu password</label>
+					<label class="explica">Usa titulo color marr&oacute;n para ver secci&oacute;n.</label>
+				</fieldset>
+				<fieldset class="hidable">
+					<div class="">	<label for="passwordId">Password</label>																			</div>
+					<div class="">  <input id="passwordId"        type="password" name="password"        maxlength="50" required=true>					</div>
+					<div class="">  <label for="passwordConfirmId">Password</label>																		</div>
+					<div class="">  <input id="passwordConfirmId" type="password" name="passwordConfirm" maxlength="50" required=true placeholder="">	</div>
+					<div>  <button type="submit" class="peq"><i class="fas fa-share-square"></i></button>									    		</div>
+				</fieldset>
+				<h3></h3>
+			</form><!-- editDuenoForm -->
 			
-		</div>
+		</div><!-- editDuenoShowNepes -->
 
-		<form id="editDuenoDataForm" class="ancho-sensi-ipad-2de3" action="XXXeditcontrasena.phpXXX" method="post">
-			<fieldset class="notHidable">
-				<label>Password</label>
-				<label class="explica">Cambia tu password</label>
-				<label class="explica">Usa titulo color marr&oacute;n para ver secci&oacute;n.</label>
-			</fieldset>
-			<fieldset class="hidable">
-				<div class="">	<label for="passwordId">Password</label>																			</div>
-				<div class="">  <input id="passwordId"        type="password" name="password"        maxlength="50" required=true>					</div>
-				<div class="">  <label for="passwordConfirmId">Password</label>																		</div>
-				<div class="">  <input id="passwordConfirmId" type="password" name="passwordConfirm" maxlength="50" required=true placeholder="">	</div>
-				<div>  <button type="submit" class="peq"><i class="fas fa-share-square"></i></button>									    		</div>
-			</fieldset>
-			<h3></h3>
-			
+		<script src="js/editDuenoShowNepes.js"></script>
 
-		</form><!-- editDuenoDataForm -->
-	</div>
 
-	<script src="js/editDuenoShowNepes.js"></script>
 	</div>
 <!-- contenido -->
 

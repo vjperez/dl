@@ -28,12 +28,12 @@ jQuery.editDuenoShowNepes = function(){
 	
 	
 	//do this when form submitted ; editDuenoShowNepes task 2
-	jQuery('form#editDuenoDataForm').submit(function(evento){
+	jQuery('form#editDuenoForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action.
 		var user = 'valorDummy';
 		var pass01 = jQuery('#passwordId').val();
 		var pass02 = jQuery('#passwordConfirmId').val();
-		if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editDuenoDataForm h3') ){
+		if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editDuenoForm h3') ){
 			//Valid values son los q cumplen estas 3 cosas.
 			//Estas cosas se pueden chequear antes del post y evito post sin sentido
 			// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
@@ -57,9 +57,9 @@ jQuery.editDuenoShowNepes = function(){
 					jQuery(window.location).attr('href', path);				
 				}
 				if(datosJSObj.cambiado){
-					jQuery.feedback('form#editDuenoDataForm h3', 'Tu password fue cambiado.');
+					jQuery.feedback('form#editDuenoForm h3', 'Tu password fue cambiado.');
 				}else{
-					jQuery.feedback('form#editDuenoDataForm h3', 'Trata otra vez. No cambiamos NADA !');
+					jQuery.feedback('form#editDuenoForm h3', 'Trata otra vez. No cambiamos NADA !');
 				}
 			})
 			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -78,8 +78,8 @@ jQuery.editDuenoShowNepes = function(){
 	jQuery.hideThem();
 
 	//erase feedback when user writting
-	jQuery('form#editDuenoDataForm  input[name^=password]').keyup(function(){
-		jQuery.feedback('form#editDuenoDataForm h3', '');
+	jQuery('form#editDuenoForm  input[name^=password]').keyup(function(){
+		jQuery.feedback('form#editDuenoForm h3', '');
 	});
 	
 	jQuery('div#nepes :button').click(function(){
