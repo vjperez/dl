@@ -1,23 +1,37 @@
 //jQuery.editDuenoShowNepes = function(duenoId){	
 jQuery.editDuenoShowNepes = function(){	
 
-	//show empresas ; editDuenoShowNepes task 1
-  //jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
+
+	//hide, show on click
+	jQuery.toggleOnClick();
+	//hide them  
+	jQuery.hideThem();
+
+	//erase feedback when user writting
+	jQuery('form#editDuenoForm  input[name^=password]').keyup(function(){
+		jQuery.feedback('form#editDuenoForm h3', '');
+	});
+	
+	jQuery('div#nepes :button').click(function(){
+		//alert(window.location.pathname + '?look=creaNepe'); 
+		jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
+	});
+
+
+
+    //show empresas ; editDuenoShowNepes
+    //jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
 	jQuery.getJSON('escritos/showNepesGetIds.php')
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-		var labelTable = '<label class="">Tus Negocios:</label>';
-		labelTable   +=  '<table class="subArea">';
-			jQuery.each(datos, function(index){
-			  //labelTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
-				labelTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'
-				+  '&nepeId=' + datos[index].nepeId  + '">' + datos[index].nepeNombre + '</a></td></tr>';
-			});
-			
-		  //labelTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
-		
-			labelTable += '</table>';
-			
-		jQuery('fieldset#labelTableContainer').prepend(labelTable);
+		var table  =  '<table class="subArea">';
+		jQuery.each(datos, function(index){
+			//table += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
+			table += '<tr><td><a class="link" href="portada.html?look=updateNepe'
+			+  '&nepeId=' + datos[index].nepeId  + '">' + datos[index].nepeNombre + '</a></td></tr>';
+		});
+		//table += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
+		table += '</table>';			
+		jQuery('fieldset#labelTableContainer').prepend(table);
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -26,8 +40,21 @@ jQuery.editDuenoShowNepes = function(){
 	});
 	
 	
+
+	jQuery.getJSON('escritos/getUsername.php')
+	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
+		var elLabel = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
+		jQuery('fieldset#labelTableContainer').prepend(elLabel);
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	});
 	
-	//do this when form submitted ; editDuenoShowNepes task 2
+
+
+	//do this when form submitted ; editDuenoShowNepes
 	jQuery('form#editDuenoForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action.
 		var user = 'valorDummy';
@@ -72,18 +99,4 @@ jQuery.editDuenoShowNepes = function(){
 	
 	
 	
-	//hide, show on click ; editDuenoShowNepes task 3
-	jQuery.toggleOnClick();
-	//hide them  ; editDuenoShowNepes task 4
-	jQuery.hideThem();
-
-	//erase feedback when user writting
-	jQuery('form#editDuenoForm  input[name^=password]').keyup(function(){
-		jQuery.feedback('form#editDuenoForm h3', '');
-	});
-	
-	jQuery('div#nepes :button').click(function(){
-		//alert(window.location.pathname + '?look=creaNepe'); 
-		jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
-	});
 }
