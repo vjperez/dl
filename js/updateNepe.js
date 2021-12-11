@@ -282,11 +282,12 @@ jQuery.getReducedImagesArray = function(){ //helper function for jQuery.have5OrL
 
 
 jQuery.isNotImage = function(){ //helper function for jQuery.have5OrLessImages
-	var i;
-	for (i = 0; i < jQuery('form#updateNepeForm input#fotosId')[0].files.length; i++) {
+	var i;			
+	var $fotoInput = jQuery('form#updateNepeForm input#fotosId');
+	for (i = 0; i < $fotoInput[0].files.length; i++) {
 		//var imageType = /image.*/;
 		//file.type.match(imageType)     ;   instead of toLowerCase() and startsWith() you could use the previous regular expression
-		if( ! jQuery('form#updateNepeForm input#fotosId')[0].files[i].type.toLowerCase().startsWith("image") ) return true; // if not an image, return true and break for loop
+		if( ! $fotoInput[0].files[i].type.toLowerCase().startsWith("image") ) return true; // if not an image, return true and break for loop
 	}
 	return false;
 }
@@ -306,4 +307,9 @@ $redInputs.on('change', function(evento){
 var $fotoInput = jQuery('form#updateNepeForm input#fotosId');
 $fotoInput.on('change', function(evento){
 	jQuery.have5OrLessImages();
+});
+
+var $fotoBoton = jQuery('fieldset#fotoSrcFieldset   button[type=button]');
+$fotoBoton.on('click', function(evento){
+	$fotoInput.click();
 });
