@@ -15,7 +15,7 @@ form button[type="submit"], button[type="button"]
 
 
 form[id$=Form] h3 { text-align:center; }
-div[id$=NepeTitulo] h3, div[id$=NepeTitulo] label.explica { text-align:center; }
+div#creaNepeTitulo h3, div#updateNepeTitulo h3, div#creaNepeTitulo label.explica,  div#updateNepeTitulo label.explica  { text-align:center; display:block; }
 
 
 /* profile */
