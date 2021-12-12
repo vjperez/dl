@@ -16,11 +16,6 @@ jQuery.adminDuenoNepes = function(){
 		jQuery.feedback('form#adminNepesForm h3', '');
 	});
 	
-	jQuery('div#nepes :button').click(function(){
-		//alert(window.location.pathname + '?look=creaNepe'); 
-		//jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
-	});
-
 
 
 	//do this when form submitted ; adminNepesForm
@@ -28,21 +23,41 @@ jQuery.adminDuenoNepes = function(){
         evento.preventDefault(); //not making a submit (POST request) from html action.
 		var userNumber = jQuery('#userNumber02Id').val();
         jQuery.post('escritos/showNepesGetIds.php', {userNumber:userNumber} )
-        .done(function(datos, estatusForDONE, xhrObjetoForDONE){
-            var labelTable = '<label class="">Los Negocios de ... :</label>';
-            labelTable   +=  '<table class="subArea">';
-                jQuery.each(datos, function(index){ 
-					//labelTable += '<tr><td>' + datos[index].nepeNombre 
-					//+ '<i id="i' + index + '" ' + ' class="fas fa-trash-alt"></i>' + '</td></tr>';
-					
-					table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
-					+ '&acto=deleteNepe' +  '&nepeId=' + datos[index].nepeId   + '&userNumber=' + userNumber + '">' 
-					+ datos[index].nepeNombre + '<i class="fas fa-trash-alt"></i>' 
-					+ '</a></td></tr>';
-                    
-                });
-                labelTable += '</table>';
-            jQuery('fieldset#labelTableContainer').prepend(labelTable);
+        .done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+			try{
+				alert('datosJSONStr: ' + datosJSONStr);
+				datosJSObj = JSON.parse(datosJSONStr);
+				alert('datosJSObj: ' + datosJSObj);
+			}catch(errorParseo){
+				var datosJSONStrAsXHRTexto = datosJSONStr;
+				var textoEstatus = 'Error parseando la siguiente respuesta del servidor en escritos/editDuenoContrasena.php :<br> Mensaje: ' + errorParseo.message;
+				var elError = errorParseo.name;
+				
+				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
+				jQuery(window.location).attr('href', path);				
+			}
+            var table =  '<table class="subArea">';
+			jQuery.each(datosJSObj, function(index){
+				
+				table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
+				+ '&acto=deleteNepe' +  '&nepeId=' + datosJSObj[index].nepeId + '">' 
+				+ datosJSObj[index].nepeNombre + '<i class="fas fa-trash-alt"></i>' 
+				+ '</a></td></tr>';
+				
+			});
+			table += '</table>';
+            jQuery('fieldset#labelTableContainer').prepend(table);
+			
+			jQuery.getJSON('escritos/getUsername.php',  {userNumber:userNumber} )
+			.done(function(dato, estatusForDONE, xhrObjetoForDONE){
+				var elLabel = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
+				jQuery('fieldset#labelTableContainer').prepend(elLabel);
+			})
+			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+				var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+				var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+				jQuery(window.location).attr('href', path); 
+			});
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
             var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -51,6 +66,7 @@ jQuery.adminDuenoNepes = function(){
         });
     });	
 	
+
 	
 
 	//do this when form submitted ; adminDuenoForm
@@ -83,7 +99,7 @@ jQuery.adminDuenoNepes = function(){
 					jQuery(window.location).attr('href', path);				
 				}
 				if(datosJSObj.cambiado){
-					jQuery.feedback('form#adminDuenoForm h3', 'Tu password fue cambiado.');
+					jQuery.feedback('form#adminDuenoForm h3', 'Password de usuario ... fue cambiado.');
 				}else{
 					jQuery.feedback('form#adminDuenoForm h3', 'Trata otra vez. No cambiamos NADA !');
 				}

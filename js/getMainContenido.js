@@ -8,9 +8,8 @@ jQuery(document).ready(
 			break;
 			case 'deleteNepe':
 				var nepeId = jQuery.urlParametro('nepeId');
-				var userNumber = jQuery.urlParametro('userNumber');
 				
-				jQuery.getJSON('escritos/deleteNepe.php', {userNumber:userNumber, nepeId:nepeId})
+				jQuery.getJSON('escritos/deleteNepe.php', {nepeId:nepeId})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.wasDeleted)  {  }

@@ -1,21 +1,18 @@
 <?php
+$deleteBregandoQuery = "DELETE 
+FROM bregando
+WHERE nepe_id = '$nepe_to_delete'";
+$recurso = pg_query($cnx, $deleteBregandoQuery);
+
+if($recurso){
+}else{
+    pg_close($cnx); //maybe not needed but doesn't hurt	
+    throw new Exception('Mal query.  Sin RECURSO, para deleteBregandoQuery en: '  . __FILE__ );
+}
 
 
-$query = "DELETE 
+$deleteNepeQuery = "DELETE 
 FROM nepe
-INNER JOIN  bregando ON dueno.id = bregando.dueno_id 
-INNER JOIN nepe  ON nepe.id = bregando.nepe_id
-WHERE id = $2";
-pg_prepare($cnx, "preparo", $query);
-$recurso = pg_execute($cnx, "preparo", array($hashed_pass01, $dueno_to_edit));
-?>
-
-
-<?php
-$getNepeIdsQuery = "SELECT
-nepe.id, nepe.nombre 
-FROM dueno 
-INNER JOIN  bregando ON dueno.id = bregando.dueno_id 
-INNER JOIN nepe  ON nepe.id = bregando.nepe_id
-WHERE dueno.id = '$dueno_to_query'";
+WHERE id = '$nepe_to_delete'";
+$recurso = pg_query($cnx, $deleteNepeQuery);
 ?>

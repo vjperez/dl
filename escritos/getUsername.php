@@ -1,7 +1,11 @@
 <?php
 session_start();
 if(isset($_SESSION['dueno_id'])){
-		$dueno_id = $_SESSION['dueno_id'];	
+		if(isset( $_REQUEST['userNumber'] )){
+			$dueno_to_query = $_REQUEST['userNumber'];
+		}else{
+			$dueno_to_query = $_SESSION['dueno_id'];
+		}
 
 		require_once 'conecta/conecta.php';
 		

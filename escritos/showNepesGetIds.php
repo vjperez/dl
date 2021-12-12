@@ -1,8 +1,8 @@
 <?php
 session_start();
 if(isset($_SESSION['dueno_id'])){
-		if(isset( $_POST['userNumber'] )){
-			$dueno_to_query = $_POST['userNumber']; 
+		if(isset( $_REQUEST['userNumber'] )){
+			$dueno_to_query = $_REQUEST['userNumber']; 
 		}else{
 			$dueno_to_query = $_SESSION['dueno_id'];
 		}
