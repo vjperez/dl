@@ -25,9 +25,9 @@ jQuery.adminDuenoNepes = function(){
         jQuery.post('escritos/showNepesGetIds.php', {userNumber:userNumber} )
         .done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 			try{
-				alert('datosJSONStr: ' + datosJSONStr);
+				//alert('datosJSONStr: ' + datosJSONStr);
 				datosJSObj = JSON.parse(datosJSONStr);
-				alert('datosJSObj: ' + datosJSObj);
+				//alert('datosJSObj: ' + datosJSObj);
 			}catch(errorParseo){
 				var datosJSONStrAsXHRTexto = datosJSONStr;
 				var textoEstatus = 'Error parseando la siguiente respuesta del servidor en escritos/editDuenoContrasena.php :<br> Mensaje: ' + errorParseo.message;

@@ -23,9 +23,7 @@ jQuery.editDuenoShowNepes = function(){
     //jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
 	jQuery.getJSON('escritos/showNepesGetIds.php')
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-
-		alert('datos: ' + datos);
-
+		//alert('datos: ' + datos);
 		var table  =  '<table class="subArea">';
 		jQuery.each(datos, function(index){
 			//table += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
