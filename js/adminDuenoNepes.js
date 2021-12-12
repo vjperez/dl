@@ -26,20 +26,22 @@ jQuery.adminDuenoNepes = function(){
 	//do this when form submitted ; adminNepesForm
     jQuery('form#adminNepesForm').submit(function(evento){
         evento.preventDefault(); //not making a submit (POST request) from html action.
-        jQuery.post('escritos/getHisNepes.php', {llave:llave} )
+		var userNumber = jQuery('#userNumber02Id').val();
+        jQuery.post('escritos/showNepesGetIds.php', {userNumber:userNumber} )
         .done(function(datos, estatusForDONE, xhrObjetoForDONE){
-            var labelTable = '<label class="">Tus Negocios:</label>';
+            var labelTable = '<label class="">Los Negocios de ... :</label>';
             labelTable   +=  '<table class="subArea">';
-                jQuery.each(datos, function(index){
-                //labelTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
-                    labelTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'
-                    +  '&nepeId=' + datos[index].nepeId  + '">' + datos[index].nepeNombre + '</a></td></tr>';
+                jQuery.each(datos, function(index){ 
+					//labelTable += '<tr><td>' + datos[index].nepeNombre 
+					//+ '<i id="i' + index + '" ' + ' class="fas fa-trash-alt"></i>' + '</td></tr>';
+					
+					table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
+					+ '&acto=deleteNepe' +  '&nepeId=' + datos[index].nepeId   + '&userNumber=' + userNumber + '">' 
+					+ datos[index].nepeNombre + '<i class="fas fa-trash-alt"></i>' 
+					+ '</a></td></tr>';
+                    
                 });
-                
-            //labelTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
-            
                 labelTable += '</table>';
-                
             jQuery('fieldset#labelTableContainer').prepend(labelTable);
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){

@@ -40,3 +40,7 @@ div#faqdiv i[class*="fa-chevron-circle"]{ margin-left:0.5em; }
 
 /*  crea update nepe  edit dueno show nepes  */
 .hidable, .subArea{  margin-top:1em;  padding:0px;  }
+
+
+/* admin */
+fieldset#lableTableContainer i[class*="fa-trash-alt"]{ margin-left:8.5em; }

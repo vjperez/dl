@@ -1,8 +1,13 @@
 <?php
 session_start();
 if(isset($_SESSION['dueno_id'])){
-		$dueno_id = $_SESSION['dueno_id'];	
-	
+		if(isset( $_POST['userNumber'] )){
+			$dueno_to_query = $_POST['userNumber']; 
+		}else{
+			$dueno_to_query = $_SESSION['dueno_id'];
+		}
+
+
 		//conecta al db
 		require_once 'conecta/conecta.php';
 		//i am sure i have a connection, because an exception was NOT thrown at conecta
