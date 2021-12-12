@@ -33,7 +33,7 @@ div#donde i+span.no, div#cuando i+span.no { background-position:0px -25px; }
 div#donde i{ margin-right:2pt; }
 
 /*  faq  */
-div#faqdiv i[class*="fa-chevron-circle"]{ margin-left:0.5em; }
+div#faqdiv i[class*="fa-chevron-circle"]{ margin-left:1em; }
 
 /*  faq  crea update nepe edit dueno show nepes  */
 .notHidable{  margin-top:2.5em;   padding:0px;  }
@@ -43,4 +43,4 @@ div#faqdiv i[class*="fa-chevron-circle"]{ margin-left:0.5em; }
 
 
 /* admin */
-fieldset#lableTableContainer i[class*="fa-trash-alt"]{ margin-left:8.5em; }
+fieldset  table tr i[class*="fa-trash-alt"],  fieldset label i[class*="fa-chevron-circle"] { margin-left:1em;  }
