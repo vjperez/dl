@@ -119,13 +119,6 @@ jQuery.showThem = function(){
 	$toShow.show();
 }
 
-jQuery.pintaHeaderLinks = function(){
-	var $headerLinks = jQuery('div#navega a.navelink');
-	$headerLinks.css({
-    	color:'#2b68c0'
-	});
-}
-
 jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatElement){
 	//Esta funcion la usan login y registra
 	//para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.

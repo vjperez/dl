@@ -33,7 +33,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					jQuery.pintaHeaderLinks();
+					
 				});
 
 				jQuery.dameLook('looks/busca.html');
@@ -52,7 +52,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					jQuery.pintaHeaderLinks();
+					
 				});
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
@@ -104,7 +104,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					jQuery.pintaHeaderLinks();
+					
 				});
 
 				//get nepeId then
@@ -141,7 +141,7 @@ jQuery(document).ready(
 						//2) redirect to error, when already logged
 						/*
 						jQuery('#navSignup').hide();
-						jQuery.pintaHeaderLinks();
+						
 						
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito login look, estando logueado.';
@@ -153,7 +153,7 @@ jQuery(document).ready(
 					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 						jQuery('#navLogin').addClass("activo");
-						jQuery.pintaHeaderLinks();
+						
 						
 						//get login look
 						jQuery.dameLook('looks/login.html');
@@ -177,7 +177,7 @@ jQuery(document).ready(
 					if(datos.isSet){ 
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 						jQuery('#navHome').addClass("activo");
-						jQuery.pintaHeaderLinks();
+						
 						
 						//get duenoId
 						//var duenoId = jQuery.urlParametro('duenoId');
@@ -193,7 +193,7 @@ jQuery(document).ready(
 						});//ajaxComplete
 					}else{
 						jQuery('#navLogout').hide();
-						jQuery.pintaHeaderLinks();
+						
 						
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito home (editDuenoShowNepes) look, sin estar logueado.';
@@ -212,7 +212,7 @@ jQuery(document).ready(
 					if(datos.isSet){
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 						jQuery('#navHome').addClass("activo");
-						jQuery.pintaHeaderLinks();
+						
 						
 						jQuery.dameLook('looks/creaNepe.html');
 
@@ -229,7 +229,7 @@ jQuery(document).ready(
 						});//ajaxComplete
 					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-						jQuery.pintaHeaderLinks();
+						
 						
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito creaNepe look, sin estar logueado.';
@@ -248,7 +248,7 @@ jQuery(document).ready(
 					if(datos.isSet){
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 						jQuery('#navHome').addClass("activo");
-						jQuery.pintaHeaderLinks();
+						
 						
 						key = 'own_nepes';
 						jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -311,7 +311,7 @@ jQuery(document).ready(
 						});
 					}else{  
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-						jQuery.pintaHeaderLinks();
+						
 						
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito updateNepe look, sin estar logueado.';
@@ -333,7 +333,7 @@ jQuery(document).ready(
 						//2) redirect to error look, when logged 
 						/*
 						jQuery('#navLogin').hide();
-						jQuery.pintaHeaderLinks();
+						
 						
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito creaDueno look, estando logueado.';
@@ -345,7 +345,7 @@ jQuery(document).ready(
 					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 						jQuery('#navSignup').addClass("activo");
-						jQuery.pintaHeaderLinks();
+						
 						
 						//get creaDueno look
 						jQuery.dameLook('looks/creaDueno.html');
@@ -368,7 +368,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					jQuery.pintaHeaderLinks();
+					
 				});
 
 				jQuery.dameLook('looks/recentNepes.html');
@@ -388,7 +388,7 @@ jQuery(document).ready(
 					if(datos.isSet){ 
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 						jQuery('#navHome').addClass("activo");
-						jQuery.pintaHeaderLinks();
+						
 						
 						//get duenoId
 						//var duenoId = jQuery.urlParametro('duenoId');
@@ -404,7 +404,7 @@ jQuery(document).ready(
 						});//ajaxComplete
 					}else{
 						jQuery('#navLogout').hide();
-						jQuery.pintaHeaderLinks();
+						
 						
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito admin (adminDuenoNepes) look, sin estar logueado.';
@@ -423,7 +423,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					jQuery.pintaHeaderLinks();
+					
 				});
 
 				jQuery.dameLook('looks/faq.html');
@@ -443,7 +443,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					jQuery.pintaHeaderLinks();
+					
 				});
 
 				jQuery.dameLook('looks/nada.html');
@@ -455,7 +455,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					jQuery.pintaHeaderLinks();
+					
 				});
 				
 				jQuery.dameLook('looks/error.html');
