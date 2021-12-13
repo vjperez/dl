@@ -102,7 +102,16 @@ jQuery.adminDuenoNepes = function(){
 					jQuery(window.location).attr('href', path);				
 				}
 				if(datosJSObj.cambiado){
-					jQuery.feedback('form#adminDuenoForm h3', 'Password de usuario ... fue cambiado.');
+					jQuery.getJSON('escritos/getUsername.php',  {userNumber:userNumber} )
+					.done(function(dato, estatusForDONE, xhrObjetoForDONE){
+						var feedback = 'Password de ' + dato + ' fue cambiado.'; 
+						jQuery.feedback('form#adminDuenoForm h3', feedback);
+					})
+					.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+						var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+						var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+						jQuery(window.location).attr('href', path); 
+					});
 				}else{
 					jQuery.feedback('form#adminDuenoForm h3', 'Trata otra vez. No cambiamos NADA !');
 				}
