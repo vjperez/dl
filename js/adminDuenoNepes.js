@@ -22,6 +22,20 @@ jQuery.adminDuenoNepes = function(){
     jQuery('form#adminNepesForm').submit(function(evento){
         evento.preventDefault(); //not making a submit (POST request) from html action.
 		var userNumber = jQuery('#userNumber02Id').val();
+
+
+		jQuery.getJSON('escritos/getUsername.php',  {userNumber:userNumber} )
+		.done(function(dato, estatusForDONE, xhrObjetoForDONE){
+			var elLabel = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
+			jQuery('fieldset#labelTableContainer').append(elLabel);
+		})
+		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+			var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+			jQuery(window.location).attr('href', path); 
+		});
+
+
         jQuery.post('escritos/showNepesGetIds.php', {userNumber:userNumber} )
         .done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 			try{
@@ -38,32 +52,21 @@ jQuery.adminDuenoNepes = function(){
 			}
             var table =  '<table class="subArea">';
 			jQuery.each(datosJSObj, function(index){
-				
 				table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
 				+ '&acto=deleteNepe' +  '&nepeId=' + datosJSObj[index].nepeId + '">' 
 				+ datosJSObj[index].nepeNombre + '<i class="fas fa-trash-alt"></i>' 
-				+ '</a></td></tr>';
-				
+				+ '</a></td></tr>';	
 			});
 			table += '</table>';
-            jQuery('fieldset#labelTableContainer').prepend(table);
-			
-			jQuery.getJSON('escritos/getUsername.php',  {userNumber:userNumber} )
-			.done(function(dato, estatusForDONE, xhrObjetoForDONE){
-				var elLabel = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
-				jQuery('fieldset#labelTableContainer').prepend(elLabel);
-			})
-			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-				var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-				var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-				jQuery(window.location).attr('href', path); 
-			});
+            jQuery('fieldset#labelTableContainer').append(table);
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
             var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
             var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
             jQuery(window.location).attr('href', path); 
         });
+
+
     });	
 	
 

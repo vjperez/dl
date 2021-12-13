@@ -19,7 +19,20 @@ jQuery.editDuenoShowNepes = function(){
 
 
 
-    //show empresas ; editDuenoShowNepes
+	jQuery.getJSON('escritos/getUsername.php')
+	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
+		var elLabel = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
+		jQuery('fieldset#labelTableContainer').prepend(elLabel);
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	});
+    
+	
+	
+	//show empresas ; editDuenoShowNepes
     //jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
 	jQuery.getJSON('escritos/showNepesGetIds.php')
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
@@ -32,20 +45,7 @@ jQuery.editDuenoShowNepes = function(){
 		});
 		//table += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
 		table += '</table>';			
-		jQuery('fieldset#labelTableContainer').prepend(table);
-	})
-	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-		jQuery(window.location).attr('href', path); 
-	});
-	
-	
-
-	jQuery.getJSON('escritos/getUsername.php')
-	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
-		var elLabel = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
-		jQuery('fieldset#labelTableContainer').prepend(elLabel);
+		jQuery(table).insertAfter('fieldset#labelTableContainer label');
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
