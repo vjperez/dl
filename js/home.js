@@ -1,5 +1,5 @@
-//jQuery.editDuenoShowNepes = function(duenoId){	
-jQuery.editDuenoShowNepes = function(){	
+//jQuery.home = function(duenoId){	
+jQuery.home = function(){	
 
 
 	//hide, show on click
@@ -32,7 +32,7 @@ jQuery.editDuenoShowNepes = function(){
     
 	
 	
-	//show empresas ; editDuenoShowNepes
+	//show nepes
     //jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
 	jQuery.getJSON('escritos/showNepesGetIds.php')
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
@@ -55,7 +55,7 @@ jQuery.editDuenoShowNepes = function(){
 	
 
 
-	//do this when form submitted ; editDuenoShowNepes
+	//do this when form submitted ; 
 	jQuery('form#editDuenoForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action.
 		var user = 'valorDummy';

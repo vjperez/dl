@@ -136,7 +136,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){  
 						//1) redirect to home, when already logged
-						jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes');
+						jQuery(window.location).attr('href', window.location.pathname + '?look=home');
 						//2) redirect to error, when already logged
 						/*
 						jQuery('#navSignup').hide();
@@ -168,7 +168,7 @@ jQuery(document).ready(
 					}
 				});				
 			break;
-			case 'editDuenoShowNepes':
+			case 'home':
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -181,13 +181,13 @@ jQuery(document).ready(
 						//get duenoId
 						//var duenoId = jQuery.urlParametro('duenoId');
 
-						jQuery.dameLook('looks/editDuenoShowNepes.html');
+						jQuery.dameLook('looks/home.html');
 
 						//once look is in, use jQuery to update look with profile values
 						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-							if(settingsObjeto.url === 'looks/editDuenoShowNepes.html'){
-								//jQuery.editDuenoShowNepes(duenoId);
-								jQuery.editDuenoShowNepes();
+							if(settingsObjeto.url === 'looks/home.html'){
+								//jQuery.home(duenoId);
+								jQuery.home();
 							}//if
 						});//ajaxComplete
 					}else{
@@ -195,7 +195,7 @@ jQuery(document).ready(
 						
 						
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-						var textoEstatus = 'Error, usuario solicito home (editDuenoShowNepes) look, sin estar logueado.';
+						var textoEstatus = 'Error, usuario solicito home look, sin estar logueado.';
 						var elError = 'Error humano.';
 
 						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
@@ -328,7 +328,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){
 						//1) redirect to home, when already logged
-						jQuery(window.location).attr('href', window.location.pathname + '?look=editDuenoShowNepes');
+						jQuery(window.location).attr('href', window.location.pathname + '?look=home');
 						//2) redirect to error look, when logged 
 						/*
 						jQuery('#navLogin').hide();
