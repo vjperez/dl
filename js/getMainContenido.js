@@ -24,6 +24,7 @@ jQuery(document).ready(
 		var look = jQuery.urlParametro('look');
 		switch(look) {
 			case 'busca':
+				/*
 				jQuery('#navBusca').addClass("activo");
 				
 				var key = 'dueno_id';
@@ -43,6 +44,7 @@ jQuery(document).ready(
 						jQuery.handleBuscaSubmit();	//when ajax complete ; handle form submit and go to opciones
 					}//if
 				}); //ajax complete
+				*/
 			break;
 			case 'opciones':
 				var key = 'dueno_id';
@@ -541,8 +543,8 @@ jQuery(document).ready(
 		}//switch
 		
 
-		var $el = jQuery('.look-faq');
-		$el.click(  function(evento){
+		
+		jQuery(document).on( 'click', '.look-faq', function(evento){
 								evento.preventDefault();
 								jQuery('#navFaq').addClass("activo");
 								var key = 'dueno_id';
@@ -563,6 +565,32 @@ jQuery(document).ready(
 										jQuery.hideThem();
 									}
 								});
-		}  );  
+		});
+		
+		
+		
+		jQuery(document).on(  'click', '.look-busca',  function(evento){
+								evento.preventDefault();
+								jQuery('#navBusca').addClass("activo");
+										
+								var key = 'dueno_id';
+								jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+								.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+									//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+									if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
+									else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
+									
+								});
+
+								jQuery.dameLook('looks/busca.html');
+
+								jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+									//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
+									if(settingsObjeto.url === 'looks/busca.html'){ // === means true without type coersion - the type and value most both be equal
+										jQuery.handleBuscaSubmit();	//when ajax complete ; handle form submit and go to opciones
+									}//if
+								}); //ajax complete
+			});
+
 		
 }); // ready function and statement
