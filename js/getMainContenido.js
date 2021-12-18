@@ -324,6 +324,7 @@ jQuery(document).ready(
 				});
 			break;			
 			case 'creaDueno':
+				/*
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -332,17 +333,17 @@ jQuery(document).ready(
 						//1) redirect to home, when already logged
 						jQuery(window.location).attr('href', window.location.pathname + '?look=home');
 						//2) redirect to error look, when logged 
-						/*
-						jQuery('#navLogin').hide();
+						
+						//jQuery('#navLogin').hide();
 						
 						
-						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-						var textoEstatus = 'Error, usuario solicito creaDueno look, estando logueado.';
-						var elError = 'Error humano.';
+						//var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+						//var textoEstatus = 'Error, usuario solicito creaDueno look, estando logueado.';
+						//var elError = 'Error humano.';
 
-						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-						jQuery(window.location).attr('href', path);	
-						*/
+						//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+						//jQuery(window.location).attr('href', path);	
+						
 					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 						jQuery('#navSignup').addClass("activo");
@@ -361,6 +362,7 @@ jQuery(document).ready(
 						});//ajax complete
 					}
 				});
+				*/
 			break;	
 			case 'recentNepes':
 				var key = 'dueno_id';
@@ -544,7 +546,7 @@ jQuery(document).ready(
 		
 
 		
-		jQuery(document).on( 'click', '.look-faq', function(evento){
+		jQuery(document).on('click', '.look-faq', function(evento){
 								evento.preventDefault();
 								jQuery('#navFaq').addClass("activo");
 								var key = 'dueno_id';
@@ -569,7 +571,7 @@ jQuery(document).ready(
 		
 		
 		
-		jQuery(document).on(  'click', '.look-busca',  function(evento){
+		jQuery(document).on('click', '.look-busca',  function(evento){
 								evento.preventDefault();
 								jQuery('#navBusca').addClass("activo");
 										
@@ -590,7 +592,47 @@ jQuery(document).ready(
 										jQuery.handleBuscaSubmit();	//when ajax complete ; handle form submit and go to opciones
 									}//if
 								}); //ajax complete
-			});
+		});
 
 		
+		jQuery(document).on('click', '.look-creaDueno', function(evento){
+								evento.preventDefault();
+								var key = 'dueno_id';
+								jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+								.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+									//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+									if(datos.isSet){
+										//1) redirect to home, when already logged
+										jQuery(window.location).attr('href', window.location.pathname + '?look=home');
+										//2) redirect to error look, when logged 
+										
+										//jQuery('#navLogin').hide();
+										
+										
+										//var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+										//var textoEstatus = 'Error, usuario solicito creaDueno look, estando logueado.';
+										//var elError = 'Error humano.';
+
+										//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+										//jQuery(window.location).attr('href', path);	
+										
+									}else{ 
+										jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+										jQuery('#navSignup').addClass("activo");
+										
+										
+										//get creaDueno look
+										jQuery.dameLook('looks/creaDueno.html');
+
+										//once look is in, use jQuery on loaded elements to get values
+										jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+											//This code runs when get isCompleted and IF the get was requesting creaDueno.html
+											if(settingsObjeto.url === 'looks/creaDueno.html'){
+												//when ajax complete ; handle form submit and make post
+												jQuery.handleCreaDuenoSubmit();
+											}//if
+										});//ajax complete
+									}
+								});
+		});
 }); // ready function and statement
