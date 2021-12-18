@@ -415,6 +415,7 @@ jQuery(document).ready(
 				});
 			break;		
 			case 'faq':
+				/*
 				jQuery('#navFaq').addClass("activo");
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -434,6 +435,7 @@ jQuery(document).ready(
 						jQuery.hideThem();
 					}
 				});
+				*/
 			break;
 			case 'nada':
 				var key = 'dueno_id';
@@ -538,5 +540,29 @@ jQuery(document).ready(
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		}//switch
 		
+
+		var $el = jQuery('.look-faq');
+		$el.click(  function(evento){
+								evento.preventDefault();
+								jQuery('#navFaq').addClass("activo");
+								var key = 'dueno_id';
+								jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+								.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+									//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+									if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
+									else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
+									
+								});
+
+								jQuery.dameLook('looks/faq.html');
+								jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+									//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
+									//This code runs when get isCompleted and IF the get was requesting faq.html
+									if(settingsObjeto.url === 'looks/faq.html'){ // === means true without type coersion - the type and value most both be equal
+										jQuery.toggleOnClick();
+										jQuery.hideThem();
+									}
+								});
+		}  );  
 		
 }); // ready function and statement
