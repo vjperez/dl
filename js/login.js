@@ -26,7 +26,8 @@ jQuery.handleLoginSubmit = function(){
 				}
 				if(datosJSObj.loguea){
 					//jQuery(window.location).attr('href', window.location.pathname + '?look=home&duenoId=' + datosJSObj.duenoId);
-					  jQuery(window.location).attr('href', window.location.pathname + '?look=home');
+					//jQuery(window.location).attr('href', window.location.pathname + '?look=home');
+					jQuery('.look-home').click();
 				}else{
 					//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 					jQuery.feedback('form#loginForm h3', 'Trata otra vez.');

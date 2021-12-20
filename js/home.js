@@ -2,8 +2,6 @@
 jQuery.home = function(){	
 
 
-	//hide, show on click
-	jQuery.toggleOnClick();
 	//hide them  
 	jQuery.hideThem();
 
@@ -22,6 +20,7 @@ jQuery.home = function(){
 	jQuery.getJSON('escritos/getUsername.php')
 	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
 		var elLabel = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
+		jQuery('fieldset#labelTableContainer label').remove();
 		jQuery('fieldset#labelTableContainer').prepend(elLabel);
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -45,6 +44,7 @@ jQuery.home = function(){
 		});
 		//table += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
 		table += '</table>';			
+		jQuery('fieldset#labelTableContainer table').remove();
 		jQuery(table).insertAfter('fieldset#labelTableContainer label');
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -53,7 +53,6 @@ jQuery.home = function(){
 		jQuery(window.location).attr('href', path); 
 	});
 	
-
 
 	//do this when form submitted ; 
 	jQuery('form#editDuenoForm').submit(function(evento){
