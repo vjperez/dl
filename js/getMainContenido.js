@@ -607,7 +607,7 @@ jQuery(document).ready(
 									//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 									if(datos.isSet){
 										//1) redirect to home, when already logged
-										jQuery('.look-home').click();
+									//jQuery('.look-home').click();
 										//2) redirect to error look, when logged 
 										
 										//jQuery('#navLogin').hide();
@@ -651,7 +651,7 @@ jQuery(document).ready(
 								
 									if(datos.isSet){  
 										//1) redirect to home, when already logged
-										jQuery('.look-home').click();
+									//jQuery('.look-home').click();
 										//2) redirect to error, when already logged
 										
 										//jQuery('#navSignup').hide();
