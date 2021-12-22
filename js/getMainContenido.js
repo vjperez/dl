@@ -553,7 +553,7 @@ jQuery(document).ready(
 		
 		jQuery(document).on('click', '.look-faq', function(eventox){
 								eventox.preventDefault();
-								jQuery('#navFaq').addClass("activo");
+								jQuery('a[id^=nav]').removeClass("activo");  jQuery('#navFaq').addClass("activo");
 								var key = 'dueno_id';
 								jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 								.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -577,7 +577,7 @@ jQuery(document).ready(
 		
 		jQuery(document).on('click', '.look-busca',  function(evento){
 								evento.preventDefault();
-								jQuery('#navBusca').addClass("activo");
+								jQuery('a[id^=nav]').removeClass("activo");  jQuery('#navBusca').addClass("activo");
 										
 								var key = 'dueno_id';
 								jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -607,7 +607,7 @@ jQuery(document).ready(
 									//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 									if(datos.isSet){
 										//1) redirect to home, when already logged
-										jQuery(window.location).attr('href', window.location.pathname + '?look=home');
+										jQuery('.look-home').click();
 										//2) redirect to error look, when logged 
 										
 										//jQuery('#navLogin').hide();
@@ -621,8 +621,8 @@ jQuery(document).ready(
 										//jQuery(window.location).attr('href', path);	
 										
 									}else{ 
-										jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-										jQuery('#navSignup').addClass("activo");
+										jQuery('#navLogout').hide(); jQuery('#navHome').hide();  jQuery('#navLogin').show();   jQuery('#navSignup').show();
+										jQuery('a[id^=nav]').removeClass("activo");  jQuery('#navSignup').addClass("activo");
 										
 										
 										//get creaDueno look
@@ -651,7 +651,7 @@ jQuery(document).ready(
 								
 									if(datos.isSet){  
 										//1) redirect to home, when already logged
-										jQuery(window.location).attr('href', window.location.pathname + '?look=home');
+										jQuery('.look-home').click();
 										//2) redirect to error, when already logged
 										
 										//jQuery('#navSignup').hide();
@@ -665,8 +665,8 @@ jQuery(document).ready(
 										//jQuery(window.location).attr('href', path);	
 										
 									}else{ 
-										jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-										jQuery('#navLogin').addClass("activo");
+										jQuery('#navLogout').hide(); jQuery('#navHome').hide();  jQuery('#navLogin').show();   jQuery('#navSignup').show();
+										jQuery('a[id^=nav]').removeClass("activo");  jQuery('#navLogin').addClass("activo");
 										
 										
 										//get login look
@@ -695,17 +695,14 @@ jQuery(document).ready(
 
 
 		jQuery(document).on('click', '.look-home', function(evento){
-
 			evento.preventDefault();
 			var key = 'dueno_id';
 			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 				if(datos.isSet){ 
-					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
-					jQuery('#navHome').addClass("activo");
-					
-					
+					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();   jQuery('#navLogout').show();  jQuery('#navHome').show();
+					jQuery('a[id^=nav]').removeClass("activo");  jQuery('#navHome').addClass("activo");
 					
 					jQuery.dameLook('looks/home.html');
 
@@ -716,7 +713,7 @@ jQuery(document).ready(
 						}//if
 					});//ajaxComplete
 				}else{
-					jQuery('#navLogout').hide();
+					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 					
 					
 					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
