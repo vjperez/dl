@@ -19,7 +19,7 @@ jQuery.home = function(){
 	var elLabel = ''; 	
 	var elTable = '';  
 	
-	$.ajax({
+	jQuery.ajax({
 		//cache: false,
 		url: 'escritos/getUsername.php',
 		dataType: "json"
@@ -39,7 +39,7 @@ jQuery.home = function(){
 
 
 	//show nepes
-	$.ajax({
+	jQuery.ajax({
 		//cache: false,
 		url: 'escritos/showNepesGetIds.php',
 		dataType: "json"
