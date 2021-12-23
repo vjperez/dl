@@ -16,12 +16,17 @@ jQuery.home = function(){
 	});
 
 
-
-	jQuery.getJSON('escritos/getUsername.php')
+	var elLabel = ''; 	
+	var elTable = '';  
+	
+	$.ajax({
+		//cache: false,
+		url: 'escritos/getUsername.php',
+		dataType: "json"
+	})
 	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
-		var elLabel = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
-		jQuery('fieldset#labelTableContainer label').remove();
-		jQuery('fieldset#labelTableContainer').prepend(elLabel);
+		elLabel = 'Negocios de ' + dato; 
+		jQuery('fieldset#labelTableContainer label').html( elLabel );
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -29,30 +34,35 @@ jQuery.home = function(){
 		jQuery(window.location).attr('href', path); 
 	});
     
+
 	
-	
+
+
 	//show nepes
-    //jQuery.getJSON('escritos/showNepesGetIds.php', {duenoId:duenoId} )
-	jQuery.getJSON('escritos/showNepesGetIds.php')
+	$.ajax({
+		//cache: false,
+		url: 'escritos/showNepesGetIds.php',
+		dataType: "json"
+	})
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 		//alert('datos: ' + datos);
-		var table  =  '<table class="subArea">';
 		jQuery.each(datos, function(index){
-			//table += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
-			table += '<tr><td><a class="link" href="portada.html?look=updateNepe'
+			//elTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
+			elTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'
 			+  '&nepeId=' + datos[index].nepeId  + '">' + datos[index].nepeNombre + '</a></td></tr>';
 		});
-		//table += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';
-		table += '</table>';			
-		jQuery('fieldset#labelTableContainer table').remove();
-		jQuery(table).insertAfter('fieldset#labelTableContainer label');
+		//elTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';	
+		jQuery('fieldset#labelTableContainer table').html( elTable );
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
 		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 		jQuery(window.location).attr('href', path); 
 	});
-	
+
+
+
+
 
 	//do this when form submitted ; 
 	jQuery('form#editDuenoForm').submit(function(evento){
