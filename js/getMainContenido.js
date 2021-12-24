@@ -642,7 +642,7 @@ jQuery(document).ready(
 
 
 
-		jQuery(document).on('click', '.look-login', function(evento){
+		jQuery(document).one('click', '.look-login', function(evento){
 								evento.preventDefault();
 								var key = 'dueno_id';
 								jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -694,7 +694,7 @@ jQuery(document).ready(
 
 
 
-		jQuery(document).on('click', '.look-home', function(evento){
+		jQuery(document).one('click', '.look-home', function(evento){
 			evento.preventDefault();
 			var key = 'dueno_id';
 			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
