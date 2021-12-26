@@ -642,7 +642,7 @@ jQuery(document).ready(
 
 
 
-		jQuery(document).one('click', '.look-login', function(evento){
+		jQuery(document).on('click', '.look-login', function(evento){
 								evento.preventDefault();
 								var key = 'dueno_id';
 								jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -664,7 +664,7 @@ jQuery(document).ready(
 										//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 										//jQuery(window.location).attr('href', path);	
 										
-									}else{ 
+									}else{
 										jQuery('#navLogout').hide(); jQuery('#navHome').hide();  jQuery('#navLogin').show();   jQuery('#navSignup').show();
 										jQuery('a[id^=nav]').removeClass("activo");  jQuery('#navLogin').addClass("activo");
 										
@@ -694,7 +694,7 @@ jQuery(document).ready(
 
 
 
-		jQuery(document).one('click', '.look-home', function(evento){
+		jQuery(document).on('click', '.look-home', function(evento){
 			evento.preventDefault();
 			var key = 'dueno_id';
 			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
