@@ -5,7 +5,7 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 h5.footersubtitulo, ul.navega li a  { font-family:mono, monospace; }
 h2.footertitulo { font-family: 'Courgette', mono, monospace; }
 
-a:link, a:visited, a {  font-size: 1.05em; font-weight:bolder; font-family:mono, monospace;  color:hsl(180, 100%, 20%); text-decoration:none;  }
+a:link, a:visited, a {  font-size: 1.05em; font-weight:bolder; font-family:mono, monospace;  letter-spacing:0.1em;  color:hsl(180, 100%, 20%); text-decoration:none;  }
 a:hover, a:focus { color:hsl(180, 100%, 15%); text-decoration:underline; }
 
 form button[type="submit"], button[type="button"]{
