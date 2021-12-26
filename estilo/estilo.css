@@ -45,7 +45,7 @@ form[id$=Form] label, fieldset.notHidable label { font-size:1.7em; letter-spacin
 div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:black; display:block; text-align:left; }
 
 fieldset.hidable label {  font-size:1.25em; letter-spacing:0.20em; font-weight:bolder;  color:#000000;  }
-fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:black);  }
+fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:black;  }
 
 
 form[id$=Form] h3, fieldset.hidable h3{ font-family:serif, Times, times; font-weight:bolder;  color:hsl(0, 100%, 50%); }
