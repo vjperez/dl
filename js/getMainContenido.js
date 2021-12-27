@@ -668,18 +668,8 @@ jQuery(document).ready(
 										jQuery('#navLogout').hide(); jQuery('#navHome').hide();  jQuery('#navLogin').show();   jQuery('#navSignup').show();
 										jQuery('a[id^=nav]').removeClass("activo");  jQuery('#navLogin').addClass("activo");
 										
-										
 										//get login look
 										jQuery.dameLook('looks/login.html');
-
-										//once look is in, use jQuery on loaded elements to get values
-										jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-											//This code runs when get isCompleted and IF the get was requesting login.html
-											if(settingsObjeto.url === 'looks/login.html'){
-												//when ajax complete ; handle form submit and make post
-												jQuery.handleLoginSubmit();
-											}//if
-										});//ajax complete
 									}
 								});
 		});
@@ -705,13 +695,6 @@ jQuery(document).ready(
 					jQuery('a[id^=nav]').removeClass("activo");  jQuery('#navHome').addClass("activo");
 					
 					jQuery.dameLook('looks/home.html');
-
-					//once look is in, use jQuery to update look with profile values
-					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						if(settingsObjeto.url === 'looks/home.html'){
-							jQuery.home();
-						}//if
-					});//ajaxComplete
 				}else{
 					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 					

@@ -250,3 +250,173 @@ jQuery.logout = function(){
 	//	jQuery(window.location).attr('href', path); 
 	//}) 
 }
+
+
+
+
+//once look is in, use jQuery on loaded elements to get values
+jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+	//This code runs when get isCompleted and IF the get was requesting login.html
+	if(settingsObjeto.url === 'looks/login.html'){
+		//when ajax complete ; handle form submit and make post
+		jQuery('form#loginForm').submit(function(evento){
+			evento.preventDefault(); //not making a submit (POST request) from html action.
+			var user = jQuery('#usernameId').val();
+			var pass = jQuery('#passwordId').val();
+			if( jQuery.areValidUserYPass(user, pass, pass, "genericFeedback", 'form#loginForm h3') ){
+				//Valid values son los q cumplen estas 3 cosas.
+				//Estas cosas se pueden chequear antes del post y evito post sin sentido
+				// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
+				//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
+				jQuery.post('escritos/login.php', {user:user, pass:pass} )
+				.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+					//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
+					//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
+					try{
+						//alert('datosJSONStr: ' + datosJSONStr);
+						datosJSObj = JSON.parse(datosJSONStr);
+						//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
+					}catch(errorParseo){
+						var datosJSONStrAsXHRTexto = datosJSONStr;
+						var textoEstatus = 'Error parseando la siguiente respuesta del server en escritos/login.php :<br> Mensaje: ' + errorParseo.message;
+						var elError = errorParseo.name;
+						
+						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
+						jQuery(window.location).attr('href', path); 
+					}
+					if(datosJSObj.loguea){
+						//jQuery(window.location).attr('href', window.location.pathname + '?look=home&duenoId=' + datosJSObj.duenoId);
+						//jQuery(window.location).attr('href', window.location.pathname + '?look=home');
+						jQuery('.look-home').click();
+					}else{
+						//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
+						jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
+					}
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
+				});
+			}
+		});
+		
+		//erase feedback when user writting
+		jQuery('form#loginForm  input[name=password]').keyup(function(){
+			jQuery.feedback('form#loginForm h3', '');
+		});
+		//erase feedback when user writting
+		jQuery('form#loginForm  input[name=username]').keyup(function(){
+			jQuery.feedback('form#loginForm h3', '');
+		});
+
+	}//if login
+
+	if(settingsObjeto.url === 'looks/home.html'){
+		//hide them  
+		jQuery.hideThem();
+
+		//erase feedback when user writting
+		jQuery('form#editDuenoForm  input[name^=password]').keyup(function(){
+			jQuery.feedback('form#editDuenoForm h3', '');
+		});
+		
+		jQuery('div#nepes :button').click(function(){
+			//alert(window.location.pathname + '?look=creaNepe'); 
+			jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
+		});
+
+
+		var elLabel = ''; 	
+		var elTable = '';  
+		
+		jQuery.ajax({
+			//cache: false,
+			url: 'escritos/getUsername.php',
+			dataType: "json"
+		})
+		.done(function(dato, estatusForDONE, xhrObjetoForDONE){
+			elLabel = 'Negocios de ' + dato; 
+			jQuery('fieldset#labelTableContainer label').html( elLabel );
+		})
+		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+			var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+			jQuery(window.location).attr('href', path); 
+		});
+		
+
+		
+
+
+		//show nepes
+		jQuery.ajax({
+			//cache: false,
+			url: 'escritos/showNepesGetIds.php',
+			dataType: "json"
+		})
+		.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+			//alert('datos: ' + datos);
+			jQuery.each(datos, function(index){
+				//elTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
+				elTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'
+				+  '&nepeId=' + datos[index].nepeId  + '">' + datos[index].nepeNombre + '</a></td></tr>';
+			});
+			//elTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';	
+			jQuery('fieldset#labelTableContainer table').html( elTable );
+		})
+		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+			var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+			jQuery(window.location).attr('href', path); 
+		});
+
+
+
+
+
+		//do this when form submitted ; 
+		jQuery('form#editDuenoForm').submit(function(evento){
+			evento.preventDefault(); //not making a submit (POST request) from html action.
+			var user = 'valorDummy';
+			var pass01 = jQuery('#passwordId').val();
+			var pass02 = jQuery('#passwordConfirmId').val();
+			if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editDuenoForm h3') ){
+				//Valid values son los q cumplen estas 3 cosas.
+				//Estas cosas se pueden chequear antes del post y evito post sin sentido
+				// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
+				//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
+				
+			//jQuery.post('escritos/editDuenoContrasena.php', {duenoId:duenoId, pass01:pass01} )
+				jQuery.post('escritos/editDuenoContrasena.php', {pass01:pass01} )
+				.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+					//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
+					//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
+					try{
+						//alert('datosJSONStr: ' + datosJSONStr);
+						datosJSObj = JSON.parse(datosJSONStr);
+						//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
+					}catch(errorParseo){
+						var datosJSONStrAsXHRTexto = datosJSONStr;
+						var textoEstatus = 'Error parseando la siguiente respuesta del servidor en escritos/editDuenoContrasena.php :<br> Mensaje: ' + errorParseo.message;
+						var elError = errorParseo.name;
+						
+						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
+						jQuery(window.location).attr('href', path);				
+					}
+					if(datosJSObj.cambiado){
+						jQuery.feedback('form#editDuenoForm h3', 'Tu password fue cambiado.');
+					}else{
+						jQuery.feedback('form#editDuenoForm h3', 'Trata otra vez. No cambiamos NADA !');
+					}
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
+				});
+			}
+		});		
+	}//if home
+
+});//ajax complete
