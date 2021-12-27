@@ -564,13 +564,6 @@ jQuery(document).ready(
 								});
 								
 								jQuery.dameLook('looks/faq.html');
-								jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-									//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
-									//This code runs when get isCompleted and IF the get was requesting faq.html
-									if(settingsObjeto.url === 'looks/faq.html'){ // === means true without type coersion - the type and value most both be equal
-										jQuery.hideThem();
-									}
-								});
 		});
 		
 		
@@ -589,12 +582,6 @@ jQuery(document).ready(
 								});
 								
 								jQuery.dameLook('looks/busca.html');
-								jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-									//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
-									if(settingsObjeto.url === 'looks/busca.html'){ // === means true without type coersion - the type and value most both be equal
-										jQuery.handleBuscaSubmit();	//whe	n ajax complete ; handle form submit and go to opciones
-									}//if
-								}); //ajax complete
 		});
 
 
