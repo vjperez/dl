@@ -19,6 +19,7 @@ div#creaNepeTitulo h3, div#updateNepeTitulo h3, div#creaNepeTitulo label.explica
 
 
 /* profile */
+div#video h2.notHidable { text-align:center ; } 
 div#donde i+span.si, div#donde i+span.no, div#cuando i+span.si, div#cuando i+span.no
 { background: url("../imagenes/si-no.png");
   vertical-align:text-bottom;
