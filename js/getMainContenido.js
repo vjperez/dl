@@ -614,15 +614,6 @@ jQuery(document).ready(
 										
 										//get creaDueno look
 										jQuery.dameLook('looks/creaDueno.html');
-
-										//once look is in, use jQuery on loaded elements to get values
-										jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-											//This code runs when get isCompleted and IF the get was requesting creaDueno.html
-											if(settingsObjeto.url === 'looks/creaDueno.html'){
-												//when ajax complete ; handle form submit and make post
-												jQuery.handleCreaDuenoSubmit();
-											}//if
-										});//ajax complete
 									}
 								});
 		});
