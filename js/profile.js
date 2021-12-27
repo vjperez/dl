@@ -10,7 +10,7 @@ jQuery.populateProfile = function(datos){
 	var opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 	jQuery('#video h5').text('' + date.toLocaleDateString('es-ES', opciones)); 
 	
-	jQuery('#video h1').text(datos.nombre);
+	jQuery('#video h2').text(datos.nombre);
 	
 	//alert('url: ' + datos.videoUrl + '\nis Valid Video Url: ' + datos.isValidVideoUrl);
 	if(datos.videoCode == 0){
