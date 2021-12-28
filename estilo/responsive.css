@@ -38,3 +38,7 @@ div#containerForMain, #footer {  margin-left: 0;  }
   body {  width:1000px;  left:calc(0.5*(100% - 1000px));  }
   #borde-derecha{  display:block;  border:1px solid black;  position: fixed;  right:calc(0.5*(100% - 1000px)); height: 100%;}
 }
+
+
+
+ul.navega li a.look-opciones{ display:none; }
