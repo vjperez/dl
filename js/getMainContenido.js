@@ -837,9 +837,9 @@ jQuery(document).ready(
 						});
 						//alert('a tu casa: ' + datos.atucasa + '\ntipo: ' + typeof datos.atucasa);
 						var clase = 'no'; if(datos.atucasa) clase = 'si';
-						jQuery('#donde i+span').attr('class', clase);
-						//jQuery('#donde i+span').after.remove();
-						jQuery('#donde i+span').after(clase);
+						jQuery('#donde span#background').attr('class', clase);
+						//jQuery('#donde span#background').after.remove();
+						jQuery('#donde span.texto').text(clase);
 				
 						
 						//show only 1 social handle with class current
