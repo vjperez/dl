@@ -854,7 +854,7 @@ jQuery(document).ready(
 						});
 									
 						//hide, show on click
-						jQuery.toggleOnClick();
+						jQuery.hideThem();
 					}//if profile
 				});
 			})//done
