@@ -798,10 +798,10 @@ jQuery(document).ready(
 						
 						
 						//alert(datos.quienSocialHandle);
-						if(datos.quienSocialHandle.email != '')   jQuery('#quien h3.email').text(datos.quienSocialHandle.email);    // si no cambias valores, se quedan los de looks/profile.html
-						if(datos.quienSocialHandle.fbk != '')  jQuery('#quien h3.fbk').text(datos.quienSocialHandle.fbk);
-						if(datos.quienSocialHandle.igrm != '') jQuery('#quien h3.igrm').text(datos.quienSocialHandle.igrm);
-						if(datos.quienSocialHandle.phn != '')  jQuery('#quien h3.phn').text(datos.quienSocialHandle.phn);
+						if(datos.quienSocialHandle.email != '')   jQuery('#quien h5.envelope').text(datos.quienSocialHandle.email);    // si no cambias valores, se quedan los de looks/profile.html
+						if(datos.quienSocialHandle.fbk != '')  jQuery('#quien h5.facebook').text(datos.quienSocialHandle.fbk);
+						if(datos.quienSocialHandle.igrm != '') jQuery('#quien h5.instagram').text(datos.quienSocialHandle.igrm);
+						if(datos.quienSocialHandle.phn != '')  jQuery('#quien h5.phone').text(datos.quienSocialHandle.phn);
 						//following code works when there are 5 or less images coming from getJSON.
 						//the html is prepared for a max of 5 images, this code removes excess html when less than 5 images come
 						//alert(datos.quienFotoSrc);
@@ -838,19 +838,24 @@ jQuery(document).ready(
 						//alert('a tu casa: ' + datos.atucasa + '\ntipo: ' + typeof datos.atucasa);
 						var clase = 'no'; if(datos.atucasa) clase = 'si';
 						jQuery('#donde i+span').attr('class', clase);
+						//jQuery('#donde i+span').after.remove();
 						jQuery('#donde i+span').after(clase);
 				
 						
 						//show only 1 social handle with class current
 						var $icon = jQuery('div#quien ul li').click(function(evento){
 							evento.preventDefault();
-							jQuery('div#quien ul li img').removeClass('current');
-							var $imgToFocus = jQuery(evento.currentTarget).find('img');
-							var $socialClass = $imgToFocus.attr('class'); // grab the name this class, used to select h3 with same class
+							jQuery('div#quien ul li i').removeClass('current');
+							var $imgToFocus = jQuery(evento.currentTarget).find('i');
+							var socialClass = $imgToFocus.attr('class'); // grab the name this class, used to select h3 with same class
 							$imgToFocus.addClass('current');
 				
-							jQuery('div#quien h3').removeClass('current');
-							jQuery('div#quien h3.' + $socialClass).addClass('current');
+							jQuery('div#quien h5').removeClass('current');
+							jQuery('div#quien h5').each(function(){
+								if( socialClass.includes( jQuery(this).attr('class') ) ){
+									jQuery(this).addClass('current');
+								}
+							});
 						});
 									
 						//hide, show on click

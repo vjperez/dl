@@ -53,3 +53,10 @@ form[id$=Form] h3, div#opcionesdiv h3  { font-family:serif, Times, times; font-w
 fieldset.hidable h3{ font-family:serif, Times, times; font-weight:bolder;  color:hsl(120, 100%, 50%); }
 
 div#updateNepeTitulo h3, div#creaNepeTitulo h3, div#video h2.notHidable { font-family: 'Courgette', mono, monospace; font-size:1.7em; letter-spacing:0.40em;}
+
+
+
+ div#quien div.hidable ul  i { border-color:#000000;  border-style:solid;  border-width:0pt;  border-radius:5pt; padding:0.2em; }
+ div#quien div.hidable ul  i:hover,  div#quien div.hidable ul  i:focus,  div#quien div.hidable ul  i.current { border-color:hsl(0, 100%, 50%); border-width:1pt; }
+
+ div#quien h5, div#cuando td  { font-family:mono, monospace; }
