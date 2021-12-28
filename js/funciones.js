@@ -520,11 +520,5 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 
 
 
-	if(settingsObjeto.url === 'looks/updateNepe.html'){
-
-	}//if updateNepe
-
-
-
 
 });//ajax complete

@@ -907,7 +907,8 @@ jQuery(document).ready(
 
 
 		jQuery(document).on('click', '.look-updateNepe', function(evento){
-			evento.preventDefault();	var nepeId = jQuery(this).data('nepeid');
+			evento.preventDefault();	
+			var nepeId = jQuery(this).data('nepeid');
 			var key = 'dueno_id';
 			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
