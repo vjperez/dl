@@ -17,6 +17,8 @@ form button[type="submit"], button[type="button"]
 form[id$=Form] h3 { text-align:center; }
 div#creaNepeTitulo h3, div#updateNepeTitulo h3, div#creaNepeTitulo label.explica,  div#updateNepeTitulo label.explica  { text-align:center; display:block; }
 
+ul.navega li a.look-opciones, ul.navega li a.look-creaNepe  { display:none; }
+
 
 /* profile */
 div#video iframe { display:block; margin-left:auto; margin-right:auto; }

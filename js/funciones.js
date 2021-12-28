@@ -310,7 +310,8 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 		
 		jQuery('div#nepes :button').click(function(){
 			//alert(window.location.pathname + '?look=creaNepe'); 
-			jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
+			//jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
+			jQuery('.look-creaNepe').click();
 		});
 
 		var elLabel = ''; 	
@@ -525,4 +526,16 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 
 
 	
+	if(settingsObjeto.url === 'looks/creaNepe.html'){
+		//get duenoId
+		//var duenoId = jQuery.urlParametro('duenoId');
+		
+		jQuery.handleCreaNepeSubmit();
+		//submit event listener and handler
+	}//if
+	
+
+
+
+
 });//ajax complete

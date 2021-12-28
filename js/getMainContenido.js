@@ -208,6 +208,7 @@ jQuery(document).ready(
 				*/
 			break;			
 			case 'creaNepe':
+				/*
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -241,7 +242,8 @@ jQuery(document).ready(
 						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 						jQuery(window.location).attr('href', path);							   
 					}
-				});				
+				});		
+				*/		
 			break;
 			case 'updateNepe':
 				var key = 'dueno_id';
@@ -543,10 +545,14 @@ jQuery(document).ready(
 			// (3) to error
 				*/
 			break;
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 		}//switch
 
 		
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 								look event listeners
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -666,7 +672,6 @@ jQuery(document).ready(
 				}else{ 
 					jQuery('#navLogout').hide(); jQuery('#navHome').hide();  jQuery('#navLogin').show();   jQuery('#navSignup').show();
 					jQuery('a[id^=nav]').removeClass("activo");  jQuery('#navSignup').addClass("activo");
-					
 					
 					//get creaDueno look
 					jQuery.dameLook('looks/creaDueno.html');
@@ -870,6 +875,33 @@ jQuery(document).ready(
 			});
 		});
 		
+
+
+		jQuery(document).on('click', '.look-creaNepe', function(evento){
+			evento.preventDefault();
+			var key = 'dueno_id';
+			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+				if(datos.isSet){
+					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
+					jQuery('#navHome').addClass("activo");
+					
+					jQuery.dameLook('looks/creaNepe.html');
+				}else{ 
+					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+					
+					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+					var textoEstatus = 'Error, usuario solicito creaNepe look, sin estar logueado.';
+					var elError = 'Error humano.';
+
+					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+					jQuery(window.location).attr('href', path);							   
+				}
+			});	
+		});
+
+
 
 
 }); // ready function and statement
