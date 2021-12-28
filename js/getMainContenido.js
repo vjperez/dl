@@ -98,8 +98,8 @@ jQuery(document).ready(
 					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
-			break;
 			*/
+			break;
 			case 'profile':
 				/*
 				var key = 'dueno_id';
@@ -246,6 +246,7 @@ jQuery(document).ready(
 				*/		
 			break;
 			case 'updateNepe':
+			/*
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -326,6 +327,7 @@ jQuery(document).ready(
 						jQuery(window.location).attr('href', path);	
 					}
 				});
+				*/
 			break;			
 			case 'creaDueno':
 				/*
@@ -899,6 +901,94 @@ jQuery(document).ready(
 					jQuery(window.location).attr('href', path);							   
 				}
 			});	
+		});
+
+
+
+
+		jQuery(document).on('click', '.look-updateNepe', function(evento){
+			evento.preventDefault();	var nepeId = jQuery(this).data('nepeid');
+			var key = 'dueno_id';
+			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+				if(datos.isSet){
+					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
+					jQuery('#navHome').addClass("activo");
+					
+					
+					key = 'own_nepes';
+					jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+					.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+						//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+						if(datos.isSet){  
+
+							key = 'own_nepes';
+							jQuery.getJSON('escritos/getSessionValue.php', {key:key})
+							.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+								//alert('key: ' + key + '\ndatos: ' + datos);
+								//var nepeId = jQuery.urlParametro('nepeId');
+								
+								alert(nepeId);
+									if( jQuery.isNepeIdOnOwnNepesSession(datos, nepeId) ){
+		
+										jQuery.dameLook('looks/updateNepe.html');
+										jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+											if(settingsObjeto.url === 'looks/updateNepe.html'){
+												//get nepeId
+												//var nepeId = jQuery.urlParametro('nepeId');  
+												
+												//get duenoId
+												//var duenoId = jQuery.urlParametro('duenoId');
+
+												//task 1 when ajax complete get that data
+												//alert('nepeId : ' + nepeId);
+												jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
+												.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+													jQuery.populateUpdateNepeForm(datos);
+												})
+												.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+													var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+													var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+													jQuery(window.location).attr('href', path); 
+												});
+																			
+												//task 2 when ajax complete ; handle form submit and make post
+												//jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
+												jQuery.handleUpdateNepeSubmit(nepeId);
+												//submit event listener and handler
+											}
+										});
+									}else{
+										var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+										var textoEstatus = 'Error, usuario solicito editar nepe q no es de el.';
+										var elError = 'Error humano.';
+										
+										var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+										jQuery(window.location).attr('href', path);								
+									}
+							});
+						}else{  
+							var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+							var textoEstatus = 'Error, usuario esta logueado pero sin own_nepes seteado. (for whatever reason)';
+							var elError = 'Error humano.';
+							
+							var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+							jQuery(window.location).attr('href', path);	
+						}
+					});
+				}else{  
+					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
+					
+					
+					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+					var textoEstatus = 'Error, usuario solicito updateNepe look, sin estar logueado.';
+					var elError = 'Error humano.';
+
+					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+					jQuery(window.location).attr('href', path);	
+				}
+			});
 		});
 
 

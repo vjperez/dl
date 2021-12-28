@@ -14,19 +14,6 @@ jQuery.dameLook = function(pageName){
 
 
 
-jQuery.dameLookConDatos = function(pageName, datosDelServer){
-	jQuery.get(pageName, function(datosDeRespuesta, estatus, xhrObjeto){
-		//console.log(datosDeRespuesta);
-		var elMain = jQuery(datosDeRespuesta).filter('#main');
- 		//console.log(mainDeBusca);
-		jQuery('#containerForMain').html(elMain);
-	});	
-	jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-
-	});
-}
-
-
 //extracs parameters from the url
 jQuery.urlParametro = function(name){
 	var str = window.location.href;
@@ -343,8 +330,8 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 			//alert('datos: ' + datos);
 			jQuery.each(datos, function(index){
 				//elTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
-				elTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'
-				+  '&nepeId=' + datos[index].nepeId  + '">' + datos[index].nepeNombre + '</a></td></tr>';
+				elTable += '<tr><td><a class="look-updateNepe" href="portada.html" data-nepeid="' + datos[index].nepeId + '">' 
+				+ datos[index].nepeNombre + '</a></td></tr>';
 			});
 			//elTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';	
 			jQuery('fieldset#labelTableContainer table').html( elTable );
@@ -527,13 +514,15 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 
 	
 	if(settingsObjeto.url === 'looks/creaNepe.html'){
-		//get duenoId
-		//var duenoId = jQuery.urlParametro('duenoId');
-		
 		jQuery.handleCreaNepeSubmit();
-		//submit event listener and handler
-	}//if
+	}//if creaNepe
 	
+
+
+
+	if(settingsObjeto.url === 'looks/updateNepe.html'){
+
+	}//if updateNepe
 
 
 
