@@ -520,5 +520,30 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 
 
 
+	if(settingsObjeto.url === 'looks/recentNepes.html'){
+		jQuery.getJSON('escritos/getRecentNepes.php')
+		.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+			var labelAndTable = '<label class="">Negocios Recientes:</label>';
+			labelAndTable   +=  '<table class="">';
+			jQuery.each(datos, function(index){
+					labelAndTable += '<tr><td>' 
+					+ '<a href="portada.html"  class="link look-profile" data-nepeid="' 
+					+ datos[index].nepeId  + '">' 
+					+ datos[index].nepeNombre 
+					+ '   (' +  datos[index].dias  +  ' dias)' 
+					+ '</a></td></tr>';
+			});
+			labelAndTable += '</table>';
+			jQuery('#labelAndTableContainer').html(labelAndTable);
+		})
+		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+			var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+			jQuery(window.location).attr('href', path); 
+		});
+	}//if recent Nepes
+
+
+
 
 });//ajax complete

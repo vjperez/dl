@@ -371,6 +371,7 @@ jQuery(document).ready(
 				*/
 			break;	
 			case 'recentNepes':
+				/*
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -388,6 +389,7 @@ jQuery(document).ready(
 						jQuery.getRecentNepes();	
 					}//if
 				}); //ajax complete
+			*/
 			break;			
 			case 'adminDuenoNepes':
 				var key = 'dueno_id';
@@ -993,6 +995,20 @@ jQuery(document).ready(
 		});
 
 
+
+		jQuery(document).on('click', '.look-recentNepes', function(evento){
+			evento.preventDefault();
+			var key = 'dueno_id';
+			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+				if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
+				else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
+				
+			});
+
+			jQuery.dameLook('looks/recentNepes.html');
+		});
 
 
 }); // ready function and statement
