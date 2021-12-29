@@ -17,7 +17,7 @@ form button[type="submit"], button[type="button"]
 form[id$=Form] h3 { text-align:center; }
 div#creaNepeTitulo h3, div#updateNepeTitulo h3, div#creaNepeTitulo label.explica,  div#updateNepeTitulo label.explica  { text-align:center; display:block; }
 
-ul.navega li a.look-opciones, ul.navega li a.look-creaNepe  { display:none; }
+ul.navega li a.look-opciones, ul.navega li a.look-creaNepe,  ul.navega li a.look-nada  { display:none; }
 
 
 /* profile */
@@ -59,3 +59,5 @@ div#faqdiv i[class*="fa-chevron-circle"]{ margin-left:1em; }
 
 /* admin */
 fieldset  table tr i[class*="fa-trash-alt"],  fieldset label i[class*="fa-chevron-circle"] { margin-left:1em;  }
+
+.nadah3 { text-align:center; }

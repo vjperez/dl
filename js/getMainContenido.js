@@ -450,6 +450,7 @@ jQuery(document).ready(
 				*/
 			break;
 			case 'nada':
+				/*
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -460,7 +461,8 @@ jQuery(document).ready(
 				});
 
 				jQuery.dameLook('looks/nada.html');
-			break;				
+				*/
+				break;				
 			case 'error':
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -746,7 +748,8 @@ jQuery(document).ready(
 					mainDeOpciones += '</div>'; //  <div id="main" class="contenido margen">
 					jQuery('#containerForMain').html(mainDeOpciones);
 				}else{
-					jQuery(window.location).attr('href', window.location.pathname + '?look=nada');  
+					//jQuery(window.location).attr('href', window.location.pathname + '?look=nada');
+					jQuery('.look-nada').click();  
 				}
 			})
 			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -1009,6 +1012,24 @@ jQuery(document).ready(
 
 			jQuery.dameLook('looks/recentNepes.html');
 		});
+
+
+
+
+		jQuery(document).on('click', '.look-nada', function(evento){
+			evento.preventDefault();
+			var key = 'dueno_id';
+			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+				if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
+				else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
+			
+			});
+			jQuery.dameLook('looks/nada.html');
+		});
+
+
 
 
 }); // ready function and statement
