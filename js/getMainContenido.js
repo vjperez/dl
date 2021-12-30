@@ -99,6 +99,9 @@ jQuery(document).ready(
 					jQuery(window.location).attr('href', path); 
 				});
 			*/
+
+
+
 			break;
 			case 'profile':
 				/*
@@ -420,9 +423,12 @@ jQuery(document).ready(
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito admin (adminDuenoNepes) look, sin estar logueado.';
 						var elError = 'Error humano.';
-
-						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-						jQuery(window.location).attr('href', path);	
+						//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+						//jQuery(window.location).attr('href', path);	
+						jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
+						jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+						jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+						jQuery('.look-error').click();
 					}
 				});
 			break;		
@@ -464,6 +470,7 @@ jQuery(document).ready(
 				*/
 				break;				
 			case 'error':
+			/*
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -489,7 +496,8 @@ jQuery(document).ready(
 						}//if
 					}); //ajax complete
 				}
-			break;
+				*/
+				break;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//you can redirect null and default cases, either into busca case,  into error case or into their own looks 
 			case null:
@@ -601,8 +609,12 @@ jQuery(document).ready(
 					var textoEstatus = 'Error, usuario solicito home look, sin estar logueado.';
 					var elError = 'Error humano.';
 
-					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-					jQuery(window.location).attr('href', path);	
+					//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+					//jQuery(window.location).attr('href', path);	
+					jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
+					jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+					jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+					jQuery('.look-error').click();
 				}
 			});
 		});
@@ -625,12 +637,16 @@ jQuery(document).ready(
 					//jQuery('#navSignup').hide();
 					
 					
-					//var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-					//var textoEstatus = 'Error, usuario solicito login look, estando logueado.';
-					//var elError = 'Error humano.';
+					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+					var textoEstatus = 'Error, usuario solicito login look, estando logueado.';
+					var elError = 'Error humano.';
 
 					//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 					//jQuery(window.location).attr('href', path);	
+					jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
+					jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+					jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+					jQuery('.look-error').click();
 					
 				}else{
 					jQuery('#navLogout').hide(); jQuery('#navHome').hide();  jQuery('#navLogin').show();   jQuery('#navSignup').show();
@@ -668,12 +684,16 @@ jQuery(document).ready(
 					//jQuery('#navLogin').hide();
 					
 					
-					//var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-					//var textoEstatus = 'Error, usuario solicito creaDueno look, estando logueado.';
-					//var elError = 'Error humano.';
+					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+					var textoEstatus = 'Error, usuario solicito creaDueno look, estando logueado.';
+					var elError = 'Error humano.';
 
 					//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-					//jQuery(window.location).attr('href', path);	
+					//jQuery(window.location).attr('href', path);
+					jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
+					jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+					jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+					jQuery('.look-error').click();	
 					
 				}else{ 
 					jQuery('#navLogout').hide(); jQuery('#navHome').hide();  jQuery('#navLogin').show();   jQuery('#navSignup').show();
@@ -708,6 +728,7 @@ jQuery(document).ready(
 
 
 		jQuery(document).on('click', '.look-opciones', function(eventox){
+			eventox.preventDefault();
 			var key = 'dueno_id';
 			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -719,8 +740,8 @@ jQuery(document).ready(
 		   //This look completely depends on the amount of options to be presented.  It doesn't make
 		   //much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 		   //concatenating strings inside an each loop, with the requested JSON datos.
-			var que = decodeURIComponent(   jQuery('ul.navega li a.look-opciones').data( 'que' ) );      
-			var donde = decodeURIComponent( jQuery('ul.navega li a.look-opciones').data( 'donde' ) ); 
+			var que = decodeURIComponent(   jQuery(this).data( 'que' ) );      alert(que);
+			var donde = decodeURIComponent( jQuery(this).data( 'donde' ) );    alert(donde);
 			jQuery.getJSON('escritos/getOpciones.php', {que:que, donde:donde} )
 			.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 				if(datos.cuantasOpciones > 0){
@@ -754,8 +775,12 @@ jQuery(document).ready(
 			})
 			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 				var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-				var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-				jQuery(window.location).attr('href', path); 
+				//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+				//jQuery(window.location).attr('href', path); 
+				jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
+				jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+				jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+				jQuery('.look-error').click();
 			});
 		});
 
@@ -835,7 +860,10 @@ jQuery(document).ready(
 						jQuery('#que li a').each(function(index){
 							if(index < datos.que.length) {
 								jQuery(this).text(datos.que[index]);
-								jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent(datos.que[index]) + '&donde=');
+								jQuery(this).attr('href', 'portada.html');
+                                jQuery(this).attr('class', 'look-opciones');
+                                jQuery(this).attr('data-que',    encodeURIComponent(datos.que[index]));
+								jQuery(this).attr('data-donde',    encodeURIComponent(''));
 							} else { jQuery(this).remove(); }
 						});
 						//following code works when there are 5 or less 'donde' coming from getJSON.
@@ -844,7 +872,10 @@ jQuery(document).ready(
 						jQuery('#donde li a').each(function(index){
 							if(index < datos.donde.length) {
 								jQuery(this).text(datos.donde[index]);
-								jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + '&donde=' + encodeURIComponent(datos.donde[index]));
+								jQuery(this).attr('href', 'portada.html');
+                                jQuery(this).attr('class', 'look-opciones');
+                                jQuery(this).attr('data-donde',    encodeURIComponent(datos.donde[index]));
+								jQuery(this).attr('data-que',    encodeURIComponent(''));
 							}else { jQuery(this).remove(); }
 						});
 						//alert('a tu casa: ' + datos.atucasa + '\ntipo: ' + typeof datos.atucasa);
@@ -877,8 +908,12 @@ jQuery(document).ready(
 			})//done
 			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 				var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-				var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-				jQuery(window.location).attr('href', path); 
+				//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+				//jQuery(window.location).attr('href', path); 
+				jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
+				jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+				jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+				jQuery('.look-error').click();
 			});
 		});
 		
@@ -902,8 +937,12 @@ jQuery(document).ready(
 					var textoEstatus = 'Error, usuario solicito creaNepe look, sin estar logueado.';
 					var elError = 'Error humano.';
 
-					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-					jQuery(window.location).attr('href', path);							   
+					//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+					//jQuery(window.location).attr('href', path);	
+					jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
+					jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+					jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+					jQuery('.look-error').click();						   
 				}
 			});	
 		});
@@ -935,7 +974,7 @@ jQuery(document).ready(
 								//alert('key: ' + key + '\ndatos: ' + datos);
 								//var nepeId = jQuery.urlParametro('nepeId');
 								
-								alert(nepeId);
+									//alert(nepeId);
 									if( jQuery.isNepeIdOnOwnNepesSession(datos, nepeId) ){
 		
 										jQuery.dameLook('looks/updateNepe.html');
@@ -955,8 +994,12 @@ jQuery(document).ready(
 												})
 												.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 													var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-													var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-													jQuery(window.location).attr('href', path); 
+													//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+													//jQuery(window.location).attr('href', path); 
+													jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
+													jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+													jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+													jQuery('.look-error').click();
 												});
 																			
 												//task 2 when ajax complete ; handle form submit and make post
@@ -970,8 +1013,12 @@ jQuery(document).ready(
 										var textoEstatus = 'Error, usuario solicito editar nepe q no es de el.';
 										var elError = 'Error humano.';
 										
-										var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-										jQuery(window.location).attr('href', path);								
+										//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+										//jQuery(window.location).attr('href', path);	
+										jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
+										jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+										jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+										jQuery('.look-error').click();							
 									}
 							});
 						}else{  
@@ -979,8 +1026,12 @@ jQuery(document).ready(
 							var textoEstatus = 'Error, usuario esta logueado pero sin own_nepes seteado. (for whatever reason)';
 							var elError = 'Error humano.';
 							
-							var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-							jQuery(window.location).attr('href', path);	
+							//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+							//jQuery(window.location).attr('href', path);	
+							jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
+							jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+							jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+							jQuery('.look-error').click();
 						}
 					});
 				}else{  
@@ -991,8 +1042,12 @@ jQuery(document).ready(
 					var textoEstatus = 'Error, usuario solicito updateNepe look, sin estar logueado.';
 					var elError = 'Error humano.';
 
-					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-					jQuery(window.location).attr('href', path);	
+					//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+					//jQuery(window.location).attr('href', path);	
+					jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
+					jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+					jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+					jQuery('.look-error').click();
 				}
 			});
 		});
@@ -1027,6 +1082,23 @@ jQuery(document).ready(
 			
 			});
 			jQuery.dameLook('looks/nada.html');
+		});
+
+
+
+
+		jQuery(document).on('click', '.look-error', function(evento){
+			evento.preventDefault();
+			var key = 'dueno_id';
+			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+				if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
+				else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
+				
+			});
+			
+			jQuery.dameLook('looks/error.html');
 		});
 
 

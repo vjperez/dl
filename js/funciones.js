@@ -54,7 +54,7 @@ jQuery.isNotVacioStr = function(str){
 	return ! jQuery.isVacioStr(str);
 }
 
-
+/*
 jQuery.encodeAndGetErrorPath = function(xhrObjetoForFAILTexto, textoEstatus, elError){
 	if(DEBUGUEO){
 		xhrObjetoForFAILTexto     = encodeURIComponent( xhrObjetoForFAILTexto );
@@ -66,7 +66,7 @@ jQuery.encodeAndGetErrorPath = function(xhrObjetoForFAILTexto, textoEstatus, elE
 	}
 	return path;	
 }
-
+*/
 
 jQuery.feedback = function(elementoDonde, mensaje, forma){
 	if(forma === 'downdelayup') {
@@ -276,7 +276,7 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent(que) + '&donde=' + encodeURIComponent(donde)  );
 				jQuery('ul.navega li a.look-opciones').data( 'que', encodeURIComponent(que) );
 				jQuery('ul.navega li a.look-opciones').data( 'donde', encodeURIComponent(donde) );
-				jQuery('.look-opciones').click();
+				jQuery('ul.navega li a.look-opciones').click();
 			}else{
 				jQuery.feedback('form#queDondeForm h3', 'Buscas algo?', 'downdelayup');
 			}
@@ -315,8 +315,12 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 		})
 		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-			var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-			jQuery(window.location).attr('href', path); 
+			//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+			//jQuery(window.location).attr('href', path);
+			jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
+			jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+			jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+			jQuery('.look-error').click();
 		});
 		
 
@@ -338,8 +342,12 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 		})
 		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-			var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-			jQuery(window.location).attr('href', path); 
+			//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+			//jQuery(window.location).attr('href', path); 
+			jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
+			jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+			jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+			jQuery('.look-error').click();
 		});
 
 
@@ -369,8 +377,12 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 						var textoEstatus = 'Error parseando la siguiente respuesta del servidor en escritos/editDuenoContrasena.php :<br> Mensaje: ' + errorParseo.message;
 						var elError = errorParseo.name;
 						
-						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
-						jQuery(window.location).attr('href', path);				
+						//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
+						//jQuery(window.location).attr('href', path);
+						jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
+						jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+						jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+						jQuery('.look-error').click();				
 					}
 					if(datosJSObj.cambiado){
 						jQuery.feedback('form#editDuenoForm h3', 'Tu password fue cambiado.');
@@ -380,8 +392,12 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
+					//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					//jQuery(window.location).attr('href', path); 
+					jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
+					jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+					jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+					jQuery('.look-error').click();
 				});
 			}
 		});		
@@ -415,8 +431,12 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 						var textoEstatus = 'Error parseando la siguiente respuesta del server en escritos/login.php :<br> Mensaje: ' + errorParseo.message;
 						var elError = errorParseo.name;
 						
-						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
-						jQuery(window.location).attr('href', path); 
+						//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
+						//jQuery(window.location).attr('href', path); 
+						jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
+						jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+						jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+						jQuery('.look-error').click();
 					}
 					if(datosJSObj.loguea){
 						//jQuery(window.location).attr('href', window.location.pathname + '?look=home&duenoId=' + datosJSObj.duenoId);
@@ -429,8 +449,12 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
+					//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					//jQuery(window.location).attr('href', path); 
+					jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
+					jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+					jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+					jQuery('.look-error').click();
 				});
 			}
 		});
@@ -473,8 +497,12 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 						var textoEstatus = 'Error parseando la siguiente respuesta del server en escritorios/creaDueno.php :<br> Mensaje: ' + errorParseo.message;
 						var elError = errorParseo.name;
 						
-						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
-						jQuery(window.location).attr('href', path); 					
+						//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
+						//jQuery(window.location).attr('href', path); 	
+						jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
+						jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+						jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+						jQuery('.look-error').click();				
 					}
 					if(datosJSObj.registrado){
 						jQuery('.look-home').click();
@@ -486,8 +514,12 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
+					//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					//jQuery(window.location).attr('href', path); 
+					jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
+					jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+					jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+					jQuery('.look-error').click();
 				});
 			}
 		});
@@ -538,10 +570,34 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 		})
 		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-			var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-			jQuery(window.location).attr('href', path); 
+			//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+			//jQuery(window.location).attr('href', path); 
+			jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
+			jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+			jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+			jQuery('.look-error').click();
 		});
 	}//if recent Nepes
+
+
+
+
+	if(settingsObjeto.url === 'looks/error.html'){
+		if(DEBUGUEO){
+			var xhrObjetoForFAILTexto = decodeURIComponent( jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto' ) ); 
+			var textoEstatus 		  = decodeURIComponent( jQuery('ul.navega li a.look-error').data( 'textoEstatus' ) ); 
+			var elError               = decodeURIComponent( jQuery('ul.navega li a.look-error').data( 'elError' ) ); 
+			
+			losLis = '<br><hr>';
+				
+			losLis += '<li><span class="color01enfasis">El error:<br></span>' + elError + '<br><br></li>';		
+			losLis += '<li><span class="color01enfasis">Texto Estatus:<br></span>' + textoEstatus + '<br><br></li>';
+			losLis += '<li><span class="color01enfasis">xhr Objecto Texto:<br></span>'      + xhrObjetoForFAILTexto + '</li>';
+				
+			losLis += '<br><hr>';
+			jQuery('#containerForErrors').append(losLis);
+		}
+	}//if error
 
 
 
