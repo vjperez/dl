@@ -513,9 +513,9 @@ jQuery(document).ready(
 				//alert('pathname: ' + window.location.pathname + '\nhref: ' + window.location.href + '\nindex: ' + indexOfDotHtml + '\nlargo: ' + largo);
 				if(indexOfDotHtml + 'html'.length + 1 == largo){ // if true, href does ends with .html, there is nothing else
 					//no hay nada en url, despues de portada.html
-					alert('portada plain');
+					//alert('portada plain');
 				}else{//hay extra parameters pero ninguno es look=, 
-					jQuery(window.location).attr('href', window.location.pathname); alert('portada sin look con loqueras');
+					jQuery(window.location).attr('href', window.location.pathname); //alert('portada sin look con otros parametros');
 				}	
 				
 			// (2) null look				
@@ -542,7 +542,7 @@ jQuery(document).ready(
 				var origin   = window.location.origin;   // Returns base URL - localhost/
 				*/
 
-				jQuery(window.location).attr('href', window.location.pathname); alert('default');
+				jQuery(window.location).attr('href', window.location.pathname); //alert('default');
 				
 			// (2) default look
 				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
