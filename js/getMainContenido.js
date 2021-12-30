@@ -513,8 +513,9 @@ jQuery(document).ready(
 				//alert('pathname: ' + window.location.pathname + '\nhref: ' + window.location.href + '\nindex: ' + indexOfDotHtml + '\nlargo: ' + largo);
 				if(indexOfDotHtml + 'html'.length + 1 == largo){ // if true, href does ends with .html, there is nothing else
 					//no hay nada en url, despues de portada.html
+					alert('portada plain');
 				}else{//hay extra parameters pero ninguno es look=, 
-					jQuery(window.location).attr('href', window.location.pathname);
+					jQuery(window.location).attr('href', window.location.pathname); alert('portada sin look con loqueras');
 				}	
 				
 			// (2) null look				
@@ -541,7 +542,7 @@ jQuery(document).ready(
 				var origin   = window.location.origin;   // Returns base URL - localhost/
 				*/
 
-				jQuery(window.location).attr('href', window.location.pathname);
+				jQuery(window.location).attr('href', window.location.pathname); alert('default');
 				
 			// (2) default look
 				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
@@ -740,8 +741,8 @@ jQuery(document).ready(
 		   //This look completely depends on the amount of options to be presented.  It doesn't make
 		   //much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 		   //concatenating strings inside an each loop, with the requested JSON datos.
-			var que = decodeURIComponent(   jQuery(this).data( 'que' ) );      alert(que);
-			var donde = decodeURIComponent( jQuery(this).data( 'donde' ) );    alert(donde);
+			var que = decodeURIComponent(   jQuery(this).data( 'que' ) );
+			var donde = decodeURIComponent( jQuery(this).data( 'donde' ) );
 			jQuery.getJSON('escritos/getOpciones.php', {que:que, donde:donde} )
 			.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 				if(datos.cuantasOpciones > 0){
