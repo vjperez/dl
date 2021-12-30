@@ -556,7 +556,7 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 		jQuery.getJSON('escritos/getRecentNepes.php')
 		.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 			var labelAndTable = '<label class="">Negocios Recientes:</label>';
-			labelAndTable   +=  '<table class="">';
+			labelAndTable   +=  '<table class="subArea">';
 			jQuery.each(datos, function(index){
 					labelAndTable += '<tr><td>' 
 					+ '<a href="portada.html"  class="link look-profile" data-nepeid="' 
