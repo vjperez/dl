@@ -38,7 +38,7 @@ input[type="text"]:focus, input[type="radio"]:focus, input[type="tel"]:focus, in
 
 fieldset{ border:0px solid green;}
 
-form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-family:'Bree Serif', 'Courer Prime', mono, monospace;  }
+form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-family:'Bree Serif', 'Courer Prime', mono, monospace; margin-bottom:0.75em; }
 fieldset.notHxxxidable label.explixxxca { font-family:'Oswaxxld', mono, monospace;  }
 
 form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:1.25em; letter-spacing:0.40em; font-weight:bolder; color:hsl(0, 100%, 50%); display: block; }
