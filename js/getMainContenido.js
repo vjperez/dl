@@ -513,7 +513,19 @@ jQuery(document).ready(
 				//alert('pathname: ' + window.location.pathname + '\nhref: ' + window.location.href + '\nindex: ' + indexOfDotHtml + '\nlargo: ' + largo);
 				if(indexOfDotHtml + 'html'.length + 1 == largo){ // if true, href does ends with .html, there is nothing else
 					//no hay nada en url, despues de portada.html
-					//alert('portada plain');
+
+					//code for recent nepes
+					var key = 'dueno_id';
+					jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+					.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+						//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+						if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
+						else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
+						
+					});
+		
+					jQuery.dameLook('looks/recentNepes.html');
+					
 				}else{//hay extra parameters pero ninguno es look=, 
 					jQuery(window.location).attr('href', window.location.pathname); //alert('portada sin look con otros parametros');
 				}	
@@ -542,7 +554,7 @@ jQuery(document).ready(
 				var origin   = window.location.origin;   // Returns base URL - localhost/
 				*/
 
-				jQuery(window.location).attr('href', window.location.pathname); //alert('default');
+				jQuery(window.location).attr('href', window.location.pathname); //alert('look= no machea nada. Default');
 				
 			// (2) default look
 				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
@@ -1054,7 +1066,7 @@ jQuery(document).ready(
 		});
 
 
-
+/*
 		jQuery(document).on('click', '.look-recentNepes', function(evento){
 			evento.preventDefault();
 			var key = 'dueno_id';
@@ -1068,7 +1080,7 @@ jQuery(document).ready(
 
 			jQuery.dameLook('looks/recentNepes.html');
 		});
-
+*/
 
 
 
