@@ -3,7 +3,7 @@ jQuery.adminDuenoNepes = function(){
     
 
     //hide, show on click ; adminDuenoNepes 
-	jQuery.toggleOnClick();
+	//jQuery.toggleOnClick();
 	//hide them  ; adminDuenoNepes
 	jQuery.hideThem();
 
