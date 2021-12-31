@@ -182,8 +182,12 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 			})
 			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 				var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-				var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-				jQuery(window.location).attr('href', path); 
+				//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+				//jQuery(window.location).attr('href', path);
+				jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
+				jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+				jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+				jQuery('.look-error').click(); 
 			});
 			// post made
 		}else{	  // submitVote1 && submitVote2; visible only after all html required fields are filled but js stop the submission
