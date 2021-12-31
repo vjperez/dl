@@ -124,7 +124,7 @@ jQuery.handleCreaNepeSubmit = function(){
 				if(datosJSObj.nepeYBregandoCreado && datosJSObj.mediaFotoUrlActualizado){		//maybe if is not needed after try catch block
 					jQuery('ul.navega li a.look-profile').data( 'nepeid', encodeURIComponent(datosJSObj.nepeId) );
 					jQuery('ul.navega li a.look-profile').click();
-					//jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
+					////jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
 				}else{
 					//jQuery.feedback('form#creaNepeForm h3', datosJSObj.feedback);
 				}
