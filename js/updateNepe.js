@@ -300,9 +300,6 @@ jQuery.isNotImage = function(){ //helper function for jQuery.have5OrLessImages
 
 
 
-
-
-
 //validation logic functions are run as handlers to change events
 var $redInputs = jQuery('form#updateNepeForm input[name^=red]');
 $redInputs.on('change', function(evento){

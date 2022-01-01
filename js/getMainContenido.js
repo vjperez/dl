@@ -865,7 +865,6 @@ jQuery(document).ready(
 					.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 						//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 						if(datos.isSet){  
-
 							key = 'own_nepes';
 							jQuery.getJSON('escritos/getSessionValue.php', {key:key})
 							.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -874,38 +873,7 @@ jQuery(document).ready(
 								
 									//alert(nepeId);
 									if( jQuery.isNepeIdOnOwnNepesSession(datos, nepeId) ){
-		
-										jQuery.dameLook('looks/updateNepe.html');
-										jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-											if(settingsObjeto.url === 'looks/updateNepe.html'){
-												//get nepeId
-												//var nepeId = jQuery.urlParametro('nepeId');  
-												
-												//get duenoId
-												//var duenoId = jQuery.urlParametro('duenoId');
-
-												//task 1 when ajax complete get that data
-												//alert('nepeId : ' + nepeId);
-												jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
-												.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-													jQuery.populateUpdateNepeForm(datos);
-												})
-												.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-													var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-													//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-													//jQuery(window.location).attr('href', path); 
-													jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
-													jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-													jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-													jQuery('.look-error').click();
-												});
-																			
-												//task 2 when ajax complete ; handle form submit and make post
-												//jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
-												jQuery.handleUpdateNepeSubmit(nepeId);
-												//submit event listener and handler
-											}
-										});
+										jQuery.dameLookToUpdateNepe(nepeId, 'looks/updateNepe.html');
 									}else{
 										var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 										var textoEstatus = 'Error, usuario solicito editar nepe q no es de el.';
