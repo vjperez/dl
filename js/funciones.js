@@ -15,14 +15,14 @@ jQuery.dameLook = function(pageName){
 
 
 jQuery.dameLookFillProfile = function(nepeId, pageName){
-	alert('dame html look to fill profile ' + nepeId);
+	//alert('dame html look to fill el profile ' + nepeId);
 	jQuery.get(pageName, function(datosDeRespuesta, estatus, xhrObjeto){
 		//console.log(datosDeRespuesta);
 		var elMain = jQuery(datosDeRespuesta).filter('#main');
 			//console.log(mainDeBusca);
 		jQuery('#containerForMain').html(elMain);
 	});
-	jQuery.post('escritos/setSessionValue.php', {nepe_id:nepeId} )
+	jQuery.post('escritos/setSessionValue.php', {nepe_id:nepeId})
 	.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -40,7 +40,7 @@ jQuery.dameLookFillProfile = function(nepeId, pageName){
 
 
 jQuery.dameLookToUpdateNepe = function(nepeId, pageName){
-		alert('dame html look to update nepe ' + nepeId);
+		//alert('dame html look to update el nepe ' + nepeId);
 		jQuery.get(pageName, function(datosDeRespuesta, estatus, xhrObjeto){
 			//console.log(datosDeRespuesta);
 			var elMain = jQuery(datosDeRespuesta).filter('#main');
@@ -354,7 +354,7 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 		var elLabel = ''; 	
 		var elTable = '';  
 		
-		alert('get username...');
+		//alert('get username...');
 		jQuery.ajax({
 			//cache: false,
 			url: 'escritos/getUsername.php',
@@ -375,7 +375,7 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 		});
 		
 
-		alert('show nepes get ids...');
+		//alert('show nepes get ids...');
 		jQuery.ajax({
 			//cache: false,
 			url: 'escritos/showNepesGetIds.php',
@@ -403,7 +403,7 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 
 
 		//do this when form submitted ;
-		alert('.submit @ home...') 
+		//alert('.submit @ home...') 
 		jQuery('form#editDuenoForm').submit(function(evento){
 			evento.preventDefault(); //not making a submit (POST request) from html action.
 			var user = 'valorDummy';
@@ -658,7 +658,7 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 		key = 'nepe_id';
 		jQuery.getJSON('escritos/getSessionValue.php', {key:key})
 		.done(function(nepeId, estatusForDONE, xhrObjetoForDONE){
-			alert('dame datos to fill profile ' + nepeId);
+			//alert('dame datos to fill el profile ' + nepeId);
 			jQuery.getJSON('escritos/getNepe.php')
 			.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					
@@ -778,17 +778,14 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 		key = 'nepe_id';
 		jQuery.getJSON('escritos/getSessionValue.php', {key:key})
 		.done(function(nepeId, estatusForDONE, xhrObjetoForDONE){
-			alert('dame datos to update nepe ' + nepeId);
+			//alert('dame datos to update el nepe ' + nepeId);
 			jQuery.getJSON('escritos/getNepe.php')
 			.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-					alert('popula');
+					//alert('popula');
 					jQuery.populateUpdateNepeForm(datos);
-					//task 2 when ajax complete ; handle form submit and make post
-					//jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
-					alert('handle submit');
+					//alert('handle submit');
 					jQuery.handleUpdateNepeSubmit(nepeId);
-					//submit event listener and handler
-			})
+			})//done
 			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
 			//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);

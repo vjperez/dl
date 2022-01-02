@@ -1,7 +1,7 @@
 <?php
 
-//saca los valores de GET
-$nepe_id = $_GET['nepeId'];
+session_start();
+$nepe_id = $_SESSION['nepe_id']; 
 //conecta al db
 require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
