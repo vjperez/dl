@@ -48,14 +48,16 @@ jQuery.adminDuenoNepes = function(){
 				//alert('datosJSObj: ' + datosJSObj);
 			}catch(errorParseo){
 				var datosJSONStrAsXHRTexto = datosJSONStr;
-				var textoEstatus = 'Error parseando la siguiente respuesta del servidor en escritos/editDuenoContrasena.php :<br> Mensaje: ' + errorParseo.message;
+				var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/showNepesGetIds.php en adminDuenoNepes :<br> Mensaje: ' + errorParseo.message;
 				var elError = errorParseo.name;
 				
 				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
 				jQuery(window.location).attr('href', path);				
 			}
             var table =  '<table class="subArea">';
+			var cuantos = 0;
 			jQuery.each(datosJSObj, function(index){
+				cuantos++;
 				table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
 				+ '&acto=deleteNepe' +  '&nepeId=' + datosJSObj[index].nepeId + '">' 
 				+ datosJSObj[index].nepeNombre + '<i class="fas fa-trash-alt"></i>' 
@@ -63,6 +65,7 @@ jQuery.adminDuenoNepes = function(){
 			});
 			table += '</table>';
             jQuery('fieldset#labelTableContainer').append(table);
+			jQuery('fieldset#labelTableContainer').append('<p>Los ' + cuantos + ' negocios.<p/>');
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
             var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -85,7 +88,7 @@ jQuery.adminDuenoNepes = function(){
 		evento.preventDefault(); //not making a submit (POST request) from html action.
 		var user = 'valorDummy';
 		var pass01 = jQuery('#passwordId').val();
-		var pass02 = jQuery('#passwordConfirmId').val();
+		var pass02 = jQuery('#passwordConfirmId').val(); 
 		if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#adminDuenoForm h3') ){
 			//Valid values son los q cumplen estas 3 cosas.
 			//Estas cosas se pueden chequear antes del post y evito post sin sentido
@@ -103,7 +106,7 @@ jQuery.adminDuenoNepes = function(){
 					//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 				}catch(errorParseo){
 					var datosJSONStrAsXHRTexto = datosJSONStr;
-					var textoEstatus = 'Error parseando la siguiente respuesta del servidor en escritos/editDuenoContrasena.php :<br> Mensaje: ' + errorParseo.message;
+					var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/editDuenoContrasena.php en adminDuenoNepes :<br> Mensaje: ' + errorParseo.message;
 					var elError = errorParseo.name;
 					
 					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
@@ -125,7 +128,7 @@ jQuery.adminDuenoNepes = function(){
 						jQuery('.look-error').click();
 					});
 				}else{
-					jQuery.feedback('form#adminDuenoForm h3', 'Trata otra vez. No cambiamos NADA !');
+					jQuery.feedback('form#adminDuenoForm h3', 'Trata otra vez. Pass VALIDO, pero, NO cambiamos NADA !');
 				}
 			})
 			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
