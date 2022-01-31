@@ -63,9 +63,15 @@ jQuery.adminDuenoNepes = function(){
 				+ datosJSObj[index].nepeNombre + '<i class="fas fa-trash-alt"></i>' 
 				+ '</a></td></tr>';	
 			});
+			table += '<tr><td>Los ' + cuantos + ' negocios.</td></tr>';
+			table += '<tr><td> </td></tr>';
+			table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
+			+ '&acto=deleteNepes' +  '&userId=' + userNumber + '">' 
+			+ ' Borra ALL nepes ' + '<i class="fas fa-trash-alt"></i>' 
+			+ '</a></td></tr>';
 			table += '</table>';
             jQuery('fieldset#labelTableContainer').append(table);
-			jQuery('fieldset#labelTableContainer').append('<p>Los ' + cuantos + ' negocios.<p/>');
+			
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
             var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
