@@ -52,7 +52,7 @@ jQuery(document).ready(
 		var look = jQuery.urlParametro('look');
 		switch(look) {
 			case 'busca':
-				/*
+				
 				jQuery('#navBusca').addClass("activo");
 				
 				var key = 'dueno_id';
@@ -65,17 +65,9 @@ jQuery(document).ready(
 				});
 
 				jQuery.dameLook('looks/busca.html');
-		
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
-					if(settingsObjeto.url === 'looks/busca.html'){ // === means true without type coersion - the type and value most both be equal
-						jQuery.handleBuscaSubmit();	//when ajax complete ; handle form submit and go to opciones
-					}//if
-				}); //ajax complete
-				*/
+				// submit is handled at funciones.js  ajaxcomplete  look busca
 			break;
 			case 'opciones':
-				/*
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -126,7 +118,7 @@ jQuery(document).ready(
 					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
-			*/
+			
 
 
 
@@ -611,7 +603,7 @@ jQuery(document).ready(
 
 
 
-
+		/*
 		jQuery(document).on('click', '.look-busca',  function(evento){
 			evento.preventDefault();
 			jQuery('a[id^=nav]').removeClass("activo");  jQuery('#navBusca').addClass("activo");
@@ -627,7 +619,7 @@ jQuery(document).ready(
 			
 			jQuery.dameLook('looks/busca.html');
 		});
-
+		*/
 
 
 
@@ -767,7 +759,7 @@ jQuery(document).ready(
 
 
 
-
+		/*
 		jQuery(document).on('click', '.look-opciones', function(eventox){
 			eventox.preventDefault();
 			var key = 'dueno_id';
@@ -824,7 +816,7 @@ jQuery(document).ready(
 				jQuery('.look-error').click();
 			});
 		});
-
+		*/
 
 
 
