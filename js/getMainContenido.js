@@ -124,7 +124,7 @@ jQuery(document).ready(
 
 			break;
 			case 'profile':
-				/*
+				
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -148,7 +148,7 @@ jQuery(document).ready(
 					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
-				*/
+				
 			break;						
 			case 'login':
 				/*
@@ -603,23 +603,7 @@ jQuery(document).ready(
 
 
 
-		/*
-		jQuery(document).on('click', '.look-busca',  function(evento){
-			evento.preventDefault();
-			jQuery('a[id^=nav]').removeClass("activo");  jQuery('#navBusca').addClass("activo");
-					
-			var key = 'dueno_id';
-			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
-			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-				if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide();   jQuery('#navLogout').show();  jQuery('#navHome').show();}
-				else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();     jQuery('#navLogin').show();   jQuery('#navSignup').show();}
-				
-			});
-			
-			jQuery.dameLook('looks/busca.html');
-		});
-		*/
+
 
 
 
@@ -759,82 +743,7 @@ jQuery(document).ready(
 
 
 
-		/*
-		jQuery(document).on('click', '.look-opciones', function(eventox){
-			eventox.preventDefault();
-			var key = 'dueno_id';
-			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
-			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-				if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
-				else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-				
-			});
-		   //This look completely depends on the amount of options to be presented.  It doesn't make
-		   //much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
-		   //concatenating strings inside an each loop, with the requested JSON datos.
-			var que = decodeURIComponent(   jQuery(this).data( 'que' ) );
-			var donde = decodeURIComponent( jQuery(this).data( 'donde' ) );
-			jQuery.getJSON('escritos/getOpciones.php', {que:que, donde:donde} )
-			.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-				if(datos.cuantasOpciones > 0){
-					//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
-					var mainDeOpciones = '<div id="main" class="">';
-					jQuery.each(datos.opciones, function(buscaMode, trios){
 
-							mainDeOpciones += '<div id="opcionesdiv" class="opcionesfotos ">';
-							if(buscaMode.indexOf("buscaBoth") > -1){
-								mainDeOpciones += '<h3>'  + que + ' + ' + donde + '</h3>';
-							}else if (buscaMode.indexOf("buscaQue") > -1){
-								mainDeOpciones += '<h3>'  + que + '</h3>';
-							}else if (buscaMode.indexOf("buscaDonde") > -1){
-								mainDeOpciones += '<h3>'  + donde + '</h3>';
-							}
-							jQuery.each(trios, function(index, pares){
-								jQuery.each(pares, function(nepeId, fotoSrc){
-									mainDeOpciones += '<a href="portada.html" class="look-profile" data-nepeid="'+ nepeId + '"  >' +
-									'<img class="" src="imagenes/profile/subidas/' + fotoSrc + '">  </a>';
-								});
-							}); // each in trios
-							mainDeOpciones += '</div>'; // <div class="ver-borde opcionesfotos">
-
-					}); // each in datos
-					mainDeOpciones += '</div>'; //  <div id="main" class="contenido margen">
-					jQuery('#containerForMain').html(mainDeOpciones);
-				}else{
-					//jQuery(window.location).attr('href', window.location.pathname + '?look=nada');
-					jQuery('.look-nada').click();  
-				}
-			})
-			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-				var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-				//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-				//jQuery(window.location).attr('href', path); 
-				jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
-				jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-				jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-				jQuery('.look-error').click();
-			});
-		});
-		*/
-
-
-
-		jQuery(document).on('click', '.look-profile', function(evento){
-			evento.preventDefault();
-			var key = 'dueno_id';
-			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
-			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-				if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
-				else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-				
-			});
-			//get nepeId then
-			var nepeId = jQuery(this).data('nepeid');  //<a>'s on the jQuery each, in the look-opciones event listener
-			jQuery.dameLookFillProfile(nepeId, 'looks/profile.html');
-		});
-		
 
 
 		jQuery(document).on('click', '.look-creaNepe', function(evento){
