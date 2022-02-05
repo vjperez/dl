@@ -323,7 +323,8 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 			donde = jQuery.cleanStr(donde, regexp); // clean function returns cleaned str, adds  ':' as delimiter
 			//alert('que=(' + que  + ')\ndonde=(' +  donde + ')');
 			if(que.length > 0 || donde.length > 0){//i'm looking for a non empty cleaned str
-				jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent(que) + '&donde=' + encodeURIComponent(donde)  );
+				jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent(que) 
+				+ '&donde=' + encodeURIComponent(donde)  );
 			}else{
 				jQuery.feedback('form#queDondeForm h3', 'Buscas algo?', 'downdelayup');
 			}
@@ -710,11 +711,7 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 						//alert(datos.que);
 						jQuery('#que li a').each(function(index){
 							if(index < datos.que.length) {
-								jQuery(this).text(datos.que[index]);
-								jQuery(this).attr('href', 'portada.html');
-								jQuery(this).attr('class', 'look-opciones');
-								jQuery(this).attr('data-que',    encodeURIComponent(datos.que[index]));
-								jQuery(this).attr('data-donde',    encodeURIComponent(''));
+								jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent(datos.que[index]) + '&donde=' + encodeURIComponent('')  );
 							} else { jQuery(this).remove(); }
 						});
 						//following code works when there are 5 or less 'donde' coming from getJSON.
@@ -722,11 +719,7 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 						//alert(datos.donde);
 						jQuery('#donde li a').each(function(index){
 							if(index < datos.donde.length) {
-								jQuery(this).text(datos.donde[index]);
-								jQuery(this).attr('href', 'portada.html');
-								jQuery(this).attr('class', 'look-opciones');
-								jQuery(this).attr('data-donde',    encodeURIComponent(datos.donde[index]));
-								jQuery(this).attr('data-que',    encodeURIComponent(''));
+								jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent('') + '&donde=' + encodeURIComponent(datos.donde[index])  );
 							}else { jQuery(this).remove(); }
 						});
 						//alert('a tu casa: ' + datos.atucasa + '\ntipo: ' + typeof datos.atucasa);
