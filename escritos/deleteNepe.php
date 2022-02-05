@@ -2,7 +2,7 @@
 
 session_start();
 if(isset($_SESSION['dueno_id'])){
-		$nepe_to_delete = $_REQUEST['nepeId'];
+		$nepe_to_delete = $_REQUEST['nepeId']; 
 
 		//conecta al db
 		require_once 'conecta/conecta.php';
@@ -21,7 +21,7 @@ if(isset($_SESSION['dueno_id'])){
 			}		
 		}else{
 			pg_close($cnx); //maybe not needed but doesn't hurt	
-			throw new Exception('Mal query  Borro bregando, pero NO el nepe!!!.  Sin RECURSO, para deleteNepeQuery en: '  . __FILE__ );
+			throw new Exception('Mal query. Sin RECURSO, para deleteNepeQuery en: '  . __FILE__ );
 		}
 }else{
 		throw new Exception('Session no seteada en: ' . __FILE__  );
