@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$nepe_id = $_SESSION['nepe_id']; 
+$nepe_id = $_GET['nepeId']; 
 //conecta al db
 require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta

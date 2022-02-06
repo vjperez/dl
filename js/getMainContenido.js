@@ -65,7 +65,11 @@ jQuery(document).ready(
 				});
 
 				jQuery.dameLook('looks/busca.html');
-				// submit is handled at funciones.js  ajaxcomplete  look busca
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'looks/busca.html'){ // === means true without type coersion - the type and value most both be equal
+						jQuery.handleSubmit();
+					} // if busca
+				}); //ajax
 			break;
 			case 'opciones':
 				var key = 'dueno_id';
@@ -136,18 +140,22 @@ jQuery(document).ready(
 
 				//get nepeId then
 				var nepeId = jQuery.urlParametro('nepeId');
-				//request get JSON data for that meId
-				jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-					//alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE );
-					//Once the data is in, get profile look
-					jQuery.dameLook('looks/profile.html');
-				})//done
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
-				});
+			
+				jQuery.dameLook('looks/profile.html');
+				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+					if(settingsObjeto.url === 'looks/profile.html'){
+						jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
+						.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+							alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE + '\nrevisado: ' + datos.revisado );
+							jQuery.populate(datos);
+						})
+						.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+							var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+							var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+							jQuery(window.location).attr('href', path); 
+						});
+					} // if profile
+				}); //ajax
 				
 			break;						
 			case 'login':
