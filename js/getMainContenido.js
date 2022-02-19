@@ -202,7 +202,6 @@ jQuery(document).ready(
 				*/		
 			break;
 			case 'home':
-				/*
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -221,13 +220,14 @@ jQuery(document).ready(
 						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 							if(settingsObjeto.url === 'looks/home.html'){
 								//jQuery.home(duenoId);
+								//hide them  
+								jQuery.hideThem();
 								jQuery.home();
 							}//if
 						});//ajaxComplete
 					}else{
 						jQuery('#navLogout').hide();
-						
-						
+									
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito home look, sin estar logueado.';
 						var elError = 'Error humano.';
@@ -236,7 +236,7 @@ jQuery(document).ready(
 						jQuery(window.location).attr('href', path);	
 					}
 				});
-				*/
+
 			break;			
 			case 'creaNepe':
 				/*
@@ -609,40 +609,6 @@ jQuery(document).ready(
 // 								look event listeners
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-
-
-		jQuery(document).on('click', '.look-home', function(evento){
-			evento.preventDefault();
-			var key = 'dueno_id';
-			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
-			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-				if(datos.isSet){ 
-					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();   jQuery('#navLogout').show();  jQuery('#navHome').show();
-					jQuery('a[id^=nav]').removeClass("activo");  jQuery('#navHome').addClass("activo");
-					
-					jQuery.dameLook('looks/home.html');
-				}else{
-					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-					
-					
-					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-					var textoEstatus = 'Error, usuario solicito home look, sin estar logueado.';
-					var elError = 'Error humano.';
-
-					//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-					//jQuery(window.location).attr('href', path);	
-					jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
-					jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-					jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-					jQuery('.look-error').click();
-				}
-			});
-		});
 
 
 
