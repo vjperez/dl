@@ -146,7 +146,7 @@ jQuery(document).ready(
 					if(settingsObjeto.url === 'looks/profile.html'){
 						jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
 						.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-							alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE + '\nrevisado: ' + datos.revisado );
+							//alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE + '\nrevisado: ' + datos.revisado );
 							jQuery.populate(datos);
 						})
 						.fail(function(xhrObjetoForFAIL, textoEstatus, elError){

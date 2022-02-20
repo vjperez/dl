@@ -30,11 +30,10 @@ jQuery.home_populate = function(){
         .done(function(datos, estatusForDONE, xhrObjetoForDONE){
             //alert('datos: ' + datos);
             jQuery.each(datos, function(index){
-                //elTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
-                elTable += '<tr><td><a class="look-updateNepe" href="portada.html" data-nepeid="' + datos[index].nepeId + '">' 
+                elTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  
+                + '&nepeId=' + datos[index].nepeId  + '">'
                 + datos[index].nepeNombre + '</a></td></tr>';
-            });
-            //elTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';	
+            });	
             jQuery('fieldset#labelTableContainer table').html( elTable );
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
