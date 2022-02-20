@@ -159,7 +159,6 @@ jQuery(document).ready(
 				
 			break;						
 			case 'login':
-				/*
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -194,12 +193,11 @@ jQuery(document).ready(
 							//This code runs when get isCompleted and IF the get was requesting login.html
 							if(settingsObjeto.url === 'looks/login.html'){
 								//when ajax complete ; handle form submit and make post
-								jQuery.handleLoginSubmit();
+									//event handlers on login js
 							}//if
 						});//ajax complete
 					}
-				});		
-				*/		
+				});				
 			break;
 			case 'home':
 				var key = 'dueno_id';
