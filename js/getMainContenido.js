@@ -275,7 +275,6 @@ jQuery(document).ready(
 				*/		
 			break;
 			case 'updateNepe':
-			/*
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -355,8 +354,7 @@ jQuery(document).ready(
 						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 						jQuery(window.location).attr('href', path);	
 					}
-				});
-				*/
+				});	
 			break;			
 			case 'creaDueno':
 				/*

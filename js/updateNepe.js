@@ -173,21 +173,15 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 					jQuery(window.location).attr('href', path); 					
 				}
 				if(datosJSObj.actualizado){		//maybe if is not needed after try catch block
-					jQuery('ul.navega li a.look-profile').data( 'nepeid', encodeURIComponent(datosJSObj.nepeId) );
-					jQuery('ul.navega li a.look-profile').click();
-					////jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
+					jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
 				}else{
 					//jQuery.feedback('form#updateNepeForm h3', datosJSObj.feedback);
 				}
 			})
 			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 				var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-				//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-				//jQuery(window.location).attr('href', path);
-				jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
-				jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-				jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-				jQuery('.look-error').click(); 
+				var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+				jQuery(window.location).attr('href', path); 
 			});
 			// post made
 		}else{	  // submitVote1 && submitVote2; visible only after all html required fields are filled but js stop the submission

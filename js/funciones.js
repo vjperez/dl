@@ -445,29 +445,6 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 
 
 
-	if(settingsObjeto.url === 'looks/updateNepe.html'){
-		key = 'nepe_id';
-		jQuery.getJSON('escritos/getSessionValue.php', {key:key})
-		.done(function(nepeId, estatusForDONE, xhrObjetoForDONE){
-			//alert('dame datos to update el nepe ' + nepeId);
-			jQuery.getJSON('escritos/getNepe.php')
-			.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-					//alert('popula');
-					jQuery.populateUpdateNepeForm(datos);
-					//alert('handle submit');
-					jQuery.handleUpdateNepeSubmit(nepeId);
-			})//done
-			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-			//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-			//jQuery(window.location).attr('href', path); 
-			jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
-			jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-			jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-			jQuery('.look-error').click();
-			});
-		});
-	}//if update nepe
 
 
 
