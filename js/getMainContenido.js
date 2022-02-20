@@ -222,7 +222,7 @@ jQuery(document).ready(
 								//jQuery.home(duenoId);
 								//hide them  
 								jQuery.hideThem();
-								jQuery.home();
+								jQuery.home_populate();
 							}//if
 						});//ajaxComplete
 					}else{

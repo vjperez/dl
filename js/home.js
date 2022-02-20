@@ -1,47 +1,48 @@
-//label and table
-var elLabel = ''; 	
-var elTable = '';  
+jQuery.home_populate = function(){
+        //label and table
+        var elLabel = ''; 	
+        var elTable = '';  
 
-//alert('get username...');
-jQuery.ajax({
-    //cache: false,
-    url: 'escritos/getUsername.php',
-    dataType: "json"
-})
-.done(function(dato, estatusForDONE, xhrObjetoForDONE){
-    elLabel = 'Negocios de ' + dato; 
-    jQuery('fieldset#labelTableContainer label').html( elLabel );
-})
-.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-    var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-    var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-    jQuery(window.location).attr('href', path);
-});
+        //alert('get username...');
+        jQuery.ajax({
+            //cache: false,
+            url: 'escritos/getUsername.php',
+            dataType: "json"
+        })
+        .done(function(dato, estatusForDONE, xhrObjetoForDONE){
+            elLabel = 'Negocios de ' + dato; 
+            jQuery('fieldset#labelTableContainer label').html( elLabel );
+        })
+        .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+            var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+            var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+            jQuery(window.location).attr('href', path);
+        });
 
 
 
-//alert('show nepes get ids...');
-jQuery.ajax({
-    //cache: false,
-    url: 'escritos/showNepesGetIds.php',
-    dataType: "json"
-})
-.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-    //alert('datos: ' + datos);
-    jQuery.each(datos, function(index){
-        //elTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
-        elTable += '<tr><td><a class="look-updateNepe" href="portada.html" data-nepeid="' + datos[index].nepeId + '">' 
-        + datos[index].nepeNombre + '</a></td></tr>';
-    });
-    //elTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';	
-    jQuery('fieldset#labelTableContainer table').html( elTable );
-})
-.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-    var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-    var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-    jQuery(window.location).attr('href', path); 
-});
-
+        //alert('show nepes get ids...');
+        jQuery.ajax({
+            //cache: false,
+            url: 'escritos/showNepesGetIds.php',
+            dataType: "json"
+        })
+        .done(function(datos, estatusForDONE, xhrObjetoForDONE){
+            //alert('datos: ' + datos);
+            jQuery.each(datos, function(index){
+                //elTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  +  '&duenoId=' + datos.duenoId 
+                elTable += '<tr><td><a class="look-updateNepe" href="portada.html" data-nepeid="' + datos[index].nepeId + '">' 
+                + datos[index].nepeNombre + '</a></td></tr>';
+            });
+            //elTable += '<tr><td><a class="link" href="portada.html?look=creaNepe'  +  '&duenoId=' datos.duenoId + '">' + 'Crea Nuevo NePe' + '</a></td></tr>';	
+            jQuery('fieldset#labelTableContainer table').html( elTable );
+        })
+        .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+            var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+            var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+            jQuery(window.location).attr('href', path); 
+        });
+}
 
 //do this when form submitted ;
 //alert('.submit @ home...') 
@@ -85,16 +86,11 @@ jQuery('form#editDuenoForm').submit(function(evento){
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
             var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-            //var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-            //jQuery(window.location).attr('href', path); 
-            jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
-            jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-            jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-            jQuery('.look-error').click();
+            var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+            jQuery(window.location).attr('href', path); 
         });
     }
 });
-
 
 
 
