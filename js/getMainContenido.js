@@ -469,7 +469,6 @@ jQuery(document).ready(
 				});
 			break;
 			case 'nada':
-				/*
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -480,10 +479,8 @@ jQuery(document).ready(
 				});
 
 				jQuery.dameLook('looks/nada.html');
-				*/
 				break;				
 			case 'error':
-			/*
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -509,7 +506,6 @@ jQuery(document).ready(
 						}//if
 					}); //ajax complete
 				}
-				*/
 				break;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//you can redirect null and default cases, either into busca case,  into error case or into their own looks 

@@ -114,7 +114,10 @@ jQuery.encodeAndGetErrorPath = function(xhrObjetoForFAILTexto, textoEstatus, elE
 		xhrObjetoForFAILTexto     = encodeURIComponent( xhrObjetoForFAILTexto );
 		textoEstatus              = encodeURIComponent( textoEstatus );
 		elError                   = encodeURIComponent( elError );
-		var path  = window.location.pathname + '?look=' + 'error' + '&xhrObjetoForFAILTexto=' + xhrObjetoForFAILTexto + '&textoEstatus=' + textoEstatus + 		'&elError=' + elError;
+		var path  = window.location.pathname + '?look=' + 'error' 
+				+ '&xhrObjetoForFAILTexto=' + xhrObjetoForFAILTexto 
+				+ '&textoEstatus=' + textoEstatus 
+				+ '&elError=' + elError;
 	}else{
 		var path = window.location.pathname + '?look=' + 'error';
 	}
@@ -384,34 +387,6 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 	if(settingsObjeto.url === 'looks/creaNepe.html'){
 		jQuery.handleCreaNepeSubmit();
 	}//if creaNepe
-	
-
-
-
-
-
-
-	if(settingsObjeto.url === 'looks/error.html'){
-		if(DEBUGUEO){
-			var xhrObjetoForFAILTexto = decodeURIComponent( jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto' ) ); 
-			var textoEstatus 		  = decodeURIComponent( jQuery('ul.navega li a.look-error').data( 'textoEstatus' ) ); 
-			var elError               = decodeURIComponent( jQuery('ul.navega li a.look-error').data( 'elError' ) ); 
-			
-			losLis = '<br><hr>';
-				
-			losLis += '<li><span class="color01enfasis">El error:<br></span>' + elError + '<br><br></li>';		
-			losLis += '<li><span class="color01enfasis">Texto Estatus:<br></span>' + textoEstatus + '<br><br></li>';
-			losLis += '<li><span class="color01enfasis">xhr Objecto Texto:<br></span>'      + xhrObjetoForFAILTexto + '</li>';
-				
-			losLis += '<br><hr>';
-			jQuery('#containerForErrors').append(losLis);
-		}
-	}//if error
-
-
-
-
-	
 
 
 
