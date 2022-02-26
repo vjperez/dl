@@ -376,13 +376,6 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 
 
 
-
-	if(settingsObjeto.url === 'looks/faq.html'){ // === means true without type coersion - the type and value most both be equal
-		jQuery.hideThem();
-	}//if faq
-
-
-
 	
 	if(settingsObjeto.url === 'looks/creaNepe.html'){
 		jQuery.handleCreaNepeSubmit();
@@ -390,33 +383,6 @@ jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 	
 
 
-
-	if(settingsObjeto.url === 'looks/recentNepes.html'){
-		jQuery.getJSON('escritos/getRecentNepes.php')
-		.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-			var labelAndTable = '<label class="">Negocios Recientes:</label>';
-			labelAndTable   +=  '<table class="subArea">';
-			jQuery.each(datos, function(index){
-					labelAndTable += '<tr><td>' 
-					+ '<a href="portada.html"  class="link look-profile" data-nepeid="' 
-					+ datos[index].nepeId  + '">' 
-					+ datos[index].nepeNombre 
-					+ '   (' +  datos[index].dias  +  ' dias)' 
-					+ '</a></td></tr>';
-			});
-			labelAndTable += '</table>';
-			jQuery('#labelAndTableContainer').html(labelAndTable);
-		})
-		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-			//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-			//jQuery(window.location).attr('href', path); 
-			jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
-			jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-			jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-			jQuery('.look-error').click();
-		});
-	}//if recent Nepes
 
 
 

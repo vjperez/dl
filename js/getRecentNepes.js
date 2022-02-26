@@ -16,12 +16,8 @@ jQuery.getRecentNepes = function(){
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-		//jQuery(window.location).attr('href', path);
-		jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
-		jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-		jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-		jQuery('.look-error').click(); 
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
 	});
 		
 }

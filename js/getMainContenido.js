@@ -398,7 +398,6 @@ jQuery(document).ready(
 				*/
 			break;	
 			case 'recentNepes':
-				/*
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -416,7 +415,6 @@ jQuery(document).ready(
 						jQuery.getRecentNepes();	
 					}//if
 				}); //ajax complete
-			*/
 			break;			
 			case 'adminDuenoNepes':
 				var key = 'dueno_id';
@@ -457,7 +455,6 @@ jQuery(document).ready(
 				});
 			break;		
 			case 'faq':
-				/*
 				jQuery('#navFaq').addClass("activo");
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -473,11 +470,9 @@ jQuery(document).ready(
 					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
 					//This code runs when get isCompleted and IF the get was requesting faq.html
 					if(settingsObjeto.url === 'looks/faq.html'){ // === means true without type coersion - the type and value most both be equal
-						jQuery.toggleOnClick();
 						jQuery.hideThem();
 					}
 				});
-				*/
 			break;
 			case 'nada':
 				/*
