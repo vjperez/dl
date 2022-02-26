@@ -133,23 +133,22 @@ jQuery(document).ready(
 				});
 
 				//get nepeId then
-				var nepeId = jQuery.urlParametro('nepeId');
-			
-				jQuery.dameLook('looks/profile.html');
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/profile.html'){
-						jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
-						.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-							//alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE + '\nrevisado: ' + datos.revisado );
-							jQuery.populate(datos);
-						})
-						.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-							var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-							var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-							jQuery(window.location).attr('href', path); 
-						});
-					} // if profile
-				}); //ajax
+				var nepeId = jQuery.urlParametro('nepeId');	
+				jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
+				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+						jQuery.dameLook('looks/profile.html');
+						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+							if(settingsObjeto.url === 'looks/profile.html'){
+									//alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE + '\nrevisado: ' + datos.revisado );
+									jQuery.populate(datos);
+							} // if profile
+						}); //ajax
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
+				});
 				
 			break;						
 			case 'login':
