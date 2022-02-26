@@ -12,6 +12,23 @@ jQuery.dameLook = function(pageName){
 }
 
 
+jQuery.cleanStr = function(str, patron){
+	//patron comes mainly from crea y update nepe, y busca
+	str = str.replace(patron, '*'); 				
+	strGoodPartsArray = str.split('*');
+	cleanedstr = '';
+	for(var i=0; i < strGoodPartsArray.length; i++){
+		//alert('parte de strGoodPartsArray=[' + strGoodPartsArray[i]  + ']');
+		if (strGoodPartsArray[i] !== '') {
+			if(cleanedstr !== ''){cleanedstr += ' ';} //the first time, dont run this line of code, simply add the 'word', other times add a ' ' before the word as delimiter
+			cleanedstr += strGoodPartsArray[i];
+		}
+	}
+	return cleanedstr;
+}
+
+///////////////////////////////////////////////////////
+
 
 
 jQuery.dameLookFillProfile = function(nepeId, pageName){
@@ -78,20 +95,7 @@ jQuery.urlParametro = function(name){
 }
 
 
-jQuery.cleanStr = function(str, patron){
-	//patron comes mainly from crea y update nepe, y busca
-	str = str.replace(patron, '*'); 				
-	strGoodPartsArray = str.split('*');
-	cleanedstr = '';
-	for(var i=0; i < strGoodPartsArray.length; i++){
-		//alert('parte de strGoodPartsArray=[' + strGoodPartsArray[i]  + ']');
-		if (strGoodPartsArray[i] !== '') {
-			if(cleanedstr !== ''){cleanedstr += ' ';} //the first time, dont run this line of code, simply add the 'word', other times add a ' ' before the word as delimiter
-			cleanedstr += strGoodPartsArray[i];
-		}
-	}
-	return cleanedstr;
-}
+
 
 
 jQuery.isVacioStr = function(str){

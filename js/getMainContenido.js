@@ -51,10 +51,8 @@ jQuery(document).ready(
 
 		var look = jQuery.urlParametro('look');
 		switch(look) {
-			case 'busca':
-				
+			case 'busca':	
 				jQuery('#navBusca').addClass("activo");
-				
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -63,13 +61,14 @@ jQuery(document).ready(
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					
 				});
-
 				jQuery.dameLook('looks/busca.html');
+				/*
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					if(settingsObjeto.url === 'looks/busca.html'){ // === means true without type coersion - the type and value most both be equal
-						jQuery.handleSubmit();
+						//jQuery.handleSubmit();
 					} // if busca
 				}); //ajax
+				*/
 			break;
 			case 'opciones':
 				var key = 'dueno_id';
@@ -122,13 +121,8 @@ jQuery(document).ready(
 					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
-			
-
-
-
 			break;
-			case 'profile':
-				
+			case 'profile':			
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
