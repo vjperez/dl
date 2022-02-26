@@ -4,7 +4,7 @@ jQuery(document).ready(
 		var acto = jQuery.urlParametro('acto');
 		switch(acto){
 			case 'logout':
-				//jQuery.logout();
+				jQuery.logout();
 			break;
 			case 'deleteNepe':
 				var nepeId = jQuery.urlParametro('nepeId');
@@ -589,57 +589,6 @@ jQuery(document).ready(
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // 								look event listeners
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-		jQuery(document).on('click', '.look-login', function(evento){
-			evento.preventDefault();
-			var key = 'dueno_id';
-			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
-			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-			
-				if(datos.isSet){  
-					//1) redirect to home, when already logged
-				//jQuery('.look-home').click();
-					//2) redirect to error, when already logged
-					
-					//jQuery('#navSignup').hide();
-					
-					
-					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-					var textoEstatus = 'Error, usuario solicito login look, estando logueado.';
-					var elError = 'Error humano.';
-
-					//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-					//jQuery(window.location).attr('href', path);	
-					jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
-					jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-					jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-					jQuery('.look-error').click();
-					
-				}else{
-					jQuery('#navLogout').hide(); jQuery('#navHome').hide();  jQuery('#navLogin').show();   jQuery('#navSignup').show();
-					jQuery('a[id^=nav]').removeClass("activo");  jQuery('#navLogin').addClass("activo");
-					
-					//get login look
-					jQuery.dameLook('looks/login.html');
-				}
-			});
-		});
-
-
-
-
-		jQuery(document).on('click', '.look-acto-logout', function(evento){
-			evento.preventDefault();
-			jQuery.logout();
-			jQuery('.look-faq').click();
-		});
-		
-		
 		
 		
 		jQuery(document).on('click', '.look-creaDueno', function(evento){
@@ -680,23 +629,6 @@ jQuery(document).ready(
 
 
 
-		jQuery(document).on('click', '.look-faq', function(eventox){
-			eventox.preventDefault();
-			jQuery('a[id^=nav]').removeClass("activo");  jQuery('#navFaq').addClass("activo");
-			var key = 'dueno_id';
-			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
-			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-				if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide();   jQuery('#navLogout').show();  jQuery('#navHome').show();}
-				else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();     jQuery('#navLogin').show();   jQuery('#navSignup').show();}
-				
-			});
-			
-			jQuery.dameLook('looks/faq.html');
-		});
-
-
-
 
 
 
@@ -729,127 +661,6 @@ jQuery(document).ready(
 			});	
 		});
 
-
-
-
-		jQuery(document).on('click', '.look-updateNepe', function(evento){
-			evento.preventDefault();	
-			var nepeId = jQuery(this).data('nepeid');
-			var key = 'dueno_id';
-			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
-			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-				if(datos.isSet){
-					jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
-					jQuery('#navHome').addClass("activo");
-					
-					
-					key = 'own_nepes';
-					jQuery.getJSON('escritos/isSessionSet.php', {key:key})
-					.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-						//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-						if(datos.isSet){  
-							key = 'own_nepes';
-							jQuery.getJSON('escritos/getSessionValue.php', {key:key})
-							.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-								//alert('key: ' + key + '\ndatos: ' + datos);
-								//var nepeId = jQuery.urlParametro('nepeId');
-								
-									//alert(nepeId);
-									if( jQuery.isNepeIdOnOwnNepesSession(datos, nepeId) ){
-										jQuery.dameLookToUpdateNepe(nepeId, 'looks/updateNepe.html');
-									}else{
-										var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-										var textoEstatus = 'Error, usuario solicito editar nepe q no es de el.';
-										var elError = 'Error humano.';
-										
-										//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-										//jQuery(window.location).attr('href', path);	
-										jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
-										jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-										jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-										jQuery('.look-error').click();							
-									}
-							});
-						}else{  
-							var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-							var textoEstatus = 'Error, usuario esta logueado pero sin own_nepes seteado. (for whatever reason)';
-							var elError = 'Error humano.';
-							
-							//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-							//jQuery(window.location).attr('href', path);	
-							jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
-							jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-							jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-							jQuery('.look-error').click();
-						}
-					});
-				}else{  
-					jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-					
-					
-					var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-					var textoEstatus = 'Error, usuario solicito updateNepe look, sin estar logueado.';
-					var elError = 'Error humano.';
-
-					//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-					//jQuery(window.location).attr('href', path);	
-					jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
-					jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-					jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-					jQuery('.look-error').click();
-				}
-			});
-		});
-
-
-/*
-		jQuery(document).on('click', '.look-recentNepes', function(evento){
-			evento.preventDefault();
-			var key = 'dueno_id';
-			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
-			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-				if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
-				else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-				
-			});
-
-			jQuery.dameLook('looks/recentNepes.html');
-		});
-*/
-
-
-
-		jQuery(document).on('click', '.look-nada', function(evento){
-			evento.preventDefault();
-			var key = 'dueno_id';
-			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
-			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-				if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
-				else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-			
-			});
-			jQuery.dameLook('looks/nada.html');
-		});
-
-
-
-
-		jQuery(document).on('click', '.look-error', function(evento){
-			evento.preventDefault();
-			var key = 'dueno_id';
-			jQuery.getJSON('escritos/isSessionSet.php', {key:key})
-			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-				if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
-				else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-				
-			});
-			
-			jQuery.dameLook('looks/error.html');
-		});
 
 
 
