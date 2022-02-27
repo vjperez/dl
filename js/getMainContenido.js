@@ -63,11 +63,11 @@ jQuery(document).ready(
 				});
 				jQuery.dameLook('looks/busca.html');
 				/*
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					if(settingsObjeto.url === 'looks/busca.html'){ // === means true without type coersion - the type and value most both be equal
-						//jQuery.handleSubmit();
-					} // if busca
-				}); //ajax
+					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+						if(settingsObjeto.url === 'looks/busca.html'){ // === means true without type coersion - the type and value most both be equal
+							//jQuery.handleSubmit();
+						} // if busca
+					}); //ajax
 				*/
 			break;
 			case 'opciones':
@@ -180,7 +180,7 @@ jQuery(document).ready(
 						
 						//get login look
 						jQuery.dameLook('looks/login.html');
-
+					/*
 						//once look is in, use jQuery on loaded elements to get values
 						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 							//This code runs when get isCompleted and IF the get was requesting login.html
@@ -189,6 +189,7 @@ jQuery(document).ready(
 									//event handlers on login js
 							}//if
 						});//ajax complete
+					*/
 					}
 				});				
 			break;
