@@ -274,50 +274,37 @@ jQuery(document).ready(
 						.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 							//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 							if(datos.isSet){  
-
 								key = 'own_nepes';
 								jQuery.getJSON('escritos/getSessionValue.php', {key:key})
 								.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 									//alert('key: ' + key + '\ndatos: ' + datos);
 									var nepeId = jQuery.urlParametro('nepeId');
-											if( jQuery.isNepeIdOnOwnNepesSession(datos, nepeId) ){
-				
+										if( jQuery.isNepeIdOnOwnNepesSession(datos, nepeId) ){
+											jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
+											.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 												jQuery.dameLook('looks/updateNepe.html');
-				
 												jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-													if(settingsObjeto.url === 'looks/updateNepe.html'){
-														//get nepeId
-														//var nepeId = jQuery.urlParametro('nepeId');  
-														
-														//get duenoId
-														//var duenoId = jQuery.urlParametro('duenoId');
-								
-														//task 1 when ajax complete get that data
-														//alert('nepeId : ' + nepeId);
-														jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
-														.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-															jQuery.populateUpdateNepeForm(datos);
-														})
-														.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-															var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-															var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-															jQuery(window.location).attr('href', path); 
-														});
-																					
-														//task 2 when ajax complete ; handle form submit and make post
-														//jQuery.handleUpdateNepeSubmit(duenoId, nepeId);
+													if(settingsObjeto.url === 'looks/updateNepe.html'){	
+														jQuery.hideThem();										
+														jQuery.populateUpdateNepeForm(datos);
 														jQuery.handleUpdateNepeSubmit(nepeId);
 														//submit event listener and handler
 													}//if
 												});//ajaxComplete
-											}else{
-												var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-												var textoEstatus = 'Error, usuario solicito editar nepe q no es de el.';
-												var elError = 'Error humano.';
-												
-												var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-												jQuery(window.location).attr('href', path);								
-											}
+											})
+											.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+												var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+												var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+												jQuery(window.location).attr('href', path); 
+											});
+										}else{
+											var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+											var textoEstatus = 'Error, usuario solicito editar nepe q no es de el.';
+											var elError = 'Error humano.';
+											
+											var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+											jQuery(window.location).attr('href', path);								
+										}
 								});
 							}else{  
 								var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';

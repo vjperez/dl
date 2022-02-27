@@ -191,16 +191,16 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 		}
 	});  //jQuery submit
 	
-	
-	
-	//hide them  ; editDuenoShowNepes task 4
-	jQuery.hideThem();
-	
-	jQuery('fieldset#submitButtonFieldset button').on('click', function(evento){
-		jQuery.showThem();
-	});
 
 }//  handleSubmit
+	
+
+
+
+	
+jQuery('fieldset#submitButtonFieldset button').on('click', function(evento){
+	jQuery.showThem();
+});
 
 
 
