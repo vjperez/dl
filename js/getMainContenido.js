@@ -475,6 +475,13 @@ jQuery(document).ready(
 					}); //ajax complete
 				}
 				break;
+
+				case null:
+				default:
+					jQuery(window.location).attr('href', window.location.pathname + '?look=recentNepes');
+				break;
+
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//you can redirect null and default cases, either into busca case,  into error case or into their own looks 
 //case null:
@@ -554,10 +561,6 @@ jQuery(document).ready(
 				*/
 //break;
 
-		case null:
-		default:
-			jQuery(window.location).attr('href', window.location.pathname + '?look=recentNepes');
-		break;
 
 		}//switch
 
