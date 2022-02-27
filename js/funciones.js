@@ -27,57 +27,9 @@ jQuery.cleanStr = function(str, patron){
 	return cleanedstr;
 }
 
+
+
 ///////////////////////////////////////////////////////
-
-
-
-jQuery.dameLookFillProfile = function(nepeId, pageName){
-	//alert('dame html look to fill el profile ' + nepeId);
-	jQuery.get(pageName, function(datosDeRespuesta, estatus, xhrObjeto){
-		//console.log(datosDeRespuesta);
-		var elMain = jQuery(datosDeRespuesta).filter('#main');
-			//console.log(mainDeBusca);
-		jQuery('#containerForMain').html(elMain);
-	});
-	jQuery.post('escritos/setSessionValue.php', {nepe_id:nepeId})
-	.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-	})
-	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-		//jQuery(window.location).attr('href', path); 
-		jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
-		jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-		jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-		jQuery('.look-error').click();
-	});
-}
-
-
-
-
-jQuery.dameLookToUpdateNepe = function(nepeId, pageName){
-		//alert('dame html look to update el nepe ' + nepeId);
-		jQuery.get(pageName, function(datosDeRespuesta, estatus, xhrObjeto){
-			//console.log(datosDeRespuesta);
-			var elMain = jQuery(datosDeRespuesta).filter('#main');
-				//console.log(mainDeBusca);
-			jQuery('#containerForMain').html(elMain);
-		});	
-		jQuery.post('escritos/setSessionValue.php', {nepe_id:nepeId} )
-		.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-		})
-		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-			//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-			//jQuery(window.location).attr('href', path); 
-			jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
-			jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-			jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-			jQuery('.look-error').click();
-		});
-}
-
 
 
 
@@ -281,21 +233,22 @@ jQuery.isNepeIdOnOwnNepesCookie = function(nepeIdTocheck){
 */
 
 
-
 /*
 jQuery.isSessionSet = function(key){
 	jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-		alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
+		//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 		return datos.isSet;
-	});
-	//.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-	//	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-	//	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-	//	jQuery(window.location).attr('href', path); 
-	//}) 
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	}); 
 }
+*/
 
+/*
 jQuery.getSessionValue = function(key){
 	jQuery.getJSON('escritos/getSessionValue.php', {key:key})
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -307,5 +260,55 @@ jQuery.getSessionValue = function(key){
 	//	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 	//	jQuery(window.location).attr('href', path); 
 	//}) 
+}
+*/
+
+
+/*
+jQuery.dameLookFillProfile = function(nepeId, pageName){
+	//alert('dame html look to fill el profile ' + nepeId);
+	jQuery.get(pageName, function(datosDeRespuesta, estatus, xhrObjeto){
+		//console.log(datosDeRespuesta);
+		var elMain = jQuery(datosDeRespuesta).filter('#main');
+			//console.log(mainDeBusca);
+		jQuery('#containerForMain').html(elMain);
+	});
+	jQuery.post('escritos/setSessionValue.php', {nepe_id:nepeId})
+	.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+		//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		//jQuery(window.location).attr('href', path); 
+		jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
+		jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+		jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+		jQuery('.look-error').click();
+	});
+}
+*/
+
+
+/*
+jQuery.dameLookToUpdateNepe = function(nepeId, pageName){
+		//alert('dame html look to update el nepe ' + nepeId);
+		jQuery.get(pageName, function(datosDeRespuesta, estatus, xhrObjeto){
+			//console.log(datosDeRespuesta);
+			var elMain = jQuery(datosDeRespuesta).filter('#main');
+				//console.log(mainDeBusca);
+			jQuery('#containerForMain').html(elMain);
+		});	
+		jQuery.post('escritos/setSessionValue.php', {nepe_id:nepeId} )
+		.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+		})
+		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+			//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+			//jQuery(window.location).attr('href', path); 
+			jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
+			jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
+			jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
+			jQuery('.look-error').click();
+		});
 }
 */
