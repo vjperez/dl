@@ -509,14 +509,15 @@ jQuery(document).ready(
 				break;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//you can redirect null and default cases, either into busca case,  into error case or into their own looks 
-			case null:
+//case null:
 			// (1) redirecting to portada removing extra parameters after .html 
 				/*
 				var pathname = window.location.pathname; // Returns path only- http://localhost/WebDevelopmentStuff/mio/portada.html - saca parametros viejos
 				var url      = window.location.href;     // Returns full URL - http://localhost/WebDevelopmentStuff/mio/portada.html - deja parametros viejos
 				var origin   = window.location.origin;   // Returns base URL - localhost/
 				*/
-					
+				
+				/*
 				var indexOfDotHtml = window.location.href.indexOf(".html");
 				var largo = window.location.href.length;
 				//alert('pathname: ' + window.location.pathname + '\nhref: ' + window.location.href + '\nindex: ' + indexOfDotHtml + '\nlargo: ' + largo);
@@ -538,6 +539,7 @@ jQuery(document).ready(
 				}else{//hay extra parameters pero ninguno es look=, 
 					jQuery(window.location).attr('href', window.location.pathname); //alert('portada sin look con otros parametros');
 				}	
+				*/
 				
 			// (2) null look				
 				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
@@ -554,8 +556,8 @@ jQuery(document).ready(
 			jQuery(window.location).attr('href', path);	
 			//// (3) to error 
 				*/
-			break;
-			default :
+//break;
+//default :
 			// (1) redirecting to portada removing extra parameters after .html
 				/*
 				var pathname = window.location.pathname; // Returns path only- http://localhost/WebDevelopmentStuff/mio/portada.html - saca parametros viejos
@@ -563,8 +565,10 @@ jQuery(document).ready(
 				var origin   = window.location.origin;   // Returns base URL - localhost/
 				*/
 
-				jQuery(window.location).attr('href', window.location.pathname); //alert('look= no machea nada. Default');
-				
+
+			//	jQuery(window.location).attr('href', window.location.pathname); //alert('look= no machea nada. Default');
+			
+			
 			// (2) default look
 				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
 				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
@@ -580,8 +584,12 @@ jQuery(document).ready(
 			jQuery(window.location).attr('href', path);	
 			// (3) to error
 				*/
-			break;
+//break;
 
+		case null:
+		default:
+			jQuery(window.location).attr('href', window.location.pathname + '?look=recentNepes');
+		break;
 
 		}//switch
 
