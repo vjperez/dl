@@ -395,33 +395,24 @@ jQuery(document).ready(
 					if(datos.isSet){ 
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 						jQuery('#navHome').addClass("activo");
-						
-						
-						//get duenoId
-						//var duenoId = jQuery.urlParametro('duenoId');
 
 						jQuery.dameLook('looks/adminDuenoNepes.html');
 
 						//once look is in, use jQuery to update look with profile values
 						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 							if(settingsObjeto.url === 'looks/adminDuenoNepes.html'){
-								//jQuery.adminDuenoNepes(duenoId);
-								jQuery.adminDuenoNepes();
+								jQuery.hideThem();
 							}//if
 						});//ajaxComplete
 					}else{
 						jQuery('#navLogout').hide();
 						
-						
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito admin (adminDuenoNepes) look, sin estar logueado.';
 						var elError = 'Error humano.';
-						//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-						//jQuery(window.location).attr('href', path);	
-						jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
-						jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-						jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-						jQuery('.look-error').click();
+
+						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+						jQuery(window.location).attr('href', path);	
 					}
 				});
 			break;		
