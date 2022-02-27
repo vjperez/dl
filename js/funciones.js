@@ -211,6 +211,26 @@ jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatEl
 }
 
 
+jQuery.isNepeIdOnOwnNepesSession = function(ownNepes, nepeIdTocheck){
+	for(var index=0; index < ownNepes.length; index++){
+		//alert('nepe id to check: ' + nepeIdTocheck + '   current value on own nepes: ' + own_nepes[index])
+		if(ownNepes[index] == nepeIdTocheck) { return true; }
+	}
+	return false;
+}
+
+jQuery.logout = function(){
+	jQuery.get('escritos/logout.php')
+	.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+	});
+	//.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+	//	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+	//	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+	//	jQuery(window.location).attr('href', path); 
+	//}) 
+}
+
+
 
 /*
 jQuery.isSetCookie = function(cookieName){
@@ -289,109 +309,3 @@ jQuery.getSessionValue = function(key){
 	//}) 
 }
 */
-
-
-
-jQuery.isNepeIdOnOwnNepesSession = function(ownNepes, nepeIdTocheck){
-	for(var index=0; index < ownNepes.length; index++){
-		//alert('nepe id to check: ' + nepeIdTocheck + '   current value on own nepes: ' + own_nepes[index])
-		if(ownNepes[index] == nepeIdTocheck) { return true; }
-	}
-	return false;
-}
-
-jQuery.logout = function(){
-	jQuery.get('escritos/logout.php')
-	.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-	});
-	//.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-	//	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-	//	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-	//	jQuery(window.location).attr('href', path); 
-	//}) 
-}
-
-
-
-
-//once look is in, use jQuery on loaded elements to get values
-jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-
-
-
-	if(settingsObjeto.url === 'looks/creaDueno.html'){
-		jQuery('form#creaDuenoForm').submit(function(evento){
-			evento.preventDefault(); //not making a submit (POST request) from html action
-			var usertb = jQuery('#usernameId').val();
-			var pass01 = jQuery('#passwordId').val();
-			var pass02 = jQuery('#passwordConfirmId').val();
-			if( jQuery.areValidUserYPass(usertb, pass01, pass02, 'fullFeedback', 'form#creaDuenoForm h3') ){
-				//Valid values son los q cumplen estas 3 cosas.
-				//Estas cosas se pueden chequear antes del post y evito post sin sentido
-				// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
-				//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
-				jQuery.post('escritos/creaDueno.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
-				.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-					//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
-					//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
-					try{
-						//alert('datosJSONStr: ' + datosJSONStr);
-						datosJSObj = JSON.parse(datosJSONStr);
-						//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
-					}catch(errorParseo){
-						var datosJSONStrAsXHRTexto = datosJSONStr;
-						var textoEstatus = 'Error parseando la siguiente respuesta del server en escritorios/creaDueno.php :<br> Mensaje: ' + errorParseo.message;
-						var elError = errorParseo.name;
-						
-						//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
-						//jQuery(window.location).attr('href', path); 	
-						jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
-						jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-						jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-						jQuery('.look-error').click();				
-					}
-					if(datosJSObj.registrado){
-						jQuery('.look-home').click();
-						//jQuery(window.location).attr('href', window.location.pathname + '?look=home');
-						//jQuery(window.location).attr('href', window.location.pathname + '?look=home&duenoId=' + datosJSObj.duenoId);
-					}else{ // usuario es repetido en el database, por eso se chequea despues del post
-						jQuery.feedback('form#creaDuenoForm h3', datosJSObj.feedback);
-					}
-				})
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-					//jQuery(window.location).attr('href', path); 
-					jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
-					jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-					jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-					jQuery('.look-error').click();
-				});
-			}
-		});
-	
-		//erase feedback when user writting
-		jQuery('form#creaDuenoForm  input[name^=password]').keyup(function(){
-			jQuery.feedback('form#creaDuenoForm h3', '');
-		});
-		//erase feedback when user writting
-		jQuery('form#creaDuenoForm  input[name=username]').keyup(function(){
-			jQuery.feedback('form#creaDuenoForm h3', '');
-		});	
-	}//if crea dueno
-
-
-
-
-	
-	if(settingsObjeto.url === 'looks/creaNepe.html'){
-		jQuery.handleCreaNepeSubmit();
-	}//if creaNepe
-
-
-
-
-
-
-
-});//ajax complete
