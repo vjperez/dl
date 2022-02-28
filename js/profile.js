@@ -67,24 +67,22 @@ jQuery.populate = function(datos){
     jQuery('#donde span#background').attr('class', clase);
     //jQuery('#donde span#background').after.remove();
     jQuery('#donde span.texto').text(clase);
-
-    
-    //show only 1 social handle with class current
-    var $icon = jQuery('div#quien ul li').click(function(evento){
-        evento.preventDefault();
-        jQuery('div#quien ul li i').removeClass('current');
-        var $imgToFocus = jQuery(evento.currentTarget).find('i');
-        var socialClass = $imgToFocus.attr('class'); // grab the name this class, used to select h3 with same class
-        $imgToFocus.addClass('current');
-
-        jQuery('div#quien h5').removeClass('current');
-        jQuery('div#quien h5').each(function(){
-            if( socialClass.includes( jQuery(this).attr('class') ) ){
-                jQuery(this).addClass('current');
-            }
-        });
-    });
                 
-    //hide, show on click
-    jQuery.hideThem();
-}
+}// populate
+
+
+//show only 1 social handle with class current
+var $icon = jQuery('div#quien ul li').click(function(evento){
+    evento.preventDefault();
+    jQuery('div#quien ul li i').removeClass('current');
+    var $imgToFocus = jQuery(evento.currentTarget).find('i');
+    var socialClass = $imgToFocus.attr('class'); // grab the name this class, used to select h3 with same class
+    $imgToFocus.addClass('current');
+
+    jQuery('div#quien h5').removeClass('current');
+    jQuery('div#quien h5').each(function(){
+        if( socialClass.includes( jQuery(this).attr('class') ) ){
+            jQuery(this).addClass('current');
+        }
+    });
+});
