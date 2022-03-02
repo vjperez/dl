@@ -46,7 +46,7 @@
 			<div class="">   <input id="red3Id"     type="text" name="red3"  maxlength="50"  placeholder=""></div>
 			<div class="">   <label for="red4Id">Telefono</label>											</div>
 			<div class="">   <input id="red4Id"     type="tel" name="red4"  maxlength="50"   placeholder=""></div>
-			<div class="">   <h3></h3>																		</div>
+			<div class="">   <h3 class="warn"></h3>																		</div>
 		</fieldset>
 		
 		
@@ -147,8 +147,9 @@
 			<input type="hidden" name="MAX_FILE_SIZE" value="1000000"> <!-- 1MB  1 000 000 Bytes-->
 			<button type="button" class="peq">   <i class="fas fa-upload"></i>   </button>
 			<input id="fotosId"  type="file" name="fotoArr[]" multiple hidden>
-			<div class="">   <h3 id="max5Feedback"></h3>	</div>
-			<div class="">   <h3 id="isImageFeedback"></h3> </div>
+			<div class="">   <h3 id="howManyFeedback"></h3>   </div>
+			<div class="">   <h3 id="max5Feedback" class="warn"></h3>	</div>
+			<div class="">   <h3 id="isImageFeedback" class="warn"></h3> </div>
 		</fieldset>
 
 
@@ -172,10 +173,7 @@
 			<div class="">   <button type="submit">   <i class="fas fa-share-square"></i>   </button>	</div>
 			<div class="">   <h3 id="handlesFeedback" class="warn"></h3>								</div>
 			<div class="">   <h3 id="fotosFeedback" class="warn"></h3>									</div>
-			<div class="">   <h3 id="buttonFeedback" class="warn"></h3>								
-			
-			
-			</div>
+			<div class="">   <h3 id="buttonFeedback" class="warn"></h3>								    </div>
  	   </fieldset>
 
  	</form>

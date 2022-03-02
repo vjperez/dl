@@ -122,21 +122,15 @@ jQuery('form#creaNepeForm').submit(function(evento){
 				jQuery(window.location).attr('href', path);					
 			}
 			if(datosJSObj.nepeYBregandoCreado && datosJSObj.mediaFotoUrlActualizado){		//maybe if is not needed after try catch block
-				jQuery('ul.navega li a.look-profile').data( 'nepeid', encodeURIComponent(datosJSObj.nepeId) );
-				jQuery('ul.navega li a.look-profile').click();
-				////jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
+				jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
 			}else{
 				//jQuery.feedback('form#creaNepeForm h3', datosJSObj.feedback);
 			}
 		})
 		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-			//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-			//jQuery(window.location).attr('href', path);
-			jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
-			jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-			jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-			jQuery('.look-error').click(); 
+			var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+			jQuery(window.location).attr('href', path);
 		});			
 		// post made
 	}else{  	//submitVote1 && submitVote2; visible only after all html required fields are filled but js stop the submission
@@ -176,13 +170,12 @@ $fotoBoton.on('click', function(evento){
 jQuery.haveAtLeast1Handle = function(){
 	if(jQuery.isVacioStr(jQuery('form#creaNepeForm input[name=red1]').val()) &&  jQuery.isVacioStr(jQuery('form#creaNepeForm input[name=red2]').val()) &&
 	   jQuery.isVacioStr(jQuery('form#creaNepeForm input[name=red3]').val()) &&  jQuery.isVacioStr(jQuery('form#creaNepeForm input[name=red4]').val()) ) {
+			
 			jQuery.feedback('fieldset#socialHandleFieldset h3', 'Minimo 1 contacto');
-			jQuery('fieldset#socialHandleFieldset').addClass('warn');
 			jQuery.feedback('fieldset#submitButtonFieldset h3#handlesFeedback', 'Verifica secci\u00F3n : QUIEN');
 			return false;
 	}else{
 			jQuery.feedback('fieldset#socialHandleFieldset h3', '');
-			jQuery('fieldset#socialHandleFieldset').removeClass('warn');
 			jQuery.feedback('fieldset#submitButtonFieldset h3#handlesFeedback', '');
 			return true;
 	}
@@ -195,6 +188,8 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 	submitVote2 = false;  // default or initial value
 	reducedImagesArray = [];  // default or initial value
 
+
+	
 
 	fotoSrcFieldsetAddWarningClassVote1 = false;
 	fotoSrcFieldsetAddWarningClassVote2 = false;
@@ -215,12 +210,13 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 		fotoSrcFieldsetAddWarningClassVote2 = false;
 	}	// if no warning from both questions
 	if(fotoSrcFieldsetAddWarningClassVote1 || fotoSrcFieldsetAddWarningClassVote2){
-		jQuery('fieldset#fotoSrcFieldset').addClass('warn');
 		jQuery.feedback('fieldset#submitButtonFieldset h3#fotosFeedback', 'Verifica secci\u00F3n : FOTOS');
+		jQuery.feedback('fieldset#fotoSrcFieldset h3#howManyFeedback', '');
+
 		submitVote2 = false;
 	}else{
-		jQuery('fieldset#fotoSrcFieldset').removeClass('warn');
 		jQuery.feedback('fieldset#submitButtonFieldset h3#fotosFeedback', '');
+		jQuery.feedback('fieldset#fotoSrcFieldset h3#howManyFeedback', 'fotos: ' + jQuery('form#creaNepeForm input#fotosId')[0].files.length);
 
 		submitVote2 = true;
 		jQuery.getReducedImagesArray();

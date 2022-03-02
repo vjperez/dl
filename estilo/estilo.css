@@ -38,10 +38,15 @@ input[type="text"]:focus, input[type="radio"]:focus, input[type="tel"]:focus, in
 
 fieldset{ border:0px solid green;}
 
+
+
+div#opcionesdiv h3  { font-family:serif, Times, times; font-weight:bolder;  color:hsl(200, 95%, 40%); }
+
+
 form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-family:'Bree Serif', 'Courer Prime', mono, monospace; }
 fieldset.notHxxxidable label.explixxxca { font-family:'Oswaxxld', mono, monospace;  }
 
-form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:1.25em; letter-spacing:0.40em; font-weight:bolder; color:hsl(0, 100%, 50%); display: block; }
+form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:1.25em; letter-spacing:0.40em; font-weight:bolder; color:hsl(200, 95%, 40%); display: block; }
 div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:black; display:block; text-align:left; }
 div[id$=Form] form[id$=Form] label { font-size:1.85em; }
 
@@ -49,8 +54,11 @@ fieldset.hidable label {  font-size:1.25em; letter-spacing:0.20em; font-weight:b
 fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:black;  }
 
 
-form[id$=Form] h3, div#opcionesdiv h3  { font-family:serif, Times, times; font-weight:bolder;  color:hsl(0, 100%, 50%); }
-fieldset.hidable h3                    { font-family:serif, Times, times; font-weight:bolder;  color:hsl(0, 100%, 50%); }
+form[id$=Form] h3   { font-family:serif, Times, times; font-weight:bolder;  color:hsla(180, 100%, 20%, 1); }
+
+fieldset.hidable    h3.warn,
+fieldset.notHidable h3.warn
+                    { font-family:serif, Times, times; font-weight:bolder;  color:hsl(0, 100%, 50%); }
 
 div#updateNepeTitulo h3, div#creaNepeTitulo h3, div#video h2.notHidable { font-family: 'Courgette', mono, monospace; font-size:1.7em; letter-spacing:0.40em;}
 div#updateNepeTitulo h3, div#creaNepeTitulo h3, div#video h2.notHidable { color:black }

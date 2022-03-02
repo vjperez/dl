@@ -209,13 +209,12 @@ jQuery('fieldset#submitButtonFieldset button').on('click', function(evento){
 jQuery.haveAtLeast1Handle = function(){
 	if(jQuery.isVacioStr(jQuery('form#updateNepeForm input[name=red1]').val()) &&  jQuery.isVacioStr(jQuery('form#updateNepeForm input[name=red2]').val()) &&
 	   jQuery.isVacioStr(jQuery('form#updateNepeForm input[name=red3]').val()) &&  jQuery.isVacioStr(jQuery('form#updateNepeForm input[name=red4]').val()) ) {
+			
 			jQuery.feedback('fieldset#socialHandleFieldset h3', 'Minimo 1 contacto');
-			jQuery('fieldset#socialHandleFieldset').addClass('warn');
 			jQuery.feedback('fieldset#submitButtonFieldset h3#handlesFeedback', 'Verifica secci\u00F3n : QUIEN');
 			return false;
 	}else{
 			jQuery.feedback('fieldset#socialHandleFieldset h3', '');
-			jQuery('fieldset#socialHandleFieldset').removeClass('warn');
 			jQuery.feedback('fieldset#submitButtonFieldset h3#handlesFeedback', '');
 			return true;
 	}
@@ -248,12 +247,13 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 		fotoSrcFieldsetAddWarningClassVote2 = false;
 	}
 	if(fotoSrcFieldsetAddWarningClassVote1 || fotoSrcFieldsetAddWarningClassVote2){
-		jQuery('fieldset#fotoSrcFieldset').addClass('warn');
 		jQuery.feedback('fieldset#submitButtonFieldset h3#fotosFeedback', 'Verifica secci\u00F3n : FOTOS');
+		jQuery.feedback('fieldset#fotoSrcFieldset h3#howManyFeedback', '');
+
 		submitVote2 = false;
 	}else{
-		jQuery('fieldset#fotoSrcFieldset').removeClass('warn');
 		jQuery.feedback('fieldset#submitButtonFieldset h3#fotosFeedback', '');
+		jQuery.feedback('fieldset#fotoSrcFieldset h3#howManyFeedback', 'fotos: ' + jQuery('form#updateNepeForm input#fotosId')[0].files.length);
 
 		submitVote2 = true;
 		jQuery.getReducedImagesArray();
