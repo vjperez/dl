@@ -66,7 +66,7 @@ div#updateNepeTitulo h3, div#creaNepeTitulo h3, div#video h2.notHidable { color:
 
 
  div#quien div.hidable ul  i { border-color:#000000;  border-style:solid;  border-width:0pt;  border-radius:5pt; padding:0.2em; }
- div#quien div.hidable ul  i:hover,  div#quien div.hidable ul  i:focus,  div#quien div.hidable ul  i.current { border-color:hsl(0, 100%, 50%); border-width:1pt; }
+ div#quien div.hidable ul  i:hover,  div#quien div.hidable ul  i:focus,  div#quien div.hidable ul  i.current { border-color:hsl(200, 95%, 40%); border-width:1pt; }
 
  div#quien h5, div#cuando td, div#donde span.texto, div#donde span.textofixed, h3.nadah3  { font-family:mono, monospace; }
  div#donde span.textofixed  { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:black; }
