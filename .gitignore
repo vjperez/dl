@@ -1,11 +1,10 @@
-stuff/
-<<<<<<< HEAD
+.vscode/
+
 escritos/configConstants/
 escritos/conecta/datosConectar.php
+stuff/
+mio/
+imagenes/
 
-
-=======
-escritos/configConstants/constants.php
-escritos/conecta/datosConectar.php
 clean
->>>>>>> c433d6e7777d03d8a9465b023d00fed487a1e1da
+hacer.txt
