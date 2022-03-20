@@ -1,1 +1,0 @@
-CREATE database donpapo WITH OWNER=victordbu;
