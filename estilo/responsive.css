@@ -2,7 +2,7 @@
 
 #borde-derecha{  display:none;  }
 
-body {  min-width:450px;  max-width:1024px;  margin:0px auto;  }
+body {  min-width:375px;  max-width:1024px;  margin:0px auto;  }
 
 ul.navega { list-style-type: none;
   margin: 0;
@@ -23,18 +23,20 @@ ul.navega li a.activo {  background-color:black;  color: white;  }     /* 0c6f10
 ul.navega li a:hover:not(.activo) {  background-color: hsl(180, 100%, 15%);  color: white;  }
   
 div#containerForMain, #footer {  margin-left: 0;  }
-
+div#containerForMain { padding-top: 2.5em; padding-left:0%; padding-right:0%;  }
 
 @media screen and (min-width: 667px) {
   ul.navega {  width: 100%;  height: auto;  position: relative;  }
   
   ul.navega li a {  float: left;  padding: 15px;  }
+  div#containerForMain { padding-left:5%; padding-right:5%;  }
 }
 
 @media screen and (min-width: 1001px) {  
   ul.navega {  width: 200px;  position: fixed;  height: 100%;  }
   ul.navega li a {  text-align: left;  float: none;  }
   div#containerForMain, #footer {  margin-left:200px;  }
+  div#containerForMain { padding-left:5%; padding-right:5%;  }
   body {  width:1000px;  left:calc(0.5*(100% - 1000px));  }
   #borde-derecha{  display:block;  border:1px solid black;  position: fixed;  right:calc(0.5*(100% - 1000px)); height: 100%;}
 }
