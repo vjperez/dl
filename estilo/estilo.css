@@ -46,9 +46,17 @@ div#opcionesdiv h3  { font-family:serif, Times, times; font-weight:bolder;  colo
 form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-family:'Bree Serif', 'Courer Prime', mono, monospace; }
 fieldset.notHxxxidable label.explixxxca { font-family:'Oswaxxld', mono, monospace;  }
 
-form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:1.25em; letter-spacing:0.40em; font-weight:bolder; color:hsl(200, 95%, 40%); display: block; }
+form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:1em; letter-spacing:0.25em; font-weight:bolder; color:hsl(200, 95%, 40%); display: block; }
 div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:black; display:block; text-align:left; }
 div[id$=Form] form[id$=Form] label { font-size:1.85em; }
+
+@media screen and (min-width: 667px) {
+    form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:1.25em; letter-spacing:0.40em; font-weight:bolder; color:hsl(200, 95%, 40%); display: block; }
+}
+
+@media screen and (min-width: 1001px) { 
+    form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:1.25em; letter-spacing:0.40em; font-weight:bolder; color:hsl(200, 95%, 40%); display: block; }
+}
 
 fieldset.hidable label {  font-size:1.25em; letter-spacing:0.20em; font-weight:bolder;  color:#000000;  }
 fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:black;  }
@@ -70,3 +78,5 @@ div#updateNepeTitulo h3, div#creaNepeTitulo h3, div#video h2.notHidable { color:
 
  div#quien h5, div#cuando td, div#donde span.texto, div#donde span.textofixed, h3.nadah3  { font-family:mono, monospace; }
  div#donde span.textofixed  { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:black; }
+
+ table.subArea tr { padding-bottom: 1em; } 
