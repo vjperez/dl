@@ -80,6 +80,7 @@ div#updateNepeTitulo h3, div#creaNepeTitulo h3, div#video h2.notHidable { color:
  div#donde span.textofixed  { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:black; }
 
  table.subArea  { border-collapse: separate; border-spacing: 0em 2em; }
+ div#que ul li, div#donde ul li { margin-top:1em; margin-bottom: 1em; padding-left:3em; }
  
  table td.hora { text-align: left; padding-left:2em;} 
  table td.dia  { text-align: right; } 
