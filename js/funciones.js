@@ -7,9 +7,8 @@ jQuery.dameLook = function(pageName){
 		//console.log(datosDeRespuesta);
 		var elMain = jQuery(datosDeRespuesta).filter('#main');
  		//console.log(mainDeBusca);
-
-
-		//jQuery('#containerForMain').html(elMain);
+		 
+		jQuery('#containerForMain').html(elMain);
 	});	
 }
 
