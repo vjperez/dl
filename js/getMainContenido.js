@@ -298,7 +298,7 @@ jQuery(document).ready(
 					if(datos.isSet){
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 						jQuery('#navHome').addClass("activo");
-						
+						jQuery('ul.navega').css('visibility','visible');
 						
 						key = 'own_nepes';
 						jQuery.getJSON('escritos/isSessionSet.php', {key:key})
@@ -318,6 +318,7 @@ jQuery(document).ready(
 													if(settingsObjeto.url === 'looks/updateNepe.html'){	
 														jQuery.hideThem();										
 														jQuery.populateUpdateNepeForm(datos);
+														jQuery('#footer').css('visibility','visible');
 														jQuery.handleUpdateNepeSubmit(nepeId);
 														//submit event listener and handler
 													}//if
@@ -347,9 +348,6 @@ jQuery(document).ready(
 							}
 						});
 					}else{  
-						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-						
-						
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito updateNepe look, sin estar logueado.';
 						var elError = 'Error humano.';
