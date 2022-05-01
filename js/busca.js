@@ -1,3 +1,5 @@
+jQuery('#footer').css('visibility','visible');
+
 //jQuery.handleSubmit = function(){
 
 jQuery('form').submit(function(evento){

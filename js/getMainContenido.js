@@ -59,7 +59,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					
+					jQuery('ul.navega').css('visibility','visible');
 				});
 				jQuery.dameLook('looks/busca.html');
 				/*
