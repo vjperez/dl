@@ -222,7 +222,7 @@ jQuery(document).ready(
 					if(datos.isSet){ 
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 						jQuery('#navHome').addClass("activo");
-						
+						jQuery('ul.navega').css('visibility','visible');
 						
 						//get duenoId
 						//var duenoId = jQuery.urlParametro('duenoId');
@@ -236,6 +236,7 @@ jQuery(document).ready(
 								//hide them  
 								jQuery.hideThem();
 								jQuery.home_populate();
+								jQuery('#footer').css('visibility','visible');
 							}//if
 						});//ajaxComplete
 					}else{
