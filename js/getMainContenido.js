@@ -264,18 +264,17 @@ jQuery(document).ready(
 					if(datos.isSet){
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 						jQuery('#navHome').addClass("activo");
-						
+						jQuery('ul.navega').css('visibility','visible');
+
 						jQuery.dameLook('looks/creaNepe.html');
 
 						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 							if(settingsObjeto.url === 'looks/creaNepe.html'){
 								jQuery.hideThem();
+								jQuery('#footer').css('visibility','visible');
 							}//if
 						});//ajaxComplete
-					}else{ 
-						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-						
-						
+					}else{
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito creaNepe look, sin estar logueado.';
 						var elError = 'Error humano.';
