@@ -82,7 +82,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					
+					jQuery('ul.navega').css('visibility','visible');
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -122,6 +122,7 @@ jQuery(document).ready(
 						}); // each in datos
 						mainDeOpciones += '</div>'; //  <div id="main" class="contenido margen">
 						jQuery('#containerForMain').html(mainDeOpciones);
+						jQuery('#footer').css('visibility','visible');
 					}else{
 						jQuery(window.location).attr('href', window.location.pathname + '?look=nada');  
 					}
