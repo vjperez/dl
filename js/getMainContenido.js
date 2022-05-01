@@ -452,8 +452,7 @@ jQuery(document).ready(
 								jQuery('#footer').css('visibility','visible');
 							}//if
 						});//ajaxComplete
-					}else{
-						
+					}else{	
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito admin (adminDuenoNepes) look, sin estar logueado.';
 						var elError = 'Error humano.';
