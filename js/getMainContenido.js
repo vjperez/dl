@@ -387,7 +387,7 @@ jQuery(document).ready(
 					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 						jQuery('#navSignup').addClass("activo");
-						
+						jQuery('ul.navega').css('visibility','visible');
 						
 						//get creaDueno look
 						jQuery.dameLook('looks/creaDueno.html');

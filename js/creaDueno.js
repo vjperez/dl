@@ -1,3 +1,5 @@
+jQuery('#footer').css('visibility','visible');
+
 //erase feedback when user writting
 jQuery('form#creaDuenoForm  input[name^=password]').keyup(function(){
     jQuery.feedback('form#creaDuenoForm h3', '');
