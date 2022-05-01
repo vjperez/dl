@@ -516,7 +516,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					
+					jQuery('ul.navega').css('visibility','visible');
 				});
 				
 				jQuery.dameLook('looks/error.html');
@@ -532,8 +532,11 @@ jQuery(document).ready(
 						if(settingsObjeto.url === 'looks/error.html'){ // === means true without type coersion - the type and value most both be equal
 							//when ajax complete ; 
 							jQuery.appendDebugErrors( xhrObjetoForFAILTexto, textoEstatus, elError );  
+							jQuery('#footer').css('visibility','visible');
 						}//if
 					}); //ajax complete
+				}else{
+					jQuery('#footer').css('visibility','visible');
 				}
 				break;
 
