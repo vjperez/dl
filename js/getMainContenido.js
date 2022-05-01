@@ -244,8 +244,6 @@ jQuery(document).ready(
 							}//if
 						});//ajaxComplete
 					}else{
-						jQuery('#navLogout').hide();
-									
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito home look, sin estar logueado.';
 						var elError = 'Error humano.';
@@ -419,14 +417,14 @@ jQuery(document).ready(
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					jQuery('ul.navega').css('visibility','visible');
+
+					jQuery.dameLook('looks/recentNepes.html');
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
 					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
-
-				jQuery.dameLook('looks/recentNepes.html');
 		
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
