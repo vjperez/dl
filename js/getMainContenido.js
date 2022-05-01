@@ -441,6 +441,7 @@ jQuery(document).ready(
 					if(datos.isSet){ 
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
 						jQuery('#navHome').addClass("activo");
+						jQuery('ul.navega').css('visibility','visible');
 
 						jQuery.dameLook('looks/adminDuenoNepes.html');
 
@@ -448,10 +449,10 @@ jQuery(document).ready(
 						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 							if(settingsObjeto.url === 'looks/adminDuenoNepes.html'){
 								jQuery.hideThem();
+								jQuery('#footer').css('visibility','visible');
 							}//if
 						});//ajaxComplete
 					}else{
-						jQuery('#navLogout').hide();
 						
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito admin (adminDuenoNepes) look, sin estar logueado.';
