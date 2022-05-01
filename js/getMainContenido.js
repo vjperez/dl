@@ -376,7 +376,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					
+					jQuery('ul.navega').css('visibility','visible');
 				});
 
 				jQuery.dameLook('looks/recentNepes.html');
@@ -384,7 +384,7 @@ jQuery(document).ready(
 				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
 					if(settingsObjeto.url === 'looks/recentNepes.html'){ // === means true without type coersion - the type and value most both be equal
-						jQuery.getRecentNepes();	
+						jQuery.getRecentNepes();
 					}//if
 				}); //ajax complete
 			break;			
@@ -477,10 +477,10 @@ jQuery(document).ready(
 				}
 				break;
 
-				case null:
-				default:
-					jQuery(window.location).attr('href', window.location.pathname + '?look=recentNepes');
-				break;
+			case null:
+			default:
+				jQuery(window.location).attr('href', window.location.pathname + '?look=recentNepes');
+			break;
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

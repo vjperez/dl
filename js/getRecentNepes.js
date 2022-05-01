@@ -12,6 +12,7 @@ jQuery.getRecentNepes = function(){
 		});
 		
 		jQuery('#labelAndTableContainer table').html(tableRows);
+		jQuery('#footer').css('visibility','visible');
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
