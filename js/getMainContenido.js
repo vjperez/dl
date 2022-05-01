@@ -192,7 +192,7 @@ jQuery(document).ready(
 					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 						jQuery('#navLogin').addClass("activo");
-						
+						jQuery('ul.navega').css('visibility','visible');
 						
 						//get login look
 						jQuery.dameLook('looks/login.html');

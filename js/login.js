@@ -1,3 +1,5 @@
+jQuery('#footer').css('visibility','visible');
+
 //when ajax complete ; handle form submit and make post
 jQuery('form#loginForm').submit(function(evento){
 	evento.preventDefault(); //not making a submit (POST request) from html action.
