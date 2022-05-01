@@ -60,6 +60,11 @@ jQuery(document).ready(
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					jQuery('ul.navega').css('visibility','visible');
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
 				});
 				jQuery.dameLook('looks/busca.html');
 				/*
@@ -78,6 +83,11 @@ jQuery(document).ready(
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
 				});
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
@@ -130,6 +140,11 @@ jQuery(document).ready(
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
 				});
 
 				//get nepeId then
@@ -192,7 +207,12 @@ jQuery(document).ready(
 						});//ajax complete
 					*/
 					}
-				});				
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
+				});			
 			break;
 			case 'home':
 				var key = 'dueno_id';
@@ -228,6 +248,11 @@ jQuery(document).ready(
 						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 						jQuery(window.location).attr('href', path);	
 					}
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
 				});
 
 			break;			
@@ -258,7 +283,12 @@ jQuery(document).ready(
 						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 						jQuery(window.location).attr('href', path);							   
 					}
-				});				
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
+				});		
 			break;
 			case 'updateNepe':
 				var key = 'dueno_id';
@@ -327,7 +357,12 @@ jQuery(document).ready(
 						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 						jQuery(window.location).attr('href', path);	
 					}
-				});	
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
+				});
 			break;			
 			case 'creaDueno':
 				var key = 'dueno_id';
@@ -367,6 +402,11 @@ jQuery(document).ready(
 						});//ajax complete
 						*/
 					}
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
 				});
 			break;	
 			case 'recentNepes':
@@ -377,6 +417,11 @@ jQuery(document).ready(
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					jQuery('ul.navega').css('visibility','visible');
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
 				});
 
 				jQuery.dameLook('looks/recentNepes.html');
@@ -415,6 +460,11 @@ jQuery(document).ready(
 						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 						jQuery(window.location).attr('href', path);	
 					}
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
 				});
 			break;		
 			case 'faq':
@@ -426,6 +476,11 @@ jQuery(document).ready(
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
 				});
 
 				jQuery.dameLook('looks/faq.html');
@@ -445,6 +500,11 @@ jQuery(document).ready(
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
 				});
 
 				jQuery.dameLook('looks/nada.html');
@@ -457,6 +517,11 @@ jQuery(document).ready(
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					
+				})
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path); 
 				});
 				
 				jQuery.dameLook('looks/error.html');
