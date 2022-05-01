@@ -505,6 +505,8 @@ jQuery(document).ready(
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					jQuery('ul.navega').css('visibility','visible');
+
+					jQuery.dameLook('looks/nada.html');
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -512,7 +514,6 @@ jQuery(document).ready(
 					jQuery(window.location).attr('href', path); 
 				});
 
-				jQuery.dameLook('looks/nada.html');
 				break;				
 			case 'error':
 				var key = 'dueno_id';
@@ -522,10 +523,10 @@ jQuery(document).ready(
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					jQuery('ul.navega').css('visibility','visible');
+				
+					jQuery.dameLook('looks/error.html');
 				});
 				
-				jQuery.dameLook('looks/error.html');
-
 				if(DEBUGUEO){
 					var xhrObjetoForFAILTexto = decodeURIComponent (jQuery.urlParametro('xhrObjetoForFAILTexto'));
 					var textoEstatus          = decodeURIComponent (jQuery.urlParametro('textoEstatus'));
