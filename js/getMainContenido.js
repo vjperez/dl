@@ -475,7 +475,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					
+					jQuery('ul.navega').css('visibility','visible');	
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -489,6 +489,7 @@ jQuery(document).ready(
 					//This code runs when get isCompleted and IF the get was requesting faq.html
 					if(settingsObjeto.url === 'looks/faq.html'){ // === means true without type coersion - the type and value most both be equal
 						jQuery.hideThem();
+						jQuery('#footer').css('visibility','visible');
 					}
 				});
 			break;
