@@ -12,6 +12,7 @@ require_once 'dueno/insertDuenoQuery.php';
 
 $recurso = pg_execute($cnx, "preparadoQueryGetUserId", array($usertb));
 if($recurso){
+	///////////////////////////////////////////////////////
 	//if i can fetch a db row with a user id ... i know the usertb is NOT a new username
 	//if there is no row, pg fetch row returns FALSE  ...  which means the username is new
 	$isNewUsername;
