@@ -58,7 +58,7 @@ jQuery('form#editDuenoForm').submit(function(evento){
         
     //jQuery.post('escritos/editDuenoContrasena.php', {duenoId:duenoId, pass01:pass01} )
         jQuery.post('escritos/editDuenoContrasena.php', {pass01:pass01} )
-        .done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+        .done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){ 
             //el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
             //Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
             try{
@@ -70,12 +70,8 @@ jQuery('form#editDuenoForm').submit(function(evento){
                 var textoEstatus = 'Error parseando la siguiente respuesta del servidor en escritos/editDuenoContrasena.php :<br> Mensaje: ' + errorParseo.message;
                 var elError = errorParseo.name;
                 
-                //var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
-                //jQuery(window.location).attr('href', path);
-                jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(datosJSONStrAsXHRTexto) );
-                jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-                jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-                jQuery('.look-error').click();				
+                var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError);
+                jQuery(window.location).attr('href', path);			
             }
             if(datosJSObj.cambiado){
                 jQuery.feedback('form#editDuenoForm h3', 'Tu password fue cambiado.');
