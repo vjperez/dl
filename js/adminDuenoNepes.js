@@ -111,7 +111,7 @@ jQuery('form#adminDuenoForm').submit(function(evento){
 					jQuery(window.location).attr('href', path); 
 				});
 			}else{
-				jQuery.feedback('form#adminDuenoForm h3', 'Trata otra vez. Pass VALIDO, pero, NO cambiamos NADA !');
+				jQuery.feedback('form#adminDuenoForm h3', 'Pass VALIDO ... pero el query NO cambio NADA !');
 			}
 		})
 		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
