@@ -7,17 +7,21 @@ $hashed_pass01 = password_hash($pass01 , PASSWORD_DEFAULT);
 //conecta al db
 require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
+require_once 'dueno/getUserIdQuery.php';
+require_once 'dueno/insertDuenoQuery.php';
 
-require_once 'creaDueno/creaDuenoQueries.php';
-$recurso = pg_execute($cnx, "preparadoQueryCheckUserName", array($usertb));
+$recurso = pg_execute($cnx, "preparadoQueryGetUserId", array($usertb));
 if($recurso){
-	$isNewName;
+	//if i can fetch a db row with a user id ... i know the usertb is NOT a new username
+	//if there is no row, pg fetch row returns FALSE  ...  which means the username is new
+	$isNewUsername;
 	if($filaDeUsertbEnDB = pg_fetch_row($recurso)){
-		$isNewName = false;
+		$isNewUsername = false; // usertb is NOT a new username
 	}else{
-		$isNewName = true;
+		$isNewUsername = true; // usertb is a new username
 	}
-	if($isNewName){
+	///////////////////////////////////////////////////////
+	if($isNewUsername){
 		$recurso = pg_execute($cnx, "preparadoQueryInsertDueno", array($usertb, $hashed_pass01));
 		if($recurso){
 			$recurso = pg_query($cnx, "SELECT currval('dueno_id_seq')"); //otro recurso, ahora con fila q tiene id
@@ -29,7 +33,7 @@ if($recurso){
 			session_start();	$_SESSION['dueno_id'] = $dueno_id; 
 		}else{
 			pg_close($cnx);
-			throw new Exception('Mal query. Sin RECURSO, para queryInsertDueno. (username es nuevo, quiza inserte,  pero hubo error en: )' . __FILE__ );
+			throw new Exception('Mal query. Sin RECURSO, para queryInsertDueno. (username es nuevo, quiza lo inserte,  pero hubo error en: )' . __FILE__ );
 		}
 	}else{
 		$respuesta = json_decode('{"registrado":false, "feedback":"Username no disponible."}');
@@ -37,8 +41,7 @@ if($recurso){
 		echo json_encode ($respuesta);
 	}
 }else{
-	pg_close($cnx);		//maybe not needed but doesn't hurt
-	throw new Exception('Mal query.  Sin RECURSO, para queryCheckUserName.  (Ni se chequio el username.) en: ' . __FILE__ );
+	pg_close($cnx);
+	throw new Exception('Mal query.  Sin RECURSO, para queryGetUserId.  (Ni se chequio el username.) en: ' . __FILE__ );
 }
-
 ?>
