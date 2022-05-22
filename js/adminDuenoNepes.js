@@ -43,9 +43,9 @@ jQuery('form#adminNepesForm').submit(function(evento){
 				+ '</a></td></tr>';	
 				cuantos++;
 			});
-			table += '<tr><td>Los ' + cuantos + ' negocios.</td></tr>';
 			
 			if(cuantos > 1){
+				table += '<tr><td>Los ' + cuantos + ' negocios.</td></tr>';
 				table += '<tr><td> </td></tr>';		
 				table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
 				+ '&acto=deleteNepes' +  '&userId=' + userNumber + '">' 
