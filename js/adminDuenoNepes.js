@@ -13,59 +13,58 @@ jQuery('form#adminNepesForm  input[type=text]').keyup(function(){
 jQuery('form#adminNepesForm').submit(function(evento){
 	evento.preventDefault(); //not making a submit (POST request) from html action.
 	var userNumber = jQuery('#userNumber02Id').val();
-	var elLabel ='';
-	var table =  '';
 
 	jQuery.getJSON('escritos/getUsername.php',  {userNumber:userNumber} )
 	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
-	 	elLabel = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
-	})
-	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-		jQuery(window.location).attr('href', path); 
-	});
+	 	var label = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
+		jQuery('fieldset#labelContainer').append(label);
 
-
-	jQuery.post('escritos/showNepesGetIds.php', {userNumber:userNumber} )
-	.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-		try{
-			//alert('datosJSONStr: ' + datosJSONStr);
-			datosJSObj = JSON.parse(datosJSONStr);
-			//alert('datosJSObj: ' + datosJSObj);
-		}catch(errorParseo){
-			var datosJSONStrAsXHRTexto = datosJSONStr;
-			var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/showNepesGetIds.php en adminDuenoNepes :<br> Mensaje: ' + errorParseo.message;
-			var elError = errorParseo.name;
+		jQuery.post('escritos/showNepesGetIds.php', {userNumber:userNumber} )
+		.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+			try{
+				//alert('datosJSONStr: ' + datosJSONStr);
+				datosJSObj = JSON.parse(datosJSONStr);
+				//alert('datosJSObj: ' + datosJSObj);
+			}catch(errorParseo){
+				var datosJSONStrAsXHRTexto = datosJSONStr;
+				var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/showNepesGetIds.php en adminDuenoNepes :<br> Mensaje: ' + errorParseo.message;
+				var elError = errorParseo.name;
+				
+				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
+				jQuery(window.location).attr('href', path);				
+			}
+			var table =  '<table class="subArea">';
+			var cuantos = 0;
+			jQuery.each(datosJSObj, function(index){
+				table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
+				+ '&acto=deleteNepe' +  '&nepeId=' + datosJSObj[index].nepeId + '">' 
+				+ datosJSObj[index].nepeNombre + '<i class="fas fa-trash-alt"></i>' 
+				+ '</a></td></tr>';	
+				cuantos++;
+			});
+			table += '<tr><td>Los ' + cuantos + ' negocios.</td></tr>';
 			
-			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
-			jQuery(window.location).attr('href', path);				
-		}
-		table =  '<table class="subArea">';
-		var cuantos = 0;
-		jQuery.each(datosJSObj, function(index){
-			cuantos++;
-			table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
-			+ '&acto=deleteNepe' +  '&nepeId=' + datosJSObj[index].nepeId + '">' 
-			+ datosJSObj[index].nepeNombre + '<i class="fas fa-trash-alt"></i>' 
-			+ '</a></td></tr>';	
+			if(cuantos > 1){
+				table += '<tr><td> </td></tr>';		
+				table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
+				+ '&acto=deleteNepes' +  '&userId=' + userNumber + '">' 
+				+ ' Borra ALL nepes de ' + dato + '<i class="fas fa-trash-alt"></i>' 
+				+ '</a></td></tr>';
+			}
+			table += '</table>';
+			jQuery('fieldset#tableContainer').append(table);	
+		})
+		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+			var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+			jQuery(window.location).attr('href', path); 
 		});
-		table += '<tr><td>Los ' + cuantos + ' negocios.</td></tr>';
-		table += '<tr><td> </td></tr>';
-		table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
-		+ '&acto=deleteNepes' +  '&userId=' + userNumber + '">' 
-		+ ' Borra ALL nepes ' + '<i class="fas fa-trash-alt"></i>' 
-		+ '</a></td></tr>';
-		table += '</table>';	
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
 		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 		jQuery(window.location).attr('href', path); 
 	});
-
-	jQuery('fieldset#labelTableContainer').append(elLabel);
-	jQuery('fieldset#labelTableContainer').append(table);
 });	
 
 
