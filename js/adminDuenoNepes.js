@@ -13,12 +13,12 @@ jQuery('form#adminNepesForm  input[type=text]').keyup(function(){
 jQuery('form#adminNepesForm').submit(function(evento){
 	evento.preventDefault(); //not making a submit (POST request) from html action.
 	var userNumber = jQuery('#userNumber02Id').val();
-
+	var elLabel ='';
+	var table =  '';
 
 	jQuery.getJSON('escritos/getUsername.php',  {userNumber:userNumber} )
 	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
-		var elLabel = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
-		jQuery('fieldset#labelTableContainer').append(elLabel);
+	 	elLabel = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -41,7 +41,7 @@ jQuery('form#adminNepesForm').submit(function(evento){
 			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
 			jQuery(window.location).attr('href', path);				
 		}
-		var table =  '<table class="subArea">';
+		table =  '<table class="subArea">';
 		var cuantos = 0;
 		jQuery.each(datosJSObj, function(index){
 			cuantos++;
@@ -56,15 +56,16 @@ jQuery('form#adminNepesForm').submit(function(evento){
 		+ '&acto=deleteNepes' +  '&userId=' + userNumber + '">' 
 		+ ' Borra ALL nepes ' + '<i class="fas fa-trash-alt"></i>' 
 		+ '</a></td></tr>';
-		table += '</table>';
-		jQuery('fieldset#labelTableContainer').append(table);
-		
+		table += '</table>';	
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
 		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 		jQuery(window.location).attr('href', path); 
 	});
+
+	jQuery('fieldset#labelTableContainer').append(elLabel);
+	jQuery('fieldset#labelTableContainer').append(table);
 });	
 
 
