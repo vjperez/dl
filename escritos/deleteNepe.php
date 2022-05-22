@@ -11,7 +11,14 @@ if(isset($_SESSION['dueno_id'])){
 		require_once 'deleteNepe/deleteNepeQuery.php';
 		if($recurso){		 
 			if(pg_affected_rows($recurso) == 1){
-				$respuesta = json_decode('{"nepeBorrado":true}');
+
+				require_once 'configConstants/constants.php';
+				$fotoTarget = $fotos_subidas_dir . $nepe_to_delete . '[abcde].';
+				foreach(glob($fotoTarget . '*') as $fotoToErase){
+					if(file_exists ($fotoToErase)) unlink($fotoToErase);
+				}
+
+				$respuesta = json_decode('{"nepeBorrado":true}'); 
 				pg_close($cnx);
 				echo json_encode($respuesta);
 			}elseif(pg_affected_rows($recurso) == 0){
