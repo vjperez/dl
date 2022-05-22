@@ -11,7 +11,8 @@ if(isset($_SESSION['dueno_id'])){
 		require_once 'deleteNepe/deleteNepeQuery.php';
 		if($recurso){		 
 			if(pg_affected_rows($recurso) == 1){
-
+				
+				// delete foto files now that nepe on db was deleted
 				require_once 'configConstants/constants.php';
 				$fotoTarget = $fotos_subidas_dir . $nepe_to_delete . '[abcde].';
 				foreach(glob($fotoTarget . '*') as $fotoToErase){
