@@ -17,7 +17,8 @@ jQuery('form#adminNepesForm').submit(function(evento){
 	jQuery.getJSON('escritos/getUsername.php',  {userNumber:userNumber} )
 	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
 	 	var label = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
-		jQuery('fieldset#labelContainer').append(label);
+		 jQuery('fieldset#labelContainer').html('');
+		 jQuery('fieldset#labelContainer').append(label);
 
 		jQuery.post('escritos/showNepesGetIds.php', {userNumber:userNumber} )
 		.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
@@ -52,6 +53,7 @@ jQuery('form#adminNepesForm').submit(function(evento){
 				+ '</a></td></tr>';
 			}
 			table += '</table>';
+			jQuery('fieldset#tableContainer').html('');
 			jQuery('fieldset#tableContainer').append(table);	
 		})
 		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
