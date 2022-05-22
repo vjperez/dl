@@ -21,23 +21,19 @@ jQuery(document).ready(
 					jQuery(window.location).attr('href', path);
 				});				
 			break;
-			case 'deleteNepes':
+			case 'deleteHerNepes':
 				var userId = jQuery.urlParametro('userId');
 				
-				jQuery.getJSON('escritos/deleteNepes.php', {userId:userId})
+				jQuery.getJSON('escritos/deleteHerNepes.php', {userId:userId})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-					if(datos.wasDeleted)  {  }
+					if(datos.nepesBorrados > 0)  {  }
 					else             {   }
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					//var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-					//jQuery(window.location).attr('href', path); 
-					jQuery('ul.navega li a.look-error').data( 'xhrObjetoForFAILTexto', encodeURIComponent(xhrObjetoForFAILTexto) );
-					jQuery('ul.navega li a.look-error').data( 'textoEstatus', encodeURIComponent(textoEstatus) );
-					jQuery('ul.navega li a.look-error').data( 'elError', encodeURIComponent(elError) );
-					jQuery('.look-error').click();
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					jQuery(window.location).attr('href', path);
 				});				
 			break;
 			case null:

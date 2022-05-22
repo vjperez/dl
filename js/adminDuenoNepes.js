@@ -48,7 +48,7 @@ jQuery('form#adminNepesForm').submit(function(evento){
 				table += '<tr><td>Los ' + cuantos + ' negocios.</td></tr>';
 				table += '<tr><td> </td></tr>';		
 				table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
-				+ '&acto=deleteNepes' +  '&userId=' + userNumber + '">' 
+				+ '&acto=deleteHerNepes' +  '&userId=' + userNumber + '">' 
 				+ ' Borra ALL nepes de ' + dato + '<i class="fas fa-trash-alt"></i>' 
 				+ '</a></td></tr>';
 			}
