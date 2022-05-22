@@ -7,7 +7,7 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 		var imagen = new Image();
 		imagen.src = reader.result;
 		imagen.onload = function(evento){
-			console.log('resizeImage:imagen onload() :' + index + '.  image width: ' + this.width);
+			console.log('resizeImage()  imagen onload() :' + index + '    image width: ' + this.width);
 			var imageMaxHeight  = 150;
 			if(this.height > imageMaxHeight){		
 				// reduce size to  height of imageMaxHeight ////////////////////////////////////////////////////////////////

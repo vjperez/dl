@@ -3,13 +3,14 @@ session_start();
 if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 	$dueno_id = $_SESSION['dueno_id'];
 	$nepe_id = $_POST['nepeId'];							// verify
-	$nombre = str_replace("%", " ", $_POST['nombre']);
-	$quien_social_handle = str_replace("%", " ", $_POST['quienSocialHandle']);
+	$nombre = $_POST['nombre'];
+	$quien_social_handle = $_POST['quienSocialHandle'];
+
 
 
 
 	//build a postgresql type array using 'que' data
-	$quePHP = str_replace("%", " ", json_decode($_POST['que']));
+	$quePHP = json_decode($_POST['que']);
 	$quePosgreArray = '{';
 	foreach($quePHP as $key => $element){
 		if(strlen($element) > 0){  // because of cleanStr in JS, this should ALWAYS be true
@@ -23,7 +24,7 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 
 
 	//build a postgresql type array using 'donde' data
-	$dondePHP = str_replace("%", " ", json_decode($_POST['donde']));
+	$dondePHP = json_decode($_POST['donde']);
 	$dondePosgreArray = '{';
 	foreach($dondePHP as $key => $element){
 		if(strlen($element) > 0){  // because of cleanStr in JS, this should ALWAYS be true
@@ -42,11 +43,16 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 
 
 
-	$cuando = str_replace("%", " ", $_POST['cuando']);
+	$cuando = $_POST['cuando'];
 
-	$videoUrl = str_replace("%", " ", $_POST['videoUrl']);
+	$videoUrl = $_POST['videoUrl'];
+
+	
+	//print_r ($_POST);
+	//print_r ($_FILES);
 
 
+	
 	// i already have the post values
 
 	/*

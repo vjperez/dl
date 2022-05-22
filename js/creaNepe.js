@@ -1,5 +1,7 @@
+var submitVote1 = false;
 var submitVote2 = false;
-var reducedImagesArray = []; 
+var reducedImagesArray = [];
+
 
 //major task 1
 //when ajax complete ; build formdata and make post
@@ -7,9 +9,12 @@ var reducedImagesArray = [];
 
 jQuery('form#creaNepeForm').submit(function(evento){
 	evento.preventDefault(); //not making a submit (POST request) from html action
-	var submitVote1 = jQuery.haveAtLeast1Handle();
-	// var submitVote2 es false por default, puede cambiar solo en have5OrLessImages() que corre como handler de un change event, este event es requerido ya que el input de fotoArr esta required en HTML
-	if(submitVote1 && submitVote2){ // 2 votes come from validation by haveAtLeast1Handle() and have5OrLessImages()
+
+	//alert("votos   " + submitVote1 + "   "+ submitVote2);
+
+	
+
+	if(submitVote1 && submitVote2){ // 2 votes come from validation by haveAtLeast1Red() and have5OrLessImages()
 		// 1) build and edit formdata
 		var forma = document.getElementById('creaNepeForm');
 		var formData = new FormData(forma);
@@ -18,7 +23,7 @@ jQuery('form#creaNepeForm').submit(function(evento){
 		var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
 		var nombre = jQuery.cleanStr( jQuery('form#creaNepeForm input[name=nombre]').val(), regexp );
 		if(jQuery.isVacioStr(nombre)){
-			formData.delete("nombre"); 			formData.append('nombre', '---');
+			formData.delete("nombre"); 			formData.append('nombre', 'sin nombre');
 		}else{
 			formData.delete("nombre"); 			formData.append('nombre', nombre);
 		}
@@ -134,50 +139,33 @@ jQuery('form#creaNepeForm').submit(function(evento){
 		});			
 		// post made
 	}else{  	//submitVote1 && submitVote2; visible only after all html required fields are filled but js stop the submission
-		//not posting ...  validation by haveAtLeast1Handle() and have5OrLessImages()  failed
+		//not posting ...  validation by haveAtLeast1Red() and have5OrLessImages()  failed
 		//no aditional feedback needed
-		//all feedback given at haveAtLeast1Handle() and have5OrLessImages() when they run to handle change events
+		//all feedback given at haveAtLeast1Red() and have5OrLessImages() when they run to handle change events
 	}
 });  //jQuery submit
 	
 	
-	
-	
-jQuery('fieldset#submitButtonFieldset button').on('click', function(evento){
-	jQuery.showThem();
-});
 
 
-//validation logic functions are run as handlers to change events
-var $redInputs = jQuery('form#creaNepeForm input[name^=red]');
-$redInputs.on('change', function(evento){
-	jQuery.haveAtLeast1Handle();
-});
 
-var $fotoInput = jQuery('form#creaNepeForm input#fotosId');
-$fotoInput.on('change', function(evento){
-	jQuery.have5OrLessImages();
-});
-
-var $fotoBoton = jQuery('fieldset#fotoSrcFieldset   button[type=button]');
-$fotoBoton.on('click', function(evento){
-	$fotoInput.click();
-});
 
 
 
 //validation logic run as change event handler
-jQuery.haveAtLeast1Handle = function(){
-	if(jQuery.isVacioStr(jQuery('form#creaNepeForm input[name=red1]').val()) &&  jQuery.isVacioStr(jQuery('form#creaNepeForm input[name=red2]').val()) &&
-	   jQuery.isVacioStr(jQuery('form#creaNepeForm input[name=red3]').val()) &&  jQuery.isVacioStr(jQuery('form#creaNepeForm input[name=red4]').val()) ) {
-			
+jQuery.haveAtLeast1Red = function(){
+    var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
+	if( jQuery.isVacioStr(jQuery.cleanStr(jQuery('form#creaNepeForm input[name=red1]').val(), regexp)) 
+	&&  jQuery.isVacioStr(jQuery.cleanStr(jQuery('form#creaNepeForm input[name=red2]').val(), regexp)) 
+	&&  jQuery.isVacioStr(jQuery.cleanStr(jQuery('form#creaNepeForm input[name=red3]').val(), regexp)) 
+	&&  jQuery.isVacioStr(jQuery.cleanStr(jQuery('form#creaNepeForm input[name=red4]').val(), regexp)) ) {	
 			jQuery.feedback('fieldset#socialHandleFieldset h3', 'Minimo 1 contacto');
 			jQuery.feedback('fieldset#submitButtonFieldset h3#handlesFeedback', 'Verifica secci\u00F3n : QUIEN');
-			return false;
+			submitVote1 = false;
 	}else{
 			jQuery.feedback('fieldset#socialHandleFieldset h3', '');
 			jQuery.feedback('fieldset#submitButtonFieldset h3#handlesFeedback', '');
-			return true;
+			submitVote1 = true;
 	}
 }
 
@@ -189,17 +177,16 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 	reducedImagesArray = [];  // default or initial value
 
 
-	
-
-	fotoSrcFieldsetAddWarningClassVote1 = false;
-	fotoSrcFieldsetAddWarningClassVote2 = false;
+	fotoSrcFieldsetAddWarningClassVote1 = true;
+	fotoSrcFieldsetAddWarningClassVote2 = true;
 	// question 1
-	if(jQuery('form#creaNepeForm input#fotosId')[0].files.length > 5 ){
-		jQuery.feedback('fieldset#fotoSrcFieldset h3#max5Feedback', 'Maximo 5 fotos');
-		fotoSrcFieldsetAddWarningClassVote1 = true;
-	}else{
-		jQuery.feedback('fieldset#fotoSrcFieldset h3#max5Feedback', '');
+	//alert("cuantas fotos " + jQuery('form#creaNepeForm input#fotosId')[0].files.length);
+	if(jQuery('form#creaNepeForm input#fotosId')[0].files.length >= 1  && jQuery('form#creaNepeForm input#fotosId')[0].files.length <= 5){
+		jQuery.feedback('fieldset#fotoSrcFieldset h3#max5min1Feedback', '');
 		fotoSrcFieldsetAddWarningClassVote1 = false;
+	}else{
+		jQuery.feedback('fieldset#fotoSrcFieldset h3#max5min1Feedback', 'Minimo 1 foto, maximo 5');
+		fotoSrcFieldsetAddWarningClassVote1 = true;
 	}
 	// question 2
 	if(jQuery.isNotImage()){
@@ -208,7 +195,8 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 	}else{
 		jQuery.feedback('fieldset#fotoSrcFieldset h3#isImageFeedback', '');
 		fotoSrcFieldsetAddWarningClassVote2 = false;
-	}	// if no warning from both questions
+	}	
+	// if warning from any question
 	if(fotoSrcFieldsetAddWarningClassVote1 || fotoSrcFieldsetAddWarningClassVote2){
 		jQuery.feedback('fieldset#submitButtonFieldset h3#fotosFeedback', 'Verifica secci\u00F3n : FOTOS');
 		jQuery.feedback('fieldset#fotoSrcFieldset h3#howManyFeedback', '');
@@ -218,11 +206,10 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 		jQuery.feedback('fieldset#submitButtonFieldset h3#fotosFeedback', '');
 		jQuery.feedback('fieldset#fotoSrcFieldset h3#howManyFeedback', 'fotos: ' + jQuery('form#creaNepeForm input#fotosId')[0].files.length);
 
-		submitVote2 = true;
 		jQuery.getReducedImagesArray();
+		submitVote2 = true;
 	}
 }
-
 
 
 
@@ -255,3 +242,30 @@ jQuery.isNotImage = function(){ 	//helper function for jQuery.have5OrLessImages
 	return false;
 }
 
+
+
+
+
+jQuery('fieldset#submitButtonFieldset button').on('click', function(evento){
+	jQuery.showThem();
+});
+
+//validation logic functions are run as handlers to change events
+var $redInputs = jQuery('form#creaNepeForm input[name^=red]');
+$redInputs.on('keyup', function(evento){
+	jQuery.haveAtLeast1Red();
+});
+
+var $fotoInput = jQuery('form#creaNepeForm input#fotosId');
+$fotoInput.on('change', function(evento){
+	jQuery.have5OrLessImages();
+});
+
+var $fotoBoton = jQuery('fieldset#fotoSrcFieldset   button[type=button]');
+$fotoBoton.on('click', function(evento){
+	$fotoInput.click();
+});
+
+
+jQuery.haveAtLeast1Red();
+jQuery.have5OrLessImages();

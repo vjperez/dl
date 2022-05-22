@@ -1,15 +1,16 @@
 <?php
 session_start();
 if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
+
 	$dueno_id = $_SESSION['dueno_id'];
+
 	//saca los valores de POST
-	$nombre = str_replace("%", " ", $_POST['nombre']);
-	$quien_social_handle = str_replace("%", " ", $_POST['quienSocialHandle']);
+	$nombre = $_POST['nombre'];
+	$quien_social_handle = $_POST['quienSocialHandle'];
 
 
-
+	$quePHP = json_decode($_POST['que']);
 	//build a postgresql type array using 'que' data
-	$quePHP = str_replace("%", " ", json_decode($_POST['que']));
 	$quePosgreArray = '{';
 	foreach($quePHP as $key => $element){
 		if(strlen($element) > 0){  // because of cleanStr in JS, this should ALWAYS be true
@@ -20,10 +21,9 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 	}
 	$quePosgreArray = $quePosgreArray . '}';
 
-
-
+	
+	$dondePHP = json_decode($_POST['donde']);
 	//build a postgresql type array using 'donde' data
-	$dondePHP = str_replace("%", " ", json_decode($_POST['donde']));
 	$dondePosgreArray = '{';
 	foreach($dondePHP as $key => $element){
 		if(strlen($element) > 0){  // because of cleanStr in JS, this should ALWAYS be true
@@ -34,22 +34,25 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 	}
 	$dondePosgreArray = $dondePosgreArray . '}';
 
+
 	if(strcmp($_POST['aTuCasa'] , 'si') === 0){
 			$a_tu_casa = 'true';
 	}else{
 			$a_tu_casa = 'false' ;
 	}
 	
-	
 
-	$cuando = str_replace("%", " ", $_POST['cuando']);
-
-	$videoUrl = str_replace("%", " ", $_POST['videoUrl']);
-
-
+	$cuando = $_POST['cuando'];
+	$videoUrl = $_POST['videoUrl'];
 	// i already have the post values
 
-	/*
+
+
+//	print_r ($_POST);
+//	print_r ($_FILES);	
+
+
+/*
 	//inspecting $_FILES array ; curiosity and debugging
 	//name at client
 	foreach ($_FILES['fotoArr']['name'] as $key => $name) {
@@ -71,6 +74,7 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 		echo 'error ' . $key . '= ' . $error . '<br>';
 	}
 	*/
+
 	/*
 	//output for 2 images:
 	name 0: light_button.png
@@ -101,6 +105,6 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 	require_once 'creaNepe/update/updateMediaFotoUrl.php';
 
 }else{
-	throw new Exception('Session no seteada en: ' . __FILE__  );
+	throw new Exception('Session dueno_id  o  own_nepes  no seteada en: ' . __FILE__  );
 }
 ?>
