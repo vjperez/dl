@@ -30,11 +30,11 @@ jQuery('form#creaNepeForm').submit(function(evento){
 		
 		regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú\.:\/=\?@\._\-+]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=? plus los de login   @ . _ - +
 		var videoUrl = jQuery.cleanStr( jQuery('form#creaNepeForm textarea[name=videoUrl]').val(), regexp );
-		if(jQuery.isVacioStr(videoUrl)){
-			formData.delete("videoUrl");	formData.append('videoUrl', 'no video');
-		}else{ 
-			formData.delete("videoUrl"); 	formData.append('videoUrl', videoUrl);
-		}
+		//if(jQuery.isVacioStr(videoUrl)){
+		//	formData.delete("videoUrl");	formData.append('videoUrl', 'no video');
+		//}else{ 
+		formData.delete("videoUrl"); 	formData.append('videoUrl', videoUrl);
+		//}
 		
 		//quienSocialHandle is a JS array object, it is stringified before sending it
 		regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus

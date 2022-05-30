@@ -12,7 +12,6 @@ jQuery.populateUpdateNepeForm = function(datos){
 	jQuery('div#updateNepeTitulo h3').text(datos.nombre);
 	jQuery('form#updateNepeForm input[name=nombre]').val(datos.nombre);
 	jQuery('form#updateNepeForm textarea[name=videoUrl]').val(datos.videoUrl);
-	//quien
 	jQuery('form#updateNepeForm input[name=red1]').val(datos.quienSocialHandle.fbk);
 	jQuery('form#updateNepeForm input[name=red2]').val(datos.quienSocialHandle.email);
 	jQuery('form#updateNepeForm input[name=red3]').val(datos.quienSocialHandle.igrm);
@@ -60,7 +59,7 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 	jQuery('form#updateNepeForm').submit(function(evento){
 		evento.preventDefault(); //not making a submit (POST request) from html action
 
-		alert("votos   " + submitVote1 + "   "+ submitVote2);
+		//alert("votos   " + submitVote1 + "   "+ submitVote2);
 
 		// var submitVote2 es false por default, puede cambiar solo en have5OrLessImages() que corre como handler de un change event, este event es requerido ya que el input de fotoArr esta required en HTML
 		if(submitVote1 && submitVote2){ // 2 votes come from validation by haveAtLeast1Red() and have5OrLessImages()
@@ -79,11 +78,11 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 			
 			regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú\.:\/=\?@\._\-+]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=? plus los de login   @ . _ - +
 			var videoUrl = jQuery.cleanStr( jQuery('form#updateNepeForm textarea[name=videoUrl]').val(), regexp );
-			if(jQuery.isVacioStr(videoUrl)){
-				formData.delete("videoUrl"); 		formData.append('videoUrl', 'no video');
-			}else{
-				formData.delete("videoUrl"); 		formData.append('videoUrl', videoUrl);
-			}
+			//if(jQuery.isVacioStr(videoUrl)){
+			//	formData.delete("videoUrl"); 		formData.append('videoUrl', 'no video');
+			//}else{
+			formData.delete("videoUrl"); 		formData.append('videoUrl', videoUrl);
+			//}
 
 			//quienSocialHandle is a JS array object, it is stringified before sending it
 			regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
