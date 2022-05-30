@@ -26,6 +26,9 @@ div#containerForMain, #footer {  margin-left: 0;  }
 div#containerForMain { padding-top: 2.5em; padding-left:0%; padding-right:0%;  }
 
 @media screen and (min-width: 667px) {
+    /* profile red icons*/
+    div#quien ul li i { font-size:24px; }
+
   ul.navega {  width: 100%;  height: auto;  position: relative;  }
   
   ul.navega li a {  float: left;  padding: 15px;  }
@@ -33,6 +36,9 @@ div#containerForMain { padding-top: 2.5em; padding-left:0%; padding-right:0%;  }
 }
 
 @media screen and (min-width: 1001px) {  
+  /* profile red icons*/
+  div#quien ul li i { font-size:48px; }
+
   ul.navega {  width: 200px;  position: fixed;  height: 100%;  }
   ul.navega li a {  text-align: left;  float: none;  }
   div#containerForMain, #footer {  margin-left:200px;  }

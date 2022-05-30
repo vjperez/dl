@@ -8,6 +8,10 @@ h2.footertitulo { font-family: 'Courgette', mono, monospace; }
 a:link, a:visited, a {  font-size: 0.75em; font-weight:bolder; font-family:mono, monospace;  letter-spacing:0.1em;  color:hsl(180, 100%, 20%); text-decoration:none;  }
 a:hover, a:focus { color:hsl(180, 100%, 15%); text-decoration:underline; }
 
+
+div#cuando td.hora { font-family:monxo, monospxace;  color:hsl(180, 100%, 20%); font-weight:bold;}
+
+
 @media screen and (min-width: 667px) {
     a:link, a:visited, a {  font-size: 1em; }
 }
