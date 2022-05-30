@@ -230,7 +230,7 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 	fotoSrcFieldsetAddWarningClassVote1 = true;
 	fotoSrcFieldsetAddWarningClassVote2 = true;
 	// question 1
-	alert("cuantas fotos " + jQuery('form#updateNepeForm input#fotosId')[0].files.length);
+	//alert("cuantas fotos " + jQuery('form#updateNepeForm input#fotosId')[0].files.length);
 	if(jQuery('form#updateNepeForm input#fotosId')[0].files.length >= 1 && jQuery('form#updateNepeForm input#fotosId')[0].files.length <= 5){
 		jQuery.feedback('fieldset#fotoSrcFieldset h3#max5min1Feedback', '');
 		fotoSrcFieldsetAddWarningClassVote1 = false;
