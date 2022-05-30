@@ -44,7 +44,7 @@ div#donde span#background.si, div#donde span#background.no
   margin-right:5pt; }
  
 div#donde span#background.no{ background-position:0px -25px; }
-div#donde div#atucasa { border:1px solid black;}
+div#donde div#atucasa { border-bottom:1px solid black;}
 div#donde div#atucasa span#atucasa { margin-left:33%; margin-right: -50%;   }
 div#donde i{ margin-right:5pt; }
 
