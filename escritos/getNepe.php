@@ -55,7 +55,7 @@ if($recurso){
 
 
 function videoCode($url) { // mide al menos 11 y tiene youtu; youtu123456 aun siendo invalido,devuelve true
-	if(strpos($url, 'no video') === 0){
+	if(strlen($url) === 0){
 		return 0;  
 	}elseif (  ! (strpos($url, 'youtu') === false)  ){	// 'youtu' is somewhere
 		return 1;
