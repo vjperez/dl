@@ -2,7 +2,7 @@
 
 #borde-derecha{  display:none;  }
 
-body {  min-width:375px;  max-width:1024px;  margin:0px auto;  }
+body {  width:98%;  margin:0px auto;  }
 
 ul.navega { list-style-type: none;
   margin: 0;
@@ -25,9 +25,12 @@ ul.navega li a:hover:not(.activo) {  background-color: hsl(180, 100%, 15%);  col
 div#containerForMain, #footer {  margin-left: 0;  }
 div#containerForMain { padding-top: 2.5em; padding-left:0%; padding-right:0%;  }
 
+/* profile red icons*/
+div#quien ul li i { font-size:24px; }
+
 @media screen and (min-width: 667px) {
-    /* profile red icons*/
-    div#quien ul li i { font-size:24px; }
+  /* profile red icons*/
+  div#quien ul li i { font-size:36px; }
 
   ul.navega {  width: 100%;  height: auto;  position: relative;  }
   
@@ -36,6 +39,8 @@ div#containerForMain { padding-top: 2.5em; padding-left:0%; padding-right:0%;  }
 }
 
 @media screen and (min-width: 1001px) {  
+  body {  min-width:375px;  max-width:1024px;  margin:0px auto;  }
+
   /* profile red icons*/
   div#quien ul li i { font-size:48px; }
 
