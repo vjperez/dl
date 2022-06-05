@@ -45,10 +45,10 @@ jQuery('form#loginForm').submit(function(evento){
 
 
 //erase feedback when user writting
-jQuery('form#loginForm  input[name=password]').keyup(function(){
+jQuery('form#loginForm  input[name=password]').keydown(function(){
 	jQuery.feedback('form#loginForm h3', '');
 });
 //erase feedback when user writting
-jQuery('form#loginForm  input[name=username]').keyup(function(){
+jQuery('form#loginForm  input[name=username]').keydown(function(){
 	jQuery.feedback('form#loginForm h3', '');
 });

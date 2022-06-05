@@ -1,11 +1,11 @@
 jQuery('#footer').css('visibility','visible');
 
 //erase feedback when user writting
-jQuery('form#creaDuenoForm  input[name^=password]').keyup(function(){
+jQuery('form#creaDuenoForm  input[name^=password]').keydown(function(){
     jQuery.feedback('form#creaDuenoForm h3', '');
 });
 //erase feedback when user writting
-jQuery('form#creaDuenoForm  input[name=username]').keyup(function(){
+jQuery('form#creaDuenoForm  input[name=username]').keydown(function(){
     jQuery.feedback('form#creaDuenoForm h3', '');
 });	
 

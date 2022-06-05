@@ -1,9 +1,9 @@
 //erase feedback when user writting
-jQuery('form#adminDuenoForm  input').keyup(function(){
+jQuery('form#adminDuenoForm  input').keydown(function(){
 	jQuery.feedback('form#adminDuenoForm h3', '');
 });
 //erase feedback when user writting
-jQuery('form#adminNepesForm  input[type=text]').keyup(function(){
+jQuery('form#adminNepesForm  input[type=text]').keydown(function(){
 	jQuery.feedback('form#adminNepesForm h3', '');
 });
 

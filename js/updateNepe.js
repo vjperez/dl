@@ -303,7 +303,7 @@ jQuery('fieldset#submitButtonFieldset button').on('click', function(evento){
 
 //validation logic functions are run as handlers to change events
 var $redInputs = jQuery('form#updateNepeForm input[name^=red]');
-$redInputs.on('keyup', function(evento){
+$redInputs.on('keydown', function(evento){
 	jQuery.haveAtLeast1Red();
 });
 

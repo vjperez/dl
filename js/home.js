@@ -90,7 +90,7 @@ jQuery('form#editDuenoForm').submit(function(evento){
 
 
 //erase feedback when user writting
-jQuery('form#editDuenoForm  input[name^=password]').keyup(function(){
+jQuery('form#editDuenoForm  input[name^=password]').keydown(function(){
     jQuery.feedback('form#editDuenoForm h3', '');
 });
 
