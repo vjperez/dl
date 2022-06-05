@@ -1,4 +1,4 @@
-const DEBUGUEO = false;
+const DEBUGUEO = true;
 const MINIMUM_USER_PASS_LENGTH = 4;
 const MINIMUM_USER_NAME_LENGTH = 3;
 
