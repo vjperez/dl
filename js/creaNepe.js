@@ -170,8 +170,6 @@ jQuery.haveAtLeast1Red = function(){
 }
 
 
-
-
 jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files? 2)are all files images?
 	submitVote2 = false;  // default or initial value
 	reducedImagesArray = [];  // default or initial value
@@ -212,9 +210,6 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 }
 
 
-
-
-
 jQuery.getReducedImagesArray = function(){ //helper function for jQuery.have5OrLessImages
 			var forma = document.getElementById('creaNepeForm');
 			var formData = new FormData(forma);
@@ -226,9 +221,6 @@ jQuery.getReducedImagesArray = function(){ //helper function for jQuery.have5OrL
 				jQuery.resizeImage(index, unFotoFile);
 			}
 }
-
-
-
  
 
 jQuery.isNotImage = function(){ 	//helper function for jQuery.have5OrLessImages
@@ -245,12 +237,11 @@ jQuery.isNotImage = function(){ 	//helper function for jQuery.have5OrLessImages
 
 
 
-
+//validation logic functions are run as handlers to change events
 jQuery('fieldset#submitButtonFieldset button').on('click', function(evento){
 	jQuery.showThem();
 });
 
-//validation logic functions are run as handlers to change events
 var $redInputs = jQuery('form#creaNepeForm input[name^=red]');
 $redInputs.on('keydown', function(evento){
 	jQuery.haveAtLeast1Red();
@@ -267,5 +258,6 @@ $fotoBoton.on('click', function(evento){
 });
 
 
+//run initially
 jQuery.haveAtLeast1Red();
 jQuery.have5OrLessImages();

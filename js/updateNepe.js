@@ -201,7 +201,6 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 
 
 
-
 //validation logic run as change event handler
 jQuery.haveAtLeast1Red = function(){
 	var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
@@ -218,8 +217,6 @@ jQuery.haveAtLeast1Red = function(){
 			submitVote1 = true;
 	}
 }
-
-
 
 
 jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files? 2)are all files images?
@@ -262,8 +259,6 @@ jQuery.have5OrLessImages = function(){ //2 questions here 1) five or less files?
 }
 
 
-
-
 jQuery.getReducedImagesArray = function(){ //helper function for jQuery.have5OrLessImages
 			var forma = document.getElementById('updateNepeForm');
 			var formData = new FormData(forma);
@@ -276,11 +271,7 @@ jQuery.getReducedImagesArray = function(){ //helper function for jQuery.have5OrL
 			}
 }
 
-
-
  
-
-
 jQuery.isNotImage = function(){ //helper function for jQuery.have5OrLessImages
 	var i;			
 	var $fotoInput = jQuery('form#updateNepeForm input#fotosId');
@@ -294,14 +285,11 @@ jQuery.isNotImage = function(){ //helper function for jQuery.have5OrLessImages
 
 
 
-
-
+//validation logic functions are run as handlers to change events
 jQuery('fieldset#submitButtonFieldset button').on('click', function(evento){
 	jQuery.showThem();
 });
 
-
-//validation logic functions are run as handlers to change events
 var $redInputs = jQuery('form#updateNepeForm input[name^=red]');
 $redInputs.on('keydown', function(evento){
 	jQuery.haveAtLeast1Red();
@@ -316,3 +304,8 @@ var $fotoBoton = jQuery('fieldset#fotoSrcFieldset   button[type=button]');
 $fotoBoton.on('click', function(evento){
 	$fotoInput.click();
 });
+
+
+//run initially
+jQuery.haveAtLeast1Red();
+jQuery.have5OrLessImages();
