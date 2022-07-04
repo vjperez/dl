@@ -19,22 +19,7 @@ div#cuando td.hora { font-family:monxo, monospxace;  color:hsl(180, 100%, 20%); 
     a:link, a:visited, a {  font-size: 1em; }
 }
 
-form button[type="submit"], button[type="button"]{
-    font-size: 32px;
-    background-color:hsl(180, 100%, 20%);
-    border:2px solid black;
-    color: white;
-    margin-top: 20px;
-    width:80px;
-    height:80px;
-    border-radius: 50%;
-}
-form button[type="submit"].peq, button[type="button"].peq{
-    font-size: 19px;
-    margin-top: 12px;
-    width:48px;
-    height:48px;
-}
+
 form button[type="submit"]:hover, button[type="button"]:hover{  background-color:hsl(180, 100%, 15%);  }
 
 

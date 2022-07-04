@@ -25,8 +25,22 @@ ul.navega li a:hover:not(.activo) {  background-color: hsl(180, 100%, 15%);  col
 div#containerForMain, #footer {  margin-left: 0;  }
 div#containerForMain { padding-top: 2.5em; padding-left:0%; padding-right:0%;  }
 
+
+form button[type="submit"], button[type="button"]{
+  font-size: 19px;
+  background-color:hsl(180, 100%, 20%);
+  border:2px solid black;
+  color: white;
+  margin-top: 12px;
+  width:48px;
+  height:48px;
+  border-radius: 0%;
+}
+
+
 /* profile red icons*/
 div#quien ul li i { font-size:24px; }
+
 
 @media screen and (min-width: 667px) {
   /* profile red icons*/
@@ -36,6 +50,18 @@ div#quien ul li i { font-size:24px; }
   
   ul.navega li a {  float: left;  padding: 15px;  }
   div#containerForMain { padding-left:5%; padding-right:5%;  }
+
+  form button[type="submit"], button[type="button"]{
+    font-size: 32px;
+    background-color:hsl(180, 100%, 20%);
+    border:2px solid black;
+    color: white;
+    margin-top: 20px;
+    width:80px;
+    height:80px;
+    border-radius: 10%;
+  }
+
 }
 
 @media screen and (min-width: 1001px) {  
@@ -50,4 +76,17 @@ div#quien ul li i { font-size:24px; }
   div#containerForMain { padding-left:5%; padding-right:5%;  }
   body {  width:1000px;  left:calc(0.5*(100% - 1000px));  }
   #borde-derecha{  display:block;  border:1px solid black;  position: fixed;  right:calc(0.5*(100% - 1000px)); height: 100%;}
+
+
+  form button[type="submit"], button[type="button"]{
+    font-size: 32px;
+    background-color:hsl(180, 100%, 20%);
+    border:2px solid black;
+    color: white;
+    margin-top: 20px;
+    width:80px;
+    height:80px;
+    border-radius: 10%;
+  }
+
 }
