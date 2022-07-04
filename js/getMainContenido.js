@@ -105,10 +105,9 @@ jQuery(document).ready(
 								}
 								jQuery.each(trios, function(index, pares){
 									jQuery.each(pares, function(nepeId, fotoSrc){
-										mainDeOpciones += '<a href="portada.html?look=profile&nepeId=' + nepeId + '">' +
-										'<img class="" ';
-										mainDeOpciones += ' src="imagenes/profile/subidas/' + fotoSrc + '">'  + 
-										'</a>';
+										mainDeOpciones += '<a href="portada.html?look=profile&nepeId=' + nepeId + '">';
+										mainDeOpciones += '<img class="" src="imagenes/profile/subidas/' + fotoSrc + '">'; 
+										mainDeOpciones += '</a>';
 									});
 								}); // each in trios
 								mainDeOpciones += '</div>'; // <div class="ver-borde opcionesfotos">
