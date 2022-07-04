@@ -1,5 +1,5 @@
 <?php
-define("MAQUINA_PATH", "C:/Users/victor/lighttpd/htdocs");
+define("MAQUINA_PATH", "C:/xxx/xxx/xxx");
 define("SITE_PATH_APPEND", "/WebDevelopmentStuff");
 define("UPLOAD_DIR", "/imagenes/profile/subidas/");
 
