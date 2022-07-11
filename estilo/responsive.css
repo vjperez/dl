@@ -39,12 +39,14 @@ form button[type="submit"], button[type="button"]{
 
 
 /* profile red icons*/
-div#quien ul li i { font-size:24px; }
+div#quien ul li i { font-size:25px; }
+div#quien li { display:inline-block; margin-right:12px; margin-left:12px; margin-top:0px; margin-bottom:0px; }
 
 
 @media screen and (min-width: 667px) {
   /* profile red icons*/
   div#quien ul li i { font-size:36px; }
+  div#quien li { display:inline-block; margin-right:16px; margin-left:16px; margin-top:0px; margin-bottom:0px; }
 
   ul.navega {  width: 100%;  height: auto;  position: relative;  }
   
@@ -69,6 +71,7 @@ div#quien ul li i { font-size:24px; }
 
   /* profile red icons*/
   div#quien ul li i { font-size:48px; }
+  div#quien li { display:inline-block; margin-right:16px; margin-left:16px; margin-top:0px; margin-bottom:0px; }
 
   ul.navega {  width: 200px;  position: fixed;  height: 100%;  }
   ul.navega li a {  text-align: left;  float: none;  }

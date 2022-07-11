@@ -26,7 +26,7 @@ div#video h2.notHidable, div#quien h5 { text-align:center ; }
 div#video h5 { text-align:right; }
 
 div#quien ul { text-align:center; margin-top:0pt; margin-bottom:20pt; }
-div#quien li { display:inline-block; margin-right:12pt; margin-left:12pt; margin-top:0pt; margin-bottom:0pt; }
+
 
 div#quien h5 { display:none; }
 div#quien h5.current { display:block; }
@@ -45,7 +45,7 @@ div#donde span#background.si, div#donde span#background.no
  
 div#donde span#background.no{ background-position:0px -25px; }
 div#donde div#atucasa { border:0px solid black;}
-div#donde div#atucasa span#atucasa { margin-left:33%; margin-right: -50%;   }
+div#donde div#atucasa span#atucasa { display:block; text-align:center }
 div#donde i{ margin-right:5pt; }
 
 /*  faq  */
