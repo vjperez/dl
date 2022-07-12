@@ -21,7 +21,20 @@ div#opcionesdiv.opcionesfotos a img { margin-top:0px; margin-bottom:0px; margin-
 div#opcionesdiv.opcionesfotos h3 {  margin-bottom:50px; }
 
 /* profile */
-div#video iframe { display:block; margin-left:auto; margin-right:auto; }
+.videoframecontainer {
+  position: relative;
+  padding-bottom: 56.25%;
+
+  display:block; margin-left:auto; margin-right:auto;
+}
+
+.videoframecontainer iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 div#video h2.notHidable, div#quien h5 { text-align:center ; } 
 div#video h5 { text-align:right; }
 
