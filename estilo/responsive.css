@@ -1,6 +1,6 @@
 /*  responsive : comun  */
 
-#borde-derecha{  display:none;  }
+div#borde-derecha{  display:none;  }
 
 body {  width:98%;  margin:0px auto;  }
 
@@ -18,10 +18,14 @@ ul.navega li a { display: block;
   text-align: center;
   float: none;  }
  
-ul.navega li a.activo {  background-color:black;  color: white;  }     /* 0c6f10  #4CAF50;   */
+ul.navega li a.activo {  background-color:black;  }     /* 0c6f10  #4CAF50;   */
 
-ul.navega li a:hover:not(.activo) {  background-color: hsl(180, 100%, 15%);  color: white;  }
+ul.navega li a:hover:not(.activo) {  background-color: hsl(180, 100%, 15%);  }
   
+/* profile red icons*/
+div#quien ul li i { font-size:25px; }
+div#quien li { display:inline-block; margin-right:12px; margin-left:12px; margin-top:0px; margin-bottom:0px; }
+
 div#containerForMain, #footer {  margin-left: 0;  }
 div#containerForMain { padding-top: 2.5em; padding-left:0%; padding-right:0%;  }
 
@@ -38,9 +42,6 @@ form button[type="submit"], button[type="button"]{
 }
 
 
-/* profile red icons*/
-div#quien ul li i { font-size:25px; }
-div#quien li { display:inline-block; margin-right:12px; margin-left:12px; margin-top:0px; margin-bottom:0px; }
 
 
 @media screen and (min-width: 667px) {
