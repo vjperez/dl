@@ -1,7 +1,16 @@
-html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
+html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit} 
 
 /* ========================================================================================== */
 /*  estilo : comun  */
+form button[type="submit"]:hover, button[type="button"]:hover{  background-color:hsl(180, 100%, 15%);  }
+form button[type="submit"],       button[type="button"]      {  
+    background-color:hsl(180, 100%, 20%);
+    border:2px solid black;
+    color: white;
+}
+/**/
+
+
 h5.footersubtitulo, ul.navega li a  { font-family:mono, monospace; }
 h2.footertitulo { font-family: 'Courgette', mono, monospace; }
 
@@ -19,8 +28,6 @@ div#cuando td.hora { font-family:monxo, monospxace;  color:hsl(180, 100%, 20%); 
     a:link, a:visited, a {  font-size: 1em; }
 }
 
-
-form button[type="submit"]:hover, button[type="button"]:hover{  background-color:hsl(180, 100%, 15%);  }
 
 
 input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], textarea{

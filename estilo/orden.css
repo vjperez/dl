@@ -8,11 +8,6 @@ div#footer h5.footersubtitulo { text-align:center; }
 
 form[id$=Form] { padding-top:5em; }
 
-form button[type="submit"], button[type="button"]
-{ display:block;   
-  width:200px;
-  margin:2em auto 0em;  }
-
 
 form[id$=Form] h3 { text-align:center; }
 div#creaNepeTitulo h3, div#updateNepeTitulo h3, div#creaNepeTitulo label.explica,  div#updateNepeTitulo label.explica  { text-align:center; display:block; }

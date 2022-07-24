@@ -1,6 +1,6 @@
 /*  responsive : comun  */
 
-div#borde-derecha{  display:none;  }
+div#borde-derecha{  display:none;  } 
 
 body {  width:98%;  margin:0px auto;  }
 
@@ -31,14 +31,13 @@ div#containerForMain { padding-top: 2.5em; padding-left:0%; padding-right:0%;  }
 
 
 form button[type="submit"], button[type="button"]{
-  font-size: 19px;
-  background-color:hsl(180, 100%, 20%);
-  border:2px solid black;
-  color: white;
-  margin-top: 12px;
+  border-radius: 5%;
+  display:block;   
+  margin:2em auto 0em; 
+  
+  font-size: 20px;
   width:48px;
   height:48px;
-  border-radius: 0%;
 }
 
 
@@ -56,13 +55,8 @@ form button[type="submit"], button[type="button"]{
 
   form button[type="submit"], button[type="button"]{
     font-size: 32px;
-    background-color:hsl(180, 100%, 20%);
-    border:2px solid black;
-    color: white;
-    margin-top: 20px;
     width:80px;
     height:80px;
-    border-radius: 10%;
   }
 
 }
@@ -83,14 +77,9 @@ form button[type="submit"], button[type="button"]{
 
 
   form button[type="submit"], button[type="button"]{
-    font-size: 32px;
-    background-color:hsl(180, 100%, 20%);
-    border:2px solid black;
-    color: white;
-    margin-top: 20px;
-    width:80px;
-    height:80px;
-    border-radius: 10%;
+    font-size: 36px;
+    width:100px;
+    height:100px;
   }
 
 }
