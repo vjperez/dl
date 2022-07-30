@@ -9,7 +9,7 @@ var reducedImagesArray = [];
 //when ajax complete ; if already existing micro empre then populate form using that data
 jQuery.populateUpdateNepeForm = function(datos){
 	//nombre y video
-	jQuery('div#updateNepeTitulo h3').text(datos.nombre);
+	jQuery('div#updateNepeTitulo h2').text(datos.nombre);
 	jQuery('form#updateNepeForm input[name=nombre]').val(datos.nombre);
 	jQuery('form#updateNepeForm textarea[name=videoUrl]').val(datos.videoUrl);
 	jQuery('form#updateNepeForm input[name=red1]').val(datos.quienSocialHandle.fbk);
@@ -177,7 +177,7 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 				if(datosJSObj.actualizado){		//maybe if is not needed after try catch block
 					jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
 				}else{
-					//jQuery.feedback('form#updateNepeForm h3', datosJSObj.feedback);
+					//jQuery.feedback('form#updateNepeForm h2', datosJSObj.feedback);
 				}
 			})
 			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
