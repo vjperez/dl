@@ -3,17 +3,21 @@ ul.navega i{ padding: 0em 0.333em; }
 
 
 div#footer { padding-top:5em;   padding-left:5%; padding-right:5%;  }
-div#footer h2.footertitulo    { text-align:center; }
-div#footer h5.footersubtitulo { text-align:center; }
+div#footer h2.footertitulo, div#footer h5.footersubtitulo    { text-align:center; }
 
+
+/*forms*/
 form[id$=Form] { padding-top:5em; }
 
+h3.feedback, h3.warn, div#creaNepeTitulo h2,  div#updateNepeTitulo h2 { text-align:center; }
+div#creaNepeTitulo label.explica,  div#updateNepeTitulo label.explica  { text-align:center; display:block; }
 
-form[id$=Form] h3 { text-align:center; }
-div#creaNepeTitulo h3, div#updateNepeTitulo h3, div#creaNepeTitulo label.explica,  div#updateNepeTitulo label.explica  { text-align:center; display:block; }
 
+/*opciones*/
 div#opcionesdiv.opcionesfotos a img { margin-top:0px; margin-bottom:0px; margin-right:2px; margin-left:0px; }
 div#opcionesdiv.opcionesfotos h3 {  margin-bottom:50px; }
+
+
 
 /* profile */
 .videoframecontainer {
@@ -68,5 +72,3 @@ div#faqdiv i[class*="fa-chevron-circle"]{ margin-left:1em; }
 
 /* admin */
 fieldset  table tr i[class*="fa-trash-alt"],  fieldset label i[class*="fa-chevron-circle"] { margin-left:1em;  }
-
-.nadah3 { text-align:center; }
