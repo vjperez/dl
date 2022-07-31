@@ -2,11 +2,13 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
 /* ========================================================================================== */
 /*  estilo : comun  */
-form button[type="submit"]:hover, button[type="button"]:hover{  background-color:hsl(180, 50%, 80%);  }
+/* color de botones :  000, 00%   180, 50% */
+
+form button[type="submit"]:hover, button[type="button"]:hover{  background-color:hsl(000, 00%, 80%);  }
 form button[type="submit"],       button[type="button"]      {  
-    background-color:hsl(180, 50%, 90%);
+    background-color:hsl(000, 00%, 90%);
     border:2px solid black;
-    color: white;
+    color: black;
 }
 /**/
 
@@ -69,7 +71,7 @@ fieldset.hidable label {  font-size:1.25em; letter-spacing:0.20em; font-weight:b
 fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:black;  }
 
 
-form[id$=Form] h3   { font-family:serif, Times, times; font-weight:bolder;  color:hsla(180, 100%, 20%, 1); }
+form[id$=Form] h3   { font-family:serif, Times, times; font-weight:bolder;  color:hsl(200, 95%, 40%); }
 
 fieldset.hidable    h3.warn,
 fieldset.notHidable h3.warn
