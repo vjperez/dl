@@ -49,6 +49,13 @@ fieldset.hidable label.explica {  font-size:0.7em; letter-spacing:0.2em; }
 
 
 
+input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], textarea{
+	border-radius: 4px;         font-size:1em;
+  margin-bottom: 12px;        
+  padding: 5px 10px;         
+}
+
+
 
 @media screen and (min-width: 667px) {
   /* profile red icons*/
@@ -71,6 +78,12 @@ fieldset.hidable label.explica {  font-size:0.7em; letter-spacing:0.2em; }
 
   fieldset.hidable label {  font-size:1.5em; letter-spacing:0.3em;    }
   fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; }
+
+  input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], textarea{
+    border-radius: 8px;         font-size:1.5em;
+    margin-bottom: 25px;        
+    padding: 10px 20px;         
+  }
 
 }
 
@@ -100,5 +113,11 @@ fieldset.hidable label.explica {  font-size:0.7em; letter-spacing:0.2em; }
 
   fieldset.hidable label {  font-size:1.5em; letter-spacing:0.30em;    }
   fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; }
+
+  input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], textarea{
+    border-radius: 8px;         font-size:1.5em;
+    margin-bottom: 25px;        
+    padding: 10px 20px;         
+  }
 
 }
