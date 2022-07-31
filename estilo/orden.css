@@ -11,7 +11,8 @@ form[id$=Form] { padding-top:5em; }
 
 h3.feedback, h3.warn, div#creaNepeTitulo h2,  div#updateNepeTitulo h2, h2.nadah2 { text-align:center; }
 div#creaNepeTitulo label.explica,  div#updateNepeTitulo label.explica  { text-align:center; display:block; }
-
+fieldset.subArea label.conMargen { margin-top: 1em; margin-left: 4em; display: inline-block;}
+fieldset.subArea input.conMargen { margin-top: 1em; margin-left: 0.5em; display: inline-block;}
 
 /*opciones*/
 div#opcionesdiv.opcionesfotos a img { margin-top:0px; margin-bottom:0px; margin-right:2px; margin-left:0px; }
