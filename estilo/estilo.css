@@ -51,13 +51,10 @@ div#opcionesdiv h3  { font-family:serif, Times, times; font-weight:bolder;  colo
 form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-family:'Bree Serif', 'Courer Prime', mono, monospace; }
 fieldset.notHxxxidable label.explixxxca { font-family:'Oswaxxld', mono, monospace;  }
 
-form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-weight:bolder; color:hsl(200, 95%, 40%); }
-div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-weight:bolder; color:black; }
+form[id$=Form] label,          fieldset.notHidable label,         fieldset.hidable label,       h2.notHidable{ font-weight:bolder; color:hsl(200, 95%, 40%); }
+div[id$=Titulo] label.explica, fieldset.notHidable label.explica, fieldset.hidable label.explica  { font-weight:bolder; color:black; }
 
 
-
-fieldset.hidable label {  font-size:1.25em; letter-spacing:0.20em; font-weight:bolder;  color:#000000;  }
-fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:black;  }
 
 
 form[id$=Form] h3   { font-family:serif, Times, times; font-weight:bolder;  color:hsl(200, 95%, 40%); }
