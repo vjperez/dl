@@ -43,7 +43,6 @@ form button[type="submit"], button[type="button"]{
 
 form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:1em; letter-spacing:0.25em; display: block; }
 div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.75em; letter-spacing:0.2em; display:block; text-align:left; }
-div[id$=Form] form[id$=Form] label { font-size:1.5em; }
 
 fieldset.hidable label {  font-size:1.25em; letter-spacing:0.20em;    }
 fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; }
@@ -69,7 +68,6 @@ fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; }
 
   form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:1.25em; letter-spacing:0.40em; display: block; }
   div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.2em; display:block; text-align:left; }
-  div[id$=Form] form[id$=Form] label { font-size:1.85em; }
 
   fieldset.hidable label {  font-size:1.25em; letter-spacing:0.20em;    }
   fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; }
@@ -97,9 +95,8 @@ fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; }
     height:96px;
   }
 
-  form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:2.5em; letter-spacing:0.40em; display: block; }
+  form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:2.5em; letter-spacing:0.4em; display: block; }
   div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.2em; display:block; text-align:left; }
-  div[id$=Form] form[id$=Form] label { font-size:1.85em; }
 
   fieldset.hidable label {  font-size:1.25em; letter-spacing:0.20em;    }
   fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; }
