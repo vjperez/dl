@@ -97,11 +97,11 @@ jQuery(document).ready(
 
 								mainDeOpciones += '<div id="opcionesdiv" class="opcionesfotos ">';
 								if(buscaMode.indexOf("buscaBoth") > -1){
-									mainDeOpciones += '<h3>'  + que + ' + ' + donde + '</h3>';
+									mainDeOpciones += '<h2 class="notHidable">'  + que + ' + ' + donde + '</h2>';
 								}else if (buscaMode.indexOf("buscaQue") > -1){
-									mainDeOpciones += '<h3>'  + que + '</h3>';
+									mainDeOpciones += '<h2 class="notHidable">'  + que + '</h2>';
 								}else if (buscaMode.indexOf("buscaDonde") > -1){
-									mainDeOpciones += '<h3>'  + donde + '</h3>';
+									mainDeOpciones += '<h2 class="notHidable">'  + donde + '</h2>';
 								}
 								jQuery.each(trios, function(index, pares){
 									jQuery.each(pares, function(nepeId, fotoSrc){
