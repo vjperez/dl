@@ -27,7 +27,7 @@ div#quien ul li i { font-size:25px; }
 div#quien li { display:inline-block; margin-right:12px; margin-left:12px; margin-top:0px; margin-bottom:0px; }
 
 div#containerForMain, #footer {  margin-left: 0;  }
-div#containerForMain { padding-top: 2.5em; padding-left:0%; padding-right:0%;  }
+div#containerForMain { padding-top: 0em; padding-left:0%; padding-right:0%;  }
 
 
 form button[type="submit"], button[type="button"]{

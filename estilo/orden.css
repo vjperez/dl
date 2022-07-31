@@ -63,8 +63,8 @@ div#donde i{ margin-right:5pt; }
 /*  faq  */
 div#faqdiv i[class*="fa-chevron-circle"]{ margin-left:1em; }
 
-/*  faq  crea update nepe edit dueno show nepes  */
-.notHidable{  margin-top:2.5em;   padding:0px;  }
+/*  faq  crea update nepe edit dueno show nepes profile-titulo, quien... */
+.notHidable{  padding-top:4em;   margin:0px;  }
 
 /*  crea update nepe  edit dueno show nepes  */
 .hidable, .subArea{  margin-top:1em;  padding:0px;  }
