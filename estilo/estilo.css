@@ -2,9 +2,9 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
 /* ========================================================================================== */
 /*  estilo : comun  */
-form button[type="submit"]:hover, button[type="button"]:hover{  background-color:hsl(180, 100%, 15%);  }
+form button[type="submit"]:hover, button[type="button"]:hover{  background-color:hsl(180, 50%, 80%);  }
 form button[type="submit"],       button[type="button"]      {  
-    background-color:hsl(180, 100%, 20%);
+    background-color:hsl(180, 50%, 90%);
     border:2px solid black;
     color: white;
 }
@@ -14,11 +14,11 @@ form button[type="submit"],       button[type="button"]      {
 h5.footersubtitulo, ul.navega li a  { font-family:mono, monospace; }
 h2.footertitulo { font-family: 'Courgette', mono, monospace; }
 
-a:link, a:visited, a {  font-size: 0.75em; font-weight:bolder; font-family:mono, monospace;  letter-spacing:0.1em;  color:hsl(180, 100%, 20%); text-decoration:none;  }
-a:hover, a:focus { color:hsl(180, 100%, 15%); text-decoration:underline; }
+a:link, a:visited, a {  font-size: 0.75em; font-weight:bolder; font-family:mono, monospace;  letter-spacing:0.1em;  color:hsl(215, 95%, 40%); text-decoration:none;  }
+a:hover, a:focus { color:hsl(215, 95%, 30%); text-decoration:underline; }
 
 
-div#cuando td.hora { font-family:monxo, monospxace;  color:hsl(180, 100%, 20%); font-weight:bold;}
+div#cuando td.hora { font-family:monxo, monospxace;  color:hsl(200, 95%, 40%); font-weight:bold;}
 
 
 @media screen and (min-width: 667px) {
@@ -60,7 +60,7 @@ div[id$=Form] form[id$=Form] label { font-size:1.5em; }
 }
 
 @media screen and (min-width: 1001px) { 
-    form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:1.25em; letter-spacing:0.40em; font-weight:bolder; color:hsl(200, 95%, 40%); display: block; }
+    form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:8.25em; letter-spacing:0.40em; font-weight:bolder; color:hsl(200, 95%, 40%); display: block; }
     div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder; color:black; display:block; text-align:left; }
     div[id$=Form] form[id$=Form] label { font-size:1.85em; }
 }
@@ -75,7 +75,7 @@ fieldset.hidable    h3.warn,
 fieldset.notHidable h3.warn
                     { font-family:serif, Times, times; font-weight:bolder;  color:hsl(0, 100%, 50%); }
 
-div#updateNepeTitulo h2, div#creaNepeTitulo h2, div#video h2.notHidable { font-family: 'Courgette', mono, monospace; font-size:1.7em; letter-spacing:0.40em;}
+div#updateNepeTitulo h2, div#creaNepeTitulo h2, div#video h2.notHidable { font-family: 'Courgette', mono, monospace;}
 div#updateNepeTitulo h2, div#creaNepeTitulo h2, div#video h2.notHidable { color:black }
 
 
@@ -83,7 +83,7 @@ div#updateNepeTitulo h2, div#creaNepeTitulo h2, div#video h2.notHidable { color:
  div#quien div.hidable ul  i { border-color:#000000;  border-style:solid;  border-width:0pt;  border-radius:5pt; padding:0.2em; }
  div#quien div.hidable ul  i:hover,  div#quien div.hidable ul  i:focus,  div#quien div.hidable ul  i.current { border-color:hsl(200, 95%, 40%); border-width:1pt; }
 
- div#quien h5, div#cuando td, div#donde span.texto, div#donde span.textofixed, h3.nadah3  { font-family:mono, monospace; }
+ div#quien h5, div#cuando td, div#donde span.texto, div#donde span.textofixed, h2.nadah2  { font-family:mono, monospace; }
  div#donde span.textofixed  { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:black; }
 
  table.subArea  { border-collapse: separate; border-spacing: 0em 2em; }
