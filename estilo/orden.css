@@ -9,7 +9,7 @@ div#footer h2.footertitulo, div#footer h5.footersubtitulo    { text-align:center
 /*forms*/
 form[id$=Form] { padding-top:5em; }
 
-h5.feedback, h5.warn, div#creaNepeTitulo h2,  div#updateNepeTitulo h2, h2.nadah2 { text-align:center; }
+h3.feedback, h5.feedback, h5.warn, div#creaNepeTitulo h2,  div#updateNepeTitulo h2, h2.nadah2 { text-align:center; }
 div#creaNepeTitulo label.explica,  div#updateNepeTitulo label.explica  { text-align:center; display:block; }
 fieldset.subArea label.conMargen { margin-top: 1em; margin-left: 4em; display: inline-block;}
 fieldset.subArea input.conMargen { margin-top: 1em; margin-left: 0.5em; display: inline-block;}
