@@ -50,9 +50,8 @@ div[id$=Titulo] label.explica, fieldset.notHidable label.explica, fieldset.hidab
 
 form[id$=Form] h3   { font-family:serif, Times, times; font-weight:bolder;  color:hsl(200, 95%, 40%); }
 
-fieldset.hidable    h3.warn,
-fieldset.notHidable h3.warn
-                    { font-family:serif, Times, times; font-weight:bolder;  color:hsl(0, 100%, 50%); }
+fieldset.hidable    h5.warn,
+fieldset.notHidable h5.warn    { font-family:mono, monospace; font-weight:bolder;  color:hsl(0, 100%, 50%); }
 
 div#updateNepeTitulo h2, div#creaNepeTitulo h2, div#video h2.notHidable { font-family: 'Courgette', mono, monospace;}
 div#updateNepeTitulo h2, div#creaNepeTitulo h2, div#video h2.notHidable { color:black }
@@ -63,7 +62,7 @@ div#updateNepeTitulo h2, div#creaNepeTitulo h2, div#video h2.notHidable { color:
  div#quien div.hidable ul  i:hover,  div#quien div.hidable ul  i:focus,  div#quien div.hidable ul  i.current { border-color:hsl(200, 95%, 40%); border-width:1pt; }
 
  div#quien h5, div#cuando td, div#donde span.texto, div#donde span.textofixed, h2.nadah2  { font-family:mono, monospace; }
- div#donde span.textofixed  { font-size:0.85em; letter-spacing:0.2em; font-weight:bolder;  color:black; }
+ div#donde span.textofixed  { font-weight:bolder;  color:black; }
 
  table.subArea  { border-collapse: separate; border-spacing: 0em 2em; }
  div#que ul li, div#donde ul li { margin-top:1em; margin-bottom: 1em; padding-left:3em; }

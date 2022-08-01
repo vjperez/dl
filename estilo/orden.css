@@ -9,7 +9,7 @@ div#footer h2.footertitulo, div#footer h5.footersubtitulo    { text-align:center
 /*forms*/
 form[id$=Form] { padding-top:5em; }
 
-h3.feedback, h3.warn, div#creaNepeTitulo h2,  div#updateNepeTitulo h2, h2.nadah2 { text-align:center; }
+h5.feedback, h5.warn, div#creaNepeTitulo h2,  div#updateNepeTitulo h2, h2.nadah2 { text-align:center; }
 div#creaNepeTitulo label.explica,  div#updateNepeTitulo label.explica  { text-align:center; display:block; }
 fieldset.subArea label.conMargen { margin-top: 1em; margin-left: 4em; display: inline-block;}
 fieldset.subArea input.conMargen { margin-top: 1em; margin-left: 0.5em; display: inline-block;}
@@ -60,6 +60,7 @@ div#donde span#background.no{ background-position:0px -25px; }
 div#donde div#atucasa { border:0px solid black;}
 div#donde div#atucasa span#atucasa { display:block; text-align:center }
 div#donde i{ margin-right:5pt; }
+div#donde span.textofixed  { font-size:0.85em; letter-spacing:0.2em; }
 
 /*  faq  */
 div#faqdiv i[class*="fa-chevron-circle"]{ margin-left:1em; }
