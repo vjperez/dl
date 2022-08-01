@@ -41,11 +41,11 @@ form button[type="submit"], button[type="button"]{
 }
 
 
-form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:1.75em; letter-spacing:0.2em; display: block; }
-div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.7em; letter-spacing:0.2em; display:block; text-align:left; }
+form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:1.75em; letter-spacing:0.20em; display: block; }
+div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
 
-fieldset.hidable label {  font-size:1.25em; letter-spacing:0.2em;    }
-fieldset.hidable label.explica {  font-size:0.7em; letter-spacing:0.2em; }
+fieldset.hidable label {  font-size:1.25em; letter-spacing:0.20em;    }
+fieldset.hidable label.explica {  font-size:0.7em; letter-spacing:0.20em; }
 
 
 
@@ -56,7 +56,7 @@ input[type="text"], input[type="radio"], input[type="tel"], input[type="password
 }
 
 
-a:link, a:visited, a {  font-size: 1.1em;  letter-spacing:0.2em;  }
+a:link, a:visited, a {  font-size: 1.1em;  letter-spacing:0.20em;  }
 
 
 @media screen and (min-width: 667px) {
@@ -76,17 +76,17 @@ a:link, a:visited, a {  font-size: 1.1em;  letter-spacing:0.2em;  }
   }
 
   form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:2em; letter-spacing:0.30em; display: block; }
-  div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.2em; display:block; text-align:left; }
+  div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.20em; display:block; text-align:left; }
 
-  fieldset.hidable label {  font-size:1.5em; letter-spacing:0.3em;    }
-  fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; }
+  fieldset.hidable label {  font-size:1.5em; letter-spacing:0.30em;    }
+  fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.20em; }
 
   input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], textarea{
     border-radius: 8px;         font-size:1.5em;
     margin-bottom: 25px;        
     padding: 10px 20px;         
   }
-  a:link, a:visited, a {  font-size: 1.25em;  letter-spacing:0.3em;  }
+  a:link, a:visited, a {  font-size: 1.25em;  letter-spacing:0.30em;  }
 }
 
 @media screen and (min-width: 1001px) {  
@@ -110,16 +110,16 @@ a:link, a:visited, a {  font-size: 1.1em;  letter-spacing:0.2em;  }
     height:96px;
   }
 
-  form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:2.5em; letter-spacing:0.4em; display: block; }
-  div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.2em; display:block; text-align:left; }
+  form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-size:2.15em; letter-spacing:0.35em; display: block; }
+  div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.20em; display:block; text-align:left; }
 
   fieldset.hidable label {  font-size:1.5em; letter-spacing:0.30em;    }
-  fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.2em; }
+  fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.20em; }
 
   input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], textarea{
     border-radius: 8px;         font-size:1.5em;
     margin-bottom: 25px;        
     padding: 10px 20px;         
   }
-  a:link, a:visited, a {  font-size: 1.25em;  letter-spacing:0.3em;  }
+  a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.20em;  }
 }
