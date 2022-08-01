@@ -16,19 +16,11 @@ form button[type="submit"],       button[type="button"]      {
 h5.footersubtitulo, ul.navega li a  { font-family:mono, monospace; }
 h2.footertitulo { font-family: 'Courgette', mono, monospace; }
 
-a:link, a:visited, a {  font-size: 0.75em; font-weight:bolder; font-family:mono, monospace;  letter-spacing:0.1em;  color:hsl(215, 95%, 40%); text-decoration:none;  }
+a:link, a:visited, a { font-weight:bolder; font-family:mono, monospace;  color:hsl(215, 95%, 40%); text-decoration:none;  }
 a:hover, a:focus { color:hsl(215, 95%, 30%); text-decoration:underline; }
 
 
 div#cuando td.hora { font-family:monxo, monospxace;  color:hsl(200, 95%, 40%); font-weight:bold;}
-
-
-@media screen and (min-width: 667px) {
-    a:link, a:visited, a {  font-size: 1em; }
-}
-@media screen and (min-width: 1001px) {
-    a:link, a:visited, a {  font-size: 1em; }
-}
 
 
 

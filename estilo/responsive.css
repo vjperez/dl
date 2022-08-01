@@ -56,6 +56,8 @@ input[type="text"], input[type="radio"], input[type="tel"], input[type="password
 }
 
 
+a:link, a:visited, a {  font-size: 1.1em;  letter-spacing:0.2em;  }
+
 
 @media screen and (min-width: 667px) {
   /* profile red icons*/
@@ -84,7 +86,7 @@ input[type="text"], input[type="radio"], input[type="tel"], input[type="password
     margin-bottom: 25px;        
     padding: 10px 20px;         
   }
-
+  a:link, a:visited, a {  font-size: 1.25em;  letter-spacing:0.3em;  }
 }
 
 @media screen and (min-width: 1001px) {  
@@ -119,5 +121,5 @@ input[type="text"], input[type="radio"], input[type="tel"], input[type="password
     margin-bottom: 25px;        
     padding: 10px 20px;         
   }
-
+  a:link, a:visited, a {  font-size: 1.25em;  letter-spacing:0.3em;  }
 }
