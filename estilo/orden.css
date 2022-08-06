@@ -15,7 +15,7 @@ fieldset.subArea label.conMargen { margin-top: 1em; margin-left: 4em; display: i
 fieldset.subArea input.conMargen { margin-top: 1em; margin-left: 0.5em; display: inline-block;}
 
 /*opciones*/
-div#opcionesdiv.opcionesfotos a img { margin-top:0px; margin-bottom:0px; margin-right:20px; margin-left:0px; }
+div#opcionesdiv.opcionesfotos a img, div#profilefotos img { margin-top:0px; margin-bottom:0.50em; margin-right:0.25em; margin-left:0px; }
 div#opcionesdiv.opcionesfotos h2 {  margin-bottom:2em; }
 
 
