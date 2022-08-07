@@ -99,7 +99,7 @@ a:link, a:visited, a {  font-size: 1.1em;  letter-spacing:0.20em;  }
   fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.20em; }
 
   input[type="text"], inxxxput[type="radio"], input[type="tel"], input[type="password"], textarea{
-    border-radius: 8px;   font-size:1.25em;  width:25em;  margin-bottom: 25px;   padding: 10px 20px;         
+    border-radius: 8px;   font-size:1.25em;  width:30em;  margin-bottom: 25px;   padding: 10px 20px;         
   }
   a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.20em;  }
 }
