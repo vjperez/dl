@@ -64,8 +64,3 @@ div#updateNepeTitulo h2, div#creaNepeTitulo h2, div#video h2.notHidable { color:
  div#quien h5, div#cuando td, div#donde span.texto, div#donde span.textofixed, h2.nadah2  { font-family:mono, monospace; }
  div#donde span.textofixed  { font-weight:bolder;  color:black; }
 
- table.subArea  { border-collapse: separate; border-spacing: 0em 2em; }
- div#que ul li, div#donde ul li { margin-top:1em; margin-bottom: 1em; padding-left:3em; }
- 
- table td.hora { text-align: left; padding-left:2em;} 
- table td.dia  { text-align: right; } 
