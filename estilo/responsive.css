@@ -27,7 +27,7 @@ div#quien ul li i { font-size:25px; }
 div#quien li { display:inline-block; margin-right:12px; margin-left:12px; margin-top:0px; margin-bottom:0px; }
 
 div#containerForMain, #footer {  margin-left: 0;  }
-div#containerForMain { padding-top: 0em; padding-left:0%; padding-right:0%;  }
+div#containerForMain { padding-top: 0em; padding-left:5%; padding-right:5%;  }
 
 form button[type="submit"], button[type="button"]{
   border-radius: 5pt;  display:block;   margin:2em auto 0em; 
@@ -42,7 +42,7 @@ fieldset.hidable label {  font-size:1.15em; letter-spacing:0.20em;    }
 fieldset.hidable label.explica {  font-size:0.7em; letter-spacing:0.20em; }
 
 input[type="text"], inxxxput[type="radio"], input[type="tel"], input[type="password"], textarea{
-	border-radius: 4px;   font-size:1.15em;  width:23em; margin-bottom: 12px;  padding: 5px 10px;         
+	border-radius: 4px;   font-size:1.15em;  width:80%; margin-bottom: 12px;  padding: 5px 10px;         
 }
 a:link, a:visited, a {  font-size: 1.10em;  letter-spacing:0.20em;  }
 
@@ -68,7 +68,7 @@ a:link, a:visited, a {  font-size: 1.10em;  letter-spacing:0.20em;  }
   fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.20em; }
 
   input[type="text"], inxxxput[type="radio"], input[type="tel"], input[type="password"], textarea{
-    border-radius: 8px;  font-size:1.25em;  width:30em; margin-bottom: 25px;  padding: 10px 20px;         
+    border-radius: 8px;  font-size:1.25em;  width:80%; margin-bottom: 25px;  padding: 10px 20px;         
   }
   a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.30em;  }
 }
@@ -99,7 +99,7 @@ a:link, a:visited, a {  font-size: 1.10em;  letter-spacing:0.20em;  }
   fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.20em; }
 
   input[type="text"], inxxxput[type="radio"], input[type="tel"], input[type="password"], textarea{
-    border-radius: 8px;   font-size:1.25em;  width:30em;  margin-bottom: 25px;   padding: 10px 20px;         
+    border-radius: 8px;   font-size:1.25em;  width:80%;  margin-bottom: 25px;   padding: 10px 20px;         
   }
   a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.20em;  }
 }
