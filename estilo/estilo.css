@@ -18,7 +18,7 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
     --warncolor:             hsl(005, 95%,  65%);
   }
 
-  span.enfasis  { font-family:mono, monospace; font-weight: bold; }
+span.enfasis  { font-family:mono, monospace; font-weight: bold; }
 
 form button[type="submit"]:hover, button[type="button"]:hover{  background-color:var(--formfondocolorhover);  }
 form button[type="submit"],       button[type="button"]      {  
