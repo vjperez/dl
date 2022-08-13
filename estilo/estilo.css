@@ -6,8 +6,8 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
 
 :root {
-    --linkcolor:             hsl(280, 70%, 55%);
-    --linkcolorhover:        hsl(280, 30%, 55%);
+    --linkcolor:             hsl(110, 50%, 50%);
+    --linkcolorhover:        hsl(110, 50%, 30%);
     --formfondocolor:        hsl(000, 00%, 90%);
     --formfondocolorhover:   hsl(000, 00%, 80%);
     --labelyheadercolor:     hsl(200, 95%, 40%);
