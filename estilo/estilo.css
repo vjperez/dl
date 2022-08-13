@@ -10,10 +10,12 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
     --linkcolorhover:        hsl(110, 50%, 30%);
     --formfondocolor:        hsl(000, 00%, 90%);
     --formfondocolorhover:   hsl(000, 00%, 80%);
-    --labelyheadercolor:     hsl(200, 95%, 40%);
+    --labelyheadercolor:     hsl(200, 90%, 50%);
+    --icolor:                hsl(110, 60%, 50%);
+    --icolorcurrent:         hsl(110, 50%, 30%);
 
     --negro:                 hsl(000, 00%,  00%);
-    --warncolor:             hsl(000, 100%, 50%);
+    --warncolor:             hsl(005, 95%,  65%);
   }
 
 
@@ -72,8 +74,12 @@ div#updateNepeTitulo h2, div#creaNepeTitulo h2, div#video h2.notHidable { color:
 
 
 
- div#quien div.hidable ul  i { border-color:var(--negro);  border-style:solid;  border-width:0pt;  border-radius:5pt; padding:0.2em; }
- div#quien div.hidable ul  i:hover,  div#quien div.hidable ul  i:focus,  div#quien div.hidable ul  i.current { border-color:var(--labelyheadercolor); border-width:1pt; }
+ div#quien div.hidable ul  i 
+    { border-color:var(--negro);  border-style:solid;  border-width:0pt;  border-radius:5pt; padding:0.2em;   /* no usando borde*/
+    color:var(--icolor);}
+ div#quien div.hidable ul  i:hover,  div#quien div.hidable ul  i:focus,  div#quien div.hidable ul  i.current 
+    { border-color:var(--labelyheadercolor); border-width:0pt;   /* no usando borde*/
+    color:var(--icolorcurrent); }
 
  div#quien h5, div#cuando td, div#donde span.texto, div#donde span.textofixed, h2.nadah2  { font-family:mono, monospace; }
  div#donde span.textofixed  { font-weight:bolder;  color:var(--negro); }
