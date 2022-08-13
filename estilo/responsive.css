@@ -4,7 +4,7 @@
 body {  width:98%;  margin:0px auto;  }
 
 :root {
-  --navegafondocolor:      hsl(000,  00%,  90%);
+  --navegafondocolor:      hsl(200,  100%,  99%);
   --navegaletracolor:      hsl(000,  00%,  00%);
 
   --navegafondocolorhover: hsl(000,  00%,  80%);
@@ -90,7 +90,7 @@ a:link, a:visited, a {  font-size: 1.10em;  letter-spacing:0.20em;  }
   body {  min-width:375px;  max-width:1024px;  margin:0px auto;  }
   body {  width:1000px;  height: 100%;  left:calc(0.5*(100% - 1000px));  border-right:0.25px solid var(--navegabordercolor); }
 
-  ul.navega {  width: 200px;  position: fixed; height: 100%;  border-right:1px solid var(--navegabordercolor); border-left:1px solid var(--navegabordercolor); }
+  ul.navega {  width: 200px;  position: fixed; height: 100%;  border-right:1px solid var(--navegabordercolor); border-left:0px solid var(--navegabordercolor); }
   ul.navega li a {  text-align: left;  float: none;  }
 
   /* profile red icons*/
