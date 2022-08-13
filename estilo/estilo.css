@@ -18,6 +18,7 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
     --warncolor:             hsl(005, 95%,  65%);
   }
 
+  span.enfasis  { font-family:mono, monospace; font-weight: bold; }
 
 form button[type="submit"]:hover, button[type="button"]:hover{  background-color:var(--formfondocolorhover);  }
 form button[type="submit"],       button[type="button"]      {  
@@ -83,4 +84,3 @@ div#updateNepeTitulo h2, div#creaNepeTitulo h2, div#video h2.notHidable { color:
 
  div#quien h5, div#cuando td, div#donde span.texto, div#donde span.textofixed, h2.nadah2  { font-family:mono, monospace; }
  div#donde span.textofixed  { font-weight:bolder;  color:var(--negro); }
-
