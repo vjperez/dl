@@ -13,6 +13,8 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
     --labelyheadercolor:     hsl(200, 90%, 50%);
     --icolor:                hsl(110, 60%, 50%);
     --icolorcurrent:         hsl(110, 50%, 30%);
+    --menuDrivercolor:       hsl(000, 00%, 00%);
+
 
     --negro:                 hsl(000, 00%,  00%);
     --warncolor:             hsl(005, 95%,  65%);
@@ -28,6 +30,7 @@ form button[type="submit"],       button[type="button"]      {
 }
 /**/
 
+div#menuicons h1.menuHidableDriver { color:var(--menuDrivercolor); }
 
 h5.footersubtitulo, ul.navega li a  { font-family:mono, monospace; }
 h2.footertitulo { font-family: 'Courgette', mono, monospace; }
