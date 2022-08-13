@@ -1,7 +1,6 @@
 /*  responsive : comun  */
 /* color del side :  000, 00%   180, 50% */
 
-body {  width:98%;  margin:0px auto;  }
 
 :root {
   --navegafondocolor:      hsl(200,  100%,  99%);
@@ -118,4 +117,6 @@ ul.navega li a  { font-size: 0.85em;  letter-spacing:0.10em; }
   }
   a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.20em;  }
   ul.navega li a  { font-size: 0.85em;  letter-spacing:0.10em; }
+
+  div#menuicons h2.menuHidableDriver { display:none; }
 }
