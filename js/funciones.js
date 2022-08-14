@@ -129,6 +129,41 @@ jQuery.showThemSections = function(){
 	$toShow.show();
 }
 
+
+
+jQuery(document).on('click', '.menuHidableDriver', function(evento){
+	if (jQuery('.menuHidableTarget').is(':visible')) {
+		jQuery.hideMenu();
+	}else{
+		jQuery.showMenu();
+	}
+});
+
+jQuery.hideMenu = function(){
+	var $toHide = jQuery('.menuHidableTarget');
+	$toHide.hide();
+
+	var $menuHidableDriver = jQuery('.menuHidableDriver');
+	$toHide = $menuHidableDriver.find('.fa-window-close');
+	$toHide.hide();
+	var $toShow = $menuHidableDriver.find('.fa-bars');
+	$toShow.show();
+}
+
+jQuery.showMenu = function(){
+	var $toShow = jQuery('.menuHidableTarget')
+	$toShow.show();
+
+	var $menuHidableDriver = jQuery('.menuHidableDriver');
+	var $toHide = $menuHidableDriver.find('.fa-bars');
+	$toHide.hide();
+	$toShow = $menuHidableDriver.find('.fa-window-close');
+	$toShow.show();
+}
+
+
+
+
 jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatElement){
 	//Esta funcion la usan login y registra
 	//para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.
