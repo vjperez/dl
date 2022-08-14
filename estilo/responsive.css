@@ -118,5 +118,5 @@ ul.navega li a  { font-size: 0.85em;  letter-spacing:0.10em; }
   a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.20em;  }
   ul.navega li a  { font-size: 0.85em;  letter-spacing:0.10em; }
 
-  div#menuicons h1.menuHidableDriver { display:none; }
+  div#menuicons h1.menuHidableDriver{ display:none; }
 }
