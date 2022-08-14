@@ -6,7 +6,7 @@ jQuery.getRecentNepes = function(){
 		var tableRows = '';
 		jQuery.each(datos, function(index){
 				tableRows += '<tr><td>' 
-				+ '<a class="link" href="portada.html?look=profile'
+				+ '<a class="" href="portada.html?look=profile'
 				+  '&nepeId=' + datos[index].nepeId  + '">' + datos[index].nepeNombre + '   (' +  datos[index].dias  +  ' dias)' 
 				+ '</a></td></tr>';
 		});
