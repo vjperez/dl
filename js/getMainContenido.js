@@ -149,7 +149,7 @@ jQuery(document).ready(
 						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 							if(settingsObjeto.url === 'looks/profile.html'){
 									//alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE + '\nrevisado: ' + datos.revisado );
-									jQuery.hideThem();
+									jQuery.hideThemSections();
 									jQuery.populate(datos);
 									jQuery('#footer').css('visibility','visible');
 							} // if profile
@@ -228,8 +228,8 @@ jQuery(document).ready(
 						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 							if(settingsObjeto.url === 'looks/home.html'){
 								//jQuery.home(duenoId);
-								//hide them  
-								jQuery.hideThem();
+								//hide ThemSections  
+								jQuery.hideThemSections();
 								jQuery.home_populate();
 								jQuery('#footer').css('visibility','visible');
 							}//if
@@ -264,7 +264,7 @@ jQuery(document).ready(
 
 						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 							if(settingsObjeto.url === 'looks/creaNepe.html'){
-								jQuery.hideThem();
+								jQuery.hideThemSections();
 								jQuery('#footer').css('visibility','visible');
 							}//if
 						});//ajaxComplete
@@ -309,7 +309,7 @@ jQuery(document).ready(
 												jQuery.dameLook('looks/updateNepe.html');
 												jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 													if(settingsObjeto.url === 'looks/updateNepe.html'){	
-														jQuery.hideThem();										
+														jQuery.hideThemSections();										
 														jQuery.populateUpdateNepeForm(datos);
 														jQuery('#footer').css('visibility','visible');
 														jQuery.handleUpdateNepeSubmit(nepeId);
@@ -439,7 +439,7 @@ jQuery(document).ready(
 						//once look is in, use jQuery to update look with profile values
 						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 							if(settingsObjeto.url === 'looks/adminDuenoNepes.html'){
-								jQuery.hideThem();
+								jQuery.hideThemSections();
 								jQuery('#footer').css('visibility','visible');
 							}//if
 						});//ajaxComplete
@@ -480,7 +480,7 @@ jQuery(document).ready(
 					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
 					//This code runs when get isCompleted and IF the get was requesting faq.html
 					if(settingsObjeto.url === 'looks/faq.html'){ // === means true without type coersion - the type and value most both be equal
-						jQuery.hideThem();
+						jQuery.hideThemSections();
 						jQuery('#footer').css('visibility','visible');
 					}
 				});

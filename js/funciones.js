@@ -105,7 +105,7 @@ jQuery(document).on('click', '.notHidable', function(evento){
 });
 
 
-jQuery.hideThem = function(){
+jQuery.hideThemSections = function(){
 	var $todosLosNotHidable = jQuery('.notHidable');
 	// var $todosLosHidable = jQuery('.hidable');
 	// $todosLosHidable.hide();
@@ -117,7 +117,7 @@ jQuery.hideThem = function(){
 	$toShow.show();
 }
 
-jQuery.showThem = function(){
+jQuery.showThemSections = function(){
 	var $todosLosNotHidable = jQuery('.notHidable');
 	// var $todosLosHidable = jQuery('.hidable');
 	// $todosLosHidable.hide();
