@@ -1,7 +1,7 @@
 /*  orden : comun  */ 
-body {  width:98%;  margin:0px auto;  }
+body {  width:100%;  margin:0px auto;  }
 
-ul.navega i{ padding: 0em 0.333em; }
+div#menuicons h1.menuHidableDriver i, div#menuicons ul.navega i{ padding: 0em 0.333em; }
 
 
 div#footer { padding-top:10em;   padding-left:5%; padding-right:5%;  }
