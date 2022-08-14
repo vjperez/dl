@@ -52,7 +52,6 @@ jQuery(document).ready(
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					jQuery('ul.navega').css('visibility','visible');
-
 					jQuery.dameLook('looks/busca.html');
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -626,5 +625,5 @@ jQuery(document).ready(
 
 
 
-
-}); // ready function and statement
+		jQuery.showMenu();
+	}); // ready function and statement
