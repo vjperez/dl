@@ -5,10 +5,20 @@ jQuery.getRecentNepes = function(){
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 		var tableRows = '';
 		jQuery.each(datos, function(index){
-				tableRows += '<tr><td>' 
+				tableRows += '<tr class="texto"><td>' 
 				+ '<a class="" href="portada.html?look=profile'
-				+  '&nepeId=' + datos[index].nepeId  + '">' + datos[index].nepeNombre + '   (' +  datos[index].dias  +  ' dias)' 
-				+ '</a></td></tr>';
+				+  '&nepeId=' + datos[index].nepeId  + '">' 
+				+ datos[index].nepeNombre + '   (' +  datos[index].dias  +  ' dias)'
+				+'</a>' 
+				+ '</td></tr>'; 
+
+				tableRows +=  '<tr class="foto"><td>' 
+				+ '<a class="" href="portada.html?look=profile'
+				+  '&nepeId=' + datos[index].nepeId  + '">' 
+				+ '<img class="" src="imagenes/profile/subidas/' + datos[index].nepeFotoName + '">'
+				+ '</a>' 
+				+ '</td></tr>'; 
+				tableRows += '<tr><td></td></tr><tr><td></td></tr>';
 		});
 		
 		jQuery('#labelAndTableContainer table').html(tableRows);
