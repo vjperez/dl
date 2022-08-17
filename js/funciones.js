@@ -89,44 +89,32 @@ jQuery.feedback = function(elementoDonde, mensaje, forma){
 
 
 jQuery(document).on('click', '.notHidable', function(evento){
-	var $elNotHidable = jQuery(evento.currentTarget); 
-	var $toToggle = $elNotHidable.next('.hidable');
-	if ($toToggle.is(':visible')) {
-		$toToggle.hide(); 
+	if (jQuery(evento.currentTarget).next('.hidable').is(':visible')) {
+
+		jQuery(evento.currentTarget).next('.hidable').hide(); 
 		//jQuery(evento.currentTarget).css({border:'none', borderBottomWidth:'1pt', borderBottomStyle:'solid', borderBottomColor:'#dadada'});
-		$elNotHidable.find('.fa-chevron-circle-up').hide();
-		$elNotHidable.find('.fa-chevron-circle-down').show();
+		jQuery(evento.currentTarget).find('.fa-chevron-circle-up').hide();
+		jQuery(evento.currentTarget).find('.fa-chevron-circle-down').show();
 	}else{
-		$toToggle.show(); 
+
+		jQuery(evento.currentTarget).next('.hidable').show(); 
 		//jQuery(evento.currentTarget).css({border:'none'});
-		$elNotHidable.find('.fa-chevron-circle-down').hide();
-		$elNotHidable.find('.fa-chevron-circle-up').show();
+		jQuery(evento.currentTarget).find('.fa-chevron-circle-down').hide();
+		jQuery(evento.currentTarget).find('.fa-chevron-circle-up').show();
 	}
 });
 
 
 jQuery.hideThemSections = function(){
-	var $todosLosNotHidable = jQuery('.notHidable');
-	// var $todosLosHidable = jQuery('.hidable');
-	// $todosLosHidable.hide();
-	var $toHide = $todosLosNotHidable.next('.hidable');
-	$toHide.hide();
-	$toHide = $todosLosNotHidable.find('.fa-chevron-circle-up');
-	$toHide.hide();
-	var $toShow = $todosLosNotHidable.find('.fa-chevron-circle-down');
-	$toShow.show();
+	jQuery('.notHidable').next('.hidable').hide();
+	jQuery('.notHidable').find('.fa-chevron-circle-up').hide();
+	jQuery('.notHidable').find('.fa-chevron-circle-down').show();
 }
 
 jQuery.showThemSections = function(){
-	var $todosLosNotHidable = jQuery('.notHidable');
-	// var $todosLosHidable = jQuery('.hidable');
-	// $todosLosHidable.hide();
-	var $toShow = $todosLosNotHidable.next('.hidable');
-	$toShow.show();
-	var $toHide = $todosLosNotHidable.find('.fa-chevron-circle-down');
-	$toHide.hide();
-	$toShow = $todosLosNotHidable.find('.fa-chevron-circle-up');
-	$toShow.show();
+	jQuery('.notHidable').next('.hidable').show();
+	jQuery('.notHidable').find('.fa-chevron-circle-down').hide();
+	jQuery('.notHidable').find('.fa-chevron-circle-up').show();
 }
 
 
@@ -140,25 +128,15 @@ jQuery(document).on('click', '.menuHidableDriver', function(evento){
 });
 
 jQuery.hideMenu = function(){
-	var $toHide = jQuery('.menuHidableTarget');
-	$toHide.hide();
-
-	var $menuHidableDriver = jQuery('.menuHidableDriver');
-	$toHide = $menuHidableDriver.find('.fa-window-close');
-	$toHide.hide();
-	var $toShow = $menuHidableDriver.find('.fa-bars');
-	$toShow.show();
+	jQuery('.menuHidableTarget').hide();
+	jQuery('.menuHidableDriver').find('.fa-window-close').hide();
+	jQuery('.menuHidableDriver').find('.fa-bars').show();
 }
 
 jQuery.showMenu = function(){
-	var $toShow = jQuery('.menuHidableTarget')
-	$toShow.show();
-
-	var $menuHidableDriver = jQuery('.menuHidableDriver');
-	var $toHide = $menuHidableDriver.find('.fa-bars');
-	$toHide.hide();
-	$toShow = $menuHidableDriver.find('.fa-window-close');
-	$toShow.show();
+	jQuery('.menuHidableTarget').show()
+	jQuery('.menuHidableDriver').find('.fa-bars').hide();
+	jQuery('.menuHidableDriver').find('.fa-window-close').show();
 }
 
 
