@@ -536,10 +536,12 @@ jQuery(document).ready(
 			case null:
 			default:
 				jQuery(window.location).attr('href', window.location.pathname + '?look=recentNepes');
-			break;
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 			//you can redirect null and default cases, either into busca case,  into error case or into their own looks 
 //case null:
 			// (1) redirecting to portada removing extra parameters after .html 
@@ -625,5 +627,5 @@ jQuery(document).ready(
 
 
 
-		jQuery.showMenu();
+		//jQuery.showMenu();
 	}); // ready function and statement
