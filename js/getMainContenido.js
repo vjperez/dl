@@ -627,5 +627,5 @@ jQuery(document).ready(
 
 
 
-		//jQuery.showMenu();
+		jQuery.showMenu();
 	}); // ready function and statement
