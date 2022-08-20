@@ -85,5 +85,5 @@ div#updateNepeTitulo h2, div#creaNepeTitulo h2, div#video h2.notHidable { color:
     { border-color:var(--labelyheadercolor); border-width:0pt;   /* no usando borde*/
     color:var(--icolorcurrent); }
 
- div#quien h5, div#cuando td, div#donde span.texto, div#donde span.textofixed, h2.nadah2  { font-family:mono, monospace; }
+ div#quien h5, div#cuando td, div#donde span.texto, div#donde span.textofixed  { font-family:mono, monospace; }
  div#donde span.textofixed  { font-weight:bolder;  color:var(--negro); }
