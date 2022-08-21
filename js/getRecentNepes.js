@@ -8,7 +8,7 @@ jQuery.getRecentNepes = function(){
 				tableRows += '<tr class="texto"><td>' 
 				+ '<a class="" href="portada.html?look=profile'
 				+  '&nepeId=' + datos[index].nepeId  + '">' 
-				+ datos[index].nepeNombre + '   (' +  datos[index].dias  +  ' dias)'
+				+ datos[index].nepeNombre + '   <span class="diasOld">[' +  datos[index].dias  +  ' dias]</span>'
 				+'</a>' 
 				+ '</td></tr>'; 
 
