@@ -3,10 +3,10 @@
 
 
 :root {
-  --navegafondocolor:      hsl(200,  100%,  99%);
+  --navegafondocolor:      hsl(240, 100%,  94%);
   --navegaletracolor:      hsl(000,  00%,  00%);
 
-  --navegafondocolorhover: hsl(000,  00%,  80%);
+  --navegafondocolorhover: hsl(000,  00%,  70%);
   --navegaletracolorhover: hsl(000,  00%,  00%);
 
   --navegafondocoloractivo:hsl(000,  00%,  00%);
