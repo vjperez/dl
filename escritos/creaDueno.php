@@ -41,6 +41,7 @@ if($recurso){
 		pg_close($cnx);
 		echo json_encode ($respuesta);
 	}
+	///////////////////////////////////////////////////////
 }else{
 	pg_close($cnx);
 	throw new Exception('Mal query.  Sin RECURSO, para queryGetUserId.  (Ni se chequio el username.) en: ' . __FILE__ );

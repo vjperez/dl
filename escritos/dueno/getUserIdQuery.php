@@ -5,7 +5,7 @@
 $queryGetUserId = "SELECT 
 	id
 FROM dueno
-WHERE username = $1";
+WHERE nombre = $1";
 
 pg_prepare($cnx, "preparadoQueryGetUserId", $queryGetUserId);
 
