@@ -1,6 +1,8 @@
 <?php
-$getUsernameQuery = "SELECT
-username
+$queryGetUsername = "SELECT
+    nombre
 FROM dueno 
-WHERE id = '$dueno_to_query'";
+WHERE id = $1";
+
+pg_prepare($cnx, "preparadoQueryGetUsername", $queryGetUsername);
 ?>
