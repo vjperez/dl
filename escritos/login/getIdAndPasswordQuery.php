@@ -1,9 +1,10 @@
 <?php
 // sacando el id primero y despues seteando last log usando id 
 
-$queryGetIdAndPassword = "SELECT id, password
+$queryGetIdAndPassword = "SELECT id, clave
 FROM dueno
-WHERE username = $1";
+WHERE nombre = $1";
+
 pg_prepare($cnx, "preparo", $queryGetIdAndPassword);
-$recurso = pg_execute($cnx, "preparo", array($user));
+
 ?>
