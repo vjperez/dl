@@ -1,8 +1,8 @@
 <?php
-$queryEditDuenoPassword = "UPDATE 
+$queryEditDuenoClave = "UPDATE 
 	dueno
-SET password = $1
+SET clave = $1
 WHERE id = $2";
 
-pg_prepare($cnx, "preparadoQueryEditDuenoPassword", $queryEditDuenoPassword);
+pg_prepare($cnx, "preparadoQueryEditDuenoClave", $queryEditDuenoClave);
 ?>
