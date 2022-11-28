@@ -8,8 +8,8 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 :root {
     --linkcolor:             hsl(120, 85%, 50%);
     --linkcolorhover:        hsl(120, 85%, 40%);
-    --formfondocolor:        hsl(000, 00%, 90%);
-    --formfondocolorhover:   hsl(000, 00%, 70%);
+    --formfondocolor:        hsl(000, 00%, 98%);
+    --formfondocolorhover:   hsl(000, 00%, 95%);
     --labelyheadercolor:     hsl(200, 90%, 40%);
     --icolor:                hsl(120, 85%, 50%);
     --icolorcurrent:         hsl(120, 85%, 40%);
@@ -17,16 +17,20 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
 
     --negro:                 hsl(000, 00%,  00%);
+    --blanco:                hsl(000, 00%, 100%);
     --warncolor:             hsl(005, 95%,  65%);
   }
 
 span.enfasis  { font-family:mono, monospace; font-weight: bold; }
 
-form button[type="submit"]:hover, button[type="button"]:hover{  background-color:var(--formfondocolorhover);  }
-form button[type="submit"],       button[type="button"]      {  
-    background-color:var(--formfondocolor);
-    border:2px solid var(--negro);
+form button[type="submit"]:hover, button[type="button"]:hover{  
+    background-color:var(--blanco); 
     color: var(--negro);
+ }
+form button[type="submit"],       button[type="button"]      {  
+    background-color:var(--negro);
+    border:0px solid var(--warncolor);
+    color: var(--blanco);
 }
 /**/
 
@@ -43,15 +47,16 @@ div#cuando td.hora { font-family:monxo, monospxace;   color:var(--labelyheaderco
 
 
 
-input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], textarea{
+input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], input[type="email"], textarea{
     background-color:var(--formfondocolor);
     border:1px solid var(--negro);
 }
-input[type="text"]:focus, input[type="radio"]:focus, input[type="tel"]:focus, input[type="password"]:focus, textarea:focus{
+input[type="text"]:focus, input[type="radio"]:focus, input[type="tel"]:focus, input[type="password"]:focus,
+input[type="email"]:focus, textarea:focus{
     background-color:var(--formfondocolorhover);
 }
 
-fieldset{ border:0px solid green;}
+fieldset{ border:0px solid var(--negro);}
 div#donde div#atucasa { border:0px solid var(--negro); }
 
 
