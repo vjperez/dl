@@ -423,7 +423,7 @@ jQuery(document).ready(
 					}//if
 				}); //ajax complete
 			break;			
-			case 'adminDuenoNepes':
+			case 'administrar':
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -433,18 +433,18 @@ jQuery(document).ready(
 						jQuery('#navHome').addClass("activo");
 						jQuery('ul.navega').css('visibility','visible');
 
-						jQuery.dameLook('looks/adminDuenoNepes.html');
+						jQuery.dameLook('looks/administrar.html');
 
 						//once look is in, use jQuery to update look with profile values
 						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-							if(settingsObjeto.url === 'looks/adminDuenoNepes.html'){
+							if(settingsObjeto.url === 'looks/administrar.html'){
 								jQuery.hideThemSections();
 								jQuery('#footer').css('visibility','visible');
 							}//if
 						});//ajaxComplete
 					}else{	
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-						var textoEstatus = 'Error, usuario solicito admin (adminDuenoNepes) look, sin estar logueado.';
+						var textoEstatus = 'Error, usuario solicito admin look, sin estar logueado.';
 						var elError = 'Error humano.';
 
 						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 

@@ -9,26 +9,26 @@
 <!-- contenido -->
     <div id="main" class="">
 
-
-		<div id="adminDuenoNepes">
-
-			<form id="adminDuenoForm" class="" action="XXXeditcontrasena.phpXXX" method="post">
+		<div id="adminEditClaveForm">
+			<form id="adminEditClaveForm" class="" action="XXXeditcontrasena.phpXXX" method="post">
 				<fieldset class="notHidable">
-					<label>Editando Dueno</label>
+					<label>Editando Dueno  <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down"></i></label>
 					<label class="explica">Cambiando password.</label>
 				</fieldset>
                 <fieldset class="hidable">
-					<div class="">	<label for="userNumberId">Dueno Id</label>																		</div>
-					<div class="">  <input id="userNumberId"        type="text" name="userNumber"        maxlength="50" required=true>					</div>
+					<div> <label for="userNumberId">Dueno Id</label>															</div>
+					<div> <input id="userNumberId"        type="text" name="userNumber"        maxlength="50" required=true>	</div>
 				
-					<div class="">	<label for="passwordId">Password</label>																			</div>
-					<div class="">  <input id="passwordId"        type="password" name="password"        maxlength="50" required=true>					</div>
-					<div class="">  <label for="passwordConfirmId">Password</label>																		</div>
-					<div class="">  <input id="passwordConfirmId" type="password" name="passwordConfirm" maxlength="50" required=true placeholder="">	</div>
-					<div>  <button type="submit" class="peq"><i class="fas fa-share-square"></i></button>									    		</div>
+					<div> <label for="passwordId">Password</label>																</div>
+					<div> <input id="passwordId"        type="password" name="password"        maxlength="50" required=true>	</div>
+					<div> <label for="passwordConfirmId">Password</label>														</div>
+					<div> <input id="passwordConfirmId" type="password" name="passwordConfirm" maxlength="50" required=true>	</div>
+					<div> <button type="submit"><i class="fas fa-sign-in-alt"></i></button>									  	</div>
+					<div>   <h3 class="feedback"></h3>                                                     					    </div>
+					<div>   <h5 class="warn"></h5> 				
 				</fieldset>
-				<h3></h3>
-			</form><!-- adminDuenoForm -->
+			</form><!-- adminEditClaveForm -->
+		</div>
 
             <form id="adminNepesForm" class="" action="XXXeditcontrasena.phpXXX" method="post">
 				<fieldset class="notHidable">
@@ -46,9 +46,9 @@
                 <fieldset id="labelContainer" class="notHidable"></fieldset>
 				<fieldset id="tableContainer" class="notHidable"></fieldset>
 			</fieldset>
-		</div>
+		
 
-		<script src="js/adminDuenoNepes.js"></script>
+		<script src="js/administrar.js"></script>
 
 
 	</div><!-- main-->
