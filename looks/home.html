@@ -10,38 +10,64 @@
     <div id="main" class="">
 
 
-		<div id="home">
+		<div id="labelTableContainerForm" class="">
+			<form id="labelTableContainerForm" class="notHidable">
+				<label class=""></label>
+				<table class="subArea"></table>
+				<div>  <button type="button"><i class="fas fa-plus-square"></i></button>  	    			</div>
+			</form>
+		</div>
 
-			<div id="nepes" class="">
-				<fieldset id="labelTableContainer" class="notHidable">
-			
-					<label class=""></label>
-					<table class="subArea"></table>
-			
-					<div>  <button type="button" class="peq"><i class="fas fa-plus-square"></i></button>  	    								    	</div>
+
+		<div id="quienForm">
+			<form id="quienForm" class="" action="XXXXmicuenta.htmlXXXX" method="post">
+				<fieldset class="notHidable">
+					<label>Contactos   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down">   </i>   </label>
+					<label class="explica">(telefono requerido)</label>
 				</fieldset>
-			</div>
+				<fieldset id="socialHandleFieldset" class="hidable">
+					<div>	<label for="red1Id">Telefono</label>											</div>
+					<div>	<label><small>Formato: 939-222-4444</small></label>                              </div>
+					<div>   <input  id="red1Id"     type="tel" name="red1"  maxlength="50"  
+						placeholder="787-222-4444" 
+						pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+					</div>
 
+					<div>	<label for="red2Id">Email</label>	   										    </div>
+					<div>	<input id="red2Id"     type="email" name="red2"  maxlength="50"  > 				</div>
+					<div>   <label for="red3Id">Instagram</label>	  									    </div>
+					<div>	<input id="red3Id"     type="text" name="red3"  maxlength="50"  > 				</div>
+					<div>   <label for="red4Id">Facebook</label>										    </div>
+					<div>   <input id="red4Id"     type="text" name="red4"  maxlength="50"  >			    </div>
+
+					<div>   <button type="submit">   <i class="fas fa-sign-in-alt"></i></button>            </div>
+					<div>   <h3 class="feedback"></h3>                                                      </div>
+					<div>   <h5 class="warn"></h5>   													    </div>
+				</fieldset>
+			</form>
+		</div>
+
+
+		<div id="editDuenoForm" class="">
 			<form id="editDuenoForm" class="" action="XXXeditcontrasena.phpXXX" method="post">
 				<fieldset class="notHidable"> 
 					<label>Password   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down">   </i>   </label>
 					<label class="explica">Cambia tu password</label>
 				</fieldset>
-				<fieldset class="hidable">
-					<div class="">	<label for="passwordId">Password</label>																			</div>
-					<div class="">  <input id="passwordId"        type="password" name="password"        maxlength="50" required=true>					</div>
-					<div class="">  <label for="passwordConfirmId">Password</label>																		</div>
-					<div class="">  <input id="passwordConfirmId" type="password" name="passwordConfirm" maxlength="50" required=true placeholder="">	</div>
-					<div>  <button type="submit" class="peq"><i class="fas fa-share-square"></i></button>									    		</div>
+				<fieldset id="editDuenoFieldset" class="hidable">
+					<div>  <label for="passwordId">Password</label>																</div>
+					<div>  <input id="passwordId"        type="password" name="password"        maxlength="50" required=true>	</div>
+					<div>  <label for="passwordConfirmId">Password</label>														</div>
+					<div>  <input id="passwordConfirmId" type="password" name="passwordConfirm" maxlength="50" required=true>	</div>
+					<div>  <button type="submit"><i class="fas fa-sign-in-alt"></i></button>									</div>
+					<div>   <h3 class="feedback"></h3>                                                     					    </div>
+					<div>   <h5 class="warn"></h5>   													    					</div>
 				</fieldset>
-				<h3></h3>
 			</form><!-- editDuenoForm -->
-			
-		</div><!-- home -->
+		</div>
 
-		
+
 	    <script src="js/home.js"></script>
-
 
 	</div>
 <!-- contenido -->

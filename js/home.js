@@ -11,7 +11,7 @@ jQuery.home_populate = function(){
         })
         .done(function(dato, estatusForDONE, xhrObjetoForDONE){
             elLabel = 'Negocios de ' + dato; 
-            jQuery('fieldset#labelTableContainer label').html( elLabel );
+            jQuery('form#labelTableContainerForm label').html( elLabel );
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
             var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -34,7 +34,7 @@ jQuery.home_populate = function(){
                 + '&nepeId=' + datos[index].nepeId  + '">'
                 + datos[index].nepeNombre + '</a></td></tr>';
             });	
-            jQuery('fieldset#labelTableContainer table').html( elTable );
+            jQuery('form#labelTableContainerForm table').html( elTable );
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
             var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -92,12 +92,13 @@ jQuery('form#editDuenoForm').submit(function(evento){
 //erase feedback when user writting
 jQuery('form#editDuenoForm  input[name^=password]').keydown(function(){
     jQuery.feedback('form#editDuenoForm h3', '');
+    jQuery.feedback('form#editDuenoForm h5', '');
 });
 
 
 
 //link to crea nepe when click on button
-jQuery('div#nepes :button').click(function(){
+jQuery('form#labelTableContainerForm :button').click(function(){
     //alert(window.location.pathname + '?look=creaNepe'); 
     jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
 });
