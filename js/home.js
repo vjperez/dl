@@ -45,19 +45,13 @@ jQuery.home_populate = function(){
 
 //do this when form submitted ;
 //alert('.submit @ home...') 
-jQuery('form#editDuenoForm').submit(function(evento){
+jQuery('form#editClaveForm').submit(function(evento){
     evento.preventDefault(); //not making a submit (POST request) from html action.
     var user = 'valorDummy';
     var pass01 = jQuery('#passwordId').val();
     var pass02 = jQuery('#passwordConfirmId').val();
-    if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editDuenoForm h3') ){
-        //Valid values son los q cumplen estas 3 cosas.
-        //Estas cosas se pueden chequear antes del post y evito post sin sentido
-        // 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
-        //Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
-        
-    //jQuery.post('escritos/editDuenoContrasena.php', {duenoId:duenoId, pass01:pass01} )
-        jQuery.post('escritos/editDuenoContrasena.php', {pass01:pass01} )
+    if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editClaveForm h3') ){
+        jQuery.post('escritos/editDuenoClave.php', {pass01:pass01} )
         .done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){ 
             //el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
             //Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
@@ -67,16 +61,16 @@ jQuery('form#editDuenoForm').submit(function(evento){
                 //alert('datosJSObj.loguea: ' + datosJSObj.loguea);
             }catch(errorParseo){
                 var datosJSONStrAsXHRTexto = datosJSONStr;
-                var textoEstatus = 'Error parseando la siguiente respuesta del servidor en escritos/editDuenoContrasena.php :<br> Mensaje: ' + errorParseo.message;
+                var textoEstatus = 'Error parseando la siguiente respuesta del servidor en escritos/editDuenoClave.php :<br> Mensaje: ' + errorParseo.message;
                 var elError = errorParseo.name;
                 
                 var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError);
                 jQuery(window.location).attr('href', path);			
             }
             if(datosJSObj.cambiado){
-                jQuery.feedback('form#editDuenoForm h3', 'Tu password fue cambiado.');
+                jQuery.feedback('form#editClaveForm h3', 'Tu password fue cambiado.');
             }else{
-                jQuery.feedback('form#editDuenoForm h3', 'Trata otra vez. No cambiamos NADA !');
+                jQuery.feedback('form#editClaveForm h3', 'Trata otra vez. No cambiamos NADA !');
             }
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -90,9 +84,9 @@ jQuery('form#editDuenoForm').submit(function(evento){
 
 
 //erase feedback when user writting
-jQuery('form#editDuenoForm  input[name^=password]').keydown(function(){
-    jQuery.feedback('form#editDuenoForm h3', '');
-    jQuery.feedback('form#editDuenoForm h5', '');
+jQuery('form#editClaveForm  input[name^=password]').keydown(function(){
+    jQuery.feedback('form#editClaveForm h3', '');
+    jQuery.feedback('form#editClaveForm h5', '');
 });
 
 

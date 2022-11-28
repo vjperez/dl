@@ -15,7 +15,7 @@ if(isset($_SESSION['dueno_id'])){
 	//conecta al db
 	require_once 'conecta/conecta.php';
 	//i am sure i have a connection, because an exception was NOT thrown at conecta
-	require_once 'dueno/editDuenoContrasenaQuery.php';
+	require_once 'dueno/editDuenoClaveQuery.php';
 
 	$recurso = pg_execute($cnx, "preparadoQueryEditDuenoClave", array($hashed_pass01, $dueno_to_edit));
 	if($recurso){		 
