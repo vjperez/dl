@@ -8,14 +8,14 @@ require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
 require_once 'login/getIdAndPasswordQuery.php';
-$recurso = pg_execute($cnx, "preparo", array($user));
+$recurso = pg_execute($cnx, "preparadoQueryGetIdAndPassword", array($user));
 if($recurso){		 
 	if($fila = pg_fetch_row($recurso)){
 		$dueno_id = $fila[0];
 		$password_from_db = $fila[1];
 		if( password_verify($pass, $password_from_db) ){
 					require_once 'login/updateQuery.php';
-					$recurso = pg_query($cnx, $queryUpdate);
+					$recurso = pg_execute($cnx, "preparadoQueryUpdateLastLog", array($dueno_id));
 					if($recurso){
 						$respuesta = json_decode('{"loguea":true}');
 						pg_close($cnx);

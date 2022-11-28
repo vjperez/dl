@@ -5,6 +5,6 @@ $queryGetIdAndPassword = "SELECT id, clave
 FROM dueno
 WHERE nombre = $1";
 
-pg_prepare($cnx, "preparo", $queryGetIdAndPassword);
+pg_prepare($cnx, "preparadoQueryGetIdAndPassword", $queryGetIdAndPassword);
 
 ?>
