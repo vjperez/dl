@@ -8,6 +8,4 @@ FROM dueno
 WHERE nombre = $1";
 
 pg_prepare($cnx, "preparadoQueryGetUserId", $queryGetUserId);
-
-
 ?>
