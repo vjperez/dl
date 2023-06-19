@@ -24,7 +24,7 @@ jQuery('form#creaDuenoForm').submit(function(evento){
         //Estas cosas se pueden chequear antes del post y evito post sin sentido
         // 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
         //Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
-        jQuery.post('escritos/creaDueno.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
+        jQuery.post('escritos/dueno/creaDueno.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
         .done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
             //el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
             //Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
@@ -34,7 +34,7 @@ jQuery('form#creaDuenoForm').submit(function(evento){
                 //alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
             }catch(errorParseo){
                 var datosJSONStrAsXHRTexto = datosJSONStr;
-                var textoEstatus = 'Error parseando la siguiente respuesta del server en escritorios/creaDueno.php :<br> Mensaje: ' + errorParseo.message;
+                var textoEstatus = 'Error parseando la siguiente respuesta del server en escritorios/dueno/creaDueno.php :<br> Mensaje: ' + errorParseo.message;
                 var elError = errorParseo.name;
                 
                 var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
