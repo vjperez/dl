@@ -51,7 +51,7 @@ jQuery('form#editClaveForm').submit(function(evento){
     var pass01 = jQuery('#passwordId').val();
     var pass02 = jQuery('#passwordConfirmId').val();
     if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editClaveForm h3') ){
-        jQuery.post('escritos/editDuenoClave.php', {pass01:pass01} )
+        jQuery.post('escritos/dueno/editClave.php', {pass01:pass01} )
         .done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){ 
             //el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
             //Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
@@ -61,14 +61,14 @@ jQuery('form#editClaveForm').submit(function(evento){
                 //alert('datosJSObj.loguea: ' + datosJSObj.loguea);
             }catch(errorParseo){
                 var datosJSONStrAsXHRTexto = datosJSONStr;
-                var textoEstatus = 'Error parseando la siguiente respuesta del servidor en escritos/editDuenoClave.php :<br> Mensaje: ' + errorParseo.message;
+                var textoEstatus = 'Error parseando la siguiente respuesta del servidor en escritos/dueno/editClave.php :<br> Mensaje: ' + errorParseo.message;
                 var elError = errorParseo.name;
                 
                 var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError);
                 jQuery(window.location).attr('href', path);			
             }
-            if(datosJSObj.cambiado){
-                jQuery.feedback('form#editClaveForm h3', 'Tu password fue cambiado.');
+            if(datosJSObj.editado){
+                jQuery.feedback('form#editClaveForm h3', 'Tu password fue editado.');
             }else{
                 jQuery.feedback('form#editClaveForm h3', 'Trata otra vez. No cambiamos NADA !');
             }
