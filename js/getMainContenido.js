@@ -354,7 +354,7 @@ jQuery(document).ready(
 					jQuery(window.location).attr('href', path); 
 				});
 			break;			
-			case 'creaDueno':
+			case 'registro':
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -368,7 +368,7 @@ jQuery(document).ready(
 						
 						
 						//var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-						//var textoEstatus = 'Error, usuario solicito creaDueno look, estando logueado.';
+						//var textoEstatus = 'Error, usuario solicito registro look, estando logueado.';
 						//var elError = 'Error humano.';
 
 						//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
@@ -379,18 +379,8 @@ jQuery(document).ready(
 						jQuery('#navSignup').addClass("activo");
 						jQuery('ul.navega').css('visibility','visible');
 						
-						//get creaDueno look
-						jQuery.dameLook('looks/creaDueno.html');
-						/*
-						//once look is in, use jQuery on loaded elements to get values
-						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-							//This code runs when get isCompleted and IF the get was requesting creaDueno.html
-							if(settingsObjeto.url === 'looks/creaDueno.html'){
-								//when ajax complete ; handle form submit and make post
-								jQuery.handleCreaDuenoSubmit();
-							}//if
-						});//ajax complete
-						*/
+						//get registro look
+						jQuery.dameLook('looks/registro.html');
 					}
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
