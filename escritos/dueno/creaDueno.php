@@ -9,8 +9,8 @@ require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
 
-require_once 'dueno/getUserIdQuery.php';
-$recurso = pg_execute($cnx, "preparadoQueryGetUserId", array($usertb));
+require_once 'dueno/read/getIdQuery.php';
+$recurso = pg_execute($cnx, "preparadoQueryGetId", array($usertb));
 if($recurso){
 	///////////////////////////////////////////////////////
 	//if i can fetch a db row with a user id ... i know the usertb is NOT a new username
@@ -23,8 +23,8 @@ if($recurso){
 	}
 	///////////////////////////////////////////////////////
 	if($isNewUsername){
-		require_once 'dueno/insertDuenoQuery.php';
-		$recurso = pg_execute($cnx, "preparadoQueryInsertDueno", array($usertb, $hashed_pass01));
+		require_once 'dueno/crea/insertQuery.php';
+		$recurso = pg_execute($cnx, "preparadoQueryInsert", array($usertb, $hashed_pass01));
 		if($recurso){
 			$recurso = pg_query($cnx, "SELECT currval('dueno_id_seq')"); //otro recurso, ahora con fila q tiene id recien insertado
 			$filaConId = pg_fetch_row ($recurso);
