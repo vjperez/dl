@@ -5,11 +5,11 @@ $pass01 = $_POST['pass01'];
 $hashed_pass01 = password_hash($pass01 , PASSWORD_DEFAULT);
 
 //conecta al db
-require_once 'conecta/conecta.php';
+require_once 'escritos/conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
 
-require_once 'dueno/read/idQuery.php';
+require_once 'escritos/dueno/read/idQuery.php';
 $recurso = pg_execute($cnx, "preparadoQueryId", array($usertb));
 if($recurso){
 	///////////////////////////////////////////////////////
