@@ -9,8 +9,8 @@ require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
 
-require_once 'dueno/read/getIdQuery.php';
-$recurso = pg_execute($cnx, "preparadoQueryGetId", array($usertb));
+require_once 'dueno/read/idQuery.php';
+$recurso = pg_execute($cnx, "preparadoQueryId", array($usertb));
 if($recurso){
 	///////////////////////////////////////////////////////
 	//if i can fetch a db row with a user id ... i know the usertb is NOT a new username
