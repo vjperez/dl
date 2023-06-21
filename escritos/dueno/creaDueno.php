@@ -35,7 +35,7 @@ if($recurso){
 			session_start();	$_SESSION['dueno_id'] = $dueno_id; 
 		}else{
 			pg_close($cnx);
-			throw new Exception('Mal query. Sin RECURSO, para preparadoQueryInsertDueno. (username es nuevo ... pero, user not inserted, en: )' . __FILE__ );
+			throw new Exception('Mal query. Sin RECURSO, para preparadoQueryInsert. (username es nuevo ... pero, user not inserted, en: )' . __FILE__ );
 		}
 	}else{
 		$respuesta = json_decode('{"registrado":false, "feedback":"Username no disponible."}');
@@ -45,6 +45,6 @@ if($recurso){
 	///////////////////////////////////////////////////////
 }else{
 	pg_close($cnx);
-	throw new Exception('Mal query.  Sin RECURSO, para preparadoQueryGetUserId.  (Ni se chequio el username.) en: ' . __FILE__ );
+	throw new Exception('Mal query.  Sin RECURSO, para preparadoQueryId.  (Ni se chequio el username.) en: ' . __FILE__ );
 }
 ?>
