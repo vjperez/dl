@@ -14,7 +14,7 @@ jQuery('form#adminNepesForm').submit(function(evento){
 	evento.preventDefault(); //not making a submit (POST request) from html action.
 	var userNumber = jQuery('#userNumber02Id').val();
 
-	jQuery.getJSON('escritos/getUsername.php',  {userNumber:userNumber} )
+	jQuery.getJSON('escritos/dueno/getNombre.php',  {userNumber:userNumber} )
 	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
 	 	var label = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
 		 jQuery('fieldset#labelContainer').html('');
@@ -28,7 +28,7 @@ jQuery('form#adminNepesForm').submit(function(evento){
 				//alert('datosJSObj: ' + datosJSObj);
 			}catch(errorParseo){
 				var datosJSONStrAsXHRTexto = datosJSONStr;
-				var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/showNepesGetIds.php en adminDuenoNepes :<br> Mensaje: ' + errorParseo.message;
+				var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/showNepesGetIds.php en administrar :<br> Mensaje: ' + errorParseo.message;
 				var elError = errorParseo.name;
 				
 				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
@@ -95,14 +95,14 @@ jQuery('form#adminEditClaveForm').submit(function(evento){
 				//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
 			}catch(errorParseo){
 				var datosJSONStrAsXHRTexto = datosJSONStr;
-				var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/dueno/editClave.php en adminDuenoNepes :<br> Mensaje: ' + errorParseo.message;
+				var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/dueno/editClave.php en administrar :<br> Mensaje: ' + errorParseo.message;
 				var elError = errorParseo.name;
 				
 				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
 				jQuery(window.location).attr('href', path);				
 			}
 			if(datosJSObj.editado){
-				jQuery.getJSON('escritos/getUsername.php',  {userNumber:userNumber} )
+				jQuery.getJSON('escritos/dueno/getNombre.php',  {userNumber:userNumber} )
 				.done(function(dato, estatusForDONE, xhrObjetoForDONE){
 					var feedback = 'Password de ' + dato + ' fue editado.'; 
 					jQuery.feedback('form#adminEditClaveForm h3', feedback);

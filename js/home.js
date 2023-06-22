@@ -1,26 +1,26 @@
-jQuery.home_populate = function(){
-        //label and table
-        var elLabel = ''; 	
-        var elTable = '';  
-
-        //alert('get username...');
+jQuery.getNombre = function(){
         jQuery.ajax({
             //cache: false,
-            url: 'escritos/getUsername.php',
+            url: 'escritos/dueno/getNombre.php',
             dataType: "json"
         })
         .done(function(dato, estatusForDONE, xhrObjetoForDONE){
-            elLabel = 'Negocios de ' + dato; 
-            jQuery('form#labelTableContainerForm label').html( elLabel );
+            return dato;
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
             var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
             var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
             jQuery(window.location).attr('href', path);
         });
+}
 
+jQuery.home_populate = function(){
+        //label and table
+        var elLabel = 'Negocios de ' + jQuery.getNombre();
+		jQuery('form#labelTableContainerForm label').html( elLabel );
+       
 
-
+	    var elTable = '';  
         //alert('show nepes get ids...');
         jQuery.ajax({
             //cache: false,
@@ -61,16 +61,20 @@ jQuery('form#editClaveForm').submit(function(evento){
                 //alert('datosJSObj.loguea: ' + datosJSObj.loguea);
             }catch(errorParseo){
                 var datosJSONStrAsXHRTexto = datosJSONStr;
-                var textoEstatus = 'Error parseando la siguiente respuesta del servidor en escritos/dueno/editClave.php :<br> Mensaje: ' + errorParseo.message;
+                var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/dueno/editClave.php :<br> Mensaje: ' + errorParseo.message;
                 var elError = errorParseo.name;
                 
                 var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError);
                 jQuery(window.location).attr('href', path);			
             }
+			
+			var usuario = jQuery.getNombre()
             if(datosJSObj.editado){
-                jQuery.feedback('form#editClaveForm h3', 'Tu password fue editado.');
+				var feedback = usuario + ' tu password fue editado.'; 
+				jQuery.feedback('form#editClaveForm h3', feedback);
             }else{
-                jQuery.feedback('form#editClaveForm h3', 'Trata otra vez. No cambiamos NADA !');
+				var feedback = 'Trata otra vez, ' + usuario + '.';
+                jQuery.feedback('form#editClaveForm h3', feedback);
             }
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
