@@ -7,66 +7,70 @@ jQuery('form#adminNepesForm  input[type=text]').keydown(function(){
 	jQuery.feedback('form#adminNepesForm h3', '');
 });
 
-
-
-//do this when form submitted ; adminNepesForm
-jQuery('form#adminNepesForm').submit(function(evento){
-	evento.preventDefault(); //not making a submit (POST request) from html action.
-	var userNumber = jQuery('#userNumber02Id').val();
-
+jQuery.getNombre = function(){
 	jQuery.getJSON('escritos/dueno/getNombre.php',  {userNumber:userNumber} )
 	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
-	 	var label = '<label class="">' + 'Negocios de ' + dato + '</label>'; 
-		 jQuery('fieldset#labelContainer').html('');
-		 jQuery('fieldset#labelContainer').append(label);
-
-		jQuery.post('escritos/showNepesGetIds.php', {userNumber:userNumber} )
-		.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-			try{
-				//alert('datosJSONStr: ' + datosJSONStr);
-				datosJSObj = JSON.parse(datosJSONStr);
-				//alert('datosJSObj: ' + datosJSObj);
-			}catch(errorParseo){
-				var datosJSONStrAsXHRTexto = datosJSONStr;
-				var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/showNepesGetIds.php en administrar :<br> Mensaje: ' + errorParseo.message;
-				var elError = errorParseo.name;
-				
-				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
-				jQuery(window.location).attr('href', path);				
-			}
-			var table =  '<table class="subArea">';
-			var cuantos = 0;
-			jQuery.each(datosJSObj, function(index){
-				table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
-				+ '&acto=deleteNepe' +  '&nepeId=' + datosJSObj[index].nepeId + '">' 
-				+ datosJSObj[index].nepeNombre + '<i class="fas fa-trash-alt"></i>' 
-				+ '</a></td></tr>';	
-				cuantos++;
-			});
-			
-			if(cuantos > 1){
-				table += '<tr><td>Los ' + cuantos + ' negocios.</td></tr>';
-				table += '<tr><td> </td></tr>';		
-				table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
-				+ '&acto=deleteHerNepes' +  '&userId=' + userNumber + '">' 
-				+ ' Borra ALL nepes de ' + dato + '<i class="fas fa-trash-alt"></i>' 
-				+ '</a></td></tr>';
-			}
-			table += '</table>';
-			jQuery('fieldset#tableContainer').html('');
-			jQuery('fieldset#tableContainer').append(table);	
-		})
-		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-			var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-			jQuery(window.location).attr('href', path); 
-		});
+		return dato;
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
 		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 		jQuery(window.location).attr('href', path); 
 	});
+}
+
+//do this when form submitted ; adminNepesForm
+jQuery('form#adminNepesForm').submit(function(evento){
+	evento.preventDefault(); //not making a submit (POST request) from html action.
+	
+	var usuario = jQuery.getNombre();		
+	var label = '<label class="">' + 'Negocios de ' + usuario + '</label>'; 
+	jQuery('fieldset#labelContainer').html('');
+	jQuery('fieldset#labelContainer').append(label);
+
+	var userNumber = jQuery('#userNumber02Id').val();
+	jQuery.post('escritos/showNepesGetIds.php', {userNumber:userNumber} )
+	.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+		try{
+			//alert('datosJSONStr: ' + datosJSONStr);
+			datosJSObj = JSON.parse(datosJSONStr);
+			//alert('datosJSObj: ' + datosJSObj);
+		}catch(errorParseo){
+			var datosJSONStrAsXHRTexto = datosJSONStr;
+			var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/showNepesGetIds.php en administrar :<br> Mensaje: ' + errorParseo.message;
+			var elError = errorParseo.name;
+			
+			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
+			jQuery(window.location).attr('href', path);				
+		}
+		var table =  '<table class="subArea">';
+		var cuantos = 0;
+		jQuery.each(datosJSObj, function(index){
+			table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
+			+ '&acto=deleteNepe' +  '&nepeId=' + datosJSObj[index].nepeId + '">' 
+			+ datosJSObj[index].nepeNombre + '<i class="fas fa-trash-alt"></i>' 
+			+ '</a></td></tr>';	
+			cuantos++;
+		});
+		
+		if(cuantos > 1){
+			table += '<tr><td>Los ' + cuantos + ' negocios.</td></tr>';
+			table += '<tr><td> </td></tr>';		
+			table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
+			+ '&acto=deleteHerNepes' +  '&userId=' + userNumber + '">' 
+			+ ' Borra ALL nepes de ' + dato + '<i class="fas fa-trash-alt"></i>' 
+			+ '</a></td></tr>';
+		}
+		table += '</table>';
+		jQuery('fieldset#tableContainer').html('');
+		jQuery('fieldset#tableContainer').append(table);	
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	});
+	
 });	
 
 
@@ -101,19 +105,14 @@ jQuery('form#adminEditClaveForm').submit(function(evento){
 				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
 				jQuery(window.location).attr('href', path);				
 			}
-			if(datosJSObj.editado){
-				jQuery.getJSON('escritos/dueno/getNombre.php',  {userNumber:userNumber} )
-				.done(function(dato, estatusForDONE, xhrObjetoForDONE){
-					var feedback = 'Password de ' + dato + ' fue editado.'; 
-					jQuery.feedback('form#adminEditClaveForm h3', feedback);
+			var usuario = jQuery.getNombre();
+			if(datosJSObj.editado){	
+				var feedback = 'Password de ' + usuario + ' fue editado.'; 
+				jQuery.feedback('form#adminEditClaveForm h3', feedback);
 				})
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
-				});
 			}else{
-				jQuery.feedback('form#adminEditClaveForm h3', 'Pass VALIDO ... pero el query NO cambio NADA !');
+				var feedback = 'Password de ' + usuario + ' no fue editado.';
+				jQuery.feedback('form#adminEditClaveForm h3', feedback);
 			}
 		})
 		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){

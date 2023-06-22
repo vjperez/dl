@@ -1,17 +1,17 @@
 jQuery.getNombre = function(){
-        jQuery.ajax({
-            //cache: false,
-            url: 'escritos/dueno/getNombre.php',
-            dataType: "json"
-        })
-        .done(function(dato, estatusForDONE, xhrObjetoForDONE){
-            return dato;
-        })
-        .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-            var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-            var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-            jQuery(window.location).attr('href', path);
-        });
+	jQuery.ajax({
+		//cache: false,
+		url: 'escritos/dueno/getNombre.php',
+		dataType: "json"
+	})
+	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
+		return dato;
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		jQuery(window.location).attr('href', path);
+	});
 }
 
 jQuery.home_populate = function(){
