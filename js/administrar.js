@@ -29,7 +29,7 @@ jQuery('form#adminNepesForm').submit(function(evento){
 	jQuery('fieldset#labelContainer').append(label);
 
 	var userNumber = jQuery('#userNumber02Id').val();
-	jQuery.post('escritos/showNepesGetIds.php', {userNumber:userNumber} )
+	jQuery.post('escritos/dueno/getOwnNepesWithIds.php', {userNumber:userNumber} )
 	.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 		try{
 			//alert('datosJSONStr: ' + datosJSONStr);
@@ -37,7 +37,7 @@ jQuery('form#adminNepesForm').submit(function(evento){
 			//alert('datosJSObj: ' + datosJSObj);
 		}catch(errorParseo){
 			var datosJSONStrAsXHRTexto = datosJSONStr;
-			var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/showNepesGetIds.php en administrar :<br> Mensaje: ' + errorParseo.message;
+			var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/dueno/getOwnNepesWithIds.php en administrar :<br> Mensaje: ' + errorParseo.message;
 			var elError = errorParseo.name;
 			
 			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined

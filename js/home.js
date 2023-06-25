@@ -24,7 +24,7 @@ jQuery.home_populate = function(){
         //alert('show nepes get ids...');
         jQuery.ajax({
             //cache: false,
-            url: 'escritos/showNepesGetIds.php',
+            url: 'escritos/dueno/getOwnNepesWithIds.php',
             dataType: "json"
         })
         .done(function(datos, estatusForDONE, xhrObjetoForDONE){

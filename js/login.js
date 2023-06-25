@@ -17,7 +17,7 @@ jQuery('form#loginForm').submit(function(evento){
 			try{
 				//alert('datosJSONStr: ' + datosJSONStr);
 				datosJSObj = JSON.parse(datosJSONStr);
-				//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
+				//alert('datosJSObj.logueado: ' + datosJSObj.logueado);
 			}catch(errorParseo){
 				var datosJSONStrAsXHRTexto = datosJSONStr;
 				var textoEstatus = 'Error parseando la siguiente respuesta del server desde escritos/dueno/login.php :<br> Mensaje: ' + errorParseo.message;
@@ -26,11 +26,11 @@ jQuery('form#loginForm').submit(function(evento){
 				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
 				jQuery(window.location).attr('href', path); 
 			}
-			if(datosJSObj.loguea){
+			if(datosJSObj.logueado){
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=home&duenoId=' + datosJSObj.duenoId);
 				jQuery(window.location).attr('href', window.location.pathname + '?look=home');
 			}else{
-				//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
+				//alert('datosJSObj.logueado: ' + datosJSObj.logueado);
 				jQuery.feedback('form#loginForm h3', 'Trata otra vez.');
 			}
 		})
