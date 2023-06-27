@@ -87,7 +87,7 @@ jQuery(document).ready(
 			//concatenating strings inside an each loop, with the requested JSON datos.
 				var que = decodeURIComponent( jQuery.urlParametro('que') );      
 				var donde = decodeURIComponent( jQuery.urlParametro('donde') );  
-				jQuery.getJSON('escritos/getOpciones.php', {que:que, donde:donde} )
+				jQuery.getJSON('escritos/ojo/getOpciones.php', {que:que, donde:donde} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 					if(datos.cuantasOpciones > 0){
 						//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
