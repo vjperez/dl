@@ -10,7 +10,7 @@
 
 
 //query returns arrays, bool values ... everything in JSON format (read data from postgre, as json)
-$query = "SELECT
+$queryGetNepe = "SELECT
 	to_json(id),
 	nombre,
 	to_char(revisado, 'MM/DD/YYYY'),
@@ -24,6 +24,5 @@ $query = "SELECT
 	array_to_json(media_foto_url) 
 FROM nepe 
 WHERE id = $1";
-pg_prepare($cnx, "preparo", $query);
-$recurso = pg_execute($cnx, "preparo", array($nepe_id));
+pg_prepare($cnx, "preparadoQueryGetNepe", $queryGetNepe);
 ?>

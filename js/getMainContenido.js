@@ -46,7 +46,7 @@ jQuery(document).ready(
 			case 'busca':	
 				jQuery('#navBusca').addClass("activo");
 				var key = 'dueno_id';
-				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
@@ -70,7 +70,7 @@ jQuery(document).ready(
 			break;
 			case 'opciones':
 				var key = 'dueno_id';
-				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
@@ -127,7 +127,7 @@ jQuery(document).ready(
 			break;
 			case 'profile':			
 				var key = 'dueno_id';
-				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
@@ -142,7 +142,8 @@ jQuery(document).ready(
 
 				//get nepeId then
 				var nepeId = jQuery.urlParametro('nepeId');	
-				jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
+				
+				jQuery.getJSON('escritos/ojo/getNepe.php', {nepeId:nepeId} )
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 						jQuery.dameLook('looks/profile.html');
 						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
@@ -164,7 +165,7 @@ jQuery(document).ready(
 			case 'login':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
 				var key = 'dueno_id';
-				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 				
@@ -180,10 +181,10 @@ jQuery(document).ready(
 						//var textoEstatus = 'Error, usuario solicito login look, estando logueado.';
 						//var elError = 'Error humano.';
 
-						//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+						//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError);
 						//jQuery(window.location).attr('href', path);	
 						
-					}else{ 
+					}else{
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 						jQuery('#navLogin').addClass("activo");
 						jQuery('ul.navega').css('visibility','visible');
@@ -210,7 +211,7 @@ jQuery(document).ready(
 			break;
 			case 'home':
 				var key = 'dueno_id';
-				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){ 
@@ -251,7 +252,7 @@ jQuery(document).ready(
 			break;			
 			case 'creaNepe':
 				var key = 'dueno_id';
-				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){
@@ -284,7 +285,7 @@ jQuery(document).ready(
 			break;
 			case 'updateNepe':
 				var key = 'dueno_id';
-				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){
@@ -293,42 +294,47 @@ jQuery(document).ready(
 						jQuery('ul.navega').css('visibility','visible');
 						
 						key = 'own_nepes';
-						jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+						jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 						.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 							//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 							if(datos.isSet){  
 								key = 'own_nepes';
-								jQuery.getJSON('escritos/getSessionValue.php', {key:key})
+								jQuery.getJSON('escritos/session/getSessionValue.php', {key:key})
 								.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 									//alert('key: ' + key + '\ndatos: ' + datos);
 									var nepeId = jQuery.urlParametro('nepeId');
-										if( jQuery.isNepeIdOnOwnNepesSession(datos, nepeId) ){
-											jQuery.getJSON('escritos/getNepe.php', {nepeId:nepeId} )
-											.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-												jQuery.dameLook('looks/updateNepe.html');
-												jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-													if(settingsObjeto.url === 'looks/updateNepe.html'){	
-														jQuery.hideThemSections();										
-														jQuery.populateUpdateNepeForm(datos);
-														jQuery('#footer').css('visibility','visible');
-														jQuery.handleUpdateNepeSubmit(nepeId);
-														//submit event listener and handler
-													}//if
-												});//ajaxComplete
-											})
-											.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-												var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-												var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-												jQuery(window.location).attr('href', path); 
-											});
-										}else{
-											var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-											var textoEstatus = 'Error, usuario solicito editar nepe q no es de el.';
-											var elError = 'Error humano.';
-											
-											var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-											jQuery(window.location).attr('href', path);								
-										}
+									if( jQuery.isNepeIdOnOwnNepesSession(datos, nepeId) ){
+										jQuery.getJSON('escritos/ojo/getNepe.php', {nepeId:nepeId} )
+										.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+											jQuery.dameLook('looks/updateNepe.html');
+											jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
+												if(settingsObjeto.url === 'looks/updateNepe.html'){	
+													jQuery.hideThemSections();										
+													jQuery.populateUpdateNepeForm(datos);
+													jQuery('#footer').css('visibility','visible');
+													jQuery.handleUpdateNepeSubmit(nepeId);
+													//submit event listener and handler
+												}//if
+											});//ajaxComplete
+										})
+										.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+											var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+											var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+											jQuery(window.location).attr('href', path); 
+										});
+									}else{
+										var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+										var textoEstatus = 'Error, usuario solicito editar nepe q no es de el.';
+										var elError = 'Error humano.';
+										
+										var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+										jQuery(window.location).attr('href', path);								
+									}
+								})
+								.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+									var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+									var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+									jQuery(window.location).attr('href', path); 
 								});
 							}else{  
 								var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
@@ -338,6 +344,11 @@ jQuery(document).ready(
 								var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 								jQuery(window.location).attr('href', path);	
 							}
+						})
+						.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+							var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+							var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+							jQuery(window.location).attr('href', path); 
 						});
 					}else{  
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
@@ -356,7 +367,7 @@ jQuery(document).ready(
 			break;			
 			case 'registro':
 				var key = 'dueno_id';
-				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){
@@ -391,7 +402,7 @@ jQuery(document).ready(
 			break;	
 			case 'recentNepes':
 				var key = 'dueno_id';
-				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
@@ -415,7 +426,7 @@ jQuery(document).ready(
 			break;			
 			case 'administrar':
 				var key = 'dueno_id';
-				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){ 
@@ -450,7 +461,7 @@ jQuery(document).ready(
 			case 'faq':
 				jQuery('#navFaq').addClass("activo");
 				var key = 'dueno_id';
-				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
@@ -476,7 +487,7 @@ jQuery(document).ready(
 			break;
 			case 'nada':
 				var key = 'dueno_id';
-				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
@@ -494,7 +505,7 @@ jQuery(document).ready(
 				break;				
 			case 'error':
 				var key = 'dueno_id';
-				jQuery.getJSON('escritos/isSessionSet.php', {key:key})
+				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
@@ -527,95 +538,9 @@ jQuery(document).ready(
 			default:
 				jQuery(window.location).attr('href', window.location.pathname + '?look=recentNepes');
 
-
-
-
-
-				///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-			//you can redirect null and default cases, either into busca case,  into error case or into their own looks 
-//case null:
-			// (1) redirecting to portada removing extra parameters after .html 
-				/*
-				var pathname = window.location.pathname; // Returns path only- http://localhost/WebDevelopmentStuff/mio/portada.html - saca parametros viejos
-				var url      = window.location.href;     // Returns full URL - http://localhost/WebDevelopmentStuff/mio/portada.html - deja parametros viejos
-				var origin   = window.location.origin;   // Returns base URL - localhost/
-				*/
-				
-				/*
-				var indexOfDotHtml = window.location.href.indexOf(".html");
-				var largo = window.location.href.length;
-				//alert('pathname: ' + window.location.pathname + '\nhref: ' + window.location.href + '\nindex: ' + indexOfDotHtml + '\nlargo: ' + largo);
-				if(indexOfDotHtml + 'html'.length + 1 == largo){ // if true, href does ends with .html, there is nothing else
-					//no hay nada en url, despues de portada.html
-
-					//code for recent nepes
-					var key = 'dueno_id';
-					jQuery.getJSON('escritos/isSessionSet.php', {key:key})
-					.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-						//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-						if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
-						else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-						
-					});
-		
-					jQuery.dameLook('looks/recentNepes.html');
-					
-				}else{//hay extra parameters pero ninguno es look=, 
-					jQuery(window.location).attr('href', window.location.pathname); //alert('portada sin look con otros parametros');
-				}	
-				*/
-				
-			// (2) null look				
-				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-				//jQuery.dameLook('looks/notused/lookIsNull.html');
-			//
-				/*
-			// (3) redirect to error
-			var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-			var textoEstatus = 'Error, usuario quito look del address bar.';
-			var elError = 'Error humano.';
-		
-			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-			jQuery(window.location).attr('href', path);	
-			//// (3) to error 
-				*/
-//break;
-//default :
-			// (1) redirecting to portada removing extra parameters after .html
-				/*
-				var pathname = window.location.pathname; // Returns path only- http://localhost/WebDevelopmentStuff/mio/portada.html - saca parametros viejos
-				var url      = window.location.href;     // Returns full URL - http://localhost/WebDevelopmentStuff/mio/portada.html - deja parametros viejos
-				var origin   = window.location.origin;   // Returns base URL - localhost/
-				*/
-
-
-			//	jQuery(window.location).attr('href', window.location.pathname); //alert('look= no machea nada. Default');
-			
-			
-			// (2) default look
-				//if( jQuery.isSessionSet('dueno_id') )  {jQuery('#navLogin').hide();  jQuery('#navSignup').hide();}
-				//else                                  {jQuery('#navLogout').hide(); jQuery('#navHome').hide();}
-				//jQuery.dameLook('looks/notused/default.html');
-			//
-				/*
-			// (3) redirect to error
-			var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-			var textoEstatus = 'Error, usuario puso un look=algo,  pero algo no esta en el switch.';
-			var elError = 'Error humano.';
-			
-			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-			jQuery(window.location).attr('href', path);	
-			// (3) to error
-				*/
-//break;
-
-
 		}//switch
 
 		
-
-
 
 		jQuery.showMenu();
 	}); // ready function and statement

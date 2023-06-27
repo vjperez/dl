@@ -7,6 +7,8 @@ require_once 'conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
 require_once 'getNepe/getNepeQuery.php';
+$recurso = pg_execute($cnx, "preparadoQueryGetNepe", array($nepe_id));
+
 if($recurso){
 //When you put bool values, arrays, or integers like the nepe Id, into a json format it allows
 //the later use of functions like json_decode().  This makes possible
@@ -38,11 +40,11 @@ if($recurso){
 		echo json_encode($nepeDato);
 	}else{
 		pg_close($cnx); //maybe not needed but doesn't hurt
-		throw new Exception('Vacio query.  Con RECURSO, pero sin $fila, (nepe id no existe) en :'  .  __FILE__  .  '.');	
+		throw new Exception('Con RECURSO, pero sin $fila, (nepe id no existe) en :'  .  __FILE__  .  '.');	
 	}
 }else{
 	pg_close($cnx); //maybe not needed but doesn't hurt
-	throw new Exception('Mal query.  Sin RECURSO en :'  .  __FILE__  .  '.');
+	throw new Exception('Mal query.  Sin RECURSO para preparadoQueryGetNepe en :'  .  __FILE__  .  '.');
 	//echo "<li>Error, pg_query, no produjo un recurso ... en .....</li>";
 }
 
