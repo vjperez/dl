@@ -1,7 +1,7 @@
 jQuery.getRecentNepes = function(){	
     
     // task 1
-	jQuery.getJSON('escritos/getRecentNepes.php')
+	jQuery.getJSON('escritos/ojo/getRecentNepes.php')
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
 		var tableRows = '';
 		jQuery.each(datos, function(index){
