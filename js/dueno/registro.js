@@ -32,7 +32,7 @@ jQuery('form#registroForm').submit(function(evento){
             }
             if(datosJSObj.registrado){
                 jQuery(window.location).attr('href', window.location.pathname + '?look=home');
-            }else{ // usuario es repetido en el database, por eso se chequea despues del post
+            }else{ // usuario ya existe
                 jQuery.feedback('form#registroForm h3.feedback', datosJSObj.feedback);
             }
         })
