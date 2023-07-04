@@ -1,3 +1,18 @@
+
+//erase feedback when user writting
+jQuery('form#editClaveForm  input[name^=password]').keydown(function(){
+    jQuery.feedback('form#editClaveForm h3.feedback', '');
+    jQuery.feedback('form#editClaveForm h5.warn', '');
+});
+
+
+//link to crea nepe when click on button
+jQuery('form#labelTableContainerForm :button').click(function(){
+    //alert(window.location.pathname + '?look=creaNepe'); 
+    jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
+});
+
+
 jQuery.getNombre = function(){
 	jQuery.ajax({
 		//cache: false,
@@ -13,6 +28,7 @@ jQuery.getNombre = function(){
 		jQuery(window.location).attr('href', path);
 	});
 }
+
 
 jQuery.home_populate = function(){
         //label and table
@@ -43,6 +59,7 @@ jQuery.home_populate = function(){
         });
 }
 
+
 //do this when form submitted ;
 //alert('.submit @ home...') 
 jQuery('form#editClaveForm').submit(function(evento){
@@ -50,7 +67,7 @@ jQuery('form#editClaveForm').submit(function(evento){
     var user = 'valorDummy';
     var pass01 = jQuery('#passwordId').val();
     var pass02 = jQuery('#passwordConfirmId').val();
-    if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editClaveForm h3') ){
+    if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editClaveForm h3.feedback') ){
         jQuery.post('escritos/dueno/editClave.php', {pass01:pass01} )
         .done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){ 
             //el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
@@ -71,10 +88,10 @@ jQuery('form#editClaveForm').submit(function(evento){
 			var usuario = jQuery.getNombre()
             if(datosJSObj.editado){
 				var feedback = usuario + ' tu password fue editado.'; 
-				jQuery.feedback('form#editClaveForm h3', feedback);
+				jQuery.feedback('form#editClaveForm h3.feedback', feedback);
             }else{
 				var feedback = 'Trata otra vez, ' + usuario + '.';
-                jQuery.feedback('form#editClaveForm h3', feedback);
+                jQuery.feedback('form#editClaveForm h3.feedback', feedback);
             }
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -85,18 +102,3 @@ jQuery('form#editClaveForm').submit(function(evento){
     }
 });
 
-
-
-//erase feedback when user writting
-jQuery('form#editClaveForm  input[name^=password]').keydown(function(){
-    jQuery.feedback('form#editClaveForm h3', '');
-    jQuery.feedback('form#editClaveForm h5', '');
-});
-
-
-
-//link to crea nepe when click on button
-jQuery('form#labelTableContainerForm :button').click(function(){
-    //alert(window.location.pathname + '?look=creaNepe'); 
-    jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
-});
