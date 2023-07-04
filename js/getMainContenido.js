@@ -219,9 +219,6 @@ jQuery(document).ready(
 						jQuery('#navHome').addClass("activo");
 						jQuery('ul.navega').css('visibility','visible');
 						
-						//get duenoId
-						//var duenoId = jQuery.urlParametro('duenoId');
-
 						jQuery.dameLook('looks/home.html');
 
 						//once look is in, use jQuery to update look with profile values
