@@ -168,7 +168,7 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 					//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
 				}catch(errorParseo){
 					var datosJSONStrAsXHRTexto = datosJSONStr;
-					var textoEstatus = 'Error parseando la siguiente respuesta del server en escritos/updateNepe.php :<br> Mensaje: ' + errorParseo.message;
+					var textoEstatus = 'Error parseando la siguiente respuesta del server desde escritos/updateNepe.php :<br> Mensaje: ' + errorParseo.message;
 					var elError = errorParseo.name;
 					
 					var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
@@ -201,7 +201,7 @@ jQuery.handleUpdateNepeSubmit = function(nepeId){
 
 
 
-//validation logic functions are run as handlers to change events
+
 jQuery('fieldset#submitButtonFieldset button').on('click', function(evento){
 	jQuery.showThem();
 });
@@ -213,7 +213,7 @@ $fotoBoton.on('click', function(evento){
 
 
 var formaStr = 'form#updateNepeForm';
-
+//validation logic functions are run as handlers to change events
 var $redInputs = jQuery( formaStr + ' input[name^=red]');
 $redInputs.on('change', function(evento){
 	jQuery.haveAtLeast1Red(formaStr);
