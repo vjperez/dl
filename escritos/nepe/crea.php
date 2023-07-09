@@ -99,10 +99,10 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 	//i am sure i have a connection, because an exception was NOT thrown at conecta
 
 	$mediaFotoUrlPosgreArray = '{vacio}';
-	require_once 'creaNepe/crea/creaNepe.php';
+	require_once 'crea/insert/insertNepe.php';
 	//check for foto errors   ;   move fotos   ;   build a $fotoUrlPosgreArray postgresql type array and insert array into db
-	require_once 'creaNepe/checkFotoUploadErrorAndMove/checkFotoUploadErrorAndMove.php';
-	require_once 'creaNepe/update/updateMediaFotoUrl.php';
+	require_once 'crea/checkFotoUploadErrorAndMove/checkFotoUploadErrorAndMove.php';
+	require_once 'crea/update/updateMediaFotoUrl.php';
 
 }else{
 	throw new Exception('Session dueno_id  o  own_nepes  no seteada en: ' . __FILE__  );
