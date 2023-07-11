@@ -13,11 +13,10 @@ if(isset($_SESSION['dueno_id'])){
 	//i am sure i have a connection, because an exception was NOT thrown at conecta
 
 	require_once 'read/nepesWithIdsQuery.php';
-	$ownNepes = array();	// to store this user's nepe ids
-	$nepe =  array();
-	$nepes = array();
 	$recurso = pg_execute($cnx, "preparadoQueryNepesWithIds", array($dueno_to_query));
 	if($recurso){
+		$ownNepes = array();	// to store this user's nepe ids
+	    $nepes = array();
 		$index = 0;
 		while($nepe = pg_fetch_row($recurso) ){
 			$ownNepes[$index] = $nepe[0];
