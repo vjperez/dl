@@ -1,25 +1,15 @@
+////////////////////////////////// //handle functions  ////////////////////////////////////////////
 //erase feedback when user writting
 jQuery('form#adminEditClaveForm  input').keydown(function(){
-	jQuery.feedback('form#adminEditClaveForm h3', '');
+	jQuery.feedback('form#adminEditClaveForm h3.feedback', '');
 });
 //erase feedback when user writting
 jQuery('form#adminNepesForm  input[type=text]').keydown(function(){
-	jQuery.feedback('form#adminNepesForm h3', '');
+	jQuery.feedback('form#adminNepesForm h3.feedback', '');
 });
 
-jQuery.getNombre = function(){
-	jQuery.getJSON('escritos/dueno/getNombre.php',  {userNumber:userNumber} )
-	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
-		return dato;
-	})
-	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-		jQuery(window.location).attr('href', path); 
-	});
-}
 
-//do this when form submitted ; adminNepesForm
+//handle form submit ; adminNepesForm
 jQuery('form#adminNepesForm').submit(function(evento){
 	evento.preventDefault(); //not making a submit (POST request) from html action.
 	
@@ -74,15 +64,13 @@ jQuery('form#adminNepesForm').submit(function(evento){
 });	
 
 
-
-
-//do this when form submitted ; adminEditClaveForm
+//handle form submit ; adminEditClaveForm
 jQuery('form#adminEditClaveForm').submit(function(evento){
 	evento.preventDefault(); //not making a submit (POST request) from html action.
 	var user = 'valorDummy';
 	var pass01 = jQuery('#passwordId').val();
 	var pass02 = jQuery('#passwordConfirmId').val(); 
-	if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#adminEditClaveForm h3') ){
+	if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#adminEditClaveForm h3.feedback') ){
 		//Valid values son los q cumplen estas 3 cosas.
 		//Estas cosas se pueden chequear antes del post y evito post sin sentido
 		// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
@@ -108,11 +96,11 @@ jQuery('form#adminEditClaveForm').submit(function(evento){
 			var usuario = jQuery.getNombre();
 			if(datosJSObj.editado){	
 				var feedback = 'Password de ' + usuario + ' fue editado.'; 
-				jQuery.feedback('form#adminEditClaveForm h3', feedback);
+				jQuery.feedback('form#adminEditClaveForm h3.feedback', feedback);
 				})
 			}else{
 				var feedback = 'Password de ' + usuario + ' no fue editado.';
-				jQuery.feedback('form#adminEditClaveForm h3', feedback);
+				jQuery.feedback('form#adminEditClaveForm h3.feedback', feedback);
 			}
 		})
 		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -122,3 +110,16 @@ jQuery('form#adminEditClaveForm').submit(function(evento){
 		});
 	}
 });	
+
+/////////////////////////function to get nombre ; same as ajax to populate on home page ///////////
+jQuery.getNombre = function(){
+	jQuery.getJSON('escritos/dueno/getNombre.php',  {userNumber:userNumber} )
+	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
+		return dato;
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	});
+}
