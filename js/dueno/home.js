@@ -5,12 +5,19 @@ jQuery('form#editClaveForm  input[name^=password]').keydown(function(){
     jQuery.feedback('form#editClaveForm h5.warn', '');
 });
 
+jQuery('form#editContactosForm  input[name^=red]').keydown(function(){
+    jQuery.feedback('form#editContactosForm h3.feedback', '');
+    jQuery.feedback('form#editContactosForm h5.warn', '');
+});
+
+
 
 //link to crea nepe when click on button
 jQuery('form#labelTableContainerForm :button').click(function(){
     //alert(window.location.pathname + '?look=creaNepe'); 
     jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
 });
+
 
 
 jQuery.getNombre = function(){
@@ -100,5 +107,5 @@ jQuery('form#editClaveForm').submit(function(evento){
             jQuery(window.location).attr('href', path); 
         });
     }
-});
+}); // editClaveForm submit
 
