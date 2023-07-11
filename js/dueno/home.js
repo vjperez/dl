@@ -18,6 +18,7 @@ jQuery('form#labelTableContainerForm :button').click(function(){
 
 //handle form submit;
 //alert('.submit @ home...') 
+var usuario = "";
 jQuery('form#editClaveForm').submit(function(evento){
     evento.preventDefault(); //not making a submit (POST request) from html action.
     var user = 'valorDummy';
@@ -60,7 +61,7 @@ jQuery('form#editClaveForm').submit(function(evento){
 ////////////////////////////////////// handlers ///////////////////////////////////////////////////
 
 
-////////////////////////////////////// ajax to populate home page ///////////////////////////////////////////////////
+////////////////////////////////////// ajax to populate home page /////////////////////////////////
 jQuery.ajax({
 	//cache: false,
 	url: 'escritos/dueno/getNombre.php',
@@ -68,6 +69,7 @@ jQuery.ajax({
 })
 .done(function(dato, estatusForDONE, xhrObjetoForDONE){
 	jQuery('form#labelTableContainerForm label').html( 'Negocios de ' + dato );
+	usuario = dato; // this value is also used on editClaveForm submit
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -103,8 +105,13 @@ jQuery.ajax({
 	url: 'escritos/dueno/getSocials.php',
 	dataType: "json"
 })
-.done(function(dato, estatusForDONE, xhrObjetoForDONE){
-	jQuery('form#labelTableContainerForm label').html( 'Negocios de ' + dato );
+.done(function(socialDatos, estatusForDONE, xhrObjetoForDONE){
+	jQuery.each(socialDatos, function(index){
+		if(socialDatos[index].tipo == 'Telefono')     jQuery('fieldset#editContactosFieldset input#red1Id').val( socialDatos[index].handle );
+		if(socialDatos[index].tipo == 'Email')        jQuery('fieldset#editContactosFieldset input#red2Id').val( socialDatos[index].handle );
+		if(socialDatos[index].tipo == 'Red Social 1') jQuery('fieldset#editContactosFieldset input#red3Id').val( socialDatos[index].handle );
+		if(socialDatos[index].tipo == 'Red Social 2') jQuery('fieldset#editContactosFieldset input#red4Id').val( socialDatos[index].handle );
+	}
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
