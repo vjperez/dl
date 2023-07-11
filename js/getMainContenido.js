@@ -224,10 +224,7 @@ jQuery(document).ready(
 						//once look is in, use jQuery to update look with profile values
 						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 							if(settingsObjeto.url === 'looks/home.html'){
-								//jQuery.home(duenoId);
-								//hide ThemSections  
 								jQuery.hideThemSections();
-								jQuery.home_populate();
 								jQuery('#footer').css('visibility','visible');
 							}//if
 						});//ajaxComplete

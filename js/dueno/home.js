@@ -1,4 +1,4 @@
-
+////////////////////////////////// //handle functions  ////////////////////////////////////////////
 //erase feedback when user writting
 jQuery('form#editClaveForm  input[name^=password]').keydown(function(){
     jQuery.feedback('form#editClaveForm h3.feedback', '');
@@ -10,64 +10,13 @@ jQuery('form#editContactosForm  input[name^=red]').keydown(function(){
     jQuery.feedback('form#editContactosForm h5.warn', '');
 });
 
-
-
-//link to crea nepe when click on button
+//handle link to crea nepe when click on button
 jQuery('form#labelTableContainerForm :button').click(function(){
     //alert(window.location.pathname + '?look=creaNepe'); 
     jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
 });
 
-
-
-jQuery.getNombre = function(){
-	jQuery.ajax({
-		//cache: false,
-		url: 'escritos/dueno/getNombre.php',
-		dataType: "json"
-	})
-	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
-		return dato;
-	})
-	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-		jQuery(window.location).attr('href', path);
-	});
-}
-
-
-jQuery.home_populate = function(){
-        //label and table
-        var elLabel = 'Negocios de ' + jQuery.getNombre();
-		jQuery('form#labelTableContainerForm label').html( elLabel );
-       
-
-	    var elTable = '';  
-        //alert('show nepes get ids...');
-        jQuery.ajax({
-            //cache: false,
-            url: 'escritos/dueno/getOwnNepesWithIds.php',
-            dataType: "json"
-        })
-        .done(function(datos, estatusForDONE, xhrObjetoForDONE){
-            //alert('datos: ' + datos);
-            jQuery.each(datos, function(index){
-                elTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  
-                + '&nepeId=' + datos[index].nepeId  + '">'
-                + datos[index].nepeNombre + '</a></td></tr>';
-            });	
-            jQuery('form#labelTableContainerForm table').html( elTable );
-        })
-        .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-            var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-            var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-            jQuery(window.location).attr('href', path); 
-        });
-}
-
-
-//do this when form submitted ;
+//handle form submit;
 //alert('.submit @ home...') 
 jQuery('form#editClaveForm').submit(function(evento){
     evento.preventDefault(); //not making a submit (POST request) from html action.
@@ -92,7 +41,6 @@ jQuery('form#editClaveForm').submit(function(evento){
                 jQuery(window.location).attr('href', path);			
             }
 			
-			var usuario = jQuery.getNombre()
             if(datosJSObj.editado){
 				var feedback = usuario + ' tu password fue editado.'; 
 				jQuery.feedback('form#editClaveForm h3.feedback', feedback);
@@ -109,3 +57,57 @@ jQuery('form#editClaveForm').submit(function(evento){
     }
 }); // editClaveForm submit
 
+////////////////////////////////////// handlers ///////////////////////////////////////////////////
+
+
+////////////////////////////////////// ajax to populate home page ///////////////////////////////////////////////////
+jQuery.ajax({
+	//cache: false,
+	url: 'escritos/dueno/getNombre.php',
+	dataType: "json"
+})
+.done(function(dato, estatusForDONE, xhrObjetoForDONE){
+	jQuery('form#labelTableContainerForm label').html( 'Negocios de ' + dato );
+})
+.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+	jQuery(window.location).attr('href', path);
+});
+
+
+jQuery.ajax({
+	//cache: false,
+	url: 'escritos/dueno/getOwnNepesWithIds.php',
+	dataType: "json"
+})
+.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+	//alert('datos: ' + datos);
+	var elTable = "";
+	jQuery.each(datos, function(index){
+		elTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  
+		+ '&nepeId=' + datos[index].nepeId  + '">'
+		+ datos[index].nepeNombre + '</a></td></tr>';
+	});	
+	jQuery('form#labelTableContainerForm table').html( elTable );
+})
+.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+	jQuery(window.location).attr('href', path); 
+});
+
+
+jQuery.ajax({
+	//cache: false,
+	url: 'escritos/dueno/getSocials.php',
+	dataType: "json"
+})
+.done(function(dato, estatusForDONE, xhrObjetoForDONE){
+	jQuery('form#labelTableContainerForm label').html( 'Negocios de ' + dato );
+})
+.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+	jQuery(window.location).attr('href', path);
+});
