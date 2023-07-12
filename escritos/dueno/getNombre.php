@@ -7,9 +7,9 @@ if(isset($_SESSION['dueno_id'])){
 		$dueno_to_query = $_SESSION['dueno_id'];
 	}
 
-	require_once 'escritos/conecta/conecta.php';
+	require_once '../conecta/conecta.php';
 	
-	require_once 'escritos/read/nombreQuery.php';
+	require_once 'read/nombreQuery.php';
 	$recurso = pg_execute($cnx, "preparadoQueryNombre", array($dueno_to_query));
 	if($recurso){
 		$fila = pg_fetch_row($recurso);

@@ -153,10 +153,13 @@ jQuery.ajax({
 		if(socialDatos[index].tipo == 'email') jQuery('fieldset#editContactosFieldset input#red2Id').val( socialDatos[index].handle );
 		if(socialDatos[index].tipo == 'rs1')   jQuery('fieldset#editContactosFieldset input#red3Id').val( socialDatos[index].handle );
 		if(socialDatos[index].tipo == 'rs2')   jQuery('fieldset#editContactosFieldset input#red4Id').val( socialDatos[index].handle );
-	}
+	});
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
 	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
 	jQuery(window.location).attr('href', path);
 });
+
+jQuery.hideThemSections();
+jQuery('#footer').css('visibility','visible');

@@ -3,9 +3,9 @@ session_start();
 if(isset($_SESSION['dueno_id'])){
 	$dueno = $_SESSION['dueno_id'];
 	
-	require_once 'escritos/conecta/conecta.php';
+	require_once '../conecta/conecta.php';
 	
-	require_once 'escritos/read/socialsQuery.php';
+	require_once 'read/socialsQuery.php';
 	$recurso = pg_execute($cnx, "preparadoQuerySocials", array($dueno));
 	if($recurso){
 		$losSocials = array();
@@ -13,7 +13,7 @@ if(isset($_SESSION['dueno_id'])){
 		while($socialFila = pg_fetch_row($recurso)){
 			$losSocials[$index]['tipo']   = $socialFila[0];
 			$losSocials[$index]['handle'] = $socialFila[1];
-			index++;
+			$index++;
 		}
 		pg_close($cnx);
 		echo json_encode($losSocials);
