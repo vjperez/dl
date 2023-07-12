@@ -4,17 +4,17 @@ $user = $_POST['user'];
 $pass = $_POST['pass'];
 
 //conecta al db
-require_once 'escritos/conecta/conecta.php';
+require_once '../conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
-require_once 'escritos/dueno/read/idAndClaveQuery.php';
+require_once '../dueno/read/idAndClaveQuery.php';
 $recurso = pg_execute($cnx, "preparadoQueryIdAndClave", array($user));
 if($recurso){		 
 	if($fila = pg_fetch_row($recurso)){
 		$dueno_id = $fila[0];
 		$password_from_db = $fila[1];
 		if( password_verify($pass, $password_from_db) ){
-			require_once 'escritos/dueno/update/lastLogQuery.php';
+			require_once '../dueno/update/lastLogQuery.php';
 			$recurso = pg_execute($cnx, "preparadoQueryLastLog", array($dueno_id));
 			if($recurso){
 				$respuesta = json_decode('{"logueado":true}');
