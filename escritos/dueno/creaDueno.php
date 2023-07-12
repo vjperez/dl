@@ -16,7 +16,7 @@ if($recurso){
 	//if i can fetch a db row with a user id ... i know the usertb is NOT a new username
 	//if there is no row, pg fetch row returns FALSE  ...  which means the username is new
 	$isNewUsername;
-	if($filaDeUsertbEnDB = pg_fetch_row($recurso)){
+	if( pg_fetch_row($recurso) ){
 		$isNewUsername = false; // usertb is NOT a new username
 	}else{
 		$isNewUsername = true; // usertb is a new username
