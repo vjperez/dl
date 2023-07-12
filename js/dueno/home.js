@@ -58,6 +58,48 @@ jQuery('form#editClaveForm').submit(function(evento){
     }
 }); // editClaveForm submit
 
+jQuery('form#editContactosForm').submit(function(evento){
+    evento.preventDefault(); //not making a submit (POST request) from html action.
+    var tel        = jQuery('form#editContactosForm  input#red1Id').val();
+	var email      = jQuery('form#editContactosForm  input#red2Id').val();
+    var redSocial1 = jQuery('form#editContactosForm  input#red3Id').val();
+    var redSocial2 = jQuery('form#editContactosForm  input#red4Id').val();
+	jQuery.post('escritos/dueno/bregaContactos.php', {tel:tel, email:email, redSocial1:redSocial1, redSocial2:redSocial2} )
+	.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){ 
+		//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
+		//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
+		try{
+			//alert('datosJSONStr: ' + datosJSONStr);
+			datosJSObj = JSON.parse(datosJSONStr);
+			//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
+		}catch(errorParseo){
+			var datosJSONStrAsXHRTexto = datosJSONStr;
+			var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/dueno/editContactos.php :<br> Mensaje: ' + errorParseo.message;
+			var elError = errorParseo.name;
+			
+			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError);
+			jQuery(window.location).attr('href', path);			
+		}
+		
+		if(datosJSObj.editados){
+			var feedback = usuario + ' tus contactos fueron editados.'; 
+			jQuery.feedback('form#editContactosForm h3.feedback', feedback);
+		}else if(datosJSObj.creados){
+			var feedback = usuario + ' tus contactos fueron creados.'; 
+			jQuery.feedback('form#editContactosForm h3.feedback', feedback);
+		}else{
+			var feedback = 'Trata otra vez, ' + usuario + '.';
+			jQuery.feedback('form#editContactosForm h3.feedback', feedback);
+		}
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	});
+    
+}); // editContactosForm submit
+
 ////////////////////////////////////// handlers ///////////////////////////////////////////////////
 
 
@@ -69,7 +111,7 @@ jQuery.ajax({
 })
 .done(function(dato, estatusForDONE, xhrObjetoForDONE){
 	jQuery('form#labelTableContainerForm label').html( 'Negocios de ' + dato );
-	usuario = dato; // this value is also used on editClaveForm submit
+	usuario = dato; // this value is also used on forms submit
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -107,10 +149,10 @@ jQuery.ajax({
 })
 .done(function(socialDatos, estatusForDONE, xhrObjetoForDONE){
 	jQuery.each(socialDatos, function(index){
-		if(socialDatos[index].tipo == 'Telefono')     jQuery('fieldset#editContactosFieldset input#red1Id').val( socialDatos[index].handle );
-		if(socialDatos[index].tipo == 'Email')        jQuery('fieldset#editContactosFieldset input#red2Id').val( socialDatos[index].handle );
-		if(socialDatos[index].tipo == 'Red Social 1') jQuery('fieldset#editContactosFieldset input#red3Id').val( socialDatos[index].handle );
-		if(socialDatos[index].tipo == 'Red Social 2') jQuery('fieldset#editContactosFieldset input#red4Id').val( socialDatos[index].handle );
+		if(socialDatos[index].tipo == 'tel')   jQuery('fieldset#editContactosFieldset input#red1Id').val( socialDatos[index].handle );
+		if(socialDatos[index].tipo == 'email') jQuery('fieldset#editContactosFieldset input#red2Id').val( socialDatos[index].handle );
+		if(socialDatos[index].tipo == 'rs1')   jQuery('fieldset#editContactosFieldset input#red3Id').val( socialDatos[index].handle );
+		if(socialDatos[index].tipo == 'rs2')   jQuery('fieldset#editContactosFieldset input#red4Id').val( socialDatos[index].handle );
 	}
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
