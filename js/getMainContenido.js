@@ -220,14 +220,14 @@ jQuery(document).ready(
 						jQuery('ul.navega').css('visibility','visible');
 						
 						jQuery.dameLook('looks/home.html');
-
+						/*
 						//once look is in, use jQuery to update look with profile values
 						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 							if(settingsObjeto.url === 'looks/home.html'){
-								jQuery.hideThemSections();
-								jQuery('#footer').css('visibility','visible');
+
 							}//if
 						});//ajaxComplete
+						*/
 					}else{
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito home look, sin estar logueado.';
