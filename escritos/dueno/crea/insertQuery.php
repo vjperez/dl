@@ -1,6 +1,4 @@
-<?php
-//case sensitive PostgreSQL search tito and tiTo are diferent
-	
+<?php	
 // query to insert new dueno on db
 $queryInsert = "INSERT INTO
 	dueno(nombre, clave, first_log, last_log)
