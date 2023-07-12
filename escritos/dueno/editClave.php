@@ -11,10 +11,10 @@ if(isset($_SESSION['dueno_id'])){
 	$hashed_pass01 = password_hash($pass01 , PASSWORD_DEFAULT);
 
 	//conecta al db
-	require_once 'escritos/conecta/conecta.php';
+	require_once '../conecta/conecta.php';
 	//i am sure i have a connection, because an exception was NOT thrown at conecta
 	
-	require_once 'escritos/dueno/update/claveQuery.php';
+	require_once 'update/claveQuery.php';
 	$recurso = pg_execute($cnx, "preparadoQueryClave", array($hashed_pass01, $dueno_to_edit));
 	if($recurso){		 
 		if(pg_affected_rows($recurso) == 1){
