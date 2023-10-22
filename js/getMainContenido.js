@@ -44,7 +44,7 @@ jQuery(document).ready(
 		var look = jQuery.urlParametro('look');
 		switch(look) {
 			case 'busca':	
-				jQuery('#navBusca').addClass("activo");
+				jQuery('#navBusca').addClass("seleccionado");
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -186,7 +186,7 @@ jQuery(document).ready(
 						
 					}else{
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-						jQuery('#navLogin').addClass("activo");
+						jQuery('#navLogin').addClass("seleccionado");
 						jQuery('ul.navega').css('visibility','visible');
 						
 						//get login look
@@ -216,7 +216,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){ 
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
-						jQuery('#navHome').addClass("activo");
+						jQuery('#navHome').addClass("seleccionado");
 						jQuery('ul.navega').css('visibility','visible');
 						
 						jQuery.dameLook('looks/home.html');
@@ -251,7 +251,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
-						jQuery('#navHome').addClass("activo");
+						jQuery('#navHome').addClass("seleccionado");
 						jQuery('ul.navega').css('visibility','visible');
 
 						jQuery.dameLook('looks/creaNepe.html');
@@ -284,7 +284,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
-						jQuery('#navHome').addClass("activo");
+						jQuery('#navHome').addClass("seleccionado");
 						jQuery('ul.navega').css('visibility','visible');
 						
 						key = 'own_nepes';
@@ -381,7 +381,7 @@ jQuery(document).ready(
 						
 					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-						jQuery('#navSignup').addClass("activo");
+						jQuery('#navSignup').addClass("seleccionado");
 						jQuery('ul.navega').css('visibility','visible');
 						
 						//get registro look
@@ -425,7 +425,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){ 
 						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
-						jQuery('#navHome').addClass("activo");
+						jQuery('#navHome').addClass("seleccionado");
 						jQuery('ul.navega').css('visibility','visible');
 
 						jQuery.dameLook('looks/administrar.html');
@@ -453,7 +453,7 @@ jQuery(document).ready(
 				});
 			break;		
 			case 'faq':
-				jQuery('#navFaq').addClass("activo");
+				jQuery('#navFaq').addClass("seleccionado");
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  

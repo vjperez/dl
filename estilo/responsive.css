@@ -1,26 +1,24 @@
 /*  responsive : comun  */
-/* color del side :  000, 00%   180, 50% */
 
-
+/* css variables, used on stylesheet with var() function */
 :root {
-  --navegafondocolor:      hsl(200, 100%,  50%);
-  --navegaletracolor:      hsl(000,  00%,  00%);
+  --navegafondocolor:      hsl(200, 100%,  50%); /* blue, all color, mid light (dont alter color with light) = blue 200 */
+  --navegaletracolor:      hsl(000, 100%,  00%); /* any color,  all color, no light  = black */
 
-  --navegafondocolorhover: hsl(000,  00%,  70%);
-  --navegaletracolorhover: hsl(000,  00%,  00%);
+  --navegafondocolorhover: hsl(200, 100%,  47%); /* blue, all color, little less than mid light = blue 200, but a little darker */
+  --navegaletracolorhover: hsl(000, 100%,  00%); /* any color,  all color, no light  = black */
 
-  --navegafondocoloractivo:hsl(000,  00%,  00%);
-  --navegaletracoloractivo:hsl(000, 100%, 100%);
+  --navegafondocolorseleccionado:hsl(000, 100%,  00%); /* any color, all color, no light   = black */
+  --navegaletracolorseleccionado:hsl(000, 100%, 100%); /* any color, all color, full light = white */
 
-  --negro:                 hsl(000,  00%,  00%);
-  --navegabordercolor:     hsl(000,  00%,  00%);
+  --navegabordercolor:     hsl(000, 100%,  00%); /* any color,  all color, no light  = black */
 }
 
 
 ul.navega { list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color:var(--navegafondocolor);  /* #e1eaea; */   
+  background-color:var(--navegafondocolor); 
   border-bottom:1px solid var(--navegabordercolor);
   overflow: auto; 
  }
@@ -32,8 +30,9 @@ ul.navega li a { display: block;
   float: none; 
  }
 
-ul.navega li a.activo {  background-color:var(--navegafondocoloractivo);  color:var(--navegaletracoloractivo); }     /* 0c6f10  #4CAF50;   */
-ul.navega li a:hover:not(.activo) {  background-color:var(--navegafondocolorhover); color:var(--navegaletracolorhover); }
+/* .seleccionado is added with js on getMainContenido, when button is pressed */
+ul.navega li a.seleccionado {  background-color:var(--navegafondocolorseleccionado);  color:var(--navegaletracolorseleccionado); }
+ul.navega li a:hover:not(.seleccionado) {  background-color:var(--navegafondocolorhover); color:var(--navegaletracolorhover); }
   
 /* profile red icons*/
 div#quien ul li i { font-size:25px; }
@@ -60,6 +59,7 @@ a:link, a:visited, a {  font-size: 1.10em;  letter-spacing:0.20em;  }
 ul.navega li a  { font-size: 0.85em;  letter-spacing:0.10em; }
 
 
+/* media query to apply css starting at 667 px */
 @media screen and (min-width: 667px) {
   ul.navega {  width: 100%;  height: auto;  position: relative;  }
   ul.navega li a {  float: left;  padding: 15px;  }
@@ -87,6 +87,7 @@ ul.navega li a  { font-size: 0.85em;  letter-spacing:0.10em; }
   ul.navega li a  { font-size: 0.85em;  letter-spacing:0.10em; }
 }
 
+/* media query to apply css starting at 1001 px */
 @media screen and (min-width: 1001px) {  
   body {  min-width:375px;  max-width:1024px;  margin:0px auto;  }
   body {  width:1000px;  min-height: 50em;  left:calc(0.5*(100% - 1000px));  border-right:1px solid var(--navegabordercolor); }
