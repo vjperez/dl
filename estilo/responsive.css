@@ -20,6 +20,7 @@ ul.navega { list-style-type: none;
   padding: 0;
   background-color:var(--navegafondocolor); 
   border-bottom:1px solid var(--navegabordercolor);
+  position: rexxlative;  widtxxh: 94%;  lxxeft: 3%;
   overflow: auto; 
  }
 ul.navega li a { display: block;
@@ -59,9 +60,9 @@ a:link, a:visited, a {  font-size: 1.10em;  letter-spacing:0.20em;  }
 ul.navega li a  { font-size: 0.85em;  letter-spacing:0.10em; }
 
 
-/* media query to apply css starting at 667 px */
-@media screen and (min-width: 667px) {
-  ul.navega {  width: 100%;  height: auto;  position: relative;  }
+/* media query to apply css starting at 768 px */
+@media screen and (min-width: 768px) {
+  ul.navega {  heixxxght: auto;  position: relative;  width: 100%;   left: 0%  }
   ul.navega li a {  float: left;  padding: 15px;  }
 
   /* profile red icons*/
@@ -87,9 +88,9 @@ ul.navega li a  { font-size: 0.85em;  letter-spacing:0.10em; }
   ul.navega li a  { font-size: 0.85em;  letter-spacing:0.10em; }
 }
 
-/* media query to apply css starting at 1001 px */
-@media screen and (min-width: 1001px) {  
-  body {  min-width:375px;  max-width:1024px;  margin:0px auto;  }
+/* media query to apply css starting at 1024 px */
+@media screen and (min-width: 1024px) {  
+  body {  min-width:375px;  max-width:1075px;  margin:0px auto;  }
   body {  width:1000px;  min-height: 50em;  left:calc(0.5*(100% - 1000px));  border-right:1px solid var(--navegabordercolor); }
 
   ul.navega {  width: 200px;  position: fixed; height: 100%;  border-right:1px solid var(--navegabordercolor); border-left:0px solid var(--navegabordercolor); }
@@ -121,3 +122,5 @@ ul.navega li a  { font-size: 0.85em;  letter-spacing:0.10em; }
 
   div#menuicons h1.menuHidableDriver{ display:none; }
 }
+
+/* media query to apply css starting at 1200 px - recommended */
