@@ -196,14 +196,14 @@ jQuery.isNepeIdOnOwnNepesSession = function(ownNepes, nepeIdTocheck){
 }
 
 jQuery.logout = function(){
-	jQuery.get('escritos/logout.php')
+	jQuery.get('escritos/dueno/logout.php')
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
 	});
-	//.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-	//	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-	//	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-	//	jQuery(window.location).attr('href', path); 
-	//}) 
 }
 
 
