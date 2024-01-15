@@ -3,10 +3,9 @@ require_once 'datosConectar.php';
 
 $cnx = pg_connect(HOST . PORT . DBNAME . USUARIO);
 if($cnx){
-	//echo "Conectado a $dbname en $host.";
+	//echo "Conectado a "  . DBNAME .  " en "  . HOST .  " !";
 }else{
-	throw new Exception('Sin coneccion a BASEDATOS en : ' . __FILE__ );
-	//echo "<li>Error conectando a $dbname en $host.</li>";
+	throw new Exception('Sin coneccion a '  .  DBNAME . ' en file: '  .  __FILE__  .  ' y compu '  .  HOST );
 }
 
 //YOU COULD INSTEAD SAY 
