@@ -60,13 +60,6 @@ jQuery(document).ready(
 					jQuery(window.location).attr('href', path); 
 				});
 
-				/*
-					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						if(settingsObjeto.url === 'looks/busca.html'){ // === means true without type coersion - the type and value most both be equal
-							//jQuery.handleSubmit();
-						} // if busca
-					}); //ajax
-				*/
 			break;
 			case 'opciones':
 				var key = 'dueno_id';
