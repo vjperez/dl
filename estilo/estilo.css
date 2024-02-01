@@ -10,7 +10,7 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
     --linkcolorhover:        hsl(120, 85%, 40%);
     --formfondocolor:        hsl(000, 00%, 98%);
     --formfondocolorhover:   hsl(000, 00%, 95%);
-    --labelyheadercolor:     hsl(200, 100%, 50%);
+    --labelyheadercolor:     hsl(200, 35%, 45%);
     --icolor:                hsl(120, 85%, 50%);
     --icolorcurrent:         hsl(120, 85%, 40%);
     --menuDrivercolor:       hsl(000, 00%, 00%);

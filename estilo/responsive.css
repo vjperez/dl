@@ -2,10 +2,10 @@
 
 /* css variables, used on stylesheet with var() function */
 :root {
-  --navegafondocolor:      hsl(200, 100%,  50%); /* blue, all color, mid light (dont alter color with light) = blue 200 */
+  --navegafondocolor:      hsl(200, 35%,  60%); 
   --navegaletracolor:      hsl(000, 100%,  00%); /* any color,  all color, no light  = black */
 
-  --navegafondocolorhover: hsl(200, 100%,  47%); /* blue, all color, little less than mid light = blue 200, but a little darker */
+  --navegafondocolorhover: hsl(200, 35%,  45%); 
   --navegaletracolorhover: hsl(000, 100%,  00%); /* any color,  all color, no light  = black */
 
   --navegafondocolorseleccionado:hsl(000, 100%,  00%); /* any color, all color, no light   = black */
