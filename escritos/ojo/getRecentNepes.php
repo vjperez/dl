@@ -1,5 +1,5 @@
 <?php 
-require_once '../../escritos/configConstants/constants.php';
+require_once '../configConstants/constants.php';
 
 //conecta al db
 require_once  MAQUINA_PATH . SITE_PATH_APPEND  . 'escritos/conecta/conecta.php';
