@@ -1,6 +1,4 @@
 <?php 
-require_once '../configConstants/constants.php';
-
 //conecta al db
 require_once  MAQUINA_PATH . SITE_PATH_APPEND  . 'escritos/conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
