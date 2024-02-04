@@ -6,7 +6,7 @@ require_once  MAQUINA_PATH . SITE_PATH_APPEND  . 'escritos/conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
 require_once 'getRecentNepes/getRecentNepesQuery.php';
-$recurso = pg_query($cnx, $getRecentNepesQuery);
+$recurso = pg_execute($cnx, "preparadoQueryGetRecentNepes", array(INTERVALO_DIAS) );
 
 if($recurso){
 	$nepes = array();
@@ -40,6 +40,6 @@ if($recurso){
     echo json_encode($nepes);
 }else{
     pg_close($cnx);
-    throw new Exception('Mal query.  Sin RECURSO para getRecentNepesQuery en: ' . __FILE__  );
+    throw new Exception('Mal query.  Sin RECURSO para preparadoQueryGetRecentNepes en: ' . __FILE__  );
 }
 ?>
