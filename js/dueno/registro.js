@@ -24,7 +24,7 @@ jQuery('form#registroForm').submit(function(evento){
             }catch(errorParseo){
 				//alert('errorParseo message: ' + errorParseo.message);
                 var datosJSONStrAsXHRTexto = datosJSONStr;
-                var textoEstatus = 'Error parseando la siguiente respuesta del server en escritorios/dueno/creaDueno.php :<br> Mensaje: ' + errorParseo.message + '</b>';
+                var textoEstatus = 'Error parseando la siguiente respuesta del server en escritorios/dueno/creaDueno.php :<br> Mensaje: ' + errorParseo.message;
                 var elError = errorParseo.name;
                 
                 var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); 
