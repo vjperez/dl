@@ -25,9 +25,9 @@ jQuery.getRecentNepes = function(){
 		jQuery('#footer').css('visibility','visible');
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-		jQuery(window.location).attr('href', path); 
+		var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+        var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+        jQuery(window.location).attr('href', path); 
 	});
 		
 }
