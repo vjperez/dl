@@ -51,9 +51,9 @@ jQuery('form#editClaveForm').submit(function(evento){
             }
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-            var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-            var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-            jQuery(window.location).attr('href', path); 
+            var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+            var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+            jQuery(window.location).attr('href', path);
         });
     }
 }); // editClaveForm submit
@@ -93,9 +93,9 @@ jQuery('form#editContactosForm').submit(function(evento){
 		}
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-		jQuery(window.location).attr('href', path); 
+		var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+        jQuery(window.location).attr('href', path);
 	});
     
 }); // editContactosForm submit
@@ -114,9 +114,9 @@ jQuery.ajax({
 	usuario = dato; // this value is also used on forms submit
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-	jQuery(window.location).attr('href', path);
+	 var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+     var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+     jQuery(window.location).attr('href', path);
 });
 
 
@@ -136,9 +136,9 @@ jQuery.ajax({
 	jQuery('form#labelTableContainerForm table').html( elTable );
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-	jQuery(window.location).attr('href', path); 
+	var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+    var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+    jQuery(window.location).attr('href', path);
 });
 
 
@@ -156,9 +156,9 @@ jQuery.ajax({
 	});
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-	jQuery(window.location).attr('href', path);
+	var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+    var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+    jQuery(window.location).attr('href', path);
 });
 
 jQuery.hideThemSections();

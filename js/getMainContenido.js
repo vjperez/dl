@@ -197,9 +197,9 @@ jQuery(document).ready(
 					}
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+					jQuery(window.location).attr('href', path);
 				});			
 			break;
 			case 'home':
@@ -231,9 +231,9 @@ jQuery(document).ready(
 					}
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+					jQuery(window.location).attr('href', path);
 				});
 
 			break;			
@@ -381,10 +381,10 @@ jQuery(document).ready(
 						jQuery.dameLook('looks/registro.html');
 					}
 				})
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
+				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){ 
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+                    var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+                    jQuery(window.location).attr('href', path);
 				});
 			break;	
 			case 'recentNepes':
