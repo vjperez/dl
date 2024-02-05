@@ -21,10 +21,10 @@ jQuery('form#registroForm').submit(function(evento){
             try{
                 //alert('datosJSONStr: ' + datosJSONStr);
                 datosJSObj = JSON.parse(datosJSONStr);
-                //alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
             }catch(errorParseo){
+				//alert('errorParseo message: ' + errorParseo.message);
                 var datosJSONStrAsXHRTexto = datosJSONStr;
-                var textoEstatus = 'Error parseando la siguiente respuesta del server en escritorios/dueno/creaDueno.php :<br> Mensaje: ' + errorParseo.message;
+                var textoEstatus = 'Error parseando la siguiente respuesta del server en escritorios/dueno/creaDueno.php :<br> Mensaje: ' + errorParseo.message + '</b>';
                 var elError = errorParseo.name;
                 
                 var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); 
@@ -37,8 +37,8 @@ jQuery('form#registroForm').submit(function(evento){
             }
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-            var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-            var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+            var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+            var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
             jQuery(window.location).attr('href', path); 
         });
     }

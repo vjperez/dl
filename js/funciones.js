@@ -62,13 +62,13 @@ jQuery.isNotVacioStr = function(str){
 }
 
 
-jQuery.encodeAndGetErrorPath = function(xhrObjetoForFAILTexto, textoEstatus, elError){
+jQuery.encodeAndGetErrorPath = function(xhrObjetoForFAILString, textoEstatus, elError){
 	if(DEBUGUEO){
-		xhrObjetoForFAILTexto     = encodeURIComponent( xhrObjetoForFAILTexto );
+		xhrObjetoForFAILString    = encodeURIComponent( xhrObjetoForFAILString );
 		textoEstatus              = encodeURIComponent( textoEstatus );
 		elError                   = encodeURIComponent( elError );
 		var path  = window.location.pathname + '?look=' + 'error' 
-				+ '&xhrObjetoForFAILTexto=' + xhrObjetoForFAILTexto 
+				+ '&xhrObjetoForFAILString=' + xhrObjetoForFAILString 
 				+ '&textoEstatus=' + textoEstatus 
 				+ '&elError=' + elError;
 	}else{
@@ -200,8 +200,8 @@ jQuery.logout = function(){
 	.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+		var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 		jQuery(window.location).attr('href', path); 
 	});
 }

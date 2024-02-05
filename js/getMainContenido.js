@@ -503,16 +503,16 @@ jQuery(document).ready(
 				});
 				
 				if(DEBUGUEO){
-					var xhrObjetoForFAILTexto = decodeURIComponent (jQuery.urlParametro('xhrObjetoForFAILTexto'));
-					var textoEstatus          = decodeURIComponent (jQuery.urlParametro('textoEstatus'));
-					var elError               = decodeURIComponent (jQuery.urlParametro('elError'));
+					var xhrObjetoForFAILString = decodeURIComponent (jQuery.urlParametro('xhrObjetoForFAILString'));
+					var textoEstatus           = decodeURIComponent (jQuery.urlParametro('textoEstatus'));
+					var elError                = decodeURIComponent (jQuery.urlParametro('elError'));
 					
 					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 						//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
 						//This code runs when get isCompleted and IF the get was requesting error.html
 						if(settingsObjeto.url === 'looks/error.html'){ // === means true without type coersion - the type and value most both be equal
 							//when ajax complete ; 
-							jQuery.appendDebugErrors( xhrObjetoForFAILTexto, textoEstatus, elError );  
+							jQuery.appendDebugErrors( xhrObjetoForFAILString, textoEstatus, elError );  
 							jQuery('#footer').css('visibility','visible');
 						}//if
 					}); //ajax complete
