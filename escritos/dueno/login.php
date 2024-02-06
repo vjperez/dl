@@ -26,12 +26,12 @@ if($recurso){
 				throw new Exception('Mal query.  Sin RECURSO, para preparadoQueryLastLog en :' . __FILE__ );
 			}
 		}else{	// pass incorrecto
-			$respuesta = json_decode('{"logueado":false}');
+			$respuesta = json_decode('{"logueado":false,  "feedback":"Trata otra vez"}');
 			pg_close($cnx);
 			echo json_encode ($respuesta);	
 		}
 	}else{	// cheo no existe
-		$respuesta = json_decode('{"logueado":false}');
+		$respuesta = json_decode('{"logueado":false,  "feedback":"Trata otra vez"}');
 		pg_close($cnx);
 		echo json_encode ($respuesta);
 	}	

@@ -9,7 +9,6 @@ jQuery('form#registroForm').submit(function(evento){
             //el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
             //Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
             try{
-                //alert('datosJSONStr: ' + datosJSONStr);
                 datosJSObj = JSON.parse(datosJSONStr);
             }catch(errorParseo){
                 var datosJSONStrAsXHRTexto = datosJSONStr;
