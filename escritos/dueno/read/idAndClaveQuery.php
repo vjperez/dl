@@ -1,5 +1,6 @@
 <?php
-// sacando el id primero y despues seteando last log usando id 
+// sacando el id y clave usando id
+//despues se setea last log usando id 
 
 $queryIdAndClave = "SELECT id, clave
 FROM dueno
