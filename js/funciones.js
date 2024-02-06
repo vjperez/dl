@@ -2,6 +2,49 @@ const DEBUGUEO = true;
 const MINIMUM_USER_PASS_LENGTH = 4;
 const MINIMUM_USER_NAME_LENGTH = 3;
 
+
+jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatElement){
+	//Esta funcion la usan login y registra
+	//para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.
+	// 1)lenght >= 3o4; 2)only numbers or letters  @ . _  - +   ; 3)both pass are equal;
+	usertbCheck = usertb.replace(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi, '');  // escaping dot and minus;  JavaScript is a case-sensitive language
+	pass01Check = pass01.replace(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi, '');
+	pass02Check = pass02.replace(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi, '');
+	if(usertb.length < MINIMUM_USER_NAME_LENGTH || pass01.length < MINIMUM_USER_PASS_LENGTH || pass02.length < MINIMUM_USER_PASS_LENGTH){
+		if(feedbackType.indexOf('fullFeedback') !== -1){
+			jQuery.feedback(whatElement, "Username o contrase\u00f1a es muy corto.");
+		}else{ // if(feedbackType.indexOf('genericFeedback') !== -1){
+			jQuery.feedback(whatElement, 'Trata otra vez.');
+		}
+		return false;
+	}else if(usertbCheck.length < usertb.length  ||  pass01Check.length < pass01.length ||  pass02Check.length < pass02.length){
+		if(feedbackType.indexOf('fullFeedback') !== -1){
+			jQuery.feedback(whatElement, 'Usa solo letras, numeros y @ . _ - + ');
+		}else{ // if(feedbackType.indexOf('genericFeedback') !== -1){
+			jQuery.feedback(whatElement, 'Trata otra vez.');
+		}
+		return false;
+	}else if(pass01 !== pass02){  //same type, same value, no type conversion, case sensitive
+		if(feedbackType.indexOf('fullFeedback') !== -1){
+			jQuery.feedback(whatElement, 'Las contrase\u00f1as son diferentes.');
+		}else  // if(feedbackType.indexOf('genericFeedback') !== -1){
+			jQuery.feedback(whatElement, 'Trata otra vez.');
+		}
+		return false;
+	}else{
+		return true;
+	}
+}
+
+jQuery.feedback = function(queElemento, mensaje, forma){
+	jQuery(queElemento).text(mensaje);
+	if(forma === 'downdelayup') {
+		jQuery(queElemento).slideDown(500).delay(1000).slideUp(2000);
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 jQuery.dameLook = function(pageName){
 	jQuery.get(pageName, function(datosDeRespuesta, estatus, xhrObjeto){
 		//console.log(datosDeRespuesta);
@@ -78,16 +121,6 @@ jQuery.encodeAndGetErrorPath = function(xhrObjetoForFAILString, textoEstatus, el
 }
 
 
-jQuery.feedback = function(elementoDonde, mensaje, forma){
-	if(forma === 'downdelayup') {
-		jQuery(elementoDonde).text(mensaje);
-		jQuery(elementoDonde).slideDown(500).delay(1000).slideUp(2000);
-	}
-	else jQuery(elementoDonde).text(mensaje);
-}
-
-
-
 jQuery(document).on('click', '.notHidable', function(evento){
 	if (jQuery(evento.currentTarget).next('.hidable').is(':visible')) {
 
@@ -149,42 +182,6 @@ jQuery(window).on( 'resize',
 		if(jQuery(window).width() * window.devicePixelRatio >= 984){   jQuery.showMenu();   }
   	}
 );
-
-
-
-jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatElement){
-	//Esta funcion la usan login y registra
-	//para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.
-	//Chequear Usuario repetido requiere hacer el post, pq requiere info de database.
-	// 1)lenght >= 4; 2)only numbers or letters  _ y -; 3)both pass are equal; se puede chequear antes del post
-	usertbCheck = usertb.replace(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi, '');  // escaping dot and minus;  JavaScript is a case-sensitive language
-	pass01Check = pass01.replace(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi, '');
-	pass02Check = pass02.replace(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi, '');
-	if(usertb.length < MINIMUM_USER_NAME_LENGTH || pass01.length < MINIMUM_USER_PASS_LENGTH || pass02.length < MINIMUM_USER_PASS_LENGTH){
-		if(feedbackType.indexOf('fullFeedback') !== -1){
-			jQuery.feedback(whatElement, "Username o contrase\u00f1a es muy corto.");
-		}else if(feedbackType.indexOf('genericFeedback') !== -1){
-			jQuery.feedback(whatElement, 'Trata otra vez.');
-		}
-		return false;
-	}else if(usertbCheck.length < usertb.length  ||  pass01Check.length < pass01.length ||  pass02Check.length < pass02.length){
-		if(feedbackType.indexOf('fullFeedback') !== -1){
-			jQuery.feedback(whatElement, 'Usa solo letras, numeros y @ . _ - + ');
-		}else if(feedbackType.indexOf('genericFeedback') !== -1){
-			jQuery.feedback(whatElement, 'Trata otra vez.');
-		}
-		return false;
-	}else if(pass01 !== pass02){  //same type, same value, no type conversion, case sensitive
-		if(feedbackType.indexOf('fullFeedback') !== -1){
-			jQuery.feedback(whatElement, 'Las contrase\u00f1as son diferentes.');
-		}else if(feedbackType.indexOf('genericFeedback') !== -1){
-			jQuery.feedback(whatElement, 'Trata otra vez.');
-		}
-		return false;
-	}else{
-		return true;
-	}
-}
 
 
 jQuery.isNepeIdOnOwnNepesSession = function(ownNepes, nepeIdTocheck){
