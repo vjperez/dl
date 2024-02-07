@@ -1,4 +1,5 @@
 <?php
+//update clave using id
 $queryClave = "UPDATE 
 	dueno
 SET clave = $1

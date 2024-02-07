@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if(isset($_SESSION['dueno_id'])){
 	if(isset( $_POST['userNumber'] )){
@@ -16,7 +15,10 @@ if(isset($_SESSION['dueno_id'])){
 	
 	require_once 'update/claveQuery.php';
 	$recurso = pg_execute($cnx, "preparadoQueryClave", array($hashed_pass01, $dueno_to_edit));
-	if($recurso){		 
+	if($recurso){
+		//consider not allowing admin to change other user's clave. The following if else-if structure would be unnecessary. Just use activo flag
+		//when user editing own clave, affected rows MUST always == 1
+		//when admin editing other user's clave, affected rows will be zero for a user that do not exist
 		if(pg_affected_rows($recurso) == 1){
 			$respuesta = json_decode('{"editado":true}');
 			pg_close($cnx);
