@@ -57,6 +57,10 @@ jQuery.ajax({
     jQuery(window.location).attr('href', path);
 });
 
+
+jQuery.hideThemSections();
+
+
 jQuery('form#editClaveForm').submit(function(evento){
     evento.preventDefault(); //not making a submit (POST request) from html action.
     var user = 'valorDummy';
@@ -75,7 +79,6 @@ jQuery('form#editClaveForm').submit(function(evento){
                 var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError);
                 jQuery(window.location).attr('href', path);			
             }
-			
             if(datosJSObj.editado){
 				var feedback = 'Clave de ' + usuario + ', fue editada.'; 
 				jQuery.feedback('form#editClaveForm h3.feedback', feedback);
@@ -110,7 +113,6 @@ jQuery('form#editContactosForm').submit(function(evento){
 			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError);
 			jQuery(window.location).attr('href', path);			
 		}
-		
 		if(datosJSObj.editados){
 			var feedback = usuario + ' tus contactos fueron editados.'; 
 			jQuery.feedback('form#editContactosForm h3.feedback', feedback);
@@ -141,5 +143,4 @@ jQuery('div#labelTableContainer :button').click(function(){
     jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
 });
 
-jQuery.hideThemSections();
 jQuery('#footer').css('visibility','visible');
