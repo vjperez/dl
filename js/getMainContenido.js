@@ -52,7 +52,7 @@ jQuery(document).ready(
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					jQuery('ul.navega').css('visibility','visible');
-					jQuery.dameLook('looks/busca.html');
+					jQuery.lookYelScript('looks/busca.html');
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
@@ -183,17 +183,7 @@ jQuery(document).ready(
 						jQuery('ul.navega').css('visibility','visible');
 						
 						//get login look
-						jQuery.dameLook('looks/login.html');
-					/*
-						//once look is in, use jQuery on loaded elements to get values
-						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-							//This code runs when get isCompleted and IF the get was requesting login.html
-							if(settingsObjeto.url === 'looks/login.html'){
-								//when ajax complete ; handle form submit and make post
-									//event handlers on login js
-							}//if
-						});//ajax complete
-					*/
+						jQuery.lookYelScript('looks/login.html');
 					}
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -378,7 +368,7 @@ jQuery(document).ready(
 						jQuery('ul.navega').css('visibility','visible');
 						
 						//get registro look
-						jQuery.dameLook('looks/registro.html');
+						jQuery.lookYelScript('looks/registro.html');
 					}
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){ 
