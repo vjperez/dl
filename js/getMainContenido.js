@@ -16,8 +16,8 @@ jQuery(document).ready(
 					else             {   }
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 					jQuery(window.location).attr('href', path);
 				});				
 			break;
@@ -31,8 +31,8 @@ jQuery(document).ready(
 					else             {   }
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 					jQuery(window.location).attr('href', path);
 				});				
 			break;
@@ -55,8 +55,8 @@ jQuery(document).ready(
 					jQuery.lookYelScript('looks/busca.html');
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
 
@@ -71,8 +71,8 @@ jQuery(document).ready(
 					jQuery('ul.navega').css('visibility','visible');
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
 			//This look completely depends on the amount of options to be presented.  It doesn't make
@@ -113,8 +113,8 @@ jQuery(document).ready(
 					}
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
 			break;
@@ -128,8 +128,8 @@ jQuery(document).ready(
 					jQuery('ul.navega').css('visibility','visible');
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
 
@@ -149,8 +149,8 @@ jQuery(document).ready(
 						}); //ajax
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
 				
@@ -164,19 +164,7 @@ jQuery(document).ready(
 				
 					if(datos.isSet){  
 						//1) redirect to home, when already logged
-						jQuery(window.location).attr('href', window.location.pathname + '?look=home');
-						//2) redirect to error, when already logged
-						
-						//jQuery('#navSignup').hide();
-						
-						
-						//var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-						//var textoEstatus = 'Error, usuario solicito login look, estando logueado.';
-						//var elError = 'Error humano.';
-
-						//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError);
-						//jQuery(window.location).attr('href', path);	
-						
+						jQuery(window.location).attr('href', window.location.pathname + '?look=home');	
 					}else{
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 						jQuery('#navLogin').addClass("seleccionado");
@@ -255,8 +243,8 @@ jQuery(document).ready(
 					}
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});		
 			break;
@@ -295,8 +283,8 @@ jQuery(document).ready(
 											});//ajaxComplete
 										})
 										.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-											var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-											var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+											var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+											var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 											jQuery(window.location).attr('href', path); 
 										});
 									}else{
@@ -309,8 +297,8 @@ jQuery(document).ready(
 									}
 								})
 								.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-									var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-									var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+									var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+									var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 									jQuery(window.location).attr('href', path); 
 								});
 							}else{  
@@ -323,8 +311,8 @@ jQuery(document).ready(
 							}
 						})
 						.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-							var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-							var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+							var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+							var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 							jQuery(window.location).attr('href', path); 
 						});
 					}else{  
@@ -337,8 +325,8 @@ jQuery(document).ready(
 					}
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
 			break;			
@@ -349,19 +337,7 @@ jQuery(document).ready(
 					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
 					if(datos.isSet){
 						//1) redirect to home, when already logged
-						jQuery(window.location).attr('href', window.location.pathname + '?look=home');
-						//2) redirect to error look, when logged 
-						
-						//jQuery('#navLogin').hide();
-						
-						
-						//var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-						//var textoEstatus = 'Error, usuario solicito registro look, estando logueado.';
-						//var elError = 'Error humano.';
-
-						//var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-						//jQuery(window.location).attr('href', path);	
-						
+						jQuery(window.location).attr('href', window.location.pathname + '?look=home');	
 					}else{ 
 						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
 						jQuery('#navSignup').addClass("seleccionado");
@@ -386,20 +362,13 @@ jQuery(document).ready(
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					jQuery('ul.navega').css('visibility','visible');
 
-					jQuery.dameLook('looks/recentNepes.html');
+					jQuery.lookYelScript('looks/recentNepes.html');
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
-		
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
-					if(settingsObjeto.url === 'looks/recentNepes.html'){ // === means true without type coersion - the type and value most both be equal
-						jQuery.getRecentNepes();
-					}//if
-				}); //ajax complete
 			break;			
 			case 'administrar':
 				var key = 'dueno_id';
@@ -430,8 +399,8 @@ jQuery(document).ready(
 					}
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
 			break;		
@@ -448,8 +417,8 @@ jQuery(document).ready(
 					jQuery.dameLook('looks/faq.html');
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
 
@@ -474,8 +443,8 @@ jQuery(document).ready(
 					jQuery.dameLook('looks/nada.html');
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 					jQuery(window.location).attr('href', path); 
 				});
 
@@ -489,7 +458,7 @@ jQuery(document).ready(
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					jQuery('ul.navega').css('visibility','visible');
 				
-					jQuery.dameLook('looks/error.html');
+					jQuery.lookYelScript('looks/error.html');
 				});
 				
 				if(DEBUGUEO){
