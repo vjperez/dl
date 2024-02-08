@@ -1,4 +1,4 @@
-var usuario = "";
+var usuario = ""; // this value is used for feedback on forms submit
 ////////////////////////////////////// ajax to populate home page /////////////////////////////////
 jQuery.ajax({
 	//cache: false,
@@ -6,8 +6,8 @@ jQuery.ajax({
 	dataType: "json"
 })
 .done(function(dato, estatusForDONE, xhrObjetoForDONE){
-	jQuery('form#labelTableContainerForm label').html( 'Negocios de ' + dato );
-	usuario = dato; // this value is also used on forms submit
+	jQuery('div#labelTableContainer label').html( 'Negocios de ' + dato );
+	usuario = dato;
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 	 var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
@@ -29,7 +29,7 @@ jQuery.ajax({
 		+ '&nepeId=' + datos[index].nepeId  + '">'
 		+ datos[index].nepeNombre + '</a></td></tr>';
 	});	
-	jQuery('form#labelTableContainerForm table').html( elTable );
+	jQuery('div#labelTableContainer table').html( elTable );
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 	var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
