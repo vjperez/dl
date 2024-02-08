@@ -43,19 +43,16 @@ jQuery.feedback = function(queElemento, mensaje, forma){
 	}
 }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-jQuery.dameLook = function(pageName){
+jQuery.lookYelScript = function(pageName){
 	jQuery.get(pageName, function(datosDeRespuesta, estatus, xhrObjeto){
-		//console.log(datosDeRespuesta);
-		var elMain = jQuery(datosDeRespuesta).filter('#main');
- 		//console.log(mainDeBusca);
-		 
+		var elMain     = jQuery(datosDeRespuesta).filter('#main');
 		jQuery('#containerForMain').html(elMain);
+		var scriptPath = jQuery('script#elscript').attr('src');
+		console.log('path: ' + scriptPath);
+		jQuery.getScript(scriptPath);
 	});	
 }
-
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 jQuery.cleanStr = function(str, patron){
 	//patron comes mainly from crea y update nepe, y busca
 	str = str.replace(patron, '*'); 				
@@ -70,10 +67,7 @@ jQuery.cleanStr = function(str, patron){
 	}
 	return cleanedstr;
 }
-
-
-
-///////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
