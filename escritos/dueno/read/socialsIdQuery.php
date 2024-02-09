@@ -1,5 +1,5 @@
 <?php
-//query to find out if certain type of social exist for a dueno
+//query to find out (read) if for a dueno, certain type of social contact exists
 $querySocialsId = "SELECT 
 	id
 FROM social
