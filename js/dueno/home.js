@@ -57,8 +57,8 @@ jQuery.ajax({
     jQuery(window.location).attr('href', path);
 });
 
-
 jQuery.hideThemSections();
+
 
 
 jQuery('form#editClaveForm').submit(function(evento){

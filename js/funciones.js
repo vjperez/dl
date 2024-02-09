@@ -43,12 +43,10 @@ jQuery.feedback = function(queElemento, mensaje, forma){
 	}
 }
 
-jQuery.lookYelScript = function(pageName){
+jQuery.lookYelScript = function(pageName, scriptPath){
 	jQuery.get(pageName, function(datosDeRespuesta, estatus, xhrObjeto){
 		var elMain     = jQuery(datosDeRespuesta).filter('#main');
 		jQuery('#containerForMain').html(elMain);
-		var scriptPath = jQuery('script#elscript').attr('src');
-		console.log('path: ' + scriptPath);
 		jQuery.getScript(scriptPath);
 	});	
 }
