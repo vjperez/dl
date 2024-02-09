@@ -7,9 +7,9 @@ jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatEl
 	//Esta funcion la usan login y registra
 	//para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.
 	// 1)lenght >= 3o4; 2)only numbers or letters  @ . _  - +   ; 3)both pass are equal;
-	usertbCheck = usertb.replace(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi, '');  // escaping dot and minus;  JavaScript is a case-sensitive language
-	pass01Check = pass01.replace(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi, '');
-	pass02Check = pass02.replace(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi, '');
+	usertbCheck = usertb.replace(/[^a-z0-9ñüàáèéìíòóùú@\._+-]/gi, '');  // escaping dot with \; g for 'dont stop at first match, find all'; i for case insensitive 
+	pass01Check = pass01.replace(/[^a-z0-9ñüàáèéìíòóùú@\._+-]/gi, '');
+	pass02Check = pass02.replace(/[^a-z0-9ñüàáèéìíòóùú@\._+-]/gi, '');
 	if(usertb.length < MINIMUM_USER_NAME_LENGTH || pass01.length < MINIMUM_USER_PASS_LENGTH || pass02.length < MINIMUM_USER_PASS_LENGTH){
 		if(feedbackType.indexOf('fullFeedback') !== -1){
 			jQuery.feedback(whatElement, "Username o contrase\u00f1a es muy corto.");
@@ -56,13 +56,15 @@ jQuery.lookYelScript = function(pageName, scriptPath){
 jQuery.cleanStr = function(str, patron){
 	//patron comes mainly from crea y update nepe, y busca
 	str = str.replace(patron, '*'); 				
-	strGoodPartsArray = str.split('*');
+	strComponentsArray = str.split('*');
 	cleanedstr = '';
-	for(var i=0; i < strGoodPartsArray.length; i++){
-		//alert('parte de strGoodPartsArray=[' + strGoodPartsArray[i]  + ']');
-		if (strGoodPartsArray[i] !== '') {
+	for(var i=0; i < strComponentsArray.length; i++){
+		//alert('parte de strComponentsArray=[' + strComponentsArray[i]  + ']');
+		if (strComponentsArray[i] !== '') {
+			//strComponent will be '' in these situations: before delimiter on first position
+			//after delimiter in last position, between 
 			if(cleanedstr !== ''){cleanedstr += ' ';} //the first time, dont run this line of code, simply add the 'word', other times add a ' ' before the word as delimiter
-			cleanedstr += strGoodPartsArray[i];
+			cleanedstr += strComponentsArray[i];
 		}
 	}
 	return cleanedstr;
