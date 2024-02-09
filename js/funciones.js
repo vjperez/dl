@@ -51,8 +51,6 @@ jQuery.lookYelScript = function(pageName, scriptPath){
 	});	
 }
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 jQuery.cleanStr = function(str, patron){
 	//function will convert a string like   !@uno#$dos&(   into   uno dos
 	//when patron is RegExp(/[^a-z0-9ñüàáèéìíòóùú]/gi)
@@ -80,7 +78,7 @@ jQuery.cleanStr = function(str, patron){
 
 
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //extracs parameters from the url
 jQuery.urlParametro = function(name){
 	var str = window.location.href;
