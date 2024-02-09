@@ -113,15 +113,9 @@ jQuery('form#editContactosForm').submit(function(evento){
 			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError);
 			jQuery(window.location).attr('href', path);			
 		}
-		if(datosJSObj.editados){
-			var feedback = usuario + ' tus contactos fueron editados.'; 
-			jQuery.feedback('form#editContactosForm h3.feedback', feedback);
-		}else if(datosJSObj.creados){
-			var feedback = usuario + ' tus contactos fueron creados.'; 
-			jQuery.feedback('form#editContactosForm h3.feedback', feedback);
-		}else{
-			var feedback = 'Trata otra vez, ' + usuario + '.';
-			jQuery.feedback('form#editContactosForm h3.feedback', feedback);
+		if(datosJSObj.actualizados){
+			var feedbackStr = usuario + ', ' + datosJSObj.feedback; 
+			jQuery.feedback('form#editContactosForm h3.feedback', feedbackStr);
 		}
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){

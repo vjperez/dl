@@ -54,7 +54,7 @@ if(isset($_SESSION['dueno_id'])){
 		}
 	$index++;
 	}// while
-	$respuesta = json_decode('{"editados":true, "feedback":"Tus socials fueron actualizados."}');
+	$respuesta = json_decode('{"actualizados":true, "feedback":"Tus socials fueron actualizados."}');
 	pg_close($cnx);
 	echo json_encode ($respuesta);
 }else{
