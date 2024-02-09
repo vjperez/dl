@@ -52,7 +52,7 @@ jQuery(document).ready(
 					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					jQuery('ul.navega').css('visibility','visible');
-					jQuery.lookYelScript('looks/busca.html');
+					jQuery.lookYelScript('looks/busca.html', 'js/busca.js');
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
