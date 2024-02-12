@@ -76,6 +76,18 @@ jQuery.cleanStr = function(str, patron){
 	return cleanedstr;
 }
 
+jQuery.hideThemSections = function(){
+	jQuery('.notHidable').next('.hidable').hide();
+	jQuery('.notHidable').find('.fa-chevron-circle-up').hide();
+	jQuery('.notHidable').find('.fa-chevron-circle-down').show();
+}
+
+jQuery.showThemSections = function(){
+	jQuery('.notHidable').next('.hidable').show();
+	jQuery('.notHidable').find('.fa-chevron-circle-down').hide();
+	jQuery('.notHidable').find('.fa-chevron-circle-up').show();
+}
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -138,20 +150,6 @@ jQuery(document).on('click', '.notHidable', function(evento){
 		jQuery(evento.currentTarget).find('.fa-chevron-circle-up').show();
 	}
 });
-
-
-jQuery.hideThemSections = function(){
-	jQuery('.notHidable').next('.hidable').hide();
-	jQuery('.notHidable').find('.fa-chevron-circle-up').hide();
-	jQuery('.notHidable').find('.fa-chevron-circle-down').show();
-}
-
-jQuery.showThemSections = function(){
-	jQuery('.notHidable').next('.hidable').show();
-	jQuery('.notHidable').find('.fa-chevron-circle-down').hide();
-	jQuery('.notHidable').find('.fa-chevron-circle-up').show();
-}
-
 
 
 jQuery(document).on('click', '.menuHidableDriver', function(evento){
