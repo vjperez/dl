@@ -88,24 +88,21 @@ jQuery.showThemSections = function(){
 	jQuery('.notHidable').find('.fa-chevron-circle-up').show();
 }
 
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //extracs parameters from the url
 jQuery.urlParametro = function(name){
 	var str = window.location.href;
 	var patron = new RegExp('[\?&]' + name + '=([^&#]*)');
 	var results = patron.exec(str);  //searches str for a pattern described in patron
-	//results is an array, contains NJLL when name=" " is not found on str. 
-    //otherwise results[0] contains name=" ", and 
-	//          results[1] contains the " " after the = sign and before  ? or &	
+	//results is an array, contains NULL when name=" " is not found on str. 
+    //otherwise results[0] contains name=" ", a match with the entire reg exp 
+	//          results[1] contains a match with the group defined between () after the = sign on the regExp.  Search for 'javascript regex groups' 
 	if(results === null) return null;
 	else return results[1];
 	//return results[1] || 0;
 }
 
 
-
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 jQuery.isVacioStr = function(str){
