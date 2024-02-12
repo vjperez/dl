@@ -11,7 +11,7 @@ if(isset($_SESSION['dueno_id'])){
 	require_once '../conecta/conecta.php';
 	//i am sure i have a connection, because an exception was NOT thrown at conecta
 
-	require_once 'read/nepesWithIdsQuery.php';
+	require_once 'read/ownNepesWithIdsQuery.php';
 	$recurso = pg_execute($cnx, "preparadoQueryNepesWithIds", array($dueno_to_query));
 	if($recurso){
 		$ownNepes = array();	// to store this user's nepe ids
