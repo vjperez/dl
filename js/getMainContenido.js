@@ -171,7 +171,7 @@ jQuery(document).ready(
 						jQuery('ul.navega').css('visibility','visible');
 						
 						//get login look
-						jQuery.lookYelScript('looks/login.html');
+						jQuery.lookYelScript('looks/login.html', 'js/dueno/login.js');
 					}
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -190,7 +190,7 @@ jQuery(document).ready(
 						jQuery('#navHome').addClass("seleccionado");
 						jQuery('ul.navega').css('visibility','visible');
 						
-						jQuery.lookYelScript('looks/home.html');
+						jQuery.lookYelScript('looks/home.html', 'js/dueno/home.js');
 					}else{
 						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 						var textoEstatus = 'Error, usuario solicito home look, sin estar logueado.';
@@ -336,7 +336,7 @@ jQuery(document).ready(
 						jQuery('ul.navega').css('visibility','visible');
 						
 						//get registro look
-						jQuery.lookYelScript('looks/registro.html');
+						jQuery.lookYelScript('looks/registro.html', 'js/dueno/registro.js');
 					}
 				})
 				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){ 
