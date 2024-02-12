@@ -1,5 +1,5 @@
 <?php
-
+//joins dueno dueno_nepe and nepe to get nepe info for a given dueno id
 $queryNepesWithIds = "SELECT 
     nepe.id, nepe.nombre 
 FROM dueno 
