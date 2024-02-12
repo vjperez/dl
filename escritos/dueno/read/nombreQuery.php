@@ -1,4 +1,5 @@
 <?php
+//get nombre using id
 $queryNombre = "SELECT
     nombre
 FROM dueno 
