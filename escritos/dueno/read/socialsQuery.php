@@ -1,4 +1,5 @@
 <?php
+//join dueno and social to get tipo and hangle using id
 $querySocials = "SELECT
     tipo, handle
 FROM dueno 

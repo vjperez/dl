@@ -1,4 +1,5 @@
 <?php
+//gets all social for a given dueno_id
 session_start();
 if(isset($_SESSION['dueno_id'])){
 	$dueno = $_SESSION['dueno_id'];
@@ -18,7 +19,7 @@ if(isset($_SESSION['dueno_id'])){
 		pg_close($cnx);
 		echo json_encode($losSocials);
 	}else{
-		pg_close($cnx); //maybe not needed but doesn't hurt
+		pg_close($cnx);
 		throw new Exception('Mal query.  Sin RECURSO para preparadoQuerySocials en: ' . __FILE__  );
 	}
 }else{
