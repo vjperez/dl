@@ -12,43 +12,36 @@
  
     <div id="creaNepeTitulo" class="">
 		<h2 class="notHidable">Negocio Nuevo</h2>
-		<label class="explica">Registrando!</label>	
+		<label class="explica">Registrando!</label>
 	</div><!-- creaNepe -->
  	<form id="creaNepeForm" class="" action="XXXeditcuenta.phpXXX" enctype="multipart/form-data" method="post">
-
  	    <fieldset class="notHidable">
  	    	<label>Nombre   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down">   </i>   </label>
  	    	<label class="explica">Nombre de tu Negocio</label>
 			<label class="explica">(requerido)</label>
 		</fieldset>
-		<fieldset class="hidable">
-			<div class="">	<input id="nombreId"  type="text"  name="nombre"     maxlength="50" placeholder="" required=true>	</div>
+		<fieldset id="editNombreFieldset" class="hidable">
+			<div> <input id="nombreId"  type="text"  name="nombre"     maxlength="50" placeholder="" required=true></div>
 		</fieldset>
 
-
-
 		<fieldset class="notHidable">
-			<label>Qu&eacute;   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down">   </i>   </label>
+			<label>Qu&eacute;   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down"> </i>   </label>
 			<label class="explica">Usando palabras claves, explica que haces.</label>
 			<label class="explica">Usado por clientes para encontrar tu Negocio!</label>
 			<label class="explica">(requerido 1, maximo 10)</label>
 		</fieldset>
-		<fieldset class="hidable">
-			<div class="">   <input id="que1Id"  type="text" name="que1"  maxlength="50" placeholder="edito videos" required=true>		</div>   
-			<div class="">   <input id="que2Id"  type="text" name="que2"  maxlength="50" placeholder="hago postres">					</div>   
-			<div class="">   <input id="que3Id"  type="text" name="que3"  maxlength="50" placeholder="soy tutor o personal trainer">	</div>   
-			<div class="">   <input id="que4Id"  type="text" name="que4"  maxlength="50" placeholder="corto grama">						</div>   
-			<div class="">   <input id="que5Id"  type="text" name="que5"  maxlength="50" placeholder="hago delivery">					</div>   
-			<div class="">   <input id="que6Id"  type="text" name="que6"  maxlength="50" placeholder="cuido ancianos en tu hogar">		</div>   
-			<div class="">   <input id="que7Id"  type="text" name="que7"  maxlength="50" placeholder="limpio hogares o cuartos">		</div>   
-			<div class="">   <input id="que8Id"  type="text" name="que8"  maxlength="50" placeholder="cocino almuerzos y desayunos">	</div>   
-			<div class="">   <input id="que9Id"  type="text" name="que9"  maxlength="50" placeholder="hago paginas web">				</div>   
-			<div class="">   <input id="que10Id" type="text" name="que10" maxlength="50" placeholder="soy influencer">					</div>   
+		<fieldset id="editQueFieldset" class="hidable">
+			<div> <input id="que1Id"  type="text" name="que1"  maxlength="50" placeholder="edito videos" required=true>		</div>   
+			<div> <input id="que2Id"  type="text" name="que2"  maxlength="50" placeholder="hago postres">					</div>   
+			<div> <input id="que3Id"  type="text" name="que3"  maxlength="50" placeholder="soy tutor o personal trainer">	</div>   
+			<div> <input id="que4Id"  type="text" name="que4"  maxlength="50" placeholder="corto grama">					</div>   
+			<div> <input id="que5Id"  type="text" name="que5"  maxlength="50" placeholder="hago delivery">					</div>   
+			<div> <input id="que6Id"  type="text" name="que6"  maxlength="50" placeholder="cuido ancianos en tu hogar">		</div>   
+			<div> <input id="que7Id"  type="text" name="que7"  maxlength="50" placeholder="limpio hogares o cuartos">		</div>   
+			<div> <input id="que8Id"  type="text" name="que8"  maxlength="50" placeholder="cocino almuerzos y desayunos">	</div>   
+			<div> <input id="que9Id"  type="text" name="que9"  maxlength="50" placeholder="hago paginas web">				</div>   
+			<div> <input id="que10Id" type="text" name="que10" maxlength="50" placeholder="soy influencer">					</div>   
 		</fieldset>
-
-
-
-
 
 		<fieldset class="notHidable">
 			<label>Donde   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down">   </i>   </label>
@@ -56,48 +49,44 @@
 			<label class="explica">Usado por clientes para encontrar tu Negocio!</label>
 			<label class="explica">(requerido 1, maximo 5)</label>
 		</fieldset>
-		<fieldset class="hidable">
-			<div class="">   <input id="donde1Id" type="text" name="donde1" maxlength="50" placeholder="moca" required=true>   </div>
-			<div class="">   <input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder="juncos">			   </div>
-			<div class="">   <input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder="">					   </div>
-			<div class="">   <input id="donde4Id" type="text" name="donde4" maxlength="50" placeholder="">					   </div>
-			<div class="">   <input id="donde5Id" type="text" name="donde5" maxlength="50" placeholder="">					   </div>
+		<fieldset id="editDondeFieldset" class="hidable">
+			<div> <input id="donde1Id" type="text" name="donde1" maxlength="50" placeholder="moca" required=true>  </div>
+			<div> <input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder="juncos">			   </div>
+			<div> <input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder="">					   </div>
+			<div> <input id="donde4Id" type="text" name="donde4" maxlength="50" placeholder="">					   </div>
+			<div> <input id="donde5Id" type="text" name="donde5" maxlength="50" placeholder="">					   </div>
 			<fieldset class="subArea">
 				<label>A su casa</label>
 				<label class="explica">&iquest;Trabajarias en casa del cliente?</label>
 				<label class="explica">(requerido)</label>
 			
-				<div class="">   <label class="conMargen" for="siRadio"><span>Si</span></label>								
-								 <input class="conMargen" id="siRadio" type="radio" name="aTuCasa" value="si" required>		</div>
-				<div class="">   <label class="conMargen" for="noRadio"><span>No</span></label>								
-								 <input class="conMargen" id="noRadio" type="radio" name="aTuCasa" value="no">				</div> 	
-			</fieldset>	
+				<div> <label class="conMargen" for="siRadio"><span>Si</span></label>								
+					  <input class="conMargen" id="siRadio" type="radio" name="aTuCasa" value="si" required>       </div>
+				<div> <label class="conMargen" for="noRadio"><span>No</span></label>								
+					  <input class="conMargen" id="noRadio" type="radio" name="aTuCasa" value="no">		    	   </div>
+			</fieldset>
 		</fieldset>
-
-
-
-
 
 		<fieldset class="notHidable">
 			<label>Cuando   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down">   </i>   </label>
 			<label class="explica">Horario de tu Negocio</label>
 			<label class="explica">(opcional)</label>
 		</fieldset>
-		<fieldset id="cuandoFieldset" class="hidable">
-			<div class="">   <label for="dia1Id">Lunes</label>										     </div>	
-			<div class="">   <input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder="">   </div>
-			<div class="">   <label for="dia2Id">Martes</label>											 </div>
-			<div class="">   <input id="dia2Id" type="text" name="dia2" maxlength="50" placeholder="">   </div>
-			<div class="">   <label for="dia3Id">Miercoles</label>										 </div>	
-			<div class="">   <input id="dia3Id" type="text" name="dia3" maxlength="50" placeholder="">   </div>
-			<div class="">   <label for="dia4Id">Jueves</label>											 </div>
-			<div class="">   <input id="dia4Id" type="text" name="dia4" maxlength="50" placeholder="">   </div>
-			<div class="">   <label for="dia5Id">Viernes</label>										 </div>	
-			<div class="">   <input id="dia5Id" type="text" name="dia5" maxlength="50" placeholder="">   </div>
-			<div class="">   <label for="dia6Id">Sabado</label>											 </div>
-			<div class="">   <input id="dia6Id" type="text" name="dia6" maxlength="50" placeholder="">   </div>
-			<div class="">   <label for="dia7Id">Domingo</label>										 </div>	
-			<div class="">   <input id="dia7Id" type="text" name="dia7" maxlength="50" placeholder="">   </div>									
+		<fieldset id="editCuandoFieldset" class="hidable">
+			<div> <label for="dia1Id">Lunes</label>										     </div>
+			<div> <input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder="">  </div>
+			<div> <label for="dia2Id">Martes</label>										 </div>
+			<div> <input id="dia2Id" type="text" name="dia2" maxlength="50" placeholder="">  </div>
+			<div> <label for="dia3Id">Miercoles</label>										 </div>
+			<div> <input id="dia3Id" type="text" name="dia3" maxlength="50" placeholder="">  </div>
+			<div> <label for="dia4Id">Jueves</label>										 </div>
+			<div> <input id="dia4Id" type="text" name="dia4" maxlength="50" placeholder="">  </div>
+			<div> <label for="dia5Id">Viernes</label>										 </div>
+			<div> <input id="dia5Id" type="text" name="dia5" maxlength="50" placeholder="">  </div>
+			<div> <label for="dia6Id">Sabado</label>										 </div>
+			<div> <input id="dia6Id" type="text" name="dia6" maxlength="50" placeholder="">  </div>
+			<div> <label for="dia7Id">Domingo</label>										 </div>
+			<div> <input id="dia7Id" type="text" name="dia7" maxlength="50" placeholder="">  </div>
 			<!--
 			<fieldset class="subArea">
 					<label>Ahora Mismo</label>
@@ -108,10 +97,6 @@
 			-->
 		</fieldset>
 
-
-
-
-
  	    <fieldset class="notHidable">
  	    	<label>Fotos   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down">   </i>   </label>
  	    	<label class="explica">Fotos de tu Negocio</label>
@@ -121,33 +106,25 @@
 			<input type="hidden" name="MAX_FILE_SIZE" value="1000000"> <!-- 1MB  1 000 000 Bytes-->
 			<button type="button" class="peq">   <i class="fas fa-upload"></i>   </button>
 			<input id="fotosId"  type="file" name="fotoArr[]" multiple hidden required=true>
-			<div class="">   <h5 id="howManyFeedback"  class="feedback"></h5>   </div>
-			<div class="">   <h5 id="max5min1Feedback" class="warn"></h5>	  </div>
-			<div class="">   <h5 id="isImageFeedback" class="warn"></h5>   </div>
+			<div>   <h5 id="howManyFeedback"  class="feedback"></h5>   </div>
+			<div>   <h5 id="max5min1Feedback" class="warn"></h5>	   </div>
+			<div>   <h5 id="isImageFeedback"  class="warn"></h5>       </div>
 		</fieldset>
-
-
-
-
 
 		<fieldset class="notHidable">
  	    	<label>Video   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down">   </i>   </label>
         	<label class="explica">Link a un video en youtube con info de tu Negocio.</label>
  	    	<label class="explica">(opcional)</label>
 		</fieldset>
-		<fieldset class="hidable">
+		<fieldset id="editVideoFieldset" class="hidable">
 			<textarea id="videoUrlId"  name="videoUrl"  rows="3" cols="50" placeholder="https://www.youtube.com/watch?v=6qpudAhYhpc" ></textarea>
 		</fieldset>
 
-
-
-
-
 		<fieldset id="submitButtonFieldset" class="notHidable">
-			<div class="">   <button type="submit">   <i class="fas fa-share-square"></i>   </button>     </div>
-			<div class="">   <h5 id="handlesFeedback" class="warn"></h5>                                  </div>
-			<div class="">   <h5 id="fotosFeedback" class="warn"></h5>                                    </div>
-			<div class="">   <h5 id="buttonFeedback" class="warn"></h5>                                   </div>
+			<div> <button type="submit">   <i class="fas fa-share-square"></i>   </button>     </div>
+			<div> <h5 id="handlesFeedback" class="warn"></h5>                                  </div>
+			<div> <h5 id="fotosFeedback"   class="warn"></h5>                                  </div>
+			<div> <h5 id="buttonFeedback"  class="warn"></h5>                                  </div>
  	   </fieldset>
 
  	</form>
