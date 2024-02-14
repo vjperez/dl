@@ -50,20 +50,20 @@
 			<label class="explica">(requerido 1, maximo 5)</label>
 		</fieldset>
 		<fieldset id="editDondeFieldset" class="hidable">
-			<div> <input id="donde1Id" type="text" name="donde1" maxlength="50" placeholder="moca" required=true>  </div>
+			<div> <input id="donde1Id" type="text" name="donde1" maxlength="50" placeholder="moca" required=true></div>
 			<div> <input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder="juncos">			   </div>
 			<div> <input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder="">					   </div>
 			<div> <input id="donde4Id" type="text" name="donde4" maxlength="50" placeholder="">					   </div>
 			<div> <input id="donde5Id" type="text" name="donde5" maxlength="50" placeholder="">					   </div>
-			<fieldset class="subArea">
+			<fieldset id="editASuCasaFieldset" class="subArea">
 				<label>A su casa</label>
 				<label class="explica">&iquest;Trabajarias en casa del cliente?</label>
 				<label class="explica">(requerido)</label>
 			
-				<div> <label class="conMargen" for="siRadio"><span>Si</span></label>								
-					  <input class="conMargen" id="siRadio" type="radio" name="aTuCasa" value="si" required>       </div>
-				<div> <label class="conMargen" for="noRadio"><span>No</span></label>								
-					  <input class="conMargen" id="noRadio" type="radio" name="aTuCasa" value="no">		    	   </div>
+				<div> <label class="conMargen" for="aSuCasaSiRadioId"><span>Si</span></label>								
+					  <input class="conMargen"  id="aSuCasaSiRadioId" type="radio" name="aSuCasa" value="si" required>       </div>
+				<div> <label class="conMargen" for="aSuCasaNoRadioId"><span>No</span></label>								
+					  <input class="conMargen"  id="aSuCasaNoRadioId" type="radio" name="aSuCasa" value="no">		    	   </div>
 			</fieldset>
 		</fieldset>
 
@@ -87,14 +87,16 @@
 			<div> <input id="dia6Id" type="text" name="dia6" maxlength="50" placeholder="">  </div>
 			<div> <label for="dia7Id">Domingo</label>										 </div>
 			<div> <input id="dia7Id" type="text" name="dia7" maxlength="50" placeholder="">  </div>
-			<!--
-			<fieldset class="subArea">
-					<label>Ahora Mismo</label>
-					<label class="explica">&iquest;Trabajando ahora mismo?</label>
-					<span>Si</span><input type="radio" name="ahoraMismo" value="si" class="si">
-					<span>No</span><input type="radio" name="ahoraMismo" value="no">
+			<fieldset id="editHoyFieldset" class="subArea">
+					<label>Hoy Mismo</label>
+					<label class="explica">&iquest;Disponible Hoy mismo?</label>
+					<label class="explica">(requerido)</label>
+					
+				    <div> <label class="conMargen" for="hoySiRadioId"><span>Si</span></label>	
+						  <input class="conMargen"  id="hoySiRadioId" type="radio" name="hoy" value="si"  required> </div>
+				    <div> <label class="conMargen" for="hoyNoRadioId"><span>No</span></label>	
+						  <input class="conMargen"  id="hoyNoRadioId" type="radio" name="hoy" value="no">           </div>
 			</fieldset>
-			-->
 		</fieldset>
 
  	    <fieldset class="notHidable">
@@ -102,10 +104,10 @@
  	    	<label class="explica">Fotos de tu Negocio</label>
 			<label class="explica">(requerido 1, maximo 5)</label>
 		</fieldset>	
-		<fieldset id="fotoSrcFieldset" class="hidable">
+		<fieldset id="editFotoFieldset" class="hidable">
 			<input type="hidden" name="MAX_FILE_SIZE" value="1000000"> <!-- 1MB  1 000 000 Bytes-->
 			<button type="button" class="peq">   <i class="fas fa-upload"></i>   </button>
-			<input id="fotosId"  type="file" name="fotoArr[]" multiple hidden required=true>
+			<input id="fotosArrId"  type="file" name="fotoArr[]" multiple hidden required=true>
 			<div>   <h5 id="howManyFeedback"  class="feedback"></h5>   </div>
 			<div>   <h5 id="max5min1Feedback" class="warn"></h5>	   </div>
 			<div>   <h5 id="isImageFeedback"  class="warn"></h5>       </div>
@@ -121,10 +123,10 @@
 		</fieldset>
 
 		<fieldset id="submitButtonFieldset" class="notHidable">
-			<div> <button type="submit">   <i class="fas fa-share-square"></i>   </button>     </div>
-			<div> <h5 id="handlesFeedback" class="warn"></h5>                                  </div>
-			<div> <h5 id="fotosFeedback"   class="warn"></h5>                                  </div>
-			<div> <h5 id="buttonFeedback"  class="warn"></h5>                                  </div>
+			<div> <button type="submit">   <i class="fas fa-share-square"></i>   </button> </div>
+			<div> <h5 id="handlesFeedback" class="warn"></h5>                              </div>
+			<div> <h5 id="fotosFeedback"   class="warn"></h5>                              </div>
+			<div> <h5 id="buttonFeedback"  class="warn"></h5>                              </div>
  	   </fieldset>
 
  	</form>

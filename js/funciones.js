@@ -101,10 +101,7 @@ jQuery.urlParametro = function(name){
 	//return results[1] || 0;
 }
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
+//returns true when argument is null or has zero length after trimmed
 jQuery.isVacioStr = function(str){
 	if (str === null) return true;
 	else return str.trim().length == 0;
@@ -114,6 +111,7 @@ jQuery.isNotVacioStr = function(str){
 	//  str !== null && str !== ''
 	return ! jQuery.isVacioStr(str);
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 jQuery.encodeAndGetErrorPath = function(xhrObjetoForFAILString, textoEstatus, elError){
