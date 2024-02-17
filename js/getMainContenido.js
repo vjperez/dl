@@ -450,13 +450,14 @@ jQuery(document).ready(
 					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
 					jQuery('ul.navega').css('visibility','visible');
 				
-					jQuery.lookYelScript('looks/error.html');
+					jQuery.lookYelScript('looks/error.html', 'js/error.js');
 				});
-				
+				/*
 				if(DEBUGUEO){
 					var xhrObjetoForFAILString = decodeURIComponent (jQuery.urlParametro('xhrObjetoForFAILString'));
 					var textoEstatus           = decodeURIComponent (jQuery.urlParametro('textoEstatus'));
 					var elError                = decodeURIComponent (jQuery.urlParametro('elError'));
+					
 					
 					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
 						//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
@@ -467,15 +468,17 @@ jQuery(document).ready(
 							jQuery('#footer').css('visibility','visible');
 						}//if
 					}); //ajax complete
+					
 				}else{
 					jQuery('#footer').css('visibility','visible');
 				}
+				*/
 				break;
 
 			case null:
 			default:
 				jQuery(window.location).attr('href', window.location.pathname + '?look=recentNepes');
-
+				break;
 		}//switch
 
 		

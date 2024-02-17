@@ -8,3 +8,15 @@ jQuery.appendDebugErrors = function( xhrObjetoForFAILString, textoEstatus, elErr
     losLis += '<br><hr>';
     jQuery('#containerForErrors').append(losLis);
 }
+
+
+if(DEBUGUEO){
+    var xhrObjetoForFAILString = decodeURIComponent (jQuery.urlParametro('xhrObjetoForFAILString'));
+    var textoEstatus           = decodeURIComponent (jQuery.urlParametro('textoEstatus'));
+    var elError                = decodeURIComponent (jQuery.urlParametro('elError'));
+    
+    jQuery.appendDebugErrors( xhrObjetoForFAILString, textoEstatus, elError );  
+    jQuery('#footer').css('visibility','visible');
+}else{
+    jQuery('#footer').css('visibility','visible');
+}
