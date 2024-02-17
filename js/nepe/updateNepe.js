@@ -3,8 +3,6 @@ var submitVote2 = true;
 var reducedImagesArray = []; 
 
 
-
-
 //major task 1
 //when ajax complete ; if already existing micro empre then populate form using that data
 jQuery.populateUpdateNepeForm = function(datos){
