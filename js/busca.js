@@ -12,6 +12,4 @@ jQuery('form').submit(function(evento){
     }else{
         jQuery.feedback('form#queDondeForm h3', 'Buscas algo?', 'downdelayup');
     }
-}); 
-
-jQuery('#footer').css('visibility','visible');     
+});    
