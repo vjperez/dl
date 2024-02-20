@@ -1,5 +1,4 @@
-jQuery(document).ready(
-	function(){
+jQuery(document).ready(function(){
 
 		var acto = jQuery.urlParametro('acto');
 		switch(acto){
@@ -479,9 +478,7 @@ jQuery(document).ready(
 			default:
 				jQuery(window.location).attr('href', window.location.pathname + '?look=recentNepes');
 				break;
-		}//switch
-
-		
+		}//switch	
 
 		jQuery.showMenu();
-	}); // ready function and statement
+}); // ready function and statement

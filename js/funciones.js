@@ -44,10 +44,21 @@ jQuery.feedback = function(queElemento, mensaje, forma){
 }
 
 jQuery.lookYelScript = function(pageName, scriptPath){
-	jQuery.get(pageName, function(datosDeRespuesta, estatus, xhrObjeto){
-		var elMain     = jQuery(datosDeRespuesta).filter('#main');
-		jQuery('#containerForMain').html(elMain);
-		jQuery.getScript(scriptPath);
+	jQuery('#containerForMain').load(pageName + ' #main', function(datosDeRespuesta, estatus, xhrObjeto){
+		if(estatus == 'error'){
+			let msg = "There was an error (" + pageName + "): ";
+			jQuery( "#containerFoMain" ).text( msg + xhrObjeto.status + " " + xhrObjeto.statusText );
+		} else if (estatus == 'success'){
+			console.log(pageName + ': ' + estatus);
+			jQuery.getScript(scriptPath)
+			.done(function(escript, estatus2){
+				console.log(scriptPath + ': ' + estatus2);
+			})
+			.fail(function(xhrObjeto2, settings, exception){
+				let msg = "There was an error (" + scriptPath + "): ";
+				jQuery( "#containerFoMain" ).text( msg + xhrObjeto2.status + " " + xhrObjeto2.statusText );
+			});
+		}
 	});	
 }
 
@@ -101,15 +112,43 @@ jQuery.urlParametro = function(name){
 	//return results[1] || 0;
 }
 
-//returns true when argument is null or has zero length after trimmed
+//returns null when typeof str is not string
+//when str IS a string ... returns whether string has zero length after trimmed
 jQuery.isVacioStr = function(str){
-	if (str === null) return true;
-	else return str.trim().length == 0;
+	if(typeof str === 'string') 
+		return   str.trim().length === 0;
+	else 
+		return null;
 }
 
+//returns null when typeof str is not string
+//when str IS a string ... returns whether string has length > zero after trimmed
 jQuery.isNotVacioStr = function(str){
-	//  str !== null && str !== ''
-	return ! jQuery.isVacioStr(str);
+	if(typeof str === 'string') 
+		return   str.trim().length > 0;
+	else 
+		return null;
+}
+
+//menu behavior
+jQuery(document).on('click', '.menuHidableDriver', function(evento){
+	if (jQuery('.menuHidableTarget').is(':visible')) {
+		jQuery.hideMenu();
+	}else{
+		jQuery.showMenu();
+	}
+});
+
+jQuery.hideMenu = function(){
+	jQuery('.menuHidableTarget').hide();
+	jQuery('.menuHidableDriver').find('.fa-window-close').hide();
+	jQuery('.menuHidableDriver').find('.fa-bars').show();
+}
+
+jQuery.showMenu = function(){
+	jQuery('.menuHidableTarget').show()
+	jQuery('.menuHidableDriver').find('.fa-bars').hide();
+	jQuery('.menuHidableDriver').find('.fa-window-close').show();
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -145,27 +184,6 @@ jQuery(document).on('click', '.notHidable', function(evento){
 		jQuery(evento.currentTarget).find('.fa-chevron-circle-up').show();
 	}
 });
-
-
-jQuery(document).on('click', '.menuHidableDriver', function(evento){
-	if (jQuery('.menuHidableTarget').is(':visible')) {
-		jQuery.hideMenu();
-	}else{
-		jQuery.showMenu();
-	}
-});
-
-jQuery.hideMenu = function(){
-	jQuery('.menuHidableTarget').hide();
-	jQuery('.menuHidableDriver').find('.fa-window-close').hide();
-	jQuery('.menuHidableDriver').find('.fa-bars').show();
-}
-
-jQuery.showMenu = function(){
-	jQuery('.menuHidableTarget').show()
-	jQuery('.menuHidableDriver').find('.fa-bars').hide();
-	jQuery('.menuHidableDriver').find('.fa-window-close').show();
-}
 
 
 //since menu Hidable Driver h1 buttons are hidden on width > 984 (js) or 1001 css,
