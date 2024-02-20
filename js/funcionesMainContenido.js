@@ -1,17 +1,17 @@
 jQuery.lookYelScript = function(pageName, scriptPath){
-	jQuery('#containerForMain').load(pageName + ' #main', function(datosDeRespuesta, estatus, xhrObjeto){
-		if(estatus == 'error'){
+	jQuery('#containerForMain').load(pageName + ' #main', function(datosDeRespuesta, pageEstatus, xhrObjetoPage){
+		if(pageEstatus == 'error'){
 			let msg = "There was an error (" + pageName + "): ";
-			jQuery( "#containerFoMain" ).text( msg + xhrObjeto.status + " " + xhrObjeto.statusText );
-		} else if (estatus == 'success'){
-			console.log(pageName + ': ' + estatus);
+			jQuery( "#containerFoMain" ).text( msg + xhrObjetoPage.status + " " + xhrObjetoPage.statusText );
+		} else if (pageEstatus == 'success'){
+			console.log(pageName + ': ' + pageEstatus);
 			jQuery.getScript(scriptPath)
-			.done(function(escript, estatus2){
-				console.log(scriptPath + ': ' + estatus2);
+			.done(function(escript, scriptEstatus){
+				console.log(scriptPath + ': ' + scriptEstatus);
 			})
-			.fail(function(xhrObjeto2, settings, exception){
+			.fail(function(xhrObjetoScript, settings, exception){
 				let msg = "There was an error (" + scriptPath + "): ";
-				jQuery( "#containerFoMain" ).text( msg + xhrObjeto2.status + " " + xhrObjeto2.statusText );
+				jQuery( "#containerFoMain" ).text( msg + xhrObjetoScript.status + " " + xhrObjetoScript.statusText );
 			});
 		}
 	});
