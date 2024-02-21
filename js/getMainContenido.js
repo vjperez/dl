@@ -149,21 +149,7 @@ jQuery(document).ready(function(){
 				jQuery.lookYelScript('looks/registro.html', 'js/dueno/registro.js');
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=home');
 			case 'recentNepes':
-				var key = 'dueno_id';
-				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
-					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					jQuery('ul.navega').css('visibility','visible');
-
-					jQuery.lookYelScript('looks/recentNepes.html');
-				})
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
-				});
+				jQuery.lookYelScript('looks/recentNepes.html', 'js/nepe/getRecentNepes.js');
 			break;			
 			case 'administrar':
 				var key = 'dueno_id';
