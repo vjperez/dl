@@ -1,5 +1,6 @@
 let que   = decodeURIComponent( jQuery.urlParametro('que') );      
-let donde = decodeURIComponent( jQuery.urlParametro('donde') );  
+let donde = decodeURIComponent( jQuery.urlParametro('donde') ); 
+alert('[' + donde + ']');
 jQuery.getJSON('escritos/ojo/getOpciones.php', {que:que, donde:donde} )
 .done(function(datos, estatusForDONE, xhrObjetoForDONE){
 	if(datos.cuantasOpciones > 0){
@@ -16,7 +17,7 @@ jQuery.getJSON('escritos/ojo/getOpciones.php', {que:que, donde:donde} )
 				}
 				jQuery.each(trios, function(index, pares){
 					jQuery.each(pares, function(nepeId, fotoSrc){
-						htmlForMain += '<a href="portada.html?look=profile&nepeId=' + nepeId + '">';
+						htmlForMain += '<a href="portada.html?look=viewNepe&nepeId=' + nepeId + '">';
 						htmlForMain += '<img class="" src="imagenes/profile/subidas/' + fotoSrc + '">'; 
 						htmlForMain += '</a>';
 					});
