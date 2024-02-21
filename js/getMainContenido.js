@@ -48,42 +48,8 @@ jQuery(document).ready(function(){
 			case 'opciones':
 				jQuery.lookYelScript('looks/opciones.html', 'js/opciones.js');
 			break;
-			case 'profile':			
-				var key = 'dueno_id';
-				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
-					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					jQuery('ul.navega').css('visibility','visible');
-				})
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
-				});
-
-				//get nepeId then
-				var nepeId = jQuery.urlParametro('nepeId');	
-				
-				jQuery.getJSON('escritos/ojo/getNepe.php', {nepeId:nepeId} )
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-						jQuery.dameLook('looks/profile.html');
-						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-							if(settingsObjeto.url === 'looks/profile.html'){
-									//alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE + '\nrevisado: ' + datos.revisado );
-									jQuery.hideThemSections();
-									jQuery.populate(datos);
-									jQuery('#footer').css('visibility','visible');
-							} // if profile
-						}); //ajax
-				})
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
-				});
-				
+			case 'viewNepe':
+				jQuery.lookYelScript('looks/viewNepe.html', 'js/nepe/viewNepe.js');
 			break;						
 			case 'login':
 				//remove navegation before requesting new html.  Less likely user will notice it going away.
