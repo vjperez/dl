@@ -8,7 +8,9 @@ jQuery(document).ready(function(){
 		case 'login':
 			jQuery('#navLogin').addClass("seleccionado");
 		break;
-		
+		case 'home':
+			jQuery('#navHome').addClass("seleccionado");
+		break;
 		case null:
 		case 'opciones':
 		case 'viewNepe':
