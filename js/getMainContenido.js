@@ -60,37 +60,7 @@ jQuery(document).ready(function(){
 				//error when solicita home sin estar logueado, se supone ni pueda
 			break;			
 			case 'creaNepe':
-				var key = 'dueno_id';
-				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-					if(datos.isSet){
-						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
-						jQuery('#navHome').addClass("seleccionado");
-						jQuery('ul.navega').css('visibility','visible');
-
-						jQuery.dameLook('looks/creaNepe.html');
-
-						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-							if(settingsObjeto.url === 'looks/creaNepe.html'){
-								jQuery.hideThemSections();
-								jQuery('#footer').css('visibility','visible');
-							}//if
-						});//ajaxComplete
-					}else{
-						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-						var textoEstatus = 'Error, usuario solicito creaNepe look, sin estar logueado.';
-						var elError = 'Error humano.';
-
-						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-						jQuery(window.location).attr('href', path);							   
-					}
-				})
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
-				});		
+				jQuery.lookYelScript('looks/creaNepe.html', 'js/nepe/creaNepe.js');		
 			break;
 			case 'updateNepe':
 				var key = 'dueno_id';
