@@ -1,3 +1,15 @@
+var nepeId = jQuery.urlParametro('nepeId');	
+jQuery.getJSON('escritos/ojo/getNepe.php', {nepeId:nepeId} )
+.done(function(datos, estatusForDONE, xhrObjetoForDONE){   
+    //alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE + '\nrevisado: ' + datos.revisado );
+    jQuery.populate(datos);         
+})
+.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+    var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+    var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+    jQuery(window.location).attr('href', path); 
+});
+
 jQuery.populate = function(datos){
     //insert json data into profile look 
 
@@ -71,6 +83,9 @@ jQuery.populate = function(datos){
                 
 }// populate
 
+
+
+jQuery.hideThemSections();
 
 //show only 1 social handle with class current
 var $icon = jQuery('div#quien ul li').click(function(evento){

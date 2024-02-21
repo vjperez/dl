@@ -24,3 +24,18 @@ jQuery.feedback = function(queElemento, mensaje, forma){
 		jQuery(queElemento).slideDown(500).delay(1000).slideUp(2000);
 	}
 }
+
+jQuery.encodeAndGetErrorPath = function(xhrObjetoForFAILString, textoEstatus, elError){
+	if(DEBUGUEO){
+		xhrObjetoForFAILString    = encodeURIComponent( xhrObjetoForFAILString );
+		textoEstatus              = encodeURIComponent( textoEstatus );
+		elError                   = encodeURIComponent( elError );
+		var path  = window.location.pathname + '?look=' + 'error' 
+				+ '&xhrObjetoForFAILString=' + xhrObjetoForFAILString 
+				+ '&textoEstatus=' + textoEstatus 
+				+ '&elError=' + elError;
+	}else{
+		var path = window.location.pathname + '?look=' + 'error';
+	}
+	return path;	
+}

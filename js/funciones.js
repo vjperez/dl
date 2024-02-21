@@ -95,22 +95,6 @@ jQuery.isNotVacioStr = function(str){
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-jQuery.encodeAndGetErrorPath = function(xhrObjetoForFAILString, textoEstatus, elError){
-	if(DEBUGUEO){
-		xhrObjetoForFAILString    = encodeURIComponent( xhrObjetoForFAILString );
-		textoEstatus              = encodeURIComponent( textoEstatus );
-		elError                   = encodeURIComponent( elError );
-		var path  = window.location.pathname + '?look=' + 'error' 
-				+ '&xhrObjetoForFAILString=' + xhrObjetoForFAILString 
-				+ '&textoEstatus=' + textoEstatus 
-				+ '&elError=' + elError;
-	}else{
-		var path = window.location.pathname + '?look=' + 'error';
-	}
-	return path;	
-}
-
-
 //since menu Hidable Driver h1 buttons are hidden on width > 984 (js) or 1001 css,
 //without this function, you could end up with no menu on windows width > 984 and no way to redisplay it
 //that can happen if menu was hidden on lower window widths
