@@ -1,3 +1,6 @@
+jQuery.hideThemSections();
+
+
 var submitVote1 = false;
 var submitVote2 = false;
 var reducedImagesArray = [];
