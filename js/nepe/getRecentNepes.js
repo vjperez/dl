@@ -17,10 +17,7 @@ jQuery.getJSON('escritos/ojo/getRecentNepes.php')
 			+ '</td></tr>'; 
 			tableRows += '<tr><td></td></tr><tr><td></td></tr>';
 	});
-	
 	jQuery('#labelAndTableContainer table').html(tableRows);
-	
-	jQuery('#footer').css('visibility','visible');
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 	var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
