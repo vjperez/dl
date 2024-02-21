@@ -2,11 +2,13 @@ jQuery(document).ready(function(){
 
 	let look = jQuery.urlParametro('look');
 	switch(look){
-		case'busca':
+		case 'busca':
 			jQuery('#navBusca').addClass("seleccionado");
 		break;
 
 		case null:
+		case 'opciones':
+		case 'viewNepe':
 		default:	
 		break;
 	}
