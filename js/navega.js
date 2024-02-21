@@ -5,7 +5,10 @@ jQuery(document).ready(function(){
 		case 'busca':
 			jQuery('#navBusca').addClass("seleccionado");
 		break;
-
+		case 'login':
+			jQuery('#navLogin').addClass("seleccionado");
+		break;
+		
 		case null:
 		case 'opciones':
 		case 'viewNepe':
