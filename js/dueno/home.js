@@ -136,5 +136,3 @@ jQuery('form[id*=Form]  input[name^=password],  form[id*=Form]  input[name^=red]
 jQuery('div#labelTableContainer :button').click(function(){
     jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
 });
-
-jQuery('#footer').css('visibility','visible');

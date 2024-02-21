@@ -36,5 +36,3 @@ jQuery('form#registroForm').submit(function(evento){
 jQuery('form[id*=Form]  input[name^=password],  form[id*=Form]  input[name=username]').keydown(function(){
 	jQuery.feedback('form[id*=Form] h3', '');
 });
-
-jQuery('#footer').css('visibility','visible');
