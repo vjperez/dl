@@ -63,6 +63,7 @@ jQuery(document).ready(function(){
 				jQuery.lookYelScript('looks/creaNepe.html', 'js/nepe/creaNepe.js');		
 			break;
 			case 'updateNepe':
+
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -145,28 +146,8 @@ jQuery(document).ready(function(){
 				});
 			break;			
 			case 'registro':
-				var key = 'dueno_id';
-				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-					if(datos.isSet){
-						//1) redirect to home, when already logged
-						jQuery(window.location).attr('href', window.location.pathname + '?look=home');	
-					}else{ 
-						jQuery('#navLogout').hide(); jQuery('#navHome').hide();
-						jQuery('#navSignup').addClass("seleccionado");
-						jQuery('ul.navega').css('visibility','visible');
-						
-						//get registro look
-						jQuery.lookYelScript('looks/registro.html', 'js/dueno/registro.js');
-					}
-				})
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){ 
-					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-                    var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-                    jQuery(window.location).attr('href', path);
-				});
-			break;	
+				jQuery.lookYelScript('looks/registro.html', 'js/dueno/registro.js');
+				//jQuery(window.location).attr('href', window.location.pathname + '?look=home');
 			case 'recentNepes':
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
