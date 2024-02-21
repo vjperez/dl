@@ -11,7 +11,7 @@ jQuery(document).ready(function(){
 		break;
 	}
 
-
+	//navigation botton that depend on logged condition
 	jQuery.getJSON('escritos/session/isSessionSet.php', {key:'dueno_id'})
 	.done(function(logueadoRespuesta, estatusForDONE, xhrObjetoForDONE){
 		//alert('for dueno_id ... logueadoRespuesta.isSet: ' + logueadoRespuesta.isSet);

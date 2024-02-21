@@ -46,49 +46,7 @@ jQuery(document).ready(function(){
 				jQuery.lookYelScript('looks/busca.html', 'js/busca.js');
 			break;
 			case 'opciones':
-
-			//This look completely depends on the amount of options to be presented.  It doesn't make
-			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
-			//concatenating strings inside an each loop, with the requested JSON datos.
-				var que = decodeURIComponent( jQuery.urlParametro('que') );      
-				var donde = decodeURIComponent( jQuery.urlParametro('donde') );  
-				jQuery.getJSON('escritos/ojo/getOpciones.php', {que:que, donde:donde} )
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-					if(datos.cuantasOpciones > 0){
-						//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
-						var mainDeOpciones = '<div id="main" class="">';
-						jQuery.each(datos.opciones, function(buscaMode, trios){
-
-								mainDeOpciones += '<div id="opcionesdiv" class="opcionesfotos ">';
-								if(buscaMode.indexOf("buscaBoth") > -1){
-									mainDeOpciones += '<h2 class="notHidable">'  + que + ' + ' + donde + '</h2>';
-								}else if (buscaMode.indexOf("buscaQue") > -1){
-									mainDeOpciones += '<h2 class="notHidable">'  + que + '</h2>';
-								}else if (buscaMode.indexOf("buscaDonde") > -1){
-									mainDeOpciones += '<h2 class="notHidable">'  + donde + '</h2>';
-								}
-								jQuery.each(trios, function(index, pares){
-									jQuery.each(pares, function(nepeId, fotoSrc){
-										mainDeOpciones += '<a href="portada.html?look=profile&nepeId=' + nepeId + '">';
-										mainDeOpciones += '<img class="" src="imagenes/profile/subidas/' + fotoSrc + '">'; 
-										mainDeOpciones += '</a>';
-									});
-								}); // each in trios
-								mainDeOpciones += '</div>'; // <div class="ver-borde opcionesfotos">
-
-						}); // each in datos
-						mainDeOpciones += '</div>'; //  <div id="main" class="contenido margen">
-						jQuery('#containerForMain').html(mainDeOpciones);
-						jQuery('#footer').css('visibility','visible');
-					}else{
-						jQuery(window.location).attr('href', window.location.pathname + '?look=nada');  
-					}
-				})
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
-				});
+				jQuery.lookYelScript('looks/opciones.html', 'js/opciones.js');
 			break;
 			case 'profile':			
 				var key = 'dueno_id';
