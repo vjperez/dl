@@ -46,19 +46,7 @@ jQuery(document).ready(function(){
 				jQuery.lookYelScript('looks/busca.html', 'js/busca.js');
 			break;
 			case 'opciones':
-				var key = 'dueno_id';
-				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
-					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					jQuery('ul.navega').css('visibility','visible');
-				})
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
-				});
+
 			//This look completely depends on the amount of options to be presented.  It doesn't make
 			//much sense to do a GET request for html, like other looks.  It is better to build mainDeOpciones
 			//concatenating strings inside an each loop, with the requested JSON datos.
@@ -464,5 +452,5 @@ jQuery(document).ready(function(){
 				jQuery(window.location).attr('href', window.location.pathname + '?look=recentNepes');
 				break;
 		}//switch	
-		
+
 }); // ready function and statement
