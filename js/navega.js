@@ -14,7 +14,10 @@ jQuery(document).ready(function(){
 		case 'creaNepe':
 			jQuery('#navHome').addClass("seleccionado");
 		break;
-
+		case 'registro':
+			jQuery('#navSignup').addClass("seleccionado");
+		break;
+		
 		case null:
 		case 'opciones':
 		case 'viewNepe':
