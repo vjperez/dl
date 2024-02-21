@@ -11,6 +11,10 @@ jQuery(document).ready(function(){
 		case 'home':
 			jQuery('#navHome').addClass("seleccionado");
 		break;
+		case 'creaNepe':
+			jQuery('#navHome').addClass("seleccionado");
+		break;
+
 		case null:
 		case 'opciones':
 		case 'viewNepe':
