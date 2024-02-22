@@ -161,38 +161,8 @@ jQuery(document).ready(function(){
 				jQuery.lookYelScript('looks/nada.html', 'js/nada.js');
 			break;				
 			case 'error':
-				var key = 'dueno_id';
-				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
-					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					jQuery('ul.navega').css('visibility','visible');
-				
-					jQuery.lookYelScript('looks/error.html', 'js/error.js');
-				});
-				/*
-				if(DEBUGUEO){
-					var xhrObjetoForFAILString = decodeURIComponent (jQuery.urlParametro('xhrObjetoForFAILString'));
-					var textoEstatus           = decodeURIComponent (jQuery.urlParametro('textoEstatus'));
-					var elError                = decodeURIComponent (jQuery.urlParametro('elError'));
-					
-					
-					jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-						//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
-						//This code runs when get isCompleted and IF the get was requesting error.html
-						if(settingsObjeto.url === 'looks/error.html'){ // === means true without type coersion - the type and value most both be equal
-							//when ajax complete ; 
-							jQuery.appendDebugErrors( xhrObjetoForFAILString, textoEstatus, elError );  
-							jQuery('#footer').css('visibility','visible');
-						}//if
-					}); //ajax complete
-					
-				}else{
-					jQuery('#footer').css('visibility','visible');
-				}
-				*/
-				break;
+				jQuery.lookYelScript('looks/error.html', 'js/error.js');
+			break;
 
 			case null:
 			default:
