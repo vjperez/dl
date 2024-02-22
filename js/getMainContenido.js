@@ -63,7 +63,6 @@ jQuery(document).ready(function(){
 				jQuery.lookYelScript('looks/creaNepe.html', 'js/nepe/creaNepe.js');		
 			break;
 			case 'updateNepe':
-
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
 				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
