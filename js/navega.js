@@ -42,7 +42,12 @@ jQuery(document).ready(function(){
 			jQuery('#navLogin').css('visibility','visible').show();     
 			jQuery('#navSignup').css('visibility','visible').show();
 		}
-	});
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	});;
 
 });
 
