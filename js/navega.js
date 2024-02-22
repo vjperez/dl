@@ -18,7 +18,9 @@ jQuery(document).ready(function(){
 		case 'registro':
 			jQuery('#navSignup').addClass("seleccionado");
 		break;
-
+		case 'faq':
+			jQuery('#navFaq').addClass("seleccionado");
+		break;
 
 		case null:
 		case 'opciones':
