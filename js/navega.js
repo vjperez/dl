@@ -47,7 +47,7 @@ jQuery(document).ready(function(){
 		var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
 		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 		jQuery(window.location).attr('href', path); 
-	});;
+	});
 
 });
 

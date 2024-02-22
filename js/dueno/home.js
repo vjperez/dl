@@ -1,5 +1,7 @@
 var usuario = ""; // this value is used for feedback on forms submit
 ////////////////////////////////////// ajax to populate home page /////////////////////////////////
+
+
 jQuery.ajax({
 	//cache: false,
 	url: 'escritos/dueno/getNombre.php',
@@ -57,8 +59,8 @@ jQuery.ajax({
     jQuery(window.location).attr('href', path);
 });
 
-jQuery.hideThemSections();
 
+jQuery.hideThemSections();
 
 
 jQuery('form#editClaveForm').submit(function(evento){
