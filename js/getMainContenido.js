@@ -148,6 +148,7 @@ jQuery(document).ready(function(){
 			case 'registro':
 				jQuery.lookYelScript('looks/registro.html', 'js/dueno/registro.js');
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=home');
+			break;
 			case 'recentNepes':
 				jQuery.lookYelScript('looks/recentNepes.html', 'js/nepe/getRecentNepes.js');
 			break;			
