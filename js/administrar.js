@@ -1,3 +1,5 @@
+jQuery.hideThemSections();
+
 ////////////////////////////////// //handle functions  ////////////////////////////////////////////
 //erase feedback when user writting
 jQuery('form#adminEditClaveForm  input').keydown(function(){
@@ -97,7 +99,6 @@ jQuery('form#adminEditClaveForm').submit(function(evento){
 			if(datosJSObj.editado){	
 				var feedback = 'Password de ' + usuario + ' fue editado.'; 
 				jQuery.feedback('form#adminEditClaveForm h3.feedback', feedback);
-				})
 			}else{
 				var feedback = 'Password de ' + usuario + ' no fue editado.';
 				jQuery.feedback('form#adminEditClaveForm h3.feedback', feedback);
