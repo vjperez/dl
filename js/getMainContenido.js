@@ -155,31 +155,7 @@ jQuery(document).ready(function(){
 				jQuery.lookYelScript('looks/administrar.html', 'js/administrar.js');
 			break;		
 			case 'faq':
-				jQuery('#navFaq').addClass("seleccionado");
-				var key = 'dueno_id';
-				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
-					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					jQuery('ul.navega').css('visibility','visible');	
-
-					jQuery.dameLook('looks/faq.html');
-				})
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
-				});
-
-				jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-					//alert('settingsObjeto.url ' + settingsObjeto.url + '\nxhrObjeto status ' + xhrObjeto.status + '\nxhrObjeto statustext ' + xhrObjeto.statusText);
-					//This code runs when get isCompleted and IF the get was requesting faq.html
-					if(settingsObjeto.url === 'looks/faq.html'){ // === means true without type coersion - the type and value most both be equal
-						jQuery.hideThemSections();
-						jQuery('#footer').css('visibility','visible');
-					}
-				});
+				jQuery.lookYelScript('looks/administrar.html', 'js/faq.js');
 			break;
 			case 'nada':
 				var key = 'dueno_id';
