@@ -158,23 +158,8 @@ jQuery(document).ready(function(){
 				jQuery.lookYelScript('looks/administrar.html', 'js/faq.js');
 			break;
 			case 'nada':
-				var key = 'dueno_id';
-				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-					if(datos.isSet)  { jQuery('#navLogin').hide();   jQuery('#navSignup').hide(); }
-					else             { jQuery('#navLogout').hide();  jQuery('#navHome').hide();   }
-					jQuery('ul.navega').css('visibility','visible');
-
-					jQuery.dameLook('looks/nada.html');
-				})
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
-				});
-
-				break;				
+				jQuery.lookYelScript('looks/nada.html', 'js/nada.js');
+			break;				
 			case 'error':
 				var key = 'dueno_id';
 				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
