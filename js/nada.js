@@ -1,1 +1,1 @@
-jQuery('#footer').css('visibility','visible');
+// empty
