@@ -155,7 +155,7 @@ jQuery(document).ready(function(){
 				jQuery.lookYelScript('looks/administrar.html', 'js/administrar.js');
 			break;		
 			case 'faq':
-				jQuery.lookYelScript('looks/administrar.html', 'js/faq.js');
+				jQuery.lookYelScript('looks/faq.html', 'js/faq.js');
 			break;
 			case 'nada':
 				jQuery.lookYelScript('looks/nada.html', 'js/nada.js');
