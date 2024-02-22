@@ -152,38 +152,7 @@ jQuery(document).ready(function(){
 				jQuery.lookYelScript('looks/recentNepes.html', 'js/nepe/getRecentNepes.js');
 			break;			
 			case 'administrar':
-				var key = 'dueno_id';
-				jQuery.getJSON('escritos/session/isSessionSet.php', {key:key})
-				.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-					//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-					if(datos.isSet){ 
-						jQuery('#navLogin').hide();  jQuery('#navSignup').hide();
-						jQuery('#navHome').addClass("seleccionado");
-						jQuery('ul.navega').css('visibility','visible');
-
-						jQuery.dameLook('looks/administrar.html');
-
-						//once look is in, use jQuery to update look with profile values
-						jQuery(document).ajaxComplete(function(evento, xhrObjeto, settingsObjeto){
-							if(settingsObjeto.url === 'looks/administrar.html'){
-								jQuery.hideThemSections();
-								jQuery('#footer').css('visibility','visible');
-							}//if
-						});//ajaxComplete
-					}else{	
-						var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-						var textoEstatus = 'Error, usuario solicito admin look, sin estar logueado.';
-						var elError = 'Error humano.';
-
-						var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-						jQuery(window.location).attr('href', path);	
-					}
-				})
-				.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-					var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-					var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-					jQuery(window.location).attr('href', path); 
-				});
+				jQuery.lookYelScript('looks/administrar.html', 'js/administrar.js');
 			break;		
 			case 'faq':
 				jQuery('#navFaq').addClass("seleccionado");
