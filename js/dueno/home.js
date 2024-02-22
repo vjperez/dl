@@ -80,10 +80,10 @@ jQuery('form#editClaveForm').submit(function(evento){
                 jQuery(window.location).attr('href', path);			
             }
             if(datosJSObj.editado){
-				var feedback = 'Clave de ' + usuario + ', fue editada.'; 
+				var feedback = usuario + ', tu clave fue editada.'; 
 				jQuery.feedback('form#editClaveForm h3.feedback', feedback);
             }else{
-				var feedback = 'Trata otra vez, ' + usuario + '.';
+				var feedback = usuario + ', trata otra vez.';
                 jQuery.feedback('form#editClaveForm h3.feedback', feedback);
             }
         })
@@ -114,7 +114,7 @@ jQuery('form#editContactosForm').submit(function(evento){
 			jQuery(window.location).attr('href', path);			
 		}
 		if(datosJSObj.actualizados){
-			var feedbackStr = usuario + ', ' + datosJSObj.feedback; 
+			var feedbackStr = usuario + ', tus contactos fueron actualizados.'; 
 			jQuery.feedback('form#editContactosForm h3.feedback', feedbackStr);
 		}
 	})
