@@ -9,6 +9,7 @@ jQuery(document).ready(function(){
 			jQuery('#navLogin').addClass("seleccionado");
 		break;
 		case 'home':
+		case 'administrar':
 			jQuery('#navHome').addClass("seleccionado");
 		break;
 		case 'creaNepe':
@@ -17,7 +18,8 @@ jQuery(document).ready(function(){
 		case 'registro':
 			jQuery('#navSignup').addClass("seleccionado");
 		break;
-		
+
+
 		case null:
 		case 'opciones':
 		case 'viewNepe':
