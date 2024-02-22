@@ -167,7 +167,7 @@ jQuery(document).ready(function(){
 			case null:
 			default:
 				jQuery(window.location).attr('href', window.location.pathname + '?look=recentNepes');
-				break;
+			break;
 		}//switch	
 
 }); // ready function and statement
