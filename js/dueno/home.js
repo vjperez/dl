@@ -1,7 +1,6 @@
 var usuario = ""; // this value is used for feedback on forms submit
 ////////////////////////////////////// ajax to populate home page /////////////////////////////////
 
-
 jQuery.ajax({
 	//cache: false,
 	url: 'escritos/dueno/getNombre.php',
@@ -13,7 +12,7 @@ jQuery.ajax({
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 	 var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-     var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+     var path = jQuery.encodeAndGetErrorPath('On home.js getNombre<br>' + xhrObjetoForFAILString, textoEstatus, elError);
      jQuery(window.location).attr('href', path);
 });
 
@@ -35,7 +34,7 @@ jQuery.ajax({
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 	var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-    var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+    var path = jQuery.encodeAndGetErrorPath('On home.js own nepes<br>' + xhrObjetoForFAILString, textoEstatus, elError);
     jQuery(window.location).attr('href', path);
 });
 
@@ -55,7 +54,7 @@ jQuery.ajax({
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 	var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-    var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+    var path = jQuery.encodeAndGetErrorPath('On home.js getSocials<br>' + xhrObjetoForFAILString, textoEstatus, elError);
     jQuery(window.location).attr('href', path);
 });
 
