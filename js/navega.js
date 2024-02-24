@@ -22,10 +22,14 @@ jQuery(document).ready(function(){
 			jQuery('#navFaq').addClass("seleccionado");
 		break;
 
+		case '':
+			//alert('look vacio nav');
+		break;
 		case null:
+			//alert('look null nav');
 		case 'opciones':
 		case 'viewNepe':
-		default:	
+		default:
 		break;
 	}
 
@@ -38,9 +42,11 @@ jQuery(document).ready(function(){
 		if(logueado){ 
 			jQuery('#navLogout').css('visibility','visible').show();
 			jQuery('#navHome').css('visibility','visible').show()  ;
+			//alert('is sesion set: logueado');
 		 }else{
 			jQuery('#navLogin').css('visibility','visible').show();     
 			jQuery('#navSignup').css('visibility','visible').show();
+			//alert('is session set: NO logueado');
 		}
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
