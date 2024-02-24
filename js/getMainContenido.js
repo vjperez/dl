@@ -164,9 +164,13 @@ jQuery(document).ready(function(){
 				jQuery.lookYelScript('looks/error.html', 'js/error.js');
 			break;
 
+			case '':
+				//alert('look vacio gmc');
+			break;
 			case null:
-			default:
+				//alert('look null gmc');
 				jQuery(window.location).attr('href', window.location.pathname + '?look=recentNepes');
+			default:
 			break;
 		}//switch	
 
