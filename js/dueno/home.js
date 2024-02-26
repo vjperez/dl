@@ -1,4 +1,6 @@
 var usuario = ""; // this value is used for feedback on forms submit
+//var ownNepesWithIds;
+var updatingNepeIndex;
 ////////////////////////////////////// ajax to populate home page /////////////////////////////////
 
 jQuery.ajax({
@@ -23,12 +25,12 @@ jQuery.ajax({
 	dataType: "json"
 })
 .done(function(datos, estatusForDONE, xhrObjetoForDONE){
-	//alert('datos: ' + datos);
+	//ownNepesWithIds = datos;
 	var elTable = "";
 	jQuery.each(datos, function(index){
-		elTable += '<tr><td><a class="link" href="portada.html?look=updateNepe'  
-		+ '&nepeId=' + datos[index].nepeId  + '">'
-		+ datos[index].nepeNombre + '</a></td></tr>';
+		elTable += '<tr><td>';
+		elTable += '<a id="' + index + '" class="link" href="portada.html?look=updateNepe">' + datos[index].nepeNombre + '</a>';
+		elTable += '</td></tr>';
 	});	
 	jQuery('div#labelTableContainer table').html( elTable );
 })
@@ -36,6 +38,23 @@ jQuery.ajax({
 	var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
     var path = jQuery.encodeAndGetErrorPath('On home.js own nepes<br>' + xhrObjetoForFAILString, textoEstatus, elError);
     jQuery(window.location).attr('href', path);
+});
+
+jQuery('div#labelTableContainer table tr td a').click(function(evento){
+	evento.preventDefault();
+	updatingNepeIndex = Number( jQuery(this).attr('id') );
+	
+	jQuery.post('escritos/session/setSessionValue.php', {key:'updating_nepe_index', valor:updatingNepeIndex} )
+	.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
+		alert('updating_nepe_index was set: ' + updatingNepeIndex);
+		jQuery(window.location).attr('href', jQuery(this).attr('href'));
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+		jQuery(window.location).attr('href', path);
+	});
+
 });
 
 
