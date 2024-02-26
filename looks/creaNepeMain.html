@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head></head>
+<body>
+<!-- header -->
+<!-- navega -->
+
+
+<!-- contenido -->
+    <div id="main" class=""> 
+
+ 
+    <div id="creaNepeTitulo" class="">
+		<h2 class="notHidable">Negocio Nuevo</h2>
+		<label class="explica">Registrando!</label>
+	</div><!-- creaNepeMain -->
+
+ 	<form id="creaNepeForm" class="" action="XXXeditcuenta.phpXXX" enctype="multipart/form-data" method="post">
+ 	    <fieldset class="notHidable">
+ 	    	<label>Nombre   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down">   </i>   </label>
+ 	    	<label class="explica">Nombre de tu Negocio</label>
+			<label class="explica">(requerido)</label>
+		</fieldset>
+		<fieldset id="editNombreFieldset" class="hidable">
+			<div> <input id="nombreId"  type="text"  name="nombre"     maxlength="50" placeholder="" required=true></div>
+		</fieldset>
+
+
+		<fieldset class="notHidable">
+			<label>Cuando   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down">   </i>   </label>
+			<label class="explica">Cuando trabajas?</label>
+		</fieldset>
+		<fieldset id="editCuandoFieldset" class="hidable">
+			<div> <label for="dia1Id">Lunes</label>										     </div>
+			<div> <input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder="">  </div>
+			<div> <label for="dia2Id">Martes</label>										 </div>
+			<div> <input id="dia2Id" type="text" name="dia2" maxlength="50" placeholder="">  </div>
+			<div> <label for="dia3Id">Miercoles</label>										 </div>
+			<div> <input id="dia3Id" type="text" name="dia3" maxlength="50" placeholder="">  </div>
+			<div> <label for="dia4Id">Jueves</label>										 </div>
+			<div> <input id="dia4Id" type="text" name="dia4" maxlength="50" placeholder="">  </div>
+			<div> <label for="dia5Id">Viernes</label>										 </div>
+			<div> <input id="dia5Id" type="text" name="dia5" maxlength="50" placeholder="">  </div>
+			<div> <label for="dia6Id">Sabado</label>										 </div>
+			<div> <input id="dia6Id" type="text" name="dia6" maxlength="50" placeholder="">  </div>
+			<div> <label for="dia7Id">Domingo</label>										 </div>
+			<div> <input id="dia7Id" type="text" name="dia7" maxlength="50" placeholder="">  </div>
+			<fieldset id="desdeCasaFieldset" class="subArea">
+				<label>Desde casa</label>
+				<label class="explica">&iquest;Trabajas desde casa?</label>
+				<label class="explica">(requerido)</label>
+				<div> <label class="conMargen" for="desdeCasaSiRadioId"><span>Si</span></label>	
+					  <input class="conMargen"  id="desdeCasaSiRadioId" type="radio" name="desdeCasa" value="si"  required> </div>
+				<div> <label class="conMargen" for="desdeCasaNoRadioId"><span>No</span></label>	
+					  <input class="conMargen"  id="desdeCasaNoRadioId" type="radio" name="desdeCasa" value="no">           </div>
+                <div> <label class="conMargen" for="desdeCasaNaRadioId"><span>No aplica</span></label>	
+                      <input class="conMargen"  id="desdeCasaNaRadioId" type="radio" name="desdeCasa" value="na">           </div>        
+			</fieldset>
+			<fieldset id="suCasaFieldset" class="subArea">
+				<label>A su casa</label>
+				<label class="explica">&iquest;Trabajas en casa del cliente?</label>
+				<label class="explica">(requerido)</label>
+				<div> <label class="conMargen" for="suCasaSiRadioId"><span>Si</span></label>								
+					  <input class="conMargen"  id="suCasaSiRadioId" type="radio" name="suCasa" value="si" required>       </div>
+				<div> <label class="conMargen" for="suCasaNoRadioId"><span>No</span></label>								
+					  <input class="conMargen"  id="suCasaNoRadioId" type="radio" name="suCasa" value="no">		    	   </div>
+                <div> <label class="conMargen" for="suCasaNaRadioId"><span>No aplica</span></label>								
+                      <input class="conMargen"  id="suCasaNaRadioId" type="radio" name="suCasa" value="na">		    	   </div>                      
+			</fieldset>			
+		</fieldset>
+
+ 	 
+		<fieldset id="submitButtonFieldset" class="notHidable">
+			<div> <button type="submit">   <i class="fas fa-share-square"></i>   </button> </div>
+			<div> <h5 id="buttonFeedback"  class="warn"></h5>                              </div>
+ 	   </fieldset>
+
+ 	</form>
+
+	<script src="js/nepe/creaNepe.js"></script>
+    </div>
+<!-- contenido -->
+
+<!-- footer -->
+</body>
+</html>
