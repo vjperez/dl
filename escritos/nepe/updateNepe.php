@@ -1,6 +1,6 @@
 <?php
 session_start();
-if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
+if( isset($_SESSION['dueno_id']) && isset($_SESSION['updating_nepe_index']) ){
 	$dueno_id = $_SESSION['dueno_id'];
 	$nepe_id = $_POST['nepeId'];							// verify
 	$nombre = $_POST['nombre'];
@@ -117,7 +117,7 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 		require_once 'updateNepe/update/updateNepeNoFotoUpdate.php';
 	}
 }else{
-	throw new Exception('Session no seteada en: ' . __FILE__  );
+	throw new Exception('Session dueno_id o updating_nepe_index, no seteada en: ' . __FILE__  );
 }
 
 ?>
