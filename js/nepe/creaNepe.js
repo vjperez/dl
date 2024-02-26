@@ -1,28 +1,25 @@
 jQuery.hideThemSections();
 
 
+
+
 var submitVote1 = false;
 var submitVote2 = false;
 var reducedImagesArray = [];
 
 
 //major task 1
-//when ajax complete ; build formdata and make post
-//jQuery.handleCreaNepeSubmit = function(duenoId){
-
+//build formdata and make post
 jQuery('form#creaNepeForm').submit(function(evento){
 	evento.preventDefault(); //not making a submit (POST request) from html action
 
 	//alert("votos   " + submitVote1 + "   "+ submitVote2);
-
-	
-
 	if(submitVote1 && submitVote2){ // 2 votes come from validation by haveAtLeast1Red(formaStr) and have5OrLessImages(formaStr)
 		// 1) build and edit formdata
 		var forma = document.getElementById('creaNepeForm');
 		var formData = new FormData(forma);
 
-		//nombre y video
+		//nombre, video y foto
 		var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
 		var nombre = jQuery.cleanStr( jQuery('form#creaNepeForm input[name=nombre]').val(), regexp );
 		if(jQuery.isVacioStr(nombre)){
@@ -39,6 +36,11 @@ jQuery('form#creaNepeForm').submit(function(evento){
 		formData.delete("videoUrl"); 	formData.append('videoUrl', videoUrl);
 		//}
 		
+		formData.delete("fotoArr[]"); // borra las originales grandes
+		jQuery.each(reducedImagesArray, function( index, value ) {
+			formData.append("fotoArr[]", value);
+		});
+
 		//quienSocialHandle is a JS array object, it is stringified before sending it
 		regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
 		var quienSocialHandle = {fbk:jQuery.cleanStr( jQuery('form#creaNepeForm input[name=red1]').val(), regexp ),
@@ -52,12 +54,6 @@ jQuery('form#creaNepeForm').submit(function(evento){
 		formData.delete("red4"); //sending reds in array so delete them individually from formData
 		quienSocialHandle = JSON.stringify(quienSocialHandle);
 		formData.append('quienSocialHandle', quienSocialHandle);
-
-
-		formData.delete("fotoArr[]"); // borra las originales grandes
-		jQuery.each(reducedImagesArray, function( index, value ) {
-			formData.append("fotoArr[]", value);
-		});
 
 		//cuando is a JS array object, it is stringified before sending it
 		regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+:]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +		y :			escaping dot and minus
@@ -101,9 +97,7 @@ jQuery('form#creaNepeForm').submit(function(evento){
 		donde = JSON.stringify(donde);  //alert(donde);
 		formData.append('donde', donde);
 
-		//formData.append('duenoId', duenoId);				////// using cookies now	///////////////
-		//formData.append('nepeId', nepeId);				////// solo para nepe update  ////////////////////
-
+		//formData.append('nepeId', updatingNepeIndex);				////// solo para nepe update  ////////////////////
 
 		console.log("form built");
 		for (var value of formData.values()) {
@@ -113,7 +107,7 @@ jQuery('form#creaNepeForm').submit(function(evento){
 
 
 		// 2) do the post submition
-		jQuery.ajax({method:"POST", url:"escritos/creaNepe.php", data:formData, processData:false, contentType:false, cache:false})
+		jQuery.ajax({method:"POST", url:"escritos/nepe/crea.php", data:formData, processData:false, contentType:false, cache:false})
 		.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 			//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
 			//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
@@ -141,7 +135,8 @@ jQuery('form#creaNepeForm').submit(function(evento){
 			jQuery(window.location).attr('href', path);
 		});			
 		// post made
-	}else{  	//submitVote1 && submitVote2; visible only after all html required fields are filled but js stop the submission
+	}else{  	
+		//submitVote1 && submitVote2; visible only after all html required fields are filled but js stop the submission
 		//not posting ...  validation by haveAtLeast1Red(formaStr) and have5OrLessImages(formaStr)  failed
 		//no aditional feedback needed
 		//all feedback given at haveAtLeast1Red(formaStr) and have5OrLessImages(formaStr) when they run to handle change events
