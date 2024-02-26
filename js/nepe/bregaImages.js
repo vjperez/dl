@@ -31,8 +31,6 @@ jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.
 }
 
  
-
-
 var dataURLToBlob = function(dataURL) {		//helper function for jQuery.have5OrLessImages
     var BASE64_MARKER = ';base64,';
     if (dataURL.indexOf(BASE64_MARKER) == -1) {
@@ -58,3 +56,27 @@ var dataURLToBlob = function(dataURL) {		//helper function for jQuery.have5OrLes
 }
 
 
+jQuery.getReducedImagesArray = function(formaStr){ //helper function for jQuery.have5OrLessImages
+    //alert(formaStr);
+    var forma = document.querySelector(formaStr);
+    var formData = new FormData(forma);
+    var fotoFilesFromFormData = formData.getAll("fotoArr[]");
+    formData.delete("fotoArr[]");
+    for(var index = 0; index < fotoFilesFromFormData.length; index++){
+        var unFotoFile = fotoFilesFromFormData[index];
+        console.log("calling resize image " + index);
+        jQuery.resizeImage(index, unFotoFile);
+    }
+}
+
+ 
+jQuery.isNotImage = function(formaStr){ //helper function for jQuery.have5OrLessImages
+	var i;			
+	var $fotoInput = jQuery(formaStr + ' input#fotosId');
+	for (i = 0; i < $fotoInput[0].files.length; i++) {
+		//var imageType = /image.*/;
+		//file.type.match(imageType)     ;   instead of toLowerCase() and startsWith() you could use the previous regular expression
+		if( ! $fotoInput[0].files[i].type.toLowerCase().startsWith("image") ) return true; // if not an image, return true and break for loop
+	}
+	return false;
+}
