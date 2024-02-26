@@ -1,6 +1,6 @@
 <?php
 session_start();
-if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
+if( isset($_SESSION['dueno_id']) ){
 
 	$dueno_id = $_SESSION['dueno_id'];
 
@@ -105,6 +105,6 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes']) ){
 	require_once 'crea/update/updateMediaFotoUrl.php';
 
 }else{
-	throw new Exception('Session dueno_id  o  own_nepes  no seteada en: ' . __FILE__  );
+	throw new Exception('Session dueno_id no seteada en: ' . __FILE__  );
 }
 ?>
