@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){
 
-	alert('logueado en navega js: ' + logueado);
+	//alert('logueado en navega js: ' + logueado);
 	if(logueado){ 
 		jQuery('#navLogout').css('visibility','visible').show();
 		jQuery('#navHome').css('visibility','visible').show()  ;
