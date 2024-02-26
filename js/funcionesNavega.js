@@ -46,16 +46,3 @@ jQuery(document).on('click', '.notHidable', function(evento){
 		jQuery(evento.currentTarget).find('.fa-chevron-circle-up').show();
 	}
 });
-
-jQuery.logout = function(){
-	jQuery.get('escritos/dueno/logout.php')
-	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-		//alert('despues de escritos logout, voy pa login!');
-		jQuery(window.location).attr('href', window.location.pathname + '?look=login');
-	})
-	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-		var path = jQuery.encodeAndGetErrorPath('On logout:<br>' +  xhrObjetoForFAILString, textoEstatus, elError);
-		jQuery(window.location).attr('href', path); 
-	});
-}

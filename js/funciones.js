@@ -1,7 +1,7 @@
 const DEBUGUEO = true;
 const MINIMUM_USER_PASS_LENGTH = 4;
 const MINIMUM_USER_NAME_LENGTH = 3;
-
+var logueado;
 
 jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatElement){
 	//Esta funcion la usan login y registra
@@ -92,6 +92,67 @@ jQuery.isNotVacioStr = function(str){
 		return null;
 }
 
+//to get logged condition and include other scripts after logueado is set
+jQuery.isLogueadoSessionSet = function(){
+	jQuery.getJSON('escritos/session/isSessionSet.php', {key:'dueno_id'})
+	.done(function(respuesta, estatusForDONE, xhrObjetoForDONE){
+		alert('logueado inside funciones, \nisSessionSet(): \n' + respuesta.isSet);
+		logueado = respuesta.isSet;
+
+		jQuery.includeScript('js/funcionesNavega.js');
+		jQuery.includeScript('js/funcionesMainContenido.js');
+		jQuery.includeScript('js/navega.js');
+		jQuery.includeScript('js/getMainContenido.js');
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	});
+}
+//to get logged condition and include other scripts after logueado is set
+jQuery.isLogueadoSessionSet();
+
+jQuery.isSessionSet = function( sessionName ){
+	jQuery.getJSON('escritos/session/isSessionSet.php', {key:sessionName})
+	.done(function(respuesta, estatusForDONE, xhrObjetoForDONE){
+		return respuesta.isSet;
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	});
+}
+
+jQuery.getSessionValue = function( sessionName ){
+	jQuery.getJSON('escritos/session/getSessionValue.php', {key:sessionName})
+	.done(function(respuesta, estatusForDONE, xhrObjetoForDONE){ 
+		return respuesta.valorSession;
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	});
+}
+
+jQuery.includeScript = function include(scriptSrc) {
+	jQuery( '<script src="' + scriptSrc + '" defer></script>' ).appendTo( 'body' );
+}
+
+jQuery.logout = function(){
+	jQuery.get('escritos/dueno/logout.php')
+	.done(function(datos, estatusForDONE, xhrObjetoForDONE){
+		//alert('despues de escritos logout, voy pa login!');
+		jQuery(window.location).attr('href', window.location.pathname + '?look=login');
+	})
+	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+		var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+		var path = jQuery.encodeAndGetErrorPath('On logout:<br>' +  xhrObjetoForFAILString, textoEstatus, elError);
+		jQuery(window.location).attr('href', path); 
+	});
+}
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -105,7 +166,7 @@ jQuery(window).on( 'resize',
   	}
 );
 
-
+/*
 jQuery.isNepeIdOnOwnNepesSession = function(ownNepes, nepeIdTocheck){
 	for(var index=0; index < ownNepes.length; index++){
 		//alert('nepe id to check: ' + nepeIdTocheck + '   current value on own nepes: ' + own_nepes[index])
@@ -113,4 +174,4 @@ jQuery.isNepeIdOnOwnNepesSession = function(ownNepes, nepeIdTocheck){
 	}
 	return false;
 }
-
+*/
