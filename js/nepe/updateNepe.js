@@ -138,7 +138,7 @@ jQuery('form#updateNepeForm').submit(function(evento){
 		donde = JSON.stringify(donde);  //alert(donde);
 		formData.append('donde', donde);
 
-		formData.append('nepeId', updatingNepeIndex);
+		formData.append('nepeId', ownNepesWithIds[updatingNepeIndex].nepeId );
 		
 		console.log("form built");
 		for (var value of formData.values()) {

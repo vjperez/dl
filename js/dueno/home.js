@@ -1,5 +1,5 @@
 var usuario = ""; // this value is used for feedback on forms submit
-//var ownNepesWithIds;
+var ownNepesWithIds;
 var updatingNepeIndex;
 ////////////////////////////////////// ajax to populate home page /////////////////////////////////
 
@@ -25,7 +25,7 @@ jQuery.ajax({
 	dataType: "json"
 })
 .done(function(datos, estatusForDONE, xhrObjetoForDONE){
-	//ownNepesWithIds = datos;
+	ownNepesWithIds = datos;
 	var elTable = "";
 	jQuery.each(datos, function(index){
 		elTable += '<tr><td>';
