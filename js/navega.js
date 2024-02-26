@@ -1,5 +1,16 @@
 jQuery(document).ready(function(){
 
+	alert('logueado en navega js: ' + logueado);
+	if(logueado){ 
+		jQuery('#navLogout').css('visibility','visible').show();
+		jQuery('#navHome').css('visibility','visible').show()  ;
+		alert('navega js:\nshowing logout and home nav buttons for: \nlogueado=' + logueado);
+	}else{
+		jQuery('#navLogin').css('visibility','visible').show();     
+		jQuery('#navSignup').css('visibility','visible').show();
+		alert('navega js:\nshowing login and sign up nav buttons for:: \nlogueado=' + logueado);
+	}
+	
 	let look = jQuery.urlParametro('look');
 	switch(look){
 		case 'busca':
@@ -10,9 +21,8 @@ jQuery(document).ready(function(){
 		break;
 		case 'home':
 		case 'administrar':
-			jQuery('#navHome').addClass("seleccionado");
-		break;
 		case 'creaNepe':
+		case 'updateNepe':
 			jQuery('#navHome').addClass("seleccionado");
 		break;
 		case 'registro':
@@ -31,29 +41,7 @@ jQuery(document).ready(function(){
 		case 'viewNepe':
 		default:
 		break;
-	}
+	}//switch
 
-	//navigation botton that depend on logged condition
-	jQuery.getJSON('escritos/session/isSessionSet.php', {key:'dueno_id'})
-	.done(function(logueadoRespuesta, estatusForDONE, xhrObjetoForDONE){
-		//alert('for dueno_id ... logueadoRespuesta.isSet: ' + logueadoRespuesta.isSet);
-		let logueado = logueadoRespuesta.isSet;
-		console.log('logueado local in DONE:' + logueado);
-		if(logueado){ 
-			jQuery('#navLogout').css('visibility','visible').show();
-			jQuery('#navHome').css('visibility','visible').show()  ;
-			//alert('is sesion set: logueado');
-		 }else{
-			jQuery('#navLogin').css('visibility','visible').show();     
-			jQuery('#navSignup').css('visibility','visible').show();
-			//alert('is session set: NO logueado');
-		}
-	})
-	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-		jQuery(window.location).attr('href', path); 
-	});
-
-});
+});//ready function and statement
 
