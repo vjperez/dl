@@ -14,19 +14,17 @@ if(isset($_SESSION['dueno_id'])){
 	require_once 'read/ownNepesWithIdsQuery.php';
 	$recurso = pg_execute($cnx, "preparadoQueryNepesWithIds", array($dueno_to_query));
 	if($recurso){
-		$ownNepes = array();	// to store this user's nepe ids
-	    $nepes = array();
+	    $own_nepes_with_ids = array();
 		$index = 0;
 		while($nepe = pg_fetch_row($recurso) ){
-			$ownNepes[$index] = $nepe[0];  						// nepe[0] is a nepe id
-			$nepes[$index]['nepeId'] = json_decode($nepe[0]);	// nepe[0] is a nepe id
-			$nepes[$index]['nepeNombre'] = $nepe[1];			// nepe[1] is a nepe nombre
+			$own_nepes_with_ids[$index]['nepeId'] = json_decode($nepe[0]);	// nepe[0] is a nepe id
+			$own_nepes_with_ids[$index]['nepeNombre'] = $nepe[1];			// nepe[1] is a nepe nombre
 			$index++;
 		}
 		pg_close($cnx);
-		echo json_encode($nepes);
+		echo json_encode($own_nepes_with_ids);
 		//Store own nepes on session in json format
-		$_SESSION['own_nepes'] = json_encode($ownNepes); 
+		$_SESSION['own_nepes_with_ids'] = json_encode($own_nepes_with_ids); 
 	}else{
 		pg_close($cnx);
 		throw new Exception('Mal query.  Sin RECURSO para preparadoQueryNepesWithIds en: ' . __FILE__  );
