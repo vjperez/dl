@@ -2,8 +2,10 @@ jQuery.appendDebugErrors = function( xhrObjetoForFAILString, textoEstatus, elErr
     // <br />\n  changed to  <br>
     xhrObjetoForFAILString = xhrObjetoForFAILString.replace(/<br \/>\\n/g, '<br>');  
     // \n   changed to  <br>
-    xhrObjetoForFAILString = xhrObjetoForFAILString.replace(/\\n/g, '<br>');  
-    
+    xhrObjetoForFAILString = xhrObjetoForFAILString.replace(/\\n/g, '<br>');
+    // bold php messages changed to bold red  
+    xhrObjetoForFAILString = xhrObjetoForFAILString.replace(/<b>/g, '<b style="color:red;">'); 
+
     losLis = '<br><hr>';
     losLis += '        <li>xhr Objecto Stringificado o Texto devuelto:<br>' + xhrObjetoForFAILString + '</li>';
     losLis += '<br><br><li>Texto Estatus:<br>' + textoEstatus + '</li>';
