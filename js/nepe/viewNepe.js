@@ -1,5 +1,5 @@
 var nepeId = jQuery.urlParametro('nepeId');	
-jQuery.getJSON('escritos/ojo/getNepe.php', {nepeId:nepeId} )
+jQuery.getJSON('escritos/nepe/read/getNepe.php', {nepeId:nepeId} )
 .done(function(datos, estatusForDONE, xhrObjetoForDONE){   
     //alert('datos: automatically parsed to object object by getJSON : ' + datos + '\nxhrObjetoForDONE status ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE statustext ' + xhrObjetoForDONE.statusText + '\nestatusForDONE ' + estatusForDONE + '\nrevisado: ' + datos.revisado );
     jQuery.populate(datos);         
