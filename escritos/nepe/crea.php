@@ -1,6 +1,6 @@
 <?php
 session_start();
-if( isset($_SESSION['dueno_id']) ){
+if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	$dueno_id = $_SESSION['dueno_id'];
 	//saca los valores de POST
 	$nombre = $_POST['nombre'];
@@ -34,6 +34,6 @@ if( isset($_SESSION['dueno_id']) ){
 	require_once 'crea/insert/insertNepe.php';
 	
 }else{
-	throw new Exception('Session dueno_id no seteada en: ' . __FILE__  );
+	throw new Exception('Session dueno_id o own_nepes_with_ids, no seteada en: ' . __FILE__  );
 }
 ?>
