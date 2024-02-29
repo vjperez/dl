@@ -1,11 +1,14 @@
 jQuery.appendDebugErrors = function( xhrObjetoForFAILString, textoEstatus, elError ){
+    // <br />\n  changed to  <br>
+    xhrObjetoForFAILString = xhrObjetoForFAILString.replace(/<br \/>\\n/g, '<br>');  
+    // \n   changed to  <br>
+    xhrObjetoForFAILString = xhrObjetoForFAILString.replace(/\\n/g, '<br>');  
+    
     losLis = '<br><hr>';
-        
-    losLis += '<li><span class="color01enfasis">El error:<br></span>' + elError + '<br><br></li>';		
-    losLis += '<li><span class="color01enfasis">Texto Estatus:<br></span>' + textoEstatus + '</b><br><br></li>';
-    losLis += '<li><span class="color01enfasis">xhr Objecto Stringificado o Texto devuelto:<br></span>'      + xhrObjetoForFAILString + '</li>';
-        
-    losLis += '<br><hr>';
+    losLis += '        <li>xhr Objecto Stringificado o Texto devuelto:<br>' + xhrObjetoForFAILString + '</li>';
+    losLis += '<br><br><li>Texto Estatus:<br>' + textoEstatus + '</li>';
+    losLis += '<br><br><li>El error:<br>' + elError + '</li>';
+    losLis += '<hr>';
     jQuery('#containerForErrors').append(losLis);
 }
 
