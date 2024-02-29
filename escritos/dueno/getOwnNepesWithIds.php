@@ -24,7 +24,7 @@ if(isset($_SESSION['dueno_id'])){
 		pg_close($cnx);
 		echo json_encode($own_nepes_with_ids);
 		//Store own nepes on session in json format
-		$_SESSION['own_nepes_with_ids'] = json_encode($own_nepes_with_ids); 
+		$_SESSION['own_nepes_with_ids'] = $own_nepes_with_ids; 
 	}else{
 		pg_close($cnx);
 		throw new Exception('Mal query.  Sin RECURSO para preparadoQueryNepesWithIds en: ' . __FILE__  );
