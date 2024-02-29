@@ -63,8 +63,9 @@ jQuery(document).ready(function(){
 			jQuery.lookYelScript('looks/creaNepe.html', 'js/nepe/creaNepe.js');		
 		break;
 		case 'updateNepe':	
-			if(logueado){				
-					jQuery.getJSON('escritos/ojo/getNepe.php', {nepeId:ownNepesWithIds[updatingNepeIndex].nepeId} )
+			if(logueado){	
+					let index = jQuery.urlParametro('index');			
+					jQuery.getJSON('escritos/nepe/read/getNepe.php', {nepe_index:index} )
 					.done(function(nepeDatos, estatusForDONE, xhrObjetoForDONE){
 						jQuery.lookYelScript('looks/updateNepe.html', 'js/nepe/updateNepe.js');
 						jQuery.populateUpdateNepeForm(nepeDatos);
