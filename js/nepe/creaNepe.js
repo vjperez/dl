@@ -60,7 +60,7 @@ jQuery('form#nepeForm').submit(function(evento){
 			jQuery(window.location).attr('href', path);					
 		}
 		if(datosJSObj.nepeMainCreado){
-			jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
+			jQuery(window.location).attr('href', window.location.pathname +  '?look=updateNepe&index=' + datosJSObj.index);
 		}else{
 			//jQuery.feedback('form#nepeForm h5', datosJSObj.feedback);
 		}
