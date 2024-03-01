@@ -40,7 +40,7 @@ if($recurso){
 		echo json_encode($nepeDato);
 	}else{
 		pg_close($cnx);
-		throw new Exception('Con RECURSO, pero sin $fila, (nepe id no existe) en :'  .  __FILE__  .  '.');	
+		throw new Exception('Con RECURSO, pero sin $fila, (nepe id do not exists or index is out of bounds) en :'  .  __FILE__  .  '.');	
 	}
 }else{
 	pg_close($cnx);
