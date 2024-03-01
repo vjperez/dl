@@ -42,6 +42,19 @@ jQuery.populateUpdateNepeForm = function(datos){
 	jQuery('form#updateNepeForm input[value=no]').prop('checked', !datos.atucasa);
 }
 
+
+let index = jQuery.urlParametro('index');			
+jQuery.getJSON('escritos/nepe/read/getNepe.php', {nepe_index:index} )
+.done(function(nepeDatos, estatusForDONE, xhrObjetoForDONE){
+	jQuery.populateUpdateNepeForm(nepeDatos);
+})
+.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+	var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
+	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+	jQuery(window.location).attr('href', path); 
+});
+
+
 jQuery.hideThemSections();
 
 var submitVote1 = true;
