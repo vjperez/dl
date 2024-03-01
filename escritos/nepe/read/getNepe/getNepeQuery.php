@@ -11,8 +11,8 @@ $queryGetNepe = "SELECT
 	to_char(creado, 'MM/DD/YYYY'),
 	nombre,
 	cuando,
-	to_json(su_casa),
-	to_json(desde_casa)
+	su_casa,
+	desde_casa
 FROM nepe 
 WHERE id = $1";
 pg_prepare($cnx, "preparadoQueryGetNepe", $queryGetNepe);
