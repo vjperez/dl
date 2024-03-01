@@ -64,17 +64,7 @@ jQuery(document).ready(function(){
 		break;
 		case 'updateNepe':	
 			if(logueado){	
-					let index = jQuery.urlParametro('index');			
-					jQuery.getJSON('escritos/nepe/read/getNepe.php', {nepe_index:index} )
-					.done(function(nepeDatos, estatusForDONE, xhrObjetoForDONE){
-						jQuery.lookYelScript('looks/updateNepe.html', 'js/nepe/updateNepe.js');
-						jQuery.populateUpdateNepeForm(nepeDatos);
-					})
-					.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-						var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-						var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-						jQuery(window.location).attr('href', path); 
-					});
+				jQuery.lookYelScript('looks/updateNepe.html', 'js/nepe/updateNepe.js');
 			}else{  
 				var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 				var textoEstatus = 'Error, usuario solicito updateNepe look, sin estar logueado.';
