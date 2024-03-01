@@ -33,8 +33,20 @@ if($recurso){
 		$nepeDato['creado']    = $fila[1];
 		$nepeDato['nombre']    = $fila[2];
 		$nepeDato['cuando']    = json_decode($fila[3]);
-		$nepeDato['sucasa']    = json_decode($fila[4]);
-		$nepeDato['desdecasa'] = json_decode($fila[5]);
+		if(is_null($fila[4])){
+			$nepeDato['sucasa'] = null;
+		}elseif(0 === strcmp($fila[4], 't')) {
+			$nepeDato['sucasa'] = true;
+		}elseif(0 === strcmp($fila[4], 'f')){
+			$nepeDato['sucasa'] = false;
+		} 
+		if(is_null($fila[5])){
+			$nepeDato['desdecasa'] = null;
+		}elseif(0 === strcmp($fila[5], 't')) {
+			$nepeDato['desdecasa'] = true;
+		}elseif(0 === strcmp($fila[5], 'f')){
+			$nepeDato['desdecasa'] = false;
+		} 
 		pg_close($cnx); 
 		//Send data from server in json format
 		echo json_encode($nepeDato);
