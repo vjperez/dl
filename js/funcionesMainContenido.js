@@ -18,12 +18,6 @@ jQuery.lookYelScript = function(pageName, scriptPath){
 	jQuery('#footer').css('visibility','visible');  
 }
 
-jQuery.feedback = function(queElemento, mensaje, forma){
-	jQuery(queElemento).text(mensaje);
-	if(forma === 'downdelayup') {
-		jQuery(queElemento).slideDown(500).delay(1000).slideUp(2000);
-	}
-}
 
 jQuery.encodeAndGetErrorPath = function(xhrObjetoForFAILString, textoEstatus, elError){
 	if(DEBUGUEO){
