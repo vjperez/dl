@@ -19,9 +19,9 @@ jQuery('form#nepeForm').submit(function(evento){
 	regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@._+-:]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +	  y  :
 	var cuando = {  lun:jQuery.cleanStr( jQuery('form#nepeForm input[name=dia1]').val(), regexp ), 
 					mar:jQuery.cleanStr( jQuery('form#nepeForm input[name=dia2]').val(), regexp ),
-					mier:jQuery.cleanStr( jQuery('form#nepeForm input[name=dia3]').val(), regexp ),
+					mie:jQuery.cleanStr( jQuery('form#nepeForm input[name=dia3]').val(), regexp ),
 					jue:jQuery.cleanStr( jQuery('form#nepeForm input[name=dia4]').val(), regexp ),
-					vier:jQuery.cleanStr( jQuery('form#nepeForm input[name=dia5]').val(), regexp ),
+					vie:jQuery.cleanStr( jQuery('form#nepeForm input[name=dia5]').val(), regexp ),
 					sab:jQuery.cleanStr( jQuery('form#nepeForm input[name=dia6]').val(), regexp ),
 					dom:jQuery.cleanStr( jQuery('form#nepeForm input[name=dia7]').val(), regexp )
 	};

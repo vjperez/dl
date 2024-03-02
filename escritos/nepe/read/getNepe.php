@@ -18,13 +18,6 @@ require_once 'getNepe/getNepeQuery.php';
 $recurso = pg_execute($cnx, "preparadoQueryGetNepe", array($nepe_id));
 
 if($recurso){
-//When you put bool values, arrays, or integers like the nepe Id, into a json format it allows
-//the later use of functions like json_decode().  This makes possible
-//the preservation of the datatypes, as stored in postgresql.
-//When jQuery.getJSON receives data it will build a javascript objects
-//with the correct datatypes only if you preserve those datatypes,
-//otherwise it simply receives text, and you get hard to debug,
-//wrong results.
 	$fila = array();
 	$nepeDato = array();
 	if($fila = pg_fetch_row($recurso)){
@@ -34,18 +27,18 @@ if($recurso){
 		$nepeDato['nombre']    = $fila[2];
 		$nepeDato['cuando']    = json_decode($fila[3]);
 		if(is_null($fila[4])){
-			$nepeDato['sucasa'] = null;
+			$nepeDato['suCasa'] = 'na';
 		}elseif(0 === strcmp($fila[4], 't')) {
-			$nepeDato['sucasa'] = true;
+			$nepeDato['suCasa'] = 'si';
 		}elseif(0 === strcmp($fila[4], 'f')){
-			$nepeDato['sucasa'] = false;
+			$nepeDato['suCasa'] = 'no';
 		} 
 		if(is_null($fila[5])){
-			$nepeDato['desdecasa'] = null;
+			$nepeDato['desdeCasa'] = 'na';
 		}elseif(0 === strcmp($fila[5], 't')) {
-			$nepeDato['desdecasa'] = true;
+			$nepeDato['desdeCasa'] = 'si';
 		}elseif(0 === strcmp($fila[5], 'f')){
-			$nepeDato['desdecasa'] = false;
+			$nepeDato['desdeCasa'] = 'no';
 		} 
 		pg_close($cnx); 
 		//Send data from server in json format

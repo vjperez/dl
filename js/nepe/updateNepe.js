@@ -1,26 +1,34 @@
 //major task 1
-//when ajax complete ; if already existing micro empre then populate form using that data
+//populate form
 jQuery.populateUpdateNepeForm = function(datos){
-	//nombre y video
-	jQuery('div#updateNepeTitulo h2').text(datos.nombre);
-	jQuery('form#updateNepeForm input[name=nombre]').val(datos.nombre);
-	jQuery('form#updateNepeForm textarea[name=videoUrl]').val(datos.videoUrl);
-	jQuery('form#updateNepeForm input[name=red1]').val(datos.quienSocialHandle.fbk);
-	jQuery('form#updateNepeForm input[name=red2]').val(datos.quienSocialHandle.email);
-	jQuery('form#updateNepeForm input[name=red3]').val(datos.quienSocialHandle.igrm);
-	jQuery('form#updateNepeForm input[name=red4]').val(datos.quienSocialHandle.phn);
-
-	//falta each para array de fotos
-	jQuery('form#updateNepeForm input[name=fotoArr]').prop('required', false);
-
+	//nombre
+	jQuery('div#nepeTitulo h2').text(datos.nombre);
+	jQuery('form#nepeForm input[name=nombre]').val(datos.nombre);
+	
 	//cuando
-	jQuery('form#updateNepeForm input[name=dia1]').val(datos.cuando.lun);
-	jQuery('form#updateNepeForm input[name=dia2]').val(datos.cuando.mar);
-	jQuery('form#updateNepeForm input[name=dia3]').val(datos.cuando.mier);
-	jQuery('form#updateNepeForm input[name=dia4]').val(datos.cuando.jue);
-	jQuery('form#updateNepeForm input[name=dia5]').val(datos.cuando.vier);
-	jQuery('form#updateNepeForm input[name=dia6]').val(datos.cuando.sab);
-	jQuery('form#updateNepeForm input[name=dia7]').val(datos.cuando.dom);
+	jQuery('form#nepeForm input[name=dia1]').val(datos.cuando.lun);
+	jQuery('form#nepeForm input[name=dia2]').val(datos.cuando.mar);
+	jQuery('form#nepeForm input[name=dia3]').val(datos.cuando.mie);
+	jQuery('form#nepeForm input[name=dia4]').val(datos.cuando.jue);
+	jQuery('form#nepeForm input[name=dia5]').val(datos.cuando.vie);
+	jQuery('form#nepeForm input[name=dia6]').val(datos.cuando.sab);
+	jQuery('form#nepeForm input[name=dia7]').val(datos.cuando.dom);
+	
+	//desdeCasa - suCasa
+	let inputValue = datos.desdeCasa;
+	let selector = 'fieldset#desdeCasaFieldset input[value=' + inputValue + ']';
+	jQuery(selector).prop('checked', true);
+	    inputValue = datos.suCasa;
+	    selector = 'fieldset#suCasaFieldset    input[value=' + inputValue + ']';
+	jQuery(selector).prop('checked', true);
+	
+	//  ------------------------          ---------------------  //
+	
+	//video
+	jQuery('form#updateNepeForm textarea[name=videoUrl]').val(datos.videoUrl);
+	
+	//foto - falta each para array
+	jQuery('form#updateNepeForm input[name=fotoArr]').prop('required', false);
 	
 	//following code works when there are 10 or less 'que' coming from getJSON.
 	//the html is prepared for a max of 10 'que'
@@ -37,9 +45,6 @@ jQuery.populateUpdateNepeForm = function(datos){
 		else {  } //en el task3 aqui, entran al arreglo de dondes, solo los cleaned dondes que no son vacioStrs,
 				  // ; en html profile solo se muestran los input field q entraron al arreglo los demas se remueven
 	});
-
-	jQuery('form#updateNepeForm input[value=si]').prop('checked', datos.atucasa);
-	jQuery('form#updateNepeForm input[value=no]').prop('checked', !datos.atucasa);
 }
 
 
@@ -226,8 +231,6 @@ var $fotoInput = jQuery( formaStr + ' input#fotosId');
 $fotoInput.on('change', function(evento){
 	jQuery.have5OrLessImages(formaStr);
 });
-
-
 
 //run initially
 //jQuery.haveAtLeast1Red(formaStr);
