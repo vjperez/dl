@@ -1,4 +1,4 @@
-jQuery.getJSON('escritos/ojo/getRecentNepes.php')
+jQuery.getJSON('escritos/nepe/read/getRecentNepes.php')
 .done(function(datos, estatusForDONE, xhrObjetoForDONE){
 	var tableRows = '';
 	jQuery.each(datos, function(index){
