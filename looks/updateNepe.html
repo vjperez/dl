@@ -10,17 +10,18 @@
     <div id="main" class="">
 
 		
-    <div id="updateNepeTitulo" class="">
+    <div id="nepeTitulo" class="">
 		<h2 class="notHidable"></h2>
 		<label class="explica">Actualizando!</label>
-	</div><!-- updateNepe -->
- 	<form id="updateNepeForm" class="" action="XXXeditcuenta.phpXXX" enctype="multipart/form-data" method="post">
+	</div>
+	
+ 	<form id="nepeForm" class="" action="XXXeditcuenta.phpXXX" enctype="multipart/form-data" method="post">
  	    <fieldset class="notHidable">
  	    	<label>Nombre   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down">   </i>   </label>
  	    	<label class="explica">Nombre de tu Negocio</label>
 			<label class="explica">(requerido)</label>
 		</fieldset>
-		<fieldset id="editNombreFieldset" class="hidable">
+		<fieldset id="nombreFieldset" class="hidable">
 			<div> <input id="nombreId"  type="text"  name="nombre"     maxlength="50" placeholder="" required=true></div>
 		</fieldset>
 		
@@ -30,7 +31,7 @@
 			<label class="explica">Usado por clientes para encontrar tu Negocio!</label>
 			<label class="explica">(requerido 1, maximo 10)</label>
 		</fieldset>
-		<fieldset id="editQueFieldset" class="hidable">
+		<fieldset id="queFieldset" class="hidable">
 			<div> <input id="que1Id"  type="text" name="que1"  maxlength="50" placeholder="corto grama" required=true></div>
 			<div> <input id="que2Id"  type="text" name="que2"  maxlength="50" placeholder="hago delivery">            </div>
 			<div> <input id="que3Id"  type="text" name="que3"  maxlength="50" placeholder="">              </div>
@@ -49,78 +50,57 @@
 			<label class="explica">Usado por clientes para encontrar tu Negocio!</label>
 			<label class="explica">(requerido 1, maximo 5)</label>
 		</fieldset>
-		<fieldset id="editDondeFieldset" class="hidable">
+		<fieldset id="dondeFieldset" class="hidable">
 			<div> <input id="donde1Id" type="text" name="donde1" maxlength="50" placeholder="moca" required=true></div>
 			<div> <input id="donde2Id" type="text" name="donde2" maxlength="50" placeholder="juncos">			</div>
 			<div> <input id="donde3Id" type="text" name="donde3" maxlength="50" placeholder="">				    </div>
 			<div> <input id="donde4Id" type="text" name="donde4" maxlength="50" placeholder="">				    </div>
 			<div> <input id="donde5Id" type="text" name="donde5" maxlength="50" placeholder="">				    </div>
-			<fieldset id="editASuCasaFieldset" class="subArea">
-				<label>A su casa</label>
-				<label class="explica">&iquest;Trabajarias en casa del cliente?</label>
+			<fieldset id="desdeCasaFieldset" class="subArea">
+				<label>Desde casa</label>
+				<label class="explica">&iquest;Trabajas desde casa?</label>
 				<label class="explica">(requerido)</label>
-			
-				<div> <label class="conMargen" for="aSuCasaSiRadioId"><span>Si</span></label>								
-					  <input class="conMargen"  id="aSuCasaSiRadioId" type="radio" name="aSuCasa" value="si" required>       </div>
-				<div> <label class="conMargen" for="aSuCasaNoRadioId"><span>No</span></label>								
-					  <input class="conMargen"  id="aSuCasaNoRadioId" type="radio" name="aSuCasa" value="no">		    	   </div>
+				<div> <label class="conMargen" for="desdeCasaSiRadioId"><span>Si</span></label>	
+					  <input class="conMargen"  id="desdeCasaSiRadioId" type="radio" name="desdeCasa" value="si"  required> </div>
+				<div> <label class="conMargen" for="desdeCasaNoRadioId"><span>No</span></label>	
+					  <input class="conMargen"  id="desdeCasaNoRadioId" type="radio" name="desdeCasa" value="no">           </div>
+                <div> <label class="conMargen" for="desdeCasaNaRadioId"><span>No aplica</span></label>	
+                      <input class="conMargen"  id="desdeCasaNaRadioId" type="radio" name="desdeCasa" value="na">           </div>        
 			</fieldset>
+			<fieldset id="suCasaFieldset" class="subArea">
+				<label>A su casa</label>
+				<label class="explica">&iquest;Trabajas en casa del cliente?</label>
+				<label class="explica">(requerido)</label>
+				<div> <label class="conMargen" for="suCasaSiRadioId"><span>Si</span></label>								
+					  <input class="conMargen"  id="suCasaSiRadioId" type="radio" name="suCasa" value="si" required>       </div>
+				<div> <label class="conMargen" for="suCasaNoRadioId"><span>No</span></label>								
+					  <input class="conMargen"  id="suCasaNoRadioId" type="radio" name="suCasa" value="no">		    	   </div>
+                <div> <label class="conMargen" for="suCasaNaRadioId"><span>No aplica</span></label>								
+                      <input class="conMargen"  id="suCasaNaRadioId" type="radio" name="suCasa" value="na">		    	   </div>                      
+			</fieldset>		
 		</fieldset>
 
 		<fieldset class="notHidable">
 			<label>Cuando   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down">   </i>   </label>
-			<label class="explica">Horario de tu Negocio</label>
-			<label class="explica">(opcional)</label>
+			<label class="explica">Cuando trabajas?</label>
 		</fieldset>
-		<fieldset id="editCuandoFieldset" class="hidable">
-			<div> <label for="dia1Id">Lunes</label>										   </div>
-			<div> <input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder="">  </div>
-			<div> <label for="dia2Id">Martes</label>										   </div>
-			<div> <input id="dia2Id" type="text" name="dia2" maxlength="50" placeholder="">  </div>
-			<div> <label for="dia3Id">Miercoles</label>									   </div>
+		<fieldset id="cuandoFieldset" class="hidable">
+			<div> <label for="dia1Id">Lunes</label>										     </div>
+			<div> <input id="dia1Id" type="text" name="dia1" maxlength="50" placeholder="de 10am a 3pm, de 6pm a 10pm">  </div>
+			<div> <label for="dia2Id">Martes</label>										 </div>
+			<div> <input id="dia2Id" type="text" name="dia2" maxlength="50" placeholder="en la tarde: 2 a 7pm">          </div>
+			<div> <label for="dia3Id">Miercoles</label>										 </div>
 			<div> <input id="dia3Id" type="text" name="dia3" maxlength="50" placeholder="">  </div>
-			<div> <label for="dia4Id">Jueves</label>										   </div>
+			<div> <label for="dia4Id">Jueves</label>										 </div>
 			<div> <input id="dia4Id" type="text" name="dia4" maxlength="50" placeholder="">  </div>
-			<div> <label for="dia5Id">Viernes</label>										   </div>
+			<div> <label for="dia5Id">Viernes</label>										 </div>
 			<div> <input id="dia5Id" type="text" name="dia5" maxlength="50" placeholder="">  </div>
-			<div> <label for="dia6Id">Sabado</label>										   </div>
+			<div> <label for="dia6Id">Sabado</label>										 </div>
 			<div> <input id="dia6Id" type="text" name="dia6" maxlength="50" placeholder="">  </div>
-			<div> <label for="dia7Id">Domingo</label>										   </div>
+			<div> <label for="dia7Id">Domingo</label>										 </div>
 			<div> <input id="dia7Id" type="text" name="dia7" maxlength="50" placeholder="">  </div>
-			<fieldset id="editHoyFieldset" class="subArea">
-					<label>Hoy Mismo</label>
-					<label class="explica">&iquest;Disponible Hoy mismo?</label>
-					<label class="explica">(requerido)</label>
-					
-				    <div> <label class="conMargen" for="hoySiRadioId"><span>Si</span></label>	
-						  <input class="conMargen"  id="hoySiRadioId" type="radio" name="hoy" value="si"  required> </div>
-				    <div> <label class="conMargen" for="hoyNoRadioId"><span>No</span></label>	
-						  <input class="conMargen"  id="hoyNoRadioId" type="radio" name="hoy" value="no">           </div>
-			</fieldset>
 		</fieldset>
 
- 	    <fieldset class="notHidable">
- 	    	<label>Fotos   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down">   </i>   </label>
- 	    	<label class="explica">Fotos de tu Negocio</label>
-			<label class="explica">(requerido 1, maximo 5)</label>
-		</fieldset>	
-		<fieldset id="editFotoFieldset" class="hidable">
-			<input type="hidden" name="MAX_FILE_SIZE" value="1000000"> <!-- 1MB  1 000 000 Bytes-->
-			<button type="button" class="peq">   <i class="fas fa-upload"></i>   </button>
-			<input id="fotoArrId"  type="file" name="fotoArr[]" multiple hidden>
-			<div>   <h5 id="howManyFeedback"  class="feedback"></h5>   </div>
-			<div>   <h5 id="max5min1Feedback" class="warn"></h5>	   </div>
-			<div>   <h5 id="isImageFeedback"  class="warn"></h5>       </div>
-		</fieldset>
-
-		<fieldset class="notHidable">
- 	    	<label>Video   <i class="fas fa-chevron-circle-up"></i>   <i class="fas fa-chevron-circle-down">   </i>   </label>
-        	<label class="explica">Link a un video en youtube con info de tu Negocio.</label>
- 	    	<label class="explica">(opcional)</label>
-		</fieldset>
-		<fieldset id="editVideoFieldset" class="hidable">
-			<textarea id="videoUrlId"  name="videoUrl"  rows="3" cols="50" placeholder="https://www.youtube.com/watch?v=6qpudAhYhpc" ></textarea>
-		</fieldset>
 
 		<fieldset id="submitButtonFieldset" class="notHidable">
 			<div> <button type="submit">   <i class="fas fa-share-square"></i>   </button> </div>
