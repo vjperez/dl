@@ -92,6 +92,13 @@ jQuery.isNotVacioStr = function(str){
 		return null;
 }
 
+jQuery.feedback = function(queElemento, mensaje, forma){
+	jQuery(queElemento).text(mensaje);
+	if(forma === 'downdelayup') {
+		jQuery(queElemento).slideDown(500).delay(1000).slideUp(2000);
+	}
+}
+
 //to get logged condition and include other scripts after logueado is set
 jQuery.isLogueadoSessionSet = function(){
 	jQuery.getJSON('escritos/session/isSessionSet.php', {key:'dueno_id'})
@@ -99,9 +106,9 @@ jQuery.isLogueadoSessionSet = function(){
 		alert('logueado inside funciones, \nisSessionSet(): \n' + respuesta.isSet);
 		logueado = respuesta.isSet;
 
-		jQuery.includeScript('js/funcionesNavega.js');
+		jQuery.includeScript('js/funcionesMenuHidableToggle.js');
 		jQuery.includeScript('js/funcionesMainContenido.js');
-		jQuery.includeScript('js/navega.js');
+		jQuery.includeScript('js/navButtons.js');
 		jQuery.includeScript('js/getMainContenido.js');
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -153,9 +160,10 @@ jQuery.logout = function(){
 		jQuery(window.location).attr('href', path); 
 	});
 }
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 //since menu Hidable Driver h1 buttons are hidden on width > 984 (js) or 1001 css,
 //without this function, you could end up with no menu on windows width > 984 and no way to redisplay it
 //that can happen if menu was hidden on lower window widths
