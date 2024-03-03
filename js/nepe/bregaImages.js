@@ -1,3 +1,4 @@
+//resize and push
 jQuery.resizeImage = function(index, unFotoFile){  //helper function for jQuery.have5OrLessImages
 	var reader = new FileReader();
 	reader.readAsDataURL(unFotoFile);
@@ -55,7 +56,7 @@ var dataURLToBlob = function(dataURL) {		//helper function for jQuery.have5OrLes
     return new Blob([uInt8Array], {type: contentType});
 }
 
-
+//in array, resize image()
 jQuery.getReducedImagesArray = function(formaStr){ //helper function for jQuery.have5OrLessImages
     //alert(formaStr);
     var forma = document.querySelector(formaStr);
@@ -82,7 +83,8 @@ jQuery.isNotImage = function(formaStr){ //helper function for jQuery.have5OrLess
 }
 
 
-
+//imagenes >= 1  imagenes <= 5
+//todo bien getReducedImagesArray() 
 jQuery.have5OrLessImages = function(formaStr){ //2 questions here 1) five or less files? 2)are all files images?
 	submitVote2 = false;  // default or initial value
 	reducedImagesArray = [];  // default or initial value
