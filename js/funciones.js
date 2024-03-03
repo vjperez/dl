@@ -103,7 +103,7 @@ jQuery.feedback = function(queElemento, mensaje, forma){
 jQuery.isLogueadoSessionSet = function(){
 	jQuery.getJSON('escritos/session/isSessionSet.php', {key:'dueno_id'})
 	.done(function(respuesta, estatusForDONE, xhrObjetoForDONE){
-		alert('logueado inside funciones, \nisSessionSet(): \n' + respuesta.isSet);
+		//alert('funciones: \nisSessionSet(): \n' + respuesta.isSet);
 		logueado = respuesta.isSet;
 
 		jQuery.includeScript('js/funcionesMenuHidableToggle.js');
@@ -161,6 +161,22 @@ jQuery.logout = function(){
 	});
 }
 
+
+jQuery.haveAtLeast1 = function(formaStr){
+	var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
+	if( jQuery.isVacioStr(jQuery.cleanStr(jQuery(formaStr + ' input[name=red1]').val(), regexp)) 
+	&&  jQuery.isVacioStr(jQuery.cleanStr(jQuery(formaStr + ' input[name=red2]').val(), regexp))
+	&&  jQuery.isVacioStr(jQuery.cleanStr(jQuery(formaStr + ' input[name=red3]').val(), regexp)) 
+	&&  jQuery.isVacioStr(jQuery.cleanStr(jQuery(formaStr + ' input[name=red4]').val(), regexp)) ) {	
+			jQuery.feedback('fieldset#socialHandleFieldset h5', 'Minimo 1 contacto');
+			jQuery.feedback('fieldset#submitButtonFieldset h5#handlesFeedback', 'Verifica secci\u00F3n : QUIEN');
+			submitVote1 = false;
+	}else{
+			jQuery.feedback('fieldset#socialHandleFieldset h5', '');
+			jQuery.feedback('fieldset#submitButtonFieldset h5#handlesFeedback', '');
+			submitVote1 = true;
+	}
+}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
