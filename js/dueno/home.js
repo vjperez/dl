@@ -23,7 +23,6 @@ jQuery.ajax({
 	dataType: "json"
 })
 .done(function(datos, estatusForDONE, xhrObjetoForDONE){
-	//ownNepesWithIds = datos;
 	var elTable = "";
 	jQuery.each(datos, function(index){
 		elTable += '<tr><td>';
@@ -96,6 +95,21 @@ jQuery('form#editClaveForm').submit(function(evento){
 }); // editClaveForm submit
 
 jQuery('form#editContactosForm').submit(function(evento){
+		/*
+		//quienSocialHandle is a JS array object, it is stringified before sending it
+		regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
+		var quienSocialHandle = {fbk:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red1]').val(), regexp ),
+									email:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red2]').val(), regexp ),
+								igrm:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red3]').val(), regexp ), 
+									phn:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red4]').val(), regexp )
+		};
+		formData.delete("red1"); //sending reds in array so delete them individually from formData
+		formData.delete("red2"); //sending reds in array so delete them individually from formData
+		formData.delete("red3"); //sending reds in array so delete them individually from formData
+		formData.delete("red4"); //sending reds in array so delete them individually from formData
+		quienSocialHandle = JSON.stringify(quienSocialHandle);
+		formData.append('quienSocialHandle', quienSocialHandle);
+		*/	
     evento.preventDefault(); //not making a submit (POST request) from html action.
     var tel        = jQuery('form#editContactosForm  input#red1Id').val();
 	var email      = jQuery('form#editContactosForm  input#red2Id').val();
