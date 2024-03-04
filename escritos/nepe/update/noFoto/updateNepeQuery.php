@@ -1,8 +1,4 @@
 <?php
-//que and donde receive data from JSON stringify (a string in json format).
-// In order to form a postgresql array, i first extract the elements and then 
-// aggregate them into a postgresql array.  So this query should manage data
-// sent by any language as long as they send it in JSON strinngify format
 $queryUpdateNepe = "UPDATE nepe
 SET
 	nombre = $1,
