@@ -28,7 +28,7 @@ jQuery.populateUpdateNepeForm = function(datos){
 	jQuery('fieldset#videoFieldset textarea[name=videoUrl]').val(datos.videoUrl);
 	
 	//foto - falta each para array
-	//jQuery('fieldset#fotoFieldset input[name=^fotoArr]').prop('required', false);
+	//jQuery('fieldset#fotoFieldset input[name^=fotoArr]').prop('required', false);
 
 	//the html is prepared for a max of 10 'que'
 	jQuery('fieldset#queFieldset input[name^=que]').each(function(indice){
