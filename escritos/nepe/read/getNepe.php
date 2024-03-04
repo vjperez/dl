@@ -24,22 +24,31 @@ if($recurso){
 		//Read data already in json format, and decode it into PHP variables with correct datatype
 		$nepeDato['nepeId']    = json_decode($fila[0]);
 		$nepeDato['creado']    = $fila[1];
-		$nepeDato['nombre']    = $fila[2];
-		$nepeDato['cuando']    = json_decode($fila[3]);
-		if(is_null($fila[4])){
+		$nepeDato['revisado']  = $fila[2];
+		$nepeDato['nombre']    = $fila[3];
+		$nepeDato['cuando']    = json_decode($fila[4]);
+		if(is_null($fila[5])){
 			$nepeDato['suCasa'] = 'na';
-		}elseif(0 === strcmp($fila[4], 't')) {
+		}elseif(0 === strcmp($fila[5], 't')) {
 			$nepeDato['suCasa'] = 'si';
-		}elseif(0 === strcmp($fila[4], 'f')){
+		}elseif(0 === strcmp($fila[5], 'f')){
 			$nepeDato['suCasa'] = 'no';
 		} 
-		if(is_null($fila[5])){
+		if(is_null($fila[6])){
 			$nepeDato['desdeCasa'] = 'na';
-		}elseif(0 === strcmp($fila[5], 't')) {
+		}elseif(0 === strcmp($fila[6], 't')) {
 			$nepeDato['desdeCasa'] = 'si';
-		}elseif(0 === strcmp($fila[5], 'f')){
+		}elseif(0 === strcmp($fila[6], 'f')){
 			$nepeDato['desdeCasa'] = 'no';
 		} 
+
+		//video
+			$nepeDato['videoUrl'] = $fila[7];
+		//que
+			$nepeDato['losQue']   = $fila[8];
+		//donde
+			$nepeDato['losDonde'] = $fila[9];
+
 		pg_close($cnx); 
 		//Send data from server in json format
 		echo json_encode($nepeDato);
