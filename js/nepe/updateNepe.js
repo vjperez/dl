@@ -1,18 +1,18 @@
-//major task 1
+//task 1
 //populate form
 jQuery.populateUpdateNepeForm = function(datos){
 	//nombre
 	jQuery('div#nepeTitulo h2').text(datos.nombre);
-	jQuery('form#nepeForm input[name=nombre]').val(datos.nombre);
+	jQuery('fieldset#nombreFieldset input[name=nombre]').val(datos.nombre);
 	
 	//cuando
-	jQuery('form#nepeForm input[name=dia1]').val(datos.cuando.lun);
-	jQuery('form#nepeForm input[name=dia2]').val(datos.cuando.mar);
-	jQuery('form#nepeForm input[name=dia3]').val(datos.cuando.mie);
-	jQuery('form#nepeForm input[name=dia4]').val(datos.cuando.jue);
-	jQuery('form#nepeForm input[name=dia5]').val(datos.cuando.vie);
-	jQuery('form#nepeForm input[name=dia6]').val(datos.cuando.sab);
-	jQuery('form#nepeForm input[name=dia7]').val(datos.cuando.dom);
+	jQuery('fieldset#cuandoFieldset input[name=dia1]').val(datos.cuando.lun);
+	jQuery('fieldset#cuandoFieldset input[name=dia2]').val(datos.cuando.mar);
+	jQuery('fieldset#cuandoFieldset input[name=dia3]').val(datos.cuando.mie);
+	jQuery('fieldset#cuandoFieldset input[name=dia4]').val(datos.cuando.jue);
+	jQuery('fieldset#cuandoFieldset input[name=dia5]').val(datos.cuando.vie);
+	jQuery('fieldset#cuandoFieldset input[name=dia6]').val(datos.cuando.sab);
+	jQuery('fieldset#cuandoFieldset input[name=dia7]').val(datos.cuando.dom);
 	
 	//desdeCasa - suCasa
 	let inputValue = datos.desdeCasa;
@@ -25,29 +25,24 @@ jQuery.populateUpdateNepeForm = function(datos){
 	//  ------------------------          ---------------------  //
 	
 	//video
-	jQuery('form#updateNepeForm textarea[name=videoUrl]').val(datos.videoUrl);
+	jQuery('fieldset#videoFieldset textarea[name=videoUrl]').val(datos.videoUrl);
 	
 	//foto - falta each para array
-	jQuery('form#updateNepeForm input[name=fotoArr]').prop('required', false);
-	
-	//following code works when there are 10 or less 'que' coming from getJSON.
+	//jQuery('fieldset#fotoFieldset input[name=^fotoArr]').prop('required', false);
+
 	//the html is prepared for a max of 10 'que'
-	jQuery('form#updateNepeForm input[name^=que]').each(function(index){
-		if(index < datos.que.length) { jQuery(this).val(datos.que[index]); }
-		else {  } //en el task3 aqui, entran al arreglo de ques, solo los cleaned ques que no son vacioStrs,
-				  // ; en html profile solo se muestran los input field q entraron al arreglo los demas se remueven
+	jQuery('fieldset#queFieldset input[name^=que]').each(function(indice){
+		if(indice < datos.losQue.length) { jQuery(this).val(datos.losQue[indice]); }
+	    //en submit entran al arreglo, luego de pasar por cleanStr() y  isNotVacioStr()		  
 	});
 
-	//following code works when there are 5 or less 'donde' coming from getJSON.
 	//the html is prepared for a max of 5 'donde'
-	jQuery('form#updateNepeForm input[name^=donde]').each(function(index){
-		if(index < datos.donde.length) { jQuery(this).val(datos.donde[index]); }
-		else {  } //en el task3 aqui, entran al arreglo de dondes, solo los cleaned dondes que no son vacioStrs,
-				  // ; en html profile solo se muestran los input field q entraron al arreglo los demas se remueven
+	jQuery('fieldset#dondeFieldset input[name^=donde]').each(function(indice){
+		if(indice < datos.losDonde.length) { jQuery(this).val(datos.losDonde[indice]); }
+		//en submit entran al arreglo, luego de pasar por cleanStr() y  isNotVacioStr()
 	});
 }
-
-
+//get data to populate form
 let index = jQuery.urlParametro('index');			
 jQuery.getJSON('escritos/nepe/read/getNepe.php', {nepe_index:index} )
 .done(function(nepeDatos, estatusForDONE, xhrObjetoForDONE){
@@ -60,129 +55,120 @@ jQuery.getJSON('escritos/nepe/read/getNepe.php', {nepe_index:index} )
 });
 
 
-jQuery.hideThemSections();
 
+
+//task 2
+//build formdata with cleanStr() and isVacioStr() returned values ... and make post
 var submitVote1 = true;
 var submitVote2 = true;
-var reducedImagesArray = []; 
-
-
-//major task 2
-//build formdata and make post
-jQuery('form#updateNepeForm').submit(function(evento){
-	evento.preventDefault(); //not making a submit (POST request) from html action
-
-	//alert("votos   " + submitVote1 + "   "+ submitVote2);
-	if(submitVote1 && submitVote2){ // 2 votes come from validation by haveAtLeast1Red(formaStr)  and have5OrLessImages(formaStr)
+//var reducedImagesArray = []; 
+jQuery('form#nepeForm').submit(function(evento){
+	evento.preventDefault();
+	if(submitVote1 && submitVote2){
 		// 1) build and edit formdata
-		var forma = document.getElementById('updateNepeForm');
+		var forma = document.getElementById('nepeForm');
 		var formData = new FormData(forma);
 
-		//nombre, video y foto[]
+		//nombre
 		var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
-		var nombre = jQuery.cleanStr( jQuery('form#updateNepeForm input[name=nombre]').val(), regexp );
+		var nombre = jQuery.cleanStr( jQuery('fieldset#nombreFieldset input[name=nombre]').val(), regexp );
 		if(jQuery.isVacioStr(nombre)){
-			formData.delete("nombre"); 			formData.append('nombre', 'sin nombre');
+			formData.delete("nombre"); 			formData.append('nombre', 'no name provided');
 		}else{
 			formData.delete("nombre"); 			formData.append('nombre', nombre);
 		}
 		
-		regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú\.:\/=\?@\._\-+]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=? plus los de login   @ . _ - +
-		var videoUrl = jQuery.cleanStr( jQuery('form#updateNepeForm textarea[name=videoUrl]').val(), regexp );
-		//if(jQuery.isVacioStr(videoUrl)){
-		//	formData.delete("videoUrl"); 		formData.append('videoUrl', 'no video');
-		//}else{
-		formData.delete("videoUrl"); 		formData.append('videoUrl', videoUrl);
-		//}
-
-		formData.delete("fotoArr[]"); // borra las originales grandes
-		jQuery.each(reducedImagesArray, function( index, value ) {
-			formData.append("fotoArr[]", value);
-		});
-
-		//quienSocialHandle is a JS array object, it is stringified before sending it
-		regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
-		var quienSocialHandle = {fbk:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red1]').val(), regexp ),
-									email:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red2]').val(), regexp ),
-								igrm:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red3]').val(), regexp ), 
-									phn:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=red4]').val(), regexp )
-		};
-		formData.delete("red1"); //sending reds in array so delete them individually from formData
-		formData.delete("red2"); //sending reds in array so delete them individually from formData
-		formData.delete("red3"); //sending reds in array so delete them individually from formData
-		formData.delete("red4"); //sending reds in array so delete them individually from formData
-		quienSocialHandle = JSON.stringify(quienSocialHandle);
-		formData.append('quienSocialHandle', quienSocialHandle);
-
-		//cuando is a JS array object, it is stringified before sending it
+		//cuando is a JS array object, ... converted to string in JSON format
 		regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+:]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +		y :			escaping dot and minus
-		var cuando = { lun:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=dia1]').val(), regexp ), 
-						mar:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=dia2]').val(), regexp ),
-						mier:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=dia3]').val(), regexp ),
-						jue:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=dia4]').val(), regexp ),
-						vier:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=dia5]').val(), regexp ),
-						sab:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=dia6]').val(), regexp ),
-						dom:jQuery.cleanStr( jQuery('form#updateNepeForm input[name=dia7]').val(), regexp )
+		var cuando = {  lun:jQuery.cleanStr( jQuery('fieldset#cuandoFieldset input[name=dia1]').val(), regexp ), 
+						mar:jQuery.cleanStr( jQuery('fieldset#cuandoFieldset input[name=dia2]').val(), regexp ),
+						mie:jQuery.cleanStr( jQuery('fieldset#cuandoFieldset input[name=dia3]').val(), regexp ),
+						jue:jQuery.cleanStr( jQuery('fieldset#cuandoFieldset input[name=dia4]').val(), regexp ),
+						vie:jQuery.cleanStr( jQuery('fieldset#cuandoFieldset input[name=dia5]').val(), regexp ),
+						sab:jQuery.cleanStr( jQuery('fieldset#cuandoFieldset input[name=dia6]').val(), regexp ),
+						dom:jQuery.cleanStr( jQuery('fieldset#cuandoFieldset input[name=dia7]').val(), regexp )
 		};
-		formData.delete("dia1"); //sending dias in array so delete them individually from formData
-		formData.delete("dia2"); //sending dias in array so delete them individually from formData
-		formData.delete("dia3"); //sending dias in array so delete them individually from formData
-		formData.delete("dia4"); //sending dias in array so delete them individually from formData
-		formData.delete("dia5"); //sending dias in array so delete them individually from formData
-		formData.delete("dia6"); //sending dias in array so delete them individually from formData
-		formData.delete("dia7"); //sending dias in array so delete them individually from formData
+		formData.delete("dia1"); //sending all dias in a JSON string, so delete individual values from formData
+		formData.delete("dia2"); 
+		formData.delete("dia3"); 
+		formData.delete("dia4");
+		formData.delete("dia5"); 
+		formData.delete("dia6"); 
+		formData.delete("dia7"); 
 		cuando = JSON.stringify(cuando);
 		formData.append('cuando', cuando);
 
-		//sending ques in array
+		//desdeCasa - suCasa
+
+		//video
+		regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú\.:\/=\?@\._\-+]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=? plus los de login   @ . _ - +
+		var videoUrl = jQuery.cleanStr( jQuery('fieldset#videoFieldset textarea[name=videoUrl]').val(), regexp );
+		if(jQuery.isVacioStr(videoUrl)){
+			formData.delete("videoUrl"); 		formData.append('videoUrl', 'no video was added');
+		}else{
+			formData.delete("videoUrl"); 		formData.append('videoUrl', videoUrl);
+		}
+
+		//foto
+		if(jQuery('fieldset#fotoFieldset   input[name^=fotoArr]')[0].files.length === 0){
+			formData.delete("fotoArr[]");     
+			formData.delete("MAX_FILE_SIZE");
+		}
+		/*
+		formData.delete("fotoArr[]"); // borra las originales grandes
+		jQuery.each(reducedImagesArray, function( indice, value ) {
+			formData.append("fotoArr[]", value);
+		});
+		*/
+		
+		//que is a JS array, ... converted to string in JSON format
 		var que = new Array();
-		jQuery('form#updateNepeForm input[name^=que]').each(function(index){
+		jQuery('fieldset#queFieldset input[name^=que]').each(function(indice){
 			regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
 			var cleanedQue = jQuery.cleanStr(jQuery(this).val(), regexp );
-			if(jQuery.isVacioStr(cleanedQue)) {  } else { que[index] = cleanedQue; }
-			formData.delete(jQuery(this).attr("name")); //sending ques in array so delete them individually from formData
+			if(jQuery.isNotVacioStr(cleanedQue)) { que[indice] = cleanedQue; }
+			formData.delete(jQuery(this).attr("name")); //sending all ques in JSON string so delete them individually from formData
 		});
-		que = JSON.stringify(que); //alert(que);
-		formData.append('que', que);
-
-		//sending dondes in array
+		que = JSON.stringify(que); 
+		formData.append('losQue', que);
+		
+		
+		//donde is a JS array, ... converted to string in JSON format
 		var donde = new Array();
-		jQuery('form#updateNepeForm input[name^=donde]').each(function(index){
+		jQuery('fieldset#dondeFieldset input[name^=donde]').each(function(indice){
 			regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
 			var cleanedDonde = jQuery.cleanStr(jQuery(this).val(), regexp );
-			if(jQuery.isVacioStr(cleanedDonde)) {  } else { donde[index] = cleanedDonde; }
-			formData.delete(jQuery(this).attr("name")); //sending dondes in array so delete them individually from formData
+			if(jQuery.isNotVacioStr(cleanedDonde)) { donde[indice] = cleanedDonde; }
+			formData.delete(jQuery(this).attr("name")); //sending all dondes in JSON string so delete them individually from formData
 		});
-		donde = JSON.stringify(donde);  //alert(donde);
-		formData.append('donde', donde);
-
-		formData.append('nepeId', ownNepesWithIds[updatingNepeIndex].nepeId );
+		donde = JSON.stringify(donde);
+		formData.append('losDonde', donde);
 		
-		console.log("form built");
-		for (var value of formData.values()) {
-			console.log(value);
+		formData.append('nepe_index', index );
+		
+		console.log("la forma...");
+		for (const pareja of formData.entries()) {
+			console.log('llave: ' + pareja[0] + '   valor: ' + pareja[1]);
 		}
 		//formdata built
 
 
 		// 2) do the post submition
-		jQuery.ajax({method:"POST", url:"escritos/nepe/updateNepe.php", data:formData, processData:false, contentType:false, cache:false})
+		jQuery.ajax({method:"POST", url:"escritos/nepe/update.php", data:formData, processData:false, contentType:false, cache:false})
 		.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 			//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
 			//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a encodeAndGetErrorPath()
 			try{
-				//alert('datosJSONStr: ' + datosJSONStr);
 				datosJSObj = JSON.parse(datosJSONStr);
-				//alert('datosJSObj.registrado: ' + datosJSObj.registrado + '\ndatosJSObj.feedback: ' + datosJSObj.feedback + '\ndatosJSObj.duenoId: ' + datosJSObj.duenoId);
 			}catch(errorParseo){
 				var datosJSONStrAsXHRTexto = datosJSONStr;
-				var textoEstatus = 'Error parseando la siguiente respuesta del server desde escritos/updateNepe.php :<br> Mensaje: ' + errorParseo.message;
+				var textoEstatus = 'Error parseando la siguiente respuesta del server desde escritos/nepe/update.php :<br> Mensaje: ' + errorParseo.message;
 				var elError = errorParseo.name;
 				
 				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); 
 				jQuery(window.location).attr('href', path); 					
 			}
-			if(datosJSObj.actualizado){		//maybe if is not needed after try catch block
+			if(datosJSObj.actualizado){
 				jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
 			}else{
 				//jQuery.feedback('form#updateNepeForm h2', datosJSObj.feedback);
@@ -195,10 +181,11 @@ jQuery('form#updateNepeForm').submit(function(evento){
 		});
 		// post made
 	}else{	  
-		// submitVote1 && submitVote2; visible only after all html required fields are filled but js stop the submission
-		//not posting ...  validation by haveAtLeast1Red(formaStr) and have5OrLessImages(formaStr)  failed
-		//no aditional feedback needed
-		//all feedback given at haveAtLeast1Red(formaStr) and have5OrLessImages(formaStr) when they run to handle change events
+		//html required fields are filled but js stoped the submission...
+		//validation failed on haveAtLeast1(formaStr) and/or have5OrLessImages(formaStr)
+		//no aditional feedback needed...
+		//feedback given by validation functions...
+		//they run to handle change events
 	}
 });  //jQuery submit
 	
@@ -209,29 +196,28 @@ jQuery('form#updateNepeForm').submit(function(evento){
 
 
 
-
+//jQuery.hideThemSections();
 jQuery('fieldset#submitButtonFieldset button').on('click', function(evento){
-	jQuery.showThem();
+	jQuery.showThemSections();
 });
 
-var $fotoBoton = jQuery('fieldset#fotoSrcFieldset   button[type=button]');
+var $fotoBoton = jQuery('fieldset#fotoFieldset   button[type=button]');
+var $fotoInput = jQuery('fieldset#fotoFieldset   input[name^=fotoArr]');
 $fotoBoton.on('click', function(evento){
 	$fotoInput.click();
 });
 
-
-var formaStr = 'form#updateNepeForm';
+/*
+var formaStr = 'form#nepeForm';
 //validation logic functions are run as handlers to change events
 var $redInputs = jQuery( formaStr + ' input[name^=red]');
 $redInputs.on('change', function(evento){
 	jQuery.haveAtLeast1Red(formaStr);
 });
-
-var $fotoInput = jQuery( formaStr + ' input#fotosId');
+*/
+/*
+var $fotoInput = jQuery( formaStr + ' input#fotoArrId');
 $fotoInput.on('change', function(evento){
 	jQuery.have5OrLessImages(formaStr);
 });
-
-//run initially
-//jQuery.haveAtLeast1Red(formaStr);
-//jQuery.have5OrLessImages(formaStr);
+*/
