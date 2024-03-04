@@ -106,7 +106,7 @@ jQuery.isLogueadoSessionSet = function(){
 		//alert('funciones: \nisSessionSet(): \n' + respuesta.isSet);
 		logueado = respuesta.isSet;
 
-		jQuery.includeScript('js/funcionesMenuHidableToggle.js');
+		jQuery.includeScript('js/funcionesMenu-HidableSectionsToggle.js');
 		jQuery.includeScript('js/funcionesMainContenido.js');
 		jQuery.includeScript('js/navButtons.js');
 		jQuery.includeScript('js/getMainContenido.js');
