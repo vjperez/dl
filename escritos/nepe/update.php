@@ -32,10 +32,10 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 
 	//foto
 	if(isset( $_FILES['fotoArr'] )){
-		require_once 'updateNepe/checkFotoUploadErrorAndMove/checkFotoUploadErrorAndMove.php';
-		require_once 'updateNepe/update/updateNepe.php';
+		require_once 'update/checkFotoErrorAndMove/checkFotoErrorAndMove.php';
+		require_once 'update/checkFotoErrorAndMove/updateNepe.php';
 	}else{
-		require_once 'updateNepe/update/updateNepeNoFotoUpdate.php';
+		require_once 'update/noFoto/updateNepe.php';
 	}
 	
 	//video
