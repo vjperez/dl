@@ -1,0 +1,50 @@
+==============================  the site   ===========================
+adapt and use haveAtLeast1() on funciones for validation, together with feedback()
+
+is there a way to place your tabs on a small text file, you can easyly share
+
+los sites para loguearte, piden uncodigo de 6 chars q envian a tu cell
+	consider this for login !!!
+	
+what tools will let me make a voice based search
+		do they use text, as an 'internal'
+		custom for PR por ejemplo
+		o custom pa la medicina por ejemplo
+		
+consider using activo flag instead of allowing admins to change claves
+	escritos\dueno getNombre.php, editClave.php y getOwnNepesWithIds.php 
+		dan la opcion de usar otro id q no sea dueno_id.  esta esto restringido a admins ?
+	escritos\dueno getSocials.php solo usa el dueno_id
+	
+consider disallowing empty strings as socials
+	use isVacio before submitting
+consider disallowing submiting same value(s) as socials 
+
+
+
+===============================  ai   ===============================
+ide or text editor using ai
+
+can ai help you recognize meaningless form inputs ?
+
+"north korea kim you um" brave search redirects to https://en.wikipedia.org/wiki/Kim_Jong_Un
+	is ai used here for search?
+
+
+
+===============================   python script ideas/needs   ============================
+crea un python script que le des un dir y un string como input, y te devuelva una lista de files ... que contengan el string
+	o sea, donde en mi proyecto use tal funcion?, por ejemplo
+
+crea un python script que le des dos input dirs, y cree un 3er dir con los files
+	merged 
+
+h5.warn en forms, lo uso de vd?
+
+hoyestoy
+	clean bnb
+	delivery
+	cooking
+	
+	
+	
