@@ -29,26 +29,27 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	}else{
 		$desde_casa = null;// value that postgreSQL undestands
 	}
-
-	//foto
-	if(isset( $_FILES['fotoArr'] )){
-		require_once 'update/checkFotoErrorAndMove/checkFotoErrorAndMove.php';
-		require_once 'update/checkFotoErrorAndMove/updateNepe.php';
-	}else{
-		require_once 'update/noFoto/updateNepe.php';
-	}
 	
 	//video
 	$videoUrl = $_POST['videoUrl'];
+	require_once 'update/core/update.php';
 	
+	//foto
+	/*
+	if(isset( $_FILES['fotoArr'] )){
+		require_once 'update/foto/with/update.php';
+	}else{
+		require_once 'update/foto/without/update.php';
+	}
+	*/
+	
+	require_once 'update/que-donde/update.php';
 	//que
-	
-
+	$queToBeFrasesArr   = json_decode( $_POST['losQue'] ); 
+	updateQueDonde('que',   $queToBeFrasesArr);
 	//donde
-
-// =======================================================================================
-	require_once 'conecta/conecta.php';
-	//i am sure i have a connection, because an exception was NOT thrown at conecta
+	$dondeToBeFrasesArr = json_decode( $_POST['losDonde'] );
+	updateQueDonde('donde', $dondeToBeFrasesArr);
 }else{
 	throw new Exception('Session dueno_id o own_nepes_with_ids, no seteada en: ' . __FILE__  );
 }
