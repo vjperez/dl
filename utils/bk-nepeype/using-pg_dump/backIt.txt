@@ -15,8 +15,10 @@ to restore:
 	drop  and re-create nepeype
 		DROP DATABASE "nepeype";
 		CREATE DATABASE "nepeype";
-	
-	run from command line (on the now empty db):
+		1) using psql run xxx.sql backup inside the empty database  (this worked)
+		
+		
+		2) run from command line (on the now empty db):  (have to test this)
 		pg_restore --dbname=nepeype --verbose C:\Users\victor\apache-postgresql-php8\httpd-2.4.57-win64-VS17\Apache24\htdocs\WebDevelopmentStuff\donlibre\backup-nepeype\using-pg_dump\nepeypeBK.sql
 		or
 		pg_restore --dbname=nepeype --verbose nepeypeBK.sql
