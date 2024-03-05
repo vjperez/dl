@@ -41,28 +41,11 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	//video
 	$videoUrl = $_POST['videoUrl'];
 	
-	//
-	$quePHP = json_decode($_POST['que']);
-	$quePosgreArray = '{';
-	foreach($quePHP as $key => $element){
-		if(strlen($element) > 0){
-			if(strlen($quePosgreArray) > strlen('{')) $quePosgreArray = $quePosgreArray . ',';
-			$quePosgreArray = $quePosgreArray . $element;
-		}
-	}
-	$quePosgreArray = $quePosgreArray . '}';
+	//que
+	
 
-	//build a postgresql type array using 'donde' data
-	$dondePHP = json_decode($_POST['donde']);
-	$dondePosgreArray = '{';
-	foreach($dondePHP as $key => $element){
-		if(strlen($element) > 0){  // because of cleanStr in JS, this should ALWAYS be true
-			if(strlen($dondePosgreArray) > strlen('{')) $dondePosgreArray = $dondePosgreArray . ',';
-			$dondePosgreArray = $dondePosgreArray . $element;
-			//if(1 + $key < count($dondePHP)) $dondePosgreArray = $dondePosgreArray . ',';
-		}
-	}
-	$dondePosgreArray = $dondePosgreArray . '}';
+	//donde
+
 // =======================================================================================
 	require_once 'conecta/conecta.php';
 	//i am sure i have a connection, because an exception was NOT thrown at conecta

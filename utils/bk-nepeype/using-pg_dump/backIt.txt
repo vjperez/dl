@@ -11,7 +11,7 @@ to back it
 ===============================================================	
 to restore:
 	go into psql
-		psql --username victordbu
+		psql --username victordbu  --dbname ' '
 	drop  and re-create nepeype
 		DROP DATABASE "nepeype";
 		CREATE DATABASE "nepeype";
@@ -24,4 +24,3 @@ to restore:
 		
 		
 do 'back database psql command' google search, if this do not work
-		
