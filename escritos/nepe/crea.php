@@ -27,9 +27,7 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	}
 	// i already have the post values
 
-	//conecta al db
-	require_once '../conecta/conecta.php';
-	//i am sure i have a connection, because an exception was NOT thrown at conecta
+
 
 	require_once 'crea/insert/insertNepe.php';
 	

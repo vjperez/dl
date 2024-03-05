@@ -2,7 +2,12 @@
 session_start();
 if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	$to_be_inserted_nepe_index = sizeof( $_SESSION['own_nepes_with_ids'] );
-	require_once 'insertNepeQuery.php'; 
+	require_once 'insertNepeQuery.php';
+
+	//conecta al db
+	require_once '../../../conecta/conecta.php';
+	//i am sure i have a connection, because an exception was NOT thrown at conecta
+	
 	$recurso = pg_execute($cnx, "preparadoQueryInsertNepe", array($nombre, $cuando,  $su_casa, $desde_casa));
 	if($recurso){
 		$recurso = pg_query($cnx, $querySelectNepeInsertedId); // redefines recurso
@@ -12,7 +17,7 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 		require_once 'duenoNepeQuery.php'; 
 		$recurso = pg_execute($cnx, "preparadoQueryInsertDuenoNepe", array($dueno_id, $inserted_nepe_id));
 		if($recurso){
-			$respuesta = json_decode('{"nepeMainCreado":true, "index":' + $to_be_inserted_nepe_index + '}');
+			$respuesta = json_decode('{"nepeMainCreado":true, "index":' . $to_be_inserted_nepe_index + '}');
 			pg_close($cnx);
 			echo json_encode ($respuesta);
 		}else{
