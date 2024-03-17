@@ -32,6 +32,10 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	
 	//video
 	$videoUrl = $_POST['videoUrl'];
+	
+	require_once '../conecta/conecta.php';
+	//i am sure i have a connection, because an exception was NOT thrown at conecta
+	
 	require_once 'update/core/update.php';
 	
 	//foto
@@ -43,13 +47,12 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	}
 	*/
 	
-	require_once 'update/que-donde/update.php';
 	//que
 	$queToBeFrasesArr   = json_decode( $_POST['losQue'] ); 
-	updateQueDonde('que',   $queToBeFrasesArr);
 	//donde
 	$dondeToBeFrasesArr = json_decode( $_POST['losDonde'] );
-	updateQueDonde('donde', $dondeToBeFrasesArr);
+	require_once 'update/que-donde/update.php';
+	
 }else{
 	throw new Exception('Session dueno_id o own_nepes_with_ids, no seteada en: ' . __FILE__  );
 }
