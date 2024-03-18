@@ -1,11 +1,10 @@
 <?php
 session_start();
 if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
-	$own_nepes_with_ids = $_SESSION['own_nepes_with_ids'];
 	$index = $_POST['nepe_index'];
+	$own_nepes_with_ids = $_SESSION['own_nepes_with_ids'];
 	$nepe_id = $own_nepes_with_ids[$index]['nepeId'];
 	$dueno_id = $_SESSION['dueno_id'];
-
 
 	$nombre = $_POST['nombre'];
 	$cuando = $_POST['cuando'];

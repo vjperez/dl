@@ -10,8 +10,7 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	if(      0 === strcmp($su_casa_str , 'si')){
 		$su_casa = 't';// value that postgreSQL undestands
 	}elseif( 0 === strcmp($su_casa_str , 'no')){
-		$su_casa = 'f';// value that postgreSQL undestands.  
-		//PHP undestands false, but tries to insert '' into Postgresql which causes an error
+		$su_casa = 'f';// value that postgreSQL undestands.  //PHP undestands false, but tries to insert '' into Postgresql which causes an error
 	}else{
 		$su_casa = null;// value that postgreSQL undestands
 	}

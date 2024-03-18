@@ -5,7 +5,7 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	//conecta al db
 	require_once '../conecta/conecta.php';
 	//i am sure i have a connection, because an exception was NOT thrown at conecta
-	require_once 'insertNepeQuery.php';
+	require_once 'crea/insert/insertNepeQuery.php';
 
 	$recurso = pg_execute($cnx, "preparadoQueryInsertNepe", array($nombre, $cuando,  $su_casa, $desde_casa));
 	if($recurso){
@@ -13,9 +13,11 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 		$fila = pg_fetch_row($recurso);
 		$inserted_nepe_id = $fila[0];
 		$dueno_id = $_SESSION['dueno_id'];
-		require_once 'duenoNepeQuery.php'; 
+		require_once 'crea/insert/duenoNepeQuery.php'; 
 		$recurso = pg_execute($cnx, "preparadoQueryInsertDuenoNepe", array($dueno_id, $inserted_nepe_id));
 		if($recurso){
+			$_SESSION['own_nepes_with_ids'][$to_be_inserted_nepe_index]['nepeId'] = $inserted_nepe_id;
+			$_SESSION['own_nepes_with_ids'][$to_be_inserted_nepe_index]['nepeNombre'] = $nombre; 
 			$respuesta = json_decode('{"nepeMainCreado":true, "index":'  .  $to_be_inserted_nepe_index  .  '}');
 			pg_close($cnx);
 			echo json_encode ($respuesta);
