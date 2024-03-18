@@ -12,7 +12,7 @@ if($recurso){
     $index = 0;
     while($nepe = pg_fetch_row($recurso) ){
 		$nepeId = json_decode($nepe[0]);
-		$randomNepeFoto;
+		$randomNepeFoto = 'negrodot.png';
         
 		require_once 'getFoto/getFotoQuery.php';
 		$recurso = pg_execute($cnx, "preparadoQueryGetFoto", array($nepeId));
@@ -23,8 +23,10 @@ if($recurso){
 				$fotos[$fotoIndex] = $foto[0];    
 				$fotoIndex++;
 			}
-			$randomIndex = rand(0, -1 + count($fotos));
-			$randomNepeFoto = $fotos[$randomIndex];
+			if(count($fotos) >= 1){
+				$randomIndex = rand(0, -1 + count($fotos));
+				$randomNepeFoto = $fotos[$randomIndex];
+			}
 		}else{
 		    pg_close($cnx); 
 			throw new Exception('Mal query.  Sin RECURSO para preparadoQueryGetFoto en: ' . __FILE__  );	

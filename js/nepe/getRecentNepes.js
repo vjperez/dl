@@ -20,7 +20,13 @@ jQuery.getJSON('escritos/nepe/read/getRecentNepes.php')
 	jQuery('#labelAndTableContainer table').html(tableRows);
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
+	/*
 	var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
 	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 	jQuery(window.location).attr('href', path); 
+	*/
+	var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
+	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
+	jQuery(window.location).attr('href', path);
+
 });
