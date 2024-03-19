@@ -4,10 +4,10 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	$own_nepes_with_ids = $_SESSION['own_nepes_with_ids'];
 	$nepe_id = $own_nepes_with_ids[$index]['nepeId'];
 	
-	require_once 'updateQueries.php';
-	$recurso = pg_execute($cnx, "preparadoQueryUpdateNepe", array($nepe_id, $nombre, $cuando,  $su_casa, $desde_casa));
+	require_once 'update/core/updateQueries.php';
+	$recurso = pg_execute($cnx, "preparadoQueryUpdateNepe", array($nepe_id, $nombre, $cuando, $su_casa, $desde_casa));
 	if($recurso){
-		require_once 'nepeHasVideoQuery.php';
+		require_once 'update/core/nepeHasVideoQuery.php';
 		$recurso = pg_execute($cnx, "preparadoQueryNepeHasVideo", array($nepe_id));
 		if($recurso){
 			if( pg_fetch_row($recurso) ){//updated nepe and update video url
