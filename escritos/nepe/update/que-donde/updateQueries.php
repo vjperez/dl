@@ -38,17 +38,17 @@ function prepareCurrentIdsQueries($tableName, $cnx){
 	pg_prepare($cnx, "preparadoQueryGetCurrent" . $tableName . "Ids", $queryGetIds);
 }
 function getCurrentIds($tableName, $nepe_id, $cnx){
-	$ids = array();	
+	$areIds = array();	
 	$recurso = pg_execute($cnx, "preparadoQueryGetCurrent" . $tableName . "Ids", array($nepe_id));
 	if($recurso){
 		while($fila = pg_fetch_row($recurso)){
-			array_push($ids, $fila[0]);
+			array_push($areIds, $fila[0]);
 		}
 	}else{
 		pg_close($cnx);
 		throw new Exception('Mal query.  Sin RECURSO, para preparadoQueryGetCurrent' . $tableName . 'Ids en: ' . __FILE__ );
 	}
-	return $ids;
+	return $areIds;
 }
 
 
@@ -71,7 +71,8 @@ function makeAndRemoveLinks($tableName, $nepe_id, $areIdsArr, $toBeIdsArr, $cnx)
 			continue;
 		}else{//make link
 			$recurso = pg_execute($cnx, "preparadoQueryAdd" . $tableName . "Link", array($toBeId, $nepe_id));
-			if($recurso){ ;
+			if($recurso){ 
+				array_push($areIdsArr, $toBeId); //a user could send same toBeId on same request, this push avoids trying to add link twice on following iterations
 			}else{
 				pg_close($cnx);
 				throw new Exception('Mal query.  Sin RECURSO, para preparadoQueryAdd' . $tableName . 'Link en: ' . __FILE__ );
