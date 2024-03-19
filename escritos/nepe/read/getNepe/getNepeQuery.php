@@ -15,16 +15,14 @@ $queryGetNepe = "SELECT
 	su_casa,
 	desde_casa,
 	video.url,
-	array(
-		SELECT
-			que.frase
+	(
+		SELECT json_agg(que.frase)
 		FROM nepe_que left JOIN que
 			ON nepe_que.que_id = que.id	
 		WHERE nepe_que.nepe_id = $1
 	) as losQue,
-    array(
-		SELECT
-			donde.frase
+    (
+		SELECT json_agg(donde.frase)
 		FROM nepe_donde left JOIN donde
 			ON nepe_donde.donde_id = donde.id	
 		WHERE nepe_donde.nepe_id = $1
