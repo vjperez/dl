@@ -32,13 +32,15 @@ jQuery.populateUpdateNepeForm = function(datos){
 
 	//the html is prepared for a max of 10 'que'
 	jQuery('fieldset#queFieldset input[name^=que]').each(function(indice){
-		if(indice < datos.losQue.length) { jQuery(this).val(datos.losQue[indice]); }
+		let losQue = JSON.parse( datos.losQue );
+		if(indice < losQue.length) { jQuery(this).val( losQue[indice] ); }
 	    //en submit entran al arreglo, luego de pasar por cleanStr() y  isNotVacioStr()		  
 	});
 
 	//the html is prepared for a max of 5 'donde'
 	jQuery('fieldset#dondeFieldset input[name^=donde]').each(function(indice){
-		if(indice < datos.losDonde.length) { jQuery(this).val(datos.losDonde[indice]); }
+		let losDonde = JSON.parse( datos.losDonde );
+		if(indice < losDonde.length) { jQuery(this).val( losDonde[indice] ); }
 		//en submit entran al arreglo, luego de pasar por cleanStr() y  isNotVacioStr()
 	});
 }
