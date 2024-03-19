@@ -29,20 +29,22 @@ jQuery.populateUpdateNepeForm = function(datos){
 	
 	//foto - falta each para array
 	//jQuery('fieldset#fotoFieldset input[name^=fotoArr]').prop('required', false);
-
-	//the html is prepared for a max of 10 'que'
-	jQuery('fieldset#queFieldset input[name^=que]').each(function(indice){
-		let losQue = JSON.parse( datos.losQue );
-		if(indice < losQue.length) { jQuery(this).val( losQue[indice] ); }
-	    //en submit entran al arreglo, luego de pasar por cleanStr() y  isNotVacioStr()		  
-	});
-
-	//the html is prepared for a max of 5 'donde'
-	jQuery('fieldset#dondeFieldset input[name^=donde]').each(function(indice){
-		let losDonde = JSON.parse( datos.losDonde );
-		if(indice < losDonde.length) { jQuery(this).val( losDonde[indice] ); }
-		//en submit entran al arreglo, luego de pasar por cleanStr() y  isNotVacioStr()
-	});
+	
+	let losQue = JSON.parse( datos.losQue );
+	if(losQue !== null){
+		jQuery('fieldset#queFieldset input[name^=que]').each(function(indice){
+			if(indice < losQue.length) { jQuery(this).val( losQue[indice] ); }//the html is prepared for a max of 10 'que'
+			//en submit entran al arreglo, luego de pasar por cleanStr() y  isNotVacioStr()		  
+		});
+	}
+	
+	let losDonde = JSON.parse( datos.losDonde );
+	if(losDonde !== null){
+		jQuery('fieldset#dondeFieldset input[name^=donde]').each(function(indice){
+				if(indice < losDonde.length) { jQuery(this).val( losDonde[indice] ); }//the html is prepared for a max of 5 'donde'
+			//en submit entran al arreglo, luego de pasar por cleanStr() y  isNotVacioStr()
+		});
+	}
 }
 //get data to populate form
 let index = jQuery.urlParametro('index');			
