@@ -10,7 +10,7 @@ function prepareToBeIdsQueries($tableName, $cnx){
 function getOrCreateToBeIds($tableName, $frasesArr, $cnx){
 	$toBeIds = array();
 	foreach($frasesArr as $frase){
-		if(is_null($frase)) continue;  //ignore empty values from user
+		if(is_null($frase)) continue;  //ignore empty 'frases' values from user
 		$recurso = pg_execute($cnx, "preparadoQueryIsAlready" . $tableName . "Frase", array($frase));
 		if($recurso){
 			if( $fila = pg_fetch_row($recurso) ){
@@ -73,7 +73,11 @@ function makeAndRemoveLinks($tableName, $nepe_id, $areIdsArr, $toBeIdsArr, $cnx)
 		}else{//make link
 			$recurso = pg_execute($cnx, "preparadoQueryAdd" . $tableName . "Link", array($toBeId, $nepe_id));
 			if($recurso){ 
-				array_push($areIdsArr, $toBeId); //a user could send same toBeId on same request, this push avoids trying to add link twice on following iterations
+				//a user could send the same toBeId on same request, 
+				//if it is a toBeId already in areIdsArr, this insert query will not run anyway
+				//BUT the push avoids trying to add link twice when it is sent multiple times 
+				//and was not already in areIdsArr
+				array_push($areIdsArr, $toBeId);
 			}else{
 				pg_close($cnx);
 				throw new Exception('Mal query.  Sin RECURSO, para preparadoQueryAdd' . $tableName . 'Link en: ' . __FILE__ );
