@@ -10,6 +10,7 @@ function prepareToBeIdsQueries($tableName, $cnx){
 function getOrCreateToBeIds($tableName, $frasesArr, $cnx){
 	$toBeIds = array();
 	foreach($frasesArr as $frase){
+		if(is_null($frase)) continue;  //ignore empty values from user
 		$recurso = pg_execute($cnx, "preparadoQueryIsAlready" . $tableName . "Frase", array($frase));
 		if($recurso){
 			if( $fila = pg_fetch_row($recurso) ){
