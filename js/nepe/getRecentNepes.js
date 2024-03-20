@@ -1,7 +1,6 @@
 jQuery.getJSON('escritos/nepe/read/getRecentNepes.php')
 .done(function(datos, estatusForDONE, xhrObjetoForDONE){
 	var tableRows = '';
-	alert(datos.length);
 	jQuery.each(datos, function(index){
 			tableRows += '<tr class="texto"><td>' 
 			+ '<a class="" href="portada.html?look=profile'

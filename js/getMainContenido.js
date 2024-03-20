@@ -56,11 +56,28 @@ jQuery(document).ready(function(){
 			//jQuery(window.location).attr('href', window.location.pathname + '?look=home');		
 		break;
 		case 'home':
-			jQuery.lookYelScript('looks/home.html', 'js/dueno/home.js');
-			//error when solicita home sin estar logueado, se supone ni pueda
+			if(logueado){	
+				jQuery.lookYelScript('looks/home.html', 'js/dueno/home.js');
+			}else{  
+				var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+				var textoEstatus = 'Error, usuario solicito home look, sin estar logueado.';
+				var elError = 'Error humano.';
+
+				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+				jQuery(window.location).attr('href', path);	
+			}
 		break;			
 		case 'creaNepe':
-			jQuery.lookYelScript('looks/creaNepe.html', 'js/nepe/creaNepe.js');		
+			if(logueado){	
+				jQuery.lookYelScript('looks/creaNepe.html', 'js/nepe/creaNepe.js');
+			}else{  
+				var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+				var textoEstatus = 'Error, usuario solicito creaNepe look, sin estar logueado.';
+				var elError = 'Error humano.';
+
+				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+				jQuery(window.location).attr('href', path);	
+			}		
 		break;
 		case 'updateNepe':	
 			if(logueado){	
