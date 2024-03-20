@@ -1,11 +1,13 @@
 <?php 
-require_once '../../configConstants/constants.php';
+//require_once '../../configConstants/constants.php';
 //conecta al db
-require_once  MAQUINA_PATH . SITE_PATH_APPEND  . 'escritos/conecta/conecta.php';
+//require_once  MAQUINA_PATH . SITE_PATH_APPEND  . 'escritos/conecta/conecta.php';
+require_once  '../../conecta/conecta.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
+define("INTERVALO_DIAS", 30);
 
 require_once 'getRecentNepes/getRecentNepesQuery.php';
-$recurso = pg_execute($cnx, "preparadoQueryGetRecentNepes", array(INTERVALO_DIAS) );
+$recurso = pg_execute($cnx, "preparadoQueryGetRecentNepes" , array( INTERVALO_DIAS ));
 
 if($recurso){
 	$nepes = array();
@@ -15,11 +17,11 @@ if($recurso){
 		$randomNepeFoto = 'negrodot.png';
         
 		require_once 'getFoto/getFotoQuery.php';
-		$recurso = pg_execute($cnx, "preparadoQueryGetFoto", array($nepeId));
-		if($recurso){
+		$recurso_fotos = pg_execute($cnx, "preparadoQueryGetFoto", array($nepeId));
+		if($recurso_fotos){
 			$fotos = array();
 			$fotoIndex = 0;
-			while($foto = pg_fetch_row($recurso)) {
+			while($foto = pg_fetch_row($recurso_fotos)) {
 				$fotos[$fotoIndex] = $foto[0];    
 				$fotoIndex++;
 			}
