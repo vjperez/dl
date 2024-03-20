@@ -7,9 +7,9 @@ jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatEl
 	//Esta funcion la usan login y registra
 	//para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.
 	// 1)lenght >= 3o4; 2)only numbers or letters  @ . _  - +   ; 3)both pass are equal;
-	usertbCheck = usertb.replace(/[^a-z0-9ñüàáèéìíòóùú@\._+-]/gi, '');  // escaping dot with \; g for 'dont stop at first match, find all'; i for case insensitive 
-	pass01Check = pass01.replace(/[^a-z0-9ñüàáèéìíòóùú@\._+-]/gi, '');
-	pass02Check = pass02.replace(/[^a-z0-9ñüàáèéìíòóùú@\._+-]/gi, '');
+	usertbCheck = usertb.replace(/[^a-z0-9ñüàáèéìíòóùú@._+-]/gi, '');  // g for 'dont stop at first match, find all'; i for case insensitive 
+	pass01Check = pass01.replace(/[^a-z0-9ñüàáèéìíòóùú@._+-]/gi, '');
+	pass02Check = pass02.replace(/[^a-z0-9ñüàáèéìíòóùú@._+-]/gi, '');
 	if(usertb.length < MINIMUM_USER_NAME_LENGTH || pass01.length < MINIMUM_USER_PASS_LENGTH || pass02.length < MINIMUM_USER_PASS_LENGTH){
 		if(feedbackType.indexOf('fullFeedback') !== -1){
 			jQuery.feedback(whatElement, "Username o contrase\u00f1a es muy corto.");
@@ -37,12 +37,23 @@ jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatEl
 }
 
 jQuery.cleanStr = function(str, patron){
-	//function will convert a string like   !@uno#$dos&(   into   uno dos
+	//function will convert a string like   !@#uno!$#dos!#@   into    ***uno***dos***
+	//when patron is RegExp(/[^a-z0-9ñüàáèéìíòóùú]/gi)
+	//patron comes mainly from crea y update nepe, y busca
+	
+	//replace characters matching a patron with '*'
+	cleanedstr = str.replace(patron, '*');
+	patron = new RegExp(/[\s]+/g);
+	return cleanedstr.replace(patron, ' ');
+}
+
+jQuery.cleanStrJustKeep1SpaceBetweenWords = function(str, patron){
+	//function will convert a string like   !@#uno!$#dos!#@    into   uno dos
 	//when patron is RegExp(/[^a-z0-9ñüàáèéìíòóùú]/gi)
 	//patron comes mainly from crea y update nepe, y busca
 	
 	//replace characters matching a patron with '%'
-	str = str.replace(patron, '%');		// str will be   %%uno%%dos%%
+	str = str.replace(patron, '%');		// str will be   %%%uno%%%dos%%%
 	
 	strComponentsArray = str.split('%'); // strComponentsArray will contain   ,,uno,,dos,,
 	cleanedstr = '';
@@ -53,7 +64,7 @@ jQuery.cleanStr = function(str, patron){
 			//to represent character BEFORE a delimiter on the first position
 			//to represent character AFTER  a delimiter on the last  position
 			//to represent character BETWEEN  back to back delimiters
-			if(cleanedstr !== ''){cleanedstr += ' ';}
+			if(cleanedstr !== ''){cleanedstr += ' ';}//add blank space before adding a component, but not the first time
 			cleanedstr += strComponentsArray[i];
 			//build a string from non-empty strComponents, adding a space BETWEEN them
 		}
@@ -163,7 +174,7 @@ jQuery.logout = function(){
 
 
 jQuery.haveAtLeast1 = function(formaStr){
-	var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
+	var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
 	if( jQuery.isVacioStr(jQuery.cleanStr(jQuery(formaStr + ' input[name=red1]').val(), regexp)) 
 	&&  jQuery.isVacioStr(jQuery.cleanStr(jQuery(formaStr + ' input[name=red2]').val(), regexp))
 	&&  jQuery.isVacioStr(jQuery.cleanStr(jQuery(formaStr + ' input[name=red3]').val(), regexp)) 
