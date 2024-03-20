@@ -7,16 +7,16 @@ jQuery('form#nepeForm').submit(function(evento){
 	var formData = new FormData(forma);
 
 	//nombre
-	var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +	
+	var regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _  +  -	
 	var nombre = jQuery.cleanStr( jQuery('form#nepeForm input[name=nombre]').val(), regexp );
 	if(jQuery.isVacioStr(nombre)){
-		formData.delete("nombre"); 			formData.append('nombre', 'sin nombre');
+		formData.delete("nombre"); 			formData.append('nombre', 'sin nombre - no name provided');
 	}else{
 		formData.delete("nombre"); 			formData.append('nombre', nombre);
 	}
 
 	//cuando is a JS object, it is stringified before sending it
-	regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@._+-:]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +	  y  :
+	regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú:,@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -	  y  : ,
 	var cuando = {  lun:jQuery.cleanStr( jQuery('form#nepeForm input[name=dia1]').val(), regexp ), 
 					mar:jQuery.cleanStr( jQuery('form#nepeForm input[name=dia2]').val(), regexp ),
 					mie:jQuery.cleanStr( jQuery('form#nepeForm input[name=dia3]').val(), regexp ),

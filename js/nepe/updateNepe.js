@@ -74,16 +74,16 @@ jQuery('form#nepeForm').submit(function(evento){
 		var formData = new FormData(forma);
 
 		//nombre
-		var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
+		var regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -
 		var nombre = jQuery.cleanStr( jQuery('fieldset#nombreFieldset input[name=nombre]').val(), regexp );
 		if(jQuery.isVacioStr(nombre)){
-			formData.delete("nombre"); 			formData.append('nombre', 'no name provided');
+			formData.delete("nombre"); 			formData.append('nombre', 'sin nombre - no name provided');
 		}else{
 			formData.delete("nombre"); 			formData.append('nombre', nombre);
 		}
 		
 		//cuando is a JS array object, ... converted to string in JSON format
-		regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+:]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +		y :			escaping dot and minus
+		regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú:,@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -	y  : ,	
 		var cuando = {  lun:jQuery.cleanStr( jQuery('fieldset#cuandoFieldset input[name=dia1]').val(), regexp ), 
 						mar:jQuery.cleanStr( jQuery('fieldset#cuandoFieldset input[name=dia2]').val(), regexp ),
 						mie:jQuery.cleanStr( jQuery('fieldset#cuandoFieldset input[name=dia3]').val(), regexp ),
@@ -105,10 +105,10 @@ jQuery('form#nepeForm').submit(function(evento){
 		//desdeCasa - suCasa
 
 		//video
-		regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú\.:\/=\?@\._\-+]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=? plus los de login   @ . _ - +
+		regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú.:/=?&@._+-]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=?& plus los de login   @ . _  + -
 		var videoUrl = jQuery.cleanStr( jQuery('fieldset#videoFieldset textarea[name=videoUrl]').val(), regexp );
 		if(jQuery.isVacioStr(videoUrl)){
-			formData.delete("videoUrl"); 		formData.append('videoUrl', 'no video was added');
+			formData.delete("videoUrl"); 		formData.append('videoUrl', 'no video provided');
 		}else{
 			formData.delete("videoUrl"); 		formData.append('videoUrl', videoUrl);
 		}
@@ -128,7 +128,7 @@ jQuery('form#nepeForm').submit(function(evento){
 		//que is a JS array, ... converted to string in JSON format
 		var que = new Array();
 		jQuery('fieldset#queFieldset input[name^=que]').each(function(indice){
-			regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
+			regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -	
 			var cleanedQue = jQuery.cleanStr(jQuery(this).val(), regexp );
 			if(jQuery.isNotVacioStr(cleanedQue)) { que[indice] = cleanedQue; }
 			formData.delete(jQuery(this).attr("name")); //sending all ques in JSON string so delete them individually from formData
@@ -140,7 +140,7 @@ jQuery('form#nepeForm').submit(function(evento){
 		//donde is a JS array, ... converted to string in JSON format
 		var donde = new Array();
 		jQuery('fieldset#dondeFieldset input[name^=donde]').each(function(indice){
-			regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@\._\-+]/gi);	//	allowing letters, numbers plus los de login   @ . _ - +					escaping dot and minus
+			regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _  +  -	
 			var cleanedDonde = jQuery.cleanStr(jQuery(this).val(), regexp );
 			if(jQuery.isNotVacioStr(cleanedDonde)) { donde[indice] = cleanedDonde; }
 			formData.delete(jQuery(this).attr("name")); //sending all dondes in JSON string so delete them individually from formData
