@@ -13,17 +13,17 @@ if($recurso){
 	$nepes = array();
     $index = 0;
     while($nepe = pg_fetch_row($recurso) ){
-		$nepeId = json_decode($nepe[0]);
-		$nepes[$index]['nepeId'] = $nepeId;
+		$nepe_id = json_decode($nepe[0]);
+		$nepes[$index]['nepeId'] = $nepe_id;
 		$nepes[$index]['nepeNombre'] = $nepe[1];
 		$nepes[$index]['dias'] = json_decode($nepe[2]);
-		// fotos is an array with urls, obtained in next required files
+		// fotos is an array with urls, obtained from next required files
     require_once 'getFoto/getFotosQuery.php';
     require_once 'getFoto/getFotos.php';
     $randomIndex = rand(0, -1 + count($fotos));
     $randomNepeFoto = $fotos[$randomIndex];
     $nepes[$index]['nepeFotoName'] = $randomNepeFoto;
-    //
+    // /////////////////   fotos   //////////////////////////////
 		$index++;
     }
     pg_close($cnx);

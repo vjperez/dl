@@ -1,7 +1,7 @@
 <?php  
 	$fotosDefault = array('negrodot.png', 'reddot.png', 'greendot.png', 'bluedot.png');
 	$fotos = array();
-	$recurso_fotos = pg_execute($cnx, "preparadoQueryGetFotos", array($nepeId));
+	$recurso_fotos = pg_execute($cnx, "preparadoQueryGetFotos", array($nepe_id));
 	if($recurso_fotos){
 		$fila = pg_fetch_row($recurso_fotos);
 		if( is_null($fila[0]) ){ // when the query agg no fotos, postgre sends null

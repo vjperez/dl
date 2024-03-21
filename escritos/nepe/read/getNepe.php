@@ -16,7 +16,6 @@ require_once '../../conecta/conecta.php';
 
 require_once 'getNepe/getNepeQuery.php';
 $recurso = pg_execute($cnx, "preparadoQueryGetNepe", array($nepe_id));
-
 if($recurso){
 	$fila = array();
 	$nepeDato = array();
@@ -48,6 +47,12 @@ if($recurso){
 			$nepeDato['losQue']   = $fila[8];
 		//donde
 			$nepeDato['losDonde'] = $fila[9];
+
+		// fotos is an array with urls, obtained from next required files
+			require_once 'getFoto/getFotosQuery.php';
+			require_once 'getFoto/getFotos.php';
+			$nepeDato['losFoto'] = $fotos;
+		// /////////////////   fotos   //////////////////////////////
 
 		pg_close($cnx); 
 		//Send data from server in json format
