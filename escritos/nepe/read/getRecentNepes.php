@@ -14,29 +14,16 @@ if($recurso){
     $index = 0;
     while($nepe = pg_fetch_row($recurso) ){
 		$nepeId = json_decode($nepe[0]);
-		$randomNepeFoto = 'negrodot.png';
-        
-		require_once 'getFoto/getFotoQuery.php';
-		$recurso_fotos = pg_execute($cnx, "preparadoQueryGetFoto", array($nepeId));
-		if($recurso_fotos){
-			$fotos = array();
-			$fotoIndex = 0;
-			while($foto = pg_fetch_row($recurso_fotos)) {
-				$fotos[$fotoIndex] = $foto[0];    
-				$fotoIndex++;
-			}
-			if(count($fotos) >= 1){
-				$randomIndex = rand(0, -1 + count($fotos));
-				$randomNepeFoto = $fotos[$randomIndex];
-			}
-		}else{
-		    pg_close($cnx); 
-			throw new Exception('Mal query.  Sin RECURSO para preparadoQueryGetFoto en: ' . __FILE__  );	
-		}
 		$nepes[$index]['nepeId'] = $nepeId;
 		$nepes[$index]['nepeNombre'] = $nepe[1];
 		$nepes[$index]['dias'] = json_decode($nepe[2]);
-		$nepes[$index]['nepeFotoName'] = $randomNepeFoto;
+		// fotos is an array with urls, obtained in next required files
+    require_once 'getFoto/getFotosQuery.php';
+    require_once 'getFoto/getFotos.php';
+    $randomIndex = rand(0, -1 + count($fotos));
+    $randomNepeFoto = $fotos[$randomIndex];
+    $nepes[$index]['nepeFotoName'] = $randomNepeFoto;
+    //
 		$index++;
     }
     pg_close($cnx);
