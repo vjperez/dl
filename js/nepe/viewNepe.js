@@ -12,18 +12,14 @@ jQuery.getJSON('escritos/nepe/read/getNepe.php', {nepeId:nepeId} )
 
 jQuery.populate = function(datos){
     //insert json data into profile look 
+    let date = new Date(datos.revisado);
+    let opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    jQuery('#nombreyRevisado h5').text('Revisado:  ' + date.toLocaleDateString('es-ES', opciones)); 
+    jQuery('#nombreyRevisado h2').text(datos.nombre);
+    
 
-    //var date = new Date(datos.revisado).toString();
-    //alert('datos revisado: ' + datos.revisado + ' date: ' + date);
-    //jQuery('#video h5').text('Revisado: ' + date.substring(0, -1+date.indexOf('00:00:00')));
-    
-    var date = new Date(datos.revisado);
-    //alert(date);
-    var opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    jQuery('#video h5').text('' + date.toLocaleDateString('es-ES', opciones)); 
-    
-    jQuery('#video h2').text(datos.nombre);
-    
+
+    /*
     //alert('url: ' + datos.videoUrl + '\nis Valid Video Url: ' + datos.isValidVideoUrl);
     if(datos.videoCode == 0){
         jQuery('.videoframecontainer').hide();
@@ -36,44 +32,68 @@ jQuery.populate = function(datos){
         //jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '123456789');
         jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '6qpudAhYhpc');  // hacker movie
     }
+    */
+    jQuery('.videoframecontainer').hide();
+
     
-    
-    //alert(datos.quienSocialHandle);
-    if(datos.quienSocialHandle.email != '')   jQuery('#quien h5.envelope').text(datos.quienSocialHandle.email);    // si no cambias valores, se quedan los de looks/profile.html
-    if(datos.quienSocialHandle.fbk != '')  jQuery('#quien h5.facebook').text(datos.quienSocialHandle.fbk);
-    if(datos.quienSocialHandle.igrm != '') jQuery('#quien h5.instagram').text(datos.quienSocialHandle.igrm);
-    if(datos.quienSocialHandle.phn != '')  jQuery('#quien h5.phone').text(datos.quienSocialHandle.phn);
-    //following code works when there are 5 or less images coming from getJSON.
-    //the html is prepared for a max of 5 images, this code removes excess html when less than 5 images come
-    //alert(datos.quienFotoSrc);
-    jQuery('#quien #profilefotos img').each(function(index){
-        if(index < datos.quienFotoSrc.length) { jQuery(this).attr('src', 'imagenes/profile/subidas/' + datos.quienFotoSrc[index] + '?v=' + Math.random() ); }
-        else { jQuery(this).remove(); }
+
+    //following code works when there are 5 or less images received.
+    //the html is prepared for a max of 5 images
+    //code removes excess html when less than 5 images are received
+    //alert(datos.losFoto);
+    jQuery('#fotos #nepefotos img').each(function(index){
+        if(index < datos.losFoto.length){ 
+            jQuery(this).attr('src', 'imagenes/nepe/subidas/' + datos.losFoto[index] + '?v=' + Math.random() );
+        }else{ 
+            jQuery(this).remove(); 
+        }
     });
+
+
+
+
+    //alert(datos.losSocial);
+    if(datos.losSocial.length > 0){
+        if(datos.losSocial[0].handle != '') jQuery('#quien h5.phone').text(datos.losSocial[0].handle);
+        if(datos.losSocial[1].handle != '') jQuery('#quien h5.envelope').text(datos.losSocial[1].handle);    
+        if(datos.losSocial[2].handle != '') jQuery('#quien h5.redSoc1').text(datos.losSocial[2].handle);
+        if(datos.losSocial[3].handle != '') jQuery('#quien h5.redSoc2').text(datos.losSocial[3].handle);
+    }        
+    
+
+
+
     //alert(datos.cuando);
-    if(datos.cuando.lun  != '') jQuery('#cuando td.lun').text(datos.cuando.lun);			// si no cambias valores, se quedan los de looks/profile.html
+    if(datos.cuando.lun  != '') jQuery('#cuando td.lun').text(datos.cuando.lun);			
     if(datos.cuando.mar  != '') jQuery('#cuando td.mar').text(datos.cuando.mar);
-    if(datos.cuando.mier != '') jQuery('#cuando td.mier').text(datos.cuando.mier);
+    if(datos.cuando.mie  != '') jQuery('#cuando td.mie').text(datos.cuando.mie);
     if(datos.cuando.jue  != '') jQuery('#cuando td.jue').text(datos.cuando.jue);
-    if(datos.cuando.vier != '') jQuery('#cuando td.vier').text(datos.cuando.vier);
+    if(datos.cuando.vie  != '') jQuery('#cuando td.vie').text(datos.cuando.vie);
     if(datos.cuando.sab  != '') jQuery('#cuando td.sab').text(datos.cuando.sab);
     if(datos.cuando.dom  != '') jQuery('#cuando td.dom').text(datos.cuando.dom);
-    //following code works when there are 10 or less 'que' coming from getJSON.
-    //the html is prepared for a max of 10 'que', this code removes excess html when less than 10 'que' come
+    
+    
+    
+    
+    //following code works when there are 10 or less 'que'  are received.
+    //the html is prepared for a max of 10 'que' 
+    //this code removes excess html when less than 10 'que' are received
     //alert(datos.que);
     jQuery('#que li a').each(function(index){
         if(index < datos.que.length) {
             jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent(datos.que[index]) + '&donde=' + encodeURIComponent('')  ).text(datos.que[index]);
-        
-        } else { jQuery(this).remove(); }
+        }else{ jQuery(this).remove(); }
     });
-    //following code works when there are 5 or less 'donde' coming from getJSON.
-    //the html is prepared for a max of 5 'donde', this code removes excess html when less than 5 'donde' come
+    
+    
+    //following code works when there are 5 or less 'donde' are received.
+    //the html is prepared for a max of 5 'donde'
+    //this code removes excess html when less than 5 'donde' are received
     //alert(datos.donde);
     jQuery('#donde li a').each(function(index){
         if(index < datos.donde.length) {
             jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent('') + '&donde=' + encodeURIComponent(datos.donde[index])  ).text(datos.donde[index]);
-        }else { jQuery(this).remove(); }
+        }else{ jQuery(this).remove(); }
     });
     //alert('a tu casa: ' + datos.atucasa + '\ntipo: ' + typeof datos.atucasa);
     var clase = 'no'; if(datos.atucasa) clase = 'si';
@@ -91,13 +111,15 @@ jQuery.hideThemSections();
 var $icon = jQuery('div#quien ul li').click(function(evento){
     evento.preventDefault();
     jQuery('div#quien ul li i').removeClass('current');
-    var $imgToFocus = jQuery(evento.currentTarget).find('i');
-    var socialClass = $imgToFocus.attr('class'); // grab the name this class, used to select h3 with same class
-    $imgToFocus.addClass('current');
+    let $iToFocus = jQuery(evento.currentTarget).find('i');
+    $iToFocus.addClass('current');
+
+    let iclass = $iToFocus.attr('class'); 
+    // grab this i class name, used to select h5 with same class
 
     jQuery('div#quien h5').removeClass('current');
     jQuery('div#quien h5').each(function(){
-        if( socialClass.includes( jQuery(this).attr('class') ) ){
+        if( iclass.includes( jQuery(this).attr('class') ) ){
             jQuery(this).addClass('current');
         }
     });

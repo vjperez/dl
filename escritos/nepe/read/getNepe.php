@@ -54,9 +54,16 @@ if($recurso){
 			$nepeDato['losFoto'] = $fotos;
 		// /////////////////   fotos   //////////////////////////////
 
+		// los socials is an array with handle and tipos, obtained from next required files
+			require_once 'getSocial/getSocialQuery.php';
+			require_once 'getSocial/getSocial.php';
+			$nepeDato['losSocial'] = $losSocial;
+	    //  /////////////   social   //////////////////////////////
+
 		pg_close($cnx); 
 		//Send data from server in json format
 		echo json_encode($nepeDato);
+		echo x;
 	}else{
 		pg_close($cnx);
 		throw new Exception('Con RECURSO, pero sin $fila, (nepe id do not exists or index is out of bounds) en :'  .  __FILE__  .  '.');	
