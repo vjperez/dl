@@ -78,10 +78,12 @@ jQuery.populate = function(datos){
     //following code works when there are 10 or less 'que'  are received.
     //the html is prepared for a max of 10 'que' 
     //this code removes excess html when less than 10 'que' are received
-    //alert(datos.que);
+    //alert(datos.losQue);
+	let losQue = JSON.parse( datos.losQue );
+	if(losQue === null) losQue = ['no que info provided'];
     jQuery('#que li a').each(function(index){
-        if(index < datos.que.length) {
-            jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent(datos.que[index]) + '&donde=' + encodeURIComponent('')  ).text(datos.que[index]);
+        if(index < losQue.length) {
+            jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent(losQue[index]) + '&donde=' + encodeURIComponent('')  ).text(losQue[index]);
         }else{ jQuery(this).remove(); }
     });
     
@@ -89,10 +91,12 @@ jQuery.populate = function(datos){
     //following code works when there are 5 or less 'donde' are received.
     //the html is prepared for a max of 5 'donde'
     //this code removes excess html when less than 5 'donde' are received
-    //alert(datos.donde);
+    //alert(datos.losDonde);
+	let losDonde = JSON.parse( datos.losDonde );
+	if(losDonde === null) losDonde = ['no donde info provided'];
     jQuery('#donde li a').each(function(index){
-        if(index < datos.donde.length) {
-            jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent('') + '&donde=' + encodeURIComponent(datos.donde[index])  ).text(datos.donde[index]);
+        if(index < losDonde.length) {
+            jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent('') + '&donde=' + encodeURIComponent(losDonde[index])  ).text(losDonde[index]);
         }else{ jQuery(this).remove(); }
     });
     //alert('a tu casa: ' + datos.atucasa + '\ntipo: ' + typeof datos.atucasa);

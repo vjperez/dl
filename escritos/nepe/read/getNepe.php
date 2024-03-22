@@ -63,7 +63,7 @@ if($recurso){
 		pg_close($cnx); 
 		//Send data from server in json format
 		echo json_encode($nepeDato);
-		echo x;
+		//echo x;
 	}else{
 		pg_close($cnx);
 		throw new Exception('Con RECURSO, pero sin $fila, (nepe id do not exists or index is out of bounds) en :'  .  __FILE__  .  '.');	
