@@ -43,8 +43,11 @@ jQuery.cleanStr = function(str, patron){
 	
 	//replace characters matching a patron with '*'
 	cleanedstr = str.replace(patron, '*');
-	patron = new RegExp(/[\s]+/g);
-	return cleanedstr.replace(patron, ' ');
+	patron = new RegExp(/[\s]+/g);       // 1 or more continuous blank spaces, global
+	cleanedstr = cleanedstr.replace(patron, ' ');
+	patron = new RegExp(/^\s+|\s+$/gm);  // 1 or more space at begginning or end, global and multiline - a trim
+	cleanedstr = cleanedstr.replace(patron,'');
+	return cleanedstr;
 }
 
 jQuery.cleanStrJustKeep1SpaceBetweenWords = function(str, patron){
