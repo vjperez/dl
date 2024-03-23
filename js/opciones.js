@@ -1,7 +1,7 @@
 let que   = decodeURIComponent( jQuery.urlParametro('que') );      
 let donde = decodeURIComponent( jQuery.urlParametro('donde') ); 
-alert('[' + donde + ']');
-jQuery.getJSON('escritos/ojo/getOpciones.php', {que:que, donde:donde} )
+alert('[' + que + '][' + donde + ']');
+jQuery.getJSON('escritos/nepe/read/getOpciones.php', {que:que, donde:donde} )
 .done(function(datos, estatusForDONE, xhrObjetoForDONE){
 	if(datos.cuantasOpciones > 0){
 		//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
@@ -18,7 +18,7 @@ jQuery.getJSON('escritos/ojo/getOpciones.php', {que:que, donde:donde} )
 				jQuery.each(trios, function(index, pares){
 					jQuery.each(pares, function(nepeId, fotoSrc){
 						htmlForMain += '<a href="portada.html?look=viewNepe&nepeId=' + nepeId + '">';
-						htmlForMain += '<img class="" src="imagenes/profile/subidas/' + fotoSrc + '">'; 
+						htmlForMain += '<img class="" src="imagenes/nepe/subidas/' + fotoSrc + '">'; 
 						htmlForMain += '</a>';
 					});
 				}); // each in trios
