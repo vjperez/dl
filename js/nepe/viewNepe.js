@@ -99,11 +99,23 @@ jQuery.populate = function(datos){
             jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent('') + '&donde=' + encodeURIComponent(losDonde[index])  ).text(losDonde[index]);
         }else{ jQuery(this).remove(); }
     });
-    //alert('a tu casa: ' + datos.atucasa + '\ntipo: ' + typeof datos.atucasa);
-    var clase = 'no'; if(datos.atucasa) clase = 'si';
-    jQuery('#donde span#background').attr('class', clase);
-    //jQuery('#donde span#background').after.remove();
-    jQuery('#donde span.texto').text(clase);
+	
+    //alert('a tu casa: ' + datos.suCasa + '\ntipo: ' + typeof datos.suCasa);
+    let clase = 'no'; 
+	if(datos.suCasa.indexOf('si') === 0) clase = 'si';
+    jQuery('span#sucasa span#background').attr('class', clase);
+    //jQuery('span#sucasa span#background').after.remove();
+	let texto = clase;
+	if(datos.suCasa.indexOf('na') === 0) texto = clase + " aplica";
+    jQuery('span#sucasa span.texto').text(texto);
+	
+    clase = 'no'; 
+	if(datos.desdeCasa.indexOf('si') === 0) clase = 'si';
+    jQuery('span#desdecasa span#background').attr('class', clase);
+    //jQuery('span#desdecasa span#background').after.remove();
+	texto = clase;
+	if(datos.desdeCasa.indexOf('na') === 0) texto = clase + " aplica";
+    jQuery('span#desdecasa span.texto').text(texto);	
                 
 }// populate
 
