@@ -4,7 +4,7 @@
 function prepareToBeIdsQueries($tableName, $cnx){
 	$queryIsAlreadyFrase = "SELECT id FROM " . $tableName . " WHERE frase=$1";
 	pg_prepare($cnx, "preparadoQueryIsAlready" . $tableName . "Frase", $queryIsAlreadyFrase);
-	$queryInsertFrase = "INSERT INTO " . $tableName . " (frase, " . $tableName . "_vector) VALUES (cast($1 as varchar), to_tsvector('spanish', $1)) RETURNING id";
+	$queryInsertFrase = "INSERT INTO " . $tableName . " (frase)  VALUES  ( cast($1 as varchar) )  RETURNING id";
 	pg_prepare($cnx, "preparadoQueryInsert" . $tableName . "Frase", $queryInsertFrase);
 }
 function getOrCreateToBeIds($tableName, $frasesArr, $cnx){
