@@ -58,13 +58,12 @@ switch($buscaMode){
 		break;
 	case 'buscaBoth':
 		$query = "SELECT 
-			nepe_que.nepe_id
+			nepe_que.nepe_id, queIds.ranqueo + dondeIds.ranqueo as ranqueoSum
 		FROM
 		(
 		SELECT id, ts_rank_cd(que_vector, que_query)  AS ranqueo
 		FROM que, to_tsquery('spanish', unaccent($1)) que_query
 		WHERE que_query @@ que_vector
-		ORDER BY ranqueo DESC
 		) queIds
 		INNER JOIN nepe_que 
 			ON  queIds.id = nepe_que.que_id,
@@ -72,11 +71,12 @@ switch($buscaMode){
 		SELECT id, ts_rank_cd(donde_vector, donde_query) AS ranqueo
 		FROM donde, to_tsquery('spanish', unaccent($2)) donde_query
 		WHERE donde_query @@ donde_vector
-		ORDER BY ranqueo DESC
 		) dondeIds		
 		INNER JOIN nepe_donde 
 			ON  dondeIds.id = nepe_donde.donde_id
-		WHERE nepe_que.nepe_id = nepe_donde.nepe_id";
+
+		WHERE nepe_que.nepe_id = nepe_donde.nepe_id
+		ORDER BY ranqueoSum DESC";
 
 		pg_prepare($cnx, "preparo", $query);
 		$recurso = pg_execute($cnx, "preparo", array($queStr, $dondeStr));
