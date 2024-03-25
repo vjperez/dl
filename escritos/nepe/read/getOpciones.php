@@ -10,23 +10,21 @@ require_once '../../conecta/conecta.php';
 require_once 'getOpciones/getOpcionesQuery.php';
 
 	if($recurso){
-		$result = array();  //array con pares
-		$parIndex = 0;  // para ordenar los pares $fila[0] , $randomNepeFoto.  
-						// $fila 0 viene de nepe_id y $randomNepeFoto es una de las fotos de media_foto_url 
+		$result = array();
 		while($fila = pg_fetch_row($recurso)){
-			$nepeId = $fila[0];
+			$nepe_id = $fila[0];
 			
-			//para lo unico q uso fila 1 o sea media_foto_url es para saber cuantas fotos son, y sacar un random number entre 0 y ese numero-1
-			//So, en el db podria guardar simplemente cuantas fotos tiene cada micro_empre
+			// para lo unico q uso $fotos es para saber cuantas fotos son, 
+			// y sacar un random number entre 0 y ese numero-1
+			// So, en el db podria guardar simplemente cuantas fotos tiene cada nepe
 			// hum maybe pero tendrias q construir el filename de la foto on the fly
-			$fotos = json_decode($fila[1]);  // todas las fotos de un nepe changed from json to php array
+			// fotos is an array with urls, obtained from next required files
+			require_once 'getFoto/getFotosQuery.php';
+			require_once 'getFoto/getFotos.php';
 			$randomIndex = rand(0, -1 + count($fotos));
 			$randomNepeFoto = $fotos[$randomIndex];
-			
-			$result['opciones']["$buscaMode"][$parIndex][$nepeId] = $randomNepeFoto;
-			$parIndex++;
+			array_push( $result, array("buscaMode"=>$buscaMode,  "nepeId"=>$nepe_id,  "fotoUrl"=>$randomNepeFoto) );
 		}
-		$result['cuantasOpciones'] = $parIndex;
 		pg_close($cnx); 
 		echo json_encode($result);
 	}else{
