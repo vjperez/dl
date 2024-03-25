@@ -37,12 +37,12 @@ jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatEl
 }
 
 jQuery.cleanStr = function(str, patron){
-	//function will convert a string like   !@#uno!$#dos!#@   into    ***uno***dos***
+	//function will convert a string like   !@#uno!$#dos!#@   into    ___uno___dos___
 	//when patron is RegExp(/[^a-z0-9ñüàáèéìíòóùú]/gi)
 	//patron comes mainly from crea y update nepe, y busca
 	
-	//replace characters matching a patron with '*'
-	cleanedstr = str.replace(patron, '*');
+	//replace characters matching a patron with '_'
+	cleanedstr = str.replace(patron, '_');
 	patron = new RegExp(/[\s]+/g);       // 1 or more continuous blank spaces, global
 	cleanedstr = cleanedstr.replace(patron, ' ');
 	patron = new RegExp(/^\s+|\s+$/gm);  // 1 or more space at begginning or end, global and multiline - a trim
