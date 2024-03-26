@@ -1,5 +1,4 @@
 <?php
-
 //are there errors loading any of the files ?
 foreach ($_FILES['fotoArr']['error'] as $key => $error) {
 	if($error > 0){
@@ -37,31 +36,29 @@ foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {
 	}
 }
 
-/////////////  aqui creando no haria falta borrar, la puse pa hacer filer igual
+//creando no haria falta borrar...
 //erase all pic with same $foto = $fotos_subidas_dir . $nepe_id 
-//for ($i = 0; $i < 5; $i++) {  // 5 is maximum amount of photos allowed ; this should be a php constant // needs to match the 5 in js/creaNepe
-require_once 'configConstants/constants.php';
-$fotoTarget = $fotos_subidas_dir . $nepe_id . '[abcde].';
-foreach(glob($fotoTarget . '*') as $fotoToErase){
+require_once '../configConstants/constants.php';
+$fotoTargetPath = $fotos_subidas_dir . $nepe_id . '[abcde].*';
+$targets = glob( $fotoTargetPath );
+foreach($targets as $fotoToErase){
 	if(file_exists ($fotoToErase)) unlink($fotoToErase);
 }
-/////////////
 
-$mediaFotoUrlPosgreArray = '';
+
+$fotoFilenameArray = array();
 //can we move the files successly ?
 foreach ($_FILES['fotoArr']['tmp_name'] as $key => $tmpn) {	
-	require_once 'configConstants/constants.php';
 	$toLetter = array(0=>"a", 1=>"b", 2=>"c", 3=>"d", 4=>"e");
 	//$tipo = str_replace("image/", "", getimagesize($tmpn)['mime']);  //convierte 'mime/png' en 'png'
 	$tipo = str_replace("image/", "", $_FILES['fotoArr']['type'][$key]);  //convierte 'mime/png' en 'png'
-	$foto = $fotos_subidas_dir . $nepe_id . $toLetter[$key] . '.' . $tipo;  // filesystem path
-   
-	if(!move_uploaded_file($tmpn, $foto )){ // si el file no se pudo mover
+	$filename = $nepe_id . $toLetter[$key] . '.' . $tipo;
+
+	$fotoFullPath = $fotos_subidas_dir . $filename;  // filesystem path
+	if(!move_uploaded_file($tmpn, $fotoFullPath )){ // si el file no se pudo mover
 		throw new Exception('Error moviendo foto. Foto: ' . $key . '.  No se pudo mover la imagen!, tmp_name es: ' . $tmpn . '.' . ' En ' . __FILE__ );
 	}
-	//building $mediaFotoUrlPosgreArray
-	if($key > 0) $mediaFotoUrlPosgreArray = $mediaFotoUrlPosgreArray . ',';
-	$mediaFotoUrlPosgreArray = $mediaFotoUrlPosgreArray . $nepe_id . $toLetter[$key] . '.' . $tipo;
+	//building $fotoFilenameArray
+	array_push( $fotoFilenameArray, $filename );
 }
-$mediaFotoUrlPosgreArray = '{' . $mediaFotoUrlPosgreArray . '}';
 ?>
