@@ -1,4 +1,5 @@
 <?php  
+function getFotos($cnx, $nepe_id){
 	$fotos = array();
 	$recurso_fotos = pg_execute($cnx, "preparadoQueryGetFotos", array($nepe_id));
 	if($recurso_fotos){
@@ -19,4 +20,6 @@
 		pg_close($cnx); 
 		throw new Exception('Mal query.  Sin RECURSO para preparadoQueryGetFotos en: ' . __FILE__  );	
 	}
+	return $fotos;
+}
 ?>
