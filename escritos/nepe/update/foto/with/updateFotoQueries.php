@@ -1,22 +1,22 @@
 <?php
-$queryGetFotos = "SELECT id, url  
-FROM foto
-WHERE nepe_id = $1" ;
-pg_prepare($cnx, "preparadoQueryGetFotos", $queryGetFotos);
+$queryGetFotoUrls = "SELECT to_json(urls), to_json(prox_indice) 
+	FROM foto
+	WHERE nepe_id = $1" ;
+pg_prepare($cnx, "preparadoQueryGetFotoUrls", $queryGetFotoUrls);
 
 
 $queryUpdateFoto = "UPDATE foto
 SET
-	url = $2,
+	urls = string_to_array($2, ','),
+	prox_indice = $3,
 	revisado = NOW()::date 
-WHERE id = $1";
-pg_prepare($cnx, "preparedQueryUpdateFoto", $queryUpdateFoto);
+WHERE nepe_id = $1";
+pg_prepare($cnx, "preparadoQueryUpdateFoto", $queryUpdateFoto);
 
 
-$queryInsertFoto = "INSERT INTO foto (url, nepe_id, creado, revisado)
-	VALUES(url = $1, nepe_id = $2, creado = NOW()::date, revisado = NOW()::date)";
-pg_prepare($cnx, "preparedQueryInsertFoto", $queryInsertFoto);
-
+$queryInsertFotoUrls = "INSERT INTO foto (nepe_id, urls, creado, revisado)
+	VALUES($1, string_to_array($2, ','), NOW()::date, NOW()::date)";
+pg_prepare($cnx, "preparadoQueryInsertFotoUrls", $queryInsertFotoUrls);
 
 
 ?>
