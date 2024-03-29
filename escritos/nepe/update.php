@@ -38,9 +38,10 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	require_once 'update/core/update.php';
 	
 	//foto
-	if(isset( $_FILES['fotoArr'] )){
-		require_once 'update/foto/with/checkFotoErrorAndMove.php';
+	if(isset( $_FILES['fotoArr'] )){  // cuando escoges files para subir
+		require_once 'update/foto/with/updateFotoQueries.php';
 		require_once 'update/foto/with/update.php';
+		require_once 'update/foto/with/checkFotoErrorAndMove.php';
 	}else{
 		//require_once 'update/foto/without/update.php';
 	}
