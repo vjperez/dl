@@ -32,9 +32,7 @@ function queryGetOrInsertFotoUrls($cnx, $nepe_id){
 function queryUpdateUrlsAndProxIndice($cnx, $nepe_id, $urlsStr, $prox_indice_db){
 	$recurso = pg_execute($cnx, "preparadoQueryUpdateFoto", array( $nepe_id, $urlsStr, $prox_indice_db ));
 	if($recurso){
-		$respuesta = json_decode('{"actualizado":true, "feedback":"Nepe actualizado, incluyendo fotos.", "nepeId":' . $nepe_id . '}');
-		//pg_close($cnx);
-		echo json_encode ($respuesta);
+		;
 	}else{
 		pg_close($cnx); 
 		throw new Exception('Mal query.  Sin RECURSO para preparadoQueryUpdateFoto en: ' . __FILE__  );	

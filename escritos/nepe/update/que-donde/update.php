@@ -20,6 +20,7 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	prepareMakeRemoveQueries('Donde', $cnx);
 	makeAndRemoveLinks('Donde', $nepe_id, $areIdsArr, $toBeIdsArr, $cnx);
 	
+	echo '<br>';
 	$respuesta = json_decode('{"nepeQue-DondeUpdated":true}');
 	pg_close($cnx);
 	echo json_encode ($respuesta);

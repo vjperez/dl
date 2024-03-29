@@ -47,7 +47,7 @@ for($indice = 0; $indice < count($_FILES['fotoArr']['tmp_name']); $indice++){
 			$urlsArray = $urlsYProxIndex['urls'];
 			$prox_indice_db = $urlsYProxIndex['prox_indice'];
 					
-			$toLetter = array(0=>"a", 1=>"b", 2=>"c", 3=>"d", 4=>"e", 5=>"f", 5=>"g", 7=>"h");
+			$toLetter = array(0=>"a", 1=>"b", 2=>"c", 3=>"d", 4=>"e", 5=>"f", 6=>"g", 7=>"h");
 			$tipo = str_replace("image/", "", $_FILES['fotoArr']['type'][$indice]);  //convierte 'mime/png' en 'png'
 			$filename = $nepe_id . $toLetter[$prox_indice_db] . '.' . $tipo;
 					
@@ -65,4 +65,8 @@ for($indice = 0; $indice < count($_FILES['fotoArr']['tmp_name']); $indice++){
 	echo '<br>';
 	print_r($files_to_skip);
 }
+
+$respuesta = json_decode('{"actualizado":true, "feedback":"Nepe actualizado, incluyendo fotos.", "nepeId":' . $nepe_id . '}');
+//pg_close($cnx);
+echo json_encode ($respuesta);
 ?>
