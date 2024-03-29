@@ -5,6 +5,8 @@
 
 //conecta al db
 require_once '../../conecta/conecta.php';
+require_once 'getFoto/getFotosQuery.php';
+require_once 'getFoto/getFotos.php';
 //i am sure i have a connection, because an exception was NOT thrown at conecta
 
 require_once 'getOpciones/getOpcionesQuery.php';
@@ -18,9 +20,8 @@ require_once 'getOpciones/getOpcionesQuery.php';
 			// y sacar un random number entre 0 y ese numero-1
 			// So, en el db podria guardar simplemente cuantas fotos tiene cada nepe
 			// hum maybe pero tendrias q construir el filename de la foto on the fly
-			// fotos is an array with urls, obtained from next required files
-			require_once 'getFoto/getFotosQuery.php';
-			require_once 'getFoto/getFotos.php';
+			// fotos is an array with urls, obtained from required files
+			$fotos = getFotos($cnx, $nepe_id);
 			$randomIndex = rand(0, -1 + count($fotos));
 			$randomNepeFoto = $fotos[$randomIndex];
 			array_push( $result, array("buscaMode"=>$buscaMode,  "nepeId"=>$nepe_id,  "fotoUrl"=>$randomNepeFoto) );

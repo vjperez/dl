@@ -48,9 +48,10 @@ if($recurso){
 		//donde
 			$nepeDato['losDonde'] = $fila[9];
 
-		// fotos is an array with urls, obtained from next required files
+		// fotos is an array with urls, obtained from required files
 			require_once 'getFoto/getFotosQuery.php';
 			require_once 'getFoto/getFotos.php';
+			$fotos = getFotos($cnx, $nepe_id);
 			$nepeDato['losFoto'] = $fotos;
 		// /////////////////   fotos   //////////////////////////////
 

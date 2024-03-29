@@ -7,6 +7,8 @@ require_once  '../../conecta/conecta.php';
 define("INTERVALO_DIAS", 30);
 
 require_once 'getRecentNepes/getRecentNepesQuery.php';
+require_once 'getFoto/getFotosQuery.php';
+require_once 'getFoto/getFotos.php';
 $recurso = pg_execute($cnx, "preparadoQueryGetRecentNepes" , array( INTERVALO_DIAS ));
 
 if($recurso){
@@ -17,12 +19,11 @@ if($recurso){
 		$nepes[$index]['nepeId'] = $nepe_id;
 		$nepes[$index]['nepeNombre'] = $nepe[1];
 		$nepes[$index]['dias'] = json_decode($nepe[2]);
-		// fotos is an array with urls, obtained from next required files
-    require_once 'getFoto/getFotosQuery.php';
-    require_once 'getFoto/getFotos.php';
-    $randomIndex = rand(0, -1 + count($fotos));
-    $randomNepeFoto = $fotos[$randomIndex];
-    $nepes[$index]['nepeFotoName'] = $randomNepeFoto;
+		// fotos is an array with urls, obtained from required files
+       $fotos = getFotos($cnx, $nepe_id);
+       $randomIndex = rand(0, -1 + count($fotos));
+       $randomNepeFoto = $fotos[$randomIndex];
+       $nepes[$index]['nepeFotoName'] = $randomNepeFoto;
     // /////////////////   fotos   //////////////////////////////
 		$index++;
     }
