@@ -1,5 +1,5 @@
 <?php
-$queryGetFotos = "SELECT json_agg(url) as losFoto  
+$queryGetFotos = "SELECT array_to_json(urls) 
         FROM foto
         WHERE nepe_id = $1" ;
 
