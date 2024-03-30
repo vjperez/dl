@@ -17,7 +17,7 @@ for($indice = 0; $indice < count($_FILES['fotoArr']['tmp_name']); $indice++){
 		$error_texto = 'Skiping file:' . $indice . ':' . $phpFileUploadErrors[$error_value];
 		$files_to_skip[$indice] = $error_texto;
 		continue;
-		//when you get one of his error, $tempo_name = $_FILES['fotoArr']['tmp_name'] 
+		//when you get one of this error, $tempo_name = $_FILES['fotoArr']['tmp_name'] 
 		//will be empty.  To avoid trying to use its value just go to next file
 	}else{
 		$files_to_skip[$indice] = '';

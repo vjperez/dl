@@ -7,7 +7,7 @@ jQuery.getJSON('escritos/nepe/read/getOpciones.php', {que:que, donde:donde} )
 		//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
 		var htmlForMain = '';
 		jQuery.each(datos, function(index){
-			alert( datos[index].nepeId );
+			//alert( datos[index].nepeId );
 			htmlForMain += '<div id="opcionesdiv" class="opcionesfotos ">';
 
 
