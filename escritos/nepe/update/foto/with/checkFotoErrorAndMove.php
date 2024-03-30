@@ -14,8 +14,11 @@ for($indice = 0; $indice < count($_FILES['fotoArr']['tmp_name']); $indice++){
 	);
 	$error_value = $_FILES['fotoArr']['error'][$indice];
 	if($error_value > 0) {
-		$error_texto = $phpFileUploadErrors[$error_value];
+		$error_texto = 'Skiping file:' . $indice . ':' . $phpFileUploadErrors[$error_value];
 		$files_to_skip[$indice] = $error_texto;
+		continue;
+		//when you get one of his error, $tempo_name = $_FILES['fotoArr']['tmp_name'] 
+		//will be empty.  To avoid trying to use its value just go to next file
 	}else{
 		$files_to_skip[$indice] = '';
 	}
@@ -23,10 +26,10 @@ for($indice = 0; $indice < count($_FILES['fotoArr']['tmp_name']); $indice++){
 	/////////////////////////////////////////////////////////////////
 	$tempo_name = $_FILES['fotoArr']['tmp_name'][$indice];
 	if(!is_uploaded_file($tempo_name)){ // si el file no es uploaded file
-		$error_texto = $tempo_name . ' no es un uploaded file.';
-		$files_to_skip[$indice] = $files_to_skip[$indice] . '::' . $error_texto;
+		$error_texto = 'Skiping file:' . $indice . ':' . $tempo_name . ' no es un uploaded file.';
+		$files_to_skip[$indice] = $files_to_skip[$indice]  .  $error_texto;
 	}else{
-		$files_to_skip[$indice] = $files_to_skip[$indice] . '' ;
+		$files_to_skip[$indice] = $files_to_skip[$indice]  .  '' ;
 	}
 	
 	/////////////////////////////////////////////////////////////////
@@ -35,14 +38,18 @@ for($indice = 0; $indice < count($_FILES['fotoArr']['tmp_name']); $indice++){
 	$es_imagen = getimagesize($tempo_name); 
 	$no_es_imagen = ! $es_imagen;
 	if( $no_es_imagen ){
-		$error_texto = $tempo_name . ' segun getimagesize(), NO es una imagen!, Tipo: ' . $_FILES['fotoArr']['type'][$indice];
+		$error_texto = 'Skiping file:' . $indice . ':' . $tempo_name . ' segun getimagesize(), NO es una imagen!, Tipo: ' . $_FILES['fotoArr']['type'][$indice];
 		$files_to_skip[$indice] = $files_to_skip[$indice] . '::' . $error_texto;
 	}elseif( 0 === stripos($es_imagen['mime'],  'image')   &&   strpos($_FILES['fotoArr']['type'][$indice], 'image') === 0 ){
-		$files_to_skip[$indice] = $files_to_skip[$indice] . '';
-		
-		if( strlen($files_to_skip[$indice]) === strlen('') ){
+		//if $error_texto has been added for this file
+		if( strlen($files_to_skip[$indice]) > strlen('') ){
+			$error_texto = 'Skiping file:' . $indice . ':' . $tempo_name . ', es imagen, tipo:' . $_FILES['fotoArr']['type'][$indice] . ', pero parece ser not uploaded.';
+			$files_to_skip[$indice] = $files_to_skip[$indice] . '::' . $error_texto;
+		}else{
+			//no $error_texto has been added for this file
+			$files_to_skip[$indice] = $files_to_skip[$indice] . '' ;
 			//$urls_prox_index is initialized with returned array
-			$urls_prox_index = queryGetOrInsertFotoUrls($cnx, $nepe_id);
+			$urls_prox_index = queryGetOrInsertUrlsAndProxIndice($cnx, $nepe_id);
 			$urls_array_ondb = $urls_prox_index['urls'];
 			$prox_indice_ondb = $urls_prox_index['prox_indice'];
 					
@@ -50,11 +57,12 @@ for($indice = 0; $indice < count($_FILES['fotoArr']['tmp_name']); $indice++){
 			$tipo = str_replace("image/", "", $_FILES['fotoArr']['type'][$indice]);  //convierte 'mime/png' en 'png'
 			$filename = $nepe_id . $toLetter[$prox_indice_ondb] . '.' . $tipo;
 					
-			if( array_key_exists( $prox_indice_ondb, $urls_array_ondb) ) backPossibleExistingImage( $urls_array_ondb[$prox_indice_ondb], $fotos_subidas_dir );
+			if( array_key_exists( $prox_indice_ondb, $urls_array_ondb) ) backPossibleExistingImage( $filename, $fotos_subidas_dir );
 			moveImage($indice, $_FILES['fotoArr'], $filename, $fotos_subidas_dir);
-			if( array_key_exists( $prox_indice_ondb, $urls_array_ondb) ) erasePossibleBackedImage( $urls_array_ondb[$prox_indice_ondb], $fotos_subidas_dir);
-			
-			$urls_array_ondb[$prox_indice_ondb] = $filename;
+			if( array_key_exists( $prox_indice_ondb, $urls_array_ondb) ) erasePossibleBackedImage( $filename, $fotos_subidas_dir);
+			//the previous array_key_exists must be done before, the next query update
+			$filename_ondb = $toLetter[$prox_indice_ondb] . '.' . $tipo;
+			$urls_array_ondb[$prox_indice_ondb] = $filename_ondb;
 			$prox_indice_ondb = (1 + $prox_indice_ondb) % count($toLetter);
 			queryUpdateUrlsAndProxIndice( $cnx, $nepe_id, implode(',', $urls_array_ondb), $prox_indice_ondb );
 		}		

@@ -1,6 +1,6 @@
 <?php
 require_once '../configConstants/constants.php';
-function queryGetOrInsertFotoUrls($cnx, $nepe_id){
+function queryGetOrInsertUrlsAndProxIndice($cnx, $nepe_id){
 	$result; // array that will contain urls array and index
 	$recurso = pg_execute($cnx, "preparadoQueryGetFotoUrls", array($nepe_id));
 	if($recurso){
