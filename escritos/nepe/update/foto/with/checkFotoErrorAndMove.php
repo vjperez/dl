@@ -1,7 +1,6 @@
 <?php
-for($indice = 0; $indice < count($_FILES['fotoArr']['tmp_name']); $indice++){
-	$files_to_skip = array();
-	
+$files_to_skip = array();
+for($indice = 0; $indice < count($_FILES['fotoArr']['tmp_name']); $indice++){	
 	/////////////////////////////////////////////////////////////////
 	$phpFileUploadErrors = array(
 	0 => 'There is no error, the file uploaded with success',
@@ -41,31 +40,30 @@ for($indice = 0; $indice < count($_FILES['fotoArr']['tmp_name']); $indice++){
 	}elseif( 0 === stripos($es_imagen['mime'],  'image')   &&   strpos($_FILES['fotoArr']['type'][$indice], 'image') === 0 ){
 		$files_to_skip[$indice] = $files_to_skip[$indice] . '';
 		
-		$urlsYProxIndex = array();
 		if( strlen($files_to_skip[$indice]) === strlen('') ){
-			$urlsYProxIndex = queryGetOrInsertFotoUrls($cnx, $nepe_id);
-			$urlsArray = $urlsYProxIndex['urls'];
-			$prox_indice_db = $urlsYProxIndex['prox_indice'];
+			//$urls_prox_index is initialized with returned array
+			$urls_prox_index = queryGetOrInsertFotoUrls($cnx, $nepe_id);
+			$urls_array_ondb = $urls_prox_index['urls'];
+			$prox_indice_ondb = $urls_prox_index['prox_indice'];
 					
 			$toLetter = array(0=>"a", 1=>"b", 2=>"c", 3=>"d", 4=>"e", 5=>"f", 6=>"g", 7=>"h");
 			$tipo = str_replace("image/", "", $_FILES['fotoArr']['type'][$indice]);  //convierte 'mime/png' en 'png'
-			$filename = $nepe_id . $toLetter[$prox_indice_db] . '.' . $tipo;
+			$filename = $nepe_id . $toLetter[$prox_indice_ondb] . '.' . $tipo;
 					
-			if( array_key_exists( $prox_indice_db, $urlsArray) ) backPossibleExistingImage( $urlsArray[$prox_indice_db], $fotos_subidas_dir );
+			if( array_key_exists( $prox_indice_ondb, $urls_array_ondb) ) backPossibleExistingImage( $urls_array_ondb[$prox_indice_ondb], $fotos_subidas_dir );
 			moveImage($indice, $_FILES['fotoArr'], $filename, $fotos_subidas_dir);
-			if( array_key_exists( $prox_indice_db, $urlsArray) ) erasePossibleBackedImage( $urlsArray[$prox_indice_db], $fotos_subidas_dir);
+			if( array_key_exists( $prox_indice_ondb, $urls_array_ondb) ) erasePossibleBackedImage( $urls_array_ondb[$prox_indice_ondb], $fotos_subidas_dir);
 			
-			$urlsArray[$prox_indice_db] = $filename;
-			$prox_indice_db = (1 + $prox_indice_db) % count($toLetter);
-			queryUpdateUrlsAndProxIndice( $cnx, $nepe_id, implode(',', $urlsArray), $prox_indice_db );
+			$urls_array_ondb[$prox_indice_ondb] = $filename;
+			$prox_indice_ondb = (1 + $prox_indice_ondb) % count($toLetter);
+			queryUpdateUrlsAndProxIndice( $cnx, $nepe_id, implode(',', $urls_array_ondb), $prox_indice_ondb );
 		}		
 	}
-	
-	/////////////////////////////////////////////////////////////////
-	echo '<br>';
-	print_r($files_to_skip);
 }
 
+/////////////////////////////////////////////////////////////////
+echo '<br>';
+print_r($files_to_skip);
 $respuesta = json_decode('{"actualizado":true, "feedback":"Nepe actualizado, incluyendo fotos.", "nepeId":' . $nepe_id . '}');
 //pg_close($cnx);
 echo json_encode ($respuesta);
