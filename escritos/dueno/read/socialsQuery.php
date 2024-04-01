@@ -1,7 +1,7 @@
 <?php
-//joins dueno and social to get tipo and hangle using id
+//gets social contacts using dueno id
 $querySocials = "SELECT
-    tipo, handle
+    array_to_json( contactos )
 FROM social
 WHERE dueno_id = $1";
 

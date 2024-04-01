@@ -1,9 +1,9 @@
 <?php
-//query to find out (read) if for a dueno, certain type of social contact exists
+//query to find out (read) if for a dueno, social contacts exists
 $querySocialsId = "SELECT 
 	id
 FROM social
-WHERE dueno_id = $1 AND tipo = $2";
+WHERE dueno_id = $1";
 
 pg_prepare($cnx, "preparadoQuerySocialsId", $querySocialsId);
 ?>
