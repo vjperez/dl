@@ -58,7 +58,7 @@ if($recurso){
 		// los socials is an array with handle and tipos, obtained from next required files
 			require_once 'getSocial/getSocialQuery.php';
 			require_once 'getSocial/getSocial.php';
-			$nepeDato['losSocial'] = $losSocial;
+			$nepeDato['socialArray'] = $social_array;
 	    //  /////////////   social   //////////////////////////////
 
 		pg_close($cnx); 
