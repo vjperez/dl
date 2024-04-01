@@ -9,15 +9,12 @@ if(isset($_SESSION['dueno_id'])){
 	require_once 'read/socialsQuery.php';
 	$recurso = pg_execute($cnx, "preparadoQuerySocials", array($dueno));
 	if($recurso){
-		$losSocials = array();
-		$index = 0;
-		while($socialFila = pg_fetch_row($recurso)){
-			$losSocials[$index]['tipo']   = $socialFila[0];
-			$losSocials[$index]['handle'] = $socialFila[1];
-			$index++;
+		$social_array = array();
+		if($socialFila = pg_fetch_row($recurso)){
+			$social_array = json_decode( $socialFila[0] );	
 		}
 		pg_close($cnx);
-		echo json_encode($losSocials);
+		echo json_encode($social_array);
 	}else{
 		pg_close($cnx);
 		throw new Exception('Mal query.  Sin RECURSO para preparadoQuerySocials en: ' . __FILE__  );
