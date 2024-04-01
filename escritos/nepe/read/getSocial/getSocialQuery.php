@@ -1,5 +1,6 @@
 <?php
-$queryGetSocials = "SELECT tipo,handle 
+$queryGetSocials = "SELECT 
+		array_to_json( contactos )
     FROM social
 	WHERE dueno_id = 
 	(

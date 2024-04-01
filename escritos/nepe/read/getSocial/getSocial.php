@@ -1,12 +1,9 @@
 <?php
-$losSocial = array();  
+$social_array = array();  
 $recurso = pg_execute($cnx, "preparadoQueryGetSocials", array($nepe_id));
 if($recurso){
-    $index = 0;
-    while($socialFila = pg_fetch_row($recurso)){
-        $losSocial[$index]['tipo']   = $socialFila[0];
-        $losSocial[$index]['handle'] = $socialFila[1];
-        $index++;
+    if($socialFila = pg_fetch_row($recurso)){
+        $social_array = json_decode( $socialFila[0] );	
     }
 }else{
     pg_close($cnx);
