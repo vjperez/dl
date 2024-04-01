@@ -52,13 +52,12 @@ jQuery.populate = function(datos){
 
 
 
-    //alert(datos.losSocial);
-    if(datos.losSocial.length > 0){
-        if(datos.losSocial[0].handle != '') jQuery('#quien h5.phone').text(datos.losSocial[0].handle);
-        if(datos.losSocial[1].handle != '') jQuery('#quien h5.envelope').text(datos.losSocial[1].handle);    
-        if(datos.losSocial[2].handle != '') jQuery('#quien h5.redSoc1').text(datos.losSocial[2].handle);
-        if(datos.losSocial[3].handle != '') jQuery('#quien h5.redSoc2').text(datos.losSocial[3].handle);
-    }        
+    alert(datos.socialArray);
+    if(datos.socialArray[0])   jQuery('#quien h5.phone').text(datos.socialArray[0]);
+    if(datos.socialArray[1])   jQuery('#quien h5.envelope').text(datos.socialArray[1]);    
+    if(datos.socialArray[2])   jQuery('#quien h5.redSoc1').text(datos.socialArray[2]);
+    if(datos.socialArray[3])   jQuery('#quien h5.redSoc2').text(datos.socialArray[3]);
+        
     
 
 
