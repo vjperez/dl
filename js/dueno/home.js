@@ -43,12 +43,11 @@ jQuery.ajax({
 	dataType: "json"
 })
 .done(function(socialDatos, estatusForDONE, xhrObjetoForDONE){
-	jQuery.each(socialDatos, function(index){
-		if(socialDatos[index].tipo == 'tel')   jQuery('fieldset#editContactosFieldset input#red1Id').val( socialDatos[index].handle );
-		if(socialDatos[index].tipo == 'email') jQuery('fieldset#editContactosFieldset input#red2Id').val( socialDatos[index].handle );
-		if(socialDatos[index].tipo == 'rs1')   jQuery('fieldset#editContactosFieldset input#red3Id').val( socialDatos[index].handle );
-		if(socialDatos[index].tipo == 'rs2')   jQuery('fieldset#editContactosFieldset input#red4Id').val( socialDatos[index].handle );
-	});
+	alert(socialDatos);
+	if( socialDatos[0]   ) jQuery('fieldset#editContactosFieldset input#red1Id').val( socialDatos[0]  );
+	if( socialDatos[1] ) jQuery('fieldset#editContactosFieldset input#red2Id').val( socialDatos[1]);
+	if( socialDatos[2]   ) jQuery('fieldset#editContactosFieldset input#red3Id').val( socialDatos[2]  );
+	if( socialDatos[3]   ) jQuery('fieldset#editContactosFieldset input#red4Id').val( socialDatos[3]  );
 })
 .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 	var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
