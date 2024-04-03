@@ -172,8 +172,8 @@ jQuery('form#nepeForm').submit(function(evento){
 				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); 
 				jQuery(window.location).attr('href', path); 					
 			}
-			if(datosJSObj.actualizado){
-				jQuery(window.location).attr('href', window.location.pathname + '?look=profile&nepeId=' + datosJSObj.nepeId);
+			if(datosJSObj.nepeCoreUpdated && datosJSObj.queDondeUpdated && (datosJSObj.videoInserted || datosJSObj.videoUpdated)){
+				jQuery(window.location).attr('href', window.location.pathname + '?look=viewNepe&nepeId=' + datosJSObj.nepeId);
 			}else{
 				//jQuery.feedback('form#updateNepeForm h2', datosJSObj.feedback);
 			}
