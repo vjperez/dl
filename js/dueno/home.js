@@ -43,7 +43,7 @@ jQuery.ajax({
 	dataType: "json"
 })
 .done(function(socialDatos, estatusForDONE, xhrObjetoForDONE){
-	alert(socialDatos);
+	//alert(socialDatos);
 	if( socialDatos[0]   ) jQuery('fieldset#editContactosFieldset input#red1Id').val( socialDatos[0]  );
 	if( socialDatos[1] ) jQuery('fieldset#editContactosFieldset input#red2Id').val( socialDatos[1]);
 	if( socialDatos[2]   ) jQuery('fieldset#editContactosFieldset input#red3Id').val( socialDatos[2]  );

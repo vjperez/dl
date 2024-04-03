@@ -52,7 +52,7 @@ jQuery.populate = function(datos){
 
 
 
-    alert(datos.socialArray);
+    //alert(datos.socialArray);
     if(datos.socialArray[0])   jQuery('#quien h5.phone').text(datos.socialArray[0]);
     if(datos.socialArray[1])   jQuery('#quien h5.envelope').text(datos.socialArray[1]);    
     if(datos.socialArray[2])   jQuery('#quien h5.redSoc1').text(datos.socialArray[2]);
