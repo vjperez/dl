@@ -70,9 +70,10 @@ for($indice = 0; $indice < count($_FILES['fotoArr']['tmp_name']); $indice++){
 }
 
 /////////////////////////////////////////////////////////////////
-echo '<br>';
-print_r($files_to_skip);
-$respuesta = json_decode('{"actualizado":true, "feedback":"Nepe actualizado, incluyendo fotos.", "nepeId":' . $nepe_id . '}');
+//print_r($files_to_skip);
+$respuesta->filesToSkip = $files_to_skip;
+//$respuesta = json_decode('{"actualizado":true, "feedback":"Nepe actualizado, incluyendo fotos.", "nepeId":' . $nepe_id . '}');
 //pg_close($cnx);
-echo json_encode ($respuesta);
+//echo json_encode ($respuesta);
+$respuesta->fotoUpdated = true;
 ?>
