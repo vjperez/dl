@@ -59,7 +59,7 @@ jQuery('form#nepeForm').submit(function(evento){
 			let path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
 			jQuery(window.location).attr('href', path);					
 		}
-		if(datosJSObj.nepeMainCreado){
+		if(datosJSObj.nepeCoreCreado){
 			jQuery(window.location).attr('href', window.location.pathname +  '?look=updateNepe&index=' + datosJSObj.index);
 		}else{
 			//jQuery.feedback('form#nepeForm h5', datosJSObj.feedback);

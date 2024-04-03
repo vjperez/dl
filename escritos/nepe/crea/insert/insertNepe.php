@@ -18,7 +18,7 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 		if($recurso){
 			$_SESSION['own_nepes_with_ids'][$to_be_inserted_nepe_index]['nepeId'] = $inserted_nepe_id;
 			$_SESSION['own_nepes_with_ids'][$to_be_inserted_nepe_index]['nepeNombre'] = $nombre; 
-			$respuesta = json_decode('{"nepeMainCreado":true, "index":'  .  $to_be_inserted_nepe_index  .  '}');
+			$respuesta = json_decode('{"nepeCoreCreado":true, "index":'  .  $to_be_inserted_nepe_index  .  '}');
 			pg_close($cnx);
 			echo json_encode ($respuesta);
 		}else{
