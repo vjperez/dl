@@ -32,10 +32,15 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	//video
 	$videoUrl = $_POST['videoUrl'];
 	
+	
+	$respuesta = new stdClass;
+	$respuesta->nepeId = $nepe_id;
 	require_once '../conecta/conecta.php';
 	//i am sure i have a connection, because an exception was NOT thrown at conecta
 	
+	
 	require_once 'update/core/update.php';
+	
 	
 	//foto
 	if(isset( $_FILES['fotoArr'] )){  // cuando escoges files para subir
@@ -52,6 +57,10 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	//donde
 	$dondeToBeFrasesArr = json_decode( $_POST['losDonde'] );
 	require_once 'update/que-donde/update.php';
+	
+	
+	pg_close($cnx);
+	echo json_encode ($respuesta);
 	
 }else{
 	throw new Exception('Session dueno_id o own_nepes_with_ids, no seteada en: ' . __FILE__  );
