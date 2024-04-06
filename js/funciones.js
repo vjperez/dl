@@ -160,6 +160,7 @@ jQuery.getSessionValue = function( sessionName ){
 
 jQuery.includeScript = function include(scriptSrc) {
 	jQuery( '<script src="' + scriptSrc + '" defer></script>' ).appendTo( 'body' );
+	console.log(scriptSrc + ' appended to body.');
 }
 
 jQuery.logout = function(){
