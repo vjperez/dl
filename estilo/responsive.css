@@ -55,17 +55,18 @@ ul.navega li a:hover:not(.seleccionado) {  background-color:var(--navegafondocol
 /* media query to apply css starting at 768 px */
 @media screen and (min-width: 768px) {
   h1.menuHidableDriver{ display:none; }
+  ul.menuHidableTarget{ display:block; }
   ul.navega li a {  float: left;   font-size: 0.85em;  letter-spacing:0.10em; }
 }
 
 /* media query to apply css starting at 1024 px */
 @media screen and (min-width: 1024px) {  
-  body {  max-width:1075px;  margin:0px auto;  }
+  body {  max-width:1280px;  margin:0px auto;  }
   body {  min-height: 50em;  border-right:1px solid var(--navegabordercolor);  }
 
   div#containerForMain, #footer {  margin-left:200px;  }
   div#rightside {  
-    width:100%;  max-width:1075px;  margin:0px auto;
+    width:100%;  max-width:1280px;  margin:0px auto;
     display:block;   
     position: fixed; height: 100%;  
     border:0px solid var(--navegabordercolor); border-right:1px solid var(--navegabordercolor);
