@@ -2,7 +2,7 @@
 //populate form
 jQuery.populateUpdateNepeForm = function(datos){
 	//nombre
-	jQuery('div#nepeTitulo h2').text(datos.nombre);
+	jQuery('div#nepeTitulo label#nombre').text(datos.nombre);
 	jQuery('fieldset#nombreFieldset input[name=nombre]').val(datos.nombre);
 	
 	//cuando
