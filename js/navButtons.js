@@ -2,12 +2,12 @@ jQuery(document).ready(function(){
 
 	//alert('logueado en navega js: ' + logueado);
 	if(logueado){ 
-		jQuery('#navLogout').css('visibility','visible').show();
-		jQuery('#navHome').css('visibility','visible').show()  ;
+		jQuery('#navLogout').show();
+		jQuery('#navHome').show()  ;
 		//alert('nav buttons js:\nshowing logout and home nav buttons for: \nlogueado=' + logueado);
 	}else{
-		jQuery('#navLogin').css('visibility','visible').show();     
-		jQuery('#navSignup').css('visibility','visible').show();
+		jQuery('#navLogin').show();     
+		jQuery('#navSignup').show();
 		//alert('nav buttons js:\nshowing login and sign up nav buttons for:: \nlogueado=' + logueado);
 	}
 	
