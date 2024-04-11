@@ -6,11 +6,11 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
 
 :root {
-    --linkcolor:             hsl(210, 85%, 50%);
-    --linkcolorhover:        hsl(210, 85%, 40%);
+    --linkcolor:             hsl(210, 100%, 50%);
+    --linkcolorhover:        hsl(210, 70%,  50%);
     --formfondocolor:        hsl(000, 00%, 98%);
     --formfondocolorhover:   hsl(000, 00%, 95%);
-    --labelyheadercolor:     hsl(200, 35%, 45%);
+    --labelyheadercolor:     hsl(210, 100%, 50%);
     --icolor:                hsl(330, 85%, 50%);
     --icolorcurrent:         hsl(330, 85%, 40%);
     --menuDrivercolor:       hsl(000, 00%, 00%);
@@ -21,7 +21,10 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
     --warncolor:             hsl(005, 95%,  65%);
   }
 
-span.enfasis  { font-family:mono, monospace; font-weight: bold; }
+p{ font-family:'Courier Prime', serif, mono, monospace;;}
+span.enfasis  { font-weight:bolder; }
+a:link, a:visited, a { font-weight:bolder;  color: var(--linkcolor);   text-decoration:none;  }
+a:hover, a:focus { color:var(--linkcolorhover); text-decoration:underline; }
 
 form button[type="submit"]:hover, button[type="button"]:hover{  
     background-color:var(--blanco); 
@@ -36,11 +39,8 @@ form button[type="submit"],       button[type="button"]      {
 
 div#menuicons h1.menuHidableDriver { color:var(--menuDrivercolor); }
 
-h5.footersubtitulo, ul.navega li a, div#video h5   { font-family:mono, monospace; }
-h2.footertitulo { font-family: 'Courgette', mono, monospace; }
-
-a:link, a:visited, a { font-weight:bolder; font-family:mono, monospace;  color: var(--linkcolor);   text-decoration:none;  }
-a:hover, a:focus { color:var(--linkcolorhover); text-decoration:underline; }
+h5.footersubtitulo, ul.navega li a, div#video h5   { font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
+h2.footertitulo { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
 
 
 div#cuando td.hora { font-family:monxo, monospxace;   color:var(--labelyheadercolor);   font-weight:bold;}
@@ -64,10 +64,10 @@ div#donde div#atucasa { border:0px solid var(--negro); }
 div#opcionesdiv h3  { font-family:serif, Times, times; font-weight:bolder;  color:var(--labelyheadercolor); }
 
 
-form[id$=Form] label, fieldset.notHidable label, h2.notHidable { font-family:'Bree Serif', 'Courer Prime', mono, monospace; }
+fieldset.notHidable label { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
 fieldset.notHxxxidable label.explixxxca { font-family:'Oswaxxld', mono, monospace;  }
 
-form[id$=Form] label,          fieldset.notHidable label,   h2.notHidable{ font-weight:bolder; color:var(--labelyheadercolor); }
+fieldset.notHidable label{ font-weight:bolder; color:var(--labelyheadercolor); }
 div[id$=Titulo] label.explica, fieldset.notHidable label.explica, fieldset.hidable label,  fieldset.hidable label.explica  { font-weight:bolder; color:var(--negro); }
 
 
@@ -78,8 +78,8 @@ form[id$=Form] h3   { font-family:serif, Times, times; font-weight:bolder;  colo
 fieldset.hidable    h5.warn,
 fieldset.notHidable h5.warn    { font-family:mono, monospace; font-weight:bolder;  color:var(--warncolor); }
 
-div#updateNepeTitulo h2, div#creaNepeTitulo h2, div#video h2.notHidable { font-family: 'Courgette', mono, monospace;}
-div#updateNepeTitulo h2, div#creaNepeTitulo h2, div#video h2.notHidable { color:var(--negro) }
+div#video h2.notHidable { font-family: 'Courgette', mono, monospace;}
+div#video h2.notHidable { color:var(--negro) }
 
 
 
