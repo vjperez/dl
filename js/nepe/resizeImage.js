@@ -9,14 +9,14 @@ jQuery.resizeImage = function(index, unFotoFile, formData){  //helper function f
 		imagen.src = reader.result;
 		imagen.onload = function(evento){
 			console.log('...in resizeImage()  imagen onload() :' + index + '  image width:' + this.width+ ' image height:' + this.height);
-			var imageMaxWidth  = 200;
-			if(this.width > imageMaxWidth){		
+			var imageMaxHeight  = 400;
+			if(this.width > imageMaxHeight){		
 				////////////////////////////////////////////////////
-				var imagenRatio = this.height / this.width;  
+				var imageRatio = this.width / this.height;  
 				//var canvas = document.getElementById('elCanvas');
 				var canvas = document.createElement("canvas");
-				canvas.width = imageMaxWidth;
-				canvas.height  = imageMaxWidth * imagenRatio;
+				canvas.height  = imageMaxHeight
+				canvas.width = imageMaxHeight * imageRatio;
 				canvas.getContext("2d").drawImage(imagen, 0, 0, canvas.width, canvas.height);
 				var dataURL = canvas.toDataURL('image/jpeg', 0.95);
 				console.log('...in resizeImage()  indice:' + index + ': dataURL: ' + dataURL);
