@@ -26,11 +26,11 @@ span.enfasis  { font-weight:bolder; }
 a:link, a:visited, a { font-weight:bolder;  color: var(--linkcolor);   text-decoration:none;  }
 a:hover, a:focus { color:var(--linkcolorhover); text-decoration:underline; }
 
-form button[type="submit"]:hover, button[type="button"]:hover{  
+form button[type="submit"]      , button[type="button"]      {  
     background-color:var(--blanco); 
     color: var(--negro);
  }
-form button[type="submit"],       button[type="button"]      {  
+form button[type="submit"]:hover, button[type="button"]:hover{  
     background-color:var(--negro);
     border:0px solid var(--warncolor);
     color: var(--blanco);
