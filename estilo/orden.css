@@ -18,6 +18,9 @@ form button[type="submit"], button[type="button"]{
   font-size: 30px;  width:60px;  height:47px;  padding-top:7px;
 }
 
+form#queDondeForm fieldset.notHidable label, form#loginForm fieldset.notHidable label, form#registroForm fieldset.notHidable label
+ { margin-left: 10%; }
+
 fieldset.notHidable label         { font-size:1.85em; letter-spacing:0.0em; display: block; }
 fieldset.notHidable label.explica { font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
 
@@ -33,7 +36,8 @@ fieldset.subArea input.conMargen { margin-top: 1em; margin-left: 0.5em; display:
 fieldset.hidable { margin-top: 1em; margin-left: 5%; display: inline-block; width:100%;}
 
 input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], input[type='email'], textarea{
-	border-radius: 4px;   font-size:1.15em;  width:80%; margin-bottom: 12px;  padding: 5px 10px;         
+	display:block;    margin:0em auto;
+  border-radius: 4px;   font-size:1.15em;  width:80%; margin-bottom: 12px;  padding: 5px 10px;         
 }
 
 /*opciones*/
