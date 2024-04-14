@@ -14,8 +14,8 @@ table.subArea  { border-collapse: separate; border-spacing: 0em 2em; }
 /*forms*/
 form[id$=Form] { padding-top:5em; }
 form button[type="submit"], button[type="button"]{
-  border-radius: 2pt;  display:block;   margin:0em auto 0em; 
-  font-size: 30px;  width:60px;  height:47px;  padding-top:7px;
+  border-radius: 4pt;  display:block;   margin:0em auto 0em; 
+  font-size: 30px;  width:120px;  height:50px;  padding-top:8px;
 }
 
 form#queDondeForm fieldset.notHidable label, form#loginForm fieldset.notHidable label, form#registroForm fieldset.notHidable label
@@ -107,7 +107,7 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
   div#quien li { display:inline-block; margin-right:16px; margin-left:16px; margin-top:0px; margin-bottom:0px; }
 
   form button[type="submit"], button[type="button"]{
-    font-size: 40px;  width:80px;  height:60px;  padding-top:10px;
+    font-size: 40px;  width:160px;  height:60px;  padding-top:10px;
   }
 
   fieldset.notHidable label { font-size:2.15em; letter-spacing:0.10em; display: block; }
@@ -132,7 +132,7 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
   div#quien li { display:inline-block; margin-right:20px; margin-left:20px; margin-top:0px; margin-bottom:0px; }
 
   form button[type="submit"], button[type="button"]{
-    font-size: 40px;  width:80px;  height:60px;  padding-top: 10px;
+    font-size: 40px;  width:160px;  height:60px;  padding-top: 10px;
   }
 
   fieldset.notHidable label { font-size:2.15em; letter-spacing:0.25em; display: block; }
