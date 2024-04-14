@@ -8,7 +8,7 @@
   --navegafondocolorhover: hsl(50,    0%,  70%);
   /*--navegafondocolorhover: hsl(50,  100%,  70%); */ 
   /*--navegaletracolorhover: hsl(210,  70%,  50%); */ 
-  --navegaletracolorhover: hsl(210,  70%,   0%);
+  --navegaletracolorhover: hsl(210, 100%,   0%);
 
   --navegafondocolorseleccionado:hsl(000, 100%,  00%); /* any color, all color, no light   = black */
   --navegaletracolorseleccionado:hsl(000, 100%, 100%); /* any color, all color, full light = white */
@@ -16,7 +16,7 @@
   --navegabordercolor:     hsl(000, 100%,  00%); /* any color,  all color, no light  = black */
 }
 
-body{ min-width:375px; }
+body{ min-width:500px; }
 div#containerForMain, #footer {  margin-left: 0;  }
 div#rightside{ display:none; }
 
@@ -40,7 +40,7 @@ ul.navega {
  }
 ul.navega li a { 
   display: block;   color: var(--navegaletracolor);
-  padding: 16px;    text-decoration: none;
+  padding: 0.67em;    text-decoration: none;
   text-align: center;   float: none; 
   font-size: 0.85em;  letter-spacing:0.10em;
  }
@@ -54,9 +54,9 @@ ul.navega li a:hover:not(.seleccionado) {  background-color:var(--navegafondocol
 
 /* media query to apply css starting at 768 px */
 @media screen and (min-width: 768px) {
-  h1.menuHidableDriver{ display:none; }
-  ul.menuHidableTarget{ display:block; }
-  ul.navega li a {  float: left;   font-size: 0.85em;  letter-spacing:0.10em; }
+  div#menuicons h1.menuHidableDriver{ display:none; }
+  div#menuicons ul.menuHidableTarget{ display:block; }
+  ul.navega li a {  float: left;   font-size: 1.0em;  letter-spacing:0.15em;  padding: 1.0em; }
 }
 
 /* media query to apply css starting at 1024 px */
@@ -74,7 +74,7 @@ ul.navega li a:hover:not(.seleccionado) {  background-color:var(--navegafondocol
   /*A fixed position element is positioned relative to the viewport, or the browser window itself. The viewport doesn’t change
   when the window is scrolled, so a fixed positioned element will stay right where it is when the page is scrolled.*/
   div#menuicons {  width: 200px;  position: fixed; height: 100%;  border:0px solid var(--navegabordercolor); border-right:1px solid var(--navegabordercolor); }
-  ul.navega li a {  text-align: left;  float: none;   font-size: 0.85em;  letter-spacing:0.10em; }
+  ul.navega li a {  text-align: left;  float: none;   font-size: 1.1em;  letter-spacing:0.15em; }
 }
 
 /* media query to apply css starting at 1200 px - recommended by */
