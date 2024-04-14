@@ -1,3 +1,6 @@
+jQuery.hideThemSections();
+
+
 //major task 1
 //build formdata and make post
 jQuery('form#nepeForm').submit(function(evento){

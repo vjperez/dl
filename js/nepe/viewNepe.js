@@ -15,7 +15,7 @@ jQuery.populate = function(datos){
     let date = new Date(datos.revisado);
     let opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     jQuery('#nombreyRevisado h5').text('Revisado:  ' + date.toLocaleDateString('es-ES', opciones)); 
-    jQuery('#nombreyRevisado h2').text(datos.nombre);
+    jQuery('#nombreyRevisado fieldset.notHidable label').text(datos.nombre);
     
 
 
@@ -37,8 +37,8 @@ jQuery.populate = function(datos){
 
     
 
-    //following code works when there are 5 or less images received.
-    //the html is prepared for a max of 5 images
+    //following code works when there are 8 or less images received.
+    //the html is prepared for a max of 8 images
     //code removes excess html when less than 5 images are received
     //alert(datos.losFoto);
     jQuery('#fotos #nepefotos img').each(function(index){
@@ -79,7 +79,7 @@ jQuery.populate = function(datos){
     //this code removes excess html when less than 10 'que' are received
     //alert(datos.losQue);
 	let losQue = JSON.parse( datos.losQue );
-	if(losQue === null) losQue = ['no que info provided'];
+	if(losQue === null) losQue = ['no info'];
     jQuery('#que li a').each(function(index){
         if(index < losQue.length) {
             jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent(losQue[index]) + '&donde=' + encodeURIComponent('')  ).text(losQue[index]);
@@ -92,7 +92,7 @@ jQuery.populate = function(datos){
     //this code removes excess html when less than 5 'donde' are received
     //alert(datos.losDonde);
 	let losDonde = JSON.parse( datos.losDonde );
-	if(losDonde === null) losDonde = ['no donde info provided'];
+	if(losDonde === null) losDonde = ['no info'];
     jQuery('#donde li a').each(function(index){
         if(index < losDonde.length) {
             jQuery(this).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent('') + '&donde=' + encodeURIComponent(losDonde[index])  ).text(losDonde[index]);

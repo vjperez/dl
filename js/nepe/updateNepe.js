@@ -63,6 +63,7 @@ jQuery.getJSON('escritos/nepe/read/getNepe.php', {nepe_index:index} )
 });
 
 
+jQuery.hideThemSections();
 
 
 //task 2
