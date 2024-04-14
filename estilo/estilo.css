@@ -6,22 +6,22 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
 
 :root {
-    --linkcolor:             hsl(210, 100%, 50%);
-    --linkcolorhover:        hsl(210, 70%,  50%);
-    --formfondocolor:        hsl(000, 00%, 98%);
-    --formfondocolorhover:   hsl(000, 00%, 95%);
+    --linkcolor:             hsl(330, 100%, 50%);
+    --linkcolorhover:        hsl(330, 100%, 40%);
+    --formfondocolor:        hsl(000,  00%, 95%);
+    --formfondocolorhover:   hsl(000,  00%, 80%);
     --labelyheadercolor:     hsl(210, 100%, 50%);
-    --icolor:                hsl(330, 85%, 50%);
-    --icolorcurrent:         hsl(330, 85%, 40%);
+/*    --icolor:                hsl(330, 100%, 50%);
+      --icolorcurrent:         hsl(330, 100%, 40%);  */
     --menuDrivercolor:       hsl(000, 00%, 00%);
 
 
-    --negro:                 hsl(000, 00%,  00%);
-    --blanco:                hsl(000, 00%, 100%);
-    --warncolor:             hsl(005, 95%,  65%);
+    --negro:                 hsl(000,  00%,  00%);
+    --blanco:                hsl(000,  00%, 100%);
+    --warncolor:             hsl(000, 100%,  70%);
   }
 
-p{ font-family:'Courier Prime', serif, mono, monospace;;}
+
 span.enfasis  { font-weight:bolder; }
 a:link, a:visited, a { font-weight:bolder;  color: var(--linkcolor);   text-decoration:none;  }
 a:hover, a:focus { color:var(--linkcolorhover); text-decoration:underline; }
@@ -39,14 +39,6 @@ form button[type="submit"],       button[type="button"]      {
 
 div#menuicons h1.menuHidableDriver { color:var(--menuDrivercolor); }
 
-h5.footersubtitulo, ul.navega li a, div#video h5   { font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
-h2.footertitulo { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
-
-
-div#cuando td.hora { font-family:monxo, monospxace;   color:var(--labelyheadercolor);   font-weight:bold;}
-
-
-
 input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], input[type="email"], textarea{
     background-color:var(--formfondocolor);
     border:1px solid var(--negro);
@@ -60,17 +52,17 @@ fieldset{ border:0px solid var(--negro);}
 div#donde div#atucasa { border:0px solid var(--negro); }
 
 
-
-div#opcionesdiv h3  { font-family:serif, Times, times; font-weight:bolder;  color:var(--labelyheadercolor); }
-
-
 fieldset.notHidable label { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
 fieldset.notHxxxidable label.explixxxca { font-family:'Oswaxxld', mono, monospace;  }
 
+h5.footersubtitulo, ul.navega li a, div#nombreyRevisado h5, h2.notHidable, span.diasOld 
+{ font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
+
+h2.footertitulo { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
+
 fieldset.notHidable label{ font-weight:bolder; color:var(--labelyheadercolor); }
-div[id$=Titulo] label.explica, fieldset.notHidable label.explica, fieldset.hidable label,  fieldset.hidable label.explica  { font-weight:bolder; color:var(--negro); }
-
-
+fieldset.notHidable label.explica, fieldset.hidable label,  fieldset.hidable label.explica  
+{ font-weight:bolder; color:var(--negro); }
 
 
 form[id$=Form] h3   { font-family:serif, Times, times; font-weight:bolder;  color:var(--labelyheadercolor); }
@@ -78,19 +70,30 @@ form[id$=Form] h3   { font-family:serif, Times, times; font-weight:bolder;  colo
 fieldset.hidable    h5.warn,
 fieldset.notHidable h5.warn    { font-family:mono, monospace; font-weight:bolder;  color:var(--warncolor); }
 
-div#video h2.notHidable { font-family: 'Courgette', mono, monospace;}
-div#video h2.notHidable { color:var(--negro) }
+
+/*   div#video h2.notHidable { font-family: 'Courgette', mono, monospace;}
+     div#video h2.notHidable { color:var(--negro) }   */
 
 
 
  div#quien div.hidable ul  i 
     { border-color:var(--negro);  border-style:solid;  border-width:0pt;  border-radius:5pt; padding:0.2em;   /* no usando borde*/
-    color:var(--icolor);}
+    color:var(--linkcolor); }
  div#quien div.hidable ul  i:hover,  div#quien div.hidable ul  i:focus,  div#quien div.hidable ul  i.current 
     { border-color:var(--labelyheadercolor); border-width:0pt;   /* no usando borde*/
-    color:var(--icolorcurrent); }
+    color:var(--linkcolorhover); }
 
- div#quien h5, div#cuando td, div#donde span.texto, div#donde span.textofixed  { font-family:mono, monospace; }
- div#donde span.textofixed  { font-weight:bolder;  color:var(--negro); }
+ div#cuando td, div#cuando td.hora, div#donde span.texto, div#donde span.textofixed, p, div#quien h5, div#opcionesdiv h2, div#que ul li, div#donde ul li  
+{ font-family:'Courier Prime', serif, mono, monospace; }
+ 
+ div#cuando td, div#donde span.textofixed, span.diasOld  
+{ font-weight:bolder;  color:var(--negro); }
 
- span.diasOld   { font-family:mono, monospace;   font-weight:bolder;  color:var(--negro); }
+ div#cuando td.hora,  div#donde span.texto, div#quien h5, div#opcionesdiv h2
+{ color:var(--labelyheadercolor);   font-weight:bolder;}
+
+ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
+{  color:var(--linkcolor); }
+i[class*="fa-trash-alt"]:hover, i[class*="fa-chevron-circle"]:hover,
+i[class*="fa-trash-alt"]:focus, i[class*="fa-chevron-circle"]:focus
+{  color:var(--linkcolorhover); }

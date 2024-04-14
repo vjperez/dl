@@ -6,7 +6,8 @@ a:link, a:visited, a {  font-size: 1.10em;  letter-spacing:0.20em;  }
 
 div#footer           { padding-top:8em;   padding-left:5%; padding-right:5%;  }
 div#containerForMain { padding-top:0em;   padding-left:5%; padding-right:5%;  }
-div#footer h2.footertitulo, div#footer h5.footersubtitulo    { text-align:center;  margin:0px auto; }
+div#footer h2.footertitulo, div#footer h5.footersubtitulo, h3.feedback, h5.feedback, h5.warn
+{ text-align:center;  margin:0px auto; }
 
 table.subArea  { border-collapse: separate; border-spacing: 0em 2em; }
 
@@ -17,24 +18,26 @@ form button[type="submit"], button[type="button"]{
   font-size: 30px;  width:60px;  height:47px;  padding-top:7px;
 }
 
-fieldset.notHidable label { font-size:1.85em; letter-spacing:0.0em; display: block; }
-div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
+fieldset.notHidable label         { font-size:1.85em; letter-spacing:0.0em; display: block; }
+fieldset.notHidable label.explica { font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
+
 
 fieldset.hidable label {  font-size:1.15em; letter-spacing:0.20em;    }
 fieldset.hidable label.explica {  font-size:0.7em; letter-spacing:0.20em; }
 
-h3.feedback, h5.feedback, h5.warn, div#creaNepeTitulo h2,  div#updateNepeTitulo h2 { text-align:center; }
-div#creaNepeTitulo label.explica,  div#updateNepeTitulo label.explica  { text-align:center; display:block; }
+div#nepeTitulo fieldset label, div#nepeTitulo fieldset label.explica, div#nombreyRevisado fieldset label,
+div#recentNepes fieldset label, div#labelTableContainer fieldset label
+{ text-align:center; display:block; }
 fieldset.subArea label.conMargen { margin-top: 1em; margin-left: 2em; display: inline-block; }
 fieldset.subArea input.conMargen { margin-top: 1em; margin-left: 0.5em; display: inline-block; }
 fieldset.hidable { margin-top: 1em; margin-left: 5%; display: inline-block; width:100%;}
 
-input[type="text"], inxxxput[type="radio"], input[type="tel"], input[type="password"], input[type='email'], textarea{
+input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], input[type='email'], textarea{
 	border-radius: 4px;   font-size:1.15em;  width:80%; margin-bottom: 12px;  padding: 5px 10px;         
 }
 
 /*opciones*/
-div#opcionesdiv.opcionesfotos a img, div#profilefotos img { margin-top:0px; margin-bottom:0.50em; margin-right:0.25em; margin-left:0px; }
+div#opcionesdiv.opcionesfotos a img, div#nepefotos img { margin-top:0px; margin-bottom:0.50em; margin-right:0.25em; margin-left:0px; }
 div#opcionesdiv.opcionesfotos h2 {  margin-bottom:2em; }
 
 
@@ -50,10 +53,11 @@ div#opcionesdiv.opcionesfotos h2 {  margin-bottom:2em; }
 .videoframecontainer iframe {
   position: absolute;  top: 0;  left: 0;  width: 100%;  height: 100%;
 }
-div#video h2.notHidable, div#quien h5 { text-align:center ; } 
-div#video h5 { text-align:right; }
 
-div#quien ul { text-align:center; margin-top:0pt; margin-bottom:20pt; }
+div#cuando table.hidable { margin-left:auto; margin-right:auto; }
+div#nepefotos, div#quien h5, div#quien ul { text-align:center ; } 
+div#quien ul { margin-top:0pt; margin-bottom:20pt; }
+
 /* profile red icons*/
 div#quien ul li i { font-size:25px; }
 div#quien li { display:inline-block; margin-right:12px; margin-left:12px; margin-top:0px; margin-bottom:0px; }
@@ -61,7 +65,7 @@ div#quien li { display:inline-block; margin-right:12px; margin-left:12px; margin
 
 div#quien h5 { display:none; }
 div#quien h5.current { display:block; }
-div#quien h5 { font-size:0.85em; letter-spacing:0.2em; margin-top:20pt; margin-bottom:20pt; }
+div#quien h5 { font-size:1.15em; letter-spacing:0.2em; margin-top:20pt; margin-bottom:20pt; }
 div#que ul, div#donde ul, div#quien ul { list-style-type:none; }
 div#que ul li, div#donde ul li { margin-top:1em; margin-bottom: 1em; padding-left:3em; }
 
@@ -69,18 +73,15 @@ div#donde span#background.si, div#donde span#background.no{
   background: url("../imagenes/si-no.png"); vertical-align:text-top; display:inline-block;  height:25px;  
   width:25px; margin-left:10pt; margin-right:5pt; 
 }
- 
 div#donde span#background.no{ background-position:0px -25px; }
+
 span#sucasa, span#desdecasa { display:block; text-align:center }
 div#donde i{ margin-right:5pt; }
 div#donde span.textofixed  { font-size:0.85em; letter-spacing:0.2em; margin-top:20pt; margin-bottom:00pt; display:inline-block; }
 
 table td.hora { text-align: left; padding-left:2em;} 
-table td.dia  { text-align: right; } 
-span.diasOld { font-size:0.65em; letter-spacing:0em; }
-
-/*  faq  */
-div#faqdiv i[class*="fa-chevron-circle"]{ margin-left:1em; }
+table td.dia, div#nombreyRevisado h5  { text-align: right; } 
+span.diasOld { font-size:0.75em; letter-spacing:0em; margin-left:2em; }
 
 /*  faq  crea update nepe edit dueno show nepes profile-titulo, quien... */
 .notHidable{  padding-top:4em;   margin:0px;  }
@@ -89,8 +90,8 @@ div#faqdiv i[class*="fa-chevron-circle"]{ margin-left:1em; }
 .hidable, .subArea{  margin-top:1em;  padding:0px;  }
 
 
-/* admin */
-fieldset  table tr i[class*="fa-trash-alt"],  fieldset label i[class*="fa-chevron-circle"] { margin-left:1em;  }
+i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
+{ margin-left:1em;  }
 
 
 
@@ -111,7 +112,7 @@ fieldset  table tr i[class*="fa-trash-alt"],  fieldset label i[class*="fa-chevro
   fieldset.hidable label {  font-size:1.25em; letter-spacing:0.30em;    }
   fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.20em; }
 
-  input[type="text"], inxxxput[type="radio"], input[type="tel"], input[type="password"], input[type='email'], textarea{
+  input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], input[type='email'], textarea{
     border-radius: 8px;  font-size:1.25em;  width:80%; margin-bottom: 25px;  padding: 10px 20px;         
   }
 
@@ -136,7 +137,7 @@ fieldset  table tr i[class*="fa-trash-alt"],  fieldset label i[class*="fa-chevro
   fieldset.hidable label {  font-size:1.25em; letter-spacing:0.30em;    }
   fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.20em; }
 
-  input[type="text"], inxxxput[type="radio"], input[type="tel"], input[type="password"], input[type='email'], textarea{
+  input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], input[type='email'], textarea{
     border-radius: 8px;   font-size:1.25em;  width:80%;  margin-bottom: 25px;   padding: 10px 20px;         
   }
 
