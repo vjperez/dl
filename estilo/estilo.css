@@ -17,6 +17,7 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
 
     --negro:                 hsl(000,  00%,  00%);
+    --griso:                 hsl(000,  00%,  60%);
     --blanco:                hsl(000,  00%, 100%);
     --warncolor:             hsl(000, 100%,  70%);
   }
@@ -41,11 +42,15 @@ div#menuicons h1.menuHidableDriver { color:var(--menuDrivercolor); }
 
 input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type="email"], textarea{
     background-color:var(--formfondocolor);
+    border:none;
     border-bottom:4px solid var(--negro);
+    outline: none;
 }
 input[type="text"]:focus, input[type="radioxx"]:focus, input[type="tel"]:focus, input[type="password"]:focus,
 input[type="email"]:focus, textarea:focus{
     background-color:var(--formfondocolorhover);
+    border:none;
+    border-bottom:4px solid var(--griso); 
 }
 
 fieldset{ border:0px solid var(--negro);}
