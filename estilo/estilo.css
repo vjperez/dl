@@ -39,11 +39,11 @@ form button[type="submit"]:hover, button[type="button"]:hover{
 
 div#menuicons h1.menuHidableDriver { color:var(--menuDrivercolor); }
 
-input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], input[type="email"], textarea{
+input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type="email"], textarea{
     background-color:var(--formfondocolor);
-    border:1px solid var(--negro);
+    border-bottom:4px solid var(--negro);
 }
-input[type="text"]:focus, input[type="radio"]:focus, input[type="tel"]:focus, input[type="password"]:focus,
+input[type="text"]:focus, input[type="radioxx"]:focus, input[type="tel"]:focus, input[type="password"]:focus,
 input[type="email"]:focus, textarea:focus{
     background-color:var(--formfondocolorhover);
 }
@@ -53,9 +53,10 @@ div#donde div#atucasa { border:0px solid var(--negro); }
 
 
 fieldset.notHidable label { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
-fieldset.notHxxxidable label.explixxxca { font-family:'Oswaxxld', mono, monospace;  }
+fieldset.notHidablexxx label.explicaxxx { font-family:'Oswald', mono, monospace;  }
 
-h5.footersubtitulo, ul.navega li a, div#nombreyRevisado h5, h2.notHidable, span.diasOld 
+h5.footersubtitulo, ul.navega li a, div#nombreyRevisado h5, h2.notHidable, span.diasOld,
+fieldset.hidable label,  fieldset.hidable label.explica  
 { font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
 
 h2.footertitulo { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
