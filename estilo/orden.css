@@ -25,19 +25,19 @@ fieldset.notHidable label         { font-size:1.85em; letter-spacing:0.0em; disp
 fieldset.notHidable label.explica { font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
 
 
-fieldset.hidable label {  font-size:1.15em; letter-spacing:0.20em;    }
-fieldset.hidable label.explica {  font-size:0.7em; letter-spacing:0.20em; }
+fieldset.hidable label {  font-size:0.85em; letter-spacing:0.20em;   display: block; }
+fieldset.hidable label.explica {  font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
 
 div#nepeTitulo fieldset label, div#nepeTitulo fieldset label.explica, div#nombreyRevisado fieldset label,
 div#recentNepes fieldset label, div#labelTableContainer fieldset label
 { text-align:center; display:block; }
 fieldset.subArea label.conMargen { margin-top: 1em; margin-left: 2em; display: inline-block; }
 fieldset.subArea input.conMargen { margin-top: 1em; margin-left: 0.5em; display: inline-block; }
-fieldset.hidable { margin-top: 1em; margin-left: 5%; display: inline-block; width:100%;}
+fieldset.hidable { margin-top: 1em; display: inline-block; width:100%;}
 
-input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], input[type='email'], textarea{
+input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type='email'], textarea{
 	display:block;    margin:0em auto;
-  border-radius: 4px;   font-size:1.15em;  width:80%; margin-bottom: 12px;  padding: 5px 10px;         
+  border-radius: 4px;   font-size:0.85em;  width:80%; margin-bottom: 12px;  padding: 0px 5px;         
 }
 
 /*opciones*/
@@ -88,10 +88,10 @@ table td.dia, div#nombreyRevisado h5  { text-align: right; }
 span.diasOld { font-size:0.75em; letter-spacing:0em; margin-left:2em; }
 
 /*  faq  crea update nepe edit dueno show nepes profile-titulo, quien... */
-.notHidable{  padding-top:4em;   margin:0px;  }
+.notHidable{  padding:0px;  padding-top:4em;   margin:0px; }
 
 /*  crea update nepe  edit dueno show nepes  */
-.hidable, .subArea{  margin-top:1em;  padding:0px;  }
+.hidable, .subArea{  margin:0px;  margin-top:1em;  padding:0px;  }
 
 
 i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
@@ -113,11 +113,11 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
   fieldset.notHidable label { font-size:2.15em; letter-spacing:0.10em; display: block; }
   div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.20em; display:block; text-align:left; }
 
-  fieldset.hidable label {  font-size:1.25em; letter-spacing:0.30em;    }
-  fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.20em; }
+  fieldset.hidable label {  font-size:0.85em; letter-spacing:0.30em;  display:block;  }
+  fieldset.hidable label.explica {  font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
 
-  input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], input[type='email'], textarea{
-    border-radius: 8px;  font-size:1.25em;  width:80%; margin-bottom: 25px;  padding: 10px 20px;         
+  input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type='email'], textarea{
+    border-radius: 8px;  font-size:0.85em;  width:80%; margin-bottom: 25px;  padding: 0px 5px;         
   }
 
 }
@@ -138,11 +138,11 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
   fieldset.notHidable label { font-size:2.15em; letter-spacing:0.25em; display: block; }
   div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.20em; display:block; text-align:left; }
 
-  fieldset.hidable label {  font-size:1.25em; letter-spacing:0.30em;    }
-  fieldset.hidable label.explica {  font-size:0.85em; letter-spacing:0.20em; }
+  fieldset.hidable label {  font-size:0.85em; letter-spacing:0.30em;  display:block;  }
+  fieldset.hidable label.explica {  font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
 
-  input[type="text"], input[type="radio"], input[type="tel"], input[type="password"], input[type='email'], textarea{
-    border-radius: 8px;   font-size:1.25em;  width:80%;  margin-bottom: 25px;   padding: 10px 20px;         
+  input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type='email'], textarea{
+    border-radius: 8px;   font-size:0.85em;  width:80%;  margin-bottom: 25px;   padding: 0px 5px;         
   }
 
 }
