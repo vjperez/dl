@@ -31,13 +31,13 @@ fieldset.hidable label.explica {  font-size:0.70em; letter-spacing:0.20em; displ
 div#nepeTitulo fieldset label, div#nepeTitulo fieldset label.explica, div#nombreyRevisado fieldset label,
 div#recentNepes fieldset label, div#labelTableContainer fieldset label
 { text-align:center; display:block; }
-fieldset.subArea label.conMargen { margin-top: 1em; margin-left: 2em; display: inline-block; }
-fieldset.subArea input.conMargen { margin-top: 1em; margin-left: 0.5em; display: inline-block; }
+fieldset.subArea input.conMargen { margin-top: 1em; margin-left: 2.0em; display: inline-block; }
+fieldset.subArea label.conMargen { margin-top: 1em; margin-left: 0.5em; display: inline-block; }
 fieldset.hidable { margin-top: 1em; display: inline-block; width:100%;}
 
 input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type='email'], textarea{
 	display:block;    margin:0em auto;
-  border-radius: 4px;   font-size:0.85em;  width:80%; margin-bottom: 12px;  padding: 0px 5px;         
+  border-radius: 0px;   font-size:0.85em;  width:80%; margin-bottom: 12px;  padding: 0.5em;         
 }
 
 /*opciones*/
@@ -117,7 +117,7 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
   fieldset.hidable label.explica {  font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
 
   input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type='email'], textarea{
-    border-radius: 8px;  font-size:0.85em;  width:80%; margin-bottom: 25px;  padding: 0px 5px;         
+    border-radius: 0px;  font-size:0.85em;  width:80%; margin-bottom: 25px;  padding: 0.5em;         
   }
 
 }
@@ -142,7 +142,7 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
   fieldset.hidable label.explica {  font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
 
   input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type='email'], textarea{
-    border-radius: 8px;   font-size:0.85em;  width:80%;  margin-bottom: 25px;   padding: 0px 5px;         
+    border-radius: 0px;   font-size:0.85em;  width:80%;  margin-bottom: 25px;   padding: 0.5em;         
   }
 
 }
