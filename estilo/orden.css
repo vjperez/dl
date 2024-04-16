@@ -4,7 +4,7 @@ body {  width:100%;  margin:0px auto;  }
 a:link, a:visited, a {  font-size: 1.10em;  letter-spacing:0.20em;  }
 
 
-div#footer           { padding-top:8em;   padding-left:5%; padding-right:5%;  }
+div#footer           { padding-top:8em;   padding-left:5%; padding-right:5%;  padding-bottom:1em; }
 div#containerForMain { padding-top:0em;   padding-left:5%; padding-right:5%;  }
 div#footer h2.footertitulo, div#footer h5.footersubtitulo, h3.feedback, h5.feedback, h5.warn
 { text-align:center;  margin:0px auto; }
@@ -14,7 +14,7 @@ table.subArea  { border-collapse: separate; border-spacing: 0em 2em; }
 /*forms*/
 form[id$=Form] { padding-top:5em; }
 form button[type="submit"], button[type="button"]{
-  border-radius: 4pt;  display:block;   margin:0em auto 0em; 
+  border-radius: 4pt;  display:block;   margin:2em auto 2em; 
   font-size: 30px;  width:120px;  height:50px;  padding:0px;
 }
 
@@ -37,7 +37,7 @@ fieldset.hidable { margin-top: 1em; display: inline-block; width:100%;}
 
 input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type='email'], textarea{
 	display:block;    margin:0em auto;
-  border-radius: 0px;   font-size:0.85em;  width:80%; margin-bottom: 12px;  padding: 0.5em;         
+  border-radius: 0px;   font-size:0.85em;  width:80%; margin-bottom: 1em;  padding: 0.5em;         
 }
 
 /*opciones*/
@@ -107,6 +107,7 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
   div#quien li { display:inline-block; margin-right:16px; margin-left:16px; margin-top:0px; margin-bottom:0px; }
 
   form button[type="submit"], button[type="button"]{
+    display:block;   margin:2em auto 2em;
     font-size: 40px;  width:160px;  height:60px;
   }
 
@@ -117,7 +118,7 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
   fieldset.hidable label.explica {  font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
 
   input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type='email'], textarea{
-    border-radius: 0px;  font-size:0.85em;  width:80%; margin-bottom: 25px;  padding: 0.5em;         
+    border-radius: 0px;  font-size:0.85em;  width:80%; margin-bottom: 2em;  padding: 0.5em;         
   }
 
 }
@@ -132,6 +133,7 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
   div#quien li { display:inline-block; margin-right:20px; margin-left:20px; margin-top:0px; margin-bottom:0px; }
 
   form button[type="submit"], button[type="button"]{
+    display:block;   margin:2em auto 2em;
     font-size: 40px;  width:160px;  height:60px;
   }
 
@@ -142,7 +144,7 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
   fieldset.hidable label.explica {  font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
 
   input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type='email'], textarea{
-    border-radius: 0px;   font-size:0.85em;  width:80%;  margin-bottom: 25px;   padding: 0.5em;         
+    border-radius: 0px;   font-size:0.85em;  width:80%;  margin-bottom: 2em;   padding: 0.5em;         
   }
 
 }
