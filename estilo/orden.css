@@ -6,7 +6,7 @@ a:link, a:visited, a {  font-size: 1.10em;  letter-spacing:0.20em;  }
 
 div#footer           { padding-top:8em;   padding-left:5%; padding-right:5%;  padding-bottom:1em; }
 div#containerForMain { padding-top:0em;   padding-left:5%; padding-right:5%;  }
-div#footer h2.footertitulo, div#footer h5.footersubtitulo, h3.feedback, h5.feedback, h5.warn
+div#footer h2.footertitulo, h5.footersubtitulo, h3.feedback
 { text-align:center;  margin:0px auto; }
 
 table.subArea  { border-collapse: separate; border-spacing: 0em 2em; }
