@@ -21,7 +21,7 @@ jQuery('form#registroForm').submit(function(evento){
             if(datosJSObj.registrado){
                 jQuery(window.location).attr('href', window.location.pathname + '?look=home');
             }else{ // usuario ya existe
-                jQuery.feedback('form#registroForm h3.feedback', datosJSObj.feedback);
+                jQuery.feedback('form#registroForm h3.feedback', datosJSObj.feedback, 'feedbackwarn', 'downdelayup');
             }
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -34,5 +34,5 @@ jQuery('form#registroForm').submit(function(evento){
 
 //erase feedback when user writes
 jQuery('form[id*=Form]  input[name^=password],  form[id*=Form]  input[name=username]').keydown(function(){
-	jQuery.feedback('form[id*=Form] h3', '');
+	jQuery.feedback('form[id*=Form] h3', '', '');
 });

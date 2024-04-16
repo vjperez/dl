@@ -78,11 +78,11 @@ jQuery('form#editClaveForm').submit(function(evento){
                 jQuery(window.location).attr('href', path);			
             }
             if(datosJSObj.editado){
-				var feedback = usuario + ', tu clave fue editada.'; 
-				jQuery.feedback('form#editClaveForm h3.feedback', feedback);
+				let feedbackStr = usuario + ', tu clave fue editada.'; 
+				jQuery.feedback('form#editClaveForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
             }else{
-				var feedback = usuario + ', trata otra vez.';
-                jQuery.feedback('form#editClaveForm h3.feedback', feedback);
+				let feedback = usuario + ', trata otra vez.';
+                jQuery.feedback('form#editClaveForm h3.feedback', feedbackStr, 'feedbackwarn', 'downdelayup');
             }
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -113,8 +113,8 @@ jQuery('form#editContactosForm').submit(function(evento){
 			jQuery(window.location).attr('href', path);			
 		}
 		if(datosJSObj.actualizados){
-			var feedbackStr = usuario + ', tus contactos fueron actualizados.'; 
-			jQuery.feedback('form#editContactosForm h3.feedback', feedbackStr);
+			let feedbackStr = usuario + ', tus contactos fueron actualizados.'; 
+			jQuery.feedback('form#editContactosForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
 		}
 	})
 	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -127,8 +127,8 @@ jQuery('form#editContactosForm').submit(function(evento){
 
 //erase feedback when user writes
 jQuery('form[id*=Form]  input[name^=password],  form[id*=Form]  input[name^=red]').keydown(function(){
-	jQuery.feedback('form[id*=Form] h3', '');
-	jQuery.feedback('form[id*=Form] h5', '');
+	jQuery.feedback('form[id*=Form] h3', '', '');
+	jQuery.feedback('form[id*=Form] h5', '', '');
 });
 
 //handle link to crea nepe when click on button

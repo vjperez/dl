@@ -20,7 +20,7 @@ jQuery('form#loginForm').submit(function(evento){
 			if(datosJSObj.logueado){
 				jQuery(window.location).attr('href', window.location.pathname + '?look=home');
 			}else{
-				jQuery.feedback('form#loginForm h3', datosJSObj.feedback);
+				jQuery.feedback('form#loginForm h3', datosJSObj.feedback, 'feedbackwarn', 'downdelayup');
 			}
 		})
 		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -33,5 +33,5 @@ jQuery('form#loginForm').submit(function(evento){
 
 //erase feedback when user writes
 jQuery('form[id*=Form]  input[name^=password],  form[id*=Form]  input[name=username]').keydown(function(){
-	jQuery.feedback('form[id*=Form] h3', '');
+	jQuery.feedback('form[id*=Form] h3', '', '');
 });
