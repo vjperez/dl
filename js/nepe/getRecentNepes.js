@@ -5,7 +5,8 @@ jQuery.getJSON('escritos/nepe/read/getRecentNepes.php')
 			let link = '"portada.html?look=viewNepe&nepeId=' + datos[index].nepeId  + '"';
 			tableRows += '<tr class="texto"><td>' 
 			+ '<a href=' + link + '>' 
-			+ datos[index].nepeNombre + '</a>   <span class="diasOld">[' +  datos[index].dias  +  ' dias]</span>'
+			+ datos[index].nepeNombre + '</a>   <span class="diasOld">['  +   datos[index].dias  +  ' dia'  + 
+			( (datos[index].dias == 1)? '' : 's' )  +  ']</span>'
 			+ '</td></tr>'; 
 
 			tableRows +=  '<tr class="foto"><td>' 
