@@ -12,23 +12,23 @@ jQuery.areValidUserYPass = function(usertb, pass01, pass02, feedbackType, whatEl
 	pass02Check = pass02.replace(/[^a-z0-9ñüàáèéìíòóùú@._+-]/gi, '');
 	if(usertb.length < MINIMUM_USER_NAME_LENGTH || pass01.length < MINIMUM_USER_PASS_LENGTH || pass02.length < MINIMUM_USER_PASS_LENGTH){
 		if(feedbackType.indexOf('fullFeedback') !== -1){
-			jQuery.feedback(whatElement, "Username o contrase\u00f1a es muy corto.");
+			jQuery.feedback(whatElement, "Username o contrase\u00f1a es muy corto.", 'feedbackwarn', 'downdelayup');
 		}else{ // if(feedbackType.indexOf('genericFeedback') !== -1){
-			jQuery.feedback(whatElement, 'Trata otra vez.');
+			jQuery.feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
 		}
 		return false;
 	}else if(usertbCheck.length < usertb.length  ||  pass01Check.length < pass01.length ||  pass02Check.length < pass02.length){
 		if(feedbackType.indexOf('fullFeedback') !== -1){
-			jQuery.feedback(whatElement, 'Usa solo letras, numeros y @ . _ - + ');
+			jQuery.feedback(whatElement, 'Usa solo letras, numeros y @ . _ - + ', 'feedbackwarn', 'downdelayup');
 		}else{ // if(feedbackType.indexOf('genericFeedback') !== -1){
-			jQuery.feedback(whatElement, 'Trata otra vez.');
+			jQuery.feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
 		}
 		return false;
 	}else if(pass01 !== pass02){  //same type, same value, no type conversion, case sensitive
 		if(feedbackType.indexOf('fullFeedback') !== -1){
-			jQuery.feedback(whatElement, 'Las contrase\u00f1as son diferentes.');
+			jQuery.feedback(whatElement, 'Las contrase\u00f1as son diferentes.', 'feedbackwarn', 'downdelayup');
 		}else{  // if(feedbackType.indexOf('genericFeedback') !== -1){
-			jQuery.feedback(whatElement, 'Trata otra vez.');
+			jQuery.feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
 		}
 		return false;
 	}else{
@@ -106,8 +106,9 @@ jQuery.isNotVacioStr = function(str){
 		return null;
 }
 
-jQuery.feedback = function(queElemento, mensaje, forma){
+jQuery.feedback = function(queElemento, mensaje, clase, forma){
 	jQuery(queElemento).text(mensaje);
+	jQuery(queElemento).addClass( clase );
 	if(forma === 'downdelayup') {
 		jQuery(queElemento).slideDown(500).delay(1000).slideUp(2000);
 	}
