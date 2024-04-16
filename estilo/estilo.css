@@ -20,10 +20,13 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
     --griso:                 hsl(000,  00%,  60%);
     --blanco:                hsl(000,  00%, 100%);
     --warncolor:             hsl(000, 100%,  70%);
+    --greencolor:            hsl(120, 100%,  70%);
   }
 
+span.enfasis   { font-weight:bolder; }
+.feedbackwarn  { color: var(--warncolor); }
+.feedbackgreen { color: var(--greencolor); }
 
-span.enfasis  { font-weight:bolder; }
 a:link, a:visited, a { font-weight:bolder;  color: var(--linkcolor);   text-decoration:none;  }
 a:hover, a:focus { color:var(--linkcolorhover); text-decoration:underline; }
 
@@ -71,10 +74,7 @@ fieldset.notHidable label.explica, fieldset.hidable label,  fieldset.hidable lab
 { font-weight:bolder; color:var(--negro); }
 
 
-form[id$=Form] h3   { font-family:serif, Times, times; font-weight:bolder;  color:var(--labelyheadercolor); }
-
-fieldset.hidable    h5.warn,
-fieldset.notHidable h5.warn    { font-family:mono, monospace; font-weight:bolder;  color:var(--warncolor); }
+form[id$=Form] h3.feedback   { font-family:'Oswald', mono, monospace; font-weight:bolder; }
 
 
 /*   div#video h2.notHidable { font-family: 'Courgette', mono, monospace;}
