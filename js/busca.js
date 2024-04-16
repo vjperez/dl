@@ -10,6 +10,7 @@ jQuery('form').submit(function(evento){
         jQuery(window.location).attr('href', window.location.pathname + '?look=opciones&que=' + encodeURIComponent(que) 
         + '&donde=' + encodeURIComponent(donde)  );
     }else{
-        jQuery.feedback('form#queDondeForm h3', 'Buscas algo?', 'downdelayup');
+        let feedbackStr = 'Buscas algo?';
+        jQuery.feedback('form#queDondeForm  h3.feedback', feedbackStr, 'feedbackwarn', 'downdelayup');
     }
 });    
