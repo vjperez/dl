@@ -108,9 +108,9 @@ jQuery.isNotVacioStr = function(str){
 
 jQuery.feedback = function(queElemento, mensaje, clase, forma){
 	jQuery(queElemento).text(mensaje);
-	jQuery(queElemento).addClass( clase );
+	jQuery(queElemento).removeClass("feedbackgreen feedbackwarn").addClass( clase );
 	if(forma === 'downdelayup') {
-		jQuery(queElemento).slideDown(500).delay(1000).slideUp(2000);
+		jQuery(queElemento).slideDown(1).delay(5000).slideUp(2000);
 	}
 }
 

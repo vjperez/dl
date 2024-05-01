@@ -81,7 +81,7 @@ jQuery('form#editClaveForm').submit(function(evento){
 				let feedbackStr = usuario + ', tu clave fue editada.'; 
 				jQuery.feedback('form#editClaveForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
             }else{
-				let feedback = usuario + ', trata otra vez.';
+				let feedbackStr = usuario + ', trata otra vez.';
                 jQuery.feedback('form#editClaveForm h3.feedback', feedbackStr, 'feedbackwarn', 'downdelayup');
             }
         })
@@ -126,10 +126,17 @@ jQuery('form#editContactosForm').submit(function(evento){
 }); // editContactosForm submit
 
 //erase feedback when user writes
-jQuery('form[id*=Form]  input[name^=password],  form[id*=Form]  input[name^=red]').keydown(function(){
+jQuery('form[id*=Form]  input[name^=password],  form[id*=Form]  input[name^=red]').keyup(function(){
 	jQuery.feedback('form[id*=Form] h3', '', '');
 	jQuery.feedback('form[id*=Form] h5', '', '');
+
+    var pass01 = jQuery('#passwordId').val();
+    if( pass01.length > 0 )
+        jQuery('.confirm').show();
+    else
+        jQuery('.confirm').hide();	
 });
+jQuery('.confirm').hide();
 
 //handle link to crea nepe when click on button
 jQuery('div#labelTableContainer :button').click(function(){

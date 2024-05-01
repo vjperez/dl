@@ -33,6 +33,16 @@ jQuery('form#registroForm').submit(function(evento){
 });
 
 //erase feedback when user writes
-jQuery('form[id*=Form]  input[name^=password],  form[id*=Form]  input[name=username]').keydown(function(){
-	jQuery.feedback('form[id*=Form] h3', '', '');
+jQuery('form[id*=Form]  input[name^=password],  form[id*=Form]  input[name=username]').keyup(function(){
+	//erase feedback
+    jQuery.feedback('form[id*=Form] h3', '', '');
+
+    //
+    var usertb = jQuery('#usernameId').val();
+    var pass01 = jQuery('#passwordId').val();
+    if( usertb.length > 0  &&  pass01.length > 0 )
+        jQuery('.confirm').show();
+    else
+        jQuery('.confirm').hide();
 });
+jQuery('.confirm').hide();

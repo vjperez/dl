@@ -7,7 +7,8 @@ jQuery(document).ready(function(){
 		//alert('nav buttons js:\nshowing logout and home nav buttons for: \nlogueado=' + logueado);
 	}else{
 		jQuery('#navLogin').show();     
-		jQuery('#navSignup').show();
+		//jQuery('#navSignup').show();   //showing only 1 of these at a time
+
 		//alert('nav buttons js:\nshowing login and sign up nav buttons for:: \nlogueado=' + logueado);
 	}
 	
@@ -26,6 +27,8 @@ jQuery(document).ready(function(){
 			jQuery('#navHome').addClass("seleccionado");
 		break;
 		case 'registro':
+			jQuery('#navLogin').hide();     
+			jQuery('#navSignup').show();
 			jQuery('#navSignup').addClass("seleccionado");
 		break;
 		case 'faq':
