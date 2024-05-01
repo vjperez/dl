@@ -24,8 +24,8 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
   }
 
 span.enfasis   { font-weight:bolder; }
-.feedbackwarn  { color: var(--warncolor); }
-.feedbackgreen { color: var(--greencolor); }
+.feedbackwarn  { color: var(--negro);  background: var(--warncolor);}
+.feedbackgreen { color: var(--negro);  background: var(--greencolor); }
 
 a:link, a:visited, a { font-weight:bolder;  color: var(--linkcolor);   text-decoration:none;  }
 a:hover, a:focus { color:var(--linkcolorhover); text-decoration:underline; }
@@ -36,7 +36,7 @@ form button[type="submit"]      , button[type="button"]      {
  }
 form button[type="submit"]:hover, button[type="button"]:hover{  
     background-color:var(--negro);
-    border:0px solid var(--warncolor);
+    /*   border:0px solid var(--warncolor);   */
     color: var(--blanco);
 }
 /**/
@@ -59,12 +59,14 @@ input[type="email"]:focus, textarea:focus{
 fieldset{ border:0px solid var(--negro);}
 div#donde div#atucasa { border:0px solid var(--negro); }
 
-
+/*
 fieldset.notHidable label { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
-fieldset.notHidablexxx label.explicaxxx { font-family:'Oswald', mono, monospace;  }
+fieldset.notHidable label.explica { font-family:'Oswald', mono, monospace;  }
+*/
 
 h5.footersubtitulo, ul.navega li a, div#nombreyRevisado h5, h2.notHidable, span.diasOld,
-fieldset.hidable label,  fieldset.hidable label.explica  
+fieldset.notHidable label,
+fieldset.hidable label,  fieldset.hidable label.explica
 { font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
 
 h2.footertitulo { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }

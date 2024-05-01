@@ -6,7 +6,7 @@ a:link, a:visited, a {  font-size: 1.10em;  letter-spacing:0.20em;  }
 
 div#footer           { padding-top:8em;   padding-left:5%; padding-right:5%;  padding-bottom:1em; }
 div#containerForMain { padding-top:0em;   padding-left:5%; padding-right:5%;  }
-div#footer h2.footertitulo, h5.footersubtitulo, h3.feedback
+div#footer h2.footertitulo, h5.footersubtitulo
 { text-align:center;  margin:0px auto; }
 
 table.subArea  { border-collapse: separate; border-spacing: 0em 2em; }
@@ -15,13 +15,15 @@ table.subArea  { border-collapse: separate; border-spacing: 0em 2em; }
 form[id$=Form] { padding-top:5em; }
 form button[type="submit"], button[type="button"]{
   border-radius: 4pt;  display:block;   margin:2em auto 2em; 
-  font-size: 30px;  width:120px;  height:50px;  padding:0px;
+  font-size: 30px;  width:120px;  padding:0px;
 }
+
+button i{ margin:0.2em auto 0em; }
 
 form#queDondeForm fieldset.notHidable label, form#loginForm fieldset.notHidable label, form#registroForm fieldset.notHidable label
  { margin-left: 10%; }
 
-fieldset.notHidable label         { font-size:1.85em; letter-spacing:0.0em; display: block; }
+fieldset.notHidable label         { font-size:1.5em; letter-spacing:0.0em; display: block; }
 fieldset.notHidable label.explica { font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
 
 
@@ -29,11 +31,11 @@ fieldset.hidable label {  font-size:0.85em; letter-spacing:0.20em;   display: bl
 fieldset.hidable label.explica {  font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
 
 div#nepeTitulo fieldset label, div#nepeTitulo fieldset label.explica, div#nombreyRevisado fieldset label,
-div#recentNepes fieldset label, div#labelTableContainer fieldset label
+div#recentNepes fieldset label, div#labelTableContainer fieldset label, form#loginForm div#registro a, form#registroForm div#login a
 { text-align:center; display:block; }
 fieldset.subArea input.conMargen { margin-top: 1em; margin-left: 2.0em; display: inline-block; }
 fieldset.subArea label.conMargen { margin-top: 1em; margin-left: 0.5em; display: inline-block; }
-fieldset.hidable { margin-top: 1em; display: inline-block; width:100%;}
+fieldset.hidable { margin-top: 3em; display: inline-block; width:100%;}
 
 input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type='email'], textarea{
 	display:block;    margin:0em auto;
@@ -91,13 +93,16 @@ span.diasOld { font-size:0.75em; letter-spacing:0em; margin-left:2em; }
 .notHidable{  padding:0px;  padding-top:4em;   margin:0px; }
 
 /*  crea update nepe  edit dueno show nepes  */
-.hidable, .subArea{  margin:0px;  margin-top:1em;  padding:0px;  }
+.hidable, .subArea{  margin:0px;  margin-top:2em;  padding:0px;  }
 
 
 i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
 { margin-left:1em;  }
 
-
+h3.feedback {
+  border-radius: 4pt;  display:block;   margin:0em auto 0em;   text-align:center; 
+  width:120px;   padding:1em 0em 1em;
+}
 
 @media screen and (min-width: 768px) {
   a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.30em;  }
@@ -106,12 +111,12 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
   div#quien ul li i { font-size:36px; }
   div#quien li { display:inline-block; margin-right:16px; margin-left:16px; margin-top:0px; margin-bottom:0px; }
 
-  form button[type="submit"], button[type="button"]{
-    display:block;   margin:2em auto 2em;
-    font-size: 40px;  width:160px;  height:60px;
+  form button[type="submit"], button[type="button"] {
+    margin:2em auto 2em;
+    font-size: 40px;  width:160px;  
   }
 
-  fieldset.notHidable label { font-size:2.15em; letter-spacing:0.10em; display: block; }
+  fieldset.notHidable label { font-size:1.7em; letter-spacing:0.10em; display: block; }
   div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.20em; display:block; text-align:left; }
 
   fieldset.hidable label {  font-size:0.85em; letter-spacing:0.30em;  display:block;  }
@@ -119,6 +124,10 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
 
   input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type='email'], textarea{
     border-radius: 0px;  font-size:0.85em;  width:80%; margin-bottom: 2em;  padding: 0.5em;         
+  }
+
+  h3.feedback {
+    width:160px;  
   }
 
 }
@@ -133,11 +142,11 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
   div#quien li { display:inline-block; margin-right:20px; margin-left:20px; margin-top:0px; margin-bottom:0px; }
 
   form button[type="submit"], button[type="button"]{
-    display:block;   margin:2em auto 2em;
-    font-size: 40px;  width:160px;  height:60px;
+    margin:2em auto 2em;
+    font-size: 40px;  width:160px;
   }
 
-  fieldset.notHidable label { font-size:2.15em; letter-spacing:0.25em; display: block; }
+  fieldset.notHidable label { font-size:1.7em; letter-spacing:0.25em; display: block; }
   div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.20em; display:block; text-align:left; }
 
   fieldset.hidable label {  font-size:0.85em; letter-spacing:0.30em;  display:block;  }
@@ -145,6 +154,10 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
 
   input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type='email'], textarea{
     border-radius: 0px;   font-size:0.85em;  width:80%;  margin-bottom: 2em;   padding: 0.5em;         
+  }
+
+  h3.feedback {
+    width:160px;  
   }
 
 }
