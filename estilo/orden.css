@@ -15,10 +15,10 @@ table.subArea  { border-collapse: separate; border-spacing: 0em 2em; }
 form[id$=Form] { padding-top:5em; }
 form button[type="submit"], button[type="button"]{
   border-radius: 4pt;  display:block;   margin:2em auto 2em; 
-  font-size: 30px;  width:120px;  padding:0px;
+  font-size: 30px;  width:90px;  padding:0px;
 }
 
-button i{ margin:0.2em auto 0em; }
+button i{ margin:0.2em auto 0.2em; }
 
 form#queDondeForm fieldset.notHidable label, form#loginForm fieldset.notHidable label, form#registroForm fieldset.notHidable label
  { margin-left: 10%; }
@@ -113,7 +113,7 @@ h3.feedback {
 
   form button[type="submit"], button[type="button"] {
     margin:2em auto 2em;
-    font-size: 40px;  width:160px;  
+    font-size: 40px;  width:120px;  
   }
 
   fieldset.notHidable label { font-size:1.7em; letter-spacing:0.10em; display: block; }
@@ -143,7 +143,7 @@ h3.feedback {
 
   form button[type="submit"], button[type="button"]{
     margin:2em auto 2em;
-    font-size: 40px;  width:160px;
+    font-size: 40px;  width:120px;
   }
 
   fieldset.notHidable label { font-size:1.7em; letter-spacing:0.25em; display: block; }
