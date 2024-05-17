@@ -74,7 +74,9 @@ ul.navega li a:hover:not(.seleccionado) {  background-color:var(--navegafondocol
   /*A fixed position element is positioned relative to the viewport, or the browser window itself. The viewport doesn’t change
   when the window is scrolled, so a fixed positioned element will stay right where it is when the page is scrolled.*/
   div#menuicons {  width: 200px;  position: fixed; height: 100%;  border:0px solid var(--navegabordercolor); border-right:1px solid var(--navegabordercolor); }
+  div#menuicons ul.navega i{ padding: 0em ; }
   ul.navega li a {  text-align: left;  float: none;   font-size: 1.1em;  letter-spacing:0.15em; }
+  ul.navega li i.fa-solid { display: block; }
 }
 
 /* media query to apply css starting at 1200 px - recommended by */
