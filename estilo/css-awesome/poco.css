@@ -90,3 +90,6 @@
 
     .fa-upload::before {
         content: "\f093"; }
+
+    .fa-camera::before {
+        content: "\f030"; }
