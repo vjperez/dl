@@ -24,6 +24,7 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
   }
 
 span.enfasis   { font-weight:bolder; }
+
 .feedbackwarn  { color: var(--negro);  background: var(--warncolor);}
 .feedbackgreen { color: var(--negro);  background: var(--greencolor); }
 
@@ -66,7 +67,7 @@ fieldset.notHidable label.explica { font-family:'Oswald', mono, monospace;  }
 
 h5.footersubtitulo, ul.navega li a, div#nombreyRevisado h5, h2.notHidable, span.diasOld,
 fieldset.notHidable label,
-fieldset.hidable label,  fieldset.hidable label.explica
+fieldset.hidable label,  fieldset.hidable label.explica, span.enfasis
 { font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
 
 h2.footertitulo { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
