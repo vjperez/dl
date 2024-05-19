@@ -104,6 +104,9 @@ h3.feedback {
   width:120px;   padding:1em 0em 1em;
 }
 
+h2.notHidable   {  width: 14em; }
+h2.notHidable  i  {  float: right; }
+
 @media screen and (min-width: 768px) {
   a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.30em;  }
   
