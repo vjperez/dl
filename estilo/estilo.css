@@ -8,8 +8,8 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 :root {
     --linkcolor:             hsl(330, 100%, 50%);
     --linkcolorhover:        hsl(330, 100%, 40%);
-    --formfondocolor:        hsl(000,  00%, 95%);
-    --formfondocolorhover:   hsl(000,  00%, 80%);
+    --formfondocolor:        hsl(000,  00%, 100%);
+    --formfondocolorhover:   hsl(000,  00%, 95%);
     --labelyheadercolor:     hsl(210, 100%, 50%);
 /*    --icolor:                hsl(330, 100%, 50%);
       --icolorcurrent:         hsl(330, 100%, 40%);  */
@@ -47,14 +47,14 @@ div#menuicons h1.menuHidableDriver { color:var(--menuDrivercolor); }
 input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type="email"], textarea{
     background-color:var(--formfondocolor);
     border:none;
-    border-bottom:4px solid var(--negro);
+    border-bottom:4px solid var(--griso);
     outline: none;
 }
 input[type="text"]:focus, input[type="radioxx"]:focus, input[type="tel"]:focus, input[type="password"]:focus,
 input[type="email"]:focus, textarea:focus{
     background-color:var(--formfondocolorhover);
     border:none;
-    border-bottom:4px solid var(--griso); 
+    border-bottom:4px solid var(--linkcolor); 
 }
 
 fieldset{ border:0px solid var(--negro);}
