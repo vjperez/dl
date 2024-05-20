@@ -24,7 +24,15 @@ require_once 'getOpciones/getOpcionesQuery.php';
 			$fotos = getFotos($cnx, $nepe_id);
 			$randomIndex = rand(0, -1 + count($fotos));
 			$randomNepeFoto = $fotos[$randomIndex];
-			array_push( $result, array("buscaMode"=>$buscaMode,  "nepeId"=>$nepe_id,  "fotoUrl"=>$randomNepeFoto) );
+			if(  str_contains($buscaMode, 'buscaBoth')  ){
+				$queDondeTag = $fila[1] . " + " . $fila[2];
+				$ranqueoDeNepe = $fila[3];
+				array_push( $result, array("nepeId"=>$nepe_id,  "fotoUrl"=>$randomNepeFoto, "queDondeTag"=>$queDondeTag, "ranqueoDeNepe"=>$ranqueoDeNepe ) );
+			}else{
+				$queDondeTag = $fila[1];
+				$ranqueoDeNepe = $fila[2];
+				array_push( $result, array("nepeId"=>$nepe_id,  "fotoUrl"=>$randomNepeFoto, "queDondeTag"=>$queDondeTag, "ranqueoDeNepe"=>$ranqueoDeNepe ) );				
+			}
 		}
 		pg_close($cnx); 
 		echo json_encode($result);
