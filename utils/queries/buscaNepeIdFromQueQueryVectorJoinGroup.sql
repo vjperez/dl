@@ -1,5 +1,5 @@
 SELECT 
-    nepe_que.nepe_id, queIds.id, queIds.frase, queIds.ranqueo
+    nepe_que.nepe_id, STRING_AGG(queIds.frase, ', '), SUM(queIds.ranqueo)
 FROM
     (
     SELECT id, frase, ts_rank_cd(que_vector, el_query) AS ranqueo
@@ -8,4 +8,5 @@ FROM
 	ORDER BY ranqueo DESC
     ) queIds
 INNER JOIN nepe_que 
-    ON  queIds.id = nepe_que.que_id;
+    ON  queIds.id = nepe_que.que_id
+GROUP BY  nepe_que.nepe_id;
