@@ -7,20 +7,17 @@ jQuery.getJSON('escritos/nepe/read/getOpciones.php', {que:que, donde:donde} )
 		//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
 		var htmlForMain = '';
 		jQuery.each(datos, function(index){
+			queDondeTag   = datos[index].queDondeTag;
+			ranqueoDeNepe = datos[index].ranqueoDeNepe;
+			nepeId =  datos[index].nepeId;
+			fotoUrl = datos[index].fotoUrl;
+
 			//alert( datos[index].nepeId );
 			htmlForMain += '<div id="opcionesdiv" class="opcionesfotos ">';
 
-
-			buscaMode = datos[index].buscaMode;
-			if(buscaMode.indexOf("buscaBoth") > -1){
-				htmlForMain += '<h2 class="notHidable">'  + que + ' + ' + donde + '</h2>';
-			}else if (buscaMode.indexOf("buscaQue") > -1){
-				htmlForMain += '<h2 class="notHidable">'  + que + '</h2>';
-			}else if (buscaMode.indexOf("buscaDonde") > -1){
-				htmlForMain += '<h2 class="notHidable">'  + donde + '</h2>';
-			}
-			nepeId =  datos[index].nepeId;
-			fotoUrl = datos[index].fotoUrl;
+			htmlForMain += '<fieldset class="notHidable"><label>'  + queDondeTag + '  [' + ranqueoDeNepe + ']</label></fieldset>';
+			//htmlForMain += '<fieldset class="notHidable"><label>'  + queDondeTag  + '</label></fieldset>';
+			
 			htmlForMain += '<a href="portada.html?look=viewNepe&nepeId=' + nepeId + '">';
 			htmlForMain += '<img class="" src="imagenes/nepe/subidas/' + fotoUrl + '">'; 
 			htmlForMain += '</a>';
