@@ -15,7 +15,7 @@ jQuery.getJSON('escritos/nepe/read/getOpciones.php', {que:que, donde:donde} )
 			//alert( datos[index].nepeId );
 			htmlForMain += '<div id="opcionesdiv" class="opcionesfotos ">';
 
-			htmlForMain += '<fieldset class="notHidable"><label>'  + queDondeTag + '  [' + ranqueoDeNepe + ']</label></fieldset>';
+			htmlForMain += '<fieldset class="notHidable"><label>'  + queDondeTag  + '</label></fieldset>' + '<h5>[' + ranqueoDeNepe + ']</h5>';
 			//htmlForMain += '<fieldset class="notHidable"><label>'  + queDondeTag  + '</label></fieldset>';
 			
 			htmlForMain += '<a href="portada.html?look=viewNepe&nepeId=' + nepeId + '">';
