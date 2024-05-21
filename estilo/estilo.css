@@ -6,8 +6,8 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
 
 :root {
-    --linkcolor:             hsl(330, 100%, 50%);
-    --linkcolorhover:        hsl(330, 100%, 40%);
+    --linkcolor:             hsl(330, 100%, 70%);
+    --linkcolorhover:        hsl(330, 100%, 00%);
     --formfondocolor:        hsl(000,  00%, 100%);
     --formfondocolorhover:   hsl(000,  00%, 95%);
     --labelyheadercolor:     hsl(210, 100%, 50%);
@@ -28,8 +28,12 @@ span.enfasis   { font-weight:bolder; }
 .feedbackwarn  { color: var(--negro);  background: var(--warncolor);}
 .feedbackgreen { color: var(--negro);  background: var(--greencolor); }
 
-a:link, a:visited, a { font-weight:bolder;  color: var(--linkcolor);   text-decoration:none;  }
-a:hover, a:focus { color:var(--linkcolorhover); text-decoration:underline; }
+a:link, a:visited, a { font-weight:bolder;  color: var(--linkcolor);
+                font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace;
+                text-decoration:none;  }
+a:hover, a:focus { color:var(--linkcolorhover);
+                font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace;
+                text-decoration:underline; }
 
 form button[type="submit"]      , button[type="button"]      {  
     background-color:var(--blanco); 
