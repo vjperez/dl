@@ -62,11 +62,11 @@ div#opcionesdiv.opcionesfotos h2 {  margin-bottom:2em; }
 
 div#cuando table.hidable { margin-left:auto; margin-right:auto; }
 div#nepefotos, div#quien h5, div#quien ul { text-align:center ; } 
-div#quien ul { margin-top:0pt; margin-bottom:20pt; }
+div#quien ul { margin-top:60pt; margin-bottom:10pt; padding: 0pt; }
 
 /* profile red icons*/
-div#quien ul li i { font-size:25px; }
-div#quien li { display:inline-block; margin-right:12px; margin-left:12px; margin-top:0px; margin-bottom:0px; }
+div#quien ul li i { font-size:1.5em; }
+div#quien li { display:inline-block; margin-right:0.25em; margin-left:0.25em; margin-top:1em; margin-bottom:0px; }
 
 
 div#quien h5 { display:none; }
@@ -104,15 +104,15 @@ h3.feedback {
   width:120px;   padding:1em 0em 1em;
 }
 
-h2.notHidable   {  width: 14em; }
+h2.notHidable   {  width: 16em; }
 h2.notHidable  i  {  float: right; }
 
 @media screen and (min-width: 768px) {
   a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.30em;  }
   
   /* profile red icons*/
-  div#quien ul li i { font-size:36px; }
-  div#quien li { display:inline-block; margin-right:16px; margin-left:16px; margin-top:0px; margin-bottom:0px; }
+  div#quien ul li i { font-size:2em; }
+  div#quien li { display:inline-block; margin-right:1em; margin-left:1em; margin-top:2em; margin-bottom:0px; }
 
   form button[type="submit"], button[type="button"] {
     margin:2em auto 2em;
@@ -141,8 +141,8 @@ h2.notHidable  i  {  float: right; }
   a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.30em;  }
   
   /* profile red icons*/
-  div#quien ul li i { font-size:48px; }
-  div#quien li { display:inline-block; margin-right:20px; margin-left:20px; margin-top:0px; margin-bottom:0px; }
+  div#quien ul li i { font-size:2em; }
+  div#quien li { display:inline-block; margin-right:1em; margin-left:1em; margin-top:2em; margin-bottom:0px; }
 
   form button[type="submit"], button[type="button"]{
     margin:2em auto 2em;
