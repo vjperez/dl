@@ -93,3 +93,12 @@
 
     .fa-camera::before {
         content: "\f030"; }
+
+    .fa-phone-square::before {
+        content: "\f098"; }
+
+    .fa-envelope-square::before {
+        content: "\f199"; }
+
+    .fa-user-group::before {
+        content: "\f500"; } 
