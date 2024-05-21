@@ -69,8 +69,8 @@ fieldset.notHidable label { font-family:'Courgette', 'Bree Serif', 'Courier Prim
 fieldset.notHidable label.explica { font-family:'Oswald', mono, monospace;  }
 */
 
-h5.footersubtitulo, ul.navega li a, div#nombreyRevisado h5, h2.notHidable, span.diasOld,
-fieldset.notHidable label,
+h5.footersubtitulo, ul.navega li a, div#opcionesdiv h5, div#nombreyRevisado h5, 
+h2.notHidable, span.diasOld, fieldset.notHidable label,
 fieldset.hidable label,  fieldset.hidable label.explica, span.enfasis
 { font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
 

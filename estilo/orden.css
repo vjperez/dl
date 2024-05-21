@@ -43,9 +43,9 @@ input[type="text"], input[type="radioxx"], input[type="tel"], input[type="passwo
 }
 
 /*opciones*/
-div#opcionesdiv.opcionesfotos a img, div#nepefotos img { margin-top:0px; margin-bottom:0.50em; margin-right:0.25em; margin-left:0px; }
+div#opcionesdiv.opcionesfotos a img, div#nepefotos img { margin-top:1.0em; margin-bottom:0em; margin-right:0.25em; margin-left:0px; }
 div#opcionesdiv.opcionesfotos h2 {  margin-bottom:2em; }
-
+div#opcionesdiv.opcionesfotos h5 { margin-top: 0em; margin-bottom: 0em; } 
 
 
 /* profile */
