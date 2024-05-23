@@ -65,7 +65,7 @@ div#nepefotos, div#quien h5, div#quien ul { text-align:center ; }
 div#quien ul { margin-top:60pt; margin-bottom:10pt; padding: 0pt; }
 
 /* profile red icons*/
-div#quien ul li i { font-size:1.5em; }
+div#quien ul li i { font-size:1.5em; padding-top: 0.125em; padding-left: 0.125em; padding-bottom: 0.125em; }
 div#quien li { display:inline-block; margin-right:0.75em; margin-left:0.75em; margin-top:1em; margin-bottom:0px; }
 
 
@@ -101,7 +101,7 @@ i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
 
 h3.feedback {
   border-radius: 4pt;  display:block;   margin:0em auto 0em;   text-align:center; 
-  width:120px;   padding:1em 0em 1em;
+  width:80%;   padding:1em 0em 1em;
 }
 
 h2.notHidable   {  width: 16em; }
@@ -130,7 +130,7 @@ h2.notHidable  i  {  float: right; }
   }
 
   h3.feedback {
-    width:160px;  
+    width:80%;  
   }
 
 }
@@ -160,7 +160,7 @@ h2.notHidable  i  {  float: right; }
   }
 
   h3.feedback {
-    width:160px;  
+    width:80%;  
   }
 
 }
