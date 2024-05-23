@@ -1,19 +1,16 @@
 /*  responsive : comun  */
 /* css variables, used on stylesheet with var() function */
 :root {
-  --navegafondocolor:      hsl(50,    0%,  90%); 
-  --navegaletracolor:      hsl(210, 100%,   0%);
-  /*--navegaletracolor:      hsl(210, 100%,  50%); */
+  --navegaletracolor:      hsl(72,    69%,  90%); 
+  --navegaletracolorseleccionado:hsl(87, 58%, 47%); 
+  --navegafondocolor:      hsl(197, 70%,   12%);
+  --navegafondocolorseleccionado:hsl(197, 70%,  12%);   
 
-  --navegafondocolorhover: hsl(50,    0%,  70%);
-  /*--navegafondocolorhover: hsl(50,  100%,  70%); */ 
-  /*--navegaletracolorhover: hsl(210,  70%,  50%); */ 
-  --navegaletracolorhover: hsl(210, 100%,   0%);
+  --navegaletracolorhovernosel: hsl(87,    69%,  50%);
+  --navegafondocolorhover: hsl(197, 70%,   12%);
 
-  --navegafondocolorseleccionado:hsl(000, 100%,  00%); /* any color, all color, no light   = black */
-  --navegaletracolorseleccionado:hsl(000, 100%, 100%); /* any color, all color, full light = white */
 
-  --navegabordercolor:     hsl(000, 100%,  00%); /* any color,  all color, no light  = black */
+  --navegabordercolor:     hsl(197, 70%,  12%); 
 }
 
 body{ min-width:500px; }
@@ -49,7 +46,7 @@ ul.navega li a {
 
 /*  .seleccionado is added on navButtons.js  */
 ul.navega li a.seleccionado {  background-color:var(--navegafondocolorseleccionado);  color:var(--navegaletracolorseleccionado); }
-ul.navega li a:hover:not(.seleccionado) {  background-color:var(--navegafondocolorhover); color:var(--navegaletracolorhover); }
+ul.navega li a:hover:not(.seleccionado) {  background-color:var(--navegafondocolorhover); color:var(--navegaletracolorhovernosel); }
 
 
 /* media query to apply css starting at 768 px */
