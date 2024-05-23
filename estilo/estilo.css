@@ -2,21 +2,23 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
 /* ========================================================================================== */
 /*  estilo : comun  */
-/* color de botones :  000, 00%   180, 50% */
+/* w3 schoools compound colors rojo #FE2712 */
 
 
 :root {
-    --linkcolor:             hsl(330, 100%, 70%);
-    --linkcolorhover:        hsl(330, 100%, 00%);
+    --linkcolor:             hsl(87, 58%, 47%);
+    --linkcolorhover:        hsl(197, 70%,   12%);
     --formfondocolor:        hsl(000,  00%, 100%);
     --formfondocolorhover:   hsl(000,  00%, 95%);
-    --labelyheadercolor:     hsl(210, 100%, 50%);
+    --labelyheadercolor:     hsl(219, 85%, 47%);
 /*    --icolor:                hsl(330, 100%, 50%);
       --icolorcurrent:         hsl(330, 100%, 40%);  */
-    --menuDrivercolor:       hsl(000, 00%, 00%);
+    --navegaletracolorhover:       hsl(87, 58%,   47%);
+    --navegaletracolor:      hsl(72,    69%,  90%); 
+    --navegafondocolor:      hsl(197, 70%,   12%);
 
 
-    --negro:                 hsl(000,  00%,  00%);
+    --negro:                 hsl(197, 70%,   12%);
     --griso:                 hsl(000,  00%,  60%);
     --blanco:                hsl(000,  00%, 100%);
     --warncolor:             hsl(000, 100%,  70%);
@@ -33,20 +35,20 @@ a:link, a:visited, a { font-weight:bolder;  color: var(--linkcolor);
                 text-decoration:none;  }
 a:hover, a:focus { color:var(--linkcolorhover);
                 font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace;
-                text-decoration:underline; }
+                text-decoration:none; }
 
 form button[type="submit"]      , button[type="button"]      {  
-    background-color:var(--blanco); 
-    color: var(--negro);
+    background-color:var(--navegafondocolor); 
+    color: var(--navegaletracolor);
  }
 form button[type="submit"]:hover, button[type="button"]:hover{  
-    background-color:var(--negro);
+    background-color:var(--navegafondocolor);
     /*   border:0px solid var(--warncolor);   */
-    color: var(--blanco);
+    color: var(--navegaletracolorhover);
 }
 /**/
 
-div#menuicons h1.menuHidableDriver { color:var(--menuDrivercolor); }
+div#menuicons h1.menuHidableDriver { color:var(--navegaletracolorhover); }
 
 input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type="email"], textarea{
     background-color:var(--formfondocolor);
@@ -76,6 +78,9 @@ fieldset.hidable label,  fieldset.hidable label.explica, span.enfasis
 
 h2.footertitulo { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
 
+h2.footertitulo       { text-shadow: 0 4px 1px var(--navegafondocolor); }
+h2.footertitulo:hover { text-shadow: 0 0px 0px var(--navegafondocolor); }
+
 fieldset.notHidable label{ font-weight:bolder; color:var(--labelyheadercolor); }
 fieldset.notHidable label.explica, fieldset.hidable label,  fieldset.hidable label.explica  
 { font-weight:bolder; color:var(--negro); }
@@ -90,11 +95,11 @@ form[id$=Form] h3.feedback   { font-family:'Oswald', mono, monospace; font-weigh
 
 
  div#quien div.hidable ul  i 
-    { border-color:var(--negro);  border-style:solid;  border-width:0pt;  border-radius:5pt; padding:0.2em;   /* no usando borde*/
-    color:var(--linkcolor); }
+    { border-color:var(--negro);  border-style:solid;  border-width:0pt;  border-radius:5pt;   /* no usando borde*/
+    color:var(--navegaletracolor); background: var(--navegafondocolor);}
  div#quien div.hidable ul  i:hover,  div#quien div.hidable ul  i:focus,  div#quien div.hidable ul  i.current 
     { border-color:var(--labelyheadercolor); border-width:0pt;   /* no usando borde*/
-    color:var(--linkcolorhover); }
+    color:var(--navegaletracolorhover); }
 
  div#cuando td, div#cuando td.hora, div#donde span.texto, div#donde span.textofixed, p, div#quien h5, div#opcionesdiv h2, div#que ul li, div#donde ul li  
 { font-family:'Courier Prime', serif, mono, monospace; }
