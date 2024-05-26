@@ -79,7 +79,7 @@ fieldset.hidable label,  fieldset.hidable label.explica, span.enfasis
 h2.footertitulo { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
 
 h2.footertitulo       { text-shadow: 0 4px 1px var(--navegafondocolor); }
-h2.footertitulo:hover { text-shadow: 0 0px 0px var(--navegafondocolor); }
+h2.footertitulo:hover { text-shadow: 0 0px 1px var(--navegaletracolorhover); }
 
 fieldset.notHidable label{ font-weight:bolder; color:var(--labelyheadercolor); }
 fieldset.notHidable label.explica, fieldset.hidable label,  fieldset.hidable label.explica  

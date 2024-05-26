@@ -97,15 +97,14 @@ span.diasOld { font-size:0.75em; letter-spacing:0em; margin-left:2em; }
 
 
 i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
-{ margin-left:1em;  }
+{ margin-right:1em;  }
 
 h3.feedback {
   border-radius: 4pt;  display:block;   margin:0em auto 0em;   text-align:center; 
   width:80%;   padding:1em 0em 1em;
 }
 
-h2.notHidable   {  width: 16em; }
-h2.notHidable  i  {  float: right; }
+
 
 @media screen and (min-width: 768px) {
   a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.30em;  }
