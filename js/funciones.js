@@ -132,6 +132,7 @@ jQuery.isLogueadoSessionSet = function(){
 		jQuery(window.location).attr('href', path); 
 	});
 }
+//////////////////////////////////////          calling function     ///////////////////////////////////
 //to get logged condition and include other scripts after logueado is set
 jQuery.isLogueadoSessionSet();
 
