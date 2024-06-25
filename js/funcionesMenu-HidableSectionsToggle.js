@@ -10,7 +10,7 @@ jQuery(document).on('click', '.menuHidableDriver', function(evento){
 jQuery.hideMenu = function(){
 	jQuery('.menuHidableTarget').hide();
 	jQuery('.menuHidableDriver').find('.fa-window-close').hide();
-	jQuery('.menuHidableDriver').find('.fa-bars').css('visibility','visible').show();
+	jQuery('.menuHidableDriver').find('.fa-bars').show();
 }
 
 jQuery.showMenu = function(){

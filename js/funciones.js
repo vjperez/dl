@@ -197,15 +197,16 @@ jQuery.haveAtLeast1 = function(formaStr){
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//since menu Hidable Driver h1 buttons are hidden on width > 984 (js) or 1001 css,
-//without this function, you could end up with no menu on windows width > 984 and no way to redisplay it
-//that can happen if menu was hidden on lower window widths
-jQuery(window).on( 'resize', 
-	function() {
-		// jQuery('body').prepend( "div" + jQuery(window).width() * window.devicePixelRatio + "/div" );
-		if(jQuery(window).width() * window.devicePixelRatio >= 984){   jQuery.showMenu();   }
-  	}
-);
+//since menu Hidable Driver h1 buttons are hidden on width >= 768
+//see div#menuicons h1.menuHidableDriver{ display:none; }
+//without this function, you end up with no menu when resizing window from 
+//pixels going from less to more than 768px
+ function elSize(){
+	//jQuery("p#size").text( window.innerWidth );
+	if(window.innerWidth >= 768)   { jQuery.showMenu(); console.log('showing menu...');  }	
+}
+jQuery(window).on("resize", elSize);
+
 
 /*
 jQuery.isNepeIdOnOwnNepesSession = function(ownNepes, nepeIdTocheck){

@@ -53,6 +53,7 @@ ul.navega li a:hover:not(.seleccionado) {  background-color:var(--navegafondocol
 @media screen and (min-width: 768px) {
   div#menuicons h1.menuHidableDriver{ display:none; }
   div#menuicons ul.menuHidableTarget{ display:block; }
+
   ul.navega li a {  float: left;   font-size: 1.0em;  letter-spacing:0.15em;  padding: 1.0em; }
 }
 
