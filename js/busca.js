@@ -14,7 +14,7 @@ function handleSubmit(evento) {
   //alert('que=(' + que  + ')\ndonde=(' +  donde + ')');
   if (que.length > 0 || donde.length > 0) {
     //i'm looking for a non empty cleaned str
-    window.location.href = 
+    window.location.href =
       window.location.pathname + '?look=opciones&que=' + encodeURIComponent(que) + '&donde=' + encodeURIComponent(donde);
   } else {
     let feedbackStr = 'Buscas algo?';
