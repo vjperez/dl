@@ -1,12 +1,12 @@
 jQuery(document).ready(function(){
 
-	var acto = jQuery.urlParametro('acto');
+	var acto = urlParametro('acto');
 	switch(acto){
 		case 'logout':
 			jQuery.logout();
 		break;
 		case 'deleteNepe':
-			var nepeId = jQuery.urlParametro('nepeId');
+			var nepeId = urlParametro('nepeId');
 			
 			jQuery.getJSON('escritos/deleteNepe.php', {nepeId:nepeId})
 			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
 			});				
 		break;
 		case 'deleteHerNepes':
-			var userId = jQuery.urlParametro('userId');
+			var userId = urlParametro('userId');
 			
 			jQuery.getJSON('escritos/deleteHerNepes.php', {userId:userId})
 			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
@@ -40,7 +40,7 @@ jQuery(document).ready(function(){
 		break;
 	}//acto switch
 
-	var look = jQuery.urlParametro('look');
+	var look = urlParametro('look');
 	switch(look) {
 		case 'busca':	
 			jQuery.lookYelScript('looks/busca.html', 'js/busca.js');

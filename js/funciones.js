@@ -46,8 +46,7 @@ function feedback(queElemento, mensaje, clase, forma) {
 
 
 /* SLIDE UP */
-
-let slideUp = (el, duration = 500) => {
+function slideUp(el, duration = 500){
   el.style.transitionProperty = 'height, margin, padding';
   el.style.transitionDuration = duration + 'ms';
   el.style.boxSizing = 'border-box';
@@ -76,7 +75,7 @@ let slideUp = (el, duration = 500) => {
 
 
 /* SLIDE DOWN */
-let slideDown = (el, duration = 500) => {
+function slideDown(el, duration = 500){
   let display = window.getComputedStyle(el).display;
   if (display === 'none') display = 'block';
   el.style.display = display;
@@ -108,12 +107,26 @@ let slideDown = (el, duration = 500) => {
 
 
 /* TOOGLE */
-let slideToggle = (el, duration = 500) => {
+function slideToggle(el, duration = 500){
   if (window.getComputedStyle(el).display === 'none') {
     return slideDown(el, duration);
   } else {
     return slideUp(el, duration);
   }
+};
+
+
+//extracs parameters from the url
+urlParametro = function (name) {
+  var str = window.location.href;
+  var patron = new RegExp('[?&]' + name + '=([^&#]*)');
+  var results = patron.exec(str); //searches str for a pattern described in patron
+  //results is an array, contains NULL when name=" " is not found on str.
+  //otherwise results[0] contains name=" ", a match with the entire reg exp
+  //          results[1] contains a match with the group defined between () after the = sign on the regExp.  Search for 'javascript regex groups'
+  if (results === null) return null;
+  else return results[1];
+  //return results[1] || 0;
 };
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -121,6 +134,7 @@ const DEBUGUEO = true;
 const MINIMUM_USER_PASS_LENGTH = 4;
 const MINIMUM_USER_NAME_LENGTH = 3;
 var logueado;
+
 
 jQuery.areValidUserYPass = function (usertb, pass01, pass02, feedbackType, whatElement) {
   //Esta funcion la usan login y registra
@@ -210,18 +224,6 @@ jQuery.cleanStrJustKeep1SpaceBetweenWords = function (str, patron) {
   return cleanedstr;
 };
 
-//extracs parameters from the url
-jQuery.urlParametro = function (name) {
-  var str = window.location.href;
-  var patron = new RegExp('[?&]' + name + '=([^&#]*)');
-  var results = patron.exec(str); //searches str for a pattern described in patron
-  //results is an array, contains NULL when name=" " is not found on str.
-  //otherwise results[0] contains name=" ", a match with the entire reg exp
-  //          results[1] contains a match with the group defined between () after the = sign on the regExp.  Search for 'javascript regex groups'
-  if (results === null) return null;
-  else return results[1];
-  //return results[1] || 0;
-};
 
 //returns null when typeof str is not string
 //when str IS a string ... returns whether string has zero length after trimmed

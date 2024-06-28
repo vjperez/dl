@@ -12,7 +12,7 @@ jQuery(document).ready(function(){
 		//alert('nav buttons js:\nshowing login and sign up nav buttons for:: \nlogueado=' + logueado);
 	}
 	
-	let look = jQuery.urlParametro('look');
+	let look = urlParametro('look');
 	switch(look){
 		case 'busca':
 			jQuery('#navBusca').addClass("seleccionado");
