@@ -1,4 +1,4 @@
-jQuery.appendDebugErrors = function( xhrObjetoForFAILString, textoEstatus, elError ){
+appendDebugErrors = function( xhrObjetoForFAILString, textoEstatus, elError ){
     // <br />\n  changed to  <br>  
     xhrObjetoForFAILString = xhrObjetoForFAILString.replace(new RegExp('<br \/>\r?\n','g'), '<br>');
     // \n   changed to  <br>
@@ -12,16 +12,16 @@ jQuery.appendDebugErrors = function( xhrObjetoForFAILString, textoEstatus, elErr
     losLis += '<br><br><li>Texto Estatus:<br>' + textoEstatus + '</li>';
     losLis += '<br><br><li>El error:<br>' + elError + '</li>';
     losLis += '<hr>';
-    jQuery('#containerForErrors').append(losLis);
+    document.querySelector('#containerForErrors').insertAdjacentHTML('beforeend', losLis);
 }
 
 
 if(DEBUGUEO){
-    var xhrObjetoForFAILString = decodeURIComponent (jQuery.urlParametro('xhrObjetoForFAILString'));
-    var textoEstatus           = decodeURIComponent (jQuery.urlParametro('textoEstatus'));
-    var elError                = decodeURIComponent (jQuery.urlParametro('elError'));
+    var xhrObjetoForFAILString = decodeURIComponent (urlParametro('xhrObjetoForFAILString'));
+    var textoEstatus           = decodeURIComponent (urlParametro('textoEstatus'));
+    var elError                = decodeURIComponent (urlParametro('elError'));
 
-    jQuery.appendDebugErrors( xhrObjetoForFAILString, textoEstatus, elError );  
+    appendDebugErrors( xhrObjetoForFAILString, textoEstatus, elError );  
 }else{
     //
 }
