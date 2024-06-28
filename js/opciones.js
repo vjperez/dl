@@ -1,5 +1,5 @@
-let que   = decodeURIComponent( jQuery.urlParametro('que') );      
-let donde = decodeURIComponent( jQuery.urlParametro('donde') ); 
+let que   = decodeURIComponent( urlParametro('que') );      
+let donde = decodeURIComponent( urlParametro('donde') ); 
 //alert('[' + que + '][' + donde + ']');
 jQuery.getJSON('escritos/nepe/read/getOpciones.php', {que:que, donde:donde} )
 .done(function(datos, estatusForDONE, xhrObjetoForDONE){
