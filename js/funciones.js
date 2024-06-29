@@ -207,22 +207,21 @@ function areValidUserYPass(usertb, pass01, pass02, feedbackType, whatElement) {
 }
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 //returns null when typeof str is not string
 //when str IS a string ... returns whether string has zero length after trimmed
-jQuery.isVacioStr = function (str) {
+function isVacioStr(str) {
   if (typeof str === 'string') return str.trim().length === 0;
   else return null;
-};
+}
 
 //returns null when typeof str is not string
 //when str IS a string ... returns whether string has length > zero after trimmed
-jQuery.isNotVacioStr = function (str) {
+function isNotVacioStr(str) {
   if (typeof str === 'string') return str.trim().length > 0;
   else return null;
-};
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 //to get logged condition and include other scripts after logueado is set
 jQuery.isLogueadoSessionSet = function () {
@@ -299,10 +298,10 @@ jQuery.logout = function () {
 jQuery.haveAtLeast1 = function (formaStr) {
   var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@._+-]/gi); //	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
   if (
-    jQuery.isVacioStr(jQuery.cleanStr(jQuery(formaStr + ' input[name=red1]').val(), regexp)) &&
-    jQuery.isVacioStr(jQuery.cleanStr(jQuery(formaStr + ' input[name=red2]').val(), regexp)) &&
-    jQuery.isVacioStr(jQuery.cleanStr(jQuery(formaStr + ' input[name=red3]').val(), regexp)) &&
-    jQuery.isVacioStr(jQuery.cleanStr(jQuery(formaStr + ' input[name=red4]').val(), regexp))
+    isVacioStr(cleanStr( document.querySelector(formaStr + ' input[name=red1]').value, regexp )) &&
+    isVacioStr(cleanStr( document.querySelector(formaStr + ' input[name=red2]').value, regexp )) &&
+    isVacioStr(cleanStr( document.querySelector(formaStr + ' input[name=red3]').value, regexp )) &&
+    isVacioStr(cleanStr( document.querySelector(formaStr + ' input[name=red4]').value, regexp ))
   ) {
     feedback('fieldset#socialHandleFieldset h5', 'Minimo 1 contacto');
     feedback('fieldset#submitButtonFieldset h5#handlesFeedback', 'Verifica secci\u00F3n : QUIEN');
