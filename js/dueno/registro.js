@@ -3,7 +3,7 @@ jQuery('form#registroForm').submit(function(evento){
     var usertb = jQuery('#usernameId').val();
     var pass01 = jQuery('#passwordId').val();
     var pass02 = jQuery('#passwordConfirmId').val();
-    if( jQuery.areValidUserYPass(usertb, pass01, pass02, 'fullFeedback', 'form#registroForm h3.feedback') ){
+    if( areValidUserYPass(usertb, pass01, pass02, 'fullFeedback', 'form#registroForm h3.feedback') ){
         jQuery.post('escritos/dueno/creaDueno.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
         .done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
             //el getJSON no entra al .done y cae en .fail si detecta errores de parseo.

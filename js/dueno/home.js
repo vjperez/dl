@@ -64,7 +64,7 @@ jQuery('form#editClaveForm').submit(function(evento){
     var user = 'valorDummy';
     var pass01 = jQuery('#passwordId').val();
     var pass02 = jQuery('#passwordConfirmId').val();
-    if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editClaveForm h3.feedback') ){
+    if( areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editClaveForm h3.feedback') ){
         jQuery.post('escritos/dueno/editClave.php', {pass01:pass01} )
         .done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){ 
             try{

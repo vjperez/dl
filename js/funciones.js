@@ -45,7 +45,6 @@ function feedback(queElemento, mensaje, clase, forma) {
 }
 
 
-/* SLIDE UP */
 function slideUp(el, duration = 500){
   el.style.transitionProperty = 'height, margin, padding';
   el.style.transitionDuration = duration + 'ms';
@@ -74,7 +73,6 @@ function slideUp(el, duration = 500){
 }
 
 
-/* SLIDE DOWN */
 function slideDown(el, duration = 500){
   let display = window.getComputedStyle(el).display;
   if (display === 'none') display = 'block';
@@ -106,7 +104,6 @@ function slideDown(el, duration = 500){
 }
 
 
-/* TOOGLE */
 function slideToggle(el, duration = 500){
   if (window.getComputedStyle(el).display === 'none') {
     return slideDown(el, duration);
@@ -129,6 +126,11 @@ function urlParametro(name){
   //return results[1] || 0;
 }
 
+
+const DEBUGUEO = true;
+const MINIMUM_USER_PASS_LENGTH = 4;
+const MINIMUM_USER_NAME_LENGTH = 3;
+var logueado;
 
 function areValidUserYPass(usertb, pass01, pass02, feedbackType, whatElement) {
   //Esta funcion la usan login y registra
@@ -175,11 +177,6 @@ function areValidUserYPass(usertb, pass01, pass02, feedbackType, whatElement) {
   }
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-const DEBUGUEO = true;
-const MINIMUM_USER_PASS_LENGTH = 4;
-const MINIMUM_USER_NAME_LENGTH = 3;
-var logueado;
 
 
 

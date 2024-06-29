@@ -72,7 +72,7 @@ jQuery('form#adminEditClaveForm').submit(function(evento){
 	var user = 'valorDummy';
 	var pass01 = jQuery('#passwordId').val();
 	var pass02 = jQuery('#passwordConfirmId').val(); 
-	if( jQuery.areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#adminEditClaveForm h3.feedback') ){
+	if( areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#adminEditClaveForm h3.feedback') ){
 		//Valid values son los q cumplen estas 3 cosas.
 		//Estas cosas se pueden chequear antes del post y evito post sin sentido
 		// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;

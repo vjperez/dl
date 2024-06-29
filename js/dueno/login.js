@@ -2,7 +2,7 @@ jQuery('form#loginForm').submit(function(evento){
 	evento.preventDefault(); //not making a submit (POST request) from html action.
 	var user = jQuery('#usernameId').val();
 	var pass = jQuery('#passwordId').val();
-	if( jQuery.areValidUserYPass(user, pass, pass, "genericFeedback", 'form#loginForm h3') ){
+	if( areValidUserYPass(user, pass, pass, "genericFeedback", 'form#loginForm h3') ){
 		jQuery.post('escritos/dueno/login.php', {user:user, pass:pass} )
 		.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
 			//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
