@@ -27,6 +27,35 @@ function cleanStr(str, patron) {
 }
 
 
+function cleanStrJustKeep1SpaceBetweenWords(str, patron) {
+  //function will convert a string like   !@#uno!$#dos!#@    into   uno dos
+  //when patron is RegExp(/[^a-z0-9ñüàáèéìíòóùú]/gi)
+  //patron comes mainly from crea y update nepe, y busca
+
+  //replace characters matching a patron with '%'
+  str = str.replace(patron, '%'); // str will be   %%%uno%%%dos%%%
+
+  strComponentsArray = str.split('%'); // strComponentsArray will contain   ,,uno,,dos,,
+  let cleanedstr = '';
+  for (var i = 0; i < strComponentsArray.length; i++) {
+    //alert('parte de strComponentsArray=[' + strComponentsArray[i]  + ']');
+    if (strComponentsArray[i] !== '') {
+      //ignore strComponent when it is empty string
+      //strComponent will be '' in these situations:
+      //to represent character BEFORE a delimiter on the first position
+      //to represent character AFTER  a delimiter on the last  position
+      //to represent character BETWEEN  back to back delimiters
+      if (cleanedstr !== '') {
+        cleanedstr += ' ';
+      } //add blank space before adding a component, but not the first time
+      cleanedstr += strComponentsArray[i];
+      //build a string from non-empty strComponents, adding a space BETWEEN them
+    }
+  }
+  return cleanedstr;
+}
+
+
 function feedback(queElemento, mensaje, clase, forma) {
   const el = document.querySelector(queElemento);
   el.innerText = mensaje;
@@ -176,38 +205,9 @@ function areValidUserYPass(usertb, pass01, pass02, feedbackType, whatElement) {
     return true;
   }
 }
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-jQuery.cleanStrJustKeep1SpaceBetweenWords = function (str, patron) {
-  //function will convert a string like   !@#uno!$#dos!#@    into   uno dos
-  //when patron is RegExp(/[^a-z0-9ñüàáèéìíòóùú]/gi)
-  //patron comes mainly from crea y update nepe, y busca
-
-  //replace characters matching a patron with '%'
-  str = str.replace(patron, '%'); // str will be   %%%uno%%%dos%%%
-
-  strComponentsArray = str.split('%'); // strComponentsArray will contain   ,,uno,,dos,,
-  cleanedstr = '';
-  for (var i = 0; i < strComponentsArray.length; i++) {
-    //alert('parte de strComponentsArray=[' + strComponentsArray[i]  + ']');
-    if (strComponentsArray[i] !== '') {
-      //ignore strComponent when it is empty string
-      //strComponent will be '' in these situations:
-      //to represent character BEFORE a delimiter on the first position
-      //to represent character AFTER  a delimiter on the last  position
-      //to represent character BETWEEN  back to back delimiters
-      if (cleanedstr !== '') {
-        cleanedstr += ' ';
-      } //add blank space before adding a component, but not the first time
-      cleanedstr += strComponentsArray[i];
-      //build a string from non-empty strComponents, adding a space BETWEEN them
-    }
-  }
-  return cleanedstr;
-};
 
 
 //returns null when typeof str is not string
