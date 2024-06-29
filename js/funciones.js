@@ -71,7 +71,7 @@ function slideUp(el, duration = 500){
     el.style.removeProperty('transition-property');
     //alert("!");
   }, duration);
-};
+}
 
 
 /* SLIDE DOWN */
@@ -103,7 +103,7 @@ function slideDown(el, duration = 500){
     el.style.removeProperty('transition-duration');
     el.style.removeProperty('transition-property');
   }, duration);
-};
+}
 
 
 /* TOOGLE */
@@ -113,30 +113,24 @@ function slideToggle(el, duration = 500){
   } else {
     return slideUp(el, duration);
   }
-};
+}
 
 
 //extracs parameters from the url
-urlParametro = function (name) {
-  var str = window.location.href;
-  var patron = new RegExp('[?&]' + name + '=([^&#]*)');
-  var results = patron.exec(str); //searches str for a pattern described in patron
+function urlParametro(name){
+  const str = window.location.href;
+  const patron = new RegExp('[?&]' + name + '=([^&#]*)');
+  const results = patron.exec(str); //searches str for a pattern described in patron
   //results is an array, contains NULL when name=" " is not found on str.
   //otherwise results[0] contains name=" ", a match with the entire reg exp
   //          results[1] contains a match with the group defined between () after the = sign on the regExp.  Search for 'javascript regex groups'
   if (results === null) return null;
   else return results[1];
   //return results[1] || 0;
-};
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-const DEBUGUEO = true;
-const MINIMUM_USER_PASS_LENGTH = 4;
-const MINIMUM_USER_NAME_LENGTH = 3;
-var logueado;
+}
 
 
-jQuery.areValidUserYPass = function (usertb, pass01, pass02, feedbackType, whatElement) {
+function areValidUserYPass(usertb, pass01, pass02, feedbackType, whatElement) {
   //Esta funcion la usan login y registra
   //para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.
   // 1)lenght >= 3o4; 2)only numbers or letters  @ . _  - +   ; 3)both pass are equal;
@@ -149,15 +143,10 @@ jQuery.areValidUserYPass = function (usertb, pass01, pass02, feedbackType, whatE
     pass02.length < MINIMUM_USER_PASS_LENGTH
   ) {
     if (feedbackType.indexOf('fullFeedback') !== -1) {
-      jQuery.feedback(
-        whatElement,
-        'Username o contrase\u00f1a es muy corto.',
-        'feedbackwarn',
-        'downdelayup'
-      );
+      feedback(whatElement, 'Username o contrase\u00f1a es muy corto.', 'feedbackwarn', 'downdelayup');
     } else {
       // if(feedbackType.indexOf('genericFeedback') !== -1){
-      jQuery.feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
+      feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
     }
     return false;
   } else if (
@@ -166,35 +155,34 @@ jQuery.areValidUserYPass = function (usertb, pass01, pass02, feedbackType, whatE
     pass02Check.length < pass02.length
   ) {
     if (feedbackType.indexOf('fullFeedback') !== -1) {
-      jQuery.feedback(
-        whatElement,
-        'Usa solo letras, numeros y @ . _ - + ',
-        'feedbackwarn',
-        'downdelayup'
-      );
+      feedback(whatElement, 'Usa solo letras, numeros y @ . _ - + ', 'feedbackwarn', 'downdelayup');
     } else {
       // if(feedbackType.indexOf('genericFeedback') !== -1){
-      jQuery.feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
+      feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
     }
     return false;
   } else if (pass01 !== pass02) {
     //same type, same value, no type conversion, case sensitive
     if (feedbackType.indexOf('fullFeedback') !== -1) {
-      jQuery.feedback(
-        whatElement,
-        'Las contrase\u00f1as son diferentes.',
-        'feedbackwarn',
-        'downdelayup'
-      );
+      feedback(whatElement, 'Las contrase\u00f1as son diferentes.', 'feedbackwarn', 'downdelayup');
     } else {
       // if(feedbackType.indexOf('genericFeedback') !== -1){
-      jQuery.feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
+      feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
     }
     return false;
   } else {
     return true;
   }
-};
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const DEBUGUEO = true;
+const MINIMUM_USER_PASS_LENGTH = 4;
+const MINIMUM_USER_NAME_LENGTH = 3;
+var logueado;
+
+
+
 
 jQuery.cleanStrJustKeep1SpaceBetweenWords = function (str, patron) {
   //function will convert a string like   !@#uno!$#dos!#@    into   uno dos
@@ -319,15 +307,12 @@ jQuery.haveAtLeast1 = function (formaStr) {
     jQuery.isVacioStr(jQuery.cleanStr(jQuery(formaStr + ' input[name=red3]').val(), regexp)) &&
     jQuery.isVacioStr(jQuery.cleanStr(jQuery(formaStr + ' input[name=red4]').val(), regexp))
   ) {
-    jQuery.feedback('fieldset#socialHandleFieldset h5', 'Minimo 1 contacto');
-    jQuery.feedback(
-      'fieldset#submitButtonFieldset h5#handlesFeedback',
-      'Verifica secci\u00F3n : QUIEN'
-    );
+    feedback('fieldset#socialHandleFieldset h5', 'Minimo 1 contacto');
+    feedback('fieldset#submitButtonFieldset h5#handlesFeedback', 'Verifica secci\u00F3n : QUIEN');
     submitVote1 = false;
   } else {
-    jQuery.feedback('fieldset#socialHandleFieldset h5', '');
-    jQuery.feedback('fieldset#submitButtonFieldset h5#handlesFeedback', '');
+    feedback('fieldset#socialHandleFieldset h5', '');
+    feedback('fieldset#submitButtonFieldset h5#handlesFeedback', '');
     submitVote1 = true;
   }
 };

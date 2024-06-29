@@ -51,7 +51,7 @@ jQuery.populateUpdateNepeForm = function(datos){
 
 
 //get data to populate form
-let index = jQuery.urlParametro('index');			
+let index = urlParametro('index');			
 jQuery.getJSON('escritos/nepe/read/getNepe.php', {nepe_index:index} )
 .done(function(nepeDatos, estatusForDONE, xhrObjetoForDONE){
 	jQuery.populateUpdateNepeForm(nepeDatos);
