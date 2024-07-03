@@ -1,4 +1,8 @@
+console.log('navButtons.js   [loading...]');
+
 jQuery(document).ready(function(){
+
+  console.log('logueado en navButtons.js: ' + logueado);
 
 	//alert('logueado en navega js: ' + logueado);
 	if(logueado){ 

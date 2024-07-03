@@ -1,3 +1,5 @@
+console.log('funcionesMainContenido.js   [loading...]');
+
 jQuery.lookYelScript = function(pageName, scriptPath){
 	jQuery('#containerForMain').load(pageName + ' #main', function(datosDeRespuesta, pageEstatus, xhrObjetoPage){
 		if(pageEstatus == 'error'){
@@ -36,17 +38,11 @@ jQuery.lookYelScript = function(pageName, scriptPath){
 }
 
 
-jQuery.encodeAndGetErrorPath = function(xhrObjetoForFAILString, textoEstatus, elError){
+function encodeAndGetErrorPath(error){
 	if(DEBUGUEO){
-		xhrObjetoForFAILString    = encodeURIComponent( xhrObjetoForFAILString );
-		textoEstatus              = encodeURIComponent( textoEstatus );
-		elError                   = encodeURIComponent( elError );
-		var path  = window.location.pathname + '?look=' + 'error' 
-				+ '&xhrObjetoForFAILString=' + xhrObjetoForFAILString 
-				+ '&textoEstatus=' + textoEstatus 
-				+ '&elError=' + elError;
+		error = encodeURIComponent( error );
+		return window.location.pathname + '?look=' + 'error'  + '&elError=' + error;
 	}else{
-		var path = window.location.pathname + '?look=' + 'error';
-	}
-	return path;	
+		return window.location.pathname + '?look=' + 'error';
+	}	
 }

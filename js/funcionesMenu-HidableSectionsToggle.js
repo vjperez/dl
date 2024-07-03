@@ -1,3 +1,5 @@
+console.log('funcionesMenu-HidableSectionsToggle.js   [loading...]');
+
 //menu behavior
 const driver = document.querySelector('.menuHidableDriver');
 driver.addEventListener('click', showOrHideMenu);

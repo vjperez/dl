@@ -1,4 +1,8 @@
+console.log('getMainContenido.js   [loading...]');
+
 jQuery(document).ready(function(){
+
+  console.log('logueado en getMainContenido: ' + logueado);
 
 	var acto = urlParametro('acto');
 	switch(acto){
@@ -68,12 +72,12 @@ jQuery(document).ready(function(){
 			if(logueado){	
 				jQuery.lookYelScript('looks/home.html', 'js/dueno/home.js');
 			}else{  
-				var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-				var textoEstatus = 'Error, usuario solicito home look, sin estar logueado.';
-				var elError = 'Error humano.';
-
-				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-				jQuery(window.location).attr('href', path);	
+				//var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
+				//var textoEstatus = 'Error, usuario solicito home look, sin estar logueado.';
+				//var elError = 'Error humano.';
+        let error = 'Error, usuario solicito home look, sin estar logueado.';
+				let path = encodeAndGetErrorPath( error ); // 
+				window.location.href = path;	
 			}
 		break;			
 		case 'creaNepe':

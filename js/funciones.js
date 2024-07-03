@@ -1,3 +1,5 @@
+console.log('funciones.js   [loading...]');
+
 //menu Hidable Driver h1 buttons are hidden on width >= 768
 //see div#menuicons h1.menuHidableDriver{ display:none; }
 //Since there is no driver, the menu, needs to be reShown when resizing window from
@@ -159,8 +161,6 @@ function urlParametro(name){
 const DEBUGUEO = true;
 const MINIMUM_USER_PASS_LENGTH = 4;
 const MINIMUM_USER_NAME_LENGTH = 3;
-var logueado;
-
 function areValidUserYPass(usertb, pass01, pass02, feedbackType, whatElement) {
   //Esta funcion la usan login y registra
   //para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.
@@ -220,31 +220,14 @@ function isNotVacioStr(str) {
   if (typeof str === 'string') return str.trim().length > 0;
   else return null;
 }
+
+
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//to get logged condition and include other scripts after logueado is set
-jQuery.isLogueadoSessionSet = function () {
-  jQuery
-    .getJSON('escritos/session/isSessionSet.php', { key: 'dueno_id' })
-    .done(function (respuesta, estatusForDONE, xhrObjetoForDONE) {
-      //alert('funciones: \nisSessionSet(): \n' + respuesta.isSet);
-      logueado = respuesta.isSet;
 
-      jQuery.includeScript('js/funcionesMenu-HidableSectionsToggle.js');
-      jQuery.includeScript('js/funcionesMainContenido.js');
-      jQuery.includeScript('js/navButtons.js');
-      jQuery.includeScript('js/getMainContenido.js');
-    })
-    .fail(function (xhrObjetoForFAIL, textoEstatus, elError) {
-      var xhrObjetoForFAILString = JSON.stringify(xhrObjetoForFAIL);
-      var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-      jQuery(window.location).attr('href', path);
-    });
-};
-//////////////////////////////////////          calling function     ///////////////////////////////////
-//to get logged condition and include other scripts after logueado is set
-jQuery.isLogueadoSessionSet();
+
 
 jQuery.isSessionSet = function (sessionName) {
   jQuery
@@ -259,6 +242,7 @@ jQuery.isSessionSet = function (sessionName) {
     });
 };
 
+
 jQuery.getSessionValue = function (sessionName) {
   jQuery
     .getJSON('escritos/session/getSessionValue.php', { key: sessionName })
@@ -272,10 +256,6 @@ jQuery.getSessionValue = function (sessionName) {
     });
 };
 
-jQuery.includeScript = function include(scriptSrc) {
-  jQuery('<script src="' + scriptSrc + '" defer></script>').appendTo('body');
-  console.log(scriptSrc + ' appended to body.');
-};
 
 jQuery.logout = function () {
   jQuery
