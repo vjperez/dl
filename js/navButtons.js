@@ -1,17 +1,16 @@
 console.log('navButtons.js   [loading...]');
 
-jQuery(document).ready(function(){
-
+function navButtonsWhenReady(){
   console.log('logueado en navButtons.js: ' + logueado);
 
 	//alert('logueado en navega js: ' + logueado);
 	if(logueado){ 
-		jQuery('#navLogout').show();
-		jQuery('#navHome').show()  ;
+		document.querySelector('#navLogout').style.display = '';
+		document.querySelector('#navHome').style.display = '';
 		//alert('nav buttons js:\nshowing logout and home nav buttons for: \nlogueado=' + logueado);
 	}else{
-		jQuery('#navLogin').show();     
-		//jQuery('#navSignup').show();   //showing only 1 of these at a time
+		document.querySelector('#navLogin').style.display = '';     
+		//document.querySelector('#navSignup').style.display = '';   //showing only 1 of these at a time
 
 		//alert('nav buttons js:\nshowing login and sign up nav buttons for:: \nlogueado=' + logueado);
 	}
@@ -19,24 +18,24 @@ jQuery(document).ready(function(){
 	let look = urlParametro('look');
 	switch(look){
 		case 'busca':
-			jQuery('#navBusca').addClass("seleccionado");
+			document.querySelector('#navBusca').classList.add("seleccionado");
 		break;
 		case 'login':
-			jQuery('#navLogin').addClass("seleccionado");
+			document.querySelector('#navLogin').classList.add("seleccionado");
 		break;
 		case 'home':
 		case 'administrar':
 		case 'creaNepe':
 		case 'updateNepe':
-			jQuery('#navHome').addClass("seleccionado");
+			document.querySelector('#navHome').classList.add("seleccionado");
 		break;
 		case 'registro':
-			jQuery('#navLogin').hide();     
-			jQuery('#navSignup').show();
-			jQuery('#navSignup').addClass("seleccionado");
+			document.querySelector('#navLogin').style.display = 'none';     
+			document.querySelector('#navSignup').style.display = '';
+			document.querySelector('#navSignup').classList.add("seleccionado");
 		break;
 		case 'faq':
-			jQuery('#navFaq').addClass("seleccionado");
+			document.querySelector('#navFaq').classList.add("seleccionado");
 		break;
 
 		case '':
@@ -50,5 +49,8 @@ jQuery(document).ready(function(){
 		break;
 	}//switch
 
-});//ready function and statement
+}
 
+
+
+isReady( navButtonsWhenReady );

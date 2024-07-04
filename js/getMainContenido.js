@@ -1,6 +1,6 @@
 console.log('getMainContenido.js   [loading...]');
 
-jQuery(document).ready(function(){
+function getMainContenidoWhenReady(){
 
   console.log('logueado en getMainContenido: ' + logueado);
 
@@ -143,4 +143,6 @@ jQuery(document).ready(function(){
 		break;
 	}//look switch	
 
-}); // ready function and statement
+}
+
+isReady( getMainContenidoWhenReady );

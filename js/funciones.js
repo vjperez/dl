@@ -144,20 +144,6 @@ function slideToggle(el, duration = 500){
 }
 
 
-//extracs parameters from the url
-function urlParametro(name){
-  const str = window.location.href;
-  const patron = new RegExp('[?&]' + name + '=([^&#]*)');
-  const results = patron.exec(str); //searches str for a pattern described in patron
-  //results is an array, contains NULL when name=" " is not found on str.
-  //otherwise results[0] contains name=" ", a match with the entire reg exp
-  //          results[1] contains a match with the group defined between () after the = sign on the regExp.  Search for 'javascript regex groups'
-  if (results === null) return null;
-  else return results[1];
-  //return results[1] || 0;
-}
-
-
 const DEBUGUEO = true;
 const MINIMUM_USER_PASS_LENGTH = 4;
 const MINIMUM_USER_NAME_LENGTH = 3;

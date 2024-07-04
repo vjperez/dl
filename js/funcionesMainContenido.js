@@ -1,10 +1,34 @@
 console.log('funcionesMainContenido.js   [loading...]');
 
+
+function isReady( fun ){
+  console.log('fun');
+  if (document.readyState !== 'loading'){
+    fun();   return;
+  }else{
+    document.addEventListener('DOMContentLoaded', fun);
+  }
+}
+
+
+//extracs parameters from the url
+function urlParametro(name){
+  const str = window.location.href;
+  const patron = new RegExp('[?&]' + name + '=([^&#]*)');
+  const results = patron.exec(str); //searches str for a pattern described in patron
+  //results is an array, contains NULL when name=" " is not found on str.
+  //otherwise results[0] contains name=" ", a match with the entire reg exp
+  //          results[1] contains a match with the group defined between () after the = sign on the regExp.  Search for 'javascript regex groups'
+  if (results === null) return null;
+  else return results[1];
+  //return results[1] || 0;
+}
+
 function lookYelScript(pageName, scriptPath){
   fetch(pageName)
   .then(
   function(respuesta){
-    return respuesta.text().trim();
+    return respuesta.text();
   })
   .then(
   function(newMainText){
@@ -19,7 +43,7 @@ function lookYelScript(pageName, scriptPath){
   })
   .then(
   function(){
-    ponScript(scriptPath, null)
+    ponScript(scriptPath)
 
     document.querySelector('#footer').style.visibility = 'visible'; 
     document.querySelector('#containerForMain').style.visibility = 'visible';

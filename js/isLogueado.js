@@ -1,11 +1,20 @@
-function ponScript(scriptSrc, cb) {
+function ponScript(scriptSrc) {
   const scriptEle = document.createElement('script');
   scriptEle.src = scriptSrc;
+  /*
   scriptEle.addEventListener('load', 
     function(){
-      if(cb) setTimeout(cb, 500);
+      console.log(cb);
+      if(cb) setTimeout(cb(),0);
     });
+  */
+  
   document.querySelector('body').insertAdjacentElement('beforeend', scriptEle);
+  scriptEle.addEventListener('load', 
+    function(){ 
+      console.log( scriptSrc + ' just loaded' );
+    }
+  );
 }
 
 
@@ -30,19 +39,19 @@ function isSessionSet( sessionName ){
       console.log(dato);
 
       logueado = dato.isSet;
-      ponScript('js/funciones.js', 
-        ponScript('js/funcionesMainContenido.js', 
-          ponScript('js/funcionesMenu-HidableSectionsToggle.js', null )
-        ) 
-      ) 
+
+      ponScript('js/funcionesMainContenido.js');
+      ponScript('js/funcionesMenu-HidableSectionsToggle.js');
+      ponScript('js/funciones.js');
+      return;
     })
     .then(
       function(dato){
         console.log('fetch en isLogueado.js, then 3: ');
       
-        ponScript('js/navButtons.js', 
-          ponScript('js/getMainContenido.js', null )
-        );
+        ponScript('js/navButtons.js');
+        ponScript('js/getMainContenido.js');
+        //setTimeout( ponScript('js/getMainContenido.js') , 9000 );
       });
     /*  
     .catch(
