@@ -1,15 +1,8 @@
 function ponScript(scriptSrc) {
   const scriptEle = document.createElement('script');
-  scriptEle.src = scriptSrc;
-  /*
-  scriptEle.addEventListener('load', 
-    function(){
-      console.log(cb);
-      if(cb) setTimeout(cb(),0);
-    });
-  */
-  
+  scriptEle.src = scriptSrc; 
   document.querySelector('body').insertAdjacentElement('beforeend', scriptEle);
+
   scriptEle.addEventListener('load', 
     function(){ 
       console.log( scriptSrc + ' just loaded' );
