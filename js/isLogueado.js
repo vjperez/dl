@@ -21,14 +21,12 @@ function isSessionSet( sessionName ){
     let urlParams = new URLSearchParams('escritos/session/isSessionSet.php');
     urlParams.set("key", sessionName);
     fetch('escritos/session/isSessionSet.php' + '?' + urlParams.toString() )
-    .then(
-    function(respuesta){
+    .then(function(respuesta){
       console.log('fetch en isLogueado.js, then 1');
       console.log(respuesta);
       return respuesta.json();
     })
-    .then(
-    function(dato){
+    .then(function(dato){
       console.log('fetch en isLogueado.js, then 2: ');
       console.log(dato);
 

@@ -10,34 +10,38 @@ function getMainContenidoWhenReady(){
 			logout();
 		break;
 		case 'deleteNepe':
-			var nepeId = urlParametro('nepeId');
+			const nepeId = urlParametro('nepeId');
 			
-			jQuery.getJSON('escritos/deleteNepe.php', {nepeId:nepeId})
-			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-				if(datos.nepeBorrado)  {  }
-				else             {   }
-			})
-			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-				var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-				var path = encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-				jQuery(window.location).attr('href', path);
-			});				
+      let urlParams = new URLSearchParams('escritos/deleteNepe.php');
+      urlParams.set("nepeId", nepeId);
+      fetch('escritos/deleteNepe.php' + '?' + urlParams.toString() )
+      .then(function(respuesta){
+        return respuesta.json();
+      })
+      .then(function(dato){
+        if(dato.nepeBorrado)  {  }
+				else  {  }
+      })
+      .catch(function(error){
+        window.location.href = encodeAndGetErrorPath(error);
+      });
 		break;
 		case 'deleteHerNepes':
-			var userId = urlParametro('userId');
-			
-			jQuery.getJSON('escritos/deleteHerNepes.php', {userId:userId})
-			.done(function(datos, estatusForDONE, xhrObjetoForDONE){  
-				//alert('key: ' + key + '\ndatos.isSet: ' + datos.isSet);
-				if(datos.nepesBorrados > 0)  {  }
-				else             {   }
-			})
-			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-				var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-				var path = encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-				jQuery(window.location).attr('href', path);
-			});				
+			const userId = urlParametro('userId');
+
+      urlParams = new URLSearchParams('escritos/deleteHerNepes.php');
+      urlParams.set("userId", userId);
+      fetch('escritos/deleteHerNepes.php' + '?' + urlParams.toString() )
+      .then(function(respuesta){
+        return respuesta.json();
+      })
+      .then(function(dato){
+        if(dato.nepeBorrado)  {  }
+				else  {  }
+      })
+      .catch(function(error){
+        window.location.href = encodeAndGetErrorPath(error);
+      });			
 		break;
 		case null:
 		default :
@@ -57,15 +61,10 @@ function getMainContenidoWhenReady(){
 		break;						
 		case 'login':
 			if(!logueado){
-				lookYelScript('looks/login.html', 'js/dueno/login.js');
-				//jQuery(window.location).attr('href', window.location.pathname + '?look=home');	
+				lookYelScript('looks/login.html', 'js/dueno/login.js');	
 			}else{  
-				var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-				var textoEstatus = 'Error, usuario solicito login look, ... ya logueado.';
-				var elError = 'Error humano.';
-
-				var path = encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-				jQuery(window.location).attr('href', path);	
+				const msg = 'Error, usuario solicito login look, ... ya logueado'; 
+			  window.location.href = encodeAndGetErrorPath( msg );
 			}	
 		break;
 		case 'home':

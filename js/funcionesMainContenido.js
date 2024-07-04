@@ -52,10 +52,10 @@ function lookYelScript(pageName, scriptPath){
 }
 
 
-function encodeAndGetErrorPath(error){
+function encodeAndGetErrorPath( msg ){
 	if(DEBUGUEO){
-		error = encodeURIComponent( error );
-		return window.location.pathname + '?look=' + 'error'  + '&elError=' + error;
+		const msgEncoded = encodeURIComponent( msg );
+		return window.location.pathname + '?look=' + 'error'  + '&msgEncoded=' + msgEncoded;
 	}else{
 		return window.location.pathname + '?look=' + 'error';
 	}	
