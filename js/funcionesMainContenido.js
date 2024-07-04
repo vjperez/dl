@@ -4,7 +4,7 @@ function lookYelScript(pageName, scriptPath){
   fetch(pageName)
   .then(
   function(respuesta){
-    return respuesta.text();
+    return respuesta.text().trim();
   })
   .then(
   function(newMainText){
@@ -12,9 +12,9 @@ function lookYelScript(pageName, scriptPath){
     //option 1
     //document.querySelector('#containerForMain').innerHTML = newMainText;
     //option 2
-    //firstElementChild will be, the newMainText, but as an HTML element
     const parentDiv = document.createElement('div');
     parentDiv.innerHTML = newMainText;
+    //firstElementChild will be, the newMainText, but as an HTML element
     document.querySelector('#main').replaceWith( parentDiv.firstElementChild );
   })
   .then(
@@ -39,6 +39,7 @@ function encodeAndGetErrorPath(error){
 
 
 /*
+  creo que era jQuery.lookYelScript
 	jQuery('#containerForMain').load(pageName + ' #main', function(datosDeRespuesta, pageEstatus, xhrObjetoPage){
 		if(pageEstatus == 'error'){
 			let msg = "There was an error loading (" + pageName + "): ";
