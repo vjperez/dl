@@ -214,6 +214,7 @@ function isVacioStr(str) {
   else return null;
 }
 
+
 //returns null when typeof str is not string
 //when str IS a string ... returns whether string has length > zero after trimmed
 function isNotVacioStr(str) {
@@ -222,59 +223,57 @@ function isNotVacioStr(str) {
 }
 
 
+function getSessionValue( sessionName ){
+ let urlParams = new URLSearchParams('escritos/session/getSessionValue.php');
+  urlParams.set("key", sessionName);
+  fetch('escritos/session/getSessionValue.php' + '?' + urlParams.toString() )
+  .then(
+    function(respuesta){
+      return respuesta.json();
+  })
+  .then(
+    function(dato){
+      return dato.valorSession;
+  });
+}
+
+
+function logout(){
+  fetch('escritos/dueno/logout.php')
+  .then(
+    function(){
+      window.location.href = window.location.pathname + '?look=login';
+  })
+  .catch(
+    function(error){
+      console.log('catch...');
+      const href = encodeAndGetErrorPath(error);
+      window.location.href = href;
+  });
+}
+
+
+
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/*
+function isSessionSet( sessionName = "xxx_id" ){
+ let urlParams = new URLSearchParams('escritos/session/isSessionSet.php');
+  urlParams.set("key", sessionName);
+  fetch('escritos/session/isSessionSet.php' + '?' + urlParams.toString() )
+  .then(
+    function(){
+  })
+  .catch(
+    function(){
+  });
+}
+*/
 
 
-
-
-jQuery.isSessionSet = function (sessionName) {
-  jQuery
-    .getJSON('escritos/session/isSessionSet.php', { key: sessionName })
-    .done(function (respuesta, estatusForDONE, xhrObjetoForDONE) {
-      return respuesta.isSet;
-    })
-    .fail(function (xhrObjetoForFAIL, textoEstatus, elError) {
-      var xhrObjetoForFAILString = JSON.stringify(xhrObjetoForFAIL);
-      var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-      jQuery(window.location).attr('href', path);
-    });
-};
-
-
-jQuery.getSessionValue = function (sessionName) {
-  jQuery
-    .getJSON('escritos/session/getSessionValue.php', { key: sessionName })
-    .done(function (respuesta, estatusForDONE, xhrObjetoForDONE) {
-      return respuesta.valorSession;
-    })
-    .fail(function (xhrObjetoForFAIL, textoEstatus, elError) {
-      var xhrObjetoForFAILString = JSON.stringify(xhrObjetoForFAIL);
-      var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-      jQuery(window.location).attr('href', path);
-    });
-};
-
-
-jQuery.logout = function () {
-  jQuery
-    .get('escritos/dueno/logout.php')
-    .done(function (datos, estatusForDONE, xhrObjetoForDONE) {
-      //alert('despues de escritos logout, voy pa login!');
-      jQuery(window.location).attr('href', window.location.pathname + '?look=login');
-    })
-    .fail(function (xhrObjetoForFAIL, textoEstatus, elError) {
-      var xhrObjetoForFAILString = JSON.stringify(xhrObjetoForFAIL);
-      var path = jQuery.encodeAndGetErrorPath(
-        'On logout:<br>' + xhrObjetoForFAILString,
-        textoEstatus,
-        elError
-      );
-      jQuery(window.location).attr('href', path);
-    });
-};
-
+/*
 jQuery.haveAtLeast1 = function (formaStr) {
   var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@._+-]/gi); //	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
   if (
@@ -292,3 +291,4 @@ jQuery.haveAtLeast1 = function (formaStr) {
     submitVote1 = true;
   }
 };
+*/

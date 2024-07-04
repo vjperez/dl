@@ -7,7 +7,7 @@ jQuery(document).ready(function(){
 	var acto = urlParametro('acto');
 	switch(acto){
 		case 'logout':
-			jQuery.logout();
+			logout();
 		break;
 		case 'deleteNepe':
 			var nepeId = urlParametro('nepeId');
@@ -20,7 +20,7 @@ jQuery(document).ready(function(){
 			})
 			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 				var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-				var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+				var path = encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 				jQuery(window.location).attr('href', path);
 			});				
 		break;
@@ -35,7 +35,7 @@ jQuery(document).ready(function(){
 			})
 			.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
 				var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-				var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
+				var path = encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
 				jQuery(window.location).attr('href', path);
 			});				
 		break;
@@ -47,30 +47,30 @@ jQuery(document).ready(function(){
 	var look = urlParametro('look');
 	switch(look) {
 		case 'busca':	
-			jQuery.lookYelScript('looks/busca.html', 'js/busca.js');
+			lookYelScript('looks/busca.html', 'js/busca.js');
 		break;
 		case 'opciones':
-			jQuery.lookYelScript('looks/opciones.html', 'js/opciones.js');
+			lookYelScript('looks/opciones.html', 'js/opciones.js');
 		break;
 		case 'viewNepe':
-			jQuery.lookYelScript('looks/viewNepe.html', 'js/nepe/viewNepe.js');
+			lookYelScript('looks/viewNepe.html', 'js/nepe/viewNepe.js');
 		break;						
 		case 'login':
 			if(!logueado){
-				jQuery.lookYelScript('looks/login.html', 'js/dueno/login.js');
+				lookYelScript('looks/login.html', 'js/dueno/login.js');
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=home');	
 			}else{  
 				var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 				var textoEstatus = 'Error, usuario solicito login look, ... ya logueado.';
 				var elError = 'Error humano.';
 
-				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+				var path = encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 				jQuery(window.location).attr('href', path);	
 			}	
 		break;
 		case 'home':
 			if(logueado){	
-				jQuery.lookYelScript('looks/home.html', 'js/dueno/home.js');
+				lookYelScript('looks/home.html', 'js/dueno/home.js');
 			}else{  
 				//var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 				//var textoEstatus = 'Error, usuario solicito home look, sin estar logueado.';
@@ -82,55 +82,55 @@ jQuery(document).ready(function(){
 		break;			
 		case 'creaNepe':
 			if(logueado){	
-				jQuery.lookYelScript('looks/creaNepe.html', 'js/nepe/creaNepe.js');
+				lookYelScript('looks/creaNepe.html', 'js/nepe/creaNepe.js');
 			}else{  
 				var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 				var textoEstatus = 'Error, usuario solicito creaNepe look, sin estar logueado.';
 				var elError = 'Error humano.';
 
-				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+				var path = encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 				jQuery(window.location).attr('href', path);	
 			}		
 		break;
 		case 'updateNepe':	
 			if(logueado){	
-				jQuery.lookYelScript('looks/updateNepe.html', 'js/nepe/updateNepe.js');
+				lookYelScript('looks/updateNepe.html', 'js/nepe/updateNepe.js');
 			}else{  
 				var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 				var textoEstatus = 'Error, usuario solicito updateNepe look, sin estar logueado.';
 				var elError = 'Error humano.';
 
-				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+				var path = encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 				jQuery(window.location).attr('href', path);	
 			}	
 		break;			
 		case 'registro':
 			if(!logueado){
-				jQuery.lookYelScript('looks/registro.html', 'js/dueno/registro.js');
+				lookYelScript('looks/registro.html', 'js/dueno/registro.js');
 				//jQuery(window.location).attr('href', window.location.pathname + '?look=home');
 			}else{  
 				var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
 				var textoEstatus = 'Error, usuario solicito registro look, ... ya logueado.';
 				var elError = 'Error humano.';
 
-				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
+				var path = encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
 				jQuery(window.location).attr('href', path);	
 			}
 		break;
 		case 'recentNepes':
-			jQuery.lookYelScript('looks/recentNepes.html', 'js/nepe/getRecentNepes.js');
+			lookYelScript('looks/recentNepes.html', 'js/nepe/getRecentNepes.js');
 		break;			
 		case 'administrar':
-			jQuery.lookYelScript('looks/administrar.html', 'js/administrar.js');
+			lookYelScript('looks/administrar.html', 'js/administrar.js');
 		break;		
 		case 'faq':
-			jQuery.lookYelScript('looks/faq.html', 'js/faq.js');
+			lookYelScript('looks/faq.html', 'js/faq.js');
 		break;
 		case 'nada':
-			jQuery.lookYelScript('looks/nada.html', 'js/nada.js');
+			lookYelScript('looks/nada.html', 'js/nada.js');
 		break;				
 		case 'error':
-			jQuery.lookYelScript('looks/error.html', 'js/error.js');
+			lookYelScript('looks/error.html', 'js/error.js');
 		break;
 
 		case '':

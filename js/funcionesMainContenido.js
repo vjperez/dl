@@ -1,11 +1,48 @@
 console.log('funcionesMainContenido.js   [loading...]');
 
-jQuery.lookYelScript = function(pageName, scriptPath){
+function lookYelScript(pageName, scriptPath){
+  fetch(pageName)
+  .then(
+  function(respuesta){
+    return respuesta.text();
+  })
+  .then(
+  function(newMainText){
+    //console.log(newMainText);
+    //option 1
+    //document.querySelector('#containerForMain').innerHTML = newMainText;
+    //option 2
+    //firstElementChild will be, the newMainText, but as an HTML element
+    const parentDiv = document.createElement('div');
+    parentDiv.innerHTML = newMainText;
+    document.querySelector('#main').replaceWith( parentDiv.firstElementChild );
+  })
+  .then(
+  function(){
+    ponScript(scriptPath, null)
+
+    document.querySelector('#footer').style.visibility = 'visible'; 
+    document.querySelector('#containerForMain').style.visibility = 'visible';
+    console.log('footer and containerForMain divs visible.');
+  });
+}
+
+
+function encodeAndGetErrorPath(error){
+	if(DEBUGUEO){
+		error = encodeURIComponent( error );
+		return window.location.pathname + '?look=' + 'error'  + '&elError=' + error;
+	}else{
+		return window.location.pathname + '?look=' + 'error';
+	}	
+}
+
+
+/*
 	jQuery('#containerForMain').load(pageName + ' #main', function(datosDeRespuesta, pageEstatus, xhrObjetoPage){
 		if(pageEstatus == 'error'){
 			let msg = "There was an error loading (" + pageName + "): ";
-			console.log('making footer and containerForMain visible...\n' + msg);
-
+			//console.log('footer and containerForMain divs visible.' + msg);
 			//jQuery('#footer').css('visibility','visible'); 
 			//jQuery('#containerForMain').css('visibility','visible'); 
 			//jQuery( "#containerForMain" ).text( msg + xhrObjetoPage.status + " " + xhrObjetoPage.statusText );
@@ -20,29 +57,12 @@ jQuery.lookYelScript = function(pageName, scriptPath){
 				jQuery('#containerForMain').css('visibility','visible'); 
 			})
 			.fail(function(xhrObjetoScript, settings, exception){
-				let msg = "There was an error (" + scriptPath + "): ";
-				console.log('making footer and containerForMain visible...\n' + msg);
-
+				let msg = "There was an error loadng (" + scriptPath + "): ";
+				//console.log('making footer and containerForMain visible...\n' + msg);
 				//jQuery('#footer').css('visibility','visible'); 
 				//jQuery('#containerForMain').css('visibility','visible'); 
 				//jQuery( "#containerForMain" ).text( msg + xhrObjetoScript.status + " " + xhrObjetoScript.statusText );
 			});
 		}
 	});
-
-	//js will runs this before the .done, i dont want that, so place it on .done 
-	//console.log('footer and containerForMain divs visible, but too early.');
-	//jQuery('#footer').css('visibility','visible'); 
-	//jQuery('#containerForMain').css('visibility','visible'); 	
-	 
-}
-
-
-function encodeAndGetErrorPath(error){
-	if(DEBUGUEO){
-		error = encodeURIComponent( error );
-		return window.location.pathname + '?look=' + 'error'  + '&elError=' + error;
-	}else{
-		return window.location.pathname + '?look=' + 'error';
-	}	
-}
+*/ 
