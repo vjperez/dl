@@ -1,4 +1,4 @@
-appendDebugErrors = function( msg ){
+function appendDebugErrors( msg ){
     // <br />\n  changed to  <br>  
     msg = msg.replace(new RegExp('<br \/>\r?\n','g'), '<br>');
     // \n   changed to  <br>
@@ -9,7 +9,7 @@ appendDebugErrors = function( msg ){
 
     
     losLis = '<br><hr>';
-    losLis += '        <li>Error:<br>' + msg + '</li>';
+    losLis += '<li>Error:<br>' + msg + '</li>';
     losLis += '<hr>';
     document.querySelector('#containerForErrors').insertAdjacentHTML('beforeend', losLis);
 }

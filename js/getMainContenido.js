@@ -63,7 +63,7 @@ function getMainContenidoWhenReady(){
 			if(!logueado){
 				lookYelScript('looks/login.html', 'js/dueno/login.js');	
 			}else{  
-				const msg = 'Error, usuario solicito login look, ... ya logueado'; 
+				const msg = '... ya estas logueado.'; 
 			  window.location.href = encodeAndGetErrorPath( msg );
 			}	
 		break;
@@ -71,56 +71,44 @@ function getMainContenidoWhenReady(){
 			if(logueado){	
 				lookYelScript('looks/home.html', 'js/dueno/home.js');
 			}else{  
-				//var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-				//var textoEstatus = 'Error, usuario solicito home look, sin estar logueado.';
-				//var elError = 'Error humano.';
-        let error = 'Error, usuario solicito home look, sin estar logueado.';
-				let path = encodeAndGetErrorPath( error ); // 
-				window.location.href = path;	
+        const msg = '... no estas logueado.';
+				window.location.href = encodeAndGetErrorPath( msg ); 	
 			}
 		break;			
 		case 'creaNepe':
 			if(logueado){	
 				lookYelScript('looks/creaNepe.html', 'js/nepe/creaNepe.js');
 			}else{  
-				var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-				var textoEstatus = 'Error, usuario solicito creaNepe look, sin estar logueado.';
-				var elError = 'Error humano.';
-
-				var path = encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-				jQuery(window.location).attr('href', path);	
+        const msg = '... no estas logueado.';
+				window.location.href = encodeAndGetErrorPath( msg );
 			}		
 		break;
 		case 'updateNepe':	
 			if(logueado){	
 				lookYelScript('looks/updateNepe.html', 'js/nepe/updateNepe.js');
 			}else{  
-				var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-				var textoEstatus = 'Error, usuario solicito updateNepe look, sin estar logueado.';
-				var elError = 'Error humano.';
-
-				var path = encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-				jQuery(window.location).attr('href', path);	
+        const msg = '... no estas logueado.';
+				window.location.href = encodeAndGetErrorPath( msg );
 			}	
 		break;			
 		case 'registro':
 			if(!logueado){
 				lookYelScript('looks/registro.html', 'js/dueno/registro.js');
-				//jQuery(window.location).attr('href', window.location.pathname + '?look=home');
 			}else{  
-				var datosJSONStrAsXHRTexto = 'Esto no es una respuesta del servidor.';
-				var textoEstatus = 'Error, usuario solicito registro look, ... ya logueado.';
-				var elError = 'Error humano.';
-
-				var path = encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // 
-				jQuery(window.location).attr('href', path);	
+        const msg = '... ya estas logueado.';
+				window.location.href = encodeAndGetErrorPath( msg );	
 			}
 		break;
 		case 'recentNepes':
 			lookYelScript('looks/recentNepes.html', 'js/nepe/getRecentNepes.js');
 		break;			
 		case 'administrar':
-			lookYelScript('looks/administrar.html', 'js/administrar.js');
+      if(logueado){	
+				lookYelScript('looks/administrar.html', 'js/administrar.js');
+			}else{  
+        const msg = '... no estas logueado.';
+				window.location.href = encodeAndGetErrorPath( msg );
+			}		
 		break;		
 		case 'faq':
 			lookYelScript('looks/faq.html', 'js/faq.js');
@@ -133,12 +121,9 @@ function getMainContenidoWhenReady(){
 		break;
 
 		case '':
-			//alert('look vacio gmc');
-		break;
 		case null:
-			//alert('look null gmc');
-			jQuery(window.location).attr('href', window.location.pathname + '?look=recentNepes');
 		default:
+      window.location.href = window.location.pathname + '?look=recentNepes';
 		break;
 	}//look switch	
 
