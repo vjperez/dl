@@ -1,11 +1,12 @@
 function ponScript(scriptSrc) {
   const scriptEle = document.createElement('script');
   scriptEle.src = scriptSrc; 
+  scriptEle.async = false;
   document.querySelector('body').insertAdjacentElement('beforeend', scriptEle);
 
   scriptEle.addEventListener('load', 
     function(){ 
-      console.log( scriptSrc + ' just loaded' );
+      console.log( scriptSrc + ' responding to load event.' );
     }
   );
 }
