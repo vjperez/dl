@@ -33,32 +33,15 @@ function isSessionSet( sessionName ){
       console.log(dato);
 
       logueado = dato.isSet;
-
+      //why setTimeout doesn't work here ?! for ponScript
       ponScript('js/funcionesMainContenido.js');
       ponScript('js/funcionesMenu-HidableSectionsToggle.js');
       ponScript('js/funciones.js');
-      return;
-    })
-    .then(
-      function(dato){
-        console.log('fetch en isLogueado.js, then 3: ');
-      
-        ponScript('js/navButtons.js');
-        ponScript('js/getMainContenido.js');
-        //setTimeout( ponScript('js/getMainContenido.js') , 9000 );
-      });
-    /*  
-    .catch(
-    function(error){
-      console.log('catch...');
-      //captures errors from .then
-      //const href = encodeAndGetErrorPath(error);
-      //window.location.href = href;
 
-      jQuery.lookYelScript('looks/error.html', 'js/error.js');
+      ponScript('js/navButtons.js');
+      ponScript('js/getMainContenido.js');
+      return;
     });
-    */
-    
 }
 
 isSessionSet( sessionName = "dueno_id")
