@@ -1,8 +1,10 @@
-jQuery('form#registroForm').submit(function(evento){
+document.querySelector('form#registroForm')
+.addEventListener('submit', 
+function(evento){
     evento.preventDefault(); //not making a submit (POST request) from html action
-    var usertb = jQuery('#usernameId').val();
-    var pass01 = jQuery('#passwordId').val();
-    var pass02 = jQuery('#passwordConfirmId').val();
+    const usertb = document.querySelector('#usernameId').value;
+    const pass01 = document.querySelector('#passwordId').value;
+    const pass02 = document.querySelector('#passwordConfirmId').value;
     if( areValidUserYPass(usertb, pass01, pass02, 'fullFeedback', 'form#registroForm h3.feedback') ){
         jQuery.post('escritos/dueno/creaDueno.php', {usertb:usertb, pass01:pass01} )//check here that password are equal
         .done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
@@ -21,7 +23,7 @@ jQuery('form#registroForm').submit(function(evento){
             if(datosJSObj.registrado){
                 jQuery(window.location).attr('href', window.location.pathname + '?look=home');
             }else{ // usuario ya existe
-                jQuery.feedback('form#registroForm h3.feedback', datosJSObj.feedback, 'feedbackwarn', 'downdelayup');
+              feedback('form#registroForm h3.feedback', datosJSObj.feedback, 'feedbackwarn', 'downdelayup');
             }
         })
         .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
@@ -33,16 +35,22 @@ jQuery('form#registroForm').submit(function(evento){
 });
 
 //erase feedback when user writes
-jQuery('form[id*=Form]  input[name^=password],  form[id*=Form]  input[name=username]').keyup(function(){
+document.querySelector('form[id*=Form]  input[name^=password],  form[id*=Form]  input[name=username]')
+.addEventListener('keyup',
+function(evento){
 	//erase feedback
-    jQuery.feedback('form[id*=Form] h3', '', '');
+    feedback('form[id*=Form] h3', '', '');
 
     //
-    var usertb = jQuery('#usernameId').val();
-    var pass01 = jQuery('#passwordId').val();
-    if( usertb.length > 0  &&  pass01.length > 0 )
-        jQuery('.confirm').show();
-    else
-        jQuery('.confirm').hide();
+    const usertb = document.querySelector('#usernameId').value;
+    const pass01 = document.querySelector('#passwordId').value;
+    if( usertb.length > 0  &&  pass01.length > 0 ){
+      document.querySelector('fieldset label.confirm').style.display = '';
+      document.querySelector('input.confirm').style.display = '';
+    }else{
+      document.querySelector('fieldset label.confirm').style.display = 'none';
+      document.querySelector('input.confirm').style.display = 'none';
+    }
 });
-jQuery('.confirm').hide();
+document.querySelector('fieldset label.confirm').style.display = '';
+document.querySelector('input.confirm').style.display = '';
