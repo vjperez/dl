@@ -34,23 +34,19 @@ function(evento){
     }
 });
 
-//erase feedback when user writes
-document.querySelector('form[id*=Form]  input[name^=password],  form[id*=Form]  input[name=username]')
-.addEventListener('keyup',
-function(evento){
-	//erase feedback
-    feedback('form[id*=Form] h3', '', '');
 
-    //
-    const usertb = document.querySelector('#usernameId').value;
-    const pass01 = document.querySelector('#passwordId').value;
-    if( usertb.length > 0  &&  pass01.length > 0 ){
-      document.querySelector('fieldset label.confirm').style.display = '';
-      document.querySelector('input.confirm').style.display = '';
-    }else{
-      document.querySelector('fieldset label.confirm').style.display = 'none';
-      document.querySelector('input.confirm').style.display = 'none';
-    }
-});
-document.querySelector('fieldset label.confirm').style.display = '';
-document.querySelector('input.confirm').style.display = '';
+function showHideConfirm(evento){    
+  const usertb = document.querySelector('#usernameId').value;
+  const pass01 = document.querySelector('#passwordId').value;
+  if( usertb.length > 0  &&  pass01.length > 0 ){
+    document.querySelector('fieldset label.confirm').style.display = '';
+    document.querySelector('input.confirm').style.display = '';
+  }else{
+    document.querySelector('fieldset label.confirm').style.display = 'none';
+    document.querySelector('input.confirm').style.display = 'none';
+  }	
+}
+document.querySelector('form[id*=Form]  input[name^=password]').addEventListener('keyup', showHideConfirm);
+document.querySelector('form[id*=Form]  input[name=username]' ).addEventListener('keyup', showHideConfirm);
+
+showHideConfirm();
