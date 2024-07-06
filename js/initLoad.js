@@ -17,7 +17,7 @@ ponScript('js/funciones.js');
 
 ponScript('js/acto.js');
 //portada html links already have look and acto, 
-//logout for example, have look=login and have an acto=logout
-//so after initLoad, then acto.js, which sets logueado
-//either on isSessionSet or logout
-//then loads the rest after acto.
+//logout for example, have look=login and an acto=logout
+//so after initLoad.js, acto.js is runned,
+//which sets logueado, either on isSessionSet or logout
+//acto.js finishes by loading other scripts on load after acto

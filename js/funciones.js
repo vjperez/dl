@@ -71,7 +71,6 @@ function feedback(queElemento, mensaje, clase, forma) {
     }, 4000);
     //slideToggle( el, 1000 );
 
-    //jQuery(queElemento).slideDown(1).delay(5000).slideUp(2000);
   }
 }
 
@@ -145,9 +144,9 @@ function slideToggle(el, duration = 500){
 
 
 const DEBUGUEO = true;
-const MINIMUM_USER_PASS_LENGTH = 4;
-const MINIMUM_USER_NAME_LENGTH = 3;
 function areValidUserYPass(usertb, pass01, pass02, feedbackType, whatElement) {
+  const MINIMUM_USER_PASS_LENGTH = 4;
+  const MINIMUM_USER_NAME_LENGTH = 3;
   //Esta funcion la usan login y registra
   //para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.
   // 1)lenght >= 3o4; 2)only numbers or letters  @ . _  - +   ; 3)both pass are equal;
@@ -226,22 +225,6 @@ function getSessionValue( sessionName ){
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/*
-function isSessionSet( sessionName = "xxx_id" ){
- let urlParams = new URLSearchParams('escritos/session/isSessionSet.php');
-  urlParams.set("key", sessionName);
-  fetch('escritos/session/isSessionSet.php' + '?' + urlParams.toString() )
-  .then(
-    function(){
-  })
-  .catch(
-    function(){
-  });
-}
-*/
-
-
 /*
 jQuery.haveAtLeast1 = function (formaStr) {
   var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@._+-]/gi); //	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
