@@ -224,23 +224,6 @@ function getSessionValue( sessionName ){
 }
 
 
-function logout(){
-  fetch('escritos/dueno/logout.php')
-  .then(
-    function(){
-      window.location.href = window.location.pathname + '?look=login';
-  })
-  .catch(
-    function(error){
-      console.log('catch...');
-      const href = encodeAndGetErrorPath(error);
-      window.location.href = href;
-  });
-}
-
-
-
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

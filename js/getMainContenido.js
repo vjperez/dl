@@ -4,50 +4,6 @@ function getMainContenidoWhenReady(){
 
   console.log('logueado en getMainContenido: ' + logueado);
 
-	var acto = urlParametro('acto');
-	switch(acto){
-		case 'logout':
-			logout();
-		break;
-		case 'deleteNepe':
-			const nepeId = urlParametro('nepeId');
-			
-      let urlParams = new URLSearchParams('escritos/deleteNepe.php');
-      urlParams.set("nepeId", nepeId);
-      fetch('escritos/deleteNepe.php' + '?' + urlParams.toString() )
-      .then(function(respuesta){
-        return respuesta.json();
-      })
-      .then(function(dato){
-        if(dato.nepeBorrado)  {  }
-				else  {  }
-      })
-      .catch(function(error){
-        window.location.href = encodeAndGetErrorPath(error);
-      });
-		break;
-		case 'deleteHerNepes':
-			const userId = urlParametro('userId');
-
-      urlParams = new URLSearchParams('escritos/deleteHerNepes.php');
-      urlParams.set("userId", userId);
-      fetch('escritos/deleteHerNepes.php' + '?' + urlParams.toString() )
-      .then(function(respuesta){
-        return respuesta.json();
-      })
-      .then(function(dato){
-        if(dato.nepeBorrado)  {  }
-				else  {  }
-      })
-      .catch(function(error){
-        window.location.href = encodeAndGetErrorPath(error);
-      });			
-		break;
-		case null:
-		default :
-		break;
-	}//acto switch
-
 	var look = urlParametro('look');
 	switch(look) {
 		case 'busca':	
@@ -65,7 +21,7 @@ function getMainContenidoWhenReady(){
 			}else{  
 				const msg = '... ya estas logueado.'; 
 			  window.location.href = encodeAndGetErrorPath( msg );
-			}	
+			}
 		break;
 		case 'home':
 			if(logueado){	

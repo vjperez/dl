@@ -24,6 +24,7 @@ function urlParametro(name){
   //return results[1] || 0;
 }
 
+
 function lookYelScript(pageName, scriptPath){
   fetch(pageName)
   .then(
