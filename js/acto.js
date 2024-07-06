@@ -68,6 +68,15 @@ function isSessionSet( sessionName ){
       logueado = dato.isSet;
       loadAfterActo();
       return;
+    })
+    .catch(
+      function(error){
+        console.error('catch...');
+        console.error(error);
+        //next href reasign will restart the process at initLoad.js
+        //and eventually here again... causing infinite loop
+        //const href = encodeAndGetErrorPath(error);
+        //window.location.href = href;
     });
 }
 

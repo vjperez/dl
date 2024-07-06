@@ -1,37 +1,45 @@
 let que   = decodeURIComponent( urlParametro('que') );      
 let donde = decodeURIComponent( urlParametro('donde') ); 
 //alert('[' + que + '][' + donde + ']');
-jQuery.getJSON('escritos/nepe/read/getOpciones.php', {que:que, donde:donde} )
-.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-	if(datos.length > 0){
-		//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
-		var htmlForMain = '';
-		jQuery.each(datos, function(index){
-			queDondeTag   = datos[index].queDondeTag;
-			ranqueoDeNepe = datos[index].ranqueoDeNepe;
-			nepeId =  datos[index].nepeId;
-			fotoUrl = datos[index].fotoUrl;
 
-			//alert( datos[index].nepeId );
-			htmlForMain += '<div id="opcionesdiv" class="opcionesfotos ">';
-
-			htmlForMain += '<fieldset class="notHidable"><label>'  + queDondeTag  + '</label></fieldset>' + '<h5>[' + ranqueoDeNepe + ']</h5>';
-			//htmlForMain += '<fieldset class="notHidable"><label>'  + queDondeTag  + '</label></fieldset>';
-			
-			htmlForMain += '<a href="portada.html?look=viewNepe&nepeId=' + nepeId + '">';
-			htmlForMain += '<img class="" src="imagenes/nepe/subidas/' + fotoUrl + '">'; 
-			htmlForMain += '</a>';
-			
-			
-			htmlForMain += '</div>'; // <div class="ver-borde opcionesfotos">
-		}); // each in datos
-		jQuery('#main').html(htmlForMain);
-	}else{
-		jQuery(window.location).attr('href', window.location.pathname + '?look=nada');  
-	}
+let urlParams = new URLSearchParams('escritos/nepe/read/getOpciones.php');
+urlParams.set("que", que);   urlParams.set("donde", donde);
+fetch('escritos/nepe/read/getOpciones.php' + '?' + urlParams.toString() )
+.then(
+function(respuesta){
+  console.log('opciones fetch, then 1');
+  console.log(respuesta);
+  return respuesta.json();
 })
-.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-	var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-	var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-	jQuery(window.location).attr('href', path); 
+.then(
+function(datos){
+  console.log('opciones fetch, then 2: ');
+  console.log(datos);
+  if(datos.length > 0){
+	//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
+	let htmlForMain = '';
+	datos.forEach(
+	function(item, index){
+		//alert( datos[index].nepeId );
+		htmlForMain += '<div id="opcionesdiv" class="opcionesfotos ">';
+
+		htmlForMain += '<fieldset class="notHidable"><label>'  + item.queDondeTag  + '</label></fieldset>' + '<h5>[' + item.ranqueoDeNepe + ']</h5>';
+		//htmlForMain += '<fieldset class="notHidable"><label>'  + queDondeTag  + '</label></fieldset>';
+		
+		htmlForMain += '<a href="portada.html?look=viewNepe&nepeId=' + item.nepeId + '">';
+		htmlForMain += '<img class="" src="imagenes/nepe/subidas/' + item.fotoUrl + '">'; 
+		htmlForMain += '</a>';
+		
+		htmlForMain += '</div>'; // <div class="ver-borde opcionesfotos">
+	}); // each in datos
+	document.querySelector('#main').innerHTML = htmlForMain;
+  }else{
+	window.location.href = window.location.pathname + '?look=nada';  
+  }
+  //return;
+})
+.catch(
+function(error){
+  const href = encodeAndGetErrorPath(error);
+  window.location.href = href;
 });
