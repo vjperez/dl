@@ -42,10 +42,9 @@ input[type="text"], input[type="radioxx"], input[type="tel"], input[type="passwo
   border-radius: 0px;   font-size:0.85em;  width:80%; margin-bottom: 1em;  padding: 0.5em;         
 }
 
-/*opciones*/
-div#opcionesdiv.opcionesfotos a img, div#nepefotos img { margin-top:1.0em; margin-bottom:0em; margin-right:0.25em; margin-left:0px; }
-div#opcionesdiv.opcionesfotos h2 {  margin-bottom:2em; }
-div#opcionesdiv.opcionesfotos h5 { margin-top: 0em; margin-bottom: 0em; } 
+/*fotos en opciones, view nepe y ...*/
+div#nepefotos img { margin-top:1.0em; margin-bottom:0em; }
+div#nepefotos h5 { margin-top: 0em; margin-bottom: 0em; } 
 
 
 /* profile */

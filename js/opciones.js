@@ -21,16 +21,14 @@ function(datos){
 	datos.forEach(
 	function(item, index){
 		//alert( datos[index].nepeId );
-		htmlForMain += '<div id="nepefotos">';
-
 		htmlForMain += '<fieldset class="notHidable"><label>'  + item.queDondeTag  + '</label></fieldset>' + '<h5>[' + item.ranqueoDeNepe + ']</h5>';
 		//htmlForMain += '<fieldset class="notHidable"><label>'  + queDondeTag  + '</label></fieldset>';
 		
+		htmlForMain += '<div id="nepefotos">';
 		htmlForMain += '<a href="portada.html?look=viewNepe&nepeId=' + item.nepeId + '">';
 		htmlForMain += '<img class="" src="imagenes/nepe/subidas/' + item.fotoUrl + '">'; 
 		htmlForMain += '</a>';
-		
-		htmlForMain += '</div>'; // <div class="ver-borde opcionesfotos">
+		htmlForMain += '</div>';
 	}); // each in datos
 	document.querySelector('#main').innerHTML = htmlForMain;
   }else{
