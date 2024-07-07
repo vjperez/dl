@@ -34,7 +34,6 @@ function(datos){
   }else{
 	window.location.href = window.location.pathname + '?look=nada';  
   }
-  //return;
 })
 .catch(
 function(error){
