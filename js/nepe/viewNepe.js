@@ -143,16 +143,27 @@ hideThemSections();
 
 
 //show only 1 social handle with class current
-document.querySelector('div#quien ul li').addEventListener('click', 
-function(evento){
+document.querySelectorAll('div#quien ul li i')
+.forEach(
+function(iEl, index){
+    iEl.addEventListener('click', clickHandler);
+});
+
+function clickHandler(evento){
     evento.preventDefault();
-    document.querySelector('div#quien ul li i').classList.remove('current');
-    let $iToFocus = evento.currentTarget.firstElementChid.firstElementChid;
-    $iToFocus.classList.add('current');
+    let iclassList; 
+    let iToFocus = evento.currentTarget;
 
-    let iclassList = $iToFocus.classList; 
-    // grab this i class name, used to select h5 with same class
-
+    document.querySelectorAll('div#quien ul li i')
+    .forEach(
+    function(iEl, index){
+        iEl.classList.remove('current');
+        if(iEl === iToFocus){
+            iclassList = iToFocus.classList; // grab this i class list, used to select h5 with 'same' class
+            iToFocus.classList.add('current');
+        }
+    });
+    
     document.querySelectorAll('div#quien h5')
     .forEach(
     function(h, index){
@@ -161,4 +172,5 @@ function(evento){
             h.classList.add('current');
         }
     });
-});
+
+}

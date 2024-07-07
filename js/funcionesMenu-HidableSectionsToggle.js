@@ -96,7 +96,7 @@ function showOrHideSection(evento){
         iElDown.style.display = '';
       }
     }
-  }else if(clickedEl.classList.contains('fa-solid')){
+  }else if(clickedEl.classList.contains('fa-chevron-circle-down') || clickedEl.classList.contains('fa-chevron-circle-up')){
     //console.log(clickedEl);
     const notHidableParent = clickedEl.parentElement;
     const hidable = notHidableParent.nextElementSibling;
