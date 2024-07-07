@@ -146,10 +146,10 @@ hideThemSections();
 document.querySelectorAll('div#quien ul li i')
 .forEach(
 function(iEl, index){
-    iEl.addEventListener('click', clickHandler);
+    iEl.addEventListener('click', clicked);
 });
 
-function clickHandler(evento){
+function clicked(evento){
     evento.preventDefault();
     let iclassList; 
     let iToFocus = evento.currentTarget;
@@ -172,5 +172,4 @@ function clickHandler(evento){
             h.classList.add('current');
         }
     });
-
 }

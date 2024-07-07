@@ -80,9 +80,9 @@ div#donde span#background.si, div#donde span#background.no{
 }
 div#donde span#background.no{ background-position:0px -25px; }
 
-span#sucasa, span#desdecasa { display:block; text-align:center }
-div#donde i{ margin-right:5pt; }
-div#donde span.textofixed  { font-size:0.85em; letter-spacing:0.2em; margin-top:20pt; margin-bottom:00pt; display:inline-block; }
+span#sucasa,   span#desdecasa { display:block; text-align:center }
+span#sucasa i, span#desdecasa i{ margin-right:1em; }
+span#sucasa span.textofixed, span#desdecasa span.textofixed { margin-top:20pt; display:inline-block; }
 
 table td.hora { text-align: left; padding-left:2em;} 
 table td.dia, div#nombreyRevisado h5  { text-align: right; } 

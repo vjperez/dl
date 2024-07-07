@@ -102,3 +102,9 @@
 
     .fa-user-group::before {
         content: "\f500"; } 
+
+    .fa-walking::before {
+        content: "\f554"; }
+
+    .fa-laptop::before {
+        content: "\f109"; }
