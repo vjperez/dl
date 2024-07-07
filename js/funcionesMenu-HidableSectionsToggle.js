@@ -85,14 +85,16 @@ function showOrHideSection(evento){
     const hidable = clickedEl.nextElementSibling;
     const iElUp = clickedEl.firstElementChild;
     const iElDown = iElUp.nextElementSibling;
-    if(hidable.classList.contains('hidable') &&  window.getComputedStyle(hidable).display === 'none'){
-      hidable.style.display = '';
-      iElUp.style.display = '';
-      iElDown.style.display = 'none';
-    }else{
-      hidable.style.display = 'none';
-      iElUp.style.display = 'none';
-      iElDown.style.display = '';
+    if(hidable.classList.contains('hidable')){
+      if(window.getComputedStyle(hidable).display === 'none'){
+        hidable.style.display = '';
+        iElUp.style.display = '';
+        iElDown.style.display = 'none';
+      }else{
+        hidable.style.display = 'none';
+        iElUp.style.display = 'none';
+        iElDown.style.display = '';
+      }
     }
   }else if(clickedEl.classList.contains('fa-solid')){
     //console.log(clickedEl);
@@ -100,14 +102,16 @@ function showOrHideSection(evento){
     const hidable = notHidableParent.nextElementSibling;
     const iElUp = notHidableParent.firstElementChild;
     const iElDown = iElUp.nextElementSibling;
-    if(hidable.classList.contains('hidable') &&  window.getComputedStyle(hidable).display === 'none'){
-      hidable.style.display = '';
-      iElUp.style.display = '';
-      iElDown.style.display = 'none';
-    }else{
-      hidable.style.display = 'none';
-      iElUp.style.display = 'none';
-      iElDown.style.display = '';
+    if(hidable.classList.contains('hidable')){
+      if(window.getComputedStyle(hidable).display === 'none'){
+        hidable.style.display = '';
+        iElUp.style.display = '';
+        iElDown.style.display = 'none';
+      }else{
+        hidable.style.display = 'none';
+        iElUp.style.display = 'none';
+        iElDown.style.display = '';
+      }
     }
   }
 }

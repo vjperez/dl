@@ -39,7 +39,7 @@ function cleanStrJustKeep1SpaceBetweenWords(str, patron) {
 
   strComponentsArray = str.split('%'); // strComponentsArray will contain   ,,uno,,dos,,
   let cleanedstr = '';
-  for (var i = 0; i < strComponentsArray.length; i++) {
+  for (let i = 0; i < strComponentsArray.length; i++) {
     //alert('parte de strComponentsArray=[' + strComponentsArray[i]  + ']');
     if (strComponentsArray[i] !== '') {
       //ignore strComponent when it is empty string
