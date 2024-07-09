@@ -103,7 +103,6 @@ function showOrHideSection(evento){
       iElUp.style.display = 'none';
       iElDown.style.display = '';
     }
-    
   }else if(clickedEl.classList.contains('fa-chevron-circle-down') || clickedEl.classList.contains('fa-chevron-circle-up')){
     //console.log(clickedEl);
     const notHidableParent = clickedEl.parentElement;
