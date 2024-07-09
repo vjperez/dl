@@ -58,7 +58,7 @@ populateUpdateNepeForm = function(datos){
 			//en submit entran al arreglo, luego de pasar por cleanStr() y  isNotVacioStr()
 		});
 	}
-}
+}//populate function
 
 //get data to populate form
 let index = urlParametro('index');
@@ -106,6 +106,7 @@ function(evento){
 		//la linea de abajo para filesOnFotoArr, works tambien
 		let selector = 'fieldset#fotoFieldset   input[name^=fotoArr]';
 		let filesOnFotoArr = document.querySelector(selector)[0].files;
+    console.log(filesOnFotoArr);
 		if( filesOnFotoArr.length === 0){
 			formData.delete("fotoArr[]");     
 			formData.delete("MAX_FILE_SIZE");
@@ -126,7 +127,7 @@ function(evento){
 		}
 	}
 
-	let forma = document.querySelector('nepeForm');
+	let forma = document.querySelector('form#nepeForm');
 	let formData = new FormData(forma);
 	function buildFormData(){
 		// a) build and edit formdata

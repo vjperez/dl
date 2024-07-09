@@ -1,4 +1,4 @@
-jQuery.hideThemSections();
+hideThemSections();
 
 
 //major task 1

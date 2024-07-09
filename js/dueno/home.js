@@ -56,7 +56,7 @@ jQuery.ajax({
 });
 
 
-jQuery.hideThemSections();
+hideThemSections();
 
 
 jQuery('form#editClaveForm').submit(function(evento){
