@@ -28,20 +28,22 @@ function showMenu() {
 
 
 function hideThemSections() {
-  let els = document.querySelectorAll('.notHidable');
+  let els = document.querySelectorAll('.hidable');
   els.forEach(
     function(el){
-      const hidableSibling = el.nextElementSibling;
-      if(hidableSibling.classList.contains('hidable')) hidableSibling.style.display = 'none'; 
+      //when selecting .notHidable... was doing these
+      //const hidableSibling = el.nextElementSibling;
+      //if(hidableSibling.classList.contains('hidable')) hidableSibling.style.display = 'none';
+      el.style.display = 'none';  
     }
   );
-  els = document.querySelectorAll('.notHidable .fa-chevron-circle-up');
+  els = document.querySelectorAll('.fa-chevron-circle-up');
   els.forEach(
     function(el){
       el.style.display = 'none'; 
     }
   );
-  els = document.querySelectorAll('.notHidable .fa-chevron-circle-down');
+  els = document.querySelectorAll('.fa-chevron-circle-down');
   els.forEach(
     function(el){
       el.style.display = ''; 
@@ -51,20 +53,22 @@ function hideThemSections() {
 
 
 function showThemSections() {
-  let els = document.querySelectorAll('.notHidable');
+  let els = document.querySelectorAll('.hidable');
   els.forEach(
     function(el){
-      const hidableSibling = el.nextElementSibling;
-      if(hidableSibling.classList.contains('hidable')) hidableSibling.style.display = 'block';
+      //when selecting .notHidable... was doing these
+      //const hidableSibling = el.nextElementSibling;
+      //if(hidableSibling.classList.contains('hidable')) hidableSibling.style.display = 'block';
+      el.style.display = 'block';
     }
   );
-  els = document.querySelectorAll('.notHidable .fa-chevron-circle-up');
+  els = document.querySelectorAll('.fa-chevron-circle-up');
   els.forEach(
     function(el){
       el.style.display = ''; 
     }
   );
-  els = document.querySelectorAll('.notHidable .fa-chevron-circle-down');
+  els = document.querySelectorAll('.fa-chevron-circle-down');
   els.forEach(
     function(el){
       el.style.display = 'none'; 
@@ -81,37 +85,44 @@ mainContainer.addEventListener('click', showOrHideSection);
 function showOrHideSection(evento){
   const clickedEl = evento.target;
   if(clickedEl.classList.contains('notHidable')){
-    //console.log(clickedEl);
-    const hidable = clickedEl.nextElementSibling;
     const iElUp = clickedEl.firstElementChild;
     const iElDown = iElUp.nextElementSibling;
-    if(hidable.classList.contains('hidable')){
-      if(window.getComputedStyle(hidable).display === 'none'){
-        hidable.style.display = '';
-        iElUp.style.display = '';
-        iElDown.style.display = 'none';
-      }else{
-        hidable.style.display = 'none';
-        iElUp.style.display = 'none';
-        iElDown.style.display = '';
-      }
+    //console.log(clickedEl);
+    
+    let hidable = clickedEl.nextElementSibling;
+    //assumes on html, every .notHidable has one .hidable sibbling    
+    while( ! hidable.classList.contains('hidable') ){
+      hidable = hidable.nextElementSibling;
     }
+    if(window.getComputedStyle(hidable).display === 'none'){
+      hidable.style.display = '';
+      iElUp.style.display = '';
+      iElDown.style.display = 'none';
+    }else{
+      hidable.style.display = 'none';
+      iElUp.style.display = 'none';
+      iElDown.style.display = '';
+    }
+    
   }else if(clickedEl.classList.contains('fa-chevron-circle-down') || clickedEl.classList.contains('fa-chevron-circle-up')){
     //console.log(clickedEl);
     const notHidableParent = clickedEl.parentElement;
-    const hidable = notHidableParent.nextElementSibling;
     const iElUp = notHidableParent.firstElementChild;
     const iElDown = iElUp.nextElementSibling;
-    if(hidable.classList.contains('hidable')){
-      if(window.getComputedStyle(hidable).display === 'none'){
-        hidable.style.display = '';
-        iElUp.style.display = '';
-        iElDown.style.display = 'none';
-      }else{
-        hidable.style.display = 'none';
-        iElUp.style.display = 'none';
-        iElDown.style.display = '';
-      }
-    }
+
+    let hidable = notHidableParent.nextElementSibling;
+    //assumes on html, every .notHidable has one .hidable sibbling    
+    while( ! hidable.classList.contains('hidable') ){
+      hidable = hidable.nextElementSibling;
+    }  
+    if(window.getComputedStyle(hidable).display === 'none'){
+      hidable.style.display = '';
+      iElUp.style.display = '';
+      iElDown.style.display = 'none';
+    }else{
+      hidable.style.display = 'none';
+      iElUp.style.display = 'none';
+      iElDown.style.display = '';
+    } 
   }
 }
