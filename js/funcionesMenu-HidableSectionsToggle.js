@@ -85,9 +85,9 @@ mainContainer.addEventListener('click', showOrHideSection);
 function showOrHideSection(evento){
   const clickedEl = evento.target;
   if(clickedEl.classList.contains('notHidable')){
+     //console.log(clickedEl);
     const iElUp = clickedEl.firstElementChild;
     const iElDown = iElUp.nextElementSibling;
-    //console.log(clickedEl);
     
     let hidable = clickedEl.nextElementSibling;
     //assumes on html, every .notHidable has one .hidable sibbling    
