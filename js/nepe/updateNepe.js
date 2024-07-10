@@ -105,7 +105,7 @@ function(evento){
 		//let filesOnFotoArr = formData.getAll("fotoArr[]");
 		//la linea de abajo para filesOnFotoArr, works tambien
 		let selector = 'fieldset#fotoFieldset   input[name^=fotoArr]';
-		let filesOnFotoArr = document.querySelector(selector)[0].files;
+		let filesOnFotoArr = document.querySelector(selector).files;
     console.log(filesOnFotoArr);
 		if( filesOnFotoArr.length === 0){
 			formData.delete("fotoArr[]");     
@@ -163,6 +163,10 @@ function(evento){
 		formData.append('cuando', cuando);
 
 		//desdeCasa - suCasa
+    let suCasa = document.querySelector('input[name="suCasa"]:checked').value;
+    formData.append('suCasa', suCasa);
+    let desdeCasa = document.querySelector('input[name="desdeCasa"]:checked').value;
+    formData.append('desdeCasa', desdeCasa);
 
 		//video
 		regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú.:/=?&@._+-]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=?& plus los de login   @ . _  + -
@@ -211,25 +215,35 @@ function(evento){
 	}//function
 
 	function postea(){
-	  alert('@ postea despues de delay...');
+	  //alert('@ postea despues de delay...');
 	  const opciones = { body:formData, method:'post' };
 	  fetch('escritos/nepe/update.php', opciones )
 	  .then(
 	  function(respuesta){
 	    console.log(' fetch, then 1');
 	    console.log(respuesta);
-	    return respuesta.json();
+      return respuesta.text();  
 	  })
 	  .then(
 	  function(datos){
 	    console.log(' fetch, then 2: ');
-	    console.log(datos);
-		if(datos.nepeCoreUpdated && datos.queDondeUpdated && (datos.videoInserted || datos.videoUpdated)){
-		  window.location.href = window.location.pathname + '?look=viewNepe&nepeId=' + datos.nepeId;
-		}else{
-		  //aqui quiza falta algo
-		  //feedback('form#updateNepeForm h2', datosJSObj.feedback);
-		}
+	    console.log( datos );
+
+      let datosJSOBJ;
+      try{
+        datosJSOBJ = JSON.parse( datos );
+      }
+      catch( err ){
+        throw new Error( err + '<br><br>' + datos ); 
+      }
+      
+      if(datosJSOBJ.nepeCoreUpdated && datosJSOBJ.queDondeUpdated && (datosJSOBJ.videoInserted || datosJSOBJ.videoUpdated)){
+        window.location.href = window.location.pathname + '?look=viewNepe&nepeId=' + datosJSOBJ.nepeId;
+      }else{
+        //aqui quiza falta algo
+        //feedback('form#updateNepeForm h2', datosJSObj.feedback);
+      }
+      
 	  })
 	  .catch(
 	  function(error){
