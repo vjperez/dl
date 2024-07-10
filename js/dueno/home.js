@@ -1,144 +1,169 @@
-var usuario = ""; // this value is used for feedback on forms submit
-////////////////////////////////////// ajax to populate home page /////////////////////////////////
+let usuario = ""; // this value is used for feedback on forms submit
+////////////////////// fetch to populate home page /////////////////
 
-jQuery.ajax({
-	//cache: false,
-	url: 'escritos/dueno/getNombre.php',
-	dataType: "json"
+fetch('escritos/dueno/getNombre.php')
+.then(
+function(respuesta){
+  console.log('view nepe fetch, then 1');
+  console.log(respuesta);
+  return respuesta.json();
 })
-.done(function(dato, estatusForDONE, xhrObjetoForDONE){
-	jQuery('div#labelTableContainer label').html( 'Negocios de ' + dato );
-	usuario = dato;
+.then(
+function(dato){
+  console.log('view nepe fetch, then 2: ');
+  console.log(dato);
+  document.querySelector('div#labelTableContainer label').innerHTML = 'Negocios de ' + dato ;
+	usuario = dato; 
 })
-.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-	 var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-     var path = jQuery.encodeAndGetErrorPath('On home.js getNombre<br>' + xhrObjetoForFAILString, textoEstatus, elError);
-     jQuery(window.location).attr('href', path);
+.catch(
+function(error){
+  const href = encodeAndGetErrorPath(error);
+  window.location.href = href;
 });
 
 
-jQuery.ajax({
-	//cache: false,
-	url: 'escritos/dueno/getOwnNepesWithIds.php',
-	dataType: "json"
+fetch('escritos/dueno/getOwnNepesWithIds.php')
+.then(
+function(respuesta){
+  console.log('view nepe fetch, then 1');
+  console.log(respuesta);
+  return respuesta.json();
 })
-.done(function(datos, estatusForDONE, xhrObjetoForDONE){
-	var elTable = "";
-	jQuery.each(datos, function(index){
-		elTable += '<tr><td>';
-		elTable += '<a class="link" href="portada.html?look=updateNepe&index=' + index + '">' + datos[index].nepeNombre + '</a>';
-		elTable += '</td></tr>';
-	});	
-	jQuery('div#labelTableContainer table').html( elTable );
+.then(
+function(datos){
+  console.log('view nepe fetch, then 2: ');
+  console.log(datos);
+  let elTable = "";
+	datos.forEach(
+    function(dato, index){
+      elTable += '<tr><td>';
+      elTable += '<a class="link" href="portada.html?look=updateNepe&index=' + index + '">' + dato.nepeNombre + '</a>';
+      elTable += '</td></tr>';
+	  });	
+	document.querySelector('div#labelTableContainer table').innerHTML = elTable;
 })
-.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-	var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-    var path = jQuery.encodeAndGetErrorPath('On home.js own nepes<br>' + xhrObjetoForFAILString, textoEstatus, elError);
-    jQuery(window.location).attr('href', path);
+.catch(
+function(error){
+  const href = encodeAndGetErrorPath(error);
+  window.location.href = href;
 });
 
-jQuery.ajax({
-	//cache: false,
-	url: 'escritos/dueno/getSocials.php',
-	dataType: "json"
+
+fetch('escritos/dueno/getSocials.php')
+.then(
+function(respuesta){
+  console.log('view nepe fetch, then 1');
+  console.log(respuesta);
+  return respuesta.json();
 })
-.done(function(socialDatos, estatusForDONE, xhrObjetoForDONE){
-	//alert(socialDatos);
-	if( socialDatos[0]   ) jQuery('fieldset#editContactosFieldset input#red1Id').val( socialDatos[0]  );
-	if( socialDatos[1] ) jQuery('fieldset#editContactosFieldset input#red2Id').val( socialDatos[1]);
-	if( socialDatos[2]   ) jQuery('fieldset#editContactosFieldset input#red3Id').val( socialDatos[2]  );
-	if( socialDatos[3]   ) jQuery('fieldset#editContactosFieldset input#red4Id').val( socialDatos[3]  );
+.then(
+function(socialDatos){
+  console.log('view nepe fetch, then 2: ');
+  console.log(socialDatos);
+	if( socialDatos[0] ) document.querySelector('fieldset#editContactosFieldset input#red1Id').value = socialDatos[0];
+	if( socialDatos[1] ) document.querySelector('fieldset#editContactosFieldset input#red2Id').value = socialDatos[1];
+	if( socialDatos[2] ) document.querySelector('fieldset#editContactosFieldset input#red3Id').value = socialDatos[2];
+	if( socialDatos[3] ) document.querySelector('fieldset#editContactosFieldset input#red4Id').value = socialDatos[3];
 })
-.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-	var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-    var path = jQuery.encodeAndGetErrorPath('On home.js getSocials<br>' + xhrObjetoForFAILString, textoEstatus, elError);
-    jQuery(window.location).attr('href', path);
+.catch(
+function(error){
+  const href = encodeAndGetErrorPath(error);
+  window.location.href = href;
 });
 
 
 hideThemSections();
 
 
-jQuery('form#editClaveForm').submit(function(evento){
-    evento.preventDefault(); //not making a submit (POST request) from html action.
-    var user = 'valorDummy';
-    var pass01 = jQuery('#passwordId').val();
-    var pass02 = jQuery('#passwordConfirmId').val();
-    if( areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editClaveForm h3.feedback') ){
-        jQuery.post('escritos/dueno/editClave.php', {pass01:pass01} )
-        .done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){ 
-            try{
-                datosJSObj = JSON.parse(datosJSONStr);
-            }catch(errorParseo){
-                var datosJSONStrAsXHRTexto = datosJSONStr;
-                var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/dueno/editClave.php :<br> Mensaje: ' + errorParseo.message;
-                var elError = errorParseo.name;
-                
-                var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError);
-                jQuery(window.location).attr('href', path);			
-            }
-            if(datosJSObj.editado){
-				let feedbackStr = usuario + ', tu clave fue editada.'; 
-				jQuery.feedback('form#editClaveForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
-            }else{
-				let feedbackStr = usuario + ', trata otra vez.';
-                jQuery.feedback('form#editClaveForm h3.feedback', feedbackStr, 'feedbackwarn', 'downdelayup');
-            }
-        })
-        .fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-            var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-            var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-            jQuery(window.location).attr('href', path);
-        });
-    }
+document.querySelector('form#editClaveForm')
+.addEventListener('submit', 
+function(evento){
+  evento.preventDefault(); //not making a submit (POST request) from html action.
+  let user = 'valorDummy';
+  let pass01 = document.querySelector('#passwordId').value;
+  let pass02 = document.querySelector('#passwordConfirmId').value;
+  if( areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editClaveForm h3.feedback') ){
+    const opciones = { pass01:pass01, method:'post' };
+	  fetch('escritos/dueno/editClave.php', opciones )
+	  .then(
+	  function(respuesta){
+	    console.log(' fetch, then 1');
+	    console.log(respuesta);
+	    return respuesta.json();
+	  })
+	  .then(
+	  function(dato){
+	    console.log(' fetch, then 2: ');
+	    console.log(dato);
+      if(dato.editado){
+        let feedbackStr = usuario + ', tu clave fue editada.'; 
+        feedback('form#editClaveForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
+      }else{
+        let feedbackStr = usuario + ', trata otra vez.';
+        feedback('form#editClaveForm h3.feedback', feedbackStr, 'feedbackwarn', 'downdelayup');
+      }
+	  })
+	  .catch(
+	  function(error){
+	    const href = encodeAndGetErrorPath(error);
+	    window.location.href = href;
+	  });
+  }
 }); // editClaveForm submit
 
-jQuery('form#editContactosForm').submit(function(evento){
-	
-    evento.preventDefault(); //not making a submit (POST request) from html action.
-    var tel        = jQuery('form#editContactosForm  input#red1Id').val();
-	var email      = jQuery('form#editContactosForm  input#red2Id').val();
-    var redSocial1 = jQuery('form#editContactosForm  input#red3Id').val();
-    var redSocial2 = jQuery('form#editContactosForm  input#red4Id').val();
-	jQuery.post('escritos/dueno/bregaContactos.php', {tel:tel, email:email, redSocial1:redSocial1, redSocial2:redSocial2} )
-	.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-		try{
-			datosJSObj = JSON.parse(datosJSONStr);
-		}catch(errorParseo){
-			var datosJSONStrAsXHRTexto = datosJSONStr;
-			var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/dueno/editContactos.php :<br> Mensaje: ' + errorParseo.message;
-			var elError = errorParseo.name;
-			
-			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError);
-			jQuery(window.location).attr('href', path);			
-		}
-		if(datosJSObj.actualizados){
+document.querySelector('form#editContactosForm')
+.addEventListener('submit', 
+function(evento){
+  evento.preventDefault(); //not making a submit (POST request) from html action.
+  let tel        = document.querySelector('form#editContactosForm  input#red1Id').value;
+	let email      = document.querySelector('form#editContactosForm  input#red2Id').value;
+  let redSocial1 = document.querySelector('form#editContactosForm  input#red3Id').value;
+  let redSocial2 = document.querySelector('form#editContactosForm  input#red4Id').value;
+
+  const opciones = { tel:tel, email:email, redSocial1:redSocial1, redSocial2:redSocial2, method:'post' };
+  fetch('escritos/dueno/bregaContactos.php', opciones )
+  .then(
+  function(respuesta){
+    console.log(' fetch, then 1');
+    console.log(respuesta);
+    return respuesta.json();
+  })
+  .then(
+  function(dato){
+    console.log(' fetch, then 2: ');
+    console.log(dato);
+		if(dato.actualizados){
 			let feedbackStr = usuario + ', tus contactos fueron actualizados.'; 
-			jQuery.feedback('form#editContactosForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
+			feedback('form#editContactosForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
 		}
-	})
-	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-        jQuery(window.location).attr('href', path);
-	});
-    
+  })
+  .catch(
+  function(error){
+    const href = encodeAndGetErrorPath(error);
+    window.location.href = href;
+  });    
 }); // editContactosForm submit
 
 //erase feedback when user writes
-jQuery('form[id*=Form]  input[name^=password],  form[id*=Form]  input[name^=red]').keyup(function(){
-	jQuery.feedback('form[id*=Form] h3', '', '');
-	jQuery.feedback('form[id*=Form] h5', '', '');
-
-    var pass01 = jQuery('#passwordId').val();
-    if( pass01.length > 0 )
-        jQuery('.confirm').show();
-    else
-        jQuery('.confirm').hide();	
-});
-jQuery('.confirm').hide();
+function showHideConfirm(){
+	//feedback('form[id*=Form] h3', '', '');
+  let pass01 = document.querySelector('#passwordId').value;
+  if( pass01.length > 0 ){
+    document.querySelector('fieldset label.confirm').style.display = '';
+    document.querySelector('input.confirm').style.display = '';
+  }
+  else{
+    document.querySelector('fieldset label.confirm').style.display = 'none';
+    document.querySelector('input.confirm').style.display = 'none';
+  }
+}
+document.querySelector('form[id*=Form]  input[name^=password]').addEventListener('keyup', showHideConfirm);
+//document.querySelector('form[id*=Form]  input[name=^red]' ).addEventListener('keyup', showHideConfirm);
+showHideConfirm();
 
 //handle link to crea nepe when click on button
-jQuery('div#labelTableContainer :button').click(function(){
-    jQuery(window.location).attr('href', window.location.pathname + '?look=creaNepe');
+document.querySelector('div#labelTableContainer button')
+.addEventListener('click',
+function(){
+  window.location.href = window.location.pathname + '?look=creaNepe';
 });
