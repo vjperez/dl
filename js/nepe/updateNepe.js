@@ -18,8 +18,8 @@ populateUpdateNepeForm = function(datos){
 	let inputValue = datos.desdeCasa;
 	let selector = 'fieldset#desdeCasaFieldset input[value=' + inputValue + ']';
 	document.querySelector(selector).checked = true;
-	    inputValue = datos.suCasa;
-	    selector = 'fieldset#suCasaFieldset    input[value=' + inputValue + ']';
+		inputValue = datos.suCasa;
+		selector = 'fieldset#suCasaFieldset    input[value=' + inputValue + ']';
 	document.querySelector(selector).checked = true;
 	
 	//  ------------------------          ---------------------  //
@@ -83,9 +83,8 @@ function(error){
   window.location.href = href;
 });
 
+
 hideThemSections();
-
-
 
 
 //task 2
@@ -95,8 +94,8 @@ document.querySelector('form#nepeForm')
 function(evento){
 	evento.preventDefault();
 	fotoArr();
-	setTimeout(function(){ buildFormData(); }, 50);
-	setTimeout(function(){ postea(); }, 100);	
+	setTimeout(function(){ buildFormData(); }, 5);
+	setTimeout(function(){ postea(); }, 10);	
 });  //submit
 
 
@@ -106,7 +105,7 @@ function(evento){
 		//la linea de abajo para filesOnFotoArr, works tambien
 		let selector = 'fieldset#fotoFieldset   input[name^=fotoArr]';
 		let filesOnFotoArr = document.querySelector(selector).files;
-    console.log(filesOnFotoArr);
+		console.log(filesOnFotoArr);
 		if( filesOnFotoArr.length === 0){
 			formData.delete("fotoArr[]");     
 			formData.delete("MAX_FILE_SIZE");
@@ -163,10 +162,10 @@ function(evento){
 		formData.append('cuando', cuando);
 
 		//desdeCasa - suCasa
-    let suCasa = document.querySelector('input[name="suCasa"]:checked').value;
-    formData.append('suCasa', suCasa);
-    let desdeCasa = document.querySelector('input[name="desdeCasa"]:checked').value;
-    formData.append('desdeCasa', desdeCasa);
+		let suCasa = document.querySelector('input[name="suCasa"]:checked').value;
+		formData.append('suCasa', suCasa);
+		let desdeCasa = document.querySelector('input[name="desdeCasa"]:checked').value;
+		formData.append('desdeCasa', desdeCasa);
 
 		//video
 		regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú.:/=?&@._+-]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=?& plus los de login   @ . _  + -
@@ -220,35 +219,35 @@ function(evento){
 	  fetch('escritos/nepe/update.php', opciones )
 	  .then(
 	  function(respuesta){
-	    console.log(' fetch, then 1');
-	    console.log(respuesta);
-      return respuesta.text();  
+		console.log(' fetch, then 1');
+		console.log(respuesta);
+	  return respuesta.text();  
 	  })
 	  .then(
 	  function(datos){
-	    console.log(' fetch, then 2: ');
-	    console.log( datos );
-
-      let datosJSOBJ;
-      try{
-        datosJSOBJ = JSON.parse( datos );
-      }
-      catch( err ){
-        throw new Error( err + '<br><br>' + datos ); 
-      }
-      
-      if(datosJSOBJ.nepeCoreUpdated && datosJSOBJ.queDondeUpdated && (datosJSOBJ.videoInserted || datosJSOBJ.videoUpdated)){
-        window.location.href = window.location.pathname + '?look=viewNepe&nepeId=' + datosJSOBJ.nepeId;
-      }else{
-        //aqui quiza falta algo
-        //feedback('form#updateNepeForm h2', datosJSObj.feedback);
-      }
-      
+		console.log(' fetch, then 2: ');
+		console.log( datos );
+		/////////////////////////try catch////////////////////////
+		let datosJSOBJ;
+		try{
+			datosJSOBJ = JSON.parse( datos );
+		}
+		catch( err ){
+			throw new Error( err + '<br><br>' + datos ); 
+		}
+	    //////////////////////////////////////////////////////////
+		if(datosJSOBJ.nepeCoreUpdated && datosJSOBJ.queDondeUpdated && (datosJSOBJ.videoInserted || datosJSOBJ.videoUpdated)){
+			window.location.href = window.location.pathname + '?look=viewNepe&nepeId=' + datosJSOBJ.nepeId;
+		}else{
+			//aqui quiza falta algo
+			//feedback('form#updateNepeForm h2', datosJSObj.feedback);
+		}
+	  
 	  })
 	  .catch(
 	  function(error){
-	    const href = encodeAndGetErrorPath(error);
-	    window.location.href = href;
+		const href = encodeAndGetErrorPath(error);
+		window.location.href = href;
 	  });
 	}//postea function
 	

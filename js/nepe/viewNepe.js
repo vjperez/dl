@@ -19,7 +19,7 @@ function(dato){
 function(error){
   const href = encodeAndGetErrorPath(error);
   window.location.href = href;
-}) ;
+});
 
 
 function populate(elNepe){

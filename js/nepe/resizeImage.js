@@ -1,5 +1,5 @@
 //resize and push
-resizeImage = function(index, unFotoFile, formData){
+function resizeImage(index, unFotoFile, formData){
 	//helper function for jQuery.have5OrLessImages
 	let reader = new FileReader();
 	reader.readAsDataURL(unFotoFile);
