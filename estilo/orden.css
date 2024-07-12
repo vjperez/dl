@@ -23,15 +23,15 @@ button i{ margin:0.2em auto 0.2em; }
 form#queDondeForm fieldset.notHidable label, form#loginForm fieldset.notHidable label, form#registroForm fieldset.notHidable label
  { margin-left: 10%; }
 
-fieldset.notHidable label         { font-size:1.5em; letter-spacing:0.0em; display: block; }
-fieldset.notHidable label.explica { font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
+section label.cabe         { font-size:1.5em; letter-spacing:0.0em; display: block; }
+section label.explica { font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
 
 
 fieldset.hidable label {  font-size:0.85em; letter-spacing:0.20em;   display: block; }
 fieldset.hidable label.explica {  font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
 
-div#nepeTitulo fieldset label, div#nepeTitulo fieldset label.explica, div#nombreyRevisado fieldset label,
-div#recentNepes fieldset label, div#labelTableContainer fieldset label, form#loginForm div#registro a, form#registroForm div#login a
+section.cabe label, 
+form#loginForm div#registro a, form#registroForm div#login a
 { text-align:center; display:block; }
 fieldset.subArea input.conMargen { margin-top: 1em; margin-left: 2.0em; display: inline-block; }
 fieldset.subArea label.conMargen { margin-top: 1em; margin-left: 0.5em; display: inline-block; }
@@ -89,7 +89,7 @@ table td.dia, div#nombreyRevisado h5  { text-align: right; }
 span.diasOld { font-size:0.75em; letter-spacing:0em; margin-left:2em; }
 
 /*  faq  crea update nepe edit dueno show nepes profile-titulo, quien... */
-.notHidable{  padding:0px;  padding-top:4em;   margin:0px; }
+section{  padding:0px;  padding-top:4em;   margin:0px; }
 
 /*  crea update nepe  edit dueno show nepes  */
 .hidable, .subArea{  margin:0px;  margin-top:2em;  padding:0px;  }
@@ -117,8 +117,8 @@ h3.feedback {
     font-size: 40px;  width:120px;  
   }
 
-  fieldset.notHidable label { font-size:1.7em; letter-spacing:0.10em; display: block; }
-  div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.20em; display:block; text-align:left; }
+  section label.cabe { font-size:1.7em; letter-spacing:0.10em; display: block; }
+  section label.explica { font-size:0.85em; letter-spacing:0.20em; display:block; text-align:left; }
 
   fieldset.hidable label {  font-size:0.85em; letter-spacing:0.30em;  display:block;  }
   fieldset.hidable label.explica {  font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }
@@ -147,8 +147,8 @@ h3.feedback {
     font-size: 40px;  width:120px;
   }
 
-  fieldset.notHidable label { font-size:1.7em; letter-spacing:0.25em; display: block; }
-  div[id$=Titulo] label.explica, fieldset.notHidable label.explica { font-size:0.85em; letter-spacing:0.20em; display:block; text-align:left; }
+  section label.cabe { font-size:1.7em; letter-spacing:0.25em; display: block; }
+  section label.explica { font-size:0.85em; letter-spacing:0.20em; display:block; text-align:left; }
 
   fieldset.hidable label {  font-size:0.85em; letter-spacing:0.30em;  display:block;  }
   fieldset.hidable label.explica {  font-size:0.70em; letter-spacing:0.20em; display:block; text-align:left; }

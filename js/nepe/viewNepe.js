@@ -27,7 +27,7 @@ function populate(elNepe){
     let date = new Date(elNepe.revisado);
     let opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     document.querySelector('#nombreyRevisado h5').innerText = 'Revisado:  ' + date.toLocaleDateString('es-ES', opciones); 
-    document.querySelector('#nombreyRevisado fieldset.notHidable label').innerText = elNepe.nombre;
+    document.querySelector('#nombreyRevisado section label.cabe').innerText = elNepe.nombre;
     
 
 

@@ -13,8 +13,7 @@ function(datos){
 	let tableRows = '';
 	datos.forEach(
 	function(dato, index){
-		console.log(index + '::' + dato.nepeFotoName);
-
+		//console.log(index + '::' + dato.nepeFotoName);
 		let link = '"portada.html?look=viewNepe&nepeId=' + dato.nepeId  + '"';
 		tableRows += '<tr class="texto"><td>' 
 		+ '<a href=' + link + '>' 
@@ -29,7 +28,7 @@ function(datos){
 		+ '</td></tr>'; 
 		tableRows += '<tr><td></td></tr><tr><td></td></tr>';
 	});
-	document.querySelector('fieldset#labelAndTableContainer table.subArea').innerHTML = tableRows;
+	document.querySelector('section#labelAndTableContainer table.subArea').innerHTML = tableRows;
 })
 .catch(
 function(error){

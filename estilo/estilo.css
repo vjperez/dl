@@ -67,12 +67,12 @@ fieldset{ border:0px solid var(--negro);}
 div#donde div#atucasa { border:0px solid var(--negro); }
 
 /*
-fieldset.notHidable label { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
-fieldset.notHidable label.explica { font-family:'Oswald', mono, monospace;  }
+section label.cabe { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
+section label.explica { font-family:'Oswald', mono, monospace;  }
 */
 
 h5.footersubtitulo, ul.navega li a, div#opcionesdiv h5, div#nombreyRevisado h5, 
-h2.notHidable, span.diasOld, fieldset.notHidable label,
+h2.notHidable, span.diasOld, section label.cabe, section label.explica,
 fieldset.hidable label,  fieldset.hidable label.explica, span.enfasis
 { font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
 
@@ -81,8 +81,8 @@ h2.footertitulo { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswal
 h2.footertitulo       { text-shadow: 0 4px 1px var(--navegafondocolor); }
 h2.footertitulo:hover { text-shadow: 0 0px 1px var(--navegaletracolorhover); }
 
-fieldset.notHidable label{ font-weight:bolder; color:var(--labelyheadercolor); }
-fieldset.notHidable label.explica, fieldset.hidable label,  fieldset.hidable label.explica  
+section label.cabe{ font-weight:bolder; color:var(--labelyheadercolor); }
+section label.explica, fieldset.hidable label,  fieldset.hidable label.explica  
 { font-weight:bolder; color:var(--negro); }
 
 
