@@ -42,7 +42,7 @@ function showHideConfirm(evento){
     document.querySelector('fieldset label.confirm').style.display = '';
     document.querySelector('input.confirm').style.display = '';
   }else{
-    document.querySelector('fieldset label.confirm').style.display = 'none';
+    document.querySelector('label.confirm').style.display = 'none';
     document.querySelector('input.confirm').style.display = 'none';
   }	
 }

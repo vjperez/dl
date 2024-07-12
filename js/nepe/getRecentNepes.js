@@ -22,7 +22,7 @@ function(datos){
 		+ '</td></tr>'; 
 
 		tableRows +=  '<tr class="foto"><td>' 
-		+ '<a href=' + link + '>' 
+    + '<a href=' + link + '>' 
 		+ '<img src="imagenes/nepe/subidas/' + dato.nepeFotoName + '">'
 		+ '</a>' 
 		+ '</td></tr>'; 
