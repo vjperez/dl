@@ -143,7 +143,7 @@ hideThemSections();
 
 
 //show only 1 social handle with class current
-document.querySelectorAll('div#quien ul li i')
+document.querySelectorAll('#quien ul li i')
 .forEach(
 function(iEl, index){
     iEl.addEventListener('click', clicked);
@@ -154,7 +154,7 @@ function clicked(evento){
     let iclassList; 
     let iToFocus = evento.currentTarget;
 
-    document.querySelectorAll('div#quien ul li i')
+    document.querySelectorAll('#quien ul li i')
     .forEach(
     function(iEl, index){
         iEl.classList.remove('current');
@@ -164,7 +164,7 @@ function clicked(evento){
         }
     });
     
-    document.querySelectorAll('div#quien h5')
+    document.querySelectorAll('#quien h5')
     .forEach(
     function(h, index){
         h.classList.remove('current');

@@ -64,7 +64,7 @@ input[type="email"]:focus, textarea:focus{
 }
 
 fieldset{ border:0px solid var(--negro);}
-div#donde div#atucasa { border:0px solid var(--negro); }
+section#donde div#sucasa { border:0px solid var(--negro); }
 
 /*
 section label.cabe { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
@@ -94,20 +94,20 @@ form[id$=Form] h3.feedback   { font-family:'Oswald', mono, monospace; font-weigh
 
 
 
- div#quien div.hidable ul  i 
+ section#quien div.hidable ul  i 
     { border-color:var(--negro);  border-style:solid;  border-width:0pt;  border-radius:5pt;   /* no usando borde*/
     color:var(--navegaletracolor); background: var(--navegafondocolor);}
- div#quien div.hidable ul  i:hover,  div#quien div.hidable ul  i:focus,  div#quien div.hidable ul  i.current 
+ section#quien div.hidable ul  i:hover,  section#quien div.hidable ul  i:focus,  section#quien div.hidable ul  i.current 
     { border-color:var(--labelyheadercolor); border-width:0pt;   /* no usando borde*/
     color:var(--navegaletracolorhover); }
 
- div#cuando td, div#cuando td.hora, div#donde span.texto, div#donde span.textofixed, p, div#quien h5, div#opcionesdiv h2, div#que ul li, div#donde ul li  
+ section#cuando td, section#cuando td.hora, section#donde span.texto, section#donde span.textofixed, p, section#quien h5, div#opcionesdiv h2, section#que ul li, section#donde ul li  
 { font-family:'Courier Prime', serif, mono, monospace; }
  
- div#cuando td, div#donde span.textofixed, span.diasOld  
+ section#cuando td, section#donde span.textofixed, span.diasOld  
 { font-weight:bolder;  color:var(--negro); }
 
- div#cuando td.hora,  div#donde span.texto, div#quien h5, div#opcionesdiv h2
+ section#cuando td.hora,  section#donde span.texto, section#quien h5, div#opcionesdiv h2
 { color:var(--labelyheadercolor);   font-weight:bolder;}
 
  i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]

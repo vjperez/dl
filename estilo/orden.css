@@ -60,28 +60,28 @@ div#nepefotos h5 { margin-top: 0em; margin-bottom: 0em; }
   position: absolute;  top: 0;  left: 0;  width: 100%;  height: 100%;
 }
 
-div#cuando table.hidable { margin-left:auto; margin-right:auto; }
+section#cuando table.hidable { margin-left:auto; margin-right:auto; }
 div#nepefotos, tr.foto,
-div#quien h5, div#quien ul
+section#quien h5, section#quien ul
 { text-align:center ; } 
-div#quien ul { margin-top:60pt; margin-bottom:10pt; padding: 0pt; }
+section#quien ul { margin-top:60pt; margin-bottom:10pt; padding: 0pt; }
 
 /* profile red icons*/
-div#quien ul li i { font-size:1.5em; padding-top: 0.125em; padding-left: 0.125em; padding-bottom: 0.125em; }
-div#quien li { display:inline-block; margin-right:0.75em; margin-left:0.75em; margin-top:1em; margin-bottom:0px; }
+section#quien ul li i { font-size:1.5em; padding-top: 0.125em; padding-left: 0.125em; padding-bottom: 0.125em; }
+section#quien li { display:inline-block; margin-right:0.75em; margin-left:0.75em; margin-top:1em; margin-bottom:0px; }
 
 
-div#quien h5 { display:none; }
-div#quien h5.current { display:block; }
-div#quien h5 { font-size:1.15em; letter-spacing:0.2em; margin-top:20pt; margin-bottom:20pt; }
-div#que ul, div#donde ul, div#quien ul { list-style-type:none; }
-div#que ul li, div#donde ul li { margin-top:1em; margin-bottom: 1em; padding-left:3em; }
+section#quien h5 { display:none; }
+section#quien h5.current { display:block; }
+section#quien h5 { font-size:1.15em; letter-spacing:0.2em; margin-top:20pt; margin-bottom:20pt; }
+section#que ul, section#donde ul, section#quien ul { list-style-type:none; padding: 0em;}
+section#que ul li, section#donde ul li { margin-top:1em; margin-bottom: 1em; padding-left:2em; }
 
-div#donde span#background.si, div#donde span#background.no{ 
+section#donde span#background.si, section#donde span#background.no{ 
   background: url("../imagenes/si-no.png"); vertical-align:text-top; display:inline-block;  height:25px;  
   width:25px; margin-left:10pt; margin-right:5pt; 
 }
-div#donde span#background.no{ background-position:0px -25px; }
+section#donde span#background.no{ background-position:0px -25px; }
 
 span#sucasa,   span#desdecasa { display:block; text-align:center }
 span#sucasa i, span#desdecasa i{ margin-right:1em; }
@@ -112,8 +112,8 @@ h3.feedback {
   a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.30em;  }
   
   /* profile red icons*/
-  div#quien ul li i { font-size:2em; }
-  div#quien li { display:inline-block; margin-right:1.25em; margin-left:1.25em; margin-top:2em; margin-bottom:0px; }
+  section#quien ul li i { font-size:2em; }
+  section#quien li { display:inline-block; margin-right:1.25em; margin-left:1.25em; margin-top:2em; margin-bottom:0px; }
 
   form button[type="submit"], button[type="button"] {
     margin:2em auto 2em;
@@ -143,8 +143,8 @@ h3.feedback {
   a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.30em;  }
   
   /* profile red icons*/
-  div#quien ul li i { font-size:2.5em; }
-  div#quien li { display:inline-block; margin-right:1.5em; margin-left:1.5em; margin-top:2em; margin-bottom:0px; }
+  section#quien ul li i { font-size:2.5em; }
+  section#quien li { display:inline-block; margin-right:1.5em; margin-left:1.5em; margin-top:2em; margin-bottom:0px; }
 
   form button[type="submit"], button[type="button"]{
     margin:2em auto 2em;
