@@ -1,35 +1,53 @@
-jQuery('form#loginForm').submit(function(evento){
+let forma = document.querySelector('form#loginForm');
+let formData = new FormData(forma);
+
+forma.addEventListener('submit',
+function(evento){
 	evento.preventDefault(); //not making a submit (POST request) from html action.
-	var user = jQuery('#usernameId').val();
-	var pass = jQuery('#passwordId').val();
+	let user = document.querySelector('#usernameId').value;
+	let pass = document.querySelector('#passwordId').value;
+
+
 	if( areValidUserYPass(user, pass, pass, "genericFeedback", 'form#loginForm h3.feedback') ){
-		jQuery.post('escritos/dueno/login.php', {user:user, pass:pass} )
-		.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-			//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
-			//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
-			try{
-				datosJSObj = JSON.parse(datosJSONStr);
-			}catch(errorParseo){
-				var datosJSONStrAsXHRTexto = datosJSONStr;
-				var textoEstatus = 'Error parseando la siguiente respuesta del server desde escritos/dueno/login.php :<br> Mensaje: ' + errorParseo.message;
-				var elError = errorParseo.name;
-				
-				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
-				jQuery(window.location).attr('href', path); 
-			}
-			if(datosJSObj.logueado){
-				jQuery(window.location).attr('href', window.location.pathname + '?look=home');
-			}else{
-				feedback('form#loginForm h3.feedback', datosJSObj.feedback, 'feedbackwarn', 'downdelayup');
-			}
-		})
-		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-			var xhrObjetoForFAILString = JSON.stringify(  xhrObjetoForFAIL  );
-			var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILString, textoEstatus, elError);
-            jQuery(window.location).attr('href', path);
-		});
-	}
-});
+		
+    formData.append('user', user);
+    formData.append('pass', pass);
+    const opciones = { body:formData, method:'post' };
+    fetch('escritos/dueno/login.php', opciones )
+	  .then(
+	  function(respuesta){
+      console.log(' fetch, then 1');
+      console.log(respuesta);
+      return respuesta.text();  
+	  })
+	  .then(
+    function(datos){
+      console.log(' fetch, then 2: ');
+      console.log( datos );
+      /////////////////////////try catch////////////////////////
+      let datosJSOBJ;
+      try{
+        datosJSOBJ = JSON.parse( datos );
+      }
+      catch( err ){
+        throw new Error( err + '<br><br>' + datos ); 
+      }
+      //////////////////////////////////////////////////////////
+      if(datosJSOBJ.logueado){
+        window.location.href = window.location.pathname + '?look=home';
+      }else{
+        feedback('form#loginForm h3.feedback', datosJSOBJ.feedback, 'feedbackwarn', 'downdelayup');
+      }
+    })
+    .catch(
+    function(error){
+      const href = encodeAndGetErrorPath(error);
+      window.location.href = href;
+    });
+
+	}//if
+
+});//eventlistener
 
 /*
 //erase feedback when user writes
