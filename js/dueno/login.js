@@ -7,7 +7,6 @@ function(evento){
 	let user = document.querySelector('#usernameId').value;
 	let pass = document.querySelector('#passwordId').value;
 
-
 	if( areValidUserYPass(user, pass, pass, "genericFeedback", 'form#loginForm h3.feedback') ){
 		
     formData.append('user', user);

@@ -1,46 +1,54 @@
-jQuery.hideThemSections();
+hideThemSections();
 
 ////////////////////////////////// //handle functions  ////////////////////////////////////////////
 //erase feedback when user writting
-jQuery('form#adminEditClaveForm  input').keydown(function(){
-	jQuery.feedback('form#adminEditClaveForm h3.feedback', '');
+document.querySelector('form#adminEditClaveForm  input')
+.addEventListener('keydown',
+function(){
+	feedback('form#adminEditClaveForm h3.feedback', '');
 });
 //erase feedback when user writting
-jQuery('form#adminNepesForm  input[type=text]').keydown(function(){
-	jQuery.feedback('form#adminNepesForm h3.feedback', '');
+document.querySelector('form#adminNepesForm  input[type=text]')
+.addEventListener('keydown',
+function(){
+	feedback('form#adminNepesForm h3.feedback', '');
 });
 
 
 //handle form submit ; adminNepesForm
-jQuery('form#adminNepesForm').submit(function(evento){
+document.querySelector('form#adminNepesForm')
+.addEventListener('submit',
+function(evento){
 	evento.preventDefault(); //not making a submit (POST request) from html action.
 	
-	var usuario = jQuery.getNombre();		
-	var label = '<label class="">' + 'Negocios de ' + usuario + '</label>'; 
-	jQuery('fieldset#labelContainer').html('');
-	jQuery('fieldset#labelContainer').append(label);
+  let userNumber = document.querySelector('#userNumber02Id').value;
+	let usuario = getNombre( userNumber );		
+	let label = '<label class="">' + 'Negocios de ' + usuario + '</label>'; 
+	//document.querySelector('fieldset#labelContainer').innerHTML = '';
+	document.querySelector('fieldset#labelContainer').append(label);
 
-	var userNumber = jQuery('#userNumber02Id').val();
-	jQuery.post('escritos/dueno/getOwnNepesWithIds.php', {userNumber:userNumber} )
-	.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-		try{
-			//alert('datosJSONStr: ' + datosJSONStr);
-			datosJSObj = JSON.parse(datosJSONStr);
-			//alert('datosJSObj: ' + datosJSObj);
-		}catch(errorParseo){
-			var datosJSONStrAsXHRTexto = datosJSONStr;
-			var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/dueno/getOwnNepesWithIds.php en administrar :<br> Mensaje: ' + errorParseo.message;
-			var elError = errorParseo.name;
-			
-			var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
-			jQuery(window.location).attr('href', path);				
-		}
-		var table =  '<table class="subArea">';
-		var cuantos = 0;
-		jQuery.each(datosJSObj, function(index){
+
+  let urlParams = new URLSearchParams('escritos/dueno/getOwnNepesWithIds.php');
+  urlParams.set("userNumber", userNumber);
+  fetch('escritos/dueno/getOwnNepesWithIds.php' + '?' + urlParams.toString())
+  .then(
+  function(respuesta){
+    console.log('view nepe fetch, then 1');
+    console.log(respuesta);
+    return respuesta.json();
+  })
+  .then(
+  function(datos){
+    console.log('view nepe fetch, then 2: ');
+    console.log(datos);
+
+    let table =  '<table class="subArea">';
+		let cuantos = 0;
+		datos.forEach(
+    function(dato, index){
 			table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
-			+ '&acto=deleteNepe' +  '&nepeId=' + datosJSObj[index].nepeId + '">' 
-			+ datosJSObj[index].nepeNombre + '<i class="fas fa-trash-alt"></i>' 
+			+ '&acto=deleteNepe' +  '&nepeId=' + dato.nepeId + '">' 
+			+ dato.nepeNombre + '<i class="fas fa-trash-alt"></i>' 
 			+ '</a></td></tr>';	
 			cuantos++;
 		});
@@ -54,73 +62,95 @@ jQuery('form#adminNepesForm').submit(function(evento){
 			+ '</a></td></tr>';
 		}
 		table += '</table>';
-		jQuery('fieldset#tableContainer').html('');
-		jQuery('fieldset#tableContainer').append(table);	
-	})
-	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-		jQuery(window.location).attr('href', path); 
-	});
+		//document.querySelector('fieldset#tableContainer').innerHTML = '';
+		document.querySelector('fieldset#tableContainer').appendChild(table);
+  })
 	
 });	
 
 
 //handle form submit ; adminEditClaveForm
-jQuery('form#adminEditClaveForm').submit(function(evento){
+let formaCl = document.querySelector('form#adminEditClaveForm');
+let formDataCl = new FormData(formaCl);
+
+formaCl.addEventListener('submit',
+function(evento){
 	evento.preventDefault(); //not making a submit (POST request) from html action.
-	var user = 'valorDummy';
-	var pass01 = jQuery('#passwordId').val();
-	var pass02 = jQuery('#passwordConfirmId').val(); 
-	if( areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#adminEditClaveForm h3.feedback') ){
+	let user = 'valorDummy';
+	let pass01 = document.querySelector('form#adminEditClaveForm #passwordId').value;
+	let pass02 = document.querySelector('form#adminEditClaveForm #passwordConfirmId').value; 
+	
+  if( areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#adminEditClaveForm h3.feedback') ){
 		//Valid values son los q cumplen estas 3 cosas.
 		//Estas cosas se pueden chequear antes del post y evito post sin sentido
 		// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
 		//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
 		
-		var userNumber = jQuery('#userNumberId').val();
-		jQuery.post('escritos/dueno/editClave.php', {pass01:pass01, userNumber:userNumber} )
-		.done(function(datosJSONStr, estatusForDONE, xhrObjetoForDONE){
-			//el getJSON no entra al .done y cae en .fail si detecta errores de parseo.
-			//Con el post tengo yo que usar un try block para detectar errores de parseo y mandarlo a jQuery fallas
-			try{
-				//alert('datosJSONStr: ' + datosJSONStr);
-				datosJSObj = JSON.parse(datosJSONStr);
-				//alert('datosJSObj.loguea: ' + datosJSObj.loguea);
-			}catch(errorParseo){
-				var datosJSONStrAsXHRTexto = datosJSONStr;
-				var textoEstatus = 'Error parseando la siguiente respuesta del servidor desde escritos/dueno/editClave.php en administrar :<br> Mensaje: ' + errorParseo.message;
-				var elError = errorParseo.name;
-				
-				var path = jQuery.encodeAndGetErrorPath(datosJSONStrAsXHRTexto, textoEstatus, elError); // first arg is not xhr Object, so no responseText member will be obtained in encodeAndGetErrorPath() at functiones.js - will produce an undefined
-				jQuery(window.location).attr('href', path);				
-			}
-			var usuario = jQuery.getNombre();
-			if(datosJSObj.editado){	
-				var feedback = 'Password de ' + usuario + ' fue editado.'; 
-				jQuery.feedback('form#adminEditClaveForm h3.feedback', feedback);
+		let userNumber = document.querySelector('#userNumberId').value;
+    let usuario = getNombre( userNumber );
+
+		formDataCl.append('pass01', pass01);  formDataCl.append('userNumber', userNumber);
+    const opciones = { body:formDataCl, method:'post' };
+
+	  fetch('escritos/dueno/editClave.php', opciones )
+	  .then(
+	  function(respuesta){
+	    console.log(' fetch, then 1');
+	    console.log(respuesta);
+	    return respuesta.text();
+	  })
+	  .then(
+	  function(dato){
+	    console.log(' fetch, then 2: ');
+	    console.log(dato);
+      /////////////////////////try catch////////////////////////
+      let datosJSOBJ;
+      try{
+        datosJSOBJ = JSON.parse( dato );
+      }
+      catch( err ){
+        throw new Error( err + '<br><br>' + dato ); 
+      }
+      //////////////////////////////////////////////////////////
+			if(datosJSOBJ.editado){	
+				let feedbackStr = 'Password de ' + usuario + ' fue editado.'; 
+				feedback('form#adminEditClaveForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
 			}else{
-				var feedback = 'Password de ' + usuario + ' no fue editado.';
-				jQuery.feedback('form#adminEditClaveForm h3.feedback', feedback);
+				let feedbackStr = 'Password de ' + usuario + ' no fue editado.';
+				feedback('form#adminEditClaveForm h3.feedback', feedbackStr, 'feedbackwarn', 'downdelayup');
 			}
-		})
-		.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-			var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-			var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-			jQuery(window.location).attr('href', path); 
-		});
-	}
-});	
+	  })
+	  .catch(
+	  function(error){
+	    const href = encodeAndGetErrorPath(error);
+	    window.location.href = href;
+	  });
+
+	}//if
+
+});//submit event listener
 
 /////////////////////////function to get nombre ; same as ajax to populate on home page ///////////
-jQuery.getNombre = function(){
-	jQuery.getJSON('escritos/dueno/getNombre.php',  {userNumber:userNumber} )
-	.done(function(dato, estatusForDONE, xhrObjetoForDONE){
-		return dato;
-	})
-	.fail(function(xhrObjetoForFAIL, textoEstatus, elError){
-		var xhrObjetoForFAILTexto = xhrObjetoForFAIL.responseText;
-		var path = jQuery.encodeAndGetErrorPath(xhrObjetoForFAILTexto, textoEstatus, elError);
-		jQuery(window.location).attr('href', path); 
-	});
+function getNombre( userNumber ){
+  let urlParams = new URLSearchParams('escritos/dueno/getNombre.php');
+  urlParams.set("userNumber", userNumber);
+  fetch('escritos/dueno/getNombre.php' + '?' + urlParams.toString())
+  .then(
+  function(respuesta){
+    console.log('view nepe fetch, then 1');
+    console.log(respuesta);
+    return respuesta.json();
+  })
+  .then(
+  function(dato){
+    console.log('view nepe fetch, then 2: ');
+    console.log(dato);
+    return dato; 
+  })
+  .catch(
+  function(error){
+    const href = encodeAndGetErrorPath(error);
+    window.location.href = href;
+  });
+
 }
