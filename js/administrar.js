@@ -6,25 +6,23 @@ hideThemSections();
 let formaCl = document.querySelector('form#adminEditClaveForm');
 let formDataCl = new FormData(formaCl);
 
-formaCl.addEventListener('submit',
+formaCl.addEventListener('submit', 
 function(evento){
-	evento.preventDefault(); //not making a submit (POST request) from html action.
+  evento.preventDefault();
+
+  let userNumber = document.querySelector('#userNumberId').value;
+  getNombre( userNumber, submitHandlerAEC );
+});//submit event listener
+
+function submitHandlerAEC( userNumber, usuario ){
 	let user = 'valorDummy';
 	let pass01 = document.querySelector('form#adminEditClaveForm #passwordId').value;
 	let pass02 = document.querySelector('form#adminEditClaveForm #passwordConfirmId').value; 
 	
   if( areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#adminEditClaveForm h3.feedback') ){
-		//Valid values son los q cumplen estas 3 cosas.
-		//Estas cosas se pueden chequear antes del post y evito post sin sentido
-		// 1)lenght >= 4; 2)only numbers or letters; 3)both pass are equal;
-		//Si tengo valores q fueron registrables entonces, Making a submit (POST request) here. Not in look=editDuenoShowEmpresas
-		
-		let userNumber = document.querySelector('#userNumberId').value;
-    let usuario = getNombre( userNumber );
 
 		formDataCl.append('pass01', pass01);  formDataCl.append('userNumber', userNumber);
     const opciones = { body:formDataCl, method:'post' };
-
 	  fetch('escritos/dueno/editClave.php', opciones )
 	  .then(
 	  function(respuesta){
@@ -61,7 +59,8 @@ function(evento){
 
 	}//if
 
-});//submit event listener
+}
+
 
 
 
@@ -69,14 +68,15 @@ function(evento){
 document.querySelector('form#adminNepesForm')
 .addEventListener('submit',
 function(evento){
-	evento.preventDefault(); //not making a submit (POST request) from html action.
-	
+  evento.preventDefault();
+  
   let userNumber = document.querySelector('#userNumber02Id').value;
-	let usuario = getNombre( userNumber );		
-	let label = '<label class="">' + 'Negocios de ' + usuario + '</label>'; 
-	document.querySelector('fieldset#labelContainer').innerHTML = label;
-	//document.querySelector('fieldset#labelContainer').append(label);
+  getNombre( userNumber, submitHandlerAN );
+});//submit event listener
 
+function submitHandlerAN( userNumber, usuario ){
+	let label = '<label class="cabe">' + 'Negocios de ' + usuario + '</label>'; 
+	document.querySelector('section#labelContainer').innerHTML = label;
 
   let urlParams = new URLSearchParams('escritos/dueno/getOwnNepesWithIds.php');
   urlParams.set("userNumber", userNumber);
@@ -96,9 +96,11 @@ function(evento){
 		let cuantos = 0;
 		datos.forEach(
     function(dato, index){
-			table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
+			table += '<tr><td>'
+      + '<i class="fa-solid fa-trash-alt"></i>'
+      + '<a href="portada.html?look=administrar'
 			+ '&acto=deleteNepe' +  '&nepeId=' + dato.nepeId + '">' 
-			+ dato.nepeNombre + '<i class="fas fa-trash-alt"></i>' 
+			+ dato.nepeNombre  
 			+ '</a></td></tr>';	
 			cuantos++;
 		});
@@ -106,23 +108,24 @@ function(evento){
 		if(cuantos > 1){
 			table += '<tr><td>Los ' + cuantos + ' negocios.</td></tr>';
 			table += '<tr><td> </td></tr>';		
-			table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
+			table += '<tr><td>'
+      + '<i class="fa-solid fa-trash-alt"></i>'
+      + '<a class="" href="portada.html?look=administrar'
 			+ '&acto=deleteHerNepes' +  '&userId=' + userNumber + '">' 
-			+ ' Borra ALL nepes de ' + dato + '<i class="fas fa-trash-alt"></i>' 
+			+ ' Borra ALL nepes de ' + usuario + '<i class="fa-solid fa-trash-alt"></i>' 
 			+ '</a></td></tr>';
 		}
 		table += '</table>';
 		document.querySelector('fieldset#tableContainer').innerHTML = table;
-		//document.querySelector('fieldset#tableContainer').appendChild(table);
   })
 	
-});//submit event listener
+}
 
 
 
-function getNombre( userNumber ){
+function getNombre( numero, f ){
   let urlParams = new URLSearchParams('escritos/dueno/getNombre.php');
-  urlParams.set("userNumber", userNumber);
+  urlParams.set("userNumber", numero);
   fetch('escritos/dueno/getNombre.php' + '?' + urlParams.toString())
   .then(
   function(respuesta){
@@ -131,10 +134,10 @@ function getNombre( userNumber ){
     return respuesta.json();
   })
   .then(
-  function(dato){
+  function(nombre){
     console.log('view nepe fetch, then 2: ');
-    console.log(dato);
-    return dato; 
+    console.log(nombre);
+    f( numero, nombre ); 
   })
   .catch(
   function(error){
