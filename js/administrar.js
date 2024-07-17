@@ -1,72 +1,5 @@
 hideThemSections();
 
-////////////////////////////////// //handle functions  ////////////////////////////////////////////
-//erase feedback when user writting
-document.querySelector('form#adminEditClaveForm  input')
-.addEventListener('keydown',
-function(){
-	feedback('form#adminEditClaveForm h3.feedback', '');
-});
-//erase feedback when user writting
-document.querySelector('form#adminNepesForm  input[type=text]')
-.addEventListener('keydown',
-function(){
-	feedback('form#adminNepesForm h3.feedback', '');
-});
-
-
-//handle form submit ; adminNepesForm
-document.querySelector('form#adminNepesForm')
-.addEventListener('submit',
-function(evento){
-	evento.preventDefault(); //not making a submit (POST request) from html action.
-	
-  let userNumber = document.querySelector('#userNumber02Id').value;
-	let usuario = getNombre( userNumber );		
-	let label = '<label class="">' + 'Negocios de ' + usuario + '</label>'; 
-	//document.querySelector('fieldset#labelContainer').innerHTML = '';
-	document.querySelector('fieldset#labelContainer').append(label);
-
-
-  let urlParams = new URLSearchParams('escritos/dueno/getOwnNepesWithIds.php');
-  urlParams.set("userNumber", userNumber);
-  fetch('escritos/dueno/getOwnNepesWithIds.php' + '?' + urlParams.toString())
-  .then(
-  function(respuesta){
-    console.log('view nepe fetch, then 1');
-    console.log(respuesta);
-    return respuesta.json();
-  })
-  .then(
-  function(datos){
-    console.log('view nepe fetch, then 2: ');
-    console.log(datos);
-
-    let table =  '<table class="subArea">';
-		let cuantos = 0;
-		datos.forEach(
-    function(dato, index){
-			table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
-			+ '&acto=deleteNepe' +  '&nepeId=' + dato.nepeId + '">' 
-			+ dato.nepeNombre + '<i class="fas fa-trash-alt"></i>' 
-			+ '</a></td></tr>';	
-			cuantos++;
-		});
-		
-		if(cuantos > 1){
-			table += '<tr><td>Los ' + cuantos + ' negocios.</td></tr>';
-			table += '<tr><td> </td></tr>';		
-			table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
-			+ '&acto=deleteHerNepes' +  '&userId=' + userNumber + '">' 
-			+ ' Borra ALL nepes de ' + dato + '<i class="fas fa-trash-alt"></i>' 
-			+ '</a></td></tr>';
-		}
-		table += '</table>';
-		//document.querySelector('fieldset#tableContainer').innerHTML = '';
-		document.querySelector('fieldset#tableContainer').appendChild(table);
-  })
-	
-});	
 
 
 //handle form submit ; adminEditClaveForm
@@ -130,7 +63,63 @@ function(evento){
 
 });//submit event listener
 
-/////////////////////////function to get nombre ; same as ajax to populate on home page ///////////
+
+
+//handle form submit ; adminNepesForm
+document.querySelector('form#adminNepesForm')
+.addEventListener('submit',
+function(evento){
+	evento.preventDefault(); //not making a submit (POST request) from html action.
+	
+  let userNumber = document.querySelector('#userNumber02Id').value;
+	let usuario = getNombre( userNumber );		
+	let label = '<label class="">' + 'Negocios de ' + usuario + '</label>'; 
+	document.querySelector('fieldset#labelContainer').innerHTML = label;
+	//document.querySelector('fieldset#labelContainer').append(label);
+
+
+  let urlParams = new URLSearchParams('escritos/dueno/getOwnNepesWithIds.php');
+  urlParams.set("userNumber", userNumber);
+  fetch('escritos/dueno/getOwnNepesWithIds.php' + '?' + urlParams.toString())
+  .then(
+  function(respuesta){
+    console.log('view nepe fetch, then 1');
+    console.log(respuesta);
+    return respuesta.json();
+  })
+  .then(
+  function(datos){
+    console.log('view nepe fetch, then 2: ');
+    console.log(datos);
+
+    let table =  '<table class="subArea">';
+		let cuantos = 0;
+		datos.forEach(
+    function(dato, index){
+			table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
+			+ '&acto=deleteNepe' +  '&nepeId=' + dato.nepeId + '">' 
+			+ dato.nepeNombre + '<i class="fas fa-trash-alt"></i>' 
+			+ '</a></td></tr>';	
+			cuantos++;
+		});
+		
+		if(cuantos > 1){
+			table += '<tr><td>Los ' + cuantos + ' negocios.</td></tr>';
+			table += '<tr><td> </td></tr>';		
+			table += '<tr><td><a class="" href="portada.html?look=adminDuenoNepes'
+			+ '&acto=deleteHerNepes' +  '&userId=' + userNumber + '">' 
+			+ ' Borra ALL nepes de ' + dato + '<i class="fas fa-trash-alt"></i>' 
+			+ '</a></td></tr>';
+		}
+		table += '</table>';
+		document.querySelector('fieldset#tableContainer').innerHTML = table;
+		//document.querySelector('fieldset#tableContainer').appendChild(table);
+  })
+	
+});//submit event listener
+
+
+
 function getNombre( userNumber ){
   let urlParams = new URLSearchParams('escritos/dueno/getNombre.php');
   urlParams.set("userNumber", userNumber);
@@ -154,3 +143,20 @@ function getNombre( userNumber ){
   });
 
 }
+
+
+
+//erase feedback when user writting
+/*
+document.querySelector('form#adminEditClaveForm  input')
+.addEventListener('keydown',
+function(){
+	feedback('form#adminEditClaveForm h3.feedback', '');
+});
+//erase feedback when user writting
+document.querySelector('form#adminNepesForm  input[type=text]')
+.addEventListener('keydown',
+function(){
+	feedback('form#adminNepesForm h3.feedback', '');
+});
+*/
