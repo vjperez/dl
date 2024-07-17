@@ -2,11 +2,14 @@ console.log('funcionesMainContenido.js   [loading...]');
 
 
 function isReady( fun ){
-  console.log('isReady trying to run fun');
-  if (document.readyState !== 'loading'){
-    fun();   return;
+  console.log('isReady() trying to run fun');
+  if (document.readyState === 'complete'){
+    //interactive and loading are also states
+    fun();
+    return;
   }else{
-    document.addEventListener('DOMContentLoaded', fun);
+    document.addEventListener('load', fun);
+    //DOMContentLoaded is another state
   }
 }
 
