@@ -37,6 +37,8 @@ a:hover, a:focus { color:var(--linkcolorhover);
                 font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace;
                 text-decoration:none; }
 
+div#adminNepesForm a:link, div#adminNepesForm a:visited, div#adminNepesForm a { color: var(--warncolor); }
+
 form button[type="submit"]      , button[type="button"]      {  
     background-color:var(--navegafondocolor); 
     color: var(--navegaletracolor);
@@ -110,8 +112,12 @@ form[id$=Form] h3.feedback   { font-family:'Oswald', mono, monospace; font-weigh
  section#cuando td.hora,  section#donde span.texto, section#quien h5, div#opcionesdiv h2
 { color:var(--labelyheadercolor);   font-weight:bolder;}
 
- i[class*="fa-trash-alt"], i[class*="fa-chevron-circle"]
+i[class*="fa-chevron-circle"]
 {  color:var(--linkcolor); }
+
+i[class*="fa-trash-alt"]
+{  color:var(--warncolor); }
+
 i[class*="fa-trash-alt"]:hover, i[class*="fa-chevron-circle"]:hover,
 i[class*="fa-trash-alt"]:focus, i[class*="fa-chevron-circle"]:focus
 {  color:var(--linkcolorhover); }
