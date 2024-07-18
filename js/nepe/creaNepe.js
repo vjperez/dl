@@ -3,18 +3,17 @@ hideThemSections();
 
 //major task 1
 //build formdata and make post
-document.querySelector('form#nepeForm')
-.addEventListener('submit',
+let forma = document.querySelector('form#nepeForm');
+forma.addEventListener('submit',
 function(evento){
 	evento.preventDefault(); //not making a submit (POST request) from html action
 	
-  // 1) build and edit formdata
-	var forma = document.querySelector('nepeForm');
-	var formData = new FormData(forma);
+  // 1) build and edit formdata 
+	let formData = new FormData(forma);
 
 	//nombre
-	var regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _  +  -	
-	var nombre = cleanStr( document.querySelector('form#nepeForm input[name=nombre]').value, regexp );
+	let regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _  +  -	
+	let nombre = cleanStr( document.querySelector('form#nepeForm input[name=nombre]').value, regexp );
 	if(isVacioStr(nombre)){
 		formData.delete("nombre"); 			formData.append('nombre', 'sin nombre - no name provided');
 	}else{
@@ -23,7 +22,7 @@ function(evento){
 
 	//cuando is a JS object, it is stringified before sending it
 	regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú:,@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -	  y  : ,
-	var cuando = {  
+	let cuando = {  
     lun:cleanStr( document.querySelector('form#nepeForm input[name=dia1]').value, regexp ), 
     mar:cleanStr( document.querySelector('form#nepeForm input[name=dia2]').value, regexp ),
     mie:cleanStr( document.querySelector('form#nepeForm input[name=dia3]').value, regexp ),
@@ -43,7 +42,7 @@ function(evento){
 	formData.append('cuando', cuando);
 
 	console.log("form built");
-	//for (var value of formData.values()) {
+	//for (let value of formData.values()) {
 	//	console.log(value);
 	//}
 	console.log(formData);
