@@ -31,7 +31,7 @@ switch(acto){
       if(datosJSOBJ.nepeBorrado){
 
       }else{ 
-        throw new Error( "borrado = false, 0 affected rows" ); 
+        throw new Error( "borrado = false, 0 affected rows." ); 
       }
     })
     .catch(
@@ -60,10 +60,10 @@ switch(acto){
         throw new Error( err + '<br><br>' + dato ); 
       }
       //////////////////////////////////////////////////////////
-      if(datosJSOBJ.nepeBorrado){
+      if(datosJSOBJ.nepeBorrados > 0){
 
       }else{ 
-        throw new Error( "borrado = false, 0 affected rows" ); 
+        throw new Error( "borrados = 0, " + datosJSOBJ.nepeBorrados + " affected rows." ); 
       }
     })
     .catch(function(error){

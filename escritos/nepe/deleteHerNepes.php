@@ -9,13 +9,13 @@ if(isset($_SESSION['dueno_id'])){
 
 		require_once 'deleteHerNepes/getHerNepeIdsQuery.php';
 		if($recurso){
-            $cuantos = 0;
+      $cuantos = 0;
 			while($nepe_to_delete = pg_fetch_row($recurso)[0] ){ 
-                $deleteNepeQuery = "DELETE 
-                FROM nepe
-                WHERE id = '$nepe_to_delete'";
-                pg_query($cnx, $deleteNepeQuery);
-                $cuantos++;
+        $deleteNepeQuery = "DELETE 
+        FROM nepe
+        WHERE id = '$nepe_to_delete'";
+        pg_query($cnx, $deleteNepeQuery);
+        $cuantos++;
 
 				// delete foto files now that nepe on db was deleted
 				require_once 'configConstants/constants.php';
@@ -25,7 +25,7 @@ if(isset($_SESSION['dueno_id'])){
 				}
 				//
 			}
-            $respuesta = json_decode('{"nepesBorrados":' . $cuantos . '}');
+      $respuesta = json_decode('{"nepesBorrados":' . $cuantos . '}');
 			pg_close($cnx);
 			echo json_encode($respuesta); 
 		}else{
