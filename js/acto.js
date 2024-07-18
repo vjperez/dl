@@ -8,67 +8,10 @@ switch(acto){
     logout();
   break;
   case 'deleteNepe':
-    const nepeId = urlParametro('nepeId');
-    
-    let urlParams = new URLSearchParams('escritos/deleteNepe.php');
-    urlParams.set("nepeId", nepeId);
-    fetch('escritos/nepe/deleteNepe.php' + '?' + urlParams.toString() )
-    .then(
-    function(respuesta){
-      return respuesta.text();
-    })
-    .then(
-    function(dato){
-      /////////////////////////try catch////////////////////////
-      let datosJSOBJ;
-      try{
-        datosJSOBJ = JSON.parse( dato );
-      }
-      catch( err ){
-        throw new Error( err + '<br><br>' + dato ); 
-      }
-      //////////////////////////////////////////////////////////
-      if(datosJSOBJ.nepeBorrado){
-
-      }else{ 
-        throw new Error( "borrado = false, 0 affected rows." ); 
-      }
-    })
-    .catch(
-    function(error){
-      window.location.href = encodeAndGetErrorPath(error);
-    });
+    deleteNepe();
   break;
   case 'deleteHerNepes':
-    const userId = urlParametro('userId');
-
-    urlParams = new URLSearchParams('escritos/deleteHerNepes.php');
-    urlParams.set("userId", userId);
-    fetch('escritos/deleteHerNepes.php' + '?' + urlParams.toString() )
-    .then(
-    function(respuesta){
-      return respuesta.text();
-    })
-    .then(
-    function(dato){
-      /////////////////////////try catch////////////////////////
-      let datosJSOBJ;
-      try{
-        datosJSOBJ = JSON.parse( dato );
-      }
-      catch( err ){
-        throw new Error( err + '<br><br>' + dato ); 
-      }
-      //////////////////////////////////////////////////////////
-      if(datosJSOBJ.nepeBorrados > 0){
-
-      }else{ 
-        throw new Error( "borrados = 0, " + datosJSOBJ.nepeBorrados + " affected rows." ); 
-      }
-    })
-    .catch(function(error){
-      window.location.href = encodeAndGetErrorPath(error);
-    });			
+    deleteHerNepes();
   break;
   
   case '':
@@ -79,35 +22,6 @@ switch(acto){
 }//acto switch
 
 
-function isSessionSet( sessionName ){
-    console.log('acto.js, before isSessionSet fetch: ' + logueado);
-
-    let urlParams = new URLSearchParams('escritos/session/isSessionSet.php');
-    urlParams.set("key", sessionName);
-    fetch('escritos/session/isSessionSet.php' + '?' + urlParams.toString() )
-    .then(function(respuesta){
-      console.log('acto.js, isSessionSet fetch, then 1');
-      console.log(respuesta);
-      return respuesta.json();
-    })
-    .then(function(dato){
-      console.log('acto.js isSessionSet fetch, then 2: ');
-      console.log(dato);
-
-      logueado = dato.isSet;
-      loadAfterActo();
-      return;
-    })
-    .catch(
-      function(error){
-        console.error('catch...');
-        console.error(error);
-        //next href reasign will restart the process at initLoad.js
-        //and eventually here again... causing infinite loop
-        //const href = encodeAndGetErrorPath(error);
-        //window.location.href = href;
-    });
-}
 
 
 function logout(){
@@ -141,6 +55,114 @@ function logout(){
       //window.location.href = href;
   });
 }
+
+
+
+
+function deleteNepe(){
+  const nepeId = urlParametro('nepeId');
+    
+  let urlParams = new URLSearchParams('escritos/deleteNepe.php');
+  urlParams.set("nepeId", nepeId);
+  fetch('escritos/nepe/deleteNepe.php' + '?' + urlParams.toString() )
+  .then(
+  function(respuesta){
+    return respuesta.text();
+  })
+  .then(
+  function(dato){
+    /////////////////////////try catch////////////////////////
+    let datosJSOBJ;
+    try{
+      datosJSOBJ = JSON.parse( dato );
+    }
+    catch( err ){
+      throw new Error( err + '<br><br>' + dato ); 
+    }
+    //////////////////////////////////////////////////////////
+    if(datosJSOBJ.nepeBorrado){
+      loadAfterActo();
+      return;
+    }else{ 
+      throw new Error( "borrado = false, 0 affected rows." ); 
+    }
+  })
+  .catch(
+  function(error){
+    window.location.href = encodeAndGetErrorPath(error);
+  });
+}
+
+
+
+
+function deleteHerNepes(){
+  const userId = urlParametro('userId');
+
+  urlParams = new URLSearchParams('escritos/deleteHerNepes.php');
+  urlParams.set("userId", userId);
+  fetch('escritos/deleteHerNepes.php' + '?' + urlParams.toString() )
+  .then(
+  function(respuesta){
+    return respuesta.text();
+  })
+  .then(
+  function(dato){
+    /////////////////////////try catch////////////////////////
+    let datosJSOBJ;
+    try{
+      datosJSOBJ = JSON.parse( dato );
+    }
+    catch( err ){
+      throw new Error( err + '<br><br>' + dato ); 
+    }
+    //////////////////////////////////////////////////////////
+    if(datosJSOBJ.nepeBorrados > 0){
+      loadAfterActo();
+      return;
+    }else{ 
+      throw new Error( "borrados = 0, " + datosJSOBJ.nepeBorrados + " affected rows." ); 
+    }
+  })
+  .catch(function(error){
+    window.location.href = encodeAndGetErrorPath(error);
+  });
+}
+
+
+
+
+function isSessionSet( sessionName ){
+  console.log('acto.js, before isSessionSet fetch: ' + logueado);
+
+  let urlParams = new URLSearchParams('escritos/session/isSessionSet.php');
+  urlParams.set("key", sessionName);
+  fetch('escritos/session/isSessionSet.php' + '?' + urlParams.toString() )
+  .then(function(respuesta){
+    console.log('acto.js, isSessionSet fetch, then 1');
+    console.log(respuesta);
+    return respuesta.json();
+  })
+  .then(function(dato){
+    console.log('acto.js isSessionSet fetch, then 2: ');
+    console.log(dato);
+
+    logueado = dato.isSet;
+    loadAfterActo();
+    return;
+  })
+  .catch(
+    function(error){
+      console.error('catch...');
+      console.error(error);
+      //next href reasign will restart the process at initLoad.js
+      //and eventually here again... causing infinite loop
+      //const href = encodeAndGetErrorPath(error);
+      //window.location.href = href;
+  });
+}
+
+
 
 
 function loadAfterActo(){
