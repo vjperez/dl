@@ -5,7 +5,7 @@ if(isset($_SESSION['dueno_id'])){
 		$nepe_to_delete = $_REQUEST['nepeId']; 
 
 		//conecta al db
-		require_once 'conecta/conecta.php';
+		require_once '../conecta/conecta.php';
 		//i am sure i have a connection, because an exception was NOT thrown at conecta
 
 		require_once 'deleteNepe/deleteNepeQuery.php';
@@ -13,7 +13,7 @@ if(isset($_SESSION['dueno_id'])){
 			if(pg_affected_rows($recurso) == 1){
 				
 				// delete foto files now that nepe on db was deleted
-				require_once 'configConstants/constants.php';
+				require_once '../configConstants/constants.php';
 				$fotoTarget = $fotos_subidas_dir . $nepe_to_delete . '[abcde].';
 				foreach(glob($fotoTarget . '*') as $fotoToErase){
 					if(file_exists ($fotoToErase)) unlink($fotoToErase);

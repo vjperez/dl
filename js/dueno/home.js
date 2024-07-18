@@ -75,6 +75,8 @@ function(error){
 hideThemSections();
 
 
+
+
 let formaCl = document.querySelector('form#editClaveForm');
 let formDataCl = new FormData(formaCl);
 
@@ -128,6 +130,8 @@ function(evento){
 }); // editClaveForm submit eventlistener
 
 
+
+
 let formaCon = document.querySelector('form#editContactosForm');
 let formDataCon = new FormData(formaCon);
 
@@ -171,8 +175,11 @@ function(evento){
   function(error){
     const href = encodeAndGetErrorPath(error);
     window.location.href = href;
-  });    
+  });
+
 }); // editContactosForm submit
+
+
 
 //erase feedback when user writes
 function showHideConfirm(){
