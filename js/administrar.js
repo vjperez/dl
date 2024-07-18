@@ -112,7 +112,7 @@ function submitHandlerAN( userNumber, usuario ){
       + '<i class="fa-solid fa-trash-alt"></i>'
       + '<a class="" href="portada.html?look=administrar'
 			+ '&acto=deleteHerNepes' +  '&userId=' + userNumber + '">' 
-			+ ' Borra ALL nepes de ' + usuario + '<i class="fa-solid fa-trash-alt"></i>' 
+			+ ' Borra ALL nepes de ' + usuario 
 			+ '</a></td></tr>';
 		}
 		table += '</table>';
