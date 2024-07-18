@@ -12,15 +12,30 @@ switch(acto){
     
     let urlParams = new URLSearchParams('escritos/deleteNepe.php');
     urlParams.set("nepeId", nepeId);
-    fetch('escritos/deleteNepe.php' + '?' + urlParams.toString() )
-    .then(function(respuesta){
-      return respuesta.json();
+    fetch('escritos/nepe/deleteNepe.php' + '?' + urlParams.toString() )
+    .then(
+    function(respuesta){
+      return respuesta.text();
     })
-    .then(function(dato){
-      if(dato.nepeBorrado)  {  }
-      else  {  }
+    .then(
+    function(dato){
+      /////////////////////////try catch////////////////////////
+      let datosJSOBJ;
+      try{
+        datosJSOBJ = JSON.parse( dato );
+      }
+      catch( err ){
+        throw new Error( err + '<br><br>' + dato ); 
+      }
+      //////////////////////////////////////////////////////////
+      if(datosJSOBJ.nepeBorrado){
+
+      }else{ 
+        throw new Error( "borrado = false, 0 affected rows" ); 
+      }
     })
-    .catch(function(error){
+    .catch(
+    function(error){
       window.location.href = encodeAndGetErrorPath(error);
     });
   break;
@@ -30,12 +45,26 @@ switch(acto){
     urlParams = new URLSearchParams('escritos/deleteHerNepes.php');
     urlParams.set("userId", userId);
     fetch('escritos/deleteHerNepes.php' + '?' + urlParams.toString() )
-    .then(function(respuesta){
-      return respuesta.json();
+    .then(
+    function(respuesta){
+      return respuesta.text();
     })
-    .then(function(dato){
-      if(dato.nepeBorrado)  {  }
-      else  {  }
+    .then(
+    function(dato){
+      /////////////////////////try catch////////////////////////
+      let datosJSOBJ;
+      try{
+        datosJSOBJ = JSON.parse( dato );
+      }
+      catch( err ){
+        throw new Error( err + '<br><br>' + dato ); 
+      }
+      //////////////////////////////////////////////////////////
+      if(datosJSOBJ.nepeBorrado){
+
+      }else{ 
+        throw new Error( "borrado = false, 0 affected rows" ); 
+      }
     })
     .catch(function(error){
       window.location.href = encodeAndGetErrorPath(error);
