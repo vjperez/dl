@@ -94,8 +94,8 @@ document.querySelector('form#nepeForm')
 function(evento){
 	evento.preventDefault();
 	fotoArr();
-	setTimeout(function(){ buildFormData(); }, 5);
-	setTimeout(function(){ postea(); }, 10);	
+	setTimeout(function(){ buildFormData(); }, 10);
+	setTimeout(function(){ postea(); }, 20);	
 });  //submit
 
 
@@ -213,41 +213,40 @@ function(evento){
 		//  a) formdata built
 	}//function
 
-	function postea(){
+	function postea(){ 
 	  //alert('@ postea despues de delay...');
 	  const opciones = { body:formData, method:'post' };
 	  fetch('escritos/nepe/update.php', opciones )
 	  .then(
 	  function(respuesta){
-		console.log(' fetch, then 1');
-		console.log(respuesta);
-	  return respuesta.text();  
+      console.log(' fetch, then 1');
+      console.log(respuesta);
+      return respuesta.text();  
 	  })
 	  .then(
 	  function(datos){
-		console.log(' fetch, then 2: ');
-		console.log( datos );
-		/////////////////////////try catch////////////////////////
-		let datosJSOBJ;
-		try{
-			datosJSOBJ = JSON.parse( datos );
-		}
-		catch( err ){
-			throw new Error( err + '<br><br>' + datos ); 
-		}
-	    //////////////////////////////////////////////////////////
-		if(datosJSOBJ.nepeCoreUpdated && datosJSOBJ.queDondeUpdated && (datosJSOBJ.videoInserted || datosJSOBJ.videoUpdated)){
-			window.location.href = window.location.pathname + '?look=viewNepe&nepeId=' + datosJSOBJ.nepeId;
-		}else{
-			//aqui quiza falta algo
-			//feedback('form#updateNepeForm h2', datosJSObj.feedback);
-		}
-	  
+      console.log(' fetch, then 2: ');
+      console.log( datos );
+      /////////////////////////try catch////////////////////////
+      let datosJSOBJ;
+      try{
+        datosJSOBJ = JSON.parse( datos );
+      }
+      catch( err ){
+        throw new Error( err + '<br><br>' + datos ); 
+      }
+      //////////////////////////////////////////////////////////
+      if(datosJSOBJ.nepeCoreUpdated && datosJSOBJ.queDondeUpdated && (datosJSOBJ.videoInserted || datosJSOBJ.videoUpdated)){
+        window.location.href = window.location.pathname + '?look=viewNepe&nepeId=' + datosJSOBJ.nepeId;
+      }else{
+        //falta algo ?
+        //feedback('form#updateNepeForm h2', datosJSOBJ.feedback);
+      } 
 	  })
 	  .catch(
 	  function(error){
-		const href = encodeAndGetErrorPath(error);
-		window.location.href = href;
+      const href = encodeAndGetErrorPath(error);
+      window.location.href = href;
 	  });
 	}//postea function
 	
