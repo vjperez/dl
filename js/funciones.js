@@ -20,7 +20,7 @@ function cleanStr(str, patron) {
   //patron comes mainly from crea y update nepe, y busca
 
   //replace characters matching a patron with '_'
-  let cleanedstr = str.replace(patron, '_');
+  let cleanedstr = str.replace(patron, '|');
   patron = new RegExp(/[\s]+/g); // 1 or more continuous blank spaces, global
   cleanedstr = cleanedstr.replace(patron, ' ');
   patron = new RegExp(/^\s+|\s+$/gm); // 1 or more space at begginning or end, global and multiline - a trim
