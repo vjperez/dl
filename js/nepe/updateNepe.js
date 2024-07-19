@@ -89,8 +89,8 @@ hideThemSections();
 
 //task 2
 //build formdata with cleanStr() and isVacioStr() returned values ... and make post
-document.querySelector('form#nepeForm')
-.addEventListener('submit',
+let forma = document.querySelector('form#nepeForm');
+forma.addEventListener('submit',
 function(evento){
 	evento.preventDefault();
 	fotoArr();
@@ -126,7 +126,6 @@ function(evento){
 		}
 	}
 
-	let forma = document.querySelector('form#nepeForm');
 	let formData = new FormData(forma);
 	function buildFormData(){
 		// a) build and edit formdata
