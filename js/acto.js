@@ -2,6 +2,8 @@ console.log('acto.js   [loading...]');
 
 var logueado;
 
+//logueado must be set on every case
+//then loadAfterActo(), runs logueado dependent contenido
 const acto = urlParametro('acto');
 switch(acto){
   case 'logout':
@@ -57,12 +59,10 @@ function logout(){
 }
 
 
-
-
 function deleteNepe(){
   const nepeId = urlParametro('nepeId');
     
-  let urlParams = new URLSearchParams('escritos/deleteNepe.php');
+  let urlParams = new URLSearchParams('escritos/nepe/deleteNepe.php');
   urlParams.set("nepeId", nepeId);
   fetch('escritos/nepe/deleteNepe.php' + '?' + urlParams.toString() )
   .then(
@@ -81,6 +81,7 @@ function deleteNepe(){
     }
     //////////////////////////////////////////////////////////
     if(datosJSOBJ.nepeBorrado){
+      logueado = true;//no need to ask server
       loadAfterActo();
       return;
     }else{ 
@@ -94,14 +95,12 @@ function deleteNepe(){
 }
 
 
-
-
 function deleteHerNepes(){
   const userId = urlParametro('userId');
 
-  urlParams = new URLSearchParams('escritos/deleteHerNepes.php');
+  urlParams = new URLSearchParams('escritos/nepe/deleteHerNepes.php');
   urlParams.set("userId", userId);
-  fetch('escritos/deleteHerNepes.php' + '?' + urlParams.toString() )
+  fetch('escritos/nepe/deleteHerNepes.php' + '?' + urlParams.toString() )
   .then(
   function(respuesta){
     return respuesta.text();
@@ -118,6 +117,7 @@ function deleteHerNepes(){
     }
     //////////////////////////////////////////////////////////
     if(datosJSOBJ.nepeBorrados > 0){
+      logueado = true;//no need to ask server
       loadAfterActo();
       return;
     }else{ 
@@ -128,8 +128,6 @@ function deleteHerNepes(){
     window.location.href = encodeAndGetErrorPath(error);
   });
 }
-
-
 
 
 function isSessionSet( sessionName ){
@@ -164,7 +162,7 @@ function isSessionSet( sessionName ){
 
 
 
-
+//runs logueado dependent contenido
 function loadAfterActo(){
   ponScript('js/navButtons.js');
   ponScript('js/getMainContenido.js');

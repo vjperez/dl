@@ -134,7 +134,7 @@ function(evento){
 		let regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -
 		let nombre = cleanStr( document.querySelector('fieldset#nombreFieldset input[name=nombre]').value, regexp );
 		if(isVacioStr(nombre)){
-			formData.delete("nombre"); 			formData.append('nombre', 'sin nombre - no name provided');
+			formData.delete("nombre"); 			formData.append('nombre', 'no-name-provided');
 		}else{
 			formData.delete("nombre"); 			formData.append('nombre', nombre);
 		}
@@ -170,7 +170,7 @@ function(evento){
 		regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú.:/=?&@._+-]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=?& plus los de login   @ . _  + -
 		let videoUrl = cleanStr( document.querySelector('fieldset#videoFieldset textarea[name=videoUrl]').value, regexp );
 		if(isVacioStr(videoUrl)){
-			formData.delete("videoUrl"); 		formData.append('videoUrl', 'no video provided');
+			formData.delete("videoUrl"); 		formData.append('videoUrl', 'no-video-provided');
 		}else{
 			formData.delete("videoUrl"); 		formData.append('videoUrl', videoUrl);
 		}
