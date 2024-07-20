@@ -10,14 +10,15 @@ if(isset($_SESSION['dueno_id'])){
 	require_once 'deleteHerNepes/getHerNepeIdsQuery.php';
 	if($recurso){
 		$cuantos = 0;
-		while($nepe_to_delete = pg_fetch_row($recurso)[0] ){ 
+		while( $fila = pg_fetch_row($recurso) ){ 
+      $nepe_to_delete = $fila[0];
 			$deleteNepeQuery = "DELETE 
 			FROM nepe
 			WHERE id = '$nepe_to_delete'";
 			pg_query($cnx, $deleteNepeQuery);
 			$cuantos++;
 			// delete foto files now that nepe on db was deleted
-			require_once 'configConstants/constants.php';
+			require_once '../configConstants/constants.php';
 			$fotoTarget = $fotos_subidas_dir . $nepe_to_delete . '[abcde].';
 			foreach(glob($fotoTarget . '*') as $fotoToErase){
 				if(file_exists ($fotoToErase)) unlink($fotoToErase);

@@ -116,12 +116,12 @@ function deleteHerNepes(){
       throw new Error( err + '<br><br>' + dato ); 
     }
     //////////////////////////////////////////////////////////
-    if(datosJSOBJ.nepeBorrados > 0){
+    if(datosJSOBJ.nepesBorrados > 0){
       logueado = true;//no need to ask server
       loadAfterActo();
       return;
     }else{ 
-      throw new Error( "borrados = 0, " + datosJSOBJ.nepeBorrados + " affected rows." ); 
+      throw new Error( "borrados = 0, " + datosJSOBJ.nepesBorrados + " affected rows." ); 
     }
   })
   .catch(function(error){
