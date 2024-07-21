@@ -21,7 +21,10 @@ function(datos){
 	datos.forEach(
 	function(item, index){
 		//alert( datos[index].nepeId );
-		htmlForMain += '<fieldset class="notHidable"><label>'  + item.queDondeTag  + '</label></fieldset>' + '<h5>[' + item.ranqueoDeNepe + ']</h5>';
+		htmlForMain += '<section>'
+					+  '<label class="cabe">'  + item.queDondeTag  + '</label>'
+					+  '<label class="explica">[' + item.ranqueoDeNepe + ']</label>'
+					+ '</section>';
 		//htmlForMain += '<fieldset class="notHidable"><label>'  + queDondeTag  + '</label></fieldset>';
 		
 		htmlForMain += '<div id="nepefotos">';
