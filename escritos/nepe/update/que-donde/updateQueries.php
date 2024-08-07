@@ -10,7 +10,10 @@ function prepareToBeIdsQueries($tableName, $cnx){
 function getOrCreateToBeIds($tableName, $frasesArr, $cnx){
 	$toBeIds = array();
 	foreach($frasesArr as $frase){
-		if(is_null($frase)) continue;  //ignore empty 'frases' values from user
+		if(is_null($frase)) 
+      continue;  //ignore empty 'frases' values from user
+    else
+      $frase = strtolower($frase);
 		$recurso = pg_execute($cnx, "preparadoQueryIsAlready" . $tableName . "Frase", array($frase));
 		if($recurso){
 			if( $fila = pg_fetch_row($recurso) ){
@@ -20,7 +23,7 @@ function getOrCreateToBeIds($tableName, $frasesArr, $cnx){
 				if($recurso){
 					$fila = pg_fetch_row($recurso);
 					array_push($toBeIds, $fila[0]);
-				}else{
+        }else{
 					pg_close($cnx);
 					throw new Exception('Mal query.  Sin RECURSO, para preparadoQueryInsert' . $tableName . 'Frase en: ' . __FILE__ );
 				}
@@ -55,8 +58,8 @@ function getCurrentIds($tableName, $nepe_id, $cnx){
 
 function prepareMakeRemoveQueries($tableName, $cnx){
 	//insert - prepared queries
-	$queryAddLink = "INSERT INTO nepe_" . $tableName . " (" . $tableName . "_id, nepe_id, creado) VALUES($1, $2, NOW()::date)";
-	pg_prepare($cnx, "preparadoQueryAdd" . $tableName . "Link", $queryAddLink);
+  $queryAddLink = "INSERT INTO nepe_" . $tableName . " (" . $tableName . "_id, nepe_id, creado) VALUES($1, $2, NOW()::date)";
+  pg_prepare($cnx, "preparadoQueryAdd" . $tableName . "Link", $queryAddLink);
 	//remove - prepared queries
 	$queryGetCount = "SELECT COUNT(nepe_id) FROM nepe_" . $tableName . " WHERE " . $tableName . "_id=$1 GROUP BY " . $tableName . "_id";
 	pg_prepare($cnx, "preparadoQueryGet" . $tableName . "Count", $queryGetCount);
