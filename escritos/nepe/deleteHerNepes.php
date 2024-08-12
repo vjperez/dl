@@ -11,6 +11,12 @@ if(isset($_SESSION['dueno_id'])){
   $recurso_ghn = pg_query($cnx, $getHerNepeIdsQuery);
 	if($recurso_ghn){
     require_once 'update/que-donde/updateQueries.php';
+    prepareCurrentIdsQueries('Que', $cnx);
+    prepareMakeRemoveQueries('Que', $cnx);
+    prepareCurrentIdsQueries('Donde', $cnx);
+    prepareMakeRemoveQueries('Donde', $cnx);
+
+    require_once 'deleteNepe/deleteNepeQuery.php';
 
 		$cuantos = 0;
 		while( $fila = pg_fetch_row($recurso_ghn) ){  
@@ -19,20 +25,14 @@ if(isset($_SESSION['dueno_id'])){
       //////////////////// deleting que and donde ////////////////
       $toBeIdsArr = array();// empty for both que and donde
 
-      prepareCurrentIdsQueries('Que', $cnx);
       $areIdsArr  = getCurrentIds('Que',   $nepe_to_delete, $cnx);
-      prepareMakeRemoveQueries('Que', $cnx);
       makeAndRemoveLinks('Que', $nepe_to_delete, $areIdsArr, $toBeIdsArr, $cnx);
       
-
-      prepareCurrentIdsQueries('Donde', $cnx);
       $areIdsArr  = getCurrentIds('Donde',   $nepe_to_delete, $cnx);
-      prepareMakeRemoveQueries('Donde', $cnx);
       makeAndRemoveLinks('Donde', $nepe_to_delete, $areIdsArr, $toBeIdsArr, $cnx);
       //////////////////// deleting que and donde ////////////////
 
-      require_once 'deleteNepe/deleteNepeQuery.php';
-      $recurso_dn = pg_query($cnx, $deleteNepeQuery);
+      $recurso_dn = pg_execute($cnx, "preparadoQueryDeleteNepe", array($nepe_to_delete));
       if($recurso_dn){		 
         if(pg_affected_rows($recurso_dn) == 1){
           $cuantos++;
