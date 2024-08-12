@@ -1,4 +1,4 @@
-function ponScript(scriptSrc) {
+function ponScript(scriptSrc) { 
   const scriptEle = document.createElement('script');
   scriptEle.src = scriptSrc; 
   scriptEle.async = false;
