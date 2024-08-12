@@ -58,7 +58,7 @@ populateUpdateNepeForm = function(datos){
 			//en submit entran al arreglo, luego de pasar por cleanStr() y  isNotVacioStr()
 		});
 	}
-}//populate function
+}//populate function 
 
 //get data to populate form
 let index = urlParametro('index');
@@ -93,9 +93,10 @@ let forma = document.querySelector('form#nepeForm');
 forma.addEventListener('submit',
 function(evento){
 	evento.preventDefault();
-	fotoArr();
-	setTimeout(function(){ buildFormData(); }, 10);
-	setTimeout(function(){ postea(); }, 20);	
+	//fotoArr();
+	setTimeout(function(){ fotoArr(); }, 0);
+	setTimeout(function(){ buildFormData(); }, 200);
+	setTimeout(function(){ postea(); }, 400);	
 });  //submit
 
 
@@ -117,7 +118,8 @@ function(evento){
 				let unFile = filesOnFotoArr[index];
 				if( filesOnFotoArr[index].type.toLowerCase().startsWith("image") ){
 					console.log("calling resizeImage(), file:" + index);
-					resizeImage(index, unFile, formData);
+					//resizeImage(index, unFile, formData);
+					setTimeout(function(){ resizeImage(index, unFile, formData); }, 100);
 				}else{ 
 					console.log("skipping file:" + index);
 					continue; 
