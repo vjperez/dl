@@ -2,6 +2,8 @@
 
 $deleteNepeQuery = "DELETE 
 FROM nepe
-WHERE id = '$nepe_to_delete'"; 
+WHERE id = $1";
+
+pg_prepare($cnx, "preparadoQueryDeleteNepe", $deleteNepeQuery);  
 
 ?>
