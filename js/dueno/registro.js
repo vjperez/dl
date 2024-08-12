@@ -54,7 +54,7 @@ function showHideConfirm(evento){
   const usertb = document.querySelector('#usernameId').value;
   const pass01 = document.querySelector('#passwordId').value;
   if( usertb.length > 0  &&  pass01.length > 0 ){
-    document.querySelector('fieldset label.confirm').style.display = '';
+    document.querySelector('label.confirm').style.display = '';
     document.querySelector('input.confirm').style.display = '';
   }else{
     document.querySelector('label.confirm').style.display = 'none';
