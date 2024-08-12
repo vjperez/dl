@@ -2,11 +2,11 @@
 
 session_start();
 if(isset($_SESSION['dueno_id'])){
-		$nepe_to_delete = $_REQUEST['nepeId']; 
+	$nepe_to_delete = $_REQUEST['nepeId']; 
 
-		//conecta al db
-		require_once '../conecta/conecta.php';
-		//i am sure i have a connection, because an exception was NOT thrown at conecta
+	//conecta al db
+	require_once '../conecta/conecta.php';
+	//i am sure i have a connection, because an exception was NOT thrown at conecta
 
 
     //////////////////// deleting que and donde ////////////////
@@ -26,8 +26,8 @@ if(isset($_SESSION['dueno_id'])){
     //////////////////// deleting que and donde ////////////////
 
 
-		require_once 'deleteNepe/deleteNepeQuery.php';
-    $recurso = pg_query($cnx, $deleteNepeQuery);
+	require_once 'deleteNepe/deleteNepeQuery.php';
+	$recurso = pg_execute($cnx, "preparadoQueryDeleteNepe", array($nepe_to_delete));
 		if($recurso){		 
 			if(pg_affected_rows($recurso) == 1){
 				
