@@ -3,15 +3,23 @@ fetch('escritos/nepe/read/getRecentNepes.php')
 function(respuesta){
   console.log('view nepe fetch, then 1');
   console.log(respuesta);
-  return respuesta.json();
+  return respuesta.text();
 })
 .then(
 function(datos){
   console.log('view nepe fetch, then 2: ');
   console.log(datos);
-  
+  /////////////////////////try catch////////////////////////
+  let datosJSOBJArr;
+  try{
+    datosJSOBJArr = JSON.parse( datos );
+  }
+  catch( err ){
+    throw new Error( err + '<br><br>' + datos ); 
+  }
+  ///////////////////////////////////////////////
 	let tableRows = '';
-	datos.forEach(
+	datosJSOBJArr.forEach(
 	function(dato, index){
 		//console.log(index + '::' + dato.nepeFotoName);
 		let link = '"portada.html?look=viewNepe&nepeId=' + dato.nepeId  + '"';
