@@ -2,7 +2,8 @@
 to back it
 	run from command line (copy command here, paste in command line):
 
-		pg_dump -U victordbu -d nepeype > C:\Users\victor\apache-postgresql-php8\httpd-2.4.57-win64-VS17\Apache24\htdocs\WebDevelopmentStuff\donlibre\backup-nepeype\using-pg_dump\nepeypeBK.sql
+		pg_dump -U victordbu -d nepeype > 
+                         C:\Users\victor\apache-postgresql-php8\httpd-2.4.57-win64-VS17\Apache24\htdocs\WebDevelopmentStuff\donlibre\utils\bk-nepeype\using-pg_dump\nepeype---BK.sql
 		or 
 		pg_dump -U victordbu -d nepeype > nepeypeBK.sql 
 		, if you are there, on the desired dir
