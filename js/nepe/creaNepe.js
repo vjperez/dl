@@ -86,3 +86,12 @@ function(evento){
 	// post made
 	
 });  //submit
+
+
+
+
+let botonSubmit = document.querySelector('section#submitButtonFieldset   button[type=submit]');
+botonSubmit.addEventListener('click', function(evento){
+	showThemSections();
+});
+
