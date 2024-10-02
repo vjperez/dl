@@ -78,7 +78,8 @@ section#que ul, section#donde ul, section#quien ul { list-style-type:none; paddi
 section#que ul li, section#donde ul li { margin-top:1em; margin-bottom: 1em; padding-left:2em; }
 
 section#donde span#background.si, section#donde span#background.no{ 
-  background: url("../imagenes/si-no.png"); vertical-align:text-top; display:inline-block;  height:25px;  
+  background: url("../imagenes/si-no.png"); 
+  vertical-align:text-top; display:inline-block;  height:25px;  
   width:25px; margin-left:10pt; margin-right:5pt; 
 }
 section#donde span#background.no{ background-position:0px -25px; }
