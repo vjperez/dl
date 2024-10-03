@@ -67,7 +67,7 @@ section#quien h5, section#quien ul
 section#quien ul { margin-top:60pt; margin-bottom:10pt; padding: 0pt; }
 
 /* profile red icons*/
-section#quien ul li i { font-size:1.5em; padding-top: 0.125em; padding-left: 0.125em; padding-bottom: 0.125em; }
+section#quien ul li i { font-size:1.5em;  padding-top: 0.125em;  padding-left: 0.5em;  padding-right: 0.5em;  padding-bottom: 0.125em; }
 section#quien li { display:inline-block; margin-right:0.75em; margin-left:0.75em; margin-top:1em; margin-bottom:0px; }
 
 
@@ -114,7 +114,7 @@ h3.feedback {
   
   /* profile red icons*/
   section#quien ul li i { font-size:2em; }
-  section#quien li { display:inline-block; margin-right:1.25em; margin-left:1.25em; margin-top:2em; margin-bottom:0px; }
+  section#quien li { display:inline-block; margin-right:1.5em; margin-left:1.5em; margin-top:2em; margin-bottom:0px; }
 
   form button[type="submit"], button[type="button"] {
     margin:2em auto 2em;
