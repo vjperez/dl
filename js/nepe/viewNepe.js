@@ -137,7 +137,11 @@ function populate(elNepe){
 }// populate
 
 
-hideThemSections();
+
+
+showThemSections();
+
+
 
 
 //show only 1 social handle with class current

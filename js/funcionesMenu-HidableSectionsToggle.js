@@ -59,7 +59,7 @@ function showThemSections() {
       //when selecting .notHidable... was doing these
       //const hidableSibling = el.nextElementSibling;
       //if(hidableSibling.classList.contains('hidable')) hidableSibling.style.display = 'block';
-      el.style.display = 'block';
+      el.style.display = '';
     }
   );
   els = document.querySelectorAll('.fa-chevron-circle-up');
