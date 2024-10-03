@@ -19,7 +19,7 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
 
     --negro:                 hsl(197, 70%,   12%);
-    --griso:                 hsl(000,  00%,  60%);
+    --griso:                 hsl(000,  00%,  50%);
     --blanco:                hsl(000,  00%, 100%);
     --warncolor:             hsl(000, 100%,  70%);
     --greencolor:            hsl(120, 100%,  70%);
@@ -50,7 +50,7 @@ form button[type="submit"]:hover, button[type="button"]:hover{
 }
 /**/
 
-div#menuicons h1.menuHidableDriver { color:var(--navegaletracolorhover); }
+div#menuicons h1.menuHidableDriver { color:var(--navegaletracolor); }
 
 input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type="email"], textarea{
     background-color:var(--formfondocolor);
@@ -98,7 +98,7 @@ form[id$=Form] h3.feedback   { font-family:'Oswald', mono, monospace; font-weigh
 
  section#quien div.hidable ul  i 
     { border-color:var(--negro);  border-style:solid;  border-width:0pt;  border-radius:5pt;   /* no usando borde*/
-    color:var(--navegaletracolor); background: var(--navegafondocolor);}
+    color:var(--griso); background: var(--blanco);}
  section#quien div.hidable ul  i:hover,  section#quien div.hidable ul  i:focus,  section#quien div.hidable ul  i.current 
     { border-color:var(--labelyheadercolor); border-width:0pt;   /* no usando borde*/
     color:var(--navegaletracolorhover); }
