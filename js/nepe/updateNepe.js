@@ -108,7 +108,7 @@ function(evento){
 		let filesOnFotoArr = document.querySelector(selector).files;
 		console.log(filesOnFotoArr);
 		if( filesOnFotoArr.length === 0){
-			formData.delete("fotoArr[]");     
+			formData.delete("fotoArr[]");     //tested with isset on php
 			formData.delete("MAX_FILE_SIZE");
 		}else if( filesOnFotoArr.length > 0 ){ 
 			ponScript('js/nepe/resizeImage.js');
@@ -124,8 +124,9 @@ function(evento){
 					console.log("skipping file:" + index);
 					continue; 
 				}
-			}
-		}
+			}//for
+
+		}//else if
 	}
 
 	let formData = new FormData(forma);
@@ -136,7 +137,7 @@ function(evento){
 		let regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -
 		let nombre = cleanStr( document.querySelector('fieldset#nombreFieldset input[name=nombre]').value, regexp );
 		if(isVacioStr(nombre)){
-			formData.delete("nombre"); 			formData.append('nombre', 'no-name-provided');
+			formData.delete("nombre");      formData.append('nombre', 'no-name-provided');
 		}else{
 			formData.delete("nombre"); 			formData.append('nombre', nombre);
 		}
@@ -172,7 +173,8 @@ function(evento){
 		regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú.:/=?&@._+-]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=?& plus los de login   @ . _  + -
 		let videoUrl = cleanStr( document.querySelector('fieldset#videoFieldset textarea[name=videoUrl]').value, regexp );
 		if(isVacioStr(videoUrl)){
-			formData.delete("videoUrl"); 		formData.append('videoUrl', 'no-video-provided');
+			formData.delete("videoUrl"); 		//tested with isset on php
+      //append nothing, for isset on php to work    formData.append('videoUrl', 'no-video-provided');
 		}else{
 			formData.delete("videoUrl"); 		formData.append('videoUrl', videoUrl);
 		}
@@ -237,7 +239,7 @@ function(evento){
         throw new Error( err + '<br><br>' + datos ); 
       }
       //////////////////////////////////////////////////////////
-      if(datosJSOBJ.nepeCoreUpdated && datosJSOBJ.queDondeUpdated && (datosJSOBJ.videoInserted || datosJSOBJ.videoUpdated)){
+      if(datosJSOBJ.nepeCoreUpdated && datosJSOBJ.queDondeUpdated && (datosJSOBJ.videoInserted || datosJSOBJ.videoUpdated  || datosJSOBJ.videoRemoved || datosJSOBJ.videoNothingDone )){
         window.location.href = window.location.pathname + '?look=viewNepe&nepeId=' + datosJSOBJ.nepeId;
       }else{
         //falta algo ?
