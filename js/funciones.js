@@ -14,22 +14,32 @@ function reShowMenu() {
 window.addEventListener('resize', reShowMenu);
 
 
-function cleanStr(str, patron) {
-  //function will convert a string like   !@#uno!$#dos!#@   into    ___uno___dos___
+//keeps multiple marks, trims spaces, merges multiple spaces
+//function cleanStrKeepMultipleMarksBetweenWords(str, patron) {
+  function cleanStr(str, elPatron){
+  firstPatron = new RegExp(/[\s]+/g); // 1 or more continuous blank spaces, global
+  str = str.replace(firstPatron, ' ');
+  firstPatron = new RegExp(/^\s+|\s+$/gm); // 1 or more space at begginning or end, global and multiline - a trim
+  str = str.replace(firstPatron, '');
+
+  //function will convert a string like   !@#uno!$#dos!#@   into    %%%uno%%%dos%%%
   //when patron is RegExp(/[^a-z0-9ñüàáèéìíòóùú]/gi)
   //patron comes mainly from crea y update nepe, y busca
 
-  //replace characters matching a patron with '_'
-  let cleanedstr = str.replace(patron, '|');
-  patron = new RegExp(/[\s]+/g); // 1 or more continuous blank spaces, global
-  cleanedstr = cleanedstr.replace(patron, ' ');
-  patron = new RegExp(/^\s+|\s+$/gm); // 1 or more space at begginning or end, global and multiline - a trim
-  cleanedstr = cleanedstr.replace(patron, '');
+  //replace characters matching a patron with '%'
+  let cleanedstr = str.replace(elPatron, '%');
+
   return cleanedstr;
 }
 
 
-function cleanStrJustKeep1SpaceBetweenWords(str, patron) {
+//JustKeep1SpaceBetweenWords, trims spaces, merges multiple spaces
+function cleanStrXXX(str, patron) {
+  patron = new RegExp(/[\s]+/g); // 1 or more continuous blank spaces, global
+  str = str.replace(patron, ' ');
+  patron = new RegExp(/^\s+|\s+$/gm); // 1 or more space at begginning or end, global and multiline - a trim
+  str = str.replace(patron, '');
+
   //function will convert a string like   !@#uno!$#dos!#@    into   uno dos
   //when patron is RegExp(/[^a-z0-9ñüàáèéìíòóùú]/gi)
   //patron comes mainly from crea y update nepe, y busca
