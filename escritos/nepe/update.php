@@ -29,18 +29,23 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 		$desde_casa = null;// value that postgreSQL undestands
 	}
 	
-	//video
-	$videoUrl = $_POST['videoUrl'];
-	
+
+
 	
 	$respuesta = new stdClass;
 	$respuesta->nepeId = $nepe_id;
 	require_once '../conecta/conecta.php';
 	//i am sure i have a connection, because an exception was NOT thrown at conecta
 	
-	
-	require_once 'update/core/update.php';
-	
+
+
+
+	if(isset( $_POST['videoUrl'] )){
+    $videoUrl = $_POST['videoUrl'];
+	  require_once 'update/core/updateWithVideoUrl.php';
+  }else{
+    require_once 'update/core/updateWithNoVideoUrl.php';
+  }
 	
 	//foto
 	if(isset( $_FILES['fotoArr'] )){  // cuando escoges files para subir
