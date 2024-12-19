@@ -15,4 +15,9 @@ $queryUpdateVideoUrl = "UPDATE video SET
 	url=$1, revisado=NOW()::date
 	WHERE nepe_id=$2";
 pg_prepare($cnx, "preparadoQueryUpdateVideoUrl", $queryUpdateVideoUrl);
+
+
+$queryRemoveVideoUrl = "DELETE from video
+	WHERE nepe_id=$1";
+pg_prepare($cnx, "preparadoQueryRemoveVideoUrl", $queryRemoveVideoUrl);
 ?>
