@@ -25,7 +25,8 @@ populateUpdateNepeForm = function(datos){
 	//  ------------------------          ---------------------  //
 	
 	//video
-	selector = 'fieldset#videoFieldset textarea[name=videoUrl]';
+	//selector = 'fieldset#videoFieldset textarea[name=videoUrl]';
+  selector = 'fieldset#videoFieldset input[name=videoUrl]';
 	document.querySelector(selector).value = datos.videoUrl;
 	
 	//foto - falta each para array
@@ -84,7 +85,9 @@ function(error){
 });
 
 
+
 hideThemSections();
+
 
 
 //task 2
@@ -171,8 +174,10 @@ function(evento){
 
 		//video
 		regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú.:/=?&@._+-]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=?& plus los de login   @ . _  + -
-		let videoUrl = cleanStr( document.querySelector('fieldset#videoFieldset textarea[name=videoUrl]').value, regexp );
-		if(isVacioStr(videoUrl)){
+		//let videoUrl = cleanStr( document.querySelector('fieldset#videoFieldset textarea[name=videoUrl]').value, regexp );
+    let videoUrl = cleanStr( document.querySelector('fieldset#videoFieldset input[name=videoUrl]').value, regexp );
+    
+    if(isVacioStr(videoUrl)){
 			formData.delete("videoUrl"); 		//tested with isset on php
       //append nothing, for isset on php to work    formData.append('videoUrl', 'no-video-provided');
 		}else{
