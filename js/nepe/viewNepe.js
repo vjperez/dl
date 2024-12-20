@@ -26,7 +26,7 @@ function populate(elNepe){
   //insert json data into profile look 
   let date = new Date(elNepe.revisado);
   let opciones = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  document.querySelector('#nombreyRevisado h5').innerText = 'Revisado:  ' + date.toLocaleDateString('es-ES', opciones); 
+  document.querySelector('#nombreyRevisado h5').innerText = date.toLocaleDateString('es-ES', opciones); 
   document.querySelector('#nombreyRevisado section label.cabe').innerText = elNepe.nombre;
     
 
@@ -45,7 +45,8 @@ function populate(elNepe){
       jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '6qpudAhYhpc');  // hacker movie
   }
   */
-  document.querySelector('.videoframecontainer').style.display = 'none';
+  document.querySelector('#video iframe').style.display = 'block';
+  document.querySelector('#video iframe').src = elNepe.videoUrl;
 
     
 
