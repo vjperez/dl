@@ -30,24 +30,12 @@ function populate(elNepe){
   document.querySelector('#nombreyRevisado section label.cabe').innerText = elNepe.nombre;
     
 
-
-  /*
-  //alert('url: ' + elNepe.videoUrl + '\nis Valid Video Url: ' + elNepe.isValidVideoUrl);
-  if(elNepe.videoCode == 0){
-      jQuery('.videoframecontainer').hide();
-  }else if(elNepe.videoCode == 1){
-      var str = elNepe.videoUrl;
-      //alert( 'https://www.youtube.com/embed/' + str.substring(str.length - 11, str.length) );
-      jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + str.substring(str.length - 11, str.length)); 		
-  }else {		//  if(elNepe.videoCode == 2)
-
-      //jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '123456789');
-      jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '6qpudAhYhpc');  // hacker movie
-  }
-  */
-  document.querySelector('#video iframe').src = elNepe.videoUrl;
-
-    
+ //to embed from youtube, add a src, src="https://www.youtube.com/embed/0123456789a"
+ if( elNepe.videoUrl !== null ){
+  let ytStr = elNepe.videoUrl;   //yt:0123456789a
+  let ytStrId = ytStr.substring(ytStr.length - 11, ytStr.length)   //0123456789a, youtube videos has 11 chars ids
+  document.querySelector('#video iframe').src = 'https://www.youtube.com/embed/' + ytStrId;
+ }
 
   //following code works when there are 8 or less images received.
   //the html is prepared for a max of 8 images
@@ -64,17 +52,12 @@ function populate(elNepe){
   });
 
 
-
-
   //alert(elNepe.socialArray);
   if(elNepe.socialArray[0])   document.querySelector('#quien h5.phone').innerText = elNepe.socialArray[0];
   if(elNepe.socialArray[1])   document.querySelector('#quien h5.envelope').innerText = elNepe.socialArray[1];    
   if(elNepe.socialArray[2])   document.querySelector('#quien h5.redSoc1').innerText = elNepe.socialArray[2];
   if(elNepe.socialArray[3])   document.querySelector('#quien h5.redSoc2').innerText = elNepe.socialArray[3];
-        
     
-
-
 
   //alert(elNepe.cuando);
   if(elNepe.cuando.lun  != '') document.querySelector('#cuando td.lun').innerText = elNepe.cuando.lun;			
@@ -85,9 +68,7 @@ function populate(elNepe){
   if(elNepe.cuando.sab  != '') document.querySelector('#cuando td.sab').innerText = elNepe.cuando.sab;
   if(elNepe.cuando.dom  != '') document.querySelector('#cuando td.dom').innerText = elNepe.cuando.dom;
     
-    
-    
-    
+      
     //following code works when there are 10 or less 'que'  are received.
     //the html is prepared for a max of 10 'que' 
     //this code removes excess html when less than 10 'que' are received
@@ -119,6 +100,7 @@ function populate(elNepe){
       }else{ link.remove(); }
   });
 	
+
   //alert('a tu casa: ' + elNepe.suCasa + '\ntipo: ' + typeof elNepe.suCasa);
   let clase = 'no'; 
 	if(elNepe.suCasa.indexOf('si') === 0) clase = 'si';
@@ -133,7 +115,8 @@ function populate(elNepe){
 	texto = clase;
 	if(elNepe.desdeCasa.indexOf('na') === 0) texto = clase + " aplica";
   document.querySelector('span#desdecasa span.texto').innerText = texto;	
-                
+   
+  
 }// populate
 
 
