@@ -1,6 +1,7 @@
 let usuario = ""; // this value is used for feedback on forms submit
-////////////////////// fetch to populate home page /////////////////
 
+//task 1 - get info
+////////////////////// fetch to populate home page /////////////////
 fetch('escritos/dueno/getNombre.php')
 .then(
 function(respuesta){
@@ -72,11 +73,14 @@ function(error){
 });
 
 
+
+
 hideThemSections();
 
 
 
 
+//task 2 - submit
 let formaCl = document.querySelector('form#editClaveForm');
 let formDataCl = new FormData(formaCl);
 
@@ -181,6 +185,8 @@ function(evento){
 
 
 
+
+//task 3 - show and hide 
 //erase feedback when user writes
 function showHideConfirm(){
 	//feedback('form[id*=Form] h3', '', '');
