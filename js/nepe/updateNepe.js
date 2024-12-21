@@ -25,9 +25,16 @@ populateUpdateNepeForm = function(datos){
 	//  ------------------------          ---------------------  //
 	
 	//video
-	//selector = 'fieldset#videoFieldset textarea[name=videoUrl]';
-  selector = 'fieldset#videoFieldset input[name=videoUrl]';
-	document.querySelector(selector).value = datos.videoUrl;
+  if(datos.videoUrl !== null){
+    let ytStr = datos.videoUrl;   //yt:0123456789a
+    let ytStrId = ytStr.substring(ytStr.length - 11, ytStr.length)   //0123456789a, youtube videos has 11 chars ids
+    
+    //selector = 'fieldset#videoFieldset textarea[name=videoUrl]';
+    selector = 'fieldset#videoFieldset input[name=videoUrl]';
+
+    //link provided by youtube share, https://youtu.be/0123456789a"
+    document.querySelector(selector).value = 'https://youtu.be/' + ytStrId;
+  }
 	
 	//foto - falta each para array
 	//document.querySelector('fieldset#fotoFieldset input[name^=fotoArr]').prop('required', false);
@@ -86,7 +93,9 @@ function(error){
 
 
 
+
 hideThemSections();
+
 
 
 
@@ -263,7 +272,7 @@ function(evento){
 
 
 
-
+//task 3
 let fotoBoton = document.querySelector('fieldset#fotoFieldset   button[type=button]');
 let fotoInput = document.querySelector('fieldset#fotoFieldset   input[name^=fotoArr]');
 fotoBoton.addEventListener('click', function(evento){
