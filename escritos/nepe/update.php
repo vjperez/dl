@@ -42,11 +42,25 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 
 	if(isset( $_POST['videoUrl'] )){
     $videoUrl = $_POST['videoUrl'];
-	  require_once 'update/core/updateWithVideoUrl.php';
+
+    $neededStr = 'youtu.be/';
+    $youtubeIdFormat = '0123456789a';   //11 chars
+    $indexOfNeededStr = strpos($videoUrl, $neededStr);
+
+    if ( strlen($videoUrl) >= $indexOfNeededStr + strlen($neededStr) + strlen($youtubeIdFormat) ){
+      $videoUrl = 'ytId:' . substr( $videoUrl, $indexOfNeededStr + strlen($neededStr), strlen($youtubeIdFormat) );
+	    require_once 'update/core/updateWithVideoUrl.php';
+    }else{
+      require_once 'update/core/updateWithNoVideoUrl.php';
+    }
+
   }else{
     require_once 'update/core/updateWithNoVideoUrl.php';
   }
-	
+
+
+
+
 	//foto
 	if(isset( $_FILES['fotoArr'] )){  // cuando escoges files para subir
 		require_once 'update/foto/with/updateFotoQueries.php';
