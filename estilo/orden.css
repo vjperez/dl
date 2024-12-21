@@ -49,14 +49,14 @@ div#nepefotos h5 { margin-top: 0em; margin-bottom: 0em; }
 
 
 /* profile */
-.videoframecontainer {
+section#video div.hidable{
   position: relative;
   padding-bottom: 56.25%;
 
   display:block; margin-left:auto; margin-right:auto;
 }
 
-.videoframecontainer iframe {
+section#video div.hidable iframe {
   position: absolute;  top: 0;  left: 0;  width: 100%;  height: 100%;
 }
 

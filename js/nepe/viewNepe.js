@@ -45,7 +45,6 @@ function populate(elNepe){
       jQuery('#video iframe').attr('src', 'https://www.youtube.com/embed/' + '6qpudAhYhpc');  // hacker movie
   }
   */
-  document.querySelector('#video iframe').style.display = 'block';
   document.querySelector('#video iframe').src = elNepe.videoUrl;
 
     
