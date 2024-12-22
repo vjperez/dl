@@ -35,6 +35,8 @@ function populate(elNepe){
   let ytStr = elNepe.videoUrl;   //yt:0123456789a
   let ytStrId = ytStr.substring(ytStr.length - 11, ytStr.length)   //0123456789a, youtube videos has 11 chars ids
   document.querySelector('#video iframe').src = 'https://www.youtube.com/embed/' + ytStrId;
+ }else{
+  document.querySelector('#video h2.notHidable').click();
  }
 
   //following code works when there are 8 or less images received.
