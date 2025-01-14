@@ -4,7 +4,7 @@ function appendDebugErrors( msg ){
     // \n   changed to  <br>
     msg = msg.replace(new RegExp('\n','g'), '<br>');  
     // bold php messages changed to bold red  
-    msg = msg.replace(/<b>/g, '<b style="color:red;">'); 
+    msg = msg.replace(/<b>/g, '<b style="color: hsl(000, 100%, 70%) ;">'); 
     msg = msg.replace(/Stack trace:/, '<br>Stack trace:'); 
 
     
