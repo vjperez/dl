@@ -36,7 +36,9 @@ function populate(elNepe){
   let ytStrId = ytStr.substring(ytStr.length - 11, ytStr.length)   //0123456789a, youtube videos has 11 chars ids
   document.querySelector('#video iframe').src = 'https://www.youtube.com/embed/' + ytStrId;
  }else{
-  document.querySelector('#video h2.notHidable').click();
+  //document.querySelector('#video h2.notHidable').click();
+  document.querySelector('#video iframe').style.border = "2px solid black";
+  document.querySelector('#video iframe').style.backgroundColor = "hsl(000,  00%,  50%)";
  }
 
   //following code works when there are 8 or less images received.
@@ -76,7 +78,7 @@ function populate(elNepe){
     //this code removes excess html when less than 10 'que' are received
     //alert(elNepe.losQue);
 	let losQue = JSON.parse( elNepe.losQue );
-	if(losQue === null) losQue = ['no info'];
+	if(losQue === null) losQue = [];
   document.querySelectorAll('#que li a')
   .forEach(
   function(link, index){
@@ -92,7 +94,7 @@ function populate(elNepe){
     //this code removes excess html when less than 5 'donde' are received
     //alert(elNepe.losDonde);
 	let losDonde = JSON.parse( elNepe.losDonde );
-	if(losDonde === null) losDonde = ['no info'];
+	if(losDonde === null) losDonde = [];
   document.querySelectorAll('#donde li a')
   .forEach(
   function(link, index){
