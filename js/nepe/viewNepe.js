@@ -98,7 +98,7 @@ function populate(elNepe){
     document.querySelector('#cuando td.dom').style.color = "hsl(000,  00%,  50%)";
   }else{
     document.querySelector('#cuando td.dom').innerText = elNepe.cuando.dom;
-  
+  }
   
       
     //following code works when there are 10 or less 'que'  are received.
