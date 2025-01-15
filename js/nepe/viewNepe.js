@@ -64,14 +64,42 @@ function populate(elNepe){
     
 
   //alert(elNepe.cuando);
-  if(elNepe.cuando.lun  != '') document.querySelector('#cuando td.lun').innerText = elNepe.cuando.lun;			
-  if(elNepe.cuando.mar  != '') document.querySelector('#cuando td.mar').innerText = elNepe.cuando.mar;
-  if(elNepe.cuando.mie  != '') document.querySelector('#cuando td.mie').innerText = elNepe.cuando.mie;
-  if(elNepe.cuando.jue  != '') document.querySelector('#cuando td.jue').innerText = elNepe.cuando.jue;
-  if(elNepe.cuando.vie  != '') document.querySelector('#cuando td.vie').innerText = elNepe.cuando.vie;
-  if(elNepe.cuando.sab  != '') document.querySelector('#cuando td.sab').innerText = elNepe.cuando.sab;
-  if(elNepe.cuando.dom  != '') document.querySelector('#cuando td.dom').innerText = elNepe.cuando.dom;
-    
+  if(elNepe.cuando.lun  === ''){
+    document.querySelector('#cuando td.lun').style.color = "hsl(000,  00%,  50%)";
+  }else{
+    document.querySelector('#cuando td.lun').innerText = elNepe.cuando.lun;
+  }
+  if(elNepe.cuando.mar  === ''){
+    document.querySelector('#cuando td.mar').style.color = "hsl(000,  00%,  50%)";
+  }else{
+    document.querySelector('#cuando td.mar').innerText = elNepe.cuando.mar;
+  }
+  if(elNepe.cuando.mie  === ''){
+    document.querySelector('#cuando td.mie').style.color = "hsl(000,  00%,  50%)";
+  }else{
+    document.querySelector('#cuando td.mie').innerText = elNepe.cuando.mie;
+  }
+  if(elNepe.cuando.jue  === ''){
+    document.querySelector('#cuando td.jue').style.color = "hsl(000,  00%,  50%)";
+  }else{
+    document.querySelector('#cuando td.jue').innerText = elNepe.cuando.jue;
+  }
+  if(elNepe.cuando.vie  === ''){
+    document.querySelector('#cuando td.vie').style.color = "hsl(000,  00%,  50%)";
+  }else{
+    document.querySelector('#cuando td.vie').innerText = elNepe.cuando.vie;
+  }
+  if(elNepe.cuando.sab  === ''){
+    document.querySelector('#cuando td.sab').style.color = "hsl(000,  00%,  50%)";
+  }else{
+    document.querySelector('#cuando td.sab').innerText = elNepe.cuando.sab;
+  }
+  if(elNepe.cuando.dom  === ''){
+    document.querySelector('#cuando td.dom').style.color = "hsl(000,  00%,  50%)";
+  }else{
+    document.querySelector('#cuando td.dom').innerText = elNepe.cuando.dom;
+  
+  
       
     //following code works when there are 10 or less 'que'  are received.
     //the html is prepared for a max of 10 'que' 
