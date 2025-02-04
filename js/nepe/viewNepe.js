@@ -37,7 +37,7 @@ function populate(elNepe){
   document.querySelector('#video iframe').src = 'https://www.youtube.com/embed/' + ytStrId;
  }else{
   //document.querySelector('#video h2.notHidable').click();
-  document.querySelector('#video iframe').style.border = "2px solid black";
+  document.querySelector('#video iframe').style.border = "1px solid black";
   document.querySelector('#video iframe').style.backgroundColor = "hsl(000,  00%,  50%)";
  }
 
