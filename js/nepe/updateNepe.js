@@ -106,13 +106,16 @@ forma.addEventListener('submit',
 function(evento){
 	evento.preventDefault();
 	//fotoArr();
-	setTimeout(function(){ fotoArr(); }, 0);
-	setTimeout(function(){ buildFormData(); }, 200);
-	setTimeout(function(){ postea(); }, 400);	
+
+	//setTimeout(function(){ fotoArr(); }, 0);
+	//setTimeout(function(){ buildFormData(); }, 200);
+	//setTimeout(function(){ postea(); }, 400);	
+
+  fotoArr( buildFormData( postea ) );
 });  //submit
 
 
-	function fotoArr(){
+	function fotoArr( callbackBuildFormFunction ){
 		//foto
 		//let filesOnFotoArr = formData.getAll("fotoArr[]");
 		//la linea de abajo para filesOnFotoArr, works tambien
@@ -139,10 +142,12 @@ function(evento){
 			}//for
 
 		}//else if
-	}
+
+    callbackBuildFormFunction();
+	}//fotoArr function
 
 	let formData = new FormData(forma);
-	function buildFormData(){
+	function buildFormData( callbackPostFunction ){
 		// a) build and edit formdata
 
 		//nombre
@@ -227,8 +232,11 @@ function(evento){
 		for (const pareja of formData.entries()) {
 			console.log('llave: ' + pareja[0] + '   valor: ' + pareja[1]);
 		}
-		//  a) formdata built
-	}//function
+		//formdata built
+
+    callbackPostFunction();
+	}//buildFormData function
+
 
 	function postea(){ 
 	  //alert('@ postea despues de delay...');
