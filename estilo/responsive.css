@@ -2,11 +2,11 @@
 /* css variables, used on stylesheet with var() function */
 :root {
   --navegaletracolor:      hsl(72,    69%,  90%); 
-  --navegaletracolorseleccionado:hsl(87, 58%, 47%); 
+  --navegaletracolorseleccionado:hsl(200, 100%, 50%); 
   --navegafondocolor:      hsl(197, 70%,   12%);
   --navegafondocolorseleccionado:hsl(197, 70%,  12%);   
 
-  --navegaletracolorhovernosel: hsl(87,    69%,  50%);
+  --navegaletracolorhovernosel: hsl(200,  100%,  40%);
   --navegafondocolorhover: hsl(197, 70%,   12%);
 
 
