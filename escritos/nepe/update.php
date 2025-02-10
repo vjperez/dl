@@ -43,11 +43,20 @@ if( isset($_SESSION['dueno_id']) && isset($_SESSION['own_nepes_with_ids']) ){
 	if(isset( $_POST['videoUrl'] )){
     $videoUrl = $_POST['videoUrl'];
 
-    $neededStr = 'youtu.be/';
     $youtubeIdFormat = '0123456789a';   //11 chars
+
+    $neededStr = 'youtu.be/';
     $indexOfNeededStr = strpos($videoUrl, $neededStr);
 
-    if ( strlen($videoUrl) >= $indexOfNeededStr + strlen($neededStr) + strlen($youtubeIdFormat) ){
+    //check for 'youtube.com/watch?v=' as neededStr 
+    //if 'youtu.be/' is not found on $videoUrl
+    //true when strpos() returned false
+    if( $indexOfNeededStr === false ){
+      $neededStr = 'youtube.com/watch?v=';
+      $indexOfNeededStr = strpos($videoUrl, $neededStr);
+    }
+
+    if ( $indexOfNeededStr !== false   &&   strlen($videoUrl) >= $indexOfNeededStr + strlen($neededStr) + strlen($youtubeIdFormat) ){
       $videoUrl = 'ytId:' . substr( $videoUrl, $indexOfNeededStr + strlen($neededStr), strlen($youtubeIdFormat) );
 	    require_once 'update/core/updateWithVideoUrl.php';
     }else{
