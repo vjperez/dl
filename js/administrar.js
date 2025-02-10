@@ -1,7 +1,7 @@
 hideThemSections();
 
 
-
+ 
 //handle form submit ; adminEditClaveForm
 let formaCl = document.querySelector('form#adminEditClaveForm');
 let formDataCl = new FormData(formaCl);
@@ -163,3 +163,24 @@ function(){
 	feedback('form#adminNepesForm h3.feedback', '');
 });
 */
+
+
+
+
+//task - show and hide 
+//erase feedback when user writes
+function showHideConfirm(){
+	//feedback('form[id*=Form] h3', '', '');
+  let pass01 = document.querySelector('#passwordId').value;
+  if( pass01.length > 0 ){
+    document.querySelector('fieldset label.confirm').style.display = '';
+    document.querySelector('input.confirm').style.display = '';
+  }
+  else{
+    document.querySelector('fieldset label.confirm').style.display = 'none';
+    document.querySelector('input.confirm').style.display = 'none';
+  }
+}
+document.querySelector('form[id*=Form]  input[name^=password]').addEventListener('keyup', showHideConfirm);
+//document.querySelector('form[id*=Form]  input[name=^red]' ).addEventListener('keyup', showHideConfirm);
+showHideConfirm();

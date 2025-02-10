@@ -204,6 +204,9 @@ document.querySelector('form[id*=Form]  input[name^=password]').addEventListener
 //document.querySelector('form[id*=Form]  input[name=^red]' ).addEventListener('keyup', showHideConfirm);
 showHideConfirm();
 
+
+
+
 //handle link to crea nepe when click on button
 document.querySelector('div#labelTableContainer button')
 .addEventListener('click',
