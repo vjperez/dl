@@ -12,9 +12,13 @@ if(isset($_SESSION['dueno_id'])){
 	require_once 'read/nombreQuery.php';
 	$recurso = pg_execute($cnx, "preparadoQueryNombre", array($dueno_to_query));
 	if($recurso){
+    $elUsername = 'Nadie: Not a User';
+
 		$fila = pg_fetch_row($recurso);
-		$elUsername = $fila[0];
-		
+    if( $fila !== false){
+		  $elUsername = $fila[0];
+    }
+
 		pg_close($cnx);
 		echo json_encode($elUsername);
 	}else{

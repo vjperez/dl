@@ -83,13 +83,13 @@ function submitHandlerAN( userNumber, usuario ){
   fetch('escritos/dueno/getOwnNepesWithIds.php' + '?' + urlParams.toString())
   .then(
   function(respuesta){
-    console.log('view nepe fetch, then 1');
+    console.log('fetch, then 1');
     console.log(respuesta);
     return respuesta.json();
   })
   .then(
   function(datos){
-    console.log('view nepe fetch, then 2: ');
+    console.log('fetch, then 2: ');
     console.log(datos);
 
     let table =  '<table class="subArea">';
@@ -129,15 +129,26 @@ function getNombre( numero, f ){
   fetch('escritos/dueno/getNombre.php' + '?' + urlParams.toString())
   .then(
   function(respuesta){
-    console.log('view nepe fetch, then 1');
+    console.log('fetch, then 1');
     console.log(respuesta);
-    return respuesta.json();
+    return respuesta.text();
   })
   .then(
   function(nombre){
-    console.log('view nepe fetch, then 2: ');
+    console.log('fetch, then 2: ');
     console.log(nombre);
-    f( numero, nombre ); 
+
+      /////////////////////////try catch////////////////////////
+      let nombreJSOBJ;
+      try{
+        nombreJSOBJ = JSON.parse( nombre );
+      }
+      catch( err ){
+        throw new Error( 'El err:' + err + '<br><br>El nombre:' + nombre ); 
+      }
+      //////////////////////////////////////////////////////////
+
+      f( numero, nombre ); 
   })
   .catch(
   function(error){
