@@ -15,50 +15,56 @@ function(evento){
 });//submit event listener
 
 function submitHandlerAEC( userNumber, usuario ){
-	let user = 'valorDummy';
-	let pass01 = document.querySelector('form#adminEditClaveForm #passwordId').value;
-	let pass02 = document.querySelector('form#adminEditClaveForm #passwordConfirmId').value; 
-	
-  if( areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#adminEditClaveForm h3.feedback') ){
+  if(usuario !== false){
+    let user = 'valorDummy';
+    let pass01 = document.querySelector('form#adminEditClaveForm #passwordId').value;
+    let pass02 = document.querySelector('form#adminEditClaveForm #passwordConfirmId').value; 
+    
+    if( areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#adminEditClaveForm h3.feedback') ){
 
-		formDataCl.append('pass01', pass01);  formDataCl.append('userNumber', userNumber);
-    const opciones = { body:formDataCl, method:'post' };
-	  fetch('escritos/dueno/editClave.php', opciones )
-	  .then(
-	  function(respuesta){
-	    console.log(' fetch, then 1');
-	    console.log(respuesta);
-	    return respuesta.text();
-	  })
-	  .then(
-	  function(dato){
-	    console.log(' fetch, then 2: ');
-	    console.log(dato);
-      /////////////////////////try catch////////////////////////
-      let datosJSOBJ;
-      try{
-        datosJSOBJ = JSON.parse( dato );
-      }
-      catch( err ){
-        throw new Error( err + '<br><br>' + dato ); 
-      }
-      //////////////////////////////////////////////////////////
-			if(datosJSOBJ.editado){	
-				let feedbackStr = 'Password de ' + usuario + ' fue editado.'; 
-				feedback('form#adminEditClaveForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
-			}else{
-				let feedbackStr = 'Password de ' + usuario + ' no fue editado.';
-				feedback('form#adminEditClaveForm h3.feedback', feedbackStr, 'feedbackwarn', 'downdelayup');
-			}
-	  })
-	  .catch(
-	  function(error){
-	    const href = encodeAndGetErrorPath(error);
-	    window.location.href = href;
-	  });
+      formDataCl.append('pass01', pass01);  formDataCl.append('userNumber', userNumber);
+      const opciones = { body:formDataCl, method:'post' };
+      fetch('escritos/dueno/editClave.php', opciones )
+      .then(
+      function(respuesta){
+        console.log(' fetch, then 1');
+        console.log(respuesta);
+        return respuesta.text();
+      })
+      .then(
+      function(dato){
+        console.log(' fetch, then 2: ');
+        console.log(dato);
+        /////////////////////////try catch////////////////////////
+        let datosJSOBJ;
+        try{
+          datosJSOBJ = JSON.parse( dato );
+        }
+        catch( err ){
+          throw new Error( err + '<br><br>' + dato ); 
+        }
+        //////////////////////////////////////////////////////////
+        if(datosJSOBJ.editado){	
+          let feedbackStr = 'Password de ' + usuario + ' fue editado.'; 
+          feedback('form#adminEditClaveForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
+        }else{
+          let feedbackStr = 'Password de ' + usuario + ' no fue editado.';
+          feedback('form#adminEditClaveForm h3.feedback', feedbackStr, 'feedbackwarn', 'downdelayup');
+        }
+      })
+      .catch(
+      function(error){
+        const href = encodeAndGetErrorPath(error);
+        window.location.href = href;
+      });
 
-	}//if
+    }//if valid pass
 
+  }else{
+    //usuario === false); ver llamada del callback al final de getNombre()
+    let feedbackStr = 'Id invalido: ' + userNumber + '.  El Usuario: ' + usuario + ', no existe.';
+    feedback('form#adminEditClaveForm h3.feedback', feedbackStr, 'feedbackwarn', 'downdelayup');
+  }
 }
 
 
@@ -75,50 +81,70 @@ function(evento){
 });//submit event listener
 
 function submitHandlerAN( userNumber, usuario ){
-	let label = '<label class="cabe">' + 'Negocios de ' + usuario + '</label>'; 
-	document.querySelector('section#labelContainer').innerHTML = label;
+  if(usuario !== false){
+    let label = '<label class="cabe">' + 'Negocios de ' + usuario + '</label>'; 
+    document.querySelector('section#labelContainer').innerHTML = label;
 
-  let urlParams = new URLSearchParams('escritos/dueno/getOwnNepesWithIds.php');
-  urlParams.set("userNumber", userNumber);
-  fetch('escritos/dueno/getOwnNepesWithIds.php' + '?' + urlParams.toString())
-  .then(
-  function(respuesta){
-    console.log('fetch, then 1');
-    console.log(respuesta);
-    return respuesta.json();
-  })
-  .then(
-  function(datos){
-    console.log('fetch, then 2: ');
-    console.log(datos);
+    let urlParams = new URLSearchParams('escritos/dueno/getOwnNepesWithIds.php');
+    urlParams.set("userNumber", userNumber);
+    fetch('escritos/dueno/getOwnNepesWithIds.php' + '?' + urlParams.toString())
+    .then(
+    function(respuesta){
+      console.log('fetch, then 1');
+      console.log(respuesta);
+      return respuesta.json();
+    })
+    .then(
+    function(datos){
+      console.log('fetch, then 2: ');
+      console.log(datos);
 
-    let table =  '<table class="subArea">';
-		let cuantos = 0;
-		datos.forEach(
-    function(dato, index){
-			table += '<tr><td>'
-      + '<i class="fa-solid fa-trash-alt"></i>'
-      + '<a href="portada.html?look=administrar'
-			+ '&acto=deleteNepe' +  '&nepeId=' + dato.nepeId + '">' 
-			+ dato.nepeNombre  
-			+ '</a></td></tr>';	
-			cuantos++;
-		});
-		
-		if(cuantos > 1){
-			table += '<tr><td>Los ' + cuantos + ' negocios.</td></tr>';
-			table += '<tr><td> </td></tr>';		
-			table += '<tr><td>'
-      + '<i class="fa-solid fa-trash-alt"></i>'
-      + '<a class="" href="portada.html?look=administrar'
-			+ '&acto=deleteHerNepes' +  '&userId=' + userNumber + '">' 
-			+ ' Borra ALL nepes de ' + usuario 
-			+ '</a></td></tr>';
-		}
-		table += '</table>';
-		document.querySelector('fieldset#tableContainer').innerHTML = table;
-  })
-	
+      let table =  '<table class="subArea">';
+      let cuantos = 0;
+      datos.forEach(
+      function(dato, index){
+        table += '<tr><td>'
+        + '<i class="fa-solid fa-trash-alt"></i>'
+        + '<a href="portada.html?look=administrar'
+        + '&acto=deleteNepe' +  '&nepeId=' + dato.nepeId + '">' 
+        + dato.nepeNombre  
+        + '</a></td></tr>';	
+        cuantos++;
+      });
+      
+      if(cuantos == 0){
+        table += '<tr><td> ' + usuario + ' tiene ' + cuantos+ ' negocios.</td></tr>';
+        table += '<tr><td> </td></tr>';		
+        table += '<tr><td>'
+        + '<i class="fa-solid fa-trash-alt"></i>'
+        + '<a class="" href="portada.html?look=administrar'
+        + '&acto=deleteUser' +  '&userId=' + userNumber + '">' 
+        + ' Borra usuario :  ' + usuario 
+        + '</a></td></tr>';
+      }
+
+      if(cuantos > 1){
+        table += '<tr><td>Los ' + cuantos + ' negocios.</td></tr>';
+        table += '<tr><td> </td></tr>';		
+        table += '<tr><td>'
+        + '<i class="fa-solid fa-trash-alt"></i>'
+        + '<a class="" href="portada.html?look=administrar'
+        + '&acto=deleteHerNepes' +  '&userId=' + userNumber + '">' 
+        + ' Borra ALL nepes de ' + usuario 
+        + '</a></td></tr>';
+      }
+
+      table += '</table>';
+      document.querySelector('fieldset#tableContainer').innerHTML = table;
+    })
+  }else{
+    //usuario === false); ver llamada del callbacck al final de getNombre()
+    let feedbackStr = 'Id invalido: ' + userNumber + '.  El Usuario: ' + usuario + ', no existe.'; 
+    feedback('form#adminNepesForm h3.feedback', feedbackStr, 'feedbackwarn', 'downdelayup');
+    
+    document.querySelector('section#labelContainer').innerHTML = '';
+    document.querySelector('fieldset#tableContainer').innerHTML = '';
+  }
 }
 
 
@@ -142,13 +168,17 @@ function getNombre( numero, f ){
       let nombreJSOBJ;
       try{
         nombreJSOBJ = JSON.parse( nombre );
+        //alert(nombreJSOBJ);
       }
       catch( err ){
         throw new Error( 'El err:' + err + '<br><br>El nombre:' + nombre ); 
       }
       //////////////////////////////////////////////////////////
 
-      f( numero, nombre ); 
+      //when nombreJSOBJ es false ...
+      //numero es un userNumber que no existe en db
+      //getNombre.php retorno false en vez de username
+      f( numero, nombreJSOBJ ); 
   })
   .catch(
   function(error){
