@@ -150,6 +150,7 @@ function(evento){
 	function buildFormData( callbackPostFunction ){
 		// a) build and edit formdata
 
+    // core nepe //
 		//nombre
 		let regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -
 		let nombre = cleanStr( document.querySelector('fieldset#nombreFieldset input[name=nombre]').value, regexp );
@@ -185,7 +186,10 @@ function(evento){
 		formData.append('suCasa', suCasa);
 		let desdeCasa = document.querySelector('input[name="desdeCasa"]:checked').value;
 		formData.append('desdeCasa', desdeCasa);
+    //  end of core nepe //
 
+    
+    //  beyond core nepe //
 		//video
 		regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú.:/=?&@._+-]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=?& plus los de login   @ . _  + -
 		//let videoUrl = cleanStr( document.querySelector('fieldset#videoFieldset textarea[name=videoUrl]').value, regexp );
@@ -225,7 +229,9 @@ function(evento){
 		});
 		donde = JSON.stringify(donde);
 		formData.append('losDonde', donde);
-		
+		// end of beyond core nepe //
+
+
 		formData.append('nepe_index', index );
 		
 		console.log("la forma...");

@@ -15,6 +15,8 @@ function(evento){
   
   let formData = new FormData(forma);
   function buildFormData( callbackPostFunction ){
+    // core nepe //
+
     //nombre
     let regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _  +  -	
     let nombre = cleanStr( document.querySelector('form#nepeForm input[name=nombre]').value, regexp );
@@ -44,6 +46,13 @@ function(evento){
     formData.delete("dia7"); //sending dias in array so delete them individually from formData
     cuando = JSON.stringify(cuando);
     formData.append('cuando', cuando);
+
+    //desdeCasa - suCasa
+		let suCasa = document.querySelector('form#nepeForm input[name="suCasa"]:checked').value;
+		formData.append('suCasa', suCasa);
+		let desdeCasa = document.querySelector('form#nepeForm input[name="desdeCasa"]:checked').value;
+		formData.append('desdeCasa', desdeCasa);
+    // end of core nepe //
 
     console.log("form built");
     //for (let value of formData.values()) {
