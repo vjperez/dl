@@ -118,7 +118,7 @@ function submitHandlerAN( userNumber, usuario ){
         table += '<tr><td>'
         + '<i class="fa-solid fa-trash-alt"></i>'
         + '<a class="" href="portada.html?look=administrar'
-        + '&acto=deleteUser' +  '&userId=' + userNumber + '">' 
+        + '&acto=deleteUser' +  '&userNo=' + userNumber + '">' 
         + ' Borra usuario :  ' + usuario 
         + '</a></td></tr>';
       }

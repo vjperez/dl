@@ -15,6 +15,9 @@ switch(acto){
   case 'deleteHerNepes':
     deleteHerNepes();
   break;
+  case 'deleteUser':
+    deleteUser();
+  break;
   
   case '':
   case null:
@@ -125,6 +128,42 @@ function deleteHerNepes(){
     }
   })
   .catch(function(error){
+    window.location.href = encodeAndGetErrorPath(error);
+  });
+}
+
+
+function deleteUser(){
+  const userNo = urlParametro('userNo');
+
+  let urlParams = new URLSearchParams('escritos/dueno/deleteDueno.php');
+  urlParams.set("userNo", userNo);
+  fetch('escritos/dueno/deleteDueno.php' + '?' + urlParams.toString() )
+  .then(
+  function(respuesta){
+    return respuesta.text();
+  })
+  .then(
+  function(dato){
+    /////////////////////////try catch////////////////////////
+    let datosJSOBJ;
+    try{
+      datosJSOBJ = JSON.parse( dato );
+    }
+    catch( err ){
+      throw new Error( err + '<br><br>' + dato ); 
+    }
+    //////////////////////////////////////////////////////////
+    if(datosJSOBJ.userBorrado){
+      logueado = true;//no need to ask server
+      loadAfterActo();
+      return;
+    }else{ 
+      throw new Error( "borrado = false, 0 affected rows." ); 
+    }
+  })
+  .catch(
+  function(error){
     window.location.href = encodeAndGetErrorPath(error);
   });
 }
