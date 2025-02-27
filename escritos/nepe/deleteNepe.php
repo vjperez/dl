@@ -48,9 +48,9 @@ if(isset($_SESSION['dueno_id'])){
 			}		
 		}else{
 			pg_close($cnx); //maybe not needed but doesn't hurt	
-			throw new Exception('Mal query. Sin RECURSO, para deleteNepeQuery en: '  . __FILE__ );
+			throw new Exception('Mal query. Sin RECURSO, para preparadoQueryDeleteNepe en: '  . __FILE__ );
 		}
 }else{
-		throw new Exception('Session no seteada en: ' . __FILE__  );
+	throw new Exception('Session no seteada en: ' . __FILE__  );
 }
 ?>

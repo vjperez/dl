@@ -8,7 +8,7 @@ if(isset($_SESSION['dueno_id'])){
 	//i am sure i have a connection, because an exception was NOT thrown at conecta
 
 	require_once 'deleteHerNepes/getHerNepeIdsQuery.php';
-  $recurso_ghn = pg_query($cnx, $getHerNepeIdsQuery);
+  $recurso_ghn = pg_execute($cnx, "preparadoQueryGetHerNepeIds", array($user_to_leave_without_nepes));
 	if($recurso_ghn){
     require_once 'update/que-donde/updateQueries.php';
     prepareCurrentIdsQueries('Que', $cnx);
@@ -36,16 +36,18 @@ if(isset($_SESSION['dueno_id'])){
       if($recurso_dn){		 
         if(pg_affected_rows($recurso_dn) == 1){
           $cuantos++;
-          // delete foto files now that nepe on db was deleted
-          require_once '../configConstants/constants.php';
-          $fotoTarget = $fotos_subidas_dir . $nepe_to_delete . '[abcde].';
-          foreach(glob($fotoTarget . '*') as $fotoToErase){
-            if(file_exists ($fotoToErase)) unlink($fotoToErase);
-          }
+              /*
+                // delete foto files is done by "preparadoQueryDeleteNepe", when nepe is deleted
+                require_once '../configConstants/constants.php';
+                $fotoTarget = $fotos_subidas_dir . $nepe_to_delete . '[abcde].';
+                foreach(glob($fotoTarget . '*') as $fotoToErase){
+                  if(file_exists ($fotoToErase)) unlink($fotoToErase);
+                }
+              */
         }		
       }else{
         pg_close($cnx); //maybe not needed but doesn't hurt	
-        throw new Exception('Mal query. Sin RECURSO, para deleteNepeQuery en: '  . __FILE__ );
+        throw new Exception('Mal query. Sin RECURSO, para preparadoQueryDeleteNepe en: '  . __FILE__ );
       }
 			
 		}
@@ -54,7 +56,7 @@ if(isset($_SESSION['dueno_id'])){
 		echo json_encode($respuesta); 
 	}else{
 		pg_close($cnx); //maybe not needed but doesn't hurt
-		throw new Exception('Mal query.  Sin RECURSO para getHerNepeIdsQuery en: ' . __FILE__  );
+		throw new Exception('Mal query.  Sin RECURSO para preparadoQueryGetHerNepeIds en: ' . __FILE__  );
 	}
 }else{
 	throw new Exception('Session no seteada en: ' . __FILE__  );
