@@ -1,0 +1,28 @@
+===============================================================
+to back it
+	run from command line (copy command here, paste in command line):
+
+		pg_dump -U victordbu -d nepeype > C:\Users\victor\apache-postgresql-php8\httpd-2.4.57-win64-VS17\Apache24\htdocs\WebDevelopmentStuff\donlibre\backup-nepeype\using-pg_dump\nepeypeBK.sql
+		or 
+		pg_dump -U victordbu -d nepeype > nepeypeBK.sql 
+		, if you are there, on the desired dir
+	
+	
+===============================================================	
+to restore:
+	go into psql
+		psql --username victordbu  --dbname ' '
+	drop  and re-create nepeype
+		DROP DATABASE "nepeype";
+		CREATE DATABASE "nepeype";
+		1) using psql run xxx.sql backup inside the empty database  (this worked)
+		
+		
+		2) run from command line (on the now empty db):  (have to test this)
+		pg_restore --dbname=nepeype --verbose C:\Users\victor\apache-postgresql-php8\httpd-2.4.57-win64-VS17\Apache24\htdocs\WebDevelopmentStuff\donlibre\backup-nepeype\using-pg_dump\nepeypeBK.sql
+		or
+		pg_restore --dbname=nepeype --verbose nepeypeBK.sql
+		, if you are there, on the desired dir
+		
+		
+do 'back database psql command' google search, if this do not work
