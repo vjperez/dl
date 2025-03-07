@@ -1,0 +1,25 @@
+ But I’ve used Oracle, Postgres, SQL Server, and MySQL during my career. Hands down,
+ Postgres has everything you want and more. I’ve been at my current employer for 10
+ months and have been transitioning them from MYSQL to Postgres for 4 months. The difference
+ is staggering. Some key difference:
+
+1 JSON/JSONB support
+
+2 Array support and functionality
+
+3 CTE and returning clauses
+
+4 Upsert/On Conflict Inserts
+
+5 More robust data types (UUIDs, Booleans, etc.)
+
+6 The ability to make it your own
+
+7 Ability to create procs/funcs in different languages like Python, JavaScript, Perl, etc. 
+I’ve been recently doing lots of JS funcs for JSON payloads e.g. parsing, flattening, mapping, 
+reducing. These run faster than anything I’ve created in Postgres and are native.
+
+8 Foreign Data Wrappers- huge. Postgres is now serving as a data warehouse of sorts.
+ All of our databases from the past 10 years are now in their individual schemas. They are 
+joined and queried in Postgres. We were using Python utilizing Pandas to merge and join. One 
+proc took 8 minutes, now in Postgres finishes in 3 secs.
