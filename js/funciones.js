@@ -17,16 +17,21 @@ window.addEventListener('resize', reShowMenu);
 //keeps multiple marks, trims spaces, merges multiple spaces
 //function cleanStrKeepMultipleMarksBetweenWords(str, patron) {
   function cleanStr(str, elPatron){
-  firstPatron = new RegExp(/[\s]+/g); // 1 or more continuous blank spaces, global
-  str = str.replace(firstPatron, ' ');
-  firstPatron = new RegExp(/^\s+|\s+$/gm); // 1 or more space at begginning or end, global and multiline - a trim
-  str = str.replace(firstPatron, '');
+  let patron = new RegExp(/[\s]+/g); // 1 or more continuous blank spaces, global
+  str = str.replace(patron, ' ');
+  patron = new RegExp(/^\s+|\s+$/gm); // 1 or more space at begginning or end, global and multiline - a trim
+  str = str.replace(patron, '');
 
-  //function will convert a string like   !@#uno!$#dos!#@   into    %%%uno%%%dos%%%
-  //when patron is RegExp(/[^a-z0-9ñüàáèéìíòóùú]/gi)
+  //using normalize with Canonically-decomposed form (NFD),
+  //then removing combining diacritical marks (includes accents)
+  patron = new RegExp(/[\u0300-\u036f]/g);
+  str = str.normalize('NFD').replace(patron, '');
+
+  //function will convert a string like   !#uno!$#dos!#   into    %%uno%%%dos%%
+  //when patron is RegExp(/[^a-z0-9@._+-\s]/gi)
   //patron comes mainly from crea y update nepe, y busca
 
-  //replace characters matching a patron with '%'
+  //replace characters matching -elPatron- with '%'
   let cleanedstr = str.replace(elPatron, '%');
 
   return cleanedstr;
