@@ -1,9 +1,10 @@
 <?php
-//updates nepe core parts
-$queryUpdateNepe = "UPDATE nepe SET
- 	nombre=$2, cuando=$3, su_casa=$4, desde_casa=$5, revisado=NOW()::date
-	WHERE id=$1";
-pg_prepare($cnx, "preparadoQueryUpdateNepe", $queryUpdateNepe);
+//query to get video id using nepe_id
+$queryNepeHasVideo = "SELECT 
+	id
+	FROM video
+	WHERE nepe_id = $1";
+pg_prepare($cnx, "preparadoQueryNepeHasVideo", $queryNepeHasVideo);
 
 
 $queryInsertVideoUrl = "INSERT INTO video (url, nepe_id, creado, revisado)
