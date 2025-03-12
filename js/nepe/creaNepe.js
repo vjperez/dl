@@ -18,8 +18,8 @@ function(evento){
     // core nepe //
 
     //nombre
-    let regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _  +  -	
-    let nombre = cleanStr( document.querySelector('form#nepeForm input[name=nombre]').value, regexp );
+    let regexpN = new RegExp(/[^a-z0-9@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _  +  -	
+    let nombre = cleanStr( document.querySelector('form#nepeForm input[name=nombre]').value, regexpN );
     if(isVacioStr(nombre)){
       formData.delete("nombre"); 			formData.append('nombre', 'sin nombre - no name provided');
     }else{
@@ -27,15 +27,15 @@ function(evento){
     }
 
     //cuando is a JS object, it is stringified before sending it
-    regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú:,@._+-]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -	  y  : ,
+    let regexpCuando = new RegExp(/[^a-z0-9:,@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -	  y  : ,
     let cuando = {  
-      lun:cleanStr( document.querySelector('form#nepeForm input[name=dia1]').value, regexp ), 
-      mar:cleanStr( document.querySelector('form#nepeForm input[name=dia2]').value, regexp ),
-      mie:cleanStr( document.querySelector('form#nepeForm input[name=dia3]').value, regexp ),
-      jue:cleanStr( document.querySelector('form#nepeForm input[name=dia4]').value, regexp ),
-      vie:cleanStr( document.querySelector('form#nepeForm input[name=dia5]').value, regexp ),
-      sab:cleanStr( document.querySelector('form#nepeForm input[name=dia6]').value, regexp ),
-      dom:cleanStr( document.querySelector('form#nepeForm input[name=dia7]').value, regexp )
+      lun:cleanStr( document.querySelector('form#nepeForm input[name=dia1]').value, regexpCuando ), 
+      mar:cleanStr( document.querySelector('form#nepeForm input[name=dia2]').value, regexpCuando ),
+      mie:cleanStr( document.querySelector('form#nepeForm input[name=dia3]').value, regexpCuando ),
+      jue:cleanStr( document.querySelector('form#nepeForm input[name=dia4]').value, regexpCuando ),
+      vie:cleanStr( document.querySelector('form#nepeForm input[name=dia5]').value, regexpCuando ),
+      sab:cleanStr( document.querySelector('form#nepeForm input[name=dia6]').value, regexpCuando ),
+      dom:cleanStr( document.querySelector('form#nepeForm input[name=dia7]').value, regexpCuando )
     };
     formData.delete("dia1"); //sending dias in array so delete them individually from formData
     formData.delete("dia2"); //sending dias in array so delete them individually from formData
@@ -61,7 +61,7 @@ function(evento){
     console.log(formData);
     //formdata built
 
-    callbackPostFunction();
+    //callbackPostFunction();
   }//buildFormData function
 
 

@@ -16,7 +16,7 @@ window.addEventListener('resize', reShowMenu);
 
 //keeps multiple marks, trims spaces, merges multiple spaces
 //function cleanStrKeepMultipleMarksBetweenWords(str, patron) {
-  function cleanStr(str, elPatron){
+function cleanStr(str, elPatron){
   let patron = new RegExp(/[\s]+/g); // 1 or more continuous blank spaces, global
   str = str.replace(patron, ' ');
   patron = new RegExp(/^\s+|\s+$/gm); // 1 or more space at begginning or end, global and multiline - a trim
@@ -39,7 +39,7 @@ window.addEventListener('resize', reShowMenu);
 
 
 //JustKeep1SpaceBetweenWords, trims spaces, merges multiple spaces
-function cleanStrXXX(str, patron) {
+function cleanStr2(str, patron) {
   patron = new RegExp(/[\s]+/g); // 1 or more continuous blank spaces, global
   str = str.replace(patron, ' ');
   patron = new RegExp(/^\s+|\s+$/gm); // 1 or more space at begginning or end, global and multiline - a trim

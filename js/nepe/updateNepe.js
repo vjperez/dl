@@ -148,12 +148,16 @@ function(evento){
 
 	let formData = new FormData(forma);
 	function buildFormData( callbackPostFunction ){
-		// a) build and edit formdata
+    let regexpNQD =    new RegExp(/[^a-z0-9@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -
+		let regexpCuando = new RegExp(/[^a-z0-9:,@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -	  y   : ,	
+    let regexpURL =    new RegExp(/[^a-z0-9.:/=?&@._+-\s]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=?& plus los de login   @ . _  + -
+
+    // a) build and edit formdata
 
     // core nepe //
+    
 		//nombre
-		let regexp = new RegExp(/[^a-z0-9@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -
-		let nombre = cleanStr( document.querySelector('fieldset#nombreFieldset input[name=nombre]').value, regexp );
+		let nombre = cleanStr( document.querySelector('fieldset#nombreFieldset input[name=nombre]').value, regexpNQD );
 		if(isVacioStr(nombre)){
 			formData.delete("nombre");      formData.append('nombre', 'no-name-provided');
 		}else{
@@ -161,15 +165,14 @@ function(evento){
 		}
 		
 		//cuando is a JS object, ... converted to string in JSON format
-		regexp = new RegExp(/[^a-z0-9:,@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -	  y   : ,	
 		let cuando = {  
-			lun:cleanStr( document.querySelector('fieldset#cuandoFieldset input[name=dia1]').value, regexp ), 
-			mar:cleanStr( document.querySelector('fieldset#cuandoFieldset input[name=dia2]').value, regexp ),
-			mie:cleanStr( document.querySelector('fieldset#cuandoFieldset input[name=dia3]').value, regexp ),
-			jue:cleanStr( document.querySelector('fieldset#cuandoFieldset input[name=dia4]').value, regexp ),
-			vie:cleanStr( document.querySelector('fieldset#cuandoFieldset input[name=dia5]').value, regexp ),
-			sab:cleanStr( document.querySelector('fieldset#cuandoFieldset input[name=dia6]').value, regexp ),
-			dom:cleanStr( document.querySelector('fieldset#cuandoFieldset input[name=dia7]').value, regexp )
+			lun:cleanStr( document.querySelector('fieldset#cuandoFieldset input[name=dia1]').value, regexpCuando ), 
+			mar:cleanStr( document.querySelector('fieldset#cuandoFieldset input[name=dia2]').value, regexpCuando ),
+			mie:cleanStr( document.querySelector('fieldset#cuandoFieldset input[name=dia3]').value, regexpCuando ),
+			jue:cleanStr( document.querySelector('fieldset#cuandoFieldset input[name=dia4]').value, regexpCuando ),
+			vie:cleanStr( document.querySelector('fieldset#cuandoFieldset input[name=dia5]').value, regexpCuando ),
+			sab:cleanStr( document.querySelector('fieldset#cuandoFieldset input[name=dia6]').value, regexpCuando ),
+			dom:cleanStr( document.querySelector('fieldset#cuandoFieldset input[name=dia7]').value, regexpCuando )
 		};
 		formData.delete("dia1"); //sending all dias in a JSON string, so delete individual values from formData
 		formData.delete("dia2"); 
@@ -191,11 +194,9 @@ function(evento){
     
     //  beyond core nepe //
 		//video
-		regexp = new RegExp(/[^a-z0-9.:/=?&@._+-\s]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=?& plus los de login   @ . _  + -
-		//let videoUrl = cleanStr( document.querySelector('fieldset#videoFieldset textarea[name=videoUrl]').value, regexp );
-    	let videoUrl = cleanStr( document.querySelector('fieldset#videoFieldset input[name=videoUrl]').value, regexp );
+    let videoUrl = cleanStr( document.querySelector('fieldset#videoFieldset input[name=videoUrl]').value, regexpURL );
     
-    	if(isVacioStr(videoUrl)){
+    if(isVacioStr(videoUrl)){
 			formData.delete("videoUrl"); 		//tested with isset on php
       		//append nothing, for isset on php to work    formData.append('videoUrl', 'no-video-provided');
 		}else{
@@ -208,8 +209,7 @@ function(evento){
 		document.querySelectorAll('fieldset#queFieldset input[name^=que]')
 		.forEach(
 		function(inputEl, indice){
-			regexp = new RegExp(/[^a-z0-9@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -	
-			let cleanedQue = cleanStr(inputEl.value, regexp );
+			let cleanedQue = cleanStr(inputEl.value, regexpNQD );
 			if(isNotVacioStr(cleanedQue)) { que[indice] = cleanedQue; }
 			formData.delete( inputEl.getAttribute("name") ); //sending all ques in JSON string so delete them individually from formData
 		});
@@ -222,8 +222,7 @@ function(evento){
 		document.querySelectorAll('fieldset#dondeFieldset input[name^=donde]')
 		.forEach(
 		function(inputEl, indice){
-			regexp = new RegExp(/[^a-z0-9@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _  +  -	
-			let cleanedDonde = cleanStr(inputEl.value, regexp );
+			let cleanedDonde = cleanStr(inputEl.value, regexpNQD );
 			if(isNotVacioStr(cleanedDonde)) { donde[indice] = cleanedDonde; }
 			formData.delete( inputEl.getAttribute("name") ); //sending all dondes in JSON string so delete them individually from formData
 		});
@@ -240,7 +239,7 @@ function(evento){
 		}
 		//formdata built
 
-    callbackPostFunction();
+    //callbackPostFunction();
 	}//buildFormData function
 
 
