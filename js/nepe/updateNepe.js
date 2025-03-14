@@ -148,8 +148,8 @@ function(evento){
 
 	let formData = new FormData(forma);
 	function buildFormData( callbackPostFunction ){
-    let regexpNQD =    new RegExp(/[^a-z0-9@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -
-		let regexpCuando = new RegExp(/[^a-z0-9:,@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -	  y   : ,	
+    let regexpNQD =    new RegExp(/[^a-z0-9ñäàáëèéïìíöòóüùú@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -
+	let regexpCuando = new RegExp(/[^a-z0-9ñäàáëèéïìíöòóüùú:,@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -	  y   : ,	
     let regexpURL =    new RegExp(/[^a-z0-9.:/=?&@._+-\s]/gi);	//	allowing letters, numbers and simbols needed for a url .:/=?& plus los de login   @ . _  + -
 
     // a) build and edit formdata

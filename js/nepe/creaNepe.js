@@ -18,7 +18,7 @@ function(evento){
     // core nepe //
 
     //nombre
-    let regexpN = new RegExp(/[^a-z0-9@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _  +  -	
+    let regexpN = new RegExp(/[^a-z0-9ñäàáëèéïìíöòóüùú@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _  +  -	
     let nombre = cleanStr( document.querySelector('form#nepeForm input[name=nombre]').value, regexpN );
     if(isVacioStr(nombre)){
       formData.delete("nombre"); 			formData.append('nombre', 'sin nombre - no name provided');
@@ -27,7 +27,7 @@ function(evento){
     }
 
     //cuando is a JS object, it is stringified before sending it
-    let regexpCuando = new RegExp(/[^a-z0-9:,@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -	  y  : ,
+    let regexpCuando = new RegExp(/[^a-z0-9ñäàáëèéïìíöòóüùú:,@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -	  y  : ,
     let cuando = {  
       lun:cleanStr( document.querySelector('form#nepeForm input[name=dia1]').value, regexpCuando ), 
       mar:cleanStr( document.querySelector('form#nepeForm input[name=dia2]').value, regexpCuando ),
