@@ -30,7 +30,7 @@ switch($buscaMode){
 		FROM
 		(
 			SELECT id,  frase, ts_rank_cd(que_vector, el_query) AS ranqueo
-			FROM que, to_tsquery('spanish', unaccent($1)) el_query
+			FROM que, to_tsquery( 'spanish', $1 ) el_query
 			WHERE el_query @@ que_vector 
 			ORDER BY ranqueo DESC
 		) queIds
@@ -48,7 +48,7 @@ switch($buscaMode){
 		FROM
 		(
 			SELECT id,  frase, ts_rank_cd(donde_vector, el_query) AS ranqueo
-			FROM donde, to_tsquery('spanish', unaccent($1)) el_query
+			FROM donde, to_tsquery( 'spanish', $1 ) el_query
 			WHERE el_query @@ donde_vector 
 			ORDER BY ranqueo DESC
 		) dondeIds
@@ -66,14 +66,14 @@ switch($buscaMode){
 		FROM
 		(
 			SELECT id, frase, ts_rank_cd(que_vector, que_query)  AS ranqueo
-			FROM que, to_tsquery('spanish', unaccent($1)) que_query
+			FROM que, to_tsquery( 'spanish', $1 ) que_query
 			WHERE que_query @@ que_vector
 		) queIds
 		INNER JOIN nepe_que 
 			ON  queIds.id = nepe_que.que_id,
 		(
 			SELECT id, frase, ts_rank_cd(donde_vector, donde_query) AS ranqueo
-			FROM donde, to_tsquery('spanish', unaccent($2)) donde_query
+			FROM donde, to_tsquery( 'spanish', $2 ) donde_query
 			WHERE donde_query @@ donde_vector
 		) dondeIds		
 		INNER JOIN nepe_donde 
