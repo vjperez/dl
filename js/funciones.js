@@ -46,7 +46,7 @@ function cleanStr2(str, patron) {
   str = str.replace(patron, '');
 
   //function will convert a string like   !@#uno!$#dos!#@    into   uno dos
-  //when patron is RegExp(/[^a-z0-9ñüàáèéìíòóùú]/gi)
+  //when patron is RegExp(/[^a-z0-9@._+-\s]/gi)
   //patron comes mainly from crea y update nepe, y busca
 
   //replace characters matching a patron with '%'
@@ -165,9 +165,9 @@ function areValidUserYPass(usertb, pass01, pass02, feedbackType, whatElement) {
   //Esta funcion la usan login y registra
   //para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.
   // 1)lenght >= 3o4; 2)only numbers or letters  @ . _  - +   ; 3)both pass are equal;
-  usertbCheck = usertb.replace(/[^a-z0-9ñüàáèéìíòóùú@._+-]/gi, ''); // g for 'dont stop at first match, find all'; i for case insensitive
-  pass01Check = pass01.replace(/[^a-z0-9ñüàáèéìíòóùú@._+-]/gi, '');
-  pass02Check = pass02.replace(/[^a-z0-9ñüàáèéìíòóùú@._+-]/gi, '');
+  usertbCheck = usertb.replace(/[^a-z0-9ñäàáëèéïìíöòóüùú@._+-]/gi, ''); // g for global - 'dont stop at first match, find all'; i for case insensitive
+  pass01Check = pass01.replace(/[^a-z0-9ñäàáëèéïìíöòóüùú@._+-]/gi, '');
+  pass02Check = pass02.replace(/[^a-z0-9ñäàáëèéïìíöòóüùú@._+-]/gi, '');
   if (
     usertb.length < MINIMUM_USER_NAME_LENGTH ||
     pass01.length < MINIMUM_USER_PASS_LENGTH ||
@@ -236,26 +236,3 @@ function getSessionValue( sessionName ){
       return dato.valorSession;
   });
 }
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-jQuery.haveAtLeast1 = function (formaStr) {
-  var regexp = new RegExp(/[^a-z0-9ñüàáèéìíòóùú@._+-]/gi); //	allowing letters, numbers plus los de login   @ . _ - +				escaping dot and minus
-  if (
-    isVacioStr(cleanStr( document.querySelector(formaStr + ' input[name=red1]').value, regexp )) &&
-    isVacioStr(cleanStr( document.querySelector(formaStr + ' input[name=red2]').value, regexp )) &&
-    isVacioStr(cleanStr( document.querySelector(formaStr + ' input[name=red3]').value, regexp )) &&
-    isVacioStr(cleanStr( document.querySelector(formaStr + ' input[name=red4]').value, regexp ))
-  ) {
-    feedback('fieldset#socialHandleFieldset h5', 'Minimo 1 contacto');
-    feedback('fieldset#submitButtonFieldset h5#handlesFeedback', 'Verifica secci\u00F3n : QUIEN');
-    submitVote1 = false;
-  } else {
-    feedback('fieldset#socialHandleFieldset h5', '');
-    feedback('fieldset#submitButtonFieldset h5#handlesFeedback', '');
-    submitVote1 = true;
-  }
-};
-*/

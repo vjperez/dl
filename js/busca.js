@@ -3,7 +3,7 @@ forma.addEventListener('submit', handleSubmit);
 
 function handleSubmit(evento) {
   evento.preventDefault(); //not making a submit (GET request) here. Lets do it at look=opciones
-  let regexp = new RegExp(/[^a-z0-9\sñüàáèéìíòóùú@._+-]/gi);
+  let regexp = new RegExp(/[^a-z0-9ñäàáëèéïìíöòóüùú@._+-\s]/gi);
   //see 'negated or complemented character class';
   //basically what characters are not letters, numbers or these symbols
 
