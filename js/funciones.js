@@ -14,45 +14,58 @@ function reShowMenu() {
 window.addEventListener('resize', reShowMenu);
 
 
-//keeps multiple marks, trims spaces, merges multiple spaces
-//function cleanStrKeepMultipleMarksBetweenWords(str, patron) {
-function cleanStr(str, elPatron){
-  let patron = new RegExp(/[\s]+/g); // 1 or more continuous blank spaces, global
-  str = str.replace(patron, ' ');
-  patron = new RegExp(/^\s+|\s+$/gm); // 1 or more space at begginning or end, global and multiline - a trim
+//trims spaces, merges multiple spaces, 
+//removes extra chars based on elPatron
+//leaves a space in between and allowed chars
+function removeExtraSpacesAndChars(str, patron){
   str = str.replace(patron, '');
-
-  //using normalize with Canonically-decomposed form (NFD),
-  //then removing combining diacritical marks (includes accents)
-  patron = new RegExp(/[\u0300-\u036f]/g);
-  str = str.normalize('NFD').replace(patron, '');
-
-  //function will convert a string like   !#uno!$#dos!#   into    %%uno%%%dos%%
-  //when patron is RegExp(/[^a-z0-9@._+-\s]/gi)
-  //patron comes mainly from crea y update nepe, y busca
-
-  //replace characters matching -elPatron- with '%'
-  let cleanedstr = str.replace(elPatron, '%');
-
-  return cleanedstr;
+  //diferent patron
+  patron = new RegExp(/[\s]+/g); // 1 or more continuous blank spaces, global
+  str = str.replace(patron, ' ');
+  patron = new RegExp(/^[\s]+|[\s]+$/gm); // 1 or more (multiple spaces were already removed anyway)
+  //space at begginning or end, global and multiline - a trim
+  str = str.replace(patron, '');
+  //str = str.trim(); // same as above
+  return str;
 }
 
 
-//JustKeep1SpaceBetweenWords, trims spaces, merges multiple spaces
-function cleanStr2(str, patron) {
-  patron = new RegExp(/[\s]+/g); // 1 or more continuous blank spaces, global
-  str = str.replace(patron, ' ');
-  patron = new RegExp(/^\s+|\s+$/gm); // 1 or more space at begginning or end, global and multiline - a trim
-  str = str.replace(patron, '');
+function unAccent(str){
+  //using normalize with Canonically-decomposed form (NFD),
+  //to then remove combining-diacritical-marks (includes accents)
+  let patron = new RegExp(/[\u0300-\u036f]/g);
+  str = str.normalize('NFD').replace(patron, '');
+  return str;
+}
 
-  //function will convert a string like   !@#uno!$#dos!#@    into   uno dos
-  //when patron is RegExp(/[^a-z0-9@._+-\s]/gi)
-  //patron comes mainly from crea y update nepe, y busca
 
-  //replace characters matching a patron with '%'
-  str = str.replace(patron, '%'); // str will be   %%%uno%%%dos%%%
+function cleanStr( str, elPatron ){
+  //function will convert a string like   !@#.uno+-  !$#dos!#@.    into   @.uno+- dos@.
+  //elPatron comes mainly from crea y update nepe
+  str = unAccent( removeExtraSpacesAndChars(str, elPatron) );
+  return str;
+}
 
-  strComponentsArray = str.split('%'); // strComponentsArray will contain   ,,uno,,dos,,
+//replace non numbers, non letters characters  and the space... with '%'
+function marca(str){
+  //function will convert a string like   @.uno+- dos@.   into    %%uno%%%dos%%
+  let patron = new RegExp(/[^a-z0-9ñäàáëèéïìíöòóüùú]/gi);
+  //if cleanStr(),which includes unaccent() has been used before, the following shorter regExp is enough
+  //but it has not been used and accents are desired, only the longer regExp keeps accents
+  //let patron = new RegExp(/[^a-z0-9]/gi);
+  str = str.replace(patron, '%');
+  return str;
+}
+
+
+//minimize str, keeping just 1 space between words
+//uses cleanStr(), and marca()
+//function will convert a string like   !@#.uno+-  !$#dos!#@.    into   uno dos
+//elPatron comes mainly from busca
+function minimizeStr(str, elPatron) {
+  str = marca(  cleanStr( str, elPatron )  );
+
+  let strComponentsArray = str.split('%'); // strComponentsArray will contain   ,,uno,,dos,,
   let cleanedstr = '';
   for (let i = 0; i < strComponentsArray.length; i++) {
     //alert('parte de strComponentsArray=[' + strComponentsArray[i]  + ']');

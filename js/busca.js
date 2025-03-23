@@ -8,15 +8,15 @@ function handleSubmit(evento) {
   //basically what characters are not letters, numbers or these symbols
 
   let que = document.querySelector('#queId').value;
-  que = cleanStr(que, regexp);
+  que = minimizeStr(que, regexp);
   let donde = document.querySelector('#dondeId').value;
-  donde = cleanStr(donde, regexp);
+  donde = minimizeStr(donde, regexp);
   //alert('que=(' + que  + ')\ndonde=(' +  donde + ')');
   if (que.length > 0 || donde.length > 0) {
     //i'm looking for a non empty cleaned str
     window.location.href =
       window.location.pathname + '?look=opciones&que=' + encodeURIComponent(que) + '&donde=' + encodeURIComponent(donde);
-  } else {
+  } else {//both are empty
     let feedbackStr = 'Buscas algo?';
     feedback('form#queDondeForm  h3.feedback', feedbackStr, 'feedbackwarn', 'downdelayup');
   }

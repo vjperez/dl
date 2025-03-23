@@ -8,7 +8,7 @@ $dondeStr = $_GET['donde'];
 if(    strlen($queStr) == strlen('') && strlen($dondeStr) >  strlen('')) $buscaMode = 'buscaDonde';
 elseif(strlen($queStr) >  strlen('') && strlen($dondeStr) == strlen('')) $buscaMode = 'buscaQue';
 elseif(strlen($queStr) >  strlen('') && strlen($dondeStr) >  strlen('')) $buscaMode = 'buscaBoth';
-// should not get here because of cleanedStr() on funciones and check at busca js; throw exception
+// should not get here because of Buscas algo? check at busca js; throw exception
 else   throw new Exception('No tengo un Busca Mode, en getOpcionesQuery.php : ' . __FILE__ ); 
      
 //delimeter is changed to " | ", OR for ts_query     
