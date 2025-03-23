@@ -19,7 +19,7 @@ function(evento){
 
     //nombre
     let regexpN = new RegExp(/[^a-z0-9ñäàáëèéïìíöòóüùú@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _  +  -	
-    let nombre = cleanStr( document.querySelector('form#nepeForm input[name=nombre]').value, regexpN );
+    let nombre = removeExtraSpacesAndChars( document.querySelector('form#nepeForm input[name=nombre]').value, regexpN );
     if(isVacioStr(nombre)){
       formData.delete("nombre"); 			formData.append('nombre', 'sin nombre - no name provided');
     }else{
@@ -29,13 +29,13 @@ function(evento){
     //cuando is a JS object, it is stringified before sending it
     let regexpCuando = new RegExp(/[^a-z0-9ñäàáëèéïìíöòóüùú:,@._+-\s]/gi);	//	allowing letters, numbers plus los de login   @ . _ + -	  y  : ,
     let cuando = {  
-      lun:cleanStr( document.querySelector('form#nepeForm input[name=dia1]').value, regexpCuando ), 
-      mar:cleanStr( document.querySelector('form#nepeForm input[name=dia2]').value, regexpCuando ),
-      mie:cleanStr( document.querySelector('form#nepeForm input[name=dia3]').value, regexpCuando ),
-      jue:cleanStr( document.querySelector('form#nepeForm input[name=dia4]').value, regexpCuando ),
-      vie:cleanStr( document.querySelector('form#nepeForm input[name=dia5]').value, regexpCuando ),
-      sab:cleanStr( document.querySelector('form#nepeForm input[name=dia6]').value, regexpCuando ),
-      dom:cleanStr( document.querySelector('form#nepeForm input[name=dia7]').value, regexpCuando )
+      lun:removeExtraSpacesAndChars( document.querySelector('form#nepeForm input[name=dia1]').value, regexpCuando ), 
+      mar:removeExtraSpacesAndChars( document.querySelector('form#nepeForm input[name=dia2]').value, regexpCuando ),
+      mie:removeExtraSpacesAndChars( document.querySelector('form#nepeForm input[name=dia3]').value, regexpCuando ),
+      jue:removeExtraSpacesAndChars( document.querySelector('form#nepeForm input[name=dia4]').value, regexpCuando ),
+      vie:removeExtraSpacesAndChars( document.querySelector('form#nepeForm input[name=dia5]').value, regexpCuando ),
+      sab:removeExtraSpacesAndChars( document.querySelector('form#nepeForm input[name=dia6]').value, regexpCuando ),
+      dom:removeExtraSpacesAndChars( document.querySelector('form#nepeForm input[name=dia7]').value, regexpCuando )
     };
     formData.delete("dia1"); //sending dias in array so delete them individually from formData
     formData.delete("dia2"); //sending dias in array so delete them individually from formData
@@ -54,14 +54,17 @@ function(evento){
 		formData.append('desdeCasa', desdeCasa);
     // end of core nepe //
 
-    console.log("form built");
+    console.log("la forma...");
+    for (const pareja of formData.entries()) {
+			console.log('llave: ' + pareja[0] + '   valor: ' + pareja[1]);
+		}
     //for (let value of formData.values()) {
     //	console.log(value);
     //}
     console.log(formData);
     //formdata built
 
-    //callbackPostFunction();
+    callbackPostFunction();
   }//buildFormData function
 
 

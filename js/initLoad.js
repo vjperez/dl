@@ -6,7 +6,7 @@ function ponScript(scriptSrc) {
 
   scriptEle.addEventListener('load', 
     function(){ 
-      console.log( scriptSrc + ' responding to load event.' );
+      console.log( scriptSrc + ' script resource has loaded.' );
     }
   );
 }

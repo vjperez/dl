@@ -2,7 +2,7 @@ console.log('funcionesMainContenido.js   [loading...]');
 
 
 function isReady( fun ){
-  console.log('isReady() trying to run fun');
+  console.log('isReady() trying to run fun()');
   if (document.readyState !== 'loading'){
     //interactive and complete are the other states
     fun();
