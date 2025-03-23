@@ -1,5 +1,24 @@
+function resizeImages(){
+  let selector = 'fieldset#fotoFieldset   input[name^=fotoArr]';
+  let filesOnFotoArr = document.querySelector(selector).files;
+
+  formData.delete("fotoArr[]"); 
+  for(let index = 0; index < filesOnFotoArr.length; index++){
+    let unFile = filesOnFotoArr[index];
+    if( filesOnFotoArr[index].type.toLowerCase().startsWith("image") ){
+      console.log("calling resizeImage(), file:" + index);
+      resizeImage(index, unFile);
+    }else{ 
+      console.log("skipping file:" + index);
+      continue; 
+    }
+  }//for
+  console.log("fotos Done.");
+}
+
+
 //resize and push
-function resizeImage(index, unFotoFile, formData){
+function resizeImage(index, unFotoFile){
 	//helper function for jQuery.have5OrLessImages
 	let reader = new FileReader();
 	reader.readAsDataURL(unFotoFile);
@@ -62,3 +81,7 @@ function dataURLToBlob(dataURL) {
 
     return new Blob([uInt8Array], {type: contentType});
 }
+
+
+
+resizeImages();
