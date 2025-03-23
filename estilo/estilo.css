@@ -54,14 +54,15 @@ form button[type="submit"]:hover, button[type="button"]:hover{
 
 div#menuicons h1.menuHidableDriver { color:var(--navegaletracolor); }
 
-input[type="text"], input[type="radioxx"], input[type="tel"], input[type="password"], input[type="email"], textarea{
+input[type="text"], input[type="radioxx"], input[type="tel"],
+input[type="password"], input[type="email"], input[type="url"], textarea{
     background-color:var(--formfondocolor);
     border:none;
     border-bottom:4px solid var(--griso);
     outline: none;
 }
-input[type="text"]:focus, input[type="radioxx"]:focus, input[type="tel"]:focus, input[type="password"]:focus,
-input[type="email"]:focus, textarea:focus{
+input[type="text"]:focus, input[type="radioxx"]:focus, input[type="tel"]:focus,
+input[type="password"]:focus, input[type="email"]:focus, input[type="url"]:focus, textarea:focus{
     background-color:var(--formfondocolorhover);
     border:none;
     border-bottom:4px solid var(--labelyheadercolor); 

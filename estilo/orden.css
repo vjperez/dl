@@ -36,8 +36,8 @@ fieldset.subArea input.conMargen { margin-top: 1em;  display: inline-block; }
 fieldset.subArea label.conMargen { margin-top: 1em; margin-left: 1em; display: inline-block; }
 fieldset.hidable { margin-top: 3em; display: inline-block; width:100%; }
 
-input[type="text"], input[type="tel"],
-input[type="password"], input[type='email'], textarea {
+input[type="text"], input[type="tel"], input[type="password"],
+input[type='email'], input[type="url"], textarea {
 	display:block;    margin:0em auto;
   border-radius: 0px;   font-size:0.85em;  width:80%; margin-bottom: 1em;  padding: 0.5em;         
 }
@@ -126,8 +126,8 @@ h3.feedback {
 
   fieldset.hidable label {  font-size:0.90em; letter-spacing:0.30em;  display:block;  margin-left: 10%;  }
 
-  input[type="text"], input[type="tel"],
-  input[type="password"], input[type='email'], textarea {
+  input[type="text"], input[type="tel"], input[type="password"],
+  input[type='email'], input[type="url"], textarea {
     border-radius: 0px;  font-size:0.85em;  width:80%; margin-bottom: 2em;  padding: 0.5em;         
   }
   input[type="radio"] { margin-left:10%; }
@@ -157,8 +157,8 @@ h3.feedback {
 
   fieldset.hidable label {  font-size:0.90em; letter-spacing:0.30em;  display:block;  margin-left: 10%;  }
 
-  input[type="text"], input[type="tel"],
-  input[type="password"], input[type='email'], textarea {
+  input[type="text"], input[type="tel"], input[type="password"],
+  input[type='email'], input[type="url"], textarea {
     border-radius: 0px;   font-size:0.85em;  width:80%;  margin-bottom: 2em;   padding: 0.5em;         
   }
   input[type="radio"] { margin-left:10%; }
