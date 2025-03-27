@@ -29,14 +29,14 @@ function resizeImage(index, unFotoFile){
 		imagen.src = reader.result;
 		imagen.onload = function(evento){
 			console.log('...in resizeImage()  imagen onload() :' + index + '  image width:' + this.width+ ' image height:' + this.height);
-			let imageMaxHeight  = 400;
-			if(this.width > imageMaxHeight){		
+			let imageMaxWidth  = 512;
+			if(this.width > imageMaxWidth){		
 				////////////////////////////////////////////////////
-				let imageRatio = this.width / this.height;  
+				let imageRatio = this.height  /  this.width;  
 				//let canvas = document.getElementById('elCanvas');
 				let canvas = document.createElement("canvas");
-				canvas.height  = imageMaxHeight
-				canvas.width = imageMaxHeight * imageRatio;
+				canvas.width  = imageMaxWidth
+				canvas.height = imageMaxWidth * imageRatio;
 				canvas.getContext("2d").drawImage(imagen, 0, 0, canvas.width, canvas.height);
 				let dataURL = canvas.toDataURL('image/jpeg', 0.95);
 				console.log('...in resizeImage()  indice:' + index + ': dataURL: ' + dataURL);
