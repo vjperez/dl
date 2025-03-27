@@ -13,7 +13,7 @@
   --navegabordercolor:     hsl(197, 70%,  12%); 
 }
 
-body{ min-width:500px; }
+body{ min-width:512px; }
 div#containerForMain, #footer {  margin-left: 0;  }
 div#rightside{ display:none; }
 
@@ -59,12 +59,12 @@ ul.navega li a:hover:not(.seleccionado) {  background-color:var(--navegafondocol
 
 /* media query to apply css starting at 1024 px */
 @media screen and (min-width: 1024px) {  
-  body {  max-width:1280px;  margin:0px auto;  }
+  body {  max-width:1224px;  margin:0px auto;  }
   body {  min-height: 50em;  border-right:1px solid var(--navegabordercolor);  }
 
   div#containerForMain, #footer {  margin-left:200px;  }
   div#rightside {  
-    width:100%;  max-width:1280px;  margin:0px auto;
+    width:100%;  max-width:1224px;  margin:0px auto;
     display:block;   
     position: fixed; height: 100%;  
     border:0px solid var(--navegabordercolor); border-right:1px solid var(--navegabordercolor);
@@ -76,5 +76,3 @@ ul.navega li a:hover:not(.seleccionado) {  background-color:var(--navegafondocol
   ul.navega li a {  text-align: left;  float: none;   font-size: 1.1em;  letter-spacing:0.15em; }
   ul.navega li i.fa-solid { display: block; }
 }
-
-/* media query to apply css starting at 1200 px - recommended by */
