@@ -45,13 +45,14 @@ function populate(elNepe){
   //the html is prepared for a max of 8 images
   //code removes excess html when less than 8 images are received
   //alert(elNepe.losFoto);
-  document.querySelectorAll('#fotos #nepefotos img')
+  document.querySelectorAll('#fotos #nepefotos')
   .forEach(
-  function(imagen, index){
+  function(nepefotosDiv, index){
     if(index < elNepe.losFoto.length){ 
+        let imagen = nepefotosDiv.querySelector('img');
         imagen.src ='imagenes/nepe/subidas/' + elNepe.losFoto[index];
     }else{ 
-        imagen.remove(); 
+        nepefotosDiv.remove(); // remove both nepefotos div and its image
     }
   });
 
