@@ -39,7 +39,7 @@ if(isset($_SESSION['dueno_id'])){
               /*
                 // delete foto files is done by "preparadoQueryDeleteNepe", when nepe is deleted
                 require_once '../configConstants/constants.php';
-                $fotoTarget = $fotos_subidas_dir . $nepe_to_delete . '[abcde].';
+                $fotoTarget = $fotos_subidas_dir . $nepe_to_delete . '[abcdefgh].';
                 foreach(glob($fotoTarget . '*') as $fotoToErase){
                   if(file_exists ($fotoToErase)) unlink($fotoToErase);
                 }

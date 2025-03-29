@@ -33,7 +33,7 @@ if(isset($_SESSION['dueno_id'])){
 				
 				// delete foto files now that nepe on db was deleted
 				require_once '../configConstants/constants.php';
-				$fotoTarget = $fotos_subidas_dir . $nepe_to_delete . '[abcde].';
+				$fotoTarget = $fotos_subidas_dir . $nepe_to_delete . '[abcdefgh].';
 				foreach(glob($fotoTarget . '*') as $fotoToErase){
 					if(file_exists ($fotoToErase)) unlink($fotoToErase);
 				}
