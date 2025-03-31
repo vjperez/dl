@@ -32,13 +32,12 @@ if(isset($_SESSION['dueno_id'])){
       if($recurso_dn){		 
         if(pg_affected_rows($recurso_dn) == 1){
           $cuantos++;
-                // delete foto files is done by "preparadoQueryDeleteNepe",
-                // when nepe is deleted
-                require_once '../configConstants/constants.php';
-                $fotoTarget = $fotos_subidas_dir . $nepe_to_delete . '[abcdefgh].';
-                foreach(glob($fotoTarget . '*') as $fotoToErase){
-                  if(file_exists ($fotoToErase)) unlink($fotoToErase);
-                }
+            // delete foto files now that nepe on db was deleted
+            require_once '../configConstants/constants.php';
+            $fotoTarget = $fotos_subidas_dir . $nepe_to_delete . '[abcdefgh].';
+            foreach(glob($fotoTarget . '*') as $fotoToErase){
+              if(file_exists ($fotoToErase)) unlink($fotoToErase);
+            }
         }		
       }else{
         pg_close($cnx); //maybe not needed but doesn't hurt	
