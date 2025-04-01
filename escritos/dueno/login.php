@@ -17,10 +17,11 @@ if($recurso){
 			require_once 'update/lastLogQuery.php';
 			$recurso = pg_execute($cnx, "preparadoQueryLastLog", array($dueno_id));
 			if($recurso){
+        session_start();	$_SESSION['dueno_id'] = $dueno_id;
+        
 				$respuesta = json_decode('{"logueado":true}');
 				pg_close($cnx);
 				echo json_encode ($respuesta);
-				session_start();	$_SESSION['dueno_id'] = $dueno_id;
 			}else{
 				pg_close($cnx);
 				throw new Exception('Mal query.  Sin RECURSO, para preparadoQueryLastLog en :' . __FILE__ );
