@@ -41,7 +41,7 @@ for($indice = 0; $indice < count($_FILES['fotoArr']['tmp_name']); $indice++){
     if( $no_es_imagen ){
         $error_texto = 'Skiping file:' . $indice . ':' . $tempo_name . ' segun getimagesize(), NO es una imagen!, Tipo: ' . $_FILES['fotoArr']['type'][$indice];
         $files_to_skip[$indice] = $files_to_skip[$indice] . '::' . $error_texto;
-    }elseif( 0 === stripos($es_imagen['mime'],  'image')   &&   strpos($_FILES['fotoArr']['type'][$indice], 'image') === 0 ){
+    }elseif( 0 === stripos($es_imagen['mime'],  'image')   &&   stripos($_FILES['fotoArr']['type'][$indice], 'image') === 0 ){
         //if $error_texto has been added for this file
         if( strlen($files_to_skip[$indice]) > strlen('') ){
             $error_texto = 'Skiping file:' . $indice . ':' . $tempo_name . ', es imagen, tipo:' . $_FILES['fotoArr']['type'][$indice] . ', pero parece ser not uploaded.';

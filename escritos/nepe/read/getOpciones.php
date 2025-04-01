@@ -24,7 +24,8 @@ require_once 'getOpciones/getOpcionesQuery.php';
 			$fotos = getFotos($cnx, $nepe_id);
 			$randomIndex = rand(0, -1 + count($fotos));
 			$randomNepeFoto = $fotos[$randomIndex];
-			if(  str_contains($buscaMode, 'buscaBoth')  ){
+
+      if( strpos($buscaMode, 'buscaBoth') !== false ){   //if(  str_contains($buscaMode, 'buscaBoth')  ){
 				$queDondeTag = $fila[1] . " + " . $fila[2];
 				$ranqueoDeNepe = $fila[3];
 				array_push( $result, array("nepeId"=>$nepe_id,  "fotoUrl"=>$randomNepeFoto, "queDondeTag"=>$queDondeTag, "ranqueoDeNepe"=>$ranqueoDeNepe ) );
