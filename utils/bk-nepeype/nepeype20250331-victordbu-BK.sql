@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.1
--- Dumped by pg_dump version 16.1
+-- Dumped from database version 15.3
+-- Dumped by pg_dump version 15.3
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -17,18 +17,48 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: unaccent; Type: EXTENSION; Schema: -; Owner: -
+-- Name: crea_dondevector_after_insert(); Type: FUNCTION; Schema: public; Owner: victordbu
 --
 
-CREATE EXTENSION IF NOT EXISTS unaccent WITH SCHEMA public;
+CREATE FUNCTION public.crea_dondevector_after_insert() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$ BEGIN   UPDATE donde set donde_vector = to_tsvector('spanish', NEW.frase) where id=NEW.id;   RETURN NEW; END; $$;
 
+
+ALTER FUNCTION public.crea_dondevector_after_insert() OWNER TO victordbu;
 
 --
--- Name: EXTENSION unaccent; Type: COMMENT; Schema: -; Owner: 
+-- Name: crea_nombrevector_after_insert(); Type: FUNCTION; Schema: public; Owner: victordbu
 --
 
-COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
+CREATE FUNCTION public.crea_nombrevector_after_insert() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$ BEGIN    UPDATE nepe set nombre_vector =  to_tsvector('spanish', NEW.nombre) where id=NEW.id ;    RETURN NEW; END; $$;
 
+
+ALTER FUNCTION public.crea_nombrevector_after_insert() OWNER TO victordbu;
+
+--
+-- Name: crea_quevector_after_insert(); Type: FUNCTION; Schema: public; Owner: victordbu
+--
+
+CREATE FUNCTION public.crea_quevector_after_insert() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$ BEGIN   UPDATE que set que_vector = to_tsvector('spanish', NEW.frase) where id=NEW.id;   RETURN NEW; END; $$;
+
+
+ALTER FUNCTION public.crea_quevector_after_insert() OWNER TO victordbu;
+
+--
+-- Name: update_nombrevector_after_update(); Type: FUNCTION; Schema: public; Owner: victordbu
+--
+
+CREATE FUNCTION public.update_nombrevector_after_update() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$ BEGIN   IF(NEW.nombre <> OLD.nombre) then     UPDATE nepe set nombre_vector =  to_tsvector('spanish', NEW.nombre) where id=NEW.id ;   END IF;    RETURN NEW; END; $$;
+
+
+ALTER FUNCTION public.update_nombrevector_after_update() OWNER TO victordbu;
 
 SET default_tablespace = '';
 
@@ -40,8 +70,8 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.donde (
     id bigint NOT NULL,
-    frase character varying(64) NOT NULL,
-    donde_vector tsvector NOT NULL
+    frase text NOT NULL,
+    donde_vector tsvector
 );
 
 
@@ -59,7 +89,7 @@ CREATE SEQUENCE public.donde_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.donde_id_seq OWNER TO victordbu;
+ALTER TABLE public.donde_id_seq OWNER TO victordbu;
 
 --
 -- Name: donde_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: victordbu
@@ -99,7 +129,7 @@ CREATE SEQUENCE public.dueno_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.dueno_id_seq OWNER TO victordbu;
+ALTER TABLE public.dueno_id_seq OWNER TO victordbu;
 
 --
 -- Name: dueno_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: victordbu
@@ -138,7 +168,7 @@ CREATE SEQUENCE public.dueno_nepe_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.dueno_nepe_id_seq OWNER TO victordbu;
+ALTER TABLE public.dueno_nepe_id_seq OWNER TO victordbu;
 
 --
 -- Name: dueno_nepe_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: victordbu
@@ -153,8 +183,9 @@ ALTER SEQUENCE public.dueno_nepe_id_seq OWNED BY public.dueno_nepe.id;
 
 CREATE TABLE public.foto (
     id bigint NOT NULL,
-    url character varying(64) NOT NULL,
     nepe_id integer NOT NULL,
+    urls text[] NOT NULL,
+    prox_indice smallint DEFAULT 0 NOT NULL,
     creado date DEFAULT '2010-01-01'::date NOT NULL,
     revisado date DEFAULT '2010-01-01'::date NOT NULL,
     hits bigint DEFAULT 0 NOT NULL,
@@ -177,7 +208,7 @@ CREATE SEQUENCE public.foto_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.foto_id_seq OWNER TO victordbu;
+ALTER TABLE public.foto_id_seq OWNER TO victordbu;
 
 --
 -- Name: foto_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: victordbu
@@ -192,13 +223,14 @@ ALTER SEQUENCE public.foto_id_seq OWNED BY public.foto.id;
 
 CREATE TABLE public.nepe (
     id integer NOT NULL,
-    nombre character varying(64) NOT NULL,
+    nombre text NOT NULL,
     cuando json NOT NULL,
     su_casa boolean DEFAULT false,
     desde_casa boolean DEFAULT false,
     creado date DEFAULT '2010-01-01'::date NOT NULL,
     revisado date DEFAULT '2010-01-01'::date NOT NULL,
     activo boolean DEFAULT true NOT NULL,
+    nombre_vector tsvector,
     CONSTRAINT nepe_creado_check CHECK ((creado > '2019-12-31'::date)),
     CONSTRAINT nepe_revisado_check CHECK ((revisado > '2019-12-31'::date))
 );
@@ -234,7 +266,7 @@ CREATE SEQUENCE public.nepe_donde_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.nepe_donde_id_seq OWNER TO victordbu;
+ALTER TABLE public.nepe_donde_id_seq OWNER TO victordbu;
 
 --
 -- Name: nepe_donde_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: victordbu
@@ -256,7 +288,7 @@ CREATE SEQUENCE public.nepe_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.nepe_id_seq OWNER TO victordbu;
+ALTER TABLE public.nepe_id_seq OWNER TO victordbu;
 
 --
 -- Name: nepe_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: victordbu
@@ -293,7 +325,7 @@ CREATE SEQUENCE public.nepe_que_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.nepe_que_id_seq OWNER TO victordbu;
+ALTER TABLE public.nepe_que_id_seq OWNER TO victordbu;
 
 --
 -- Name: nepe_que_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: victordbu
@@ -308,8 +340,8 @@ ALTER SEQUENCE public.nepe_que_id_seq OWNED BY public.nepe_que.id;
 
 CREATE TABLE public.que (
     id bigint NOT NULL,
-    frase character varying(64) NOT NULL,
-    que_vector tsvector NOT NULL
+    frase text NOT NULL,
+    que_vector tsvector
 );
 
 
@@ -327,7 +359,7 @@ CREATE SEQUENCE public.que_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.que_id_seq OWNER TO victordbu;
+ALTER TABLE public.que_id_seq OWNER TO victordbu;
 
 --
 -- Name: que_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: victordbu
@@ -342,8 +374,7 @@ ALTER SEQUENCE public.que_id_seq OWNED BY public.que.id;
 
 CREATE TABLE public.social (
     id integer NOT NULL,
-    handle character varying(64) NOT NULL,
-    tipo character varying(64) NOT NULL,
+    contactos text[] NOT NULL,
     dueno_id integer NOT NULL
 );
 
@@ -363,7 +394,7 @@ CREATE SEQUENCE public.social_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.social_id_seq OWNER TO victordbu;
+ALTER TABLE public.social_id_seq OWNER TO victordbu;
 
 --
 -- Name: social_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: victordbu
@@ -402,7 +433,7 @@ CREATE SEQUENCE public.video_id_seq
     CACHE 1;
 
 
-ALTER SEQUENCE public.video_id_seq OWNER TO victordbu;
+ALTER TABLE public.video_id_seq OWNER TO victordbu;
 
 --
 -- Name: video_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: victordbu
@@ -486,7 +517,6 @@ ALTER TABLE ONLY public.video ALTER COLUMN id SET DEFAULT nextval('public.video_
 --
 
 COPY public.donde (id, frase, donde_vector) FROM stdin;
-19	santiago	'santiag':1
 \.
 
 
@@ -495,8 +525,8 @@ COPY public.donde (id, frase, donde_vector) FROM stdin;
 --
 
 COPY public.dueno (id, nombre, clave, activo, last_log, first_log) FROM stdin;
-1024	victor	$2y$10$iU29bhi4vBGw6qYBTvuG9.txjSTuwPkrSzi9ESmQPd1Tp4C1z8MfG	t	2024-03-21	2021-10-24
--2147483648	rosa	$2y$10$3yvM/L9EPfnZxYZe9E7due.C1N6Oydb3JeSNITEJOiZGNHmervzO2	t	2024-03-21	2024-03-20
+-2147483646	victor	$2y$10$AL258KMrRb7fwXnEJT3MAufJZelSLJhYlyUZ/URJrTNqaSfD4.mQW	t	2025-03-31	2025-03-29
+-2147483647	rosa	$2y$10$OW4kYFTM/8SXrian.GqQ3OMe5KG5CpZ5Kp9vRvQXxKbpBCsoYxfle	t	2025-03-31	2025-03-29
 \.
 
 
@@ -505,8 +535,6 @@ COPY public.dueno (id, nombre, clave, activo, last_log, first_log) FROM stdin;
 --
 
 COPY public.dueno_nepe (id, dueno_id, nepe_id, creado, vence, activo) FROM stdin;
-1	1024	-2147483648	2024-03-17	2025-03-17	t
-2	-2147483648	-2147483647	2024-03-20	2025-03-20	t
 \.
 
 
@@ -514,7 +542,7 @@ COPY public.dueno_nepe (id, dueno_id, nepe_id, creado, vence, activo) FROM stdin
 -- Data for Name: foto; Type: TABLE DATA; Schema: public; Owner: victordbu
 --
 
-COPY public.foto (id, url, nepe_id, creado, revisado, hits) FROM stdin;
+COPY public.foto (id, nepe_id, urls, prox_indice, creado, revisado, hits) FROM stdin;
 \.
 
 
@@ -522,9 +550,7 @@ COPY public.foto (id, url, nepe_id, creado, revisado, hits) FROM stdin;
 -- Data for Name: nepe; Type: TABLE DATA; Schema: public; Owner: victordbu
 --
 
-COPY public.nepe (id, nombre, cuando, su_casa, desde_casa, creado, revisado, activo) FROM stdin;
--2147483647	rosin	{"lun":"","mar":"","mie":"por la tarde, despues de la 1:32 pm","jue":"","vie":"","sab":"","dom":""}	\N	\N	2024-03-20	2024-03-20	t
--2147483648	vito	{"lun":"","mar":"","mie":"12:28 pm 2024 03 20","jue":"","vie":"","sab":"","dom":""}	t	t	2024-03-18	2024-03-21	t
+COPY public.nepe (id, nombre, cuando, su_casa, desde_casa, creado, revisado, activo, nombre_vector) FROM stdin;
 \.
 
 
@@ -533,7 +559,6 @@ COPY public.nepe (id, nombre, cuando, su_casa, desde_casa, creado, revisado, act
 --
 
 COPY public.nepe_donde (id, nepe_id, donde_id, creado, hits) FROM stdin;
-18	-2147483648	19	2024-03-20	0
 \.
 
 
@@ -542,7 +567,6 @@ COPY public.nepe_donde (id, nepe_id, donde_id, creado, hits) FROM stdin;
 --
 
 COPY public.nepe_que (id, nepe_id, que_id, creado, hits) FROM stdin;
-27	-2147483648	31	2024-03-20	0
 \.
 
 
@@ -551,7 +575,6 @@ COPY public.nepe_que (id, nepe_id, que_id, creado, hits) FROM stdin;
 --
 
 COPY public.que (id, frase, que_vector) FROM stdin;
-31	codeador con ai	'ai':3 'codeador':1
 \.
 
 
@@ -559,15 +582,8 @@ COPY public.que (id, frase, que_vector) FROM stdin;
 -- Data for Name: social; Type: TABLE DATA; Schema: public; Owner: victordbu
 --
 
-COPY public.social (id, handle, tipo, dueno_id) FROM stdin;
--2147483648	787-122-1212	tel	1024
--2147483647		email	1024
--2147483646		rs1	1024
--2147483645		rs2	1024
--2147483644	787-249-1819	tel	-2147483648
--2147483643	rosa@amfenol.com	email	-2147483648
--2147483642	@totin en tiktok	rs1	-2147483648
--2147483641	@rosita en fb	rs2	-2147483648
+COPY public.social (id, contactos, dueno_id) FROM stdin;
+-2147483647	{787-000-1111,algo@algom.com,"","vito @ wasa"}	-2147483646
 \.
 
 
@@ -576,8 +592,6 @@ COPY public.social (id, handle, tipo, dueno_id) FROM stdin;
 --
 
 COPY public.video (id, url, nepe_id, creado, revisado, hits) FROM stdin;
-2	no video provided	-2147483647	2024-03-20	2024-03-20	0
-1	mi vid	-2147483648	2024-03-18	2024-03-21	0
 \.
 
 
@@ -585,21 +599,21 @@ COPY public.video (id, url, nepe_id, creado, revisado, hits) FROM stdin;
 -- Name: donde_id_seq; Type: SEQUENCE SET; Schema: public; Owner: victordbu
 --
 
-SELECT pg_catalog.setval('public.donde_id_seq', 22, true);
+SELECT pg_catalog.setval('public.donde_id_seq', 1, false);
 
 
 --
 -- Name: dueno_id_seq; Type: SEQUENCE SET; Schema: public; Owner: victordbu
 --
 
-SELECT pg_catalog.setval('public.dueno_id_seq', -2147483648, true);
+SELECT pg_catalog.setval('public.dueno_id_seq', -2147483648, false);
 
 
 --
 -- Name: dueno_nepe_id_seq; Type: SEQUENCE SET; Schema: public; Owner: victordbu
 --
 
-SELECT pg_catalog.setval('public.dueno_nepe_id_seq', 2, true);
+SELECT pg_catalog.setval('public.dueno_nepe_id_seq', 1, false);
 
 
 --
@@ -613,42 +627,42 @@ SELECT pg_catalog.setval('public.foto_id_seq', 1, false);
 -- Name: nepe_donde_id_seq; Type: SEQUENCE SET; Schema: public; Owner: victordbu
 --
 
-SELECT pg_catalog.setval('public.nepe_donde_id_seq', 23, true);
+SELECT pg_catalog.setval('public.nepe_donde_id_seq', 1, false);
 
 
 --
 -- Name: nepe_id_seq; Type: SEQUENCE SET; Schema: public; Owner: victordbu
 --
 
-SELECT pg_catalog.setval('public.nepe_id_seq', -2147483647, true);
+SELECT pg_catalog.setval('public.nepe_id_seq', -2147483648, false);
 
 
 --
 -- Name: nepe_que_id_seq; Type: SEQUENCE SET; Schema: public; Owner: victordbu
 --
 
-SELECT pg_catalog.setval('public.nepe_que_id_seq', 32, true);
+SELECT pg_catalog.setval('public.nepe_que_id_seq', 1, false);
 
 
 --
 -- Name: que_id_seq; Type: SEQUENCE SET; Schema: public; Owner: victordbu
 --
 
-SELECT pg_catalog.setval('public.que_id_seq', 34, true);
+SELECT pg_catalog.setval('public.que_id_seq', 1, false);
 
 
 --
 -- Name: social_id_seq; Type: SEQUENCE SET; Schema: public; Owner: victordbu
 --
 
-SELECT pg_catalog.setval('public.social_id_seq', -2147483641, true);
+SELECT pg_catalog.setval('public.social_id_seq', -2147483648, false);
 
 
 --
 -- Name: video_id_seq; Type: SEQUENCE SET; Schema: public; Owner: victordbu
 --
 
-SELECT pg_catalog.setval('public.video_id_seq', 2, true);
+SELECT pg_catalog.setval('public.video_id_seq', 1, false);
 
 
 --
@@ -705,14 +719,6 @@ ALTER TABLE ONLY public.dueno
 
 ALTER TABLE ONLY public.foto
     ADD CONSTRAINT foto_pkey PRIMARY KEY (id);
-
-
---
--- Name: foto foto_url_key; Type: CONSTRAINT; Schema: public; Owner: victordbu
---
-
-ALTER TABLE ONLY public.foto
-    ADD CONSTRAINT foto_url_key UNIQUE (url);
 
 
 --
@@ -788,11 +794,31 @@ ALTER TABLE ONLY public.video
 
 
 --
--- Name: video video_url_key; Type: CONSTRAINT; Schema: public; Owner: victordbu
+-- Name: donde after_insert_dondefrase_trigger; Type: TRIGGER; Schema: public; Owner: victordbu
 --
 
-ALTER TABLE ONLY public.video
-    ADD CONSTRAINT video_url_key UNIQUE (url);
+CREATE TRIGGER after_insert_dondefrase_trigger AFTER INSERT ON public.donde FOR EACH ROW EXECUTE FUNCTION public.crea_dondevector_after_insert();
+
+
+--
+-- Name: nepe after_insert_nombre_trigger; Type: TRIGGER; Schema: public; Owner: victordbu
+--
+
+CREATE TRIGGER after_insert_nombre_trigger AFTER INSERT ON public.nepe FOR EACH ROW EXECUTE FUNCTION public.crea_nombrevector_after_insert();
+
+
+--
+-- Name: que after_insert_quefrase_trigger; Type: TRIGGER; Schema: public; Owner: victordbu
+--
+
+CREATE TRIGGER after_insert_quefrase_trigger AFTER INSERT ON public.que FOR EACH ROW EXECUTE FUNCTION public.crea_quevector_after_insert();
+
+
+--
+-- Name: nepe after_update_nombre_trigger; Type: TRIGGER; Schema: public; Owner: victordbu
+--
+
+CREATE TRIGGER after_update_nombre_trigger AFTER UPDATE ON public.nepe FOR EACH ROW EXECUTE FUNCTION public.update_nombrevector_after_update();
 
 
 --
@@ -865,6 +891,20 @@ ALTER TABLE ONLY public.social
 
 ALTER TABLE ONLY public.video
     ADD CONSTRAINT "video-nepe_id-Fkey" FOREIGN KEY (nepe_id) REFERENCES public.nepe(id) ON DELETE CASCADE;
+
+
+--
+-- Name: SCHEMA public; Type: ACL; Schema: -; Owner: pg_database_owner
+--
+
+GRANT ALL ON SCHEMA public TO victordbu;
+
+
+--
+-- Name: DEFAULT PRIVILEGES FOR TABLES; Type: DEFAULT ACL; Schema: public; Owner: victordbu
+--
+
+ALTER DEFAULT PRIVILEGES FOR ROLE victordbu IN SCHEMA public GRANT SELECT,INSERT ON TABLES  TO victordbu;
 
 
 --
