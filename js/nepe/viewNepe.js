@@ -7,13 +7,24 @@ fetch('escritos/nepe/read/getNepe.php' + '?' + urlParams.toString() )
 function(respuesta){
   console.log('view nepe fetch, then 1');
   console.log(respuesta);
-  return respuesta.json();
+  return respuesta.text();
 })
 .then(
 function(dato){
   console.log('view nepe fetch, then 2: ');
   console.log(dato);
-  populate(dato); 
+  
+  /////////////////////////try-catch/////////////
+  let datoJSObj;
+  try{
+    datoJSObj = JSON.parse( dato );
+  }
+  catch( err ){
+    throw new Error( err + '<br><br>::php<br>' + dato ); 
+  }
+  ///////////////////////////////////////////////
+
+  populate(datoJSObj); 
 })
 .catch(
 function(error){

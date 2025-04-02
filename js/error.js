@@ -50,8 +50,8 @@ function appendDebugErrors( msg ){
     msg = msg.replace(/Stack trace:/, '<br>Stack trace:'); 
 
     
-    losLis = '<br><hr><br>';
-    losLis += '<li>Error:<br>' + msg + '</li>';
+    losLis = '<hr><br>';
+    losLis += '<li>' + msg + '</li>';
     losLis += '<br><hr>';
     document.querySelector('#containerForErrors').insertAdjacentHTML('beforeend', losLis);
 }

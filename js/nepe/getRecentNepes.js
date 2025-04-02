@@ -10,13 +10,13 @@ function(datos){
   console.log('view nepe fetch, then 2: ');
   console.log(datos);
   
-  /////////////////////////try catch/////////////
+  /////////////////////////try-catch/////////////
   let datosJSOBJArr;
   try{
     datosJSOBJArr = JSON.parse( datos );
   }
   catch( err ){
-    throw new Error( err + '<br><br>' + datos ); 
+    throw new Error( err + '<br><br>::php<br>' + datos ); 
   }
   ///////////////////////////////////////////////
 
