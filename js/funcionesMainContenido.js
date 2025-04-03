@@ -56,6 +56,7 @@ function lookYelScript(pageName, scriptPath){
 }
 
 
+const DEBUGUEO = true;
 function encodeAndGetErrorPath( msg ){
 	if(DEBUGUEO){
 		const msgEncoded = encodeURIComponent( msg );

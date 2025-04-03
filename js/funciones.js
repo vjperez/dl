@@ -171,7 +171,6 @@ function slideToggle(el, duration = 500){
 }
 
 
-const DEBUGUEO = true;
 function areValidUserYPass(usertb, pass01, pass02, feedbackType, whatElement) {
   const MINIMUM_USER_PASS_LENGTH = 4;
   const MINIMUM_USER_NAME_LENGTH = 3;
