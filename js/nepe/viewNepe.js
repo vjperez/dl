@@ -10,21 +10,21 @@ function(respuesta){
   return respuesta.text();
 })
 .then(
-function(dato){
+function(datoTxt){
   console.log('view nepe fetch, then 2: ');
-  console.log(dato);
+  console.log(datoTxt);
   
   /////////////////////////try-catch/////////////
-  let datoJSObj;
+  let datoJsObj;
   try{
-    datoJSObj = JSON.parse( dato );
+    datoJsObj = JSON.parse( datoTxt );
   }
   catch( err ){
-    throw new Error( err + '<br><br>::php<br>' + dato ); 
+    throw new Error( err + '<br><br>::php<br>' + datoTxt ); 
   }
   ///////////////////////////////////////////////
 
-  populate(datoJSObj); 
+  populate(datoJsObj); 
 })
 .catch(
 function(error){

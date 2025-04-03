@@ -6,21 +6,21 @@ function(respuesta){
   return respuesta.text();
 })
 .then(
-function(datos){
+function(datosTxt){
   console.log('view nepe fetch, then 2: ');
-  console.log(datos);
+  console.log(datosTxt);
   
-  /////////////////////////try-catch/////////////
-  let datosJSOBJArr;
+  /////////////////////try-catch/////////////////
+  let datosJsObjArr;
   try{
-    datosJSOBJArr = JSON.parse( datos );
+    datosJsObjArr = JSON.parse( datosTxt );
   }
   catch( err ){
-    throw new Error( err + '<br><br>::php<br>' + datos ); 
+    throw new Error( err + '<br><br>::php<br>' + datosTxt ); 
   }
   ///////////////////////////////////////////////
-
-  addNepes( datosJSOBJArr );
+  
+  addNepes( datosJsObjArr );
 })
 .catch(
 function(error){
@@ -29,7 +29,7 @@ function(error){
 });
 
 
-function addNepes(losNepes){
+function addNepes( losNepes ){
 	let tableRows = '';
 	losNepes.forEach(
 	function(nepe, index){
