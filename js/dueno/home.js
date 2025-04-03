@@ -7,14 +7,25 @@ fetch('escritos/dueno/getNombre.php')
 function(respuesta){
   console.log('view nepe fetch, then 1');
   console.log(respuesta);
-  return respuesta.json();
+  return respuesta.text();
 })
 .then(
-function(dato){
+function(datoTxt){
   console.log('view nepe fetch, then 2: ');
-  console.log(dato);
-  document.querySelector('div#labelTableContainer label').innerHTML = 'Negocios de ' + dato ;
-	usuario = dato; 
+  console.log(datoTxt);
+
+  /////////////////////try-catch/////////////////
+  let datoJsObj;
+  try{
+    datoJsObj = JSON.parse( datoTxt );
+  }
+  catch( err ){
+    throw new Error( err + '<br><br>::php<br>' + datoTxt ); 
+  }
+  ///////////////////////////////////////////////
+
+  usuario = datoJsObj;
+  document.querySelector('div#labelTableContainer label').innerHTML = 'Negocios de ' + usuario ; 
 })
 .catch(
 function(error){
@@ -23,22 +34,34 @@ function(error){
 });
 
 
+////////////////////// fetch to populate home page /////////////////
 fetch('escritos/dueno/getOwnNepesWithIds.php')
 .then(
 function(respuesta){
   console.log('view nepe fetch, then 1');
   console.log(respuesta);
-  return respuesta.json();
+  return respuesta.text();
 })
 .then(
-function(datos){
+function(datosTxt){
   console.log('view nepe fetch, then 2: ');
-  console.log(datos);
+  console.log(datosTxt);
+
+  /////////////////////try-catch/////////////////
+  let datosJsObj;
+  try{
+    datosJsObj = JSON.parse( datosTxt );
+  }
+  catch( err ){
+    throw new Error( err + '<br><br>::php<br>' + datosTxt ); 
+  }
+  ///////////////////////////////////////////////
+
   let elTable = "";
-	datos.forEach(
-    function(dato, index){
+	datosJsObj.forEach(
+    function(nepe, index){
       elTable += '<tr><td>';
-      elTable += '<a class="link" href="portada.html?look=updateNepe&index=' + index + '">' + dato.nepeNombre + '</a>';
+      elTable += '<a class="link" href="portada.html?look=updateNepe&index=' + index + '">' + nepe.nepeNombre + '</a>';
       elTable += '</td></tr>';
 	  });	
 	document.querySelector('div#labelTableContainer table').innerHTML = elTable;
@@ -50,21 +73,34 @@ function(error){
 });
 
 
+
+////////////////////// fetch to populate home page /////////////////
 fetch('escritos/dueno/getSocials.php')
 .then(
 function(respuesta){
   console.log('view nepe fetch, then 1');
   console.log(respuesta);
-  return respuesta.json();
+  return respuesta.text();
 })
 .then(
-function(socialDatos){
+function(datosTxt){
   console.log('view nepe fetch, then 2: ');
-  console.log(socialDatos);
-	if( socialDatos[0] ) document.querySelector('fieldset#editContactosFieldset input#red1Id').value = socialDatos[0];
-	if( socialDatos[1] ) document.querySelector('fieldset#editContactosFieldset input#red2Id').value = socialDatos[1];
-	if( socialDatos[2] ) document.querySelector('fieldset#editContactosFieldset input#red3Id').value = socialDatos[2];
-	if( socialDatos[3] ) document.querySelector('fieldset#editContactosFieldset input#red4Id').value = socialDatos[3];
+  console.log(datosTxt);
+
+  /////////////////////try-catch/////////////////
+  let socialDatosJsObj;
+  try{
+    socialDatosJsObj = JSON.parse( datosTxt );
+  }
+  catch( err ){
+    throw new Error( err + '<br><br>::php<br>' + datosTxt ); 
+  }
+  ///////////////////////////////////////////////
+
+	if( socialDatosJsObj[0] ) document.querySelector('fieldset#editContactosFieldset input#red1Id').value = socialDatosJsObj[0];
+	if( socialDatosJsObj[1] ) document.querySelector('fieldset#editContactosFieldset input#red2Id').value = socialDatosJsObj[1];
+	if( socialDatosJsObj[2] ) document.querySelector('fieldset#editContactosFieldset input#red3Id').value = socialDatosJsObj[2];
+	if( socialDatosJsObj[3] ) document.querySelector('fieldset#editContactosFieldset input#red4Id').value = socialDatosJsObj[3];
 })
 .catch(
 function(error){
@@ -103,19 +139,21 @@ function(evento){
 	    return respuesta.text();
 	  })
 	  .then(
-	  function(dato){
+	  function(datoTxt){
 	    console.log(' fetch, then 2: ');
-	    console.log(dato);
-      /////////////////////////try catch////////////////////////
-      let datosJSOBJ;
+	    console.log(datoTxt);
+
+      /////////////////////////try-catch////////////////////////
+      let datoJsObj;
       try{
-        datosJSOBJ = JSON.parse( dato );
+        datoJsObj = JSON.parse( datoTxt );
       }
       catch( err ){
-        throw new Error( err + '<br><br>' + dato ); 
+        throw new Error( err + '<br><br>::php<br>' + datoTxt ); 
       }
       //////////////////////////////////////////////////////////
-      if(datosJSOBJ.editado){
+
+      if(datoJsObj.editado){
         let feedbackStr = usuario + ', tu clave fue editada.'; 
         feedback('form#editClaveForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
       }else{
@@ -158,19 +196,21 @@ function(evento){
     return respuesta.text();
   })
   .then(
-  function(dato){
+  function(datoTxt){
     console.log(' fetch, then 2: ');
-    console.log(dato);
-    /////////////////////////try catch////////////////////////
-    let datosJSOBJ;
+    console.log(datoTxt);
+
+    /////////////////////////try-catch////////////////////////
+    let datoJsObj;
     try{
-      datosJSOBJ = JSON.parse( dato );
+      datoJsObj = JSON.parse( datoTxt );
     }
     catch( err ){
-      throw new Error( err + '<br><br>' + dato ); 
+      throw new Error( err + '<br><br>' + datoTxt ); 
     }
     //////////////////////////////////////////////////////////
-		if(datosJSOBJ.actualizados){
+
+		if(datoJsObj.actualizados){
 			let feedbackStr = usuario + ', tus contactos fueron actualizados.'; 
 			feedback('form#editContactosForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
 		}
