@@ -20,22 +20,24 @@ function(evento){
       return respuesta.text();  
 	  })
 	  .then(
-    function(datos){
+    function(datoTxt){
       console.log(' fetch, then 2: ');
-      console.log( datos );
+      console.log( datoTxt );
+
       /////////////////////////try catch////////////////////////
-      let datosJSOBJ;
+      let datoJsObj;
       try{
-        datosJSOBJ = JSON.parse( datos );
+        datoJsObj = JSON.parse( datoTxt );
       }
       catch( err ){
-        throw new Error( err + '<br><br>' + datos ); 
+        throw new Error( err + '<br><br>::php<br>' + datoTxt ); 
       }
       //////////////////////////////////////////////////////////
-      if(datosJSOBJ.logueado){
+
+      if(datoJsObj.logueado){
         window.location.href = window.location.pathname + '?look=home';
       }else{
-        feedback('form#loginForm h3.feedback', datosJSOBJ.feedback, 'feedbackwarn', 'downdelayup');
+        feedback('form#loginForm h3.feedback', datoJsObj.feedback, 'feedbackwarn', 'downdelayup');
       }
     })
     .catch(
