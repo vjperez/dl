@@ -77,13 +77,24 @@ fetch('escritos/nepe/read/getNepe.php' + '?' + urlParams.toString() )
 function(respuesta){
   console.log(' fetch, then 1');
   console.log(respuesta);
-  return respuesta.json();
+  return respuesta.text();
 })
 .then(
-function(nepeDatos){
+function(datosTxt){
   console.log(' fetch, then 2: ');
-  console.log(nepeDatos);
-  populateUpdateNepeForm(nepeDatos);
+  console.log(datosTxt);
+
+  /////////////////////try-catch/////////////////
+  let nepeDatosJsObj;
+  try{
+    nepeDatosJsObj = JSON.parse( datosTxt );
+  }
+  catch( err ){
+    throw new Error( err + '<br><br>::php<br>' + datosTxt ); 
+  }
+  ///////////////////////////////////////////////
+
+  populateUpdateNepeForm(nepeDatosJsObj);
 })
 .catch(
 function(error){
@@ -219,23 +230,25 @@ function(evento){
         return respuesta.text();  
       })
       .then(
-      function(datos){
+      function(datosTxt){
         console.log(' fetch, then 2: ');
-        console.log( datos );
-        /////////////////////////try catch////////////////////////
-        let datosJSOBJ;
+        console.log( datosTxt );
+
+        /////////////////////////try-catch////////////////////////
+        let datosJsObj;
         try{
-          datosJSOBJ = JSON.parse( datos );
+          datosJsObj = JSON.parse( datosTxt );
         }
         catch( err ){
-          throw new Error( err + '<br><br>' + datos ); 
+          throw new Error( err + '<br><br>::php<br>' + datosTxt ); 
         }
         //////////////////////////////////////////////////////////
-        if(datosJSOBJ.nepeCoreUpdated && datosJSOBJ.queDondeUpdated && (datosJSOBJ.videoInserted || datosJSOBJ.videoUpdated  || datosJSOBJ.videoRemoved || datosJSOBJ.videoNothingDone )){
-          window.location.href = window.location.pathname + '?look=viewNepe&nepeId=' + datosJSOBJ.nepeId;
+        
+        if(datosJsObj.nepeCoreUpdated && datosJsObj.queDondeUpdated && (datosJsObj.videoInserted || datosJsObj.videoUpdated  || datosJsObj.videoRemoved || datosJsObj.videoNothingDone )){
+          window.location.href = window.location.pathname + '?look=viewNepe&nepeId=' + datosJsObj.nepeId;
         }else{
           //falta algo ?
-          //feedback('form#updateNepeForm h2', datosJSOBJ.feedback);
+          //feedback('form#updateNepeForm h2', datosJsObj.feedback);
         } 
       })
       .catch(
