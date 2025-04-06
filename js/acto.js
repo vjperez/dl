@@ -151,7 +151,7 @@ function deleteUser(){
       datosJsObj = JSON.parse( datoTxt );
     }
     catch( err ){
-      throw new Error( err + '<br><br>' + datoTxt ); 
+      throw new Error( err + '<br><br>::php<br>' + datoTxt ); 
     }
     //////////////////////////////////////////////////////////
     if(datosJsObj.userBorrado){
