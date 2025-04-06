@@ -32,19 +32,19 @@ function submitHandlerAEC( userNumber, usuario ){
         return respuesta.text();
       })
       .then(
-      function(dato){
+      function(datoTxt){
         console.log(' fetch, then 2: ');
-        console.log(dato);
+        console.log(datoTxt);
         /////////////////////////try catch////////////////////////
-        let datosJSOBJ;
+        let datosJsObj;
         try{
-          datosJSOBJ = JSON.parse( dato );
+          datosJsObj = JSON.parse( datoTxt );
         }
         catch( err ){
-          throw new Error( err + '<br><br>' + dato ); 
+          throw new Error( err + '<br><br>::php<br>' + datoTxt ); 
         }
         //////////////////////////////////////////////////////////
-        if(datosJSOBJ.editado){	
+        if(datosJsObj.editado){	
           let feedbackStr = 'Password de ' + usuario + ' fue editado.'; 
           feedback('form#adminEditClaveForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
         }else{
@@ -92,16 +92,27 @@ function submitHandlerAN( userNumber, usuario ){
     function(respuesta){
       console.log('fetch, then 1');
       console.log(respuesta);
-      return respuesta.json();
+      return respuesta.text();
     })
     .then(
-    function(datos){
+    function(datosTxt){ datosTxt = datosTxt + 'dx}';
       console.log('fetch, then 2: ');
-      console.log(datos);
+      console.log(datosTxt);
+
+      /////////////////////try-catch/////////////////
+      let datosJsObj;
+      try{
+        datosJsObj = JSON.parse( datosTxt );
+      }
+      catch( err ){
+        throw new Error( err + '<br><br>::php<br>' + datosTxt ); 
+      }
+      ///////////////////////////////////////////////
+  
 
       let table =  '<table class="subArea">';
       let cuantos = 0;
-      datos.forEach(
+      datosJsObj.forEach(
       function(dato, index){
         table += '<tr><td>'
         + '<i class="fa-solid fa-trash-alt"></i>'
@@ -137,6 +148,11 @@ function submitHandlerAN( userNumber, usuario ){
       table += '</table>';
       document.querySelector('fieldset#tableContainer').innerHTML = table;
     })
+    .catch(
+      function(error){
+        const href = encodeAndGetErrorPath(error);
+        window.location.href = href;
+    });
   }else{
     //usuario === false); ver llamada del callbacck al final de getNombre()
     let feedbackStr = 'Id invalido: ' + userNumber + '.  El Usuario: ' + usuario + ', no existe.'; 
@@ -160,25 +176,25 @@ function getNombre( numero, f ){
     return respuesta.text();
   })
   .then(
-  function(nombre){
+  function(nombreTxt){
     console.log('fetch, then 2: ');
-    console.log(nombre);
+    console.log(nombreTxt);
 
       /////////////////////////try catch////////////////////////
-      let nombreJSOBJ;
+      let nombreJsObj;
       try{
-        nombreJSOBJ = JSON.parse( nombre );
+        nombreJsObj = JSON.parse( nombreTxt );
         //alert(nombreJSOBJ);
       }
       catch( err ){
-        throw new Error( 'El err:' + err + '<br><br>El nombre:' + nombre ); 
+        throw new Error( 'El err:' + err + '<br><br>El nombre:' + nombreTxt ); 
       }
       //////////////////////////////////////////////////////////
 
       //when nombreJSOBJ es false ...
       //numero es un userNumber que no existe en db
       //getNombre.php retorno false en vez de username
-      f( numero, nombreJSOBJ ); 
+      f( numero, nombreJsObj ); 
   })
   .catch(
   function(error){

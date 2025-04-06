@@ -78,20 +78,20 @@ function(evento){
       return respuesta.text();  
     })
     .then(
-    function(datos){
+    function(datoTxt){
       console.log(' fetch, then 2: ');
-      console.log( datos );
+      console.log( datoTxt );
       /////////////////////////try catch////////////////////////
-      let datosJSOBJ;
+      let datoJsObj;
       try{
-        datosJSOBJ = JSON.parse( datos );
+        datoJsObj = JSON.parse( datoTxt );
       }
       catch( err ){
-        throw new Error( err + '<br><br>' + datos ); 
+        throw new Error( err + '<br><br>::php<br>' + datoTxt ); 
       }
       //////////////////////////////////////////////////////////
-      if(datosJSOBJ.nepeCoreCreado){
-        window.location.href = window.location.pathname +  '?look=updateNepe&index=' + datosJSOBJ.index;
+      if(datoJsObj.nepeCoreCreado){
+        window.location.href = window.location.pathname +  '?look=updateNepe&index=' + datoJsObj.index;
       }else{
         //falta algo ?
         //feedback('form#xxxxNepeForm hx', datosJSOBJ.feedback);

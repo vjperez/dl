@@ -73,17 +73,17 @@ function deleteNepe(){
     return respuesta.text();
   })
   .then(
-  function(dato){
+  function(datoTxt){
     /////////////////////////try catch////////////////////////
-    let datosJSOBJ;
+    let datosJsObj;
     try{
-      datosJSOBJ = JSON.parse( dato );
+      datosJsObj = JSON.parse( datoTxt );
     }
     catch( err ){
-      throw new Error( err + '<br><br>' + dato ); 
+      throw new Error( err + '<br><br>::php<br>' + datoTxt ); 
     }
     //////////////////////////////////////////////////////////
-    if(datosJSOBJ.nepeBorrado){
+    if(datosJsObj.nepeBorrado){
       logueado = true;//no need to ask server
       loadAfterActo();
       return;
@@ -109,22 +109,22 @@ function deleteHerNepes(){
     return respuesta.text();
   })
   .then(
-  function(dato){
+  function(datoTxt){
     /////////////////////////try catch////////////////////////
-    let datosJSOBJ;
+    let datosJsObj;
     try{
-      datosJSOBJ = JSON.parse( dato );
+      datosJsObj = JSON.parse( datoTxt );
     }
     catch( err ){
-      throw new Error( err + '<br><br>' + dato ); 
+      throw new Error( err + '<br><br>::php<br>' + datoTxt ); 
     }
     //////////////////////////////////////////////////////////
-    if(datosJSOBJ.nepesBorrados > 0){
+    if(datosJsObj.nepesBorrados > 0){
       logueado = true;//no need to ask server
       loadAfterActo();
       return;
     }else{ 
-      throw new Error( "borrados = 0, " + datosJSOBJ.nepesBorrados + " affected rows." ); 
+      throw new Error( "borrados = 0, " + datosJsObj.nepesBorrados + " affected rows." ); 
     }
   })
   .catch(function(error){
@@ -144,17 +144,17 @@ function deleteUser(){
     return respuesta.text();
   })
   .then(
-  function(dato){
+  function(datoTxt){
     /////////////////////////try catch////////////////////////
-    let datosJSOBJ;
+    let datosJsObj;
     try{
-      datosJSOBJ = JSON.parse( dato );
+      datosJsObj = JSON.parse( datoTxt );
     }
     catch( err ){
-      throw new Error( err + '<br><br>' + dato ); 
+      throw new Error( err + '<br><br>' + datoTxt ); 
     }
     //////////////////////////////////////////////////////////
-    if(datosJSOBJ.userBorrado){
+    if(datosJsObj.userBorrado){
       logueado = true;//no need to ask server
       loadAfterActo();
       return;

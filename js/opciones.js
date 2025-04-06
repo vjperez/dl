@@ -12,22 +12,22 @@ function(respuesta){
   return respuesta.text();
 })
 .then(
-function(datos){
+function(datosTxt){
   console.log('opciones fetch, then 2: ');
-  console.log(datos);
+  console.log(datosTxt);
   /////////////////////////try catch////////////////////////
-  let datosJSOBJ;
+  let datosJsObj;
   try{
-    datosJSOBJ = JSON.parse( datos );
+    datosJsObj = JSON.parse( datosTxt );
   }
   catch( err ){
-    throw new Error( err + '<br><br>' + datos ); 
+    throw new Error( err + '<br><br>::php<br>' + datosTxt ); 
   }
   //////////////////////////////////////////////////////////
-  if(datosJSOBJ.length > 0){
+  if(datosJsObj.length > 0){
 	//alert('datos: automatically parsed to object object por getJSON = ' + datos + '\nxhrObjetoForDONE.status = ' + xhrObjetoForDONE.status + '\nxhrObjetoForDONE.statustext = ' + xhrObjetoForDONE.statusText + '\nestatusForDONE = ' + estatusForDONE );
 	let htmlForMain = '';
-	datosJSOBJ.forEach(
+	datosJsObj.forEach(
 	function(item, index){
 		//alert( datos[index].nepeId );
 		htmlForMain += '<section>'
