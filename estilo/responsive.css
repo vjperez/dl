@@ -49,22 +49,22 @@ ul.navega li a.seleccionado {  background-color:var(--navegafondocolorselecciona
 ul.navega li a:hover:not(.seleccionado) {  background-color:var(--navegafondocolorhover); color:var(--navegaletracolorhovernosel); }
 
 
-/* media query to apply css starting at 768 px */
-@media screen and (min-width: 768px) {
+/* media query to apply css starting at 700 px */
+@media screen and (min-width: 700px) {
   div#menuicons h1.menuHidableDriver{ display:none; }
   div#menuicons ul.menuHidableTarget{ display:block; }
 
   ul.navega li a {  float: left;   font-size: 1.0em;  letter-spacing:0.15em;  padding: 1.0em; }
 }
 
-/* media query to apply css starting at 1024 px */
-@media screen and (min-width: 1024px) {  
-  body {  max-width:1224px;  margin:0px auto;  }
+/* media query to apply css starting at 900 px */
+@media screen and (min-width: 900px) {  
+  body {  max-width:1100px;  margin:0px auto;  }
   body {  min-height: 50em;  border-right:1px solid var(--navegabordercolor);  }
 
   div#containerForMain, #footer {  margin-left:200px;  }
   div#rightside {  
-    width:100%;  max-width:1224px;  margin:0px auto;
+    width:100%;  max-width:1100px;  margin:0px auto;
     display:block;   
     position: fixed; height: 100%;  
     border:0px solid var(--navegabordercolor); border-right:1px solid var(--navegabordercolor);
