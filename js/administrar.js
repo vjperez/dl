@@ -95,7 +95,7 @@ function submitHandlerAN( userNumber, usuario ){
       return respuesta.text();
     })
     .then(
-    function(datosTxt){ datosTxt = datosTxt + 'dx}';
+    function(datosTxt){
       console.log('fetch, then 2: ');
       console.log(datosTxt);
 
