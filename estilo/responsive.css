@@ -13,7 +13,7 @@
   --navegabordercolor:     hsl(197, 70%,  12%); 
 }
 
-body{ min-width:512px; }
+/*   body{ min-width:512px; }   */
 div#containerForMain, #footer {  margin-left: 0;  }
 div#rightside{ display:none; }
 
