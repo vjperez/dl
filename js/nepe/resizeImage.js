@@ -29,7 +29,7 @@ function resizeImage(index, unFotoFile){
 		imagen.src = reader.result;
 		imagen.onload = function(evento){
 			console.log('...in resizeImage()  imagen onload() :' + index + '  image width:' + this.width+ ' image height:' + this.height);
-			let imageMaxWidth  = 450;
+			let imageMaxWidth  = 350;
 			if(this.width > imageMaxWidth){		
 				////////////////////////////////////////////////////
 				let imageRatio = this.height  /  this.width;  

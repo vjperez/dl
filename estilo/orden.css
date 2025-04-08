@@ -109,7 +109,7 @@ h3.feedback {
 
 
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 700px) {
   a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.30em;  }
   
   /* profile red icons*/
@@ -140,7 +140,7 @@ h3.feedback {
 
 
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 900px) {
   a:link, a:visited, a {  font-size: 1.15em;  letter-spacing:0.30em;  }
   
   /* profile red icons*/
