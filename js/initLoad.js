@@ -11,6 +11,7 @@ function ponScript(scriptSrc) {
   );
 }
 
+ponScript('js/funcionesConst.js');
 ponScript('js/funcionesMainContenido.js');
 ponScript('js/funcionesMenu-HidableSectionsToggle.js');
 ponScript('js/funciones.js');
