@@ -3,20 +3,22 @@ fetch('escritos/nepe/read/getRecentNepes.php')
 function(respuesta){
   console.log('view nepe fetch, then 1');
   console.log(respuesta);
-  return respuesta.text();
+  const texto = respuesta.text();
+  console.log('respuesta texto: ' + texto);
+  return texto;
 })
 .then(
 function(datosTxt){
   console.log('view nepe fetch, then 2: ');
   console.log(datosTxt);
-  
+  console.log('datos texto: ' + datosTxt);
   /////////////////////try-catch/////////////////
   let datosJsObjArr;
   try{
     datosJsObjArr = JSON.parse( datosTxt );
   }
   catch( err ){
-    throw new Error( err + '<br><br>::php<br>' + datosTxt ); 
+    throw new Error( 'el js error:<br>' + err + '<br><br><br><br>' + 'el php error:<br>' + datosTxt ); 
   }
   ///////////////////////////////////////////////
   
