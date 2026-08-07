@@ -1,3 +1,4 @@
+/*
 const nepeId = -2147483648;
 
 let urlParams = new URLSearchParams('escritos/nepe/read/getNepe.php');
@@ -39,6 +40,17 @@ function addNepeRow(elNepe){
   tableRow += '<tr><td></td></tr><tr><td></td></tr>';
 	document.querySelector('table.subArea').innerHTML = tableRow;
 }
+*/
+
+
+
+if(DEBUGUEO){
+    const msg = decodeURIComponent( urlParametro('msgEncoded') );
+    appendDebugErrors( msg );  
+}else{
+    //
+}
+
 
 function appendDebugErrors( msg ){
     // <br />\n  changed to  <br>  
@@ -54,12 +66,4 @@ function appendDebugErrors( msg ){
     losLis += '<li>' + msg + '</li>';
     losLis += '<br><hr>';
     document.querySelector('#containerForErrors').insertAdjacentHTML('beforeend', losLis);
-}
-
-
-if(DEBUGUEO){
-    const msg = decodeURIComponent( urlParametro('msgEncoded') );
-    appendDebugErrors( msg );  
-}else{
-    //
 }
