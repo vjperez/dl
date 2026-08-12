@@ -56,11 +56,11 @@ function showHideConfirm(evento){
   const usertb = document.querySelector('#usernameId').value;
   const pass01 = document.querySelector('#passwordId').value;
   if( usertb.length > 0  &&  pass01.length > 0 ){
-    document.querySelector('label.confirm').style.display = '';
-    document.querySelector('input.confirm').style.display = '';
+    document.querySelector('section.confirm').style.display = '';
+    document.querySelector('div.confirm').style.display = '';
   }else{
-    document.querySelector('label.confirm').style.display = 'none';
-    document.querySelector('input.confirm').style.display = 'none';
+    document.querySelector('section.confirm').style.display = 'none';
+    document.querySelector('div.confirm').style.display = 'none';
   }	
 }
 document.querySelector('form[id*=Form]  input[name^=password]').addEventListener('keyup', showHideConfirm);
