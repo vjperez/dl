@@ -1,16 +1,16 @@
 /*  responsive : comun  */
 /* css variables, used on stylesheet with var() function */
 :root {
-  --navegaletracolor:      hsl(72,    69%,  90%); 
-  --navegaletracolorseleccionado:hsl(200, 100%, 50%); 
-  --navegafondocolor:      hsl(197, 70%,   12%);
-  --navegafondocolorseleccionado:hsl(197, 70%,  12%);   
+  --navegaletracolor:            hsl(00,  00%, 100%); 
+  --navegaletracolorseleccionado:hsl(00,  00%, 100%); 
+  --navegaletracolorhovernosel:  hsl(00,  00%, 100%);
 
-  --navegaletracolorhovernosel: hsl(200,  100%,  40%);
-  --navegafondocolorhover: hsl(197, 70%,   12%);
+  --navegafondocolor:            hsl(000, 00%,  00%);
+  --navegafondocolorseleccionado:hsl(000, 00%,  10%);   
+  --navegafondocolorhover:       hsl(000, 00%,  05%);
 
 
-  --navegabordercolor:     hsl(197, 70%,  12%); 
+  --navegabordercolor:           hsl(197, 70%,  50%); 
 }
 
 /*   body{ min-width:512px; }   */
