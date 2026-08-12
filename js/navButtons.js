@@ -9,8 +9,8 @@ function navButtonsWhenReady(){
 		document.querySelector('#navHome').style.display = '';
 		//alert('nav buttons js:\nshowing logout and home nav buttons for: \nlogueado=' + logueado);
 	}else{
-		document.querySelector('#navLogin').style.display = '';     
-		//document.querySelector('#navSignup').style.display = '';   //showing only 1 of these at a time
+		document.querySelector('#navLogin').style.display = '';   //showing only 1 of these at a time  
+		//document.querySelector('#navSignup').style.display = '';
 
 		//alert('nav buttons js:\nshowing login and sign up nav buttons for:: \nlogueado=' + logueado);
 	}
@@ -21,7 +21,11 @@ function navButtonsWhenReady(){
 			document.querySelector('#navBusca').classList.add("seleccionado");
 		break;
 		case 'login':
-			document.querySelector('#navLogin').classList.add("seleccionado");
+			document.querySelector('#navSignup').style.display = '';
+			document.querySelector('#navLogin').style.display = 'none';  
+
+			//document.querySelector('#navLogin').style.display = '';
+			//document.querySelector('#navLogin').classList.add("seleccionado");
 		break;
 		case 'home':
 		case 'administrar':
@@ -30,9 +34,12 @@ function navButtonsWhenReady(){
 			document.querySelector('#navHome').classList.add("seleccionado");
 		break;
 		case 'registro':
-			document.querySelector('#navLogin').style.display = 'none';     
-			document.querySelector('#navSignup').style.display = '';
-			document.querySelector('#navSignup').classList.add("seleccionado");
+			//prox 2 redundantes ... no harian falta en realidad
+			document.querySelector('#navSignup').style.display = 'none';
+			document.querySelector('#navLogin').style.display = '';    
+
+			//document.querySelector('#navSignup').style.display = '';
+			//document.querySelector('#navSignup').classList.add("seleccionado");
 		break;
 		case 'faq':
 			document.querySelector('#navFaq').classList.add("seleccionado");
