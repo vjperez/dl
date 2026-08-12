@@ -6,28 +6,34 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
 
 :root {
-    --linkcolor:             hsl(200, 100%, 50%);
-    --linkcolorhover:        hsl(200, 100%, 40%);
+    --linkcolor:             hsl(40,  100%, 40%);
+    --linkcolorhover:        hsl(40,  100%, 50%);
+
     --formfondocolor:        hsl(000,  00%, 100%);
     --formfondocolorhover:   hsl(000,  00%, 95%);
-    --labelyheadercolor:     hsl(200, 100%, 40%);
+
+    --labelyheadercolor:     hsl(000,  00%, 0%);
 /*    --icolor:                hsl(330, 100%, 50%);
       --icolorcurrent:         hsl(330, 100%, 40%);  */
       
-    --navegaletracolor:      hsl(000,    00%,  100%); 
-    --navegafondocolor:      hsl(197, 70%,   12%);
+    --navegaletracolor:      hsl(000,  00%,  100%); 
+    --navegafondocolor:      hsl(000,  00%,   0%);
 
 
-    --negro:                 hsl(197, 70%,   12%);
+    --negro:                 hsl(000,  00%,   0%);
     --griso:                 hsl(000,  00%,  50%);
     --blanco:                hsl(000,  00%, 100%);
+    
     --warncolor:             hsl(360, 100%,  70%);
     --greencolor:            hsl(120, 100%,  70%);
+    --infocolor:             hsl(240, 100%,  85%); 
   }
 
 body {  background-color: var(--blanco);  }
 
-span.enfasis   { font-weight:bolder; }
+span.enfasis { font-weight:bolder; }
+span.info { background-color: var(--infocolor);  }
+
 
 .feedbackwarn  { color: var(--negro);  background: var(--warncolor);}
 .feedbackgreen { color: var(--negro);  background: var(--greencolor); }
@@ -58,14 +64,14 @@ input[type="text"], input[type="radioxx"], input[type="tel"],
 input[type="password"], input[type="email"], input[type="url"], textarea{
     background-color:var(--formfondocolor);
     border:none;
-    border-bottom:4px solid var(--griso);
+    border-bottom:4px solid var(--negro);
     outline: none;
 }
 input[type="text"]:focus, input[type="radioxx"]:focus, input[type="tel"]:focus,
 input[type="password"]:focus, input[type="email"]:focus, input[type="url"]:focus, textarea:focus{
     background-color:var(--formfondocolorhover);
     border:none;
-    border-bottom:4px solid var(--labelyheadercolor); 
+    border-bottom:4px solid var(--griso); 
 }
 
 fieldset{ border:0px solid var(--negro);}
