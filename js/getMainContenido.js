@@ -79,7 +79,7 @@ function getMainContenidoWhenReady(){
 		case '':
 		case null:
 		default:
-      		window.location.href = window.location.pathname + '?look=recentNepes';
+      		window.location.href = window.location.pathname + '?look=faq';
 		break;
 	}//look switch	
 
