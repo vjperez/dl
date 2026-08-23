@@ -1,4 +1,5 @@
 let usuario = ""; // this value is used for feedback on forms submit
+let cuantosNepes = 0; 
 
 //task 1 - get info
 ////////////////////// fetch to populate home page /////////////////
@@ -63,8 +64,11 @@ function(datosTxt){
       elTable += '<tr><td>';
       elTable += '<a class="link" href="portada.html?look=updateNepe&index=' + index + '">' + nepe.nepeNombre + '</a>';
       elTable += '</td></tr>';
+
+      cuantosNepes++;
 	  });	
 	document.querySelector('div#labelTableContainer table').innerHTML = elTable;
+  boton();
 })
 .catch(
 function(error){
@@ -246,10 +250,22 @@ showHideConfirm();
 
 
 
-
-//handle link to crea nepe when click on button
-document.querySelector('div#labelTableContainer button')
-.addEventListener('click',
-function(){
-  window.location.href = window.location.pathname + '?look=creaNepe';
-});
+function boton(){
+  //handle link to crea nepe when click on button
+  let elboton = document.querySelector('div#labelTableContainer button');
+  if(cuantosNepes < 1){
+    console.log('menor que uno:'+cuantosNepes);
+    //elboton.disabled = false;
+    elboton.addEventListener('click',
+    function(){
+      window.location.href = window.location.pathname + '?look=creaNepe';
+    });
+  }else{
+    console.log('uno o mas:'+cuantosNepes);
+    //elboton.disabled = true;
+    elboton.removeEventListener('click',
+    function(){
+      window.location.href = window.location.pathname + '?look=creaNepe';
+    });
+  }
+}
