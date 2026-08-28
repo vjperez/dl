@@ -42,7 +42,7 @@ function unAccent(str){
 function cleanStr( str, elPatron ){
   //function will convert a string like   !@#.uno+-  !$#dos!#@.    into   @.uno+- dos@.
   //elPatron comes mainly from crea y update nepe
-  str = removeExtraSpacesAndChars( unAccent(str, elPatron) );
+  str = removeExtraSpacesAndChars( unAccent(str), elPatron );
   return str;
 }
 

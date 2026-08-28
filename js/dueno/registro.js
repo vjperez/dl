@@ -16,7 +16,7 @@ function(evento){
       fetch('escritos/dueno/creaDueno.php', opciones )
       .then(
       function(respuesta){
-        console.log(' fetch, then 1');
+        console.log(' fetch, then 1:');
         console.log(respuesta);
         return respuesta.text();  
       })
