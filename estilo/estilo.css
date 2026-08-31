@@ -6,17 +6,19 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
 
 :root {
-    --linkcolor:             hsl(22,  84%, 50%);
-    --linkcolorhover:        hsl(40,  100%, 50%);
+    --linkcolor:             hsl(22,  84%, 45%);
+    --linkcolorhover:        hsl(22,  84%, 55%);
 
     --formfondocolor:        hsl(000,  00%, 100%);
-    --formfondocolorhover:   hsl(000,  00%, 95%);
+    --formfondocolorhover:   hsl(000,  00%, 88%);
 
     --labelyheadercolor:     hsl(000,  00%, 0%);
 /*    --icolor:                hsl(330, 100%, 50%);
       --icolorcurrent:         hsl(330, 100%, 40%);  */
        
     --formbuttonfondocolor:      hsl(200,  80%,   60%);
+    --borderdarkcolor:      hsl(000,  00%,   00%);
+    --bordergriscolor:      hsl(000,  00%,   50%);
 
 
     --negro:                 hsl(000,  00%,   0%);
@@ -48,11 +50,12 @@ div#adminNepesForm a:link, div#adminNepesForm a:visited, div#adminNepesForm a { 
 
 form button[type="submit"]      , button[type="button"]      {  
     background-color:var(--formbuttonfondocolor); 
+    border:2px solid var(--borderdarkcolor);
     color: var(--linkcolor);
  }
 form button[type="submit"]:hover, button[type="button"]:hover{  
     background-color:var(--formbuttonfondocolor);
-    /*   border:0px solid var(--warncolor);   */
+    border:2px solid var(--bordergriscolor);
     color: var(--linkcolorhover);
 }
 /**/
@@ -63,14 +66,14 @@ input[type="text"], input[type="radioxx"], input[type="tel"],
 input[type="password"], input[type="email"], input[type="url"], textarea{
     background-color:var(--formfondocolor);
     border:none;
-    border-bottom:4px solid var(--negro);
+    border-bottom:4px solid var(--borderdarkcolor);
     outline: none;
 }
 input[type="text"]:focus, input[type="radioxx"]:focus, input[type="tel"]:focus,
 input[type="password"]:focus, input[type="email"]:focus, input[type="url"]:focus, textarea:focus{
     background-color:var(--formfondocolorhover);
     border:none;
-    border-bottom:4px solid var(--griso); 
+    border-bottom:4px solid var(--bordergriscolor); 
 }
 
 fieldset{ border:0px solid var(--negro);}
