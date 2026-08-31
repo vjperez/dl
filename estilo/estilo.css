@@ -6,7 +6,7 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 
 
 :root {
-    --linkcolor:             hsl(40,  100%, 40%);
+    --linkcolor:             hsl(22,  84%, 50%);
     --linkcolorhover:        hsl(40,  100%, 50%);
 
     --formfondocolor:        hsl(000,  00%, 100%);
@@ -15,9 +15,8 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
     --labelyheadercolor:     hsl(000,  00%, 0%);
 /*    --icolor:                hsl(330, 100%, 50%);
       --icolorcurrent:         hsl(330, 100%, 40%);  */
-      
-    --navegaletracolor:      hsl(000,  00%,  100%); 
-    --navegafondocolor:      hsl(000,  00%,   0%);
+       
+    --formbuttonfondocolor:      hsl(200,  80%,   60%);
 
 
     --negro:                 hsl(000,  00%,   0%);
@@ -48,17 +47,17 @@ a:hover, a:focus { color:var(--linkcolorhover);
 div#adminNepesForm a:link, div#adminNepesForm a:visited, div#adminNepesForm a { color: var(--warncolor); }
 
 form button[type="submit"]      , button[type="button"]      {  
-    background-color:var(--navegafondocolor); 
+    background-color:var(--formbuttonfondocolor); 
     color: var(--linkcolor);
  }
 form button[type="submit"]:hover, button[type="button"]:hover{  
-    background-color:var(--navegafondocolor);
+    background-color:var(--formbuttonfondocolor);
     /*   border:0px solid var(--warncolor);   */
     color: var(--linkcolorhover);
 }
 /**/
 
-div#menuicons h1.menuHidableDriver { color:var(--navegaletracolor); }
+
 
 input[type="text"], input[type="radioxx"], input[type="tel"],
 input[type="password"], input[type="email"], input[type="url"], textarea{
