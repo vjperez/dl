@@ -16,7 +16,7 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
 /*    --icolor:                hsl(330, 100%, 50%);
       --icolorcurrent:         hsl(330, 100%, 40%);  */
        
-    --formbuttonfondocolor:      hsl(200,  80%,   60%);
+    --buttonfondocolor:      hsl(200,  80%,   60%);
     --borderdarkcolor:      hsl(000,  00%,   00%);
     --bordergriscolor:      hsl(000,  00%,   50%);
 
@@ -49,12 +49,12 @@ a:hover, a:focus { color:var(--linkcolorhover);
 div#adminNepesForm a:link, div#adminNepesForm a:visited, div#adminNepesForm a { color: var(--warncolor); }
 
 form button[type="submit"]      , button[type="button"]      {  
-    background-color:var(--formbuttonfondocolor); 
+    background-color:var(--buttonfondocolor); 
     border:2px solid var(--borderdarkcolor);
     color: var(--linkcolor);
  }
 form button[type="submit"]:hover, button[type="button"]:hover{  
-    background-color:var(--formbuttonfondocolor);
+    background-color:var(--buttonfondocolor);
     border:2px solid var(--bordergriscolor);
     color: var(--linkcolorhover);
 }
