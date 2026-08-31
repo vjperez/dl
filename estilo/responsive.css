@@ -6,12 +6,13 @@
   --navegaletracolorhovernosel:  hsl(00,  00%, 00%);
 
   --navegafondocolor:            hsl(000, 00%,  100%);
-  --navegafondocolorseleccionado:hsl(000, 00%,  90%);   
-  --navegafondocolorhover:       hsl(000, 00%,  95%);
+  --navegafondocolorseleccionado:hsl(000, 00%,  88%);   
+  --navegafondocolorhover:       hsl(000, 00%,  90%);
 
 
-/*  --navegabordercolor:           hsl(200, 70%,  50%);   */
-  --navegabordercolor:           hsl(200, 80%,  35%);  
+/*  --navegabordercolor:           hsl(200, 70%,  50%);  */
+/*  --navegabordercolor:           hsl(200, 80%,  35%);  */
+--navegabordercolor:           hsl(00, 00%,  88%);  
 }
 
 /*   body{ min-width:512px; }   */
