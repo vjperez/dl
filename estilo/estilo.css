@@ -9,20 +9,19 @@ html{box-sizing:border-box}*,*:before,*:after{box-sizing:inherit}
     --linkcolor:             hsl(22,  84%, 45%);
     --linkcolorhover:        hsl(22,  84%, 55%);
 
-    --formfondocolor:        hsl(000,  00%, 100%);
-    --formfondocolorhover:   hsl(000,  00%, 88%);
+    --fondowhitecolor:       hsl(000,  00%, 100%);
+    --fondowhitecolorshadow: hsl(000,  00%, 88%);
 
     --labelyheadercolor:     hsl(000,  00%, 0%);
 /*    --icolor:                hsl(330, 100%, 50%);
       --icolorcurrent:         hsl(330, 100%, 40%);  */
        
     --buttonfondocolor:      hsl(200,  80%,   60%);
-    --borderdarkcolor:      hsl(000,  00%,   00%);
-    --bordergriscolor:      hsl(000,  00%,   50%);
-
+    --borderdarkcolor:       hsl(000,  00%,   00%);
+    --bordergriscolor:       hsl(000,  00%,   50%);
+    --icongriscolor:         hsl(000,  00%,   50%);
 
     --negro:                 hsl(000,  00%,   0%);
-    --griso:                 hsl(000,  00%,  50%);
     --blanco:                hsl(000,  00%, 100%);
     
     --warncolor:             hsl(360, 100%,  70%);
@@ -64,14 +63,14 @@ form button[type="submit"]:hover, button[type="button"]:hover{
 
 input[type="text"], input[type="radioxx"], input[type="tel"],
 input[type="password"], input[type="email"], input[type="url"], textarea{
-    background-color:var(--formfondocolor);
+    background-color:var(--fondowhitecolor);
     border:none;
     border-bottom:4px solid var(--borderdarkcolor);
     outline: none;
 }
 input[type="text"]:focus, input[type="radioxx"]:focus, input[type="tel"]:focus,
 input[type="password"]:focus, input[type="email"]:focus, input[type="url"]:focus, textarea:focus{
-    background-color:var(--formfondocolorhover);
+    background-color:var(--fondowhitecolorshadow);
     border:none;
     border-bottom:4px solid var(--bordergriscolor); 
 }
@@ -109,10 +108,10 @@ form[id$=Form] h3.feedback   { font-family:'Oswald', mono, monospace; font-weigh
 
  section#quien div.hidable ul  i 
     { border-color:var(--negro);  border-style:solid;  border-width:0pt;  border-radius:5pt;   /* no usando borde*/
-    color:var(--griso); background: var(--blanco);}
+    color:var(--icongriscolor); background: var(--fondowhitecolor);}
  section#quien div.hidable ul  i:hover,  section#quien div.hidable ul  i:focus,  section#quien div.hidable ul  i.current 
     { border-color:var(--labelyheadercolor); border-width:0pt;   /* no usando borde*/
-    color:var(--linkcolorhover); }
+    color:var(--linkcolor); }
 
  section#cuando td, section#cuando td.hora, section#donde span.texto, section#donde span.textofixed, p, section#quien h5, div#opcionesdiv h2, section#que ul li, section#donde ul li  
 { font-family:'Courier Prime', serif, mono, monospace; }
@@ -124,11 +123,11 @@ form[id$=Form] h3.feedback   { font-family:'Oswald', mono, monospace; font-weigh
 { color:var(--labelyheadercolor);   font-weight:bolder;}
 
 i[class*="fa-chevron-circle"]
-{  color:var(--negro);   background-color:var(--linkcolor); border-radius:200pt;}
+{  color:var(--fondowhitecolorshadow);   background-color:var(--linkcolor); border-radius:200pt; border:2px solid var(--borderdarkcolor); }
 
 i[class*="fa-trash-alt"]
 {  color:var(--warncolor); }
 
 i[class*="fa-trash-alt"]:hover, i[class*="fa-chevron-circle"]:hover,
 i[class*="fa-trash-alt"]:focus, i[class*="fa-chevron-circle"]:focus
-{  background-color:var(--linkcolorhover); }
+{  background-color:var(--linkcolorhover); border:2px solid var(--bordergriscolor); }
