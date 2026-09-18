@@ -1,39 +1,38 @@
   <!-- contenido -->
   <div id="main">
-  <div id="registroForm"> 
+  <div id="registroForm">  
     <form id="registroForm" class="" action="looks/njs.html" method="post">
     
-  			<section>
-        <h2 class="notHidable">Contactos</h2>
-        <fieldset id="creaContactosFieldset" class="hidable">
 
-          <section>   <label class="cabe" for="nombreId">Nombre</label>	</section>
-	        <div>   <input id="nombreId" type="text" name="nombre"  maxlength="25" required="true">	</div>
+        <section>   <label class="cabe" for="nombreId">Nombre</label>	</section>
+	      <div>   <input id="nombreId" type="text" name="nombre"  maxlength="25" required="true">	</div>
 
-          <section>	<label class="cabe" for="emilioId">Email</label>	</section>
+        <section>	
+          <label class="cabe" for="emilioId">Email</label>	
           <label class="explica">(Enviaremos info por email.)</label>
-          <div>	<input  id="emilioId" type="email" name="emilio"  maxlength="30"  required="true" placeholder="tito@algo.com" >  </div>
+        </section>
+        <div>	<input  id="emilioId" type="email" name="emilio"  maxlength="30"  required="true" placeholder="tito@algo.com" >  </div>
 
-          <section><label class="cabe" for="telefonoId">Telefono</label></section>
-          <div>	<label><small>Formato: 939-222-4444</small></label> </div>
-          <div>   <input  id="telefonoId"     type="tel"   name="telefono"  maxlength="12"  
+        <section>
+          <label class="cabe" for="telefonoId">Telefono</label>
+          <label class="explica"><small>Formato: 939-222-4444</small></label>
+        </section>
+        <div>   <input  id="telefonoId"     type="tel"   name="telefono"  maxlength="12"  
             placeholder="787-222-4444" 
             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
-          </div>
+        </div>
 
-          <section><label class="cabe" for="redinstaId">Red Social 1</label></section> 
-          <div>	<input  id="redinstaId"     type="text"  name="redinsta"  maxlength="30"> </div>
+        <section><label class="cabe" for="redinstaId">Red Social 1</label></section> 
+        <div>	<input  id="redinstaId"     type="text"  name="redinsta"  maxlength="30"> </div>
           
-          <section><label class="cabe" for="redcaralibroId">Red Social 2</label> </section> 
-          <div>   <input  id="redcaralibroId"     type="text"  name="redcaralibro"  maxlength="30">	</div>
+        <section><label class="cabe" for="redcaralibroId">Red Social 2</label> </section> 
+        <div>   <input  id="redcaralibroId"     type="text"  name="redcaralibro"  maxlength="30">	</div>
 
-          <section>   <label class="cabe" for="passwordId">Password</label>	</section>
-          <div>   <input id="passwordId"        type="password" name="password"        maxlength="20" required=true>	</div>
-          <section class="confirm">   <label class="cabe" for="passwordConfirmId">Password</label>	</section>
-          <div class="confirm">   <input id="passwordConfirmId" type="password" name="passwordConfirm" maxlength="20" required=true>	</div>
+        <section>   <label class="cabe" for="passwordId">Password</label>	</section>
+        <div>   <input id="passwordId"        type="password" name="password"        maxlength="20" required=true>	</div>
+        <section class="confirm">   <label class="cabe" for="passwordConfirmId">Password</label>	</section>
+        <div class="confirm">   <input id="passwordConfirmId" type="password" name="passwordConfirm" maxlength="20" required=true>	</div>
 
-        </fieldset>
-      </section>
     
     <div>   <button type="submit">   <i class="fas fa-user-plus"></i></button>								                  </div>
 	  <div>   <h3 class="feedback"></h3>																			                                    </div>

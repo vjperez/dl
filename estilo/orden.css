@@ -20,8 +20,8 @@ form button[type="submit"], button[type="button"]{
 
 button i{ margin:0.2em auto 0.2em; }
 
-form#queDondeForm section label.cabe, form#loginForm section label.cabe,
-form#registroForm section label.cabe
+form#queDondeForm section label, form#loginForm section label,
+form#registroForm section label
 { margin-left: 10%; }
 
 section label.cabe         { font-size:1.5em; letter-spacing:0.0em; display: block; }

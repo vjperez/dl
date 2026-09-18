@@ -4,7 +4,7 @@ let formData = new FormData(forma);
 forma.addEventListener('submit', 
 function(evento){
     evento.preventDefault(); //not making a submit (POST request) from html action
-    let usertb = document.querySelector('#usernameId').value;
+    let usertb = document.querySelector('#nombreId').value;
     let pass01 = document.querySelector('#passwordId').value;
     let pass02 = document.querySelector('#passwordConfirmId').value;
 
@@ -53,7 +53,7 @@ function(evento){
 
 
 function showHideConfirm(evento){    
-  const usertb = document.querySelector('#usernameId').value;
+  const usertb = document.querySelector('#nombreId').value;
   const pass01 = document.querySelector('#passwordId').value;
   if( usertb.length > 0  &&  pass01.length > 0 ){
     document.querySelector('section.confirm').style.display = '';
@@ -64,6 +64,6 @@ function showHideConfirm(evento){
   }	
 }
 document.querySelector('form[id*=Form]  input[name^=password]').addEventListener('keyup', showHideConfirm);
-document.querySelector('form[id*=Form]  input[name=username]' ).addEventListener('keyup', showHideConfirm);
+document.querySelector('form[id*=Form]  input[name=nombre]' ).addEventListener('keyup', showHideConfirm);
 
 showHideConfirm();
