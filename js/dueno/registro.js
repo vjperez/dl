@@ -4,15 +4,15 @@ let formData = new FormData(forma);
 forma.addEventListener('submit', 
 function(evento){
     evento.preventDefault(); //not making a submit (POST request) from html action
-    let usertb = document.querySelector('#nombreId').value;
+    let nombretb = document.querySelector('#nombreId').value;
     let pass01 = document.querySelector('#passwordId').value;
     let pass02 = document.querySelector('#passwordConfirmId').value;
 
-    if( areValidUserYPass(usertb, pass01, pass02, 'fullFeedback', 'form#registroForm h3.feedback') ){
+    if( areValidNombreYPass(nombretb, pass01, pass02, 'fullFeedback', 'form#registroForm h3.feedback') ){
 
-      formData.append('usertb', usertb);
+      formData.append('nombretb', nombretb);
       formData.append('pass01', pass01);
-      const opciones = { body:formData, method:'post' };
+      let opciones = { body:formData, method:'post' };
       fetch('escritos/dueno/creaDueno.php', opciones )
       .then(
       function(respuesta){
@@ -43,7 +43,7 @@ function(evento){
       })
       .catch(
       function(error){
-        const href = encodeAndGetErrorPath(error);
+        let href = encodeAndGetErrorPath(error);
         window.location.href = href;
       });      
 
@@ -53,9 +53,9 @@ function(evento){
 
 
 function showHideConfirm(evento){    
-  const usertb = document.querySelector('#nombreId').value;
-  const pass01 = document.querySelector('#passwordId').value;
-  if( usertb.length > 0  &&  pass01.length > 0 ){
+  let nombretb = document.querySelector('#nombreId').value;
+  let pass01 = document.querySelector('#passwordId').value;
+  if( nombretb.length > 0  &&  pass01.length > 0 ){
     document.querySelector('section.confirm').style.display = '';
     document.querySelector('div.confirm').style.display = '';
   }else{

@@ -171,49 +171,54 @@ function slideToggle(el, duration = 500){
 }
 
 
-function areValidUserYPass(usertb, pass01, pass02, feedbackType, whatElement) {
+function areValidNombreYPass(nombretb, pass01, pass02, feedbackType, whatElement) {
   const MINIMUM_USER_PASS_LENGTH = 4;
-  const MINIMUM_USER_NAME_LENGTH = 3;
+  const MINIMUM_USER_NOMBRE_LENGTH = 2;
   //Esta funcion la usan login y registra
   //para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.
-  // 1)lenght >= 3o4; 2)only numbers or letters  @ . _  - +   ; 3)both pass are equal;
-  usertbCheck = usertb.replace(/[^a-z0-9ñäàáëèéïìíöòóüùú@._+-]/gi, ''); // g for global - 'dont stop at first match, find all'; i for case insensitive
-  pass01Check = pass01.replace(/[^a-z0-9ñäàáëèéïìíöòóüùú@._+-]/gi, '');
-  pass02Check = pass02.replace(/[^a-z0-9ñäàáëèéïìíöòóüùú@._+-]/gi, '');
+  // 1)lenght >= 2 o 4; 2)only numbers or letters  @ . _  - +   ; 3)both pass are equal;
+
+  // \p{L}: This matches any letter from any language in the world
+  // u flag: The Unicode flag (/gu) is required 
+  // \p{L} automatically covers uppercase and lowercase letters globally,
+  // no longer need a-z or the case-insensitive /i flag
+  let nombretbCheck = nombretb.replace(/[^0-9\p{L}@._+-]/gu, ''); // g for global - 'dont stop at first match, find all'; i for case insensitive
+  let pass01Check = pass01.replace(/[^0-9\p{L}@._+-]/gu, '');
+  let pass02Check = pass02.replace(/[^0-9\p{L}@._+-]/gu, '');
   if (
-    usertb.length < MINIMUM_USER_NAME_LENGTH ||
+    nombretb.length < MINIMUM_USER_NOMBRE_LENGTH ||
     pass01.length < MINIMUM_USER_PASS_LENGTH ||
     pass02.length < MINIMUM_USER_PASS_LENGTH
   ) {
-    if (feedbackType.indexOf('fullFeedback') !== -1) {
-      feedback(whatElement, 'Username o contrase\u00f1a es muy corto.', 'feedbackwarn', 'downdelayup');
-    } else {
-      // if(feedbackType.indexOf('genericFeedback') !== -1){
-      feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
-    }
-    return false;
+        if (feedbackType.indexOf('fullFeedback') !== -1) {
+          feedback(whatElement, 'nombre o contrase\u00f1a es muy corto.', 'feedbackwarn', 'downdelayup');
+        } else {
+          // if(feedbackType.indexOf('genericFeedback') !== -1){
+          feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
+        }
+        return false;
   } else if (
-    usertbCheck.length < usertb.length ||
+    nombretbCheck.length < nombretb.length ||
     pass01Check.length < pass01.length ||
     pass02Check.length < pass02.length
   ) {
-    if (feedbackType.indexOf('fullFeedback') !== -1) {
-      feedback(whatElement, 'Usa solo letras, numeros y @ . _ - + ', 'feedbackwarn', 'downdelayup');
-    } else {
-      // if(feedbackType.indexOf('genericFeedback') !== -1){
-      feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
-    }
-    return false;
+        if (feedbackType.indexOf('fullFeedback') !== -1) {
+          feedback(whatElement, 'Usa solo letras, numeros y @ . _ - + ', 'feedbackwarn', 'downdelayup');
+        } else {
+          // if(feedbackType.indexOf('genericFeedback') !== -1){
+          feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
+        }
+        return false;
   } else if (pass01 !== pass02) {
-    //same type, same value, no type conversion, case sensitive
-    if (feedbackType.indexOf('fullFeedback') !== -1) {
-      feedback(whatElement, 'Las contrase\u00f1as son diferentes.', 'feedbackwarn', 'downdelayup');
-    } else {
-      // if(feedbackType.indexOf('genericFeedback') !== -1){
-      feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
-    }
-    return false;
-  } else {
+        //same type, same value, no type conversion, case sensitive
+        if (feedbackType.indexOf('fullFeedback') !== -1) {
+          feedback(whatElement, 'Las contrase\u00f1as son diferentes.', 'feedbackwarn', 'downdelayup');
+        } else {
+          // if(feedbackType.indexOf('genericFeedback') !== -1){
+          feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
+        }
+        return false;
+  } else { // only letter, numbers, a few signs and long "enough", ... and equal passwords 
     return true;
   }
 }
