@@ -1,8 +1,6 @@
 console.log('funciones.js   [loading...]');
 
 
-
-
 function areValidNombreYPass(nombretb, pass01, pass02, feedbackType, whatElement) {
   const MINIMUM_USER_PASS_LENGTH = 4;
   const MINIMUM_USER_NOMBRE_LENGTH = 2;
@@ -54,6 +52,25 @@ function areValidNombreYPass(nombretb, pass01, pass02, feedbackType, whatElement
     return true;
   }
 }
+
+
+function feedback(queElemento, mensaje, clase, forma) {
+  const el = document.querySelector(queElemento);
+  el.innerText = mensaje;
+  el.classList.remove('feedbackgreen');
+  el.classList.remove('feedbackwarn');
+  el.classList.add(clase);
+  if (forma === 'downdelayup') {
+    slideDown(el, 1000);
+    window.setTimeout(() => {
+      slideUp(el, 1000);
+    }, 4000);
+    //slideToggle( el, 1000 );
+
+  }
+}
+
+
 
 
 //trims spaces, merges multiple spaces, 
@@ -125,23 +142,6 @@ function minimizeStr(str, elPatron) {
     }
   }
   return cleanedstr;
-}
-
-
-function feedback(queElemento, mensaje, clase, forma) {
-  const el = document.querySelector(queElemento);
-  el.innerText = mensaje;
-  el.classList.remove('feedbackgreen');
-  el.classList.remove('feedbackwarn');
-  el.classList.add(clase);
-  if (forma === 'downdelayup') {
-    slideDown(el, 1000);
-    window.setTimeout(() => {
-      slideUp(el, 1000);
-    }, 4000);
-    //slideToggle( el, 1000 );
-
-  }
 }
 
 
