@@ -49,7 +49,7 @@ function(evento){
 
     }//if
 
-});//eventlistener
+});//submit eventlistener
 
 
 function showHideConfirm(evento){    

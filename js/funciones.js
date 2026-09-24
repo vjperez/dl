@@ -1,17 +1,59 @@
 console.log('funciones.js   [loading...]');
 
-//menu Hidable Driver h1 buttons are hidden on width >= 768
-//see div#menuicons h1.menuHidableDriver{ display:none; }
-//Since there is no driver, the menu, needs to be reShown when resizing window from
-//pixels going from less to more than 768px
-function reShowMenu() {
-  const menuTarget = document.querySelector('.menuHidableTarget');
-  if (window.innerWidth >= 768 && window.getComputedStyle(menuTarget).display === 'none') {
-    showMenu();
-    console.log('reShowing menu...');
+
+
+
+function areValidNombreYPass(nombretb, pass01, pass02, feedbackType, whatElement) {
+  const MINIMUM_USER_PASS_LENGTH = 4;
+  const MINIMUM_USER_NOMBRE_LENGTH = 2;
+  //Esta funcion la usan login y registra
+  //para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.
+  // 1)lenght >= 2 o 4; 2)only numbers or letters  @ . _  - +   ; 3)both pass are equal;
+
+  // \p{L}: This matches any letter from any language in the world
+  // u flag: The Unicode flag (/gu) is required 
+  // \p{L} automatically covers uppercase and lowercase letters globally,
+  // no longer need a-z or the case-insensitive /i flag
+  let nombretbCheck = nombretb.replace(/[^0-9\p{L}@._+-]/gu, ''); // g for global - 'dont stop at first match, find all'; i for case insensitive
+  let pass01Check = pass01.replace(/[^0-9\p{L}@._+-]/gu, '');
+  let pass02Check = pass02.replace(/[^0-9\p{L}@._+-]/gu, '');
+  if (
+    nombretb.length < MINIMUM_USER_NOMBRE_LENGTH ||
+    pass01.length < MINIMUM_USER_PASS_LENGTH ||
+    pass02.length < MINIMUM_USER_PASS_LENGTH
+  ) {
+        if (feedbackType.indexOf('fullFeedback') !== -1) {
+          feedback(whatElement, 'nombre o contrase\u00f1a es muy corto.', 'feedbackwarn', 'downdelayup');
+        } else {
+          // if(feedbackType.indexOf('genericFeedback') !== -1){
+          feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
+        }
+        return false;
+  } else if (
+    nombretbCheck.length < nombretb.length ||
+    pass01Check.length < pass01.length ||
+    pass02Check.length < pass02.length
+  ) {
+        if (feedbackType.indexOf('fullFeedback') !== -1) {
+          feedback(whatElement, 'Usa solo letras, numeros y @ . _ - + ', 'feedbackwarn', 'downdelayup');
+        } else {
+          // if(feedbackType.indexOf('genericFeedback') !== -1){
+          feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
+        }
+        return false;
+  } else if (pass01 !== pass02) {
+        //same type, same value, no type conversion, case sensitive
+        if (feedbackType.indexOf('fullFeedback') !== -1) {
+          feedback(whatElement, 'Las contrase\u00f1as son diferentes.', 'feedbackwarn', 'downdelayup');
+        } else {
+          // if(feedbackType.indexOf('genericFeedback') !== -1){
+          feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
+        }
+        return false;
+  } else { // only letter, numbers, a few signs and long "enough", ... and equal passwords 
+    return true;
   }
 }
-window.addEventListener('resize', reShowMenu);
 
 
 //trims spaces, merges multiple spaces, 
@@ -171,59 +213,6 @@ function slideToggle(el, duration = 500){
 }
 
 
-function areValidNombreYPass(nombretb, pass01, pass02, feedbackType, whatElement) {
-  const MINIMUM_USER_PASS_LENGTH = 4;
-  const MINIMUM_USER_NOMBRE_LENGTH = 2;
-  //Esta funcion la usan login y registra
-  //para detectar valores invalidos q se pueden chequear con JavaScript, y evitar post innecesarios.
-  // 1)lenght >= 2 o 4; 2)only numbers or letters  @ . _  - +   ; 3)both pass are equal;
-
-  // \p{L}: This matches any letter from any language in the world
-  // u flag: The Unicode flag (/gu) is required 
-  // \p{L} automatically covers uppercase and lowercase letters globally,
-  // no longer need a-z or the case-insensitive /i flag
-  let nombretbCheck = nombretb.replace(/[^0-9\p{L}@._+-]/gu, ''); // g for global - 'dont stop at first match, find all'; i for case insensitive
-  let pass01Check = pass01.replace(/[^0-9\p{L}@._+-]/gu, '');
-  let pass02Check = pass02.replace(/[^0-9\p{L}@._+-]/gu, '');
-  if (
-    nombretb.length < MINIMUM_USER_NOMBRE_LENGTH ||
-    pass01.length < MINIMUM_USER_PASS_LENGTH ||
-    pass02.length < MINIMUM_USER_PASS_LENGTH
-  ) {
-        if (feedbackType.indexOf('fullFeedback') !== -1) {
-          feedback(whatElement, 'nombre o contrase\u00f1a es muy corto.', 'feedbackwarn', 'downdelayup');
-        } else {
-          // if(feedbackType.indexOf('genericFeedback') !== -1){
-          feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
-        }
-        return false;
-  } else if (
-    nombretbCheck.length < nombretb.length ||
-    pass01Check.length < pass01.length ||
-    pass02Check.length < pass02.length
-  ) {
-        if (feedbackType.indexOf('fullFeedback') !== -1) {
-          feedback(whatElement, 'Usa solo letras, numeros y @ . _ - + ', 'feedbackwarn', 'downdelayup');
-        } else {
-          // if(feedbackType.indexOf('genericFeedback') !== -1){
-          feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
-        }
-        return false;
-  } else if (pass01 !== pass02) {
-        //same type, same value, no type conversion, case sensitive
-        if (feedbackType.indexOf('fullFeedback') !== -1) {
-          feedback(whatElement, 'Las contrase\u00f1as son diferentes.', 'feedbackwarn', 'downdelayup');
-        } else {
-          // if(feedbackType.indexOf('genericFeedback') !== -1){
-          feedback(whatElement, 'Trata otra vez.', 'feedbackwarn', 'downdelayup');
-        }
-        return false;
-  } else { // only letter, numbers, a few signs and long "enough", ... and equal passwords 
-    return true;
-  }
-}
-
-
 //returns null when typeof str is not string
 //when str IS a string ... returns whether string has zero length after trimmed
 function isVacioStr(str) {
@@ -253,3 +242,19 @@ function getSessionValue( sessionName ){
       return dato.valorSession;
   });
 }
+
+
+
+
+//menu Hidable Driver h1 buttons are hidden on width >= 768
+//see div#menuicons h1.menuHidableDriver{ display:none; }
+//Since there is no driver, the menu, needs to be reShown when resizing window from
+//pixels going from less to more than 768px
+function reShowMenu() {
+  const menuTarget = document.querySelector('.menuHidableTarget');
+  if (window.innerWidth >= 768 && window.getComputedStyle(menuTarget).display === 'none') {
+    showMenu();
+    console.log('reShowing menu...');
+  }
+}
+window.addEventListener('resize', reShowMenu);
