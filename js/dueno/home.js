@@ -101,10 +101,10 @@ function(datosTxt){
   }
   ///////////////////////////////////////////////
 
-	if( socialDatosJsObj[0] ) document.querySelector('fieldset#editContactosFieldset input#red1Id').value = socialDatosJsObj[0];
-	if( socialDatosJsObj[1] ) document.querySelector('fieldset#editContactosFieldset input#red2Id').value = socialDatosJsObj[1];
-	if( socialDatosJsObj[2] ) document.querySelector('fieldset#editContactosFieldset input#red3Id').value = socialDatosJsObj[2];
-	if( socialDatosJsObj[3] ) document.querySelector('fieldset#editContactosFieldset input#red4Id').value = socialDatosJsObj[3];
+	if( socialDatosJsObj[0] ) document.querySelector('fieldset#editContactosFieldset input#telefonoId').value = socialDatosJsObj[0];
+	if( socialDatosJsObj[1] ) document.querySelector('fieldset#editContactosFieldset input#emilioId').value = socialDatosJsObj[1];
+	if( socialDatosJsObj[2] ) document.querySelector('fieldset#editContactosFieldset input#redinstaId').value = socialDatosJsObj[2];
+	if( socialDatosJsObj[3] ) document.querySelector('fieldset#editContactosFieldset input#redcaralibroId').value = socialDatosJsObj[3];
 })
 .catch(
 function(error){
