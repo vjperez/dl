@@ -53,7 +53,6 @@ function areValidNombreYPass(nombretb, pass01, pass02, feedbackType, whatElement
   }
 }
 
-
 function feedback(queElemento, mensaje, clase, forma) {
   const el = document.querySelector(queElemento);
   el.innerText = mensaje;
@@ -88,7 +87,6 @@ function removeExtraSpacesAndChars(str, patron){
   return str;
 }
 
-
 function unAccent(str){
   //using normalize with Canonically-decomposed form (NFD),
   //to then remove combining-diacritical-marks (includes accents)
@@ -96,7 +94,6 @@ function unAccent(str){
   str = str.normalize('NFD').replace(patron, '');
   return str;
 }
-
 
 function cleanStr( str, elPatron ){
   //function will convert a string like   !@#.uno+-  !$#dos!#@.    into   @.uno+- dos@.
@@ -115,7 +112,6 @@ function marca(str){
   str = str.replace(patron, '%');
   return str;
 }
-
 
 //minimize str, keeping just 1 space between words
 //uses cleanStr(), and marca()
@@ -143,6 +139,8 @@ function minimizeStr(str, elPatron) {
   }
   return cleanedstr;
 }
+
+
 
 
 function slideUp(el, duration = 500){
