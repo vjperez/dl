@@ -8,11 +8,11 @@ if(isset($_SESSION['dueno_id'])){
 	}
 
 	//conecta al db
-	require_once '../conecta/conecta.php';
+	require_once '../../conecta/conecta.php';
 	//i am sure i have a connection, because an exception was NOT thrown at conecta
 
-	require_once 'read/ownNepesWithIdsQuery.php';
-	$recurso = pg_execute($cnx, "preparadoQueryNepesWithIds", array($dueno_to_query));
+	require_once '../read/ownNepesWithIdsQuery.php';
+	$recurso = pg_execute($cnx, "preparadoQueryOwnNepesWithIds", array($dueno_to_query));
 	if($recurso){
 	    $own_nepes_with_ids = array();
 		$index = 0;
@@ -27,7 +27,7 @@ if(isset($_SESSION['dueno_id'])){
 		$_SESSION['own_nepes_with_ids'] = $own_nepes_with_ids; 
 	}else{
 		pg_close($cnx);
-		throw new Exception('Mal query.  Sin RECURSO para preparadoQueryNepesWithIds en: ' . __FILE__  );
+		throw new Exception('Mal query.  Sin RECURSO para preparadoQueryOwnNepesWithIds en: ' . __FILE__  );
 	}
 }else{
 	throw new Exception('Session no seteada en: ' . __FILE__  );
