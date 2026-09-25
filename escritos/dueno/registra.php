@@ -34,29 +34,27 @@ if($recurso){
 		if($recurso){
 			$recurso = pg_query($cnx, "SELECT currval('duenoid_seq')"); //otro recurso, ahora con fila q tiene id recien insertado.  Use RETURNING in insert and avoid this currval query
 			$filaConId = pg_fetch_row ($recurso);
-			$dueno_id = $filaConId[0];
-			session_start();	$_SESSION['dueno_id'] = $dueno_id;
+			$duenoid = $filaConId[0];
+			session_start();	$_SESSION['dueno_id'] = $duenoid;
 			
 			require_once 'crea/socialInsertQuery.php';
-			$recurso = pg_execute($cnx, "preparadoQuerySocialInsert", array($dueno_id, $contactosStr));
+			$recurso = pg_execute($cnx, "preparadoQuerySocialInsert", array($duenoid, $contactosStr));
 			if($recurso){
-				// just keep going to next on $tipos
+				pg_close($cnx);
+				$respuesta = json_decode('{"registrado":true, "feedback":"Ya estas registrado.  Directo a mi cuenta, no uso feedback."}');
+				echo json_encode ($respuesta); 
 			}else{
 				pg_close($cnx);
-				throw new Exception('Mal query. Sin RECURSO, preparadoQuerySocialInsert. Social not inserted. (Red tipo: ' .$tipos[$index]. ' en: )' . __FILE__ );
+				throw new Exception('Mal query. Sin RECURSO, preparadoQuerySocialInsert. dueno inserted, but social not inserted en: )' . __FILE__ );
 			}			
-			
-
-			pg_close($cnx);
-			$respuesta = json_decode('{"registrado":true, "feedback":"Ya estas registrado.  Directo a mi cuenta, no uso feedback."}');
-			echo json_encode ($respuesta); 
+		
 		}else{
 			pg_close($cnx);
 			throw new Exception('Mal query. Sin RECURSO, para preparadoQueryDuenoInsert. Email es nuevo, pero ... dueno not inserted, en: ' . __FILE__ );
 		}
 	}else{// isNewEmail is false
-		$respuesta = json_decode('{"registrado":false, "feedback":"Email no disponible, ya esta usado."}');
 		pg_close($cnx);
+		$respuesta = json_decode('{"registrado":false, "feedback":"Email no disponible, ya esta usado."}');
 		echo json_encode ($respuesta);
 	}
 	///////////////////////////////////////////////////////
