@@ -192,7 +192,7 @@ function(evento){
   formDataCon.append('tel', tel);               formDataCon.append('email', email);
   formDataCon.append('redSocial1', redSocial1); formDataCon.append('redSocial2', redSocial2);
   const opciones = { body:formDataCon, method:'post' };
-  fetch('escritos/dueno/bregaContactos.php', opciones )
+  fetch('escritos/dueno/editContactos.php', opciones )
   .then(
   function(respuesta){
     console.log(' fetch, then 1');
