@@ -9,20 +9,28 @@ function(evento){
     let pass02 = document.querySelector('#passwordConfirmId').value;
 
     if( areValidNombreYPass(nombretb, pass01, pass02, 'fullFeedback', 'form#registroForm h3.feedback') ){
+      let emiliotb = document.querySelector('#emilioId').value;
+      let telefono = document.querySelector('#telefonoId').value;
+      let insta = document.querySelector('#redinstaId').value;
+      let caralibro = document.querySelector('#redcaralibroId').value;
 
-      formData.append('nombretb', nombretb);
-      formData.append('pass01', pass01);
+      formData.append('nombre', nombretb);
+      formData.append('pass', pass01);
+      formData.append('emiliotb', emiliotb);
+      formData.append('telefono', telefono);
+      formData.append('insta', insta);
+      formData.append('caralibro', caralibro);      
       let opciones = { body:formData, method:'post' };
-      fetch('escritos/dueno/creaDueno.php', opciones )
+      fetch('escritos/dueno/registra.php', opciones )
       .then(
       function(respuesta){
-        console.log(' fetch, then 1:');
+        console.log('registro fetch, then 1:');
         console.log(respuesta);
         return respuesta.text();  
       })
       .then(
       function(datoTxt){
-        console.log(' fetch, then 2: ');
+        console.log('registro fetch, then 2: ');
         console.log( datoTxt );
 
         /////////////////////////try-catch////////////////////////
@@ -38,7 +46,7 @@ function(evento){
         if(datoJsObj.registrado){
           window.location.href = window.location.pathname + '?look=home';
         }else{ // usuario ya existe
-          feedback('form#registroForm h3.feedback', datoJsObj.feedback, 'feedbackwarn', 'downdelayup');
+          feedback(forma + ' h3.feedback', datoJsObj.feedback, 'feedbackwarn', 'downdelayup');
         }
       })
       .catch(
