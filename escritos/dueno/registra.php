@@ -9,6 +9,7 @@ $telefono = $_POST['telefono'];
 $insta = $_POST['insta'];
 $caralibro = $_POST['caralibro'];
 
+//used on social insert query 
 $contactos   = array( $telefono,  $nombre,  $insta,  $caralibro);
 $contactosStr = implode(',', $contactos);
 
