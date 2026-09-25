@@ -1,5 +1,5 @@
 <?php
-// query to insert dueno's social red handle, using tipo and id
+// query to insert dueno's social contactos, dueno id
 $querySocialInsert = "INSERT INTO
 	social(dueno_id, contactos)
 	VALUES($1, string_to_array( $2, ',' ))";
