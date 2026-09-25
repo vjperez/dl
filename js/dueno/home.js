@@ -1,9 +1,9 @@
 let usuario = ""; // this value is used for feedback on forms submit
 let cuantosNepes = 0; 
-
+ 
 //task 1 - get info
 ////////////////////// fetch to populate home page /////////////////
-fetch('escritos/dueno/getNombre.php')
+fetch('escritos/dueno/home/getNombre.php')
 .then(
 function(respuesta){
   console.log('view nepe fetch, then 1');
@@ -36,7 +36,7 @@ function(error){
 
 
 ////////////////////// fetch to populate home page /////////////////
-fetch('escritos/dueno/getOwnNepesWithIds.php')
+fetch('escritos/dueno/home/getOwnNepesWithIds.php')
 .then(
 function(respuesta){
   console.log('view nepe fetch, then 1');
@@ -79,7 +79,7 @@ function(error){
 
 
 ////////////////////// fetch to populate home page /////////////////
-fetch('escritos/dueno/getSocials.php')
+fetch('escritos/dueno/home/getSocials.php')
 .then(
 function(respuesta){
   console.log('view nepe fetch, then 1');
