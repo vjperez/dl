@@ -13,8 +13,12 @@
 		<form id="editContactosForm" class="" action="XXXXmicuenta.htmlXXXX" method="post">
 			<section>
         <h2 class="notHidable">    <i class="fa-solid  fa-chevron-circle-up"></i>   <i class="fa-solid  fa-chevron-circle-down"></i>   Contactos   </h2>
-        <label class="explica">(Enviaremos info por telefono/email.)</label>
+        <!--   <label class="explica">(Enviaremos info por telefono/email.)</label>  -->
+           
         <fieldset id="editContactosFieldset" class="hidable">
+          <div>	<label for="nombreId">Nombre</label>	</div>
+          <div>	<input  id="nombreId" type="email" name="nombre"  maxlength="25"  required placeholder="tito@algo.com" >  </div>  
+
           <div>	<label for="telefonoId">Telefono</label> </div>
           <div>	<label><small>Formato: 939-222-4444</small></label> </div>
           <div>   <input  id="telefonoId"     type="tel"   name="telefono"  maxlength="12"  
@@ -22,14 +26,11 @@
             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
           </div>
 
-          <div>	<label for="emilioId">Email</label>	</div>
-          <div>	<input  id="emilioId" type="email" name="emilio"  maxlength="30"  required placeholder="tito@algo.com" >  </div>
-
           <div>   <label for="redinstaId">Red Social 1</label> </div>
-          <div>	<input  id="redinstaId"     type="text"  name="redinsta"  maxlength="50"> </div>
+          <div>	<input  id="redinstaId"     type="text"  name="redinsta"  maxlength="25"> </div>
           
           <div>   <label for="redcaralibroId">Red Social 2</label> </div>
-          <div>   <input  id="redcaralibroId"     type="text"  name="redcaralibro"  maxlength="50">	</div>
+          <div>   <input  id="redcaralibroId"     type="text"  name="redcaralibro"  maxlength="25">	</div>
 
           <div>   <button type="submit">   <i class="fa-solid  fa-upload"></i></button>  </div>
           <div>   <h3 class="feedback"></h3> </div>
