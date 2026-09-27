@@ -3,7 +3,7 @@ let cuantosNepes = 0;
  
 //task 1 - get info
 ////////////////////// fetch to populate home page /////////////////
-fetch('escritos/dueno/home/getNombre.php')
+fetch('escritos/dueno/home/getEmilio.php')
 .then(
 function(respuesta){
   console.log('view nepe fetch, then 1');
@@ -26,7 +26,7 @@ function(datoTxt){
   ///////////////////////////////////////////////
 
   usuario = datoJsObj;
-  document.querySelector('div#labelTableContainer label').innerHTML = 'Negocios de ' + usuario ; 
+  document.querySelector('div#labelTableContainer label').innerHTML = ':: ' + usuario ; 
 })
 .catch(
 function(error){
@@ -102,7 +102,7 @@ function(datosTxt){
   ///////////////////////////////////////////////
 
 	if( socialDatosJsObj[0] ) document.querySelector('fieldset#editContactosFieldset input#telefonoId').value = socialDatosJsObj[0];
-	if( socialDatosJsObj[1] ) document.querySelector('fieldset#editContactosFieldset input#emilioId').value = socialDatosJsObj[1];
+	if( socialDatosJsObj[1] ) document.querySelector('fieldset#editContactosFieldset input#nombreId').value = socialDatosJsObj[1];
 	if( socialDatosJsObj[2] ) document.querySelector('fieldset#editContactosFieldset input#redinstaId').value = socialDatosJsObj[2];
 	if( socialDatosJsObj[3] ) document.querySelector('fieldset#editContactosFieldset input#redcaralibroId').value = socialDatosJsObj[3];
 })
