@@ -9,8 +9,8 @@ if(isset($_SESSION['dueno_id'])){
 
 	require_once '../../conecta/conecta.php';
 	
-	require_once '../read/getNombreQuery.php';
-	$recurso = pg_execute($cnx, "preparadoQueryGetNombre", array($dueno_to_query));
+	require_once '../read/getEmilioQuery.php';
+	$recurso = pg_execute($cnx, "preparadoQueryGetEmilio", array($dueno_to_query));
 	if($recurso){
 		$fila = pg_fetch_row($recurso);
 
@@ -24,7 +24,7 @@ if(isset($_SESSION['dueno_id'])){
 		echo json_encode($elUsername);
 	}else{
 		pg_close($cnx);
-		throw new Exception('Mal query.  Sin RECURSO para preparadoQueryGetNombre en: ' . __FILE__  );
+		throw new Exception('Mal query.  Sin RECURSO para preparadoQueryGetEmilio en: ' . __FILE__  );
 	}
 }else{
 	throw new Exception('Session no seteada en: ' . __FILE__  );
