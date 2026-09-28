@@ -4,10 +4,10 @@ if(isset($_SESSION['dueno_id'])){
 	$dueno_id = $_SESSION['dueno_id'];
 	//saca los valores de POST
 	$tel          = $_POST['tel'];
-	$email        = $_POST['email'];
-	$rs1   = $_POST['redSocial1'];
-	$rs2   = $_POST['redSocial2'];
-	$contactos   = array( $tel,  $email,  $rs1,  $rs2);
+	$nombre       = $_POST['nombre'];
+	$rs1   = $_POST['redinsta'];
+	$rs2   = $_POST['redcaralibro'];
+	$contactos   = array( $tel,  $nombre,  $rs1,  $rs2);
 	$contactosStr = implode(',', $contactos);
 	//conecta al db
 	require_once '../conecta/conecta.php';
