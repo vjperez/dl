@@ -121,30 +121,31 @@ hideThemSections();
 
 
 //task 2 - submit
-let formaCl = document.querySelector('form#editClaveForm');
+let formaClTxt = 'form#editClaveForm'; 
+let formaCl = document.querySelector(formaClTxt);
 let formDataCl = new FormData(formaCl);
 
 formaCl.addEventListener('submit', 
 function(evento){
   evento.preventDefault(); //not making a submit (POST request) from html action.
   let user = 'valorDummy';
-  let pass01 = document.querySelector('form#editClaveForm #passwordId').value;
-  let pass02 = document.querySelector('form#editClaveForm #passwordConfirmId').value;
+  let pass01tb = document.querySelector('form#editClaveForm #passwordId').value;
+  let pass02tb = document.querySelector('form#editClaveForm #passwordConfirmId').value;
 
-  if( areValidUserYPass(user, pass01, pass02, 'fullFeedback', 'form#editClaveForm h3.feedback') ){
+  if( areValidNombreYPass(user, pass01tb, pass02tb, 'fullFeedback', 'form#editClaveForm h3.feedback') ){
 
-    formDataCl.append('pass01', pass01);
+    formDataCl.append('pass', pass01tb);
     const opciones = { body:formDataCl, method:'post' };
 	  fetch('escritos/dueno/editClave.php', opciones )
 	  .then(
 	  function(respuesta){
-	    console.log(' fetch, then 1');
+	    console.log('edit clave fetch, then 1');
 	    console.log(respuesta);
 	    return respuesta.text();
 	  })
 	  .then(
 	  function(datoTxt){
-	    console.log(' fetch, then 2: ');
+	    console.log('edit clave fetch, then 2: ');
 	    console.log(datoTxt);
 
       /////////////////////////try-catch////////////////////////
@@ -158,11 +159,11 @@ function(evento){
       //////////////////////////////////////////////////////////
 
       if(datoJsObj.editado){
-        let feedbackStr = usuario + ', tu clave fue editada.'; 
-        feedback('form#editClaveForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
+        let feedbackStr = usuario + ', tu password fue editado.'; 
+        feedback(formaClTxt + ' h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
       }else{
-        let feedbackStr = usuario + ', trata otra vez.';
-        feedback('form#editClaveForm h3.feedback', feedbackStr, 'feedbackwarn', 'downdelayup');
+        let feedbackStr = usuario + ', no se pudo con tu pass.';
+        feedback(formaClTxt + ' h3.feedback', feedbackStr, 'feedbackwarn', 'downdelayup');
       }
 	  })
 	  .catch(
@@ -177,31 +178,31 @@ function(evento){
 
 
 
-
-let formaCon = document.querySelector('form#editContactosForm');
+let formaConTxt = 'form#editContactosForm';
+let formaCon = document.querySelector(formaConTxt);
 let formDataCon = new FormData(formaCon);
 
 formaCon.addEventListener('submit', 
 function(evento){
   evento.preventDefault(); //not making a submit (POST request) from html action.
-  let tel        = document.querySelector('form#editContactosForm  input#red1Id').value;
-	let email      = document.querySelector('form#editContactosForm  input#red2Id').value;
-  let redSocial1 = document.querySelector('form#editContactosForm  input#red3Id').value;
-  let redSocial2 = document.querySelector('form#editContactosForm  input#red4Id').value;
+  let tel        = document.querySelector('fieldset#editContactosFieldset input#telefonoId').value;
+	let nombre      = document.querySelector('fieldset#editContactosFieldset input#nombreId').value;
+  let redinsta = document.querySelector('fieldset#editContactosFieldset input#redinstaId').value;
+  let redcaralibro = document.querySelector('fieldset#editContactosFieldset input#redcaralibroId').value;
 
-  formDataCon.append('tel', tel);               formDataCon.append('email', email);
-  formDataCon.append('redSocial1', redSocial1); formDataCon.append('redSocial2', redSocial2);
+  formDataCon.append('tel', tel);               formDataCon.append('nombre', nombre);
+  formDataCon.append('redinsta', redinsta); formDataCon.append('redcaralibro', redcaralibro);
   const opciones = { body:formDataCon, method:'post' };
   fetch('escritos/dueno/editContactos.php', opciones )
   .then(
   function(respuesta){
-    console.log(' fetch, then 1');
+    console.log('edit contactos fetch, then 1');
     console.log(respuesta);
     return respuesta.text();
   })
   .then(
   function(datoTxt){
-    console.log(' fetch, then 2: ');
+    console.log('edit contactos fetch, then 2: ');
     console.log(datoTxt);
 
     /////////////////////////try-catch////////////////////////
@@ -216,7 +217,7 @@ function(evento){
 
 		if(datoJsObj.actualizados){
 			let feedbackStr = usuario + ', tus contactos fueron actualizados.'; 
-			feedback('form#editContactosForm h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
+			feedback(formaConTxt + ' h3.feedback', feedbackStr, 'feedbackgreen', 'downdelayup');
 		}
   })
   .catch(
