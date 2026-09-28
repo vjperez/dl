@@ -1,4 +1,5 @@
-let forma = document.querySelector('form#registroForm');
+let formaTxt = 'form#registroForm';
+let forma = document.querySelector(formaTxt);
 let formData = new FormData(forma);
 
 forma.addEventListener('submit', 
@@ -46,7 +47,7 @@ function(evento){
         if(datoJsObj.registrado){
           window.location.href = window.location.pathname + '?look=home';
         }else{ // usuario ya existe
-          feedback(forma + ' h3.feedback', datoJsObj.feedback, 'feedbackwarn', 'downdelayup');
+          feedback(formaTxt + ' h3.feedback', datoJsObj.feedback, 'feedbackwarn', 'downdelayup');
         }
       })
       .catch(

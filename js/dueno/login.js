@@ -1,4 +1,5 @@
-let forma = document.querySelector('form#loginForm');
+let formaTxt = 'form#loginForm';
+let forma = document.querySelector(formaTxt);
 let formData = new FormData(forma);
 
 forma.addEventListener('submit',
@@ -37,7 +38,7 @@ function(evento){
       if(datoJsObj.logueado){
         window.location.href = window.location.pathname + '?look=home';
       }else{
-        feedback( forma + ' h3.feedback', datoJsObj.feedback, 'feedbackwarn', 'downdelayup');
+        feedback(formaTxt + ' h3.feedback', datoJsObj.feedback, 'feedbackwarn', 'downdelayup');
       }
     })
     .catch(
