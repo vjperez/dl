@@ -13,8 +13,8 @@ if(isset($_SESSION['dueno_id'])){
 	require_once '../conecta/conecta.php';
 	//i am sure i have a connection, because an exception was NOT thrown at conecta
 	
-	require_once 'update/claveQuery.php';
-	$recurso = pg_execute($cnx, "preparadoQueryClave", array($hashed_pass, $dueno_to_edit));
+	require_once 'update/editClaveQuery.php';
+	$recurso = pg_execute($cnx, "preparadoQueryEditClave", array($hashed_pass, $dueno_to_edit));
 	if($recurso){
 		//consider not allowing admin to change other user's clave. The following if else-if structure would be unnecessary. Just use activo flag
 		//when user editing own clave, affected rows MUST always == 1
@@ -30,7 +30,7 @@ if(isset($_SESSION['dueno_id'])){
 		}		
 	}else{
 		pg_close($cnx);
-		throw new Exception('Mal query.  Sin RECURSO, para preparadoQueryClave en: '  . __FILE__ );
+		throw new Exception('Mal query.  Sin RECURSO, para preparadoQueryEditClave en: '  . __FILE__ );
 	}
 }else{
 	throw new Exception('Session dueno_id, no seteada en: ' . __FILE__  );
