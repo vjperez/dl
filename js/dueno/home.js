@@ -26,7 +26,7 @@ function(datoTxt){
   ///////////////////////////////////////////////
 
   usuario = datoJsObj;
-  document.querySelector('div#labelTableContainer label').innerHTML = ':: ' + usuario ; 
+  document.querySelector('div#labelTableContainer label').innerHTML = '' + usuario ; 
 })
 .catch(
 function(error){
