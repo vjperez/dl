@@ -39,10 +39,10 @@ span.info { background-color: var(--infocolor);  }
 .feedbackgreen { color: var(--negro);  background: var(--greencolor); }
 
 a:link, a:visited, a { font-weight:bolder;  color: var(--linkcolor);
-                font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace;
+                font-family:'Courier Prime', 'Bree Serif',  mono, monospace;
                 text-decoration:none;  }
 a:hover, a:focus { color:var(--linkcolorhover);
-                font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace;
+                font-family:'Courier Prime', 'Bree Serif',  mono, monospace;
                 text-decoration:none; }
 
 div#adminNepesForm a:link, div#adminNepesForm a:visited, div#adminNepesForm a { color: var(--warncolor); }
@@ -79,16 +79,16 @@ fieldset{ border:0px solid var(--negro);}
 section#donde div#sucasa { border:0px solid var(--negro); }
 
 /*
-section label.cabe { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
-section label.explica { font-family:'Oswald', mono, monospace;  }
+section label.cabe { font-family:'Courgette', 'Bree Serif', 'Courier Prime',  mono, monospace; }
+section label.explica { font-family: mono, monospace;  }
 */
 
 h5.footersubtitulo, ul.navega li a, div#opcionesdiv h5, div#nombreyRevisado h5, 
 h2.notHidable, span.diasOld, section label.cabe, section label.explica,
 fieldset.hidable label,  fieldset.hidable label.explica, span.enfasis
-{ font-family:'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
+{ font-family:'Bree Serif', 'Courier Prime',  mono, monospace; }
 
-h2.footertitulo { font-family:'Courgette', 'Bree Serif', 'Courier Prime', 'Oswald', mono, monospace; }
+h2.footertitulo { font-family:'Courgette','Bree Serif', 'Courier Prime',  mono, monospace; }
 
 h2.footertitulo       { text-shadow: 0px 2px 0px var(--negro); }
 /*  h2.footertitulo:hover { text-shadow: 0px 2px 0px var(--negro); }  */
@@ -98,7 +98,7 @@ section label.explica, fieldset.hidable label,  fieldset.hidable label.explica
 { font-weight:bolder; color:var(--negro); }
 
 
-form[id$=Form] h3.feedback   { font-family:'Oswald', mono, monospace; font-weight:bolder; }
+form[id$=Form] h3.feedback   { font-family:'Courier Prime', mono, monospace; font-weight:bolder; }
 
 
 /*   div#video h2.notHidable { font-family: 'Courgette', mono, monospace;}
@@ -113,7 +113,9 @@ form[id$=Form] h3.feedback   { font-family:'Oswald', mono, monospace; font-weigh
     { border-color:var(--labelyheadercolor); border-width:0pt;   /* no usando borde*/
     color:var(--linkcolor); }
 
- section#cuando td, section#cuando td.hora, section#donde span.texto, section#donde span.textofixed, p, section#quien h5, div#opcionesdiv h2, section#que ul li, section#donde ul li  
+ section#cuando td, section#cuando td.hora, section#donde span.texto,
+ section#donde span.textofixed, p, section#quien h5, div#opcionesdiv h2,
+ section#que ul li, section#donde ul li, fieldset#cuandoFieldset label[for^=dia]
 { font-family:'Courier Prime', serif, mono, monospace; }
  
  section#cuando td, section#donde span.textofixed, span.diasOld  
