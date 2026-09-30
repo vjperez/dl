@@ -93,9 +93,8 @@ h2.footertitulo { font-family:'Courgette','Bree Serif', 'Courier Prime',  mono, 
 h2.footertitulo       { text-shadow: 0px 2px 0px var(--negro); }
 /*  h2.footertitulo:hover { text-shadow: 0px 2px 0px var(--negro); }  */
 
-section label.cabe{ font-weight:bolder; color:var(--labelyheadercolor); }
-section label.explica, fieldset.hidable label,  fieldset.hidable label.explica  
-{ font-weight:bolder; color:var(--negro); }
+section label.cabe, section label.explica, fieldset.hidable label,  fieldset.hidable label.explica  
+{ font-weight:bolder; color:var(--labelyheadercolor); }
 
 
 form[id$=Form] h3.feedback   { font-family:'Courier Prime', mono, monospace; font-weight:bolder; }
