@@ -124,7 +124,7 @@ form[id$=Form] h3.feedback   { font-family:'Courier Prime', mono, monospace; fon
 { color:var(--labelyheadercolor);   font-weight:bolder;}
 
 i[class*="fa-chevron-circle"]
-{  color:var(--fondowhitecolorshadow);   background-color:var(--linkcolor); border-radius:200pt; border:2px solid var(--borderdarkcolor); }
+{  color:var(--fondowhitecolorshadow);   background-color:var(--linkcolor); border-radius:0.5em; border:0.05em solid var(--borderdarkcolor); }
 
 i[class*="fa-trash-alt"]
 {  color:var(--warncolor); }

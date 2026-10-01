@@ -25,6 +25,9 @@
   line-height: 1;
   text-rendering: auto; }
 
+.fa-fw {
+  text-align: center;
+  width: 1.10em; }
 
 .fas,
 .fa-classic,
