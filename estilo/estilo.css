@@ -84,14 +84,14 @@ section label.explica { font-family: mono, monospace;  }
 */
 
 h5.footersubtitulo, ul.navega li a, div#opcionesdiv h5, div#nombreyRevisado h5, 
-h2.notHidable, span.diasOld, section label.cabe, section label.explica,
+span.diasOld, section label.cabe, section label.explica,
 fieldset.hidable label,  fieldset.hidable label.explica, span.enfasis
 { font-family:'Bree Serif', 'Courier Prime',  mono, monospace; }
 
 h2.footertitulo { font-family:'Courgette','Bree Serif', 'Courier Prime',  mono, monospace; }
 
-h2.footertitulo       { text-shadow: 0px 2px 0px var(--negro); }
-/*  h2.footertitulo:hover { text-shadow: 0px 2px 0px var(--negro); }  */
+h2.footertitulo       { text-shadow: 0px 0.05em 0px var(--bordergriscolor); }
+h2.footertitulo:hover { text-shadow: 0px 0.05em 0px var(--fondowhitecolorshadow); }
 
 section label.cabe, section label.explica, fieldset.hidable label,  fieldset.hidable label.explica  
 { font-weight:bolder; color:var(--labelyheadercolor); }
