@@ -124,11 +124,11 @@ form[id$=Form] h3.feedback   { font-family:'Courier Prime', mono, monospace; fon
 { color:var(--labelyheadercolor);   font-weight:bolder;}
 
 i[class*="fa-chevron-circle"]
-{  color:var(--linkcolor);   background-color:var(--icongriscolor); border-radius:0.55em; border:0.05em solid var(--bordergriscolor); }
+{  color:var(--linkcolor);   background-color:var(--fondowhitecolorshadow); border-radius:0.55em; border:0.05em solid var(--fondowhitecolorshadow); }
 
 i[class*="fa-trash-alt"]
 {  color:var(--warncolor); }
 
 i[class*="fa-trash-alt"]:hover, i[class*="fa-chevron-circle"]:hover,
 i[class*="fa-trash-alt"]:focus, i[class*="fa-chevron-circle"]:focus
-{  color:var(--linkcolorhover); background-color:var(--fondowhitecolorshadow); border:0.05em solid var(--fondowhitecolorshadow); }
+{  color:var(--linkcolorhover); background-color:var(--icongriscolor); border:0.05em solid var(--bordergriscolor); }
