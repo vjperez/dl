@@ -54,7 +54,7 @@ function(evento){
 		formData.append('desdeCasa', desdeCasa);
     // end of core nepe //
 
-    console.log("la forma...");
+    console.log("crea nepe forma...");
     for (const pareja of formData.entries()) {
 			console.log('llave: ' + pareja[0] + '   valor: ' + pareja[1]);
 		}
